@@ -1,0 +1,52 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: scenario-player-service
+    env: dev
+
+# Конфигурация RestTemplate для подключения к внешним REST сервисам
+rest-client:
+# Таймаут подключения по http, мс
+#  connection.so.timeout: 1000
+# Таймаут ожидания ответа на запрос, мс
+#  http.request.timeout: 5000
+
+service-descriptor-storage-client:
+  # url сервиса-дескриптор хранилища
+  url: http://dev01.pgu2-pub.test.gosuslugi.ru/service-descriptor-storage/
+
+esia:
+  auth:
+    enabled: true
+    exclude-urls: /api/getService,/api/setService,/api/actuator
+  #this url used only for RtLabs development environment
+  #uddi.url: http://d00nlbservices/juddi/services/inquiry?wsdl
+  uddi.url: http://pgu-dev-fednlb.test.gosuslugi.ru/juddiv3/services/inquiry?wsdl
+  system.token.host: http://pgu-dev-fedlkapinlb.test.gosuslugi.ru/lk-api/internal/api/lk/v1/users/system/token
+  keystore:
+    passwd: 111111
+    pk:
+      passwd: 111111
+    alias: epgu
+  token:
+    instance:
+      code: epgu
+    jmsGroupDenominator: 200
+  url: https://esia-portal1.test.gosuslugi.ru
+  redirect:
+    url: https://pgu-dev-fed.test.gosuslugi.ru/ pgu/esia/oauth/auth_code_receiver
+    portal:
+      url: personcab
+  crt: classpath:esia/esia-epgu-major.cert
+  rs:
+    certificate: classpath:esia/rs-esia.cert
+  pd:
+    proxy:
+    #url: http://d00nlbservices/pds/api/pds/v1
+  cache: http://pgu-dev-fednlb.test.gosuslugi.ru/pds/api/pds/v1
+
+esia.keystore: classpath:esia/esia-keystore.jks
