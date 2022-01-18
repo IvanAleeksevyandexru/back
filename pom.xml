@@ -12,7 +12,6 @@
         <module>ms</module>
         <module>lib/pgu-kafka-cli</module>
         <module>lib/components</module>
-        <module>lib/pgu-fs-common</module>
     </modules>
 
     <properties>
