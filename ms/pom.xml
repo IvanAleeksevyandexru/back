@@ -23,6 +23,7 @@
 
     <modules>
         <module>form-backend</module>
+        <module>pgu-scenario-player-service</module>
     </modules>
 
     <distributionManagement>
