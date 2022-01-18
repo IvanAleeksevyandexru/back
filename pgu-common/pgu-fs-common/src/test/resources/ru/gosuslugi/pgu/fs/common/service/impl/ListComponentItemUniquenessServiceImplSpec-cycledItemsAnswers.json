@@ -1,0 +1,59 @@
+[
+  {
+    "id": "7459906",
+    "uniqueKeys": ["", "", "", "", ""],
+    "fieldToId": {
+      "firstName": "ai7_4",
+      "lastName": "ai7_3",
+      "isNew": "ai7_6"
+    },
+    "itemAnswers": {},
+    "cachedAnswers": {},
+    "esiaData": {
+      "lastName": "Каменев",
+      "rfBirthCertificateIssueDate": "2017-01-09T00:00:00Z",
+      "gender": "M",
+      "omsNumber": "7852110823003091",
+      "regDate": "",
+      "isNew": false,
+      "relationshipToChild": "",
+      "birthDate": "2017-01-01T00:00:00.000Z",
+      "regAddr": "",
+      "firstName": "Иван",
+      "rfBirthCertificateIssuedBy": "Спб",
+      "rfBirthCertificateSeries": "V-ДД",
+      "middleName": "Игоревич",
+      "id": "7459906",
+      "rfBirthCertificateNumber": "123456",
+      "snils": "985-102-088 16",
+      "rfBirthCertificateActNumber": "-"
+    },
+    "finishedScreens": []
+  },
+  {
+    "id": "7533952",
+    "uniqueKeys": ["", "", "", "", ""],
+    "fieldToId": {},
+    "itemAnswers": {},
+    "cachedAnswers": {},
+    "esiaData": {
+      "lastName": "Каменев",
+      "rfBirthCertificateIssueDate": "2010-09-02T00:00:00Z",
+      "gender": "M",
+      "omsNumber": "331231233123",
+      "regDate": "",
+      "isNew": false,
+      "relationshipToChild": "",
+      "birthDate": "2009-05-30T00:00:00.000Z",
+      "regAddr": "",
+      "firstName": "Иван",
+      "rfBirthCertificateIssuedBy": "ПРПР",
+      "rfBirthCertificateSeries": "IV-АВ",
+      "middleName": "Михайлович",
+      "id": "7533952",
+      "rfBirthCertificateNumber": "3333333",
+      "rfBirthCertificateActNumber": "-"
+    },
+    "finishedScreens": []
+  }
+]
