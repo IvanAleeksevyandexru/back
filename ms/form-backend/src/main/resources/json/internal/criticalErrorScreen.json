@@ -1,0 +1,43 @@
+{
+  "init": "criticalErrorScreen",
+  "saveDraftModeEnabled": false,
+  "serviceName": "criticalError",
+  "screens": [
+    {
+      "id": "criticalErrorScreen",
+      "name": "Экран критической ошибки",
+      "type": "INFO",
+      "header": "",
+      "hideBackButton": true,
+      "components": [
+        "criticalError"
+      ],
+      "buttons": [
+        {
+          "label": "На главную",
+          "type": "home",
+          "action": "getNextScreen"
+        }
+      ]
+    }
+  ],
+  "applicationFields": [
+    {
+      "id": "criticalError",
+      "type": "InfoScr",
+      "label": "<center><h3>Не удалось загрузить страницу</h3></center><center class='text-color--text-helper'>${errorMsg}</center>",
+      "attrs": {
+        "image": {
+          "src": "https://gu-st.ru/content/catalog/new/i_Helmet.svg"
+        }
+      },
+      "value": "",
+      "visited": false
+    }
+  ],
+  "roleToInitScreen": {
+    "Applicant": "criticalErrorScreen"
+  },
+  "screenRules": {
+  }
+}

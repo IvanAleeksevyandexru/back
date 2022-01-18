@@ -1,0 +1,43 @@
+{
+  "id": "pd6",
+  "type": "ConfirmPersonalPolicy",
+  "label": "Подтвердите полис ОМС",
+  "attrs": {
+    "style": {
+      "group": "mb-24",
+      "groupTitle": "mb-12",
+      "value": "",
+      "label": "mb-4",
+      "field": "mb-16",
+      "list": "",
+      "divider": ""
+    },
+    "actions": [],
+    "fields": [
+      {
+        "fieldName": "unitedNumber",
+        "label": "Номер полиса ОМС",
+        "required": "true"
+      },
+      {
+        "fieldName": "issuePlace",
+        "label": "Регион страхования",
+        "required": "true"
+      },
+      {
+        "fieldName": "issuedBy",
+        "label": "Страховая организация",
+        "required": "true"
+      }
+    ],
+    "errors": [
+      {
+        "title": "Ошибка загрузки данных",
+        "desc": "<a data-action-type='prevStep'>Попробуйте снова</a> или <b data-action-type='nextStep'>заполните данные вручную</b> ",
+        "type": "error"
+      }
+    ]
+  },
+  "value": "",
+  "visited": false
+}

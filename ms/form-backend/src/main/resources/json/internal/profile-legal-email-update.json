@@ -1,0 +1,137 @@
+{
+  "init": "editLegalEmail_s1",
+  "saveDraftModeEnabled": false,
+  "serviceName": "editLegalEmail",
+  "presetFieldTypes": [
+    "ConfirmLegalEmail"
+  ],
+  "screens": [
+    {
+      "id": "editLegalEmail_s1",
+      "name": "Укажите новый адрес электронной почты",
+      "type": "CUSTOM",
+      "header": "Укажите новый адрес электронной почты",
+      "components": [
+        "wn1",
+        "nm"
+      ],
+      "buttons": [
+        {
+          "label": "Продолжить",
+          "type": "nextStepModal"
+        }
+      ]
+    },
+    {
+      "id": "editLegalEmail_s2",
+      "name": "Подтвердите адрес электронной почты",
+      "type": "UNIQUE",
+      "header": "",
+      "components": [
+        "cnm1"
+      ]
+    },
+    {
+      "id": "editLegalEmail_s3",
+      "name": "Адрес электронной почты успешно изменен",
+      "type": "INFO",
+      "header": "",
+      "components": [
+        "finishscreen1"
+      ],
+      "buttons": [
+        {
+          "label": "Вернуться к заявлению",
+          "type": "nextStepModal",
+          "value": "Вернуться к заявлению",
+          "action": "goBackToMainScenario"
+        }
+      ]
+    }
+  ],
+  "applicationFields": [
+    {
+      "id": "wn1",
+      "type": "HtmlString",
+      "label": "<div><b><svg width=\"32\" height=\"4\" viewBox=\"0 0 32 4\" xmlns=\"http://www.w3.org/2000/svg\" style=\" margin-right: 8px; vertical-align: middle; \"> <path d=\"M32 0H0V4H32V0Z\" fill=\"#FED13E\"></path> </svg>Обратите внимание!</b><p style=\" margin-top: 4px; margin-bottom: 24px; color: #66727F; \">Изменение адреса электронной почты произойдет и в вашей учетной записи</p></div>",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "nm",
+      "type": "NewLegalEmailInput",
+      "label": "Электронная почта",
+      "attrs": {
+        "validation": [
+          {
+            "type": "RegExp",
+            "value": "^[0-9а-яА-Яa-zA-Z_.-]{1,50}[@]{1}[0-9а-яА-Яa-zA-Z_.-]{2,50}[.]{1}[а-яА-Яa-zA-Z]{2,5}$",
+            "ref": "",
+            "dataType": "",
+            "condition": "",
+            "errorMsg": "Введите корректный адрес электронной почты",
+            "updateOn": "blur"
+          },
+          {
+            "type": "maxLength",
+            "value": 100,
+            "errorMsg": "Можно ввести максимум ${maxLength} символов"
+          }
+        ],
+        "hint": "На этот адрес будет отправлено письмо для подтверждения электронной почты"
+      },
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "cnm1",
+      "type": "ConfirmLegalNewEmail",
+      "label": "",
+      "linkedValues": [
+        {
+          "argument": "email",
+          "source": "nm"
+        }
+      ],
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "finishscreen1",
+      "type": "GInfoScr",
+      "label": "<div class=\"info__status-image\"><img src='{staticDomainAssetsPath}/assets/icons/svg/ok.svg' /></div><h4 class=\"info__end-screen-text\">Адрес электронной почты успешно изменен</h4>",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    }
+  ],
+  "roleToInitScreen": {
+    "Applicant": "editLegalEmail_s1"
+  },
+  "screenRules": {
+    "editLegalEmail_s1": [
+      {
+        "conditions": [
+          {
+            "field": "nm",
+            "visited": true
+          }
+        ],
+        "nextDisplay": "editLegalEmail_s2"
+      }
+    ],
+    "editLegalEmail_s2": [
+      {
+        "conditions": [
+          {
+            "field": "cnm1",
+            "visited": true
+          }
+        ],
+        "nextDisplay": "editLegalEmail_s3"
+      }
+    ]
+  },
+  "parameters": {}
+}

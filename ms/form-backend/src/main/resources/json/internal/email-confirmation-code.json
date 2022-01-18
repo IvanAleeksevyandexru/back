@@ -1,0 +1,99 @@
+{
+  "init": "editEmail_s1",
+  "saveDraftModeEnabled": false,
+  "serviceName": "confirmEmailCode",
+  "screens": [
+    {
+      "id": "editEmail_s1",
+      "name": "Введите код подтверждения из почты",
+      "type": "UNIQUE",
+      "header": "",
+      "components": [
+        "internalProcessSuccess"
+      ]
+    },
+    {
+      "id": "editEmail_s3",
+      "name": "Код подтвержден",
+      "type": "INFO",
+      "header": "",
+      "components": [
+        "d1"
+      ],
+      "buttons": [
+        {
+          "label": "Вернуться к заявлению",
+          "type": "nextStepModal",
+          "value": "Вернуться к заявлению",
+          "action": "goBackToMainScenario"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "name": "Ошибка подтверждения кода",
+      "type": "INFO",
+      "header": "",
+      "components": [
+        "d2"
+      ],
+      "buttons": [
+        {
+          "label": "Вернуться к заявлению",
+          "type": "nextStepModal",
+          "value": "Вернуться к заявлению",
+          "action": "goBackToMainScenario"
+        }
+      ]
+    }
+  ],
+  "applicationFields": [
+    {
+      "id": "internalProcessSuccess",
+      "type": "ConfirmEmailCodeInput",
+      "label": "код подтверждения",
+      "attrs": {
+        "codeLength": 4,
+        "characterMask": "\\d",
+        "resendCodeUrl": "service/actions/confirmEmailCode"
+      },
+      "linkedValues": [
+        {
+          "argument": "email",
+          "source": "pd1"
+        }
+      ],
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "d1",
+      "type": "GInfoScr",
+      "label": "<div class=\"info__status-image\"><img src='{staticDomainAssetsPath}/assets/icons/svg/ok.svg' /></div><h4 class=\"info__end-screen-text\">Успешное подтверждение</h4>",
+      "attrs": {
+        "displayShowTimeSeconds": 5
+      },
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "d2",
+      "type": "GInfoScr",
+      "label": "<div class=\"info__status-image\"><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg' /></div><h4 class=\"info__end-screen-text\">Ошибка подтверждения</h4>",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    }
+  ],
+  "roleToInitScreen": {
+    "Applicant": "editEmail_s2"
+  },
+  "screenRules": {
+    "editEmail_s1": [
+      {"conditions": [{"field": "internalProcessSuccess", "visited": true}], "nextDisplay": "editEmail_s3"}
+    ]
+  },
+  "parameters": {
+    "moveMainScenarioToNextStep": "1"
+  }
+}

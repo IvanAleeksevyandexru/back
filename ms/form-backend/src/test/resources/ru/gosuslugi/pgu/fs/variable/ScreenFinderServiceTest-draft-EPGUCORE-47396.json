@@ -1,0 +1,306 @@
+{
+  "body": {
+    "serviceCode": "10000000106",
+    "targetCode": "-10000000106",
+    "orderId": 763650323,
+    "currentScenarioId": 1,
+    "currentUrl": "http://dev01.pgu2-pub.test.gosuslugi.ru/",
+    "finishedAndCurrentScreens": [
+      "finishscreen20_book_reject",
+      "s17_slots_const"
+    ],
+    "cachedAnswers": {
+      "w1": {
+        "visited": true,
+        "value": ""
+      },
+      "q1": {
+        "visited": true,
+        "value": "Совместное согласие"
+      },
+      "q2": {
+        "visited": true,
+        "value": "Да"
+      },
+      "q3": {
+        "visited": true,
+        "value": "По месту постоянной регистрации"
+      },
+      "d2": {
+        "visited": true,
+        "value": ""
+      },
+      "pd1": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Алексев Алексей Александрович\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"20.10.1972\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"6662 213646\"},{\"label\":\"Дата выдачи:\",\"value\":\"01.01.2018\"},{\"label\":\"Кем выдан:\",\"value\":\"Воронежским ГУВД‚\"},{\"label\":\"Код подразделения:\",\"value\":\"212-121\"},{\"label\":\"Место рождения:\",\"value\":\"Воронеж\"}]}],\"storedValues\":{\"firstName\":\"Алексей\",\"lastName\":\"Алексев\",\"middleName\":\"Александрович\",\"birthDate\":\"20.10.1972\",\"birthPlace\":\"Воронеж\",\"gender\":\"M\",\"rfPasportSeries\":\"6662\",\"rfPasportNumber\":\"213646\",\"rfPasportIssueDate\":\"01.01.2018\",\"rfPasportIssuedBy\":\"Воронежским ГУВД‚\",\"rfPasportIssuedById\":\"212121\",\"citizenship\":\"РОССИЯ\",\"citizenshipCode\":\"RUS\"}}"
+      },
+      "pd2": {
+        "visited": true,
+        "value": "+7(997)1237890"
+      },
+      "pd3": {
+        "visited": true,
+        "value": "666225646123525240@test.tst.ph"
+      },
+      "pd4": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":\"\",\"streetShortType\":\"ул\",\"additionalStreetShortType\":\"\",\"districtType\":\"\",\"geoLat\":\"55.8115278\",\"building2Type\":\"\",\"okato\":\"45280561000\",\"building1Type\":\"корпус\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.8115278\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.5922338\",\"index\":\"127254\",\"townShortType\":\"\",\"district\":\"\",\"fullAddress\":\"127254, г. Москва, ул. Руставели, д. 10, к. 3, кв. 55\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.5922338\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"10\",\"apartmentCheckbox\":false,\"townType\":\"\",\"additionalAreaType\":\"\",\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":\"\",\"street\":\"Руставели\",\"additionalStreetType\":\"\",\"inCityDistShortType\":\"\",\"additionalAreaShortType\":\"\",\"cityShortType\":\"\",\"kladrCode\":\"7700000000025220027\",\"building1ShortType\":\"к\",\"fiasCode\":\"398aade5-9d05-4c57-a0ff-44785e7d9ae0\",\"hasErrors\":0,\"inCityDistType\":\"\",\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Руставели\",\"building1\":\"3\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":\"\",\"apartment\":\"55\"}}"
+      },
+      "act3": {
+        "visited": true,
+        "value": "2017-02-04T00:00:00.000+03:00"
+      },
+      "act2": {
+        "visited": true,
+        "value": "3543"
+      },
+      "act4": {
+        "visited": true,
+        "value": "{\"id\":\"R4800001\",\"text\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\",\"formatted\":\"\",\"originalItem\":{\"value\":\"R4800001\",\"parentValue\":null,\"title\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\",\"isLeaf\":true,\"children\":[],\"attributes\":[{\"name\":\"PR4\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR5\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR6\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR7\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"CITE\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"DATAN\",\"type\":\"STRING\",\"value\":{\"asString\":\"2016-06-01\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"2016-06-01\"},\"valueAsOfType\":\"2016-06-01\"},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R4800001\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R4800001\"},\"valueAsOfType\":\"R4800001\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\"},\"valueAsOfType\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"398050, Россия, Липецкая область, г. Липецк, ул. Ленина, д. 28\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"398050, Россия, Липецкая область, г. Липецк, ул. Ленина, д. 28\"},\"valueAsOfType\":\"398050, Россия, Липецкая область, г. Липецк, ул. Ленина, д. 28\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"(84742) 27-42-29\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"(84742) 27-42-29\"},\"valueAsOfType\":\"(84742) 27-42-29\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags@cominfo.lipetsk.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags@cominfo.lipetsk.ru\"},\"valueAsOfType\":\"zags@cominfo.lipetsk.ru\"},{\"name\":\"OKTMO\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"PR1\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR3\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"}],\"source\":null,\"attributeValues\":{\"OKTMO\":null,\"PHONE\":\"(84742) 27-42-29\",\"CITE\":null,\"EMAIL\":\"zags@cominfo.lipetsk.ru\",\"PR1\":\"false\",\"PR3\":\"false\",\"PR2\":\"false\",\"PR5\":\"false\",\"CODE\":\"R4800001\",\"PR4\":\"false\",\"PR7\":\"false\",\"PR6\":\"false\",\"ADDRESS\":\"398050, Россия, Липецкая область, г. Липецк, ул. Ленина, д. 28\",\"DATAN\":\"2016-06-01\",\"DATAK\":null,\"FULLNAME\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\"}}}"
+      },
+      "fai1": {
+        "visited": true,
+        "value": ""
+      },
+      "fai2": {
+        "visited": true,
+        "value": ""
+      },
+      "fai3": {
+        "visited": true,
+        "value": ""
+      },
+      "pd5": {
+        "visited": true,
+        "value": "Джонс"
+      },
+      "pd15": {
+        "visited": true,
+        "value": ""
+      },
+      "pd6": {
+        "visited": true,
+        "value": "{\"birthDate\":\"20.10.1972\",\"gender\":\"F\",\"trusted\":true,\"citizenship\":\"RUS\",\"snils\":\"915-293-895 38\",\"biomStu\":false,\"oid\":\"1000466573\",\"exists\":true,\"age\":48}"
+      },
+      "pd7": {
+        "visited": true,
+        "value": "79217419478@nwgsm.ru"
+      },
+      "ms1": {
+        "visited": true,
+        "value": "{\"value\":\"R7700024\",\"parentValue\":null,\"title\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"PR4\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR5\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR6\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR7\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"CITE\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags.mos.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags.mos.ru\"},\"valueAsOfType\":\"zags.mos.ru\"},{\"name\":\"DATAN\",\"type\":\"STRING\",\"value\":{\"asString\":\"2003-10-20\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"2003-10-20\"},\"valueAsOfType\":\"2003-10-20\"},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R7700024\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R7700024\"},\"valueAsOfType\":\"R7700024\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},\"valueAsOfType\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\"},\"valueAsOfType\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"8(499)251-53-88\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"8(499)251-53-88\"},\"valueAsOfType\":\"8(499)251-53-88\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags@mos.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags@mos.ru\"},\"valueAsOfType\":\"zags@mos.ru\"},{\"name\":\"OKTMO\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"PR1\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR3\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"}],\"source\":null,\"attributeValues\":{\"OKTMO\":null,\"PHONE\":\"8(499)251-53-88\",\"CITE\":\"zags.mos.ru\",\"EMAIL\":\"zags@mos.ru\",\"PR1\":\"true\",\"PR3\":\"true\",\"PR2\":\"true\",\"PR5\":\"true\",\"CODE\":\"R7700024\",\"PR4\":\"true\",\"PR7\":\"true\",\"PR6\":\"true\",\"ADDRESS\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"DATAN\":\"2003-10-20\",\"DATAK\":null,\"FULLNAME\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},\"idForMap\":26,\"center\":[37.591045,55.775029],\"baloonContent\":[{\"value\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"label\":\"Адрес\"},{\"value\":\"8(499)251-53-88\",\"label\":\"Телефон\"},{\"value\":\"zags@mos.ru\",\"label\":\"Email\"}],\"agreement\":true,\"expanded\":true,\"okato\":\"45280561000\"}"
+      },
+      "ts1": {
+        "visited": true,
+        "value": "{\"bookId\":\"80cd047a-032e-447d-9797-9852d8e92373\",\"esiaId\":\"1000466570\",\"status\":{\"statusCode\":201,\"statusMessage\":\"Забронировано\"},\"timeSlot\":{\"slotId\":\"9f5e8262-4ca6-4bd7-a8c5-94ab37b8683d\",\"serviceId\":\"10000000000456\",\"organizationId\":\"R7700005\",\"areaId\":\"Дом музыки\",\"visitTime\":1612609200000,\"visitTimeStr\":\"2021-02-06T11:00:00.000\",\"visitTimeISO\":\"2021-02-06T11:00:00Z\",\"queueNumber\":null,\"duration\":null,\"attributes\":[]},\"error\":null,\"timeStart\":\"2021-02-04T09:01:49.076Z\",\"timeFinish\":\"2021-02-05T09:01:49.076Z\",\"department\":{\"value\":\"R7700024\",\"parentValue\":null,\"title\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"PR4\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR5\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR6\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR7\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"CITE\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags.mos.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags.mos.ru\"},\"valueAsOfType\":\"zags.mos.ru\"},{\"name\":\"DATAN\",\"type\":\"STRING\",\"value\":{\"asString\":\"2003-10-20\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"2003-10-20\"},\"valueAsOfType\":\"2003-10-20\"},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R7700024\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R7700024\"},\"valueAsOfType\":\"R7700024\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},\"valueAsOfType\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\"},\"valueAsOfType\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"8(499)251-53-88\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"8(499)251-53-88\"},\"valueAsOfType\":\"8(499)251-53-88\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags@mos.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags@mos.ru\"},\"valueAsOfType\":\"zags@mos.ru\"},{\"name\":\"OKTMO\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"PR1\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR3\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"}],\"source\":null,\"attributeValues\":{\"OKTMO\":null,\"PHONE\":\"8(499)251-53-88\",\"CITE\":\"zags.mos.ru\",\"EMAIL\":\"zags@mos.ru\",\"PR1\":\"true\",\"PR3\":\"true\",\"PR2\":\"true\",\"PR5\":\"true\",\"CODE\":\"R7700024\",\"PR4\":\"true\",\"PR7\":\"true\",\"PR6\":\"true\",\"ADDRESS\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"DATAN\":\"2003-10-20\",\"DATAK\":null,\"FULLNAME\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},\"idForMap\":26,\"center\":[37.591045,55.775029],\"baloonContent\":[{\"value\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"label\":\"Адрес\"},{\"value\":\"8(499)251-53-88\",\"label\":\"Телефон\"},{\"value\":\"zags@mos.ru\",\"label\":\"Email\"}],\"agreement\":true,\"expanded\":true,\"okato\":\"45280561000\"}}"
+      },
+      "pay3ms5": {
+        "visited": true,
+        "value": "{\"uin\":\"0316373317011700000057047\",\"amount\":\"359\",\"amountWithoutDiscount\":\"512\",\"paymentPurpose\":\"Госпошлина ЗАГС\",\"receiver\":\"CНИЛС 00069600068\",\"billId\":22241583}"
+      },
+      "sentTime": {
+        "value": "2021-02-04T12:03:47+03:00"
+      },
+      "book_reject1": {
+        "visited": true,
+        "value": "Выбрать дату"
+      }
+    },
+    "currentValue": {
+      "ts1": {
+        "visited": true,
+        "value": "{\"bookId\":\"37f7f197-fbd9-4c52-9992-78e18fe35268\",\"esiaId\":\"1000466570\",\"status\":{\"statusCode\":201,\"statusMessage\":\"Забронировано\"},\"timeSlot\":{\"slotId\":\"a7164f5b-c5d6-4d47-9478-dcab86882695\",\"serviceId\":\"10000000000456\",\"organizationId\":\"R7700005\",\"areaId\":\"Дом музыки\",\"visitTime\":1637402400000,\"visitTimeStr\":\"2021-11-20T10:00:00.000\",\"visitTimeISO\":\"2021-11-20T10:00:00Z\",\"queueNumber\":null,\"duration\":null,\"attributes\":[]},\"error\":null,\"timeStart\":\"2021-02-04T09:14:53.822Z\",\"timeFinish\":\"2021-02-05T09:14:53.822Z\",\"department\":{\"value\":\"R7700024\",\"parentValue\":null,\"title\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"PR4\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR5\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR6\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR7\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"CITE\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags.mos.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags.mos.ru\"},\"valueAsOfType\":\"zags.mos.ru\"},{\"name\":\"DATAN\",\"type\":\"STRING\",\"value\":{\"asString\":\"2003-10-20\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"2003-10-20\"},\"valueAsOfType\":\"2003-10-20\"},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R7700024\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R7700024\"},\"valueAsOfType\":\"R7700024\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},\"valueAsOfType\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\"},\"valueAsOfType\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"8(499)251-53-88\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"8(499)251-53-88\"},\"valueAsOfType\":\"8(499)251-53-88\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags@mos.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags@mos.ru\"},\"valueAsOfType\":\"zags@mos.ru\"},{\"name\":\"OKTMO\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"PR1\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR3\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"}],\"source\":null,\"attributeValues\":{\"OKTMO\":null,\"PHONE\":\"8(499)251-53-88\",\"CITE\":\"zags.mos.ru\",\"EMAIL\":\"zags@mos.ru\",\"PR1\":\"true\",\"PR3\":\"true\",\"PR2\":\"true\",\"PR5\":\"true\",\"CODE\":\"R7700024\",\"PR4\":\"true\",\"PR7\":\"true\",\"PR6\":\"true\",\"ADDRESS\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"DATAN\":\"2003-10-20\",\"DATAK\":null,\"FULLNAME\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},\"idForMap\":26,\"center\":[37.591045,55.775029],\"baloonContent\":[{\"value\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"label\":\"Адрес\"},{\"value\":\"8(499)251-53-88\",\"label\":\"Телефон\"},{\"value\":\"zags@mos.ru\",\"label\":\"Email\"}],\"agreement\":true,\"expanded\":true,\"okato\":\"45280561000\"}}"
+      }
+    },
+    "errors": {},
+    "applicantAnswers": {
+      "w1": {
+        "visited": true,
+        "value": ""
+      },
+      "q1": {
+        "visited": true,
+        "value": "Совместное согласие"
+      },
+      "q2": {
+        "visited": true,
+        "value": "Да"
+      },
+      "q3": {
+        "visited": true,
+        "value": "По месту постоянной регистрации"
+      },
+      "d2": {
+        "visited": true,
+        "value": ""
+      },
+      "pd1": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Алексев Алексей Александрович\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"20.10.1972\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"6662 213646\"},{\"label\":\"Дата выдачи:\",\"value\":\"01.01.2018\"},{\"label\":\"Кем выдан:\",\"value\":\"Воронежским ГУВД‚\"},{\"label\":\"Код подразделения:\",\"value\":\"212-121\"},{\"label\":\"Место рождения:\",\"value\":\"Воронеж\"}]}],\"storedValues\":{\"firstName\":\"Алексей\",\"lastName\":\"Алексев\",\"middleName\":\"Александрович\",\"birthDate\":\"20.10.1972\",\"birthPlace\":\"Воронеж\",\"gender\":\"M\",\"rfPasportSeries\":\"6662\",\"rfPasportNumber\":\"213646\",\"rfPasportIssueDate\":\"01.01.2018\",\"rfPasportIssuedBy\":\"Воронежским ГУВД‚\",\"rfPasportIssuedById\":\"212121\",\"citizenship\":\"РОССИЯ\",\"citizenshipCode\":\"RUS\"}}"
+      },
+      "pd2": {
+        "visited": true,
+        "value": "+7(997)1237890"
+      },
+      "pd3": {
+        "visited": true,
+        "value": "666225646123525240@test.tst.ph"
+      },
+      "pd4": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":\"\",\"streetShortType\":\"ул\",\"additionalStreetShortType\":\"\",\"districtType\":\"\",\"geoLat\":\"55.8115278\",\"building2Type\":\"\",\"okato\":\"45280561000\",\"building1Type\":\"корпус\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.8115278\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.5922338\",\"index\":\"127254\",\"townShortType\":\"\",\"district\":\"\",\"fullAddress\":\"127254, г. Москва, ул. Руставели, д. 10, к. 3, кв. 55\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.5922338\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"10\",\"apartmentCheckbox\":false,\"townType\":\"\",\"additionalAreaType\":\"\",\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":\"\",\"street\":\"Руставели\",\"additionalStreetType\":\"\",\"inCityDistShortType\":\"\",\"additionalAreaShortType\":\"\",\"cityShortType\":\"\",\"kladrCode\":\"7700000000025220027\",\"building1ShortType\":\"к\",\"fiasCode\":\"398aade5-9d05-4c57-a0ff-44785e7d9ae0\",\"hasErrors\":0,\"inCityDistType\":\"\",\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Руставели\",\"building1\":\"3\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":\"\",\"apartment\":\"55\"}}"
+      },
+      "act3": {
+        "visited": true,
+        "value": "2017-02-04T00:00:00.000+03:00"
+      },
+      "act2": {
+        "visited": true,
+        "value": "3543"
+      },
+      "act4": {
+        "visited": true,
+        "value": "{\"id\":\"R4800001\",\"text\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\",\"formatted\":\"\",\"originalItem\":{\"value\":\"R4800001\",\"parentValue\":null,\"title\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\",\"isLeaf\":true,\"children\":[],\"attributes\":[{\"name\":\"PR4\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR5\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR6\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR7\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"CITE\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"DATAN\",\"type\":\"STRING\",\"value\":{\"asString\":\"2016-06-01\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"2016-06-01\"},\"valueAsOfType\":\"2016-06-01\"},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R4800001\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R4800001\"},\"valueAsOfType\":\"R4800001\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\"},\"valueAsOfType\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"398050, Россия, Липецкая область, г. Липецк, ул. Ленина, д. 28\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"398050, Россия, Липецкая область, г. Липецк, ул. Ленина, д. 28\"},\"valueAsOfType\":\"398050, Россия, Липецкая область, г. Липецк, ул. Ленина, д. 28\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"(84742) 27-42-29\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"(84742) 27-42-29\"},\"valueAsOfType\":\"(84742) 27-42-29\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags@cominfo.lipetsk.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags@cominfo.lipetsk.ru\"},\"valueAsOfType\":\"zags@cominfo.lipetsk.ru\"},{\"name\":\"OKTMO\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"PR1\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR3\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"}],\"source\":null,\"attributeValues\":{\"OKTMO\":null,\"PHONE\":\"(84742) 27-42-29\",\"CITE\":null,\"EMAIL\":\"zags@cominfo.lipetsk.ru\",\"PR1\":\"false\",\"PR3\":\"false\",\"PR2\":\"false\",\"PR5\":\"false\",\"CODE\":\"R4800001\",\"PR4\":\"false\",\"PR7\":\"false\",\"PR6\":\"false\",\"ADDRESS\":\"398050, Россия, Липецкая область, г. Липецк, ул. Ленина, д. 28\",\"DATAN\":\"2016-06-01\",\"DATAK\":null,\"FULLNAME\":\"\\\"Управление записи актов гражданского состояния администрации города Липецка\\\"\"}}}"
+      },
+      "fai1": {
+        "visited": true,
+        "value": ""
+      },
+      "fai2": {
+        "visited": true,
+        "value": ""
+      },
+      "fai3": {
+        "visited": true,
+        "value": ""
+      },
+      "pd5": {
+        "visited": true,
+        "value": "Джонс"
+      },
+      "pd15": {
+        "visited": true,
+        "value": ""
+      },
+      "pd6": {
+        "visited": true,
+        "value": "{\"birthDate\":\"20.10.1972\",\"gender\":\"F\",\"trusted\":true,\"citizenship\":\"RUS\",\"snils\":\"915-293-895 38\",\"biomStu\":false,\"oid\":\"1000466573\",\"exists\":true,\"age\":48}"
+      },
+      "pd7": {
+        "visited": true,
+        "value": "79217419478@nwgsm.ru"
+      },
+      "ms1": {
+        "visited": true,
+        "value": "{\"value\":\"R7700024\",\"parentValue\":null,\"title\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"PR4\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR5\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR6\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR7\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"CITE\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags.mos.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags.mos.ru\"},\"valueAsOfType\":\"zags.mos.ru\"},{\"name\":\"DATAN\",\"type\":\"STRING\",\"value\":{\"asString\":\"2003-10-20\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"2003-10-20\"},\"valueAsOfType\":\"2003-10-20\"},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R7700024\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R7700024\"},\"valueAsOfType\":\"R7700024\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},\"valueAsOfType\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\"},\"valueAsOfType\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"8(499)251-53-88\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"8(499)251-53-88\"},\"valueAsOfType\":\"8(499)251-53-88\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags@mos.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags@mos.ru\"},\"valueAsOfType\":\"zags@mos.ru\"},{\"name\":\"OKTMO\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"PR1\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR3\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"}],\"source\":null,\"attributeValues\":{\"OKTMO\":null,\"PHONE\":\"8(499)251-53-88\",\"CITE\":\"zags.mos.ru\",\"EMAIL\":\"zags@mos.ru\",\"PR1\":\"true\",\"PR3\":\"true\",\"PR2\":\"true\",\"PR5\":\"true\",\"CODE\":\"R7700024\",\"PR4\":\"true\",\"PR7\":\"true\",\"PR6\":\"true\",\"ADDRESS\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"DATAN\":\"2003-10-20\",\"DATAK\":null,\"FULLNAME\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},\"idForMap\":26,\"center\":[37.591045,55.775029],\"baloonContent\":[{\"value\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"label\":\"Адрес\"},{\"value\":\"8(499)251-53-88\",\"label\":\"Телефон\"},{\"value\":\"zags@mos.ru\",\"label\":\"Email\"}],\"agreement\":true,\"expanded\":true,\"okato\":\"45280561000\"}"
+      },
+      "ts1": {
+        "visited": true,
+        "value": "{\"bookId\":\"80cd047a-032e-447d-9797-9852d8e92373\",\"esiaId\":\"1000466570\",\"status\":{\"statusCode\":201,\"statusMessage\":\"Забронировано\"},\"timeSlot\":{\"slotId\":\"9f5e8262-4ca6-4bd7-a8c5-94ab37b8683d\",\"serviceId\":\"10000000000456\",\"organizationId\":\"R7700005\",\"areaId\":\"Дом музыки\",\"visitTime\":1612609200000,\"visitTimeStr\":\"2021-02-06T11:00:00.000\",\"visitTimeISO\":\"2021-02-06T11:00:00Z\",\"queueNumber\":null,\"duration\":null,\"attributes\":[]},\"error\":null,\"timeStart\":\"2021-02-04T09:01:49.076Z\",\"timeFinish\":\"2021-02-05T09:01:49.076Z\",\"department\":{\"value\":\"R7700024\",\"parentValue\":null,\"title\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"PR4\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR5\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR6\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR7\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"CITE\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags.mos.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags.mos.ru\"},\"valueAsOfType\":\"zags.mos.ru\"},{\"name\":\"DATAN\",\"type\":\"STRING\",\"value\":{\"asString\":\"2003-10-20\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"2003-10-20\"},\"valueAsOfType\":\"2003-10-20\"},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R7700024\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R7700024\"},\"valueAsOfType\":\"R7700024\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},\"valueAsOfType\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\"},\"valueAsOfType\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"8(499)251-53-88\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"8(499)251-53-88\"},\"valueAsOfType\":\"8(499)251-53-88\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"zags@mos.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"zags@mos.ru\"},\"valueAsOfType\":\"zags@mos.ru\"},{\"name\":\"OKTMO\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"PR1\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR3\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"}],\"source\":null,\"attributeValues\":{\"OKTMO\":null,\"PHONE\":\"8(499)251-53-88\",\"CITE\":\"zags.mos.ru\",\"EMAIL\":\"zags@mos.ru\",\"PR1\":\"true\",\"PR3\":\"true\",\"PR2\":\"true\",\"PR5\":\"true\",\"CODE\":\"R7700024\",\"PR4\":\"true\",\"PR7\":\"true\",\"PR6\":\"true\",\"ADDRESS\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"DATAN\":\"2003-10-20\",\"DATAK\":null,\"FULLNAME\":\"Тверской отдел ЗАГС Управления ЗАГС Москвы\"},\"idForMap\":26,\"center\":[37.591045,55.775029],\"baloonContent\":[{\"value\":\"г Москва, ул Тверская-Ямская 3-Я , д.52\",\"label\":\"Адрес\"},{\"value\":\"8(499)251-53-88\",\"label\":\"Телефон\"},{\"value\":\"zags@mos.ru\",\"label\":\"Email\"}],\"agreement\":true,\"expanded\":true,\"okato\":\"45280561000\"}}"
+      },
+      "pay3ms5": {
+        "visited": true,
+        "value": "{\"uin\":\"0316373317011700000057047\",\"amount\":\"359\",\"amountWithoutDiscount\":\"512\",\"paymentPurpose\":\"Госпошлина ЗАГС\",\"receiver\":\"CНИЛС 00069600068\",\"billId\":22241583}"
+      },
+      "sentTime": {
+        "value": "2021-02-04T12:03:47+03:00"
+      },
+      "state15": {
+        "value": "false"
+      },
+      "book_reject1": {
+        "visited": true,
+        "value": "Выбрать дату"
+      }
+    },
+    "cycledApplicantAnswers": {
+      "answerlist": []
+    },
+    "participants": {
+      "1000466573": {
+        "role": "Coapplicant",
+        "mode": "MentionedApplicant",
+        "component": "pd6"
+      }
+    },
+    "display": {
+      "id": "s17_slots_const",
+      "name": "Выбор даты и времени для пост. регистрации",
+      "type": "UNIQUE",
+      "header": "Выберите дату и время",
+      "components": [
+        {
+          "id": "ts1",
+          "type": "TimeSlot",
+          "label": "",
+          "attrs": {
+            "timerCode": "Booking24h",
+            "timeSlotType": {
+              "type": "CONST",
+              "value": "RAZBRAK"
+            },
+            "department": {
+              "type": "REF",
+              "value": "ms1"
+            },
+            "restrictions": {
+              "minDate": [
+                30,
+                "d"
+              ],
+              "maxDate": [
+                1,
+                "y"
+              ]
+            },
+            "refs": {}
+          },
+          "linkedValues": [],
+          "arguments": {},
+          "value": "{\"timeSlotType\":\"RAZBRAK\",\"department\":\"{\\\"value\\\":\\\"R7700024\\\",\\\"parentValue\\\":null,\\\"title\\\":\\\"Тверской отдел ЗАГС Управления ЗАГС Москвы\\\",\\\"isLeaf\\\":true,\\\"children\\\":null,\\\"attributes\\\":[{\\\"name\\\":\\\"PR4\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"true\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"true\\\"},\\\"valueAsOfType\\\":\\\"true\\\"},{\\\"name\\\":\\\"PR5\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"true\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"true\\\"},\\\"valueAsOfType\\\":\\\"true\\\"},{\\\"name\\\":\\\"PR6\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"true\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"true\\\"},\\\"valueAsOfType\\\":\\\"true\\\"},{\\\"name\\\":\\\"PR7\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"true\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"true\\\"},\\\"valueAsOfType\\\":\\\"true\\\"},{\\\"name\\\":\\\"CITE\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"zags.mos.ru\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"zags.mos.ru\\\"},\\\"valueAsOfType\\\":\\\"zags.mos.ru\\\"},{\\\"name\\\":\\\"DATAN\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"2003-10-20\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"2003-10-20\\\"},\\\"valueAsOfType\\\":\\\"2003-10-20\\\"},{\\\"name\\\":\\\"DATAK\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":null,\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":null},\\\"valueAsOfType\\\":null},{\\\"name\\\":\\\"CODE\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"R7700024\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"R7700024\\\"},\\\"valueAsOfType\\\":\\\"R7700024\\\"},{\\\"name\\\":\\\"FULLNAME\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"Тверской отдел ЗАГС Управления ЗАГС Москвы\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"Тверской отдел ЗАГС Управления ЗАГС Москвы\\\"},\\\"valueAsOfType\\\":\\\"Тверской отдел ЗАГС Управления ЗАГС Москвы\\\"},{\\\"name\\\":\\\"ADDRESS\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"г Москва, ул Тверская-Ямская 3-Я , д.52\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"г Москва, ул Тверская-Ямская 3-Я , д.52\\\"},\\\"valueAsOfType\\\":\\\"г Москва, ул Тверская-Ямская 3-Я , д.52\\\"},{\\\"name\\\":\\\"PHONE\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"8(499)251-53-88\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"8(499)251-53-88\\\"},\\\"valueAsOfType\\\":\\\"8(499)251-53-88\\\"},{\\\"name\\\":\\\"EMAIL\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"zags@mos.ru\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"zags@mos.ru\\\"},\\\"valueAsOfType\\\":\\\"zags@mos.ru\\\"},{\\\"name\\\":\\\"OKTMO\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":null,\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":null},\\\"valueAsOfType\\\":null},{\\\"name\\\":\\\"PR1\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"true\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"true\\\"},\\\"valueAsOfType\\\":\\\"true\\\"},{\\\"name\\\":\\\"PR2\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"true\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"true\\\"},\\\"valueAsOfType\\\":\\\"true\\\"},{\\\"name\\\":\\\"PR3\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"true\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"true\\\"},\\\"valueAsOfType\\\":\\\"true\\\"}],\\\"source\\\":null,\\\"attributeValues\\\":{\\\"OKTMO\\\":null,\\\"PHONE\\\":\\\"8(499)251-53-88\\\",\\\"CITE\\\":\\\"zags.mos.ru\\\",\\\"EMAIL\\\":\\\"zags@mos.ru\\\",\\\"PR1\\\":\\\"true\\\",\\\"PR3\\\":\\\"true\\\",\\\"PR2\\\":\\\"true\\\",\\\"PR5\\\":\\\"true\\\",\\\"CODE\\\":\\\"R7700024\\\",\\\"PR4\\\":\\\"true\\\",\\\"PR7\\\":\\\"true\\\",\\\"PR6\\\":\\\"true\\\",\\\"ADDRESS\\\":\\\"г Москва, ул Тверская-Ямская 3-Я , д.52\\\",\\\"DATAN\\\":\\\"2003-10-20\\\",\\\"DATAK\\\":null,\\\"FULLNAME\\\":\\\"Тверской отдел ЗАГС Управления ЗАГС Москвы\\\"},\\\"idForMap\\\":26,\\\"center\\\":[37.591045,55.775029],\\\"baloonContent\\\":[{\\\"value\\\":\\\"г Москва, ул Тверская-Ямская 3-Я , д.52\\\",\\\"label\\\":\\\"Адрес\\\"},{\\\"value\\\":\\\"8(499)251-53-88\\\",\\\"label\\\":\\\"Телефон\\\"},{\\\"value\\\":\\\"zags@mos.ru\\\",\\\"label\\\":\\\"Email\\\"}],\\\"agreement\\\":true,\\\"expanded\\\":true,\\\"okato\\\":\\\"45280561000\\\"}\",\"orderId\":763650323,\"userId\":\"1000466570\",\"waitingTimeExpired\":true}",
+          "required": true
+        }
+      ],
+      "infoComponents": [],
+      "terminal": false,
+      "accepted": true,
+      "firstScreen": false,
+      "impasse": false
+    },
+    "userData": {
+      "citizenship": "РОССИЯ",
+      "citizenshipCode": "RUS"
+    },
+    "serviceInfo": {},
+    "attachmentInfo": {},
+    "additionalParameters": {
+      "orderId": "763650323",
+      "oid": "1000466570",
+      "snils": "291-411-978 78",
+      "firstName": "Алексей",
+      "lastName": "Алексев",
+      "middleName": "Александрович",
+      "birthDate": "20.10.1972",
+      "gender": "M",
+      "citizenship": "РОССИЯ",
+      "citizenshipCode": "RUS",
+      "serviceId": "10000000106",
+      "timezone": "+3",
+      "masterId": "763650323",
+      "masterOid": "1000466570",
+      "masterSnils": "291-411-978 78",
+      "masterFirstName": "Алексей",
+      "masterLastName": "Алексев",
+      "masterMiddleName": "Александрович",
+      "masterBirthDate": "20.10.1972",
+      "masterGender": "M",
+      "masterCitizenship": "РОССИЯ",
+      "masterCitizenshipCode": "RUS",
+      "masterTimezone": "+3"
+    },
+    "generatedFiles": [],
+    "gender": "M"
+  },
+  "isInviteScenario": false,
+  "canStartNew": false
+}

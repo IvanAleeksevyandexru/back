@@ -1,0 +1,196 @@
+{
+  "serviceCode": "10000000105",
+  "targetCode": "-10000000105",
+  "orderId": 764234668,
+  "currentScenarioId": 1,
+  "serviceDescriptorId": "10000000105",
+  "currentUrl": "https://local.test.gosuslugi.ru:4200/",
+  "finishedAndCurrentScreens": [
+    "s1",
+    "s2",
+    "s4",
+    "s5",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s40"
+  ],
+  "cachedAnswers": {
+    "pd6": {
+      "visited": true,
+      "value": "{\"code\":\"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\",\"address\":{\"fiasCode\":\"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\",\"fullAddress\":\"г Москва\",\"postIndex\":\"101000\",\"elements\":[{\"level\":1,\"fiasCode\":\"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\",\"kladrCode\":\"7700000000000\",\"data\":\"Москва\",\"type\":\"город\",\"shortType\":\"г\",\"numericFiasCode\":\"77-0-000-000-000-000-0000-0000-000\"}]},\"level\":1,\"id\":\"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\",\"text\":\"г Москва\",\"error\":{\"code\":0,\"message\":\"operation completed\"},\"dadataQc\":\"0\",\"dadataQcComplete\":\"3\",\"dadataQcHouse\":\"10\",\"fiasLevel\":\"1\",\"postalCode\":\"101000\",\"okato\":\"45000000000\",\"tax_office\":\"7700\",\"oktmo\":\"45000000\",\"geo_lat\":\"55.7540471\",\"geo_lon\":\"37.620405\",\"regionCode\":\"77\"}"
+    },
+    "pd6_2": {
+      "visited": true,
+      "value": ""
+    }
+  },
+  "currentValue": {
+    "pd6": {
+      "visited": true,
+      "value": "{\"code\":\"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\",\"address\":{\"fiasCode\":\"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\",\"fullAddress\":\"г Москва\",\"postIndex\":\"101000\",\"elements\":[{\"level\":1,\"fiasCode\":\"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\",\"kladrCode\":\"7700000000000\",\"data\":\"Москва\",\"type\":\"город\",\"shortType\":\"г\",\"numericFiasCode\":\"77-0-000-000-000-000-0000-0000-000\"}]},\"level\":1,\"id\":\"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\",\"text\":\"г Москва\",\"error\":{\"code\":0,\"message\":\"operation completed\"},\"dadataQc\":\"0\",\"dadataQcComplete\":\"3\",\"dadataQcHouse\":\"10\",\"fiasLevel\":\"1\",\"postalCode\":\"101000\",\"okato\":\"45000000000\",\"tax_office\":\"7700\",\"oktmo\":\"45000000\",\"geo_lat\":\"55.7540471\",\"geo_lon\":\"37.620405\",\"regionCode\":\"77\"}",
+      "disabled": false
+    },
+    "pd6_2": {
+      "visited": true,
+      "value": "",
+      "disabled": false
+    }
+  },
+  "errors": {},
+  "uniquenessErrors": [],
+  "applicantAnswers": {
+    "q1": {
+      "visited": true,
+      "value": "Нет"
+    },
+    "pd4": {
+      "visited": true,
+      "value": "{\"regAddr\":{\"regionType\":\"город\",\"regionShortType\":\"г\",\"region\":\"Москва\",\"cityType\":\"\",\"cityShortType\":\"\",\"city\":\"\",\"districtType\":\"\",\"districtShortType\":\"\",\"district\":\"\",\"townType\":\"\",\"townShortType\":\"\",\"town\":\"\",\"inCityDistType\":\"\",\"inCityDistShortType\":\"\",\"inCityDist\":\"\",\"streetType\":\"набережная\",\"streetShortType\":\"наб\",\"street\":\"Кремлевская\",\"additionalAreaType\":\"\",\"additionalAreaShortType\":\"\",\"additionalArea\":\"\",\"additionalStreetType\":\"\",\"additionalStreetShortType\":\"\",\"additionalStreet\":\"\",\"houseType\":\"дом\",\"houseShortType\":\"д\",\"house\":\"1\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1Type\":\"\",\"building1ShortType\":\"\",\"building1\":\"\",\"building2Type\":\"\",\"building2ShortType\":\"\",\"building2\":\"\",\"apartmentType\":\"квартира\",\"apartmentShortType\":\"кв\",\"apartment\":\"1\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"119019\",\"geoLat\":\"55.7514426\",\"geoLon\":\"37.6155537\",\"fullAddress\":\"119019, г Москва, наб Кремлевская, д 1, кв 1\",\"lat\":\"55.7514426\",\"lng\":\"37.6155537\",\"kladrCode\":\"7700000000016030015\",\"fiasCode\":\"befdcbff-fa7e-4c5f-aecf-52691a9ca216\",\"okato\":\"45286585000\",\"oktmo\":\"45382000\",\"hasErrors\":0,\"regionCode\":\"77\"}}"
+    },
+    "q3": {
+      "visited": true,
+      "value": "Нет"
+    },
+    "d1": {
+      "visited": true,
+      "value": ""
+    },
+    "ai5i": {
+      "visited": true,
+      "value": "Ывапро"
+    },
+    "fai16": {
+      "visited": true,
+      "value": "{\"originalItem\":{\"value\":\"16\",\"parentValue\":null,\"title\":\"Абхаз\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}},\"id\":\"16\",\"text\":\"Абхаз\"}"
+    },
+    "w1": {
+      "visited": true,
+      "value": ""
+    },
+    "pd1": {
+      "visited": true,
+      "value": "{\"states\":[{\"groupName\":\"Иванов Иван Иванович\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"13.11.1960\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер\",\"value\":\"0898 667667\"},{\"label\":\"Дата выдачи\",\"value\":\"05.08.2016\"},{\"label\":\"Кем выдан\",\"value\":\"кем-то 11\"},{\"label\":\"Код подразделения\",\"value\":\"889-898\"},{\"label\":\"Место рождения\",\"value\":\"ПРОСЬБА ФИО НЕ МЕНЯТЬ\"}]}],\"storedValues\":{\"firstName\":\"Иван\",\"lastName\":\"Иванов\",\"middleName\":\"Иванович\",\"birthDate\":\"13.11.1960\",\"birthPlace\":\"ПРОСЬБА ФИО НЕ МЕНЯТЬ\",\"gender\":\"M\",\"genderFull\":\"Мужской\",\"docType\":\"RF_PASSPORT\",\"rfPasportSeries\":\"0898\",\"rfPasportNumber\":\"667667\",\"rfPasportIssueDate\":\"05.08.2016\",\"rfPasportIssuedBy\":\"кем-то 11\",\"rfPasportIssuedById\":\"889898\",\"rfPasportIssuedByIdFormatted\":\"889-898\",\"citizenship\":\"РОССИЯ\",\"citizenshipCode\":\"RUS\"},\"errors\":[]}"
+    },
+    "fai19": {
+      "visited": true,
+      "value": ""
+    },
+    "pd3": {
+      "visited": true,
+      "value": "akurbanov@it-one.ru"
+    },
+    "sn1a": {
+      "visited": true,
+      "value": "{\"birthDate\":\"13.03.1991\",\"gender\":\"F\",\"trusted\":true,\"citizenship\":\"RUS\",\"snils\":\"227-413-594 60\",\"biomStu\":false,\"verifying\":false,\"oid\":\"1000479753\",\"exists\":true,\"age\":30}"
+    },
+    "pd2": {
+      "visited": true,
+      "value": "+7(916)3119400"
+    },
+    "fai17": {
+      "visited": true,
+      "value": "{\"originalItem\":{\"value\":\"1\",\"parentValue\":null,\"title\":\"Профессиональное высшее\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}},\"id\":\"1\",\"text\":\"Профессиональное высшее\"}"
+    },
+    "sn2a": {
+      "visited": true,
+      "value": "divanov@it-one.ru"
+    }
+  },
+  "cycledApplicantAnswers": {
+    "answerlist": []
+  },
+  "participants": {
+    "1000479753": {
+      "role": "Coapplicant",
+      "mode": "MentionedApplicant",
+      "component": "sn1a"
+    }
+  },
+  "display": {
+    "id": "s40",
+    "name": "Укажите место регистрации брака",
+    "type": "CUSTOM",
+    "header": "Укажите место регистрации брака",
+    "components": [
+      {
+        "id": "pd6",
+        "name": "Город",
+        "type": "CityInput",
+        "label": "Город",
+        "attrs": {
+          "useBarLocation": true,
+          "hideLevels": [
+            "inCityDist",
+            "street",
+            "additionalArea",
+            "additionalStreet",
+            "house",
+            "building1",
+            "building2",
+            "apartment",
+            "index"
+          ],
+          "refs": {}
+        },
+        "arguments": {},
+        "value": "",
+        "required": true,
+        "suggestionId": "marriage_place"
+      },
+      {
+        "id": "pd6_2",
+        "type": "HtmlString",
+        "attrs": {
+          "refs": {}
+        },
+        "arguments": {},
+        "value": "",
+        "required": true
+      }
+    ],
+    "buttons": [
+      {
+        "label": "Далее",
+        "type": "nextStep",
+        "action": "getNextScreen"
+      }
+    ],
+    "suggestion": {
+      "groupId": "marriage_place"
+    },
+    "hideBackButton": false,
+    "infoComponents": [],
+    "arguments": {},
+    "impasse": false,
+    "terminal": false,
+    "accepted": true,
+    "firstScreen": false
+  },
+  "logicComponents": [],
+  "serviceInfo": {
+    "userRegion": {
+      "name": "Ярославль г",
+      "path": "Ярославская область/Ярославль г",
+      "codes": [
+        "78401000000",
+        "78000000000"
+      ]
+    },
+    "statusId": 0
+  },
+  "signInfoMap": {},
+  "attachmentInfo": {},
+  "additionalParameters": {},
+  "serviceParameters": {},
+  "generatedFiles": [],
+  "disclaimers": [],
+  "cycledApplicantAnswerContext": {},
+  "gender": "M",
+  "isPrevStepCase": true
+}

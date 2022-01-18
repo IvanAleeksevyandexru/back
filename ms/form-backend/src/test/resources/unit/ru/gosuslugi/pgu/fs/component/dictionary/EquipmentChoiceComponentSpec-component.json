@@ -1,0 +1,25 @@
+{
+  "id": "test1",
+  "type": "EquipmentChoice",
+  "label": "Оборудование",
+  "attrs": {
+    "equipmentFilters": [
+      {
+        "dictionaryType": "CONC_ACTIVITY_KIND",
+        "requestBody": "{\"treeFiltering\": \"ONELEVEL\",\"pageNum\": 1,\"pageSize\": \"1000\",\"parentRefItemValue\": \"\",\"selectAttributes\": [\"*\"],\"tx\": \"\",\"filter\": {\"union\": {\"unionKind\": \"AND\",\"subs\": [{\"simple\": {\"attributeName\": \"LIC_DEPARTMENT_OGRN\",\"condition\": \"EQUALS\",\"checkAllValues\": false,\"value\": {\"asString\": \"1047796244396\"}}},{\"union\": {\"unionKind\": \"OR\",\"subs\": [{\"simple\": {\"attributeName\": \"ACTIVITY_NAME\",\"condition\": \"CONTAINS\",\"value\": {\"asString\": \"Опт\"}}}]}}]}}}"
+      },
+      {
+        "dictionaryType": "CONC_EQUIPMENT_CATEGORY",
+        "requestBody": "{\"treeFiltering\": \"ONELEVEL\",\"pageNum\": 1,\"pageSize\": \"1000\",\"parentRefItemValue\": \"\",\"selectAttributes\": [\"*\"],\"tx\": \"\",\"filter\": {\"union\": {\"unionKind\": \"AND\",\"subs\": [{\"simple\": {\"attributeName\": \"LIC_DEPARTMENT_OGRN\",\"condition\": \"EQUALS\",\"checkAllValues\": false,\"value\": {\"asString\": \"1047796244396\"}}},{\"union\": {\"unionKind\": \"OR\",\"subs\": [{\"simple\": {\"attributeName\": \"ACTIVITY_KIND_ID\",\"condition\": \"EQUALS\",\"value\": {\"asString\": \"${ID}\"}}}]}}]}}}"
+      },
+      {
+        "dictionaryType": "CONC_EQUIPMENT_NAME",
+        "requestBody": "{\"treeFiltering\": \"ONELEVEL\",\"pageNum\": 1,\"pageSize\": \"1000\",\"parentRefItemValue\": \"\",\"selectAttributes\": [\"*\"],\"tx\": \"\",\"filter\": {\"union\": {\"unionKind\": \"AND\",\"subs\": [{\"simple\": {\"attributeName\": \"LIC_DEPARTMENT_OGRN\",\"condition\": \"EQUALS\",\"checkAllValues\": false,\"value\": {\"asString\": \"1047796244396\"}}},{\"union\": {\"unionKind\": \"OR\",\"subs\": [{\"simple\": {\"attributeName\": \"CATEGORY_ID\",\"condition\": \"EQUALS\",\"value\": {\"asString\": \"${ID}\"}}}]}}]}}}",
+        "additionalSave": ["CATEGORY_NAME", "MIN_AMOUNT_EQUIPMENT"]
+      }
+    ],
+    "required": true
+  },
+  "value": "",
+  "visited": false
+}

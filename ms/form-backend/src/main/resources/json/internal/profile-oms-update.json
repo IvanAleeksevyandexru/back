@@ -1,0 +1,134 @@
+{
+  "init": "editUserOms_s1",
+  "saveDraftModeEnabled": false,
+  "serviceName": "editUserPolicy",
+  "presetFieldTypes": [
+    "ConfirmPersonalPolicy"
+  ],
+  "screens": [
+    {
+      "id": "editUserOms_s1",
+      "name": "Укажите новый полис ОМС",
+      "type": "CUSTOM",
+      "header": "Укажите новый полис ОМС",
+      "components": [
+        "nm",
+        "wn1"
+      ],
+      "buttons": [
+        {
+          "label": "Сохранить",
+          "type": "nextStepModal"
+        }
+      ]
+    },
+    {
+      "id": "editUserAddress_s2",
+      "name": "Полис ОМС успешно изменен",
+      "type": "INFO",
+      "header": "",
+      "components": [
+        "finishscreen1"
+      ],
+      "buttons": [
+        {
+          "label": "Отменить",
+          "type": "nextStepModal",
+          "value": "Вернуться к заявлению",
+          "action": "goBackToMainScenario"
+        }
+      ]
+    }
+  ],
+  "applicationFields": [
+    {
+      "id": "wn1",
+      "type": "HtmlString",
+      "label": "<div><b><svg width=\"32\" height=\"4\" viewBox=\"0 0 32 4\" xmlns=\"http://www.w3.org/2000/svg\" style=\" margin-right: 8px; vertical-align: middle; \"> <path d=\"M32 0H0V4H32V0Z\" fill=\"#FED13E\"></path> </svg>Полис будет сохранен в профиль</b><p style=\"margin-top: 8px;color: #66727F;\">В будущих заявлениях не придется вводить его заново</p></div>",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "nm",
+      "type": "ConfirmPersonalPolicyChange",
+      "label": "",
+      "attrs": {
+        "fields": [
+          {
+            "fieldName": "number",
+            "label": "Номер полиса",
+            "type": "input",
+            "attrs": {
+              "hint": "<a href='' id='ref_pp'>Посмотреть пример</a>",
+              "clarifications": {
+                "ref_pp": {
+                  "title": "Пример полиса ОМС",
+                  "text": "<p class='text--center'>Полис нового образца</p><img class='modal__doc-img mt-16 mb-24' src='https://gu-st.ru/content/catalog/new/OMS_card.svg'><p class='text--center'>Полис образца с 1 августа 2012 года</p><img class='modal__doc-img mt-16 mb-24' src='https://gu-st.ru/content/catalog/new/OMS_new.svg'><p class='text--center'>Полис образца до 1 августа 2012 года</p><img class='modal__doc-img mt-16 mb-24' src='https://gu-st.ru/content/catalog/new/OMS_Old.svg'>"
+                }
+              },
+              "required": false,
+              "validation": [
+                {
+                  "type": "RegExp",
+                  "value": "^[0-9]{0,20}$",
+                  "ref": "",
+                  "dataType": "",
+                  "condition": "",
+                  "errorMsg": "Номер должен быть не длиннее 20 знаков и может содержать только цифры",
+                  "updateOn": "blur"
+                }
+              ]
+            }
+          },
+          {
+            "fieldName": "series",
+            "label": "Серия полиса",
+            "type": "input",
+            "hint": "Для полисов старого образца",
+            "attrs": {
+              "required": false,
+              "validation": [
+                {
+                  "type": "RegExp",
+                  "value": "^[а-яА-ЯЁё0-9.-]{0,10}$",
+                  "ref": "",
+                  "dataType": "",
+                  "condition": "",
+                  "errorMsg": "Серия должна быть не длиннее 10 знаков и может содержать цифры и русские буквы",
+                  "updateOn": "blur"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "finishscreen1",
+      "type": "GInfoScr",
+      "label": "<div class=\"info__status-image\"><img src='{staticDomainAssetsPath}/assets/icons/svg/ok.svg' /></div><h4 class=\"info__end-screen-text\">Полис ОМС успешно изменен</h4>",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    }
+  ],
+  "roleToInitScreen": {
+    "Applicant": "editUserOms_s1"
+  },
+  "screenRules": {
+    "editUserOms_s1": [
+      {
+        "conditions": [
+          {
+            "field": "nm",
+            "visited": true
+          }
+        ],
+        "nextDisplay": "editUserAddress_s2"
+      }
+    ]
+  }
+}

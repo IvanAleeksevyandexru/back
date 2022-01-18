@@ -1,0 +1,27 @@
+{
+  "id": "fai1",
+  "type": "PersonUserInn",
+  "label": "ИНН для 2-НДФЛ",
+  "attrs": {
+    "validation": [
+      {
+        "type": "RegExp",
+        "value": ".+",
+        "ref": "",
+        "dataType": "",
+        "condition": "",
+        "errorMsg": "Поле не может быть пустым"
+      },
+      {
+        "type": "RegExp",
+        "value": "([0-9] {1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{10}",
+        "ref": "",
+        "dataType": "",
+        "condition": "",
+        "errorMsg": "Значение не является ИНН"
+      }
+    ]
+  },
+  "value": "",
+  "visited": false
+}

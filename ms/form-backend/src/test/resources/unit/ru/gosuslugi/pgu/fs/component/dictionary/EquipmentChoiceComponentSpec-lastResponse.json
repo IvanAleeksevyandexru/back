@@ -1,0 +1,116 @@
+[
+  {
+    "value": "19",
+    "title": "гигрометр (электронный гигрометр) или психрометр",
+    "attributeValues": {
+      "ID": 19,
+      "EQUIPMENT_NAME": "гигрометр (электронный гигрометр) или психрометр",
+      "IS_OWNERSHIP_FORM_REQUIRED": "false",
+      "IS_FACTORY_NUMBER_REQUIRED": "false",
+      "IS_REG_NUMBER_REQUIRED": "false",
+      "CATEGORY_ID": 3,
+      "REQUIRED_FOR_SERVICE": 14681,
+      "LIC_DEPARTMENT_OGRN": "1047796244396",
+      "autokey": "CONC_EQUIPMENT_NAME_RZ_19_1047796244396",
+      "IS_FACTORY_NUMBER_OPTIONAL": "false",
+      "IS_REG_NUMBER_OPTIONAL": "false",
+      "MIN_AMOUNT_EQUIPMENT": 1,
+      "CATEGORY_NAME": "Оборудование (средства измерений) для контроля или мониторинга условий хранения лекарственных средств"
+    }
+  },
+  {
+    "value": "17",
+    "title": "система климат-мониторинга ",
+    "attributeValues": {
+      "ID": 17,
+      "EQUIPMENT_NAME": "система климат-мониторинга ",
+      "IS_OWNERSHIP_FORM_REQUIRED": "false",
+      "IS_FACTORY_NUMBER_REQUIRED": "false",
+      "IS_REG_NUMBER_REQUIRED": "false",
+      "CATEGORY_ID": 3,
+      "REQUIRED_FOR_SERVICE": 14681,
+      "LIC_DEPARTMENT_OGRN": "1047796244396",
+      "autokey": "CONC_EQUIPMENT_NAME_RZ_17_1047796244396",
+      "IS_FACTORY_NUMBER_OPTIONAL": "false",
+      "IS_REG_NUMBER_OPTIONAL": "false",
+      "MIN_AMOUNT_EQUIPMENT": 1,
+      "CATEGORY_NAME": "Оборудование (средства измерений) для контроля или мониторинга условий хранения лекарственных средств"
+    }
+  },
+  {
+    "value": "20",
+    "title": "термогигрометры",
+    "attributeValues": {
+      "ID": 20,
+      "EQUIPMENT_NAME": "термогигрометры",
+      "IS_OWNERSHIP_FORM_REQUIRED": "false",
+      "IS_FACTORY_NUMBER_REQUIRED": "false",
+      "IS_REG_NUMBER_REQUIRED": "false",
+      "CATEGORY_ID": 3,
+      "REQUIRED_FOR_SERVICE": 14681,
+      "LIC_DEPARTMENT_OGRN": "1047796244396",
+      "autokey": "CONC_EQUIPMENT_NAME_RZ_20_1047796244396",
+      "IS_FACTORY_NUMBER_OPTIONAL": "false",
+      "IS_REG_NUMBER_OPTIONAL": "false",
+      "MIN_AMOUNT_EQUIPMENT": 1,
+      "CATEGORY_NAME": "Оборудование (средства измерений) для контроля или мониторинга условий хранения лекарственных средств"
+    }
+  },
+  {
+    "value": "18",
+    "title": "термометр",
+    "attributeValues": {
+      "ID": 18,
+      "EQUIPMENT_NAME": "термометр",
+      "IS_OWNERSHIP_FORM_REQUIRED": "false",
+      "IS_FACTORY_NUMBER_REQUIRED": "false",
+      "IS_REG_NUMBER_REQUIRED": "false",
+      "CATEGORY_ID": 3,
+      "REQUIRED_FOR_SERVICE": 14681,
+      "LIC_DEPARTMENT_OGRN": "1047796244396",
+      "autokey": "CONC_EQUIPMENT_NAME_RZ_18_1047796244396",
+      "IS_FACTORY_NUMBER_OPTIONAL": "false",
+      "IS_REG_NUMBER_OPTIONAL": "false",
+      "MIN_AMOUNT_EQUIPMENT": 1,
+      "CATEGORY_NAME": "Оборудование (средства измерений) для контроля или мониторинга условий хранения лекарственных средств"
+    }
+  },
+  {
+    "value": "30",
+    "title": "штабелер",
+    "attributeValues": {
+      "ID": 30,
+      "EQUIPMENT_NAME": "штабелер",
+      "IS_OWNERSHIP_FORM_REQUIRED": "false",
+      "IS_FACTORY_NUMBER_REQUIRED": "false",
+      "IS_REG_NUMBER_REQUIRED": "false",
+      "CATEGORY_ID": 1,
+      "REQUIRED_FOR_SERVICE": 14681,
+      "LIC_DEPARTMENT_OGRN": "1047796244396",
+      "autokey": "CONC_EQUIPMENT_NAME_RZ_30_1047796244396",
+      "IS_FACTORY_NUMBER_OPTIONAL": "false",
+      "IS_REG_NUMBER_OPTIONAL": "false",
+      "MIN_AMOUNT_EQUIPMENT": 1,
+      "CATEGORY_NAME": "Оборудование для защиты от воздействия погодных условий"
+    }
+  },
+  {
+    "value": "31",
+    "title": "электроштабелер",
+    "attributeValues": {
+      "ID": 31,
+      "EQUIPMENT_NAME": "электроштабелер",
+      "IS_OWNERSHIP_FORM_REQUIRED": "false",
+      "IS_FACTORY_NUMBER_REQUIRED": "false",
+      "IS_REG_NUMBER_REQUIRED": "false",
+      "CATEGORY_ID": 1,
+      "REQUIRED_FOR_SERVICE": 14681,
+      "LIC_DEPARTMENT_OGRN": "1047796244396",
+      "autokey": "CONC_EQUIPMENT_NAME_RZ_31_1047796244396",
+      "IS_FACTORY_NUMBER_OPTIONAL": "false",
+      "IS_REG_NUMBER_OPTIONAL": "false",
+      "MIN_AMOUNT_EQUIPMENT": 1,
+      "CATEGORY_NAME": "Оборудование для защиты от воздействия погодных условий"
+    }
+  }
+]

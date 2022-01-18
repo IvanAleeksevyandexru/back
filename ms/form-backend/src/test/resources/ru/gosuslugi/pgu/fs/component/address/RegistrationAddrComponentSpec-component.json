@@ -1,0 +1,30 @@
+{
+  "id": "ai21",
+  "type": "RegistrationAddr",
+  "label": "",
+  "attrs": {
+    "accuracy": "day",
+    "minDate": "today",
+    "maxDate": "+5y",
+    "fields": [
+      {
+        "fieldName": "regAddr",
+        "label": "Адрес",
+        "type": "input"
+      },
+      {
+        "fieldName": "regFrom",
+        "label": "регистрация с",
+        "type": "date"
+      },
+      {
+        "fieldName": "regTo",
+        "label": "регистрация до",
+        "type": "date",
+        "minDate": "today"
+      }
+    ]
+  },
+  "value": "",
+  "visited": false
+}

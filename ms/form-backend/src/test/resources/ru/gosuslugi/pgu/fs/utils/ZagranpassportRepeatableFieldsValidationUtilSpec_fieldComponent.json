@@ -1,0 +1,30 @@
+{
+  "id": "ai17",
+  "type": "RepeatableFields",
+  "label": "",
+  "attrs": {
+    "repeatAmount": "20",
+    "components": [
+      "rf51",
+      "rf52",
+      "rf53",
+      "rf54",
+      "rf55"
+    ],
+    "validation": [
+      {
+        "type": "zagranpassport-childNameChange-allFieldsEqual",
+        "value": "",
+        "ref": "ai18",
+        "add": {
+          "day": 1
+        },
+        "errorMsg": "Указанные Вами сведения о предыдущих персональных данных в точности совпадают с текущими персональными данными. Внесите, пожалуйста, информацию об измененных персональных данных."
+      }
+    ]
+  },
+  "linkedValues": null,
+  "arguments": {},
+  "value": "",
+  "required": true
+}

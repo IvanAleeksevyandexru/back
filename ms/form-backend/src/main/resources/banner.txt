@@ -1,0 +1,6 @@
+
+${AnsiColor.CYAN}============================ - - - ============================
+  application: ${AnsiColor.BRIGHT_CYAN}${application.title:EPGU - Form service}${AnsiColor.CYAN}
+  version    : ${AnsiColor.BRIGHT_CYAN}${application.version:0.0.1}${AnsiColor.CYAN}
+  spring boot: ${AnsiColor.BRIGHT_CYAN}${spring-boot.version}
+${AnsiColor.CYAN}============================ - - - ============================${AnsiColor.DEFAULT}

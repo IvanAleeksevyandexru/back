@@ -1,0 +1,1098 @@
+{
+  "serviceCode": "10000000100",
+  "targetCode": "-10000000100",
+  "orderId": 763510799,
+  "currentScenarioId": 1,
+  "currentUrl": "http://local.test.gosuslugi.ru:4200/",
+  "finishedAndCurrentScreens": [
+    "s1",
+    "s2",
+    "s3",
+    "s8",
+    "s4",
+    "s72",
+    "s88",
+    "s89",
+    "s90",
+    "s91",
+    "s92",
+    "s93",
+    "SCRegrn",
+    "s95",
+    "s5",
+    "s104",
+    "s112"
+  ],
+  "cachedAnswers": {
+    "w1": {
+      "visited": true,
+      "value": ""
+    },
+    "q1": {
+      "visited": true,
+      "value": "Зарегистрироваться"
+    },
+    "q2": {
+      "visited": true,
+      "value": "Меня, супруга (супругу) и детей"
+    },
+    "q6": {
+      "visited": true,
+      "value": "До 14 лет и от 14 до 18 лет"
+    },
+    "q3": {
+      "visited": true,
+      "value": "Да"
+    },
+    "d54": {
+      "visited": true,
+      "value": ""
+    },
+    "pd1": {
+      "visited": true,
+      "value": "{\"states\":[{\"groupName\":\"Брак Один Бракович\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"03.10.1997\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"0000 120120\"},{\"label\":\"Дата выдачи:\",\"value\":\"08.10.2016\"},{\"label\":\"Кем выдан:\",\"value\":\"ОВД-шное ОВД\"},{\"label\":\"Код подразделения:\",\"value\":\"777-777\"}]}],\"storedValues\":{\"firstName\":\"Один\",\"lastName\":\"Брак\",\"rfPasportIssuedBy\":\"ОВД-шное ОВД\",\"rfPasportIssuedById\":\"777777\",\"rfPasportSeries\":\"0000\",\"middleName\":\"Бракович\",\"birthDate\":\"03.10.1997\",\"rfPasportNumber\":\"120120\",\"rfPasportIssueDate\":\"08.10.2016\"}}"
+    },
+    "pd2": {
+      "visited": true,
+      "value": "+7(926)2252442"
+    },
+    "pd3": {
+      "visited": true,
+      "value": "zlomanovva@elocont.ru"
+    },
+    "pd4": {
+      "visited": true,
+      "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.7287979\",\"building2Type\":null,\"okato\":\"45268597000\",\"building1Type\":null,\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7287979\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4584805\",\"index\":\"121108\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 2, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4584805\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"2\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":null,\"street\":\"Ивана Франко\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"7700000000033130001\",\"building1ShortType\":null,\"fiasCode\":\"91aabbc6-1dbb-4a7a-bd07-f2b0ac1b2cde\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"1\"},\"regDate\":\"26.10.2020\"}"
+    },
+    "pd5": {
+      "visited": true,
+      "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.7282669\",\"building2Type\":null,\"okato\":\"45268597000\",\"building1Type\":null,\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7282669\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4543027\",\"index\":\"121108\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 4А, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4543027\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"4А\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":null,\"street\":\"Ивана Франко\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"7700000000033130022\",\"building1ShortType\":null,\"fiasCode\":\"81bb0cef-6ac4-46f3-973f-7523bf3c54be\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"1\"},\"regDate\":\"2022-11-21T05:05:18.599Z\"}"
+    },
+    "pd6": {
+      "visited": true,
+      "value": "Выписка из ЕГРН"
+    },
+    "CMPegrndate": {
+      "visited": true,
+      "value": "2020-10-26T00:00:00.000+03:00"
+    },
+    "CMPegrnnum": {
+      "visited": true,
+      "value": "23424"
+    },
+    "fai0": {
+      "visited": true,
+      "value": ""
+    },
+    "rb1": {
+      "visited": true,
+      "value": "false"
+    },
+    "rb2": {
+      "visited": true,
+      "value": "false"
+    },
+    "fai1": {
+      "visited": true,
+      "value": ""
+    },
+    "fai2": {
+      "visited": true,
+      "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+    },
+    "fai5": {
+      "visited": true,
+      "value": ""
+    },
+    "fai6": {
+      "visited": true,
+      "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+    },
+    "fai10": {
+      "visited": true,
+      "value": "{\"id\":\"2020-0\",\"originalItem\":{\"label\":2020},\"text\":2020}"
+    },
+    "fai12": {
+      "visited": true,
+      "value": "{\"id\":\"2\",\"text\":\"в связи с учебой\",\"unselectable\":false,\"originalItem\":{\"label\":\"в связи с учебой\",\"disable\":false,\"code\":\"2\"}}"
+    },
+    "fai13": {
+      "visited": true,
+      "value": ""
+    },
+    "fai14": {
+      "visited": true,
+      "value": "{\"id\":\"0\",\"text\":\"Военнослужащие (за исключением военнослужащих срочной службы по призыву)\",\"unselectable\":false,\"originalItem\":{\"label\":\"Военнослужащие (за исключением военнослужащих срочной службы по призыву)\",\"disable\":false,\"code\":\"0\"}}"
+    },
+    "fai15": {
+      "visited": true,
+      "value": "{\"id\":\"36\",\"text\":\"магистр\",\"unselectable\":false,\"originalItem\":{\"label\":\"магистр\",\"disable\":false,\"code\":\"36\"}}"
+    },
+    "fai16": {
+      "visited": true,
+      "value": "{\"id\":\"34\",\"text\":\"женат (замужем)\",\"unselectable\":false,\"originalItem\":{\"label\":\"женат (замужем)\",\"disable\":false,\"code\":\"34\"}}"
+    },
+    "ai19": {
+      "visited": true,
+      "value": "{\"firstName\":\"Игорь\",\"lastName\":\"Каменев\",\"rfPasportSeries\":\"5300\",\"oid\":\"1000298933\",\"rfPasportNumber\":\"535353\"}"
+    },
+    "ai7": {
+      "visited": true,
+      "value": "[{\"ai7_6\":\"true\",\"ai7_5\":\"Иванович\",\"ai7_4\":\"Иван\",\"qс1\":\"0\",\"ai7_3\":\"Иванов\",\"ai7_2\":\"M\",\"ai7_1\":\"2018-10-29T00:00:00.000+03:00\",\"ai7_0\":\"73cfeeb9-227c-4f78-b0b3-fe66d2edcad9\",\"cl2\":{\"regDate\":\"26.10.2020\",\"regAddr\":{\"streetShortType\":\"ул\",\"geoLat\":\"55.7287979\",\"okato\":\"45268597000\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7287979\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4584805\",\"index\":\"121108\",\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 2, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4584805\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"2\",\"apartmentCheckbox\":false,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"street\":\"Ивана Франко\",\"kladrCode\":\"7700000000033130001\",\"fiasCode\":\"91aabbc6-1dbb-4a7a-bd07-f2b0ac1b2cde\",\"hasErrors\":0,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"apartment\":\"1\"}},\"cai1\":\"\",\"cfai5\":\"\",\"cai2\":{\"formatted\":\"\",\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"originalItem\":{\"value\":\"ABH\",\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cfai6\":{\"formatted\":\"\",\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"originalItem\":{\"value\":\"ABH\",\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cai0\":\"\",\"bd1\":\"IX\",\"bd0\":\"\",\"bd3\":\"111\",\"crb1\":\"false\",\"cfai10\":{\"id\":\"2020-0\",\"text\":2020,\"originalItem\":{\"label\":2020}},\"bd2\":\"11111\",\"сrb2\":\"false\",\"bd5\":\"ЗАГС 1\",\"bd4\":\"2020-10-26T00:00:00.000+03:00\",\"fu_childrenunder14\":{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"children73cfeeb9-227c-4f78-b0b3-fe66d2edcad9\",\"value\":[{\"fileName\":\"св-во.jpeg\",\"objectId\":763510799,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.children73cfeeb9-227c-4f78-b0b3-fe66d2edcad9.0\",\"fileSize\":10665,\"uploaded\":true,\"hasError\":false}]}]}},{\"ai7_6\":\"true\",\"ai7_5\":\"Ивановна\",\"ai7_4\":\"Ивана\",\"qс1\":\"0\",\"hidden\":\"false\",\"ai7_3\":\"Иванова\",\"ai7_2\":\"F\",\"ai7_1\":\"2016-11-02T00:00:00.000+03:00\",\"ai7_0\":\"a27ca7d6-765b-4e0c-96e1-8afeb180c7ad\",\"crb1\":\"false\",\"cfai10\":{\"id\":\"2020-0\",\"text\":2020,\"originalItem\":{\"label\":2020}},\"сrb2\":\"false\",\"fu_childrenunder14\":{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"childrena27ca7d6-765b-4e0c-96e1-8afeb180c7ad\",\"value\":[{\"fileName\":\"св-во.jpeg\",\"objectId\":763510799,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.childrena27ca7d6-765b-4e0c-96e1-8afeb180c7ad.0\",\"fileSize\":10665,\"uploaded\":true,\"hasError\":false}]}]},\"cl2\":{\"regDate\":\"26.10.2020\",\"regAddr\":{\"streetShortType\":\"ул\",\"geoLat\":\"55.7287979\",\"okato\":\"45268597000\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7287979\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4584805\",\"index\":\"121108\",\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 2, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4584805\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"2\",\"apartmentCheckbox\":false,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"street\":\"Ивана Франко\",\"kladrCode\":\"7700000000033130001\",\"fiasCode\":\"91aabbc6-1dbb-4a7a-bd07-f2b0ac1b2cde\",\"hasErrors\":0,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"apartment\":\"1\"}},\"cai1\":\"\",\"cfai5\":\"\",\"cai2\":{\"formatted\":\"\",\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"originalItem\":{\"value\":\"ABH\",\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cfai6\":{\"formatted\":\"\",\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"originalItem\":{\"value\":\"ABH\",\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cai0\":\"\",\"bd1\":\"XX\",\"bd0\":\"\",\"bd3\":\"222\",\"bd2\":\"22222\",\"bd5\":\"ЗАГС 2\",\"bd4\":\"2020-10-27T00:00:00.000+03:00\"}]"
+    },
+    "ai7_6": {
+      "visited": true,
+      "value": "true"
+    },
+    "ai7_5": {
+      "visited": true,
+      "value": "Ивановна"
+    },
+    "ai7_4": {
+      "visited": true,
+      "value": "Ивана"
+    },
+    "hidden": {
+      "visited": true,
+      "value": "false"
+    },
+    "ai7_3": {
+      "visited": true,
+      "value": "Иванова"
+    },
+    "ai7_2": {
+      "visited": true,
+      "value": "F"
+    },
+    "ai7_1": {
+      "visited": true,
+      "value": "2016-11-02T00:00:00.000+03:00"
+    },
+    "ai7_0": {
+      "visited": true,
+      "value": "a27ca7d6-765b-4e0c-96e1-8afeb180c7ad"
+    },
+    "bd0": {
+      "visited": true,
+      "value": ""
+    },
+    "bd1": {
+      "visited": true,
+      "value": "XX"
+    },
+    "bd2": {
+      "visited": true,
+      "value": "22222"
+    },
+    "bd3": {
+      "visited": true,
+      "value": "222"
+    },
+    "bd4": {
+      "visited": true,
+      "value": "2020-10-27T00:00:00.000+03:00"
+    },
+    "bd5": {
+      "visited": true,
+      "value": "ЗАГС 2"
+    },
+    "qс1": {
+      "visited": true,
+      "value": "0"
+    },
+    "cl2": {
+      "visited": true,
+      "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.7287979\",\"building2Type\":null,\"okato\":\"45268597000\",\"building1Type\":null,\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7287979\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4584805\",\"index\":\"121108\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 2, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4584805\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"2\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":null,\"street\":\"Ивана Франко\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"7700000000033130001\",\"building1ShortType\":null,\"fiasCode\":\"91aabbc6-1dbb-4a7a-bd07-f2b0ac1b2cde\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"1\"},\"regDate\":\"26.10.2020\"}"
+    },
+    "cai0": {
+      "visited": true,
+      "value": ""
+    },
+    "crb1": {
+      "visited": true,
+      "value": "false"
+    },
+    "сrb2": {
+      "visited": true,
+      "value": "false"
+    },
+    "cai1": {
+      "visited": true,
+      "value": ""
+    },
+    "cai2": {
+      "visited": true,
+      "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+    },
+    "cfai5": {
+      "visited": true,
+      "value": ""
+    },
+    "cfai6": {
+      "visited": true,
+      "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+    },
+    "cfai10": {
+      "visited": true,
+      "value": "{\"id\":\"2020-0\",\"originalItem\":{\"label\":2020},\"text\":2020}"
+    },
+    "fu_childrenunder14": {
+      "visited": true,
+      "value": "{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"childrena27ca7d6-765b-4e0c-96e1-8afeb180c7ad\",\"value\":[{\"fileName\":\"св-во.jpeg\",\"objectId\":763510799,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.childrena27ca7d6-765b-4e0c-96e1-8afeb180c7ad.0\",\"fileSize\":10665,\"uploaded\":true,\"hasError\":false}]}]}"
+    }
+  },
+  "currentValue": {
+    "ai15": {
+      "visited": true,
+      "value": "[{\"ai15_0\":\"eff3441a-5df1-420d-b31d-5f0aa1dc5c60\",\"ai15_1\":\"2006-10-30T00:00:00.000+03:00\",\"ai15_2\":\"M\",\"ai15_3\":\"Петров\",\"ai15_4\":\"Петр\",\"ai15_5\":\"Петрович\",\"ai15_7\":{\"rfPasportSeries\":\"1111\",\"rfPasportNumber\":\"222222\"},\"ai15_6\":\"true\"}]"
+    }
+  },
+  "errors": {},
+  "applicantAnswers": {
+    "w1": {
+      "visited": true,
+      "value": ""
+    },
+    "q1": {
+      "visited": true,
+      "value": "Зарегистрироваться"
+    },
+    "q2": {
+      "visited": true,
+      "value": "Меня, супруга (супругу) и детей"
+    },
+    "q6": {
+      "visited": true,
+      "value": "До 14 лет и от 14 до 18 лет"
+    },
+    "q3": {
+      "visited": true,
+      "value": "Да"
+    },
+    "d54": {
+      "visited": true,
+      "value": ""
+    },
+    "pd1": {
+      "visited": true,
+      "value": "{\"states\":[{\"groupName\":\"Брак Один Бракович\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"03.10.1997\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"0000 120120\"},{\"label\":\"Дата выдачи:\",\"value\":\"08.10.2016\"},{\"label\":\"Кем выдан:\",\"value\":\"ОВД-шное ОВД\"},{\"label\":\"Код подразделения:\",\"value\":\"777-777\"}]}],\"storedValues\":{\"firstName\":\"Один\",\"lastName\":\"Брак\",\"rfPasportIssuedBy\":\"ОВД-шное ОВД\",\"rfPasportIssuedById\":\"777777\",\"rfPasportSeries\":\"0000\",\"middleName\":\"Бракович\",\"birthDate\":\"03.10.1997\",\"rfPasportNumber\":\"120120\",\"rfPasportIssueDate\":\"08.10.2016\"}}"
+    },
+    "pd2": {
+      "visited": true,
+      "value": "+7(926)2252442"
+    },
+    "pd3": {
+      "visited": true,
+      "value": "zlomanovva@elocont.ru"
+    },
+    "pd4": {
+      "visited": true,
+      "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.7287979\",\"building2Type\":null,\"okato\":\"45268597000\",\"building1Type\":null,\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7287979\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4584805\",\"index\":\"121108\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 2, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4584805\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"2\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":null,\"street\":\"Ивана Франко\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"7700000000033130001\",\"building1ShortType\":null,\"fiasCode\":\"91aabbc6-1dbb-4a7a-bd07-f2b0ac1b2cde\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"1\"},\"regDate\":\"26.10.2020\"}"
+    },
+    "pd5": {
+      "visited": true,
+      "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.7282669\",\"building2Type\":null,\"okato\":\"45268597000\",\"building1Type\":null,\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7282669\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4543027\",\"index\":\"121108\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 4А, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4543027\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"4А\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":null,\"street\":\"Ивана Франко\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"7700000000033130022\",\"building1ShortType\":null,\"fiasCode\":\"81bb0cef-6ac4-46f3-973f-7523bf3c54be\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"1\"},\"regDate\":\"2022-11-21T05:05:18.599Z\"}"
+    },
+    "pd6": {
+      "visited": true,
+      "value": "Выписка из ЕГРН"
+    },
+    "CMPegrndate": {
+      "visited": true,
+      "value": "2020-10-26T00:00:00.000+03:00"
+    },
+    "CMPegrnnum": {
+      "visited": true,
+      "value": "23424"
+    },
+    "fai0": {
+      "visited": true,
+      "value": ""
+    },
+    "rb1": {
+      "visited": true,
+      "value": "false"
+    },
+    "rb2": {
+      "visited": true,
+      "value": "false"
+    },
+    "fai1": {
+      "visited": true,
+      "value": ""
+    },
+    "fai2": {
+      "visited": true,
+      "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+    },
+    "fai5": {
+      "visited": true,
+      "value": ""
+    },
+    "fai6": {
+      "visited": true,
+      "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+    },
+    "fai10": {
+      "visited": true,
+      "value": "{\"id\":\"2020-0\",\"originalItem\":{\"label\":2020},\"text\":2020}"
+    },
+    "fai12": {
+      "visited": true,
+      "value": "{\"id\":\"2\",\"text\":\"в связи с учебой\",\"unselectable\":false,\"originalItem\":{\"label\":\"в связи с учебой\",\"disable\":false,\"code\":\"2\"}}"
+    },
+    "fai13": {
+      "visited": true,
+      "value": ""
+    },
+    "fai14": {
+      "visited": true,
+      "value": "{\"id\":\"0\",\"text\":\"Военнослужащие (за исключением военнослужащих срочной службы по призыву)\",\"unselectable\":false,\"originalItem\":{\"label\":\"Военнослужащие (за исключением военнослужащих срочной службы по призыву)\",\"disable\":false,\"code\":\"0\"}}"
+    },
+    "fai15": {
+      "visited": true,
+      "value": "{\"id\":\"36\",\"text\":\"магистр\",\"unselectable\":false,\"originalItem\":{\"label\":\"магистр\",\"disable\":false,\"code\":\"36\"}}"
+    },
+    "fai16": {
+      "visited": true,
+      "value": "{\"id\":\"34\",\"text\":\"женат (замужем)\",\"unselectable\":false,\"originalItem\":{\"label\":\"женат (замужем)\",\"disable\":false,\"code\":\"34\"}}"
+    },
+    "ai19": {
+      "visited": true,
+      "value": "{\"firstName\":\"Игорь\",\"lastName\":\"Каменев\",\"rfPasportSeries\":\"5300\",\"oid\":\"1000298933\",\"rfPasportNumber\":\"535353\"}"
+    },
+    "ai7": {
+      "visited": true,
+      "value": "[{\"ai7_6\":\"true\",\"ai7_5\":\"Иванович\",\"ai7_4\":\"Иван\",\"qс1\":\"0\",\"ai7_3\":\"Иванов\",\"ai7_2\":\"M\",\"ai7_1\":\"2018-10-29T00:00:00.000+03:00\",\"ai7_0\":\"73cfeeb9-227c-4f78-b0b3-fe66d2edcad9\",\"cl2\":{\"regDate\":\"26.10.2020\",\"regAddr\":{\"streetShortType\":\"ул\",\"geoLat\":\"55.7287979\",\"okato\":\"45268597000\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7287979\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4584805\",\"index\":\"121108\",\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 2, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4584805\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"2\",\"apartmentCheckbox\":false,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"street\":\"Ивана Франко\",\"kladrCode\":\"7700000000033130001\",\"fiasCode\":\"91aabbc6-1dbb-4a7a-bd07-f2b0ac1b2cde\",\"hasErrors\":0,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"apartment\":\"1\"}},\"cai1\":\"\",\"cfai5\":\"\",\"cai2\":{\"formatted\":\"\",\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"originalItem\":{\"value\":\"ABH\",\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cfai6\":{\"formatted\":\"\",\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"originalItem\":{\"value\":\"ABH\",\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cai0\":\"\",\"bd1\":\"IX\",\"bd0\":\"\",\"bd3\":\"111\",\"crb1\":\"false\",\"cfai10\":{\"id\":\"2020-0\",\"text\":2020,\"originalItem\":{\"label\":2020}},\"bd2\":\"11111\",\"сrb2\":\"false\",\"bd5\":\"ЗАГС 1\",\"bd4\":\"2020-10-26T00:00:00.000+03:00\",\"fu_childrenunder14\":{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"children73cfeeb9-227c-4f78-b0b3-fe66d2edcad9\",\"value\":[{\"fileName\":\"св-во.jpeg\",\"objectId\":763510799,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.children73cfeeb9-227c-4f78-b0b3-fe66d2edcad9.0\",\"fileSize\":10665,\"uploaded\":true,\"hasError\":false}]}]}},{\"ai7_6\":\"true\",\"ai7_5\":\"Ивановна\",\"ai7_4\":\"Ивана\",\"qс1\":\"0\",\"hidden\":\"false\",\"ai7_3\":\"Иванова\",\"ai7_2\":\"F\",\"ai7_1\":\"2016-11-02T00:00:00.000+03:00\",\"ai7_0\":\"a27ca7d6-765b-4e0c-96e1-8afeb180c7ad\",\"crb1\":\"false\",\"cfai10\":{\"id\":\"2020-0\",\"text\":2020,\"originalItem\":{\"label\":2020}},\"сrb2\":\"false\",\"fu_childrenunder14\":{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"childrena27ca7d6-765b-4e0c-96e1-8afeb180c7ad\",\"value\":[{\"fileName\":\"св-во.jpeg\",\"objectId\":763510799,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.childrena27ca7d6-765b-4e0c-96e1-8afeb180c7ad.0\",\"fileSize\":10665,\"uploaded\":true,\"hasError\":false}]}]},\"cl2\":{\"regDate\":\"26.10.2020\",\"regAddr\":{\"streetShortType\":\"ул\",\"geoLat\":\"55.7287979\",\"okato\":\"45268597000\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7287979\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4584805\",\"index\":\"121108\",\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 2, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4584805\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"2\",\"apartmentCheckbox\":false,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"street\":\"Ивана Франко\",\"kladrCode\":\"7700000000033130001\",\"fiasCode\":\"91aabbc6-1dbb-4a7a-bd07-f2b0ac1b2cde\",\"hasErrors\":0,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"apartment\":\"1\"}},\"cai1\":\"\",\"cfai5\":\"\",\"cai2\":{\"formatted\":\"\",\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"originalItem\":{\"value\":\"ABH\",\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cfai6\":{\"formatted\":\"\",\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"originalItem\":{\"value\":\"ABH\",\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cai0\":\"\",\"bd1\":\"XX\",\"bd0\":\"\",\"bd3\":\"222\",\"bd2\":\"22222\",\"bd5\":\"ЗАГС 2\",\"bd4\":\"2020-10-27T00:00:00.000+03:00\"}]"
+    }
+  },
+  "cycledApplicantAnswers": {
+    "currentAnswerId": "ai7",
+    "answerlist": [
+      {
+        "id": "ai7",
+        "initScreen": "s104",
+        "currentItemId": "a27ca7d6-765b-4e0c-96e1-8afeb180c7ad",
+        "items": [
+          {
+            "id": "73cfeeb9-227c-4f78-b0b3-fe66d2edcad9",
+            "itemAnswers": {
+              "ai7_6": {
+                "visited": true,
+                "value": "true"
+              },
+              "ai7_5": {
+                "visited": true,
+                "value": "Иванович"
+              },
+              "ai7_4": {
+                "visited": true,
+                "value": "Иван"
+              },
+              "ai7_3": {
+                "visited": true,
+                "value": "Иванов"
+              },
+              "ai7_2": {
+                "visited": true,
+                "value": "M"
+              },
+              "ai7_1": {
+                "visited": true,
+                "value": "2018-10-29T00:00:00.000+03:00"
+              },
+              "ai7_0": {
+                "visited": true,
+                "value": "73cfeeb9-227c-4f78-b0b3-fe66d2edcad9"
+              },
+              "bd0": {
+                "visited": true,
+                "value": ""
+              },
+              "bd1": {
+                "visited": true,
+                "value": "IX"
+              },
+              "bd2": {
+                "visited": true,
+                "value": "11111"
+              },
+              "bd3": {
+                "visited": true,
+                "value": "111"
+              },
+              "bd4": {
+                "visited": true,
+                "value": "2020-10-26T00:00:00.000+03:00"
+              },
+              "bd5": {
+                "visited": true,
+                "value": "ЗАГС 1"
+              },
+              "qс1": {
+                "visited": true,
+                "value": "0"
+              },
+              "cl2": {
+                "visited": true,
+                "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.7287979\",\"building2Type\":null,\"okato\":\"45268597000\",\"building1Type\":null,\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7287979\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4584805\",\"index\":\"121108\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 2, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4584805\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"2\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":null,\"street\":\"Ивана Франко\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"7700000000033130001\",\"building1ShortType\":null,\"fiasCode\":\"91aabbc6-1dbb-4a7a-bd07-f2b0ac1b2cde\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"1\"},\"regDate\":\"26.10.2020\"}"
+              },
+              "cai0": {
+                "visited": true,
+                "value": ""
+              },
+              "crb1": {
+                "visited": true,
+                "value": "false"
+              },
+              "сrb2": {
+                "visited": true,
+                "value": "false"
+              },
+              "cai1": {
+                "visited": true,
+                "value": ""
+              },
+              "cai2": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai5": {
+                "visited": true,
+                "value": ""
+              },
+              "cfai6": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai10": {
+                "visited": true,
+                "value": "{\"id\":\"2020-0\",\"originalItem\":{\"label\":2020},\"text\":2020}"
+              },
+              "fu_childrenunder14": {
+                "visited": true,
+                "value": "{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"children73cfeeb9-227c-4f78-b0b3-fe66d2edcad9\",\"value\":[{\"fileName\":\"св-во.jpeg\",\"objectId\":763510799,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.children73cfeeb9-227c-4f78-b0b3-fe66d2edcad9.0\",\"fileSize\":10665,\"uploaded\":true,\"hasError\":false}]}]}"
+              }
+            },
+            "cachedAnswers": {
+              "ai7_6": {
+                "visited": true,
+                "value": "true"
+              },
+              "ai7_5": {
+                "visited": true,
+                "value": "Иванович"
+              },
+              "ai7_4": {
+                "visited": true,
+                "value": "Иван"
+              },
+              "ai7_3": {
+                "visited": true,
+                "value": "Иванов"
+              },
+              "ai7_2": {
+                "visited": true,
+                "value": "M"
+              },
+              "ai7_1": {
+                "visited": true,
+                "value": "2018-10-29T00:00:00.000+03:00"
+              },
+              "ai7_0": {
+                "visited": true,
+                "value": "73cfeeb9-227c-4f78-b0b3-fe66d2edcad9"
+              },
+              "bd0": {
+                "visited": true,
+                "value": ""
+              },
+              "bd1": {
+                "visited": true,
+                "value": "IX"
+              },
+              "bd2": {
+                "visited": true,
+                "value": "11111"
+              },
+              "bd3": {
+                "visited": true,
+                "value": "111"
+              },
+              "bd4": {
+                "visited": true,
+                "value": "2020-10-26T00:00:00.000+03:00"
+              },
+              "bd5": {
+                "visited": true,
+                "value": "ЗАГС 1"
+              },
+              "qс1": {
+                "visited": true,
+                "value": "0"
+              },
+              "cl2": {
+                "visited": true,
+                "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.7287979\",\"building2Type\":null,\"okato\":\"45268597000\",\"building1Type\":null,\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7287979\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4584805\",\"index\":\"121108\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 2, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4584805\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"2\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":null,\"street\":\"Ивана Франко\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"7700000000033130001\",\"building1ShortType\":null,\"fiasCode\":\"91aabbc6-1dbb-4a7a-bd07-f2b0ac1b2cde\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"1\"},\"regDate\":\"26.10.2020\"}"
+              },
+              "cai0": {
+                "visited": true,
+                "value": ""
+              },
+              "crb1": {
+                "visited": true,
+                "value": "false"
+              },
+              "сrb2": {
+                "visited": true,
+                "value": "false"
+              },
+              "cai1": {
+                "visited": true,
+                "value": ""
+              },
+              "cai2": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai5": {
+                "visited": true,
+                "value": ""
+              },
+              "cfai6": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai10": {
+                "visited": true,
+                "value": "{\"id\":\"2020-0\",\"originalItem\":{\"label\":2020},\"text\":2020}"
+              },
+              "fu_childrenunder14": {
+                "visited": true,
+                "value": "{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"children73cfeeb9-227c-4f78-b0b3-fe66d2edcad9\",\"value\":[{\"fileName\":\"св-во.jpeg\",\"objectId\":763510799,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.children73cfeeb9-227c-4f78-b0b3-fe66d2edcad9.0\",\"fileSize\":10665,\"uploaded\":true,\"hasError\":false}]}]}"
+              }
+            },
+            "esiaData": {
+              "firstName": "Иван",
+              "lastName": "Иванов",
+              "middleName": "Иванович",
+              "id": "73cfeeb9-227c-4f78-b0b3-fe66d2edcad9",
+              "rfBirthCertificateSeries": "IX",
+              "rfBirthCertificateNumber": "11111",
+              "rfBirthCertificateActNumber": "111",
+              "rfBirthCertificateIssuedBy": "ЗАГС 1"
+            },
+            "finishedScreens": [
+              "scrchld2",
+              "scrchld3",
+              "scrchld4",
+              "scrchld5",
+              "fileuploadscr_childrenunder14"
+            ]
+          },
+          {
+            "id": "a27ca7d6-765b-4e0c-96e1-8afeb180c7ad",
+            "itemAnswers": {
+              "ai7_6": {
+                "visited": true,
+                "value": "true"
+              },
+              "ai7_5": {
+                "visited": true,
+                "value": "Ивановна"
+              },
+              "ai7_4": {
+                "visited": true,
+                "value": "Ивана"
+              },
+              "hidden": {
+                "visited": true,
+                "value": "false"
+              },
+              "ai7_3": {
+                "visited": true,
+                "value": "Иванова"
+              },
+              "ai7_2": {
+                "visited": true,
+                "value": "F"
+              },
+              "ai7_1": {
+                "visited": true,
+                "value": "2016-11-02T00:00:00.000+03:00"
+              },
+              "ai7_0": {
+                "visited": true,
+                "value": "a27ca7d6-765b-4e0c-96e1-8afeb180c7ad"
+              },
+              "bd0": {
+                "visited": true,
+                "value": ""
+              },
+              "bd1": {
+                "visited": true,
+                "value": "XX"
+              },
+              "bd2": {
+                "visited": true,
+                "value": "22222"
+              },
+              "bd3": {
+                "visited": true,
+                "value": "222"
+              },
+              "bd4": {
+                "visited": true,
+                "value": "2020-10-27T00:00:00.000+03:00"
+              },
+              "bd5": {
+                "visited": true,
+                "value": "ЗАГС 2"
+              },
+              "qс1": {
+                "visited": true,
+                "value": "0"
+              },
+              "cl2": {
+                "visited": true,
+                "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.7287979\",\"building2Type\":null,\"okato\":\"45268597000\",\"building1Type\":null,\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7287979\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4584805\",\"index\":\"121108\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 2, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4584805\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"2\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":null,\"street\":\"Ивана Франко\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"7700000000033130001\",\"building1ShortType\":null,\"fiasCode\":\"91aabbc6-1dbb-4a7a-bd07-f2b0ac1b2cde\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"1\"},\"regDate\":\"26.10.2020\"}"
+              },
+              "cai0": {
+                "visited": true,
+                "value": ""
+              },
+              "crb1": {
+                "visited": true,
+                "value": "false"
+              },
+              "сrb2": {
+                "visited": true,
+                "value": "false"
+              },
+              "cai1": {
+                "visited": true,
+                "value": ""
+              },
+              "cai2": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai5": {
+                "visited": true,
+                "value": ""
+              },
+              "cfai6": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai10": {
+                "visited": true,
+                "value": "{\"id\":\"2020-0\",\"originalItem\":{\"label\":2020},\"text\":2020}"
+              },
+              "fu_childrenunder14": {
+                "visited": true,
+                "value": "{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"childrena27ca7d6-765b-4e0c-96e1-8afeb180c7ad\",\"value\":[{\"fileName\":\"св-во.jpeg\",\"objectId\":763510799,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.childrena27ca7d6-765b-4e0c-96e1-8afeb180c7ad.0\",\"fileSize\":10665,\"uploaded\":true,\"hasError\":false}]}]}"
+              }
+            },
+            "cachedAnswers": {
+              "ai7_6": {
+                "visited": true,
+                "value": "true"
+              },
+              "ai7_5": {
+                "visited": true,
+                "value": "Ивановна"
+              },
+              "ai7_4": {
+                "visited": true,
+                "value": "Ивана"
+              },
+              "hidden": {
+                "visited": true,
+                "value": "false"
+              },
+              "ai7_3": {
+                "visited": true,
+                "value": "Иванова"
+              },
+              "ai7_2": {
+                "visited": true,
+                "value": "F"
+              },
+              "ai7_1": {
+                "visited": true,
+                "value": "2016-11-02T00:00:00.000+03:00"
+              },
+              "ai7_0": {
+                "visited": true,
+                "value": "a27ca7d6-765b-4e0c-96e1-8afeb180c7ad"
+              },
+              "bd0": {
+                "visited": true,
+                "value": ""
+              },
+              "bd1": {
+                "visited": true,
+                "value": "XX"
+              },
+              "bd2": {
+                "visited": true,
+                "value": "22222"
+              },
+              "bd3": {
+                "visited": true,
+                "value": "222"
+              },
+              "bd4": {
+                "visited": true,
+                "value": "2020-10-27T00:00:00.000+03:00"
+              },
+              "bd5": {
+                "visited": true,
+                "value": "ЗАГС 2"
+              },
+              "qс1": {
+                "visited": true,
+                "value": "0"
+              },
+              "cl2": {
+                "visited": true,
+                "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.7287979\",\"building2Type\":null,\"okato\":\"45268597000\",\"building1Type\":null,\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.7287979\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.4584805\",\"index\":\"121108\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"121108, г. Москва, ул. Ивана Франко, д. 2, кв. 1\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.4584805\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"2\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":null,\"street\":\"Ивана Франко\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"7700000000033130001\",\"building1ShortType\":null,\"fiasCode\":\"91aabbc6-1dbb-4a7a-bd07-f2b0ac1b2cde\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Ивана Франко\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"1\"},\"regDate\":\"26.10.2020\"}"
+              },
+              "cai0": {
+                "visited": true,
+                "value": ""
+              },
+              "crb1": {
+                "visited": true,
+                "value": "false"
+              },
+              "сrb2": {
+                "visited": true,
+                "value": "false"
+              },
+              "cai1": {
+                "visited": true,
+                "value": ""
+              },
+              "cai2": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai5": {
+                "visited": true,
+                "value": ""
+              },
+              "cfai6": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai10": {
+                "visited": true,
+                "value": "{\"id\":\"2020-0\",\"originalItem\":{\"label\":2020},\"text\":2020}"
+              },
+              "fu_childrenunder14": {
+                "visited": true,
+                "value": "{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"childrena27ca7d6-765b-4e0c-96e1-8afeb180c7ad\",\"value\":[{\"fileName\":\"св-во.jpeg\",\"objectId\":763510799,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.childrena27ca7d6-765b-4e0c-96e1-8afeb180c7ad.0\",\"fileSize\":10665,\"uploaded\":true,\"hasError\":false}]}]}"
+              }
+            },
+            "esiaData": {
+              "firstName": "Ивана",
+              "lastName": "Иванова",
+              "middleName": "Ивановна",
+              "id": "a27ca7d6-765b-4e0c-96e1-8afeb180c7ad",
+              "rfBirthCertificateSeries": "XX",
+              "rfBirthCertificateNumber": "22222",
+              "rfBirthCertificateActNumber": "222",
+              "rfBirthCertificateIssuedBy": "ЗАГС 2"
+            },
+            "finishedScreens": [
+              "scrchld2",
+              "scrchld3",
+              "scrchld4",
+              "scrchld5",
+              "fileuploadscr_childrenunder14"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ai15",
+        "items": []
+      }
+    ]
+  },
+  "participants": {
+    "1000298933": {
+      "role": "Coapplicant",
+      "mode": "MentionedApplicant",
+      "component": "ai19"
+    }
+  },
+  "display": {
+    "id": "s112",
+    "name": "Укажите детей от 14 до 18 лет",
+    "type": "COMPONENT",
+    "header": "Укажите детей от 14 до 18 лет",
+    "components": [
+      {
+        "id": "ai15",
+        "type": "ChildrenList",
+        "label": "",
+        "attrs": {
+          "isCycled": true,
+          "minAge": 14,
+          "components": [
+            {
+              "id": "ai15_0",
+              "type": "StringInput",
+              "label": "Идентификатор",
+              "attrs": {
+                "fields": [
+                  {
+                    "fieldName": "id"
+                  }
+                ],
+                "validation": [
+                  {
+                    "type": "RegExp",
+                    "value": ".+",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле не может быть пустым"
+                  }
+                ],
+                "hidden": true
+              },
+              "value": "",
+              "required": true,
+              "cycled": false
+            },
+            {
+              "id": "ai15_1",
+              "type": "DateInput",
+              "label": "Дата рождения",
+              "attrs": {
+                "accuracy": "day",
+                "maxDate": "-14y",
+                "minDate": "-18y",
+                "fields": [
+                  {
+                    "fieldName": "birthDate"
+                  }
+                ]
+              },
+              "value": "",
+              "required": true,
+              "cycled": false
+            },
+            {
+              "id": "ai15_2",
+              "type": "RadioInput",
+              "label": "Пол",
+              "attrs": {
+                "fields": [
+                  {
+                    "fieldName": "gender"
+                  }
+                ],
+                "supportedValues": [
+                  {
+                    "label": "Мальчик",
+                    "value": "M",
+                    "isDefault": true
+                  },
+                  {
+                    "label": "Девочка",
+                    "value": "F"
+                  }
+                ],
+                "isHorizontal": true
+              },
+              "value": "",
+              "required": true,
+              "cycled": false
+            },
+            {
+              "id": "ai15_3",
+              "type": "StringInput",
+              "label": "Фамилия",
+              "attrs": {
+                "fstuc": "all",
+                "fields": [
+                  {
+                    "fieldName": "lastName"
+                  }
+                ],
+                "validation": [
+                  {
+                    "type": "RegExp",
+                    "value": ".+",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле не может быть пустым"
+                  },
+                  {
+                    "type": "RegExp",
+                    "value": "^.{0,30}$",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле может содержать не более 30 символов"
+                  }
+                ]
+              },
+              "value": "",
+              "required": true,
+              "cycled": false
+            },
+            {
+              "id": "ai15_4",
+              "type": "StringInput",
+              "label": "Имя",
+              "attrs": {
+                "fstuc": "all",
+                "fields": [
+                  {
+                    "fieldName": "firstName"
+                  }
+                ],
+                "validation": [
+                  {
+                    "type": "RegExp",
+                    "value": ".+",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле не может быть пустым"
+                  },
+                  {
+                    "type": "RegExp",
+                    "value": "^.{0,30}$",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле может содержать не более 30 символов"
+                  }
+                ]
+              },
+              "value": "",
+              "required": true,
+              "cycled": false
+            },
+            {
+              "id": "ai15_5",
+              "type": "StringInput",
+              "label": "Отчество",
+              "attrs": {
+                "fstuc": "first",
+                "customUnrecLabel": "При наличии",
+                "fields": [
+                  {
+                    "fieldName": "middleName"
+                  }
+                ],
+                "validation": [
+                  {
+                    "type": "RegExp",
+                    "value": "^.{0,30}$",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле может содержать не более 30 символов"
+                  }
+                ]
+              },
+              "value": "",
+              "required": false,
+              "cycled": false
+            },
+            {
+              "id": "ai15_7",
+              "type": "PassportLookup",
+              "label": "",
+              "attrs": {
+                "fields": [
+                  {
+                    "mask": [
+                      "/\\d/",
+                      "/\\d/",
+                      "/\\d/",
+                      "/\\d/"
+                    ],
+                    "fieldName": "rfPasportSeries",
+                    "label": "Серия",
+                    "type": "input",
+                    "regexp": "^[0-9]{4}$",
+                    "errorMsg": "Поле должно содержать 4 цифры"
+                  },
+                  {
+                    "mask": [
+                      "/\\d/",
+                      "/\\d/",
+                      "/\\d/",
+                      "/\\d/",
+                      "/\\d/",
+                      "/\\d/"
+                    ],
+                    "fieldName": "rfPasportNumber",
+                    "label": "Номер",
+                    "type": "input",
+                    "regexp": "^[0-9]{6}$",
+                    "errorMsg": "Поле должно содержать 6 цифр"
+                  }
+                ]
+              },
+              "value": "",
+              "required": true,
+              "cycled": false
+            },
+            {
+              "id": "ai15_6",
+              "type": "RadioInput",
+              "label": "Ребенок новый?",
+              "attrs": {
+                "fields": [
+                  {
+                    "fieldName": "isNew"
+                  }
+                ],
+                "supportedValues": [
+                  {
+                    "label": "Да",
+                    "value": true
+                  },
+                  {
+                    "label": "Нет",
+                    "value": false,
+                    "isDefault": false
+                  }
+                ],
+                "isHorizontal": true,
+                "hidden": true
+              },
+              "value": "",
+              "required": true,
+              "cycled": false
+            }
+          ]
+        },
+        "arguments": {},
+        "value": "[]",
+        "required": true,
+        "cycled": false
+      }
+    ],
+    "accepted": true,
+    "terminal": false,
+    "impasse": false,
+    "firstScreen": false
+  },
+  "attachmentInfo": {},
+  "additionalParameters": {},
+  "gender": "M",
+  "userId": "1000466341",
+  "token": "eyJ2ZXIiOjEsInR5cCI6IkpXVCIsInNidCI6ImFjY2VzcyIsImFsZyI6IlJTMjU2In0.eyJuYmYiOjE2MDU5MzQ0NjcsInNjb3BlIjoiaHR0cDpcL1wvZXNpYS5nb3N1c2x1Z2kucnVcL3Vzcl90cm0_bW9kZT13Jm9pZD0xMDAwNDY2MzQxIG9wZW5pZCBodHRwOlwvXC9lc2lhLmdvc3VzbHVnaS5ydVwvdXNyX2luZj9tb2RlPXcmb2lkPTEwMDA0NjYzNDEgaHR0cDpcL1wvZXNpYS5nb3N1c2x1Z2kucnVcL3Vzcl9zZWM_bW9kZT13Jm9pZD0xMDAwNDY2MzQxIiwiaXNzIjoiaHR0cDpcL1wvZXNpYS1wb3J0YWwxLnRlc3QuZ29zdXNsdWdpLnJ1XC8iLCJ1cm46ZXNpYTpzaWQiOiI5NjdiMDQ5MjU1YWYzZGMxMmQ4YzFhYzhmZWFmNGIwOWU0NGZmZWNmMTk2Y2QwNjQ3MTRkMmNmN2NhMWRjNTI5IiwidXJuOmVzaWE6c2JqX2lkIjoxMDAwNDY2MzQxLCJleHAiOjE2MDU5NDUyNjcsImlhdCI6MTYwNTkzNDQ2NywiY2xpZW50X2lkIjoiUEdVIn0.iU8C7AfNT8VH_SJGEn5lSHxHvnYWva6cwGoixiwlibmpW8NhVdI0f-FS28pePWXxb10LMMi91y70sQ73mUQ1IYQ6SGp-Y9xCwzokIRfHcgzJFZmWi3ANwKi4D7GBOfdIKtkjovL1JCr5KoE7ZvLrU-IGCwO_f3rOycMxLDxs0svBlaE-lwx15DlqXc0R5lNvScz-LzWdvO_l-XjLh_4G4BI1wO-ShRu1N9x5db4C8FwgfU_xJdqvMoxzANCag5O4jjhx2uNXPnr9x4by45kMOmppsw8yPhpn7Lj1qYpSzmHPXbALk40fnvF4xOHWarirqgdRQCSh69hvL8USoBHpkQ"
+}

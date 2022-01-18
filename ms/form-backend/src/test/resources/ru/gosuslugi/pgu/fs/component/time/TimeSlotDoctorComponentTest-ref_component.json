@@ -1,0 +1,235 @@
+{
+  "id": "ts_doctor_ref",
+  "type": "TimeSlotDoctor",
+  "label": "",
+  "attrs": {
+    "docLookup": {
+      "dictionaryType": "v1/equeue/agg/ref/items",
+      "dictionaryUrlType": "lkApi",
+      "mappingParams": {
+        "idPath": "attributes[5].value",
+        "textPath": "attributes[6].value"
+      },
+      "searchProvider": {
+        "turnOffStartFilter": true,
+        "dictionaryFilter": [
+          {
+            "attributeName": "Service_Id",
+            "condition": "EQUALS",
+            "value": "MedRef.value.convertedAttributes.toSpecsId",
+            "valueType": "ref",
+            "excludeWrapper": true
+          },
+          {
+            "attributeName": "Referral_Id",
+            "condition": "EQUALS",
+            "value": "MedRef.value.convertedAttributes.referralId",
+            "valueType": "ref",
+            "excludeWrapper": true
+          },
+          {
+            "attributeName": "MO_OID",
+            "condition": "EQUALS",
+            "value": "MedRef.value.convertedAttributes.toMoOid",
+            "valueType": "ref",
+            "excludeWrapper": true
+          },
+          {
+            "attributeName": "Session_Id",
+            "condition": "EQUALS",
+            "value": "reg1.value.medicalInfo.sessionId",
+            "valueType": "ref",
+            "excludeWrapper": true
+          }
+        ],
+        "dictionaryOptions": {
+          "selectAttributes": [
+            "Resource_Id",
+            "Resource_Name"
+          ],
+          "additionalParams": [
+            {
+              "name": "eserviceId",
+              "value": "reg1.value.medicalInfo.eserviceId",
+              "type": "ref"
+            },
+            {
+              "name": "refName",
+              "value": "Resource",
+              "type": "value"
+            }
+          ],
+          "excludedParams": [
+            "parentRefItemValue",
+            "tx"
+          ]
+        }
+      },
+      "ref": [],
+      "required": true,
+      "validation": [
+        {
+          "type": "RegExp",
+          "value": ".+",
+          "errorMsg": "Поле не может быть пустым"
+        }
+      ]
+    },
+    "ts": {
+      "attributeNameWithAddress": "Address_MO",
+      "daysToShow": 15,
+      "startSection": "today",
+      "isMonthsRangeVisible": true
+    },
+    "calculations": [
+      {
+        "attributeName": "eserviceId",
+        "expr": [
+          "$reg1.value.medicalInfo.eserviceId"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "serviceId",
+        "expr": [
+          "'10001000603'"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "serviceCode",
+        "expr": [
+          "'-10001000603'"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "bookAttributes",
+        "expr": [
+          "$reg1.value.medicalInfo.bookAttributes"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "Session_Id",
+        "expr": [
+          "$reg1.value.medicalInfo.sessionId"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "Starttime",
+        "expr": [
+          "'00:00'"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "Endtime",
+        "expr": [
+          "'23:59'"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "Service_Id",
+        "expr": [
+          "$MedRef.value.convertedAttributes.toServiceId"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "ServiceSpec_Id",
+        "expr": [
+          "$MedRef.value.convertedAttributes.toSpecsId"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "userSelectedRegion",
+        "expr": [
+          "$reg1.value.originalItem.attributeValues.OKATO"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "doctor",
+        "expr": [
+          "$MedRef.value.convertedAttributes.toSpecsName"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "anotherperson",
+        "expr": [
+          "$q1.value == 'Себя' ? 'N' : 'Y'"
+        ],
+        "valueType": "calc"
+      },
+      {
+        "attributeName": "genderperson",
+        "expr": [
+          "($q1.value == 'Себя' && $pd1.value.storedValues.gender == 'M') ? 'Мужской' : ''",
+          "($q1.value == 'Себя' && $pd1.value.storedValues.gender == 'F') ? 'Женский' : ''",
+          "($q1.value == 'Ребенка' && $cld1.value[0].cld1_5 == 'M') ? 'Мужской' : ''",
+          "($q1.value == 'Ребенка' && $cld1.value[0].cld1_5 == 'F') ? 'Женский' : ''",
+          "($q1.value == 'Другого человека' && $pd5_6.value == 'M') ? 'Мужской' : ''",
+          "($q1.value == 'Другого человека' && $pd5_6.value == 'F') ? 'Женский' : 'Мужской'"
+        ],
+        "valueType": "calc"
+      }
+    ]
+  },
+  "linkedValues": [
+    {
+      "argument": "ageperson",
+      "jsonLogic": {
+        "if": [
+          {
+            "==": [
+              "answer.q1.value",
+              "Себя"
+            ]
+          },
+          "answer.pd1.value.storedValues.birthDate",
+          {
+            "==": [
+              "answer.q1.value",
+              "Ребенка"
+            ]
+          },
+          "answer.cld1.value[0].pd_cld1.storedValues.birthDate",
+          "answer.pd5_4.value"
+        ]
+      },
+      "converterSettings": {
+        "converter": "DATE_TO_AGE"
+      }
+    },
+    {
+      "argument": "pacientname",
+      "jsonLogic": {
+        "if": [
+          {
+            "==": [
+              "answer.q1.value",
+              "Себя"
+            ]
+          },
+          "answer.pd1.value.storedValues.lastName",
+          {
+            "==": [
+              "answer.q1.value",
+              "Ребенка"
+            ]
+          },
+          "answer.cld1.value[0].cld1_1",
+          "answer.pd5_1.value"
+        ]
+      }
+    }
+  ],
+  "clearCacheForComponentIds": [],
+  "value": "",
+  "visited": false
+}

@@ -1,0 +1,73 @@
+{
+  "id": "MedRef",
+  "name": "",
+  "type": "MedicalReferrals",
+  "label": "",
+  "attrs": {
+    "disclaimer": {
+      "type": "warn",
+      "title": "Направления не найдены",
+      "description": "Воспользуйтесь поиском направления по номеру"
+    },
+    "refs": {}
+  },
+  "linkedValues": [
+    {
+      "argument": "medicalInfo",
+      "source": "reg1.medicalInfo",
+      "activeCheckType": "ANY",
+      "jsonSource": true
+    },
+    {
+      "argument": "referralDisclaimerDescription",
+      "jsonLogic": {
+        "if": [
+          {
+            "==": [
+              "answer.reg1.value.originalItem.attributeValues.Referral",
+              3
+            ]
+          },
+          "Воспользуйтесь поиском направления по номеру",
+          {
+            "==": [
+              "answer.reg1.value.originalItem.attributeValues.Referral",
+              2
+            ]
+          },
+          "Для записи выберите врача"
+        ]
+      },
+      "jsonSource": false
+    },
+    {
+      "argument": "buttonLabel",
+      "jsonLogic": {
+        "if": [
+          {
+            "==": [
+              "answer.reg1.value.originalItem.attributeValues.Referral",
+              3
+            ]
+          },
+          "Найти направление по номеру",
+          {
+            "==": [
+              "answer.reg1.value.originalItem.attributeValues.Referral",
+              2
+            ]
+          },
+          "Выбрать врача"
+        ]
+      },
+      "jsonSource": false
+    }
+  ],
+  "arguments": {
+    "referralDisclaimerDescription": "Воспользуйтесь поиском направления по номеру",
+    "medicalInfo": "{\"smevVersion\":3,\"sessionId\":\"bdae5fa4-d528-4b6b-ac15-9c6a099d50b7\",\"eserviceId\":\"10000025167\",\"medicalData\":{\"error\":{\"errorDetail\":{\"errorCode\":0,\"errorMessage\":\"Operation completed\"}},\"totalItems\":5,\"items\":[{\"attributes\":[{\"name\":\"referralId\",\"value\":\"205206\"},{\"name\":\"referralNumber\",\"value\":\"445\"},{\"name\":\"referralTypeId\",\"value\":\"6\"},{\"name\":\"referralStartDate\",\"value\":\"2020-01-10\"},{\"name\":\"referralEndDate\",\"value\":\"2021-12-31\"},{\"name\":\"paymentSourceId\",\"value\":\"1\"},{\"name\":\"toMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\"},{\"name\":\"toMoName\",\"value\":\"Женская консультация, ГАУЗ &quot;Городская поликлиника № 21&quot;\"},{\"name\":\"toSpecsId\",\"value\":\"34\"},{\"name\":\"toSpecsName\",\"value\":\"врач-кардиолог\"},{\"name\":\"toResourceName\",\"value\":\"Пушкина Анна Ивановна\"},{\"name\":\"fromMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\"},{\"name\":\"fromMoName\",\"value\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\"},{\"name\":\"fromSpecsId\",\"value\":\"109\"},{\"name\":\"fromSpecsName\",\"value\":\"врач-терапевт\"},{\"name\":\"fromResourceName\",\"value\":\"Николаева Яна Семеновна\"}],\"convertedAttributes\":{\"toMoOid\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\",\"toSpecsName\":\"врач-кардиолог\",\"fromResourceName\":\"Николаева Яна Семеновна\",\"referralStartDate\":\"2020-01-10\",\"referralId\":\"205206\",\"fromSpecsId\":\"109\",\"fromSpecsName\":\"врач-терапевт\",\"paymentSourceId\":\"1\",\"toMoName\":\"Женская консультация, ГАУЗ &quot;Городская поликлиника № 21&quot;\",\"referralNumber\":\"445\",\"fromMoOid\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\",\"referralEndDate\":\"2021-12-31\",\"toResourceName\":\"Пушкина Анна Ивановна\",\"fromMoName\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\",\"toSpecsId\":\"34\",\"referralTypeId\":\"6\"}},{\"attributes\":[{\"name\":\"referralId\",\"value\":\"206789\"},{\"name\":\"referralNumber\",\"value\":\"558\"},{\"name\":\"referralTypeId\",\"value\":\"8\"},{\"name\":\"referralStartDate\",\"value\":\"2020-01-10\"},{\"name\":\"referralEndDate\",\"value\":\"2021-12-31\"},{\"name\":\"paymentSourceId\",\"value\":\"1\"},{\"name\":\"toMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\"},{\"name\":\"toMoName\",\"value\":\"Женская консультация, ГАУЗ &quot;Городская поликлиника № 21&quot;\"},{\"name\":\"toSpecsId\",\"value\":\"53\"},{\"name\":\"toSpecsName\",\"value\":\"врач-оториноларинголог\"},{\"name\":\"toResourceName\",\"value\":\"Нестерова Карина Ивановна\"},{\"name\":\"fromMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\"},{\"name\":\"fromMoName\",\"value\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\"},{\"name\":\"fromSpecsId\",\"value\":\"109\"},{\"name\":\"fromSpecsName\",\"value\":\"врач-терапевт\"},{\"name\":\"fromResourceName\",\"value\":\"Иванов Петр Иванович\"},{\"name\":\"toServiceId\",\"value\":\"A16.08.010.001\"},{\"name\":\"toServiceName\",\"value\":\"Подслизистая вазотомия нижних носовых раковин\"}],\"convertedAttributes\":{\"toMoOid\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\",\"toSpecsName\":\"врач-оториноларинголог\",\"fromResourceName\":\"Иванов Петр Иванович\",\"referralStartDate\":\"2020-01-10\",\"referralId\":\"206789\",\"fromSpecsId\":\"109\",\"fromSpecsName\":\"врач-терапевт\",\"paymentSourceId\":\"1\",\"toMoName\":\"Женская консультация, ГАУЗ &quot;Городская поликлиника № 21&quot;\",\"toServiceId\":\"A16.08.010.001\",\"referralNumber\":\"558\",\"fromMoOid\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\",\"referralEndDate\":\"2021-12-31\",\"toResourceName\":\"Нестерова Карина Ивановна\",\"fromMoName\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\",\"toSpecsId\":\"53\",\"toServiceName\":\"Подслизистая вазотомия нижних носовых раковин\",\"referralTypeId\":\"8\"}},{\"attributes\":[{\"name\":\"referralId\",\"value\":\"335335\"},{\"name\":\"referralNumber\",\"value\":\"335\"},{\"name\":\"referralTypeId\",\"value\":\"6\"},{\"name\":\"referralStartDate\",\"value\":\"2020-01-10\"},{\"name\":\"referralEndDate\",\"value\":\"2021-12-31\"},{\"name\":\"paymentSourceId\",\"value\":\"1\"},{\"name\":\"toSpecsId\",\"value\":\"13\"},{\"name\":\"toSpecsName\",\"value\":\"врач-акушер-гинеколог\"},{\"name\":\"toResourceName\",\"value\":\"Куприянова Ирина Семеновна\"},{\"name\":\"fromMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\"},{\"name\":\"fromMoName\",\"value\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\"},{\"name\":\"fromSpecsId\",\"value\":\"109\"},{\"name\":\"fromSpecsName\",\"value\":\"врач-терапевт\"},{\"name\":\"fromResourceName\",\"value\":\"Николаева Яна Семеновна\"}],\"convertedAttributes\":{\"toSpecsName\":\"врач-акушер-гинеколог\",\"fromResourceName\":\"Николаева Яна Семеновна\",\"referralStartDate\":\"2020-01-10\",\"referralId\":\"335335\",\"fromSpecsId\":\"109\",\"fromSpecsName\":\"врач-терапевт\",\"paymentSourceId\":\"1\",\"referralNumber\":\"335\",\"fromMoOid\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\",\"referralEndDate\":\"2021-12-31\",\"toResourceName\":\"Куприянова Ирина Семеновна\",\"fromMoName\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\",\"toSpecsId\":\"13\",\"referralTypeId\":\"6\"}},{\"attributes\":[{\"name\":\"referralId\",\"value\":\"55544433\"},{\"name\":\"referralNumber\",\"value\":\"1589\"},{\"name\":\"referralTypeId\",\"value\":\"4\"},{\"name\":\"referralStartDate\",\"value\":\"2020-06-30\"},{\"name\":\"referralEndDate\",\"value\":\"2022-09-30\"},{\"name\":\"paymentSourceId\",\"value\":\"1\"},{\"name\":\"toMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.59.6018.0.74664\"},{\"name\":\"toMoName\",\"value\":\"Поликлиника №1, ГБУЗ ПК &quot; ГКП №4&quot;\"},{\"name\":\"fromMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.59.10097.0.273023\"},{\"name\":\"fromMoName\",\"value\":\"Поликлиника №1, ГБУЗ ПК &quot;ГП №7&quot;\"},{\"name\":\"fromSpecsId\",\"value\":\"34\"},{\"name\":\"fromSpecsName\",\"value\":\"врач-кардиолог\"},{\"name\":\"fromResourceName\",\"value\":\"Пушнина Любовь Аркадьевна\"},{\"name\":\"toServiceId\",\"value\":\"A04.10.002.010\"},{\"name\":\"toServiceName\",\"value\":\"Эхокардиография с допплерографией\"}],\"convertedAttributes\":{\"toMoOid\":\"1.2.643.5.1.13.13.12.2.59.6018.0.74664\",\"fromResourceName\":\"Пушнина Любовь Аркадьевна\",\"referralStartDate\":\"2020-06-30\",\"referralId\":\"55544433\",\"fromSpecsId\":\"34\",\"fromSpecsName\":\"врач-кардиолог\",\"paymentSourceId\":\"1\",\"toMoName\":\"Поликлиника №1, ГБУЗ ПК &quot; ГКП №4&quot;\",\"toServiceId\":\"A04.10.002.010\",\"referralNumber\":\"1589\",\"fromMoOid\":\"1.2.643.5.1.13.13.12.2.59.10097.0.273023\",\"referralEndDate\":\"2022-09-30\",\"fromMoName\":\"Поликлиника №1, ГБУЗ ПК &quot;ГП №7&quot;\",\"toServiceName\":\"Эхокардиография с допплерографией\",\"referralTypeId\":\"4\"}},{\"attributes\":[{\"name\":\"referralId\",\"value\":\"5554443322\"},{\"name\":\"referralNumber\",\"value\":\"158922\"},{\"name\":\"referralTypeId\",\"value\":\"4\"},{\"name\":\"referralStartDate\",\"value\":\"2020-06-30\"},{\"name\":\"referralEndDate\",\"value\":\"2022-09-30\"},{\"name\":\"paymentSourceId\",\"value\":\"1\"},{\"name\":\"toMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.59.6018.0.74664\"},{\"name\":\"toMoName\",\"value\":\"Поликлиника №1, ГБУЗ ПК &quot; ГКП №4&quot;\"},{\"name\":\"toSpecsId\",\"value\":\"13\"},{\"name\":\"toSpecsName\",\"value\":\"врач-акушер-гинеколог\"},{\"name\":\"fromMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.59.10097.0.273023\"},{\"name\":\"fromMoName\",\"value\":\"Поликлиника №1, ГБУЗ ПК &quot;ГП №7&quot;\"},{\"name\":\"fromSpecsId\",\"value\":\"34\"},{\"name\":\"fromSpecsName\",\"value\":\"врач-кардиолог\"},{\"name\":\"fromResourceName\",\"value\":\"Пушнина Любовь Аркадьевна\"}],\"convertedAttributes\":{\"toMoOid\":\"1.2.643.5.1.13.13.12.2.59.6018.0.74664\",\"toSpecsName\":\"врач-акушер-гинеколог\",\"fromResourceName\":\"Пушнина Любовь Аркадьевна\",\"referralStartDate\":\"2020-06-30\",\"referralId\":\"5554443322\",\"fromSpecsId\":\"34\",\"fromSpecsName\":\"врач-кардиолог\",\"paymentSourceId\":\"1\",\"toMoName\":\"Поликлиника №1, ГБУЗ ПК &quot; ГКП №4&quot;\",\"referralNumber\":\"158922\",\"fromMoOid\":\"1.2.643.5.1.13.13.12.2.59.10097.0.273023\",\"referralEndDate\":\"2022-09-30\",\"fromMoName\":\"Поликлиника №1, ГБУЗ ПК &quot;ГП №7&quot;\",\"toSpecsId\":\"13\",\"referralTypeId\":\"4\"}}]},\"bookAttributes\":[{\"value\":\"bdae5fa4-d528-4b6b-ac15-9c6a099d50b7\",\"name\":\"Session_Id\"}]}",
+    "buttonLabel": "Найти направление по номеру"
+  },
+  "value": "",
+  "required": true
+}

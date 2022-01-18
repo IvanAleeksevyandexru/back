@@ -1,0 +1,21 @@
+{
+  "service": "Запись на прием к врачу",
+  "applicationFields": [
+    {
+      "id": "medRef",
+      "type": "MedicalReferrals",
+      "label": "",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "timeSlotDoctor",
+      "type": "TimeSlotDoctor",
+      "label": "",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    }
+  ]
+}

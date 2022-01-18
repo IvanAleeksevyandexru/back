@@ -1,0 +1,85 @@
+{
+  "init": "editUserAddress_s1",
+  "saveDraftModeEnabled": false,
+  "serviceName": "editUserAddressPermanentRegistry",
+  "presetFieldTypes": [
+    "ConfirmPersonalUserRegReadOnlyAddr"
+  ],
+  "screens": [
+    {
+      "id": "editUserAddress_s1",
+      "name": "Укажите новый адрес постоянной регистрации",
+      "type": "CUSTOM",
+      "header": "Укажите новый адрес постоянной регистрации",
+      "components": [
+        "nm",
+        "wn1"
+      ],
+      "buttons": [
+        {
+          "label": "Сохранить",
+          "type": "nextStepModal"
+        }
+      ]
+    },
+    {
+      "id": "editUserAddress_s2",
+      "name": "Адрес успешно сохранён в профиле",
+      "type": "INFO",
+      "header": "",
+      "components": [
+        "finishscreen1"
+      ],
+      "buttons": [
+        {
+          "label": "Вернуться к заявлению",
+          "type": "nextStepModal",
+          "value": "Вернуться к заявлению",
+          "action": "goBackToMainScenario"
+        }
+      ]
+    }
+  ],
+  "applicationFields": [
+    {
+      "id": "wn1",
+      "type": "HtmlString",
+      "label": "<div class='divider'></div><h6 class='disclaimer-yellow'>Адрес будет сохранен в профиль\n<span>В будущих заявлениях не придется вводить его заново</span>\n</h6>",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "nm",
+      "type": "ConfirmPersonalUserRegAddrChange",
+      "label": "Населённый пункт, улица, дом и квартира",
+      "attrs": {"addrType": "permanentRegistry"},
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "finishscreen1",
+      "type": "GInfoScr",
+      "label": "<div class=\"info__status-image\"><img src='{staticDomainAssetsPath}/assets/icons/svg/ok.svg' /></div><h4 class=\"info__end-screen-text\">Адрес успешно сохранён в профиле</h4>",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    }
+  ],
+  "roleToInitScreen": {
+    "Applicant": "editUserAddress_s1"
+  },
+  "screenRules": {
+    "editUserAddress_s1": [
+      {
+        "conditions": [
+          {
+            "field": "nm",
+            "visited": true
+          }
+        ],
+        "nextDisplay": "editUserAddress_s2"
+      }
+    ]
+  }
+}

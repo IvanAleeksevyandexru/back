@@ -1,0 +1,135 @@
+{
+  "orderId": 1091204183,
+  "type": "10000000103",
+  "locked": false,
+  "updated": "2021-03-01T09:16:57.859Z",
+  "body": {
+    "serviceCode": "10000000103",
+    "targetCode": "-10000000103",
+    "orderId": 1091204183,
+    "currentScenarioId": 1,
+    "currentUrl": "https://pgu-uat-fed.test.gosuslugi.ru/600103/1/form",
+    "finishedAndCurrentScreens": [
+      "s1",
+      "s2",
+      "s3",
+      "s19",
+      "s88",
+      "s89",
+      "s90",
+      "s91",
+      "s92",
+      "sd2",
+      "sd3",
+      "s97"
+    ],
+    "cachedAnswers": {},
+    "currentValue": {},
+    "errors": {},
+    "applicantAnswers": {
+      "w1": {
+        "visited": true,
+        "value": ""
+      },
+      "q1": {
+        "visited": true,
+        "value": "Электронная справка"
+      },
+      "q2": {
+        "visited": true,
+        "value": "На меня"
+      },
+      "d1": {
+        "visited": true,
+        "value": ""
+      },
+      "pd1": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Соловьева Ольга Александровна\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"11.05.1998\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"5213 345454\"},{\"label\":\"Дата выдачи:\",\"value\":\"02.10.2019\"},{\"label\":\"Кем выдан:\",\"value\":\"Отделом УФМС России г.Москвы\"},{\"label\":\"Код подразделения:\",\"value\":\"233-456\"},{\"label\":\"Место рождения:\",\"value\":\"г. Москва\"}]}],\"storedValues\":{\"firstName\":\"Ольга\",\"lastName\":\"Соловьева\",\"middleName\":\"Александровна\",\"birthDate\":\"11.05.1998\",\"birthPlace\":\"г. Москва\",\"gender\":\"F\",\"rfPasportSeries\":\"5213\",\"rfPasportNumber\":\"345454\",\"rfPasportIssueDate\":\"02.10.2019\",\"rfPasportIssuedBy\":\"Отделом УФМС России г.Москвы\",\"rfPasportIssuedById\":\"233456\",\"citizenship\":\"РОССИЯ\",\"citizenshipCode\":\"RUS\"}}"
+      },
+      "pd2": {
+        "visited": true,
+        "value": "+7(678)6787878"
+      },
+      "pd3": {
+        "visited": true,
+        "value": "olgasol98@mail.ru"
+      },
+      "pd4": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":\"\",\"streetShortType\":\"ул\",\"additionalStreetShortType\":\"\",\"districtType\":\"\",\"geoLat\":\"55.6946417\",\"building2Type\":\"\",\"okato\":\"45296573000\",\"building1Type\":\"\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.6946417\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.6767001\",\"index\":\"115533\",\"townShortType\":\"\",\"district\":\"\",\"fullAddress\":\"115533, г. Москва, пр-кт. Андропова, д. 1, кв. 2\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.6767001\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"1\",\"apartmentCheckbox\":false,\"townType\":\"\",\"additionalAreaType\":\"\",\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":\"\",\"street\":\"Андропова\",\"additionalStreetType\":\"\",\"inCityDistShortType\":\"\",\"additionalAreaShortType\":\"\",\"cityShortType\":\"\",\"kladrCode\":\"7700000000007500291\",\"building1ShortType\":\"\",\"fiasCode\":\"8dc3cf49-444e-4902-b87b-90cd4a373647\",\"hasErrors\":0,\"inCityDistType\":\"\",\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, пр-кт. Андропова\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":\"\",\"apartment\":\"2\"}}"
+      },
+      "q5": {
+        "visited": true,
+        "value": "Да"
+      },
+      "qd2": {
+        "visited": true,
+        "value": "Нет"
+      },
+      "qd4": {
+        "visited": true,
+        "value": "Нет"
+      }
+    },
+    "cycledApplicantAnswers": {
+      "answerlist": []
+    },
+    "participants": {},
+    "display": {
+      "id": "s97",
+      "name": "Загрузка документов",
+      "type": "UNIQUE",
+      "header": "Загрузите документы",
+      "components": [
+        {
+          "id": "fu1",
+          "type": "FileUploadComponent",
+          "label": "Загрузите документы",
+          "attrs": {
+            "maxSize": 5242880,
+            "maxFileCount": 10,
+            "uploads": [
+              {
+                "uploadId": "passport",
+                "type": "single",
+                "title": "Паспорт (развороты страниц)",
+                "label": "<p>Фото или сканы должны быть без обрезанных краев и хорошо видны</br></p><ul><li>Личные данные, стр. 2-3</li><li>Регистрация, стр. 5, даже если не заполнена (стр. 6-12, если заполнены)</li><li>Семейное положение, стр. 14-15, даже если не заполнены</li></ul><p><center><a id=\"thelaw\"></a></center></p></p>",
+                "fileType": [
+                  "JPEG",
+                  "PDF",
+                  "JPG",
+                  "PNG",
+                  "TIFF",
+                  "TIF",
+                  "BMP",
+                  "ZIP",
+                  "RAR"
+                ],
+                "maxSize": 5242880,
+                "maxFileCount": 10
+              }
+            ],
+            "refs": {}
+          },
+          "linkedValues": [],
+          "arguments": {},
+          "value": "",
+          "required": true
+        }
+      ],
+      "infoComponents": [],
+      "terminal": false,
+      "impasse": false,
+      "accepted": true,
+      "firstScreen": false
+    },
+    "serviceInfo": {
+      "statusId": 0
+    },
+    "attachmentInfo": {},
+    "additionalParameters": {},
+    "generatedFiles": [],
+    "gender": "F"
+  }
+}

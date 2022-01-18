@@ -1,0 +1,150 @@
+{
+  "id": "flc",
+  "type": "FieldList",
+  "label": "",
+  "attrs": {
+    "actions": [
+      {
+        "label": "Далее",
+        "value": "",
+        "type": "nextStep",
+        "action": "getNextScreen"
+      }
+    ],
+    "fieldGroups": [
+      {
+        "groupName": "Данные без рефа",
+        "fields": [
+          {
+            "label": "Лейбл без рефа",
+            "value": "Значение без рефа"
+          }
+        ]
+      },
+      {
+        "groupName": "Не циклические с разделителем",
+        "needDivider": true,
+        "fields": [
+          {
+            "label": "Лейбл",
+            "value": "Значение"
+          }
+        ]
+      },
+      {
+        "groupName": "Данные с рефом (${groupNameRef})",
+        "fields": [
+          {
+            "label": "Лейбл с рефами (${labelRef1} ${labelRef2})",
+            "value": "Значение с рефом (${valueRef})"
+          }
+        ]
+      },
+      {
+        "groupName": "Одно поле пустое",
+        "fields": [
+          {
+            "label": "Национальность",
+            "value": "${optNationalityRef}"
+          },
+          {
+            "label": "Первый или повторный брак",
+            "value": "${optIsFirstMarriageRef}"
+          },
+          {
+            "label": "Пустое значение в value",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "groupName": "Все поля пустые (${optNationalityRef})",
+        "fields": [
+          {
+            "label": "Образование",
+            "value": "${optEducationRef}"
+          },
+          {
+            "label": "Первый или повторный брак",
+            "value": "${optIsFirstMarriageRef}"
+          }
+        ]
+      },
+      {
+        "groupName": "Данные с рефом, неверная ссылка",
+        "fields": [
+          {
+            "label": "Национальность",
+            "value": "${wrongNationalityRef}"
+          }
+        ]
+      },
+      {
+        "groupName": "Циклические все (${childNameRef} ${childLastNameRef})",
+        "fields": [
+          {
+            "label": "Имя",
+            "value": "${childNameRef}"
+          },
+          {
+            "label": "Фамилия",
+            "value": "${childLastNameRef}"
+          }
+        ],
+        "attrs": {
+          "cycledAnswerId": "ai7"
+        }
+      },
+      {
+        "groupName": "Циклические все (${childNameRef} ${childLastNameRef}) с разделителем",
+        "needDivider": true,
+        "fields": [
+          {
+            "label": "Имя и Фамилия",
+            "value": "${childNameRef} ${childLastNameRef}"
+          }
+        ],
+        "attrs": {
+          "cycledAnswerId": "ai7"
+        }
+      },
+      {
+        "groupName": "Один цикличный (${childNameRef} ${childLastNameRef})",
+        "fields": [
+          {
+            "label": "Имя и Фамилия",
+            "value": "${childNameRef} ${childLastNameRef}"
+          }
+        ],
+        "attrs": {
+          "cycledAnswerId": "ai7",
+          "cycledAnswerIndex": "confirm_data.value"
+        }
+      }
+    ],
+    "refs": {
+      "groupNameRef": "pd1.value.storedValues.firstName",
+      "labelRef1": "pd1.value.storedValues.middleName",
+      "labelRef2": "pd1.value.storedValues.lastName",
+      "valueRef": "pd6.value",
+      "childNameRef": "bd6.value.storedValues.firstName",
+      "childLastNameRef": "bd6.value.storedValues.lastName",
+      "visitTimeRef": {
+        "path": "ts1.timeSlot.visitTimeStr",
+        "converter": "DATE",
+        "format": "dd MMM yyyy г. в HH:mm"
+      },
+      "optNationalityRef": "fai2.value.text",
+      "wrongNationalityRef": "fai2.wrong.path",
+      "optIsFirstMarriageRef": "fai5.value",
+      "optEducationRef": "fai1.value.text"
+    },
+    "refsAttrs": {
+      "dateFieldRef": {
+        "format": "yyyy.MM.dd"
+      }
+    }
+  },
+  "value": "",
+  "visited": false
+}

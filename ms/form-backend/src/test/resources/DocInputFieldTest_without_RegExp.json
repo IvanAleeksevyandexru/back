@@ -1,0 +1,7 @@
+{
+  "series": {
+    "fieldName": "series",
+    "label": "серия",
+    "type": "input"
+  }
+}

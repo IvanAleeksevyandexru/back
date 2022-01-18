@@ -1,0 +1,89 @@
+# Service Processing Adapter
+
+.таблица кофигурирования
+
+|===
+|Ключ |Тип  |Описание
+
+|spring.kafka
+|Section
+|Настройка обмена через kafka
+
+#Дальше ниже тильда ~ как ~.#
+
+|~.bootstrap-servers
+|Строка
+|Адрес подключения к kafka
+
+```localhost:9092```
+
+|~.sp-adapter
+|Секция
+|Секция настройки обмена с SPAdapter
+
+|~.sp-adapter.enabled
+|Логический
+|Флаг включение обмена с сервисом форм через кафка (интерфейс http остается доступным)
+
+Если ```false```, то обмен с SPAdapter будет по HTTP протоколу
+
+Настройка ведется в разделе ```sp.integration```
+
+|~.sp-adapter.topic-name
+|Строка
+|Название топика севиса форм
+
+|~.sp-adapter.topic-partitions
+|Целое
+|Кол-во партиций
+
+|~.sp-adapter.topic-replication-factor
+|Целое
+|Количество копий данных по нескольким брокерам
+
+|~.zipkin
+|Секция
+|Секция настройки zipkin
+
+https://cloud.spring.io/spring-cloud-sleuth/reference/html/appendix.html[ссылка на описание] ```(╭ರ_⊙)```
+
+|sp.integration
+|Секция
+|Настройка интеграции с SPAdater через HTTP
+
+|sp.integration.enabled
+|Логический
+|Не нашел использования (скорее всего ни на что не влияет)
+
+//TODO @adragan Выпилить?
+
+|sp.integration.url
+|Строка
+|Адрес SPAdapter
+
+```http://localhost:8090```
+
+|===
+
+
+.Пример
+```
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    sp-adapter:
+      enabled: true
+      topic-name: sp-adapter
+      topic-partitions: 1
+      topic-replication-factor: 1
+
+  zipkin:
+    enabled: false
+    sender.type: KAFKA
+
+sp:
+  integration:
+    url: http://localhost:8090
+    enabled: true
+```

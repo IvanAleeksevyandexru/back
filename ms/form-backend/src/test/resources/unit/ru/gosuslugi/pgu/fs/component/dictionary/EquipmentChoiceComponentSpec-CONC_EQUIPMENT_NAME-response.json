@@ -1,0 +1,1138 @@
+{
+  "error": {
+    "code": 0,
+    "message": "operation completed"
+  },
+  "fieldErrors": [],
+  "total": 6,
+  "items": [
+    {
+      "value": "19",
+      "parentValue": null,
+      "title": "гигрометр (электронный гигрометр) или психрометр",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 19,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 19
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "EQUIPMENT_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "гигрометр (электронный гигрометр) или психрометр",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "гигрометр (электронный гигрометр) или психрометр"
+          },
+          "valueAsOfType": "гигрометр (электронный гигрометр) или психрометр"
+        },
+        {
+          "name": "IS_OWNERSHIP_FORM_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "CATEGORY_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 3,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 3
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "REQUIRED_FOR_SERVICE",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14681,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14681
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_EQUIPMENT_NAME_RZ_19_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_EQUIPMENT_NAME_RZ_19_1047796244396"
+          },
+          "valueAsOfType": "CONC_EQUIPMENT_NAME_RZ_19_1047796244396"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "CATEGORY_ID": null,
+        "IS_OWNERSHIP_FORM_REQUIRED": "false",
+        "IS_FACTORY_NUMBER_OPTIONAL": "false",
+        "IS_REG_NUMBER_REQUIRED": "false",
+        "LIC_DEPARTMENT_OGRN": "1047796244396",
+        "EQUIPMENT_NAME": "гигрометр (электронный гигрометр) или психрометр",
+        "IS_REG_NUMBER_OPTIONAL": "false",
+        "autokey": "CONC_EQUIPMENT_NAME_RZ_19_1047796244396",
+        "ID": null,
+        "IS_FACTORY_NUMBER_REQUIRED": "false",
+        "REQUIRED_FOR_SERVICE": null
+      }
+    },
+    {
+      "value": "17",
+      "parentValue": null,
+      "title": "система климат-мониторинга ",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 17,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 17
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "EQUIPMENT_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "система климат-мониторинга ",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "система климат-мониторинга "
+          },
+          "valueAsOfType": "система климат-мониторинга "
+        },
+        {
+          "name": "IS_OWNERSHIP_FORM_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "CATEGORY_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 3,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 3
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "REQUIRED_FOR_SERVICE",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14681,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14681
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_EQUIPMENT_NAME_RZ_17_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_EQUIPMENT_NAME_RZ_17_1047796244396"
+          },
+          "valueAsOfType": "CONC_EQUIPMENT_NAME_RZ_17_1047796244396"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "CATEGORY_ID": null,
+        "IS_OWNERSHIP_FORM_REQUIRED": "false",
+        "IS_FACTORY_NUMBER_OPTIONAL": "false",
+        "IS_REG_NUMBER_REQUIRED": "false",
+        "LIC_DEPARTMENT_OGRN": "1047796244396",
+        "EQUIPMENT_NAME": "система климат-мониторинга ",
+        "IS_REG_NUMBER_OPTIONAL": "false",
+        "autokey": "CONC_EQUIPMENT_NAME_RZ_17_1047796244396",
+        "ID": null,
+        "IS_FACTORY_NUMBER_REQUIRED": "false",
+        "REQUIRED_FOR_SERVICE": null
+      }
+    },
+    {
+      "value": "20",
+      "parentValue": null,
+      "title": "термогигрометры",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 20,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 20
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "EQUIPMENT_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "термогигрометры",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "термогигрометры"
+          },
+          "valueAsOfType": "термогигрометры"
+        },
+        {
+          "name": "IS_OWNERSHIP_FORM_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "CATEGORY_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 3,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 3
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "REQUIRED_FOR_SERVICE",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14681,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14681
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_EQUIPMENT_NAME_RZ_20_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_EQUIPMENT_NAME_RZ_20_1047796244396"
+          },
+          "valueAsOfType": "CONC_EQUIPMENT_NAME_RZ_20_1047796244396"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "CATEGORY_ID": null,
+        "IS_OWNERSHIP_FORM_REQUIRED": "false",
+        "IS_FACTORY_NUMBER_OPTIONAL": "false",
+        "IS_REG_NUMBER_REQUIRED": "false",
+        "LIC_DEPARTMENT_OGRN": "1047796244396",
+        "EQUIPMENT_NAME": "термогигрометры",
+        "IS_REG_NUMBER_OPTIONAL": "false",
+        "autokey": "CONC_EQUIPMENT_NAME_RZ_20_1047796244396",
+        "ID": null,
+        "IS_FACTORY_NUMBER_REQUIRED": "false",
+        "REQUIRED_FOR_SERVICE": null
+      }
+    },
+    {
+      "value": "18",
+      "parentValue": null,
+      "title": "термометр",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 18,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 18
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "EQUIPMENT_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "термометр",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "термометр"
+          },
+          "valueAsOfType": "термометр"
+        },
+        {
+          "name": "IS_OWNERSHIP_FORM_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "CATEGORY_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 3,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 3
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "REQUIRED_FOR_SERVICE",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14681,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14681
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_EQUIPMENT_NAME_RZ_18_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_EQUIPMENT_NAME_RZ_18_1047796244396"
+          },
+          "valueAsOfType": "CONC_EQUIPMENT_NAME_RZ_18_1047796244396"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "CATEGORY_ID": null,
+        "IS_OWNERSHIP_FORM_REQUIRED": "false",
+        "IS_FACTORY_NUMBER_OPTIONAL": "false",
+        "IS_REG_NUMBER_REQUIRED": "false",
+        "LIC_DEPARTMENT_OGRN": "1047796244396",
+        "EQUIPMENT_NAME": "термометр",
+        "IS_REG_NUMBER_OPTIONAL": "false",
+        "autokey": "CONC_EQUIPMENT_NAME_RZ_18_1047796244396",
+        "ID": null,
+        "IS_FACTORY_NUMBER_REQUIRED": "false",
+        "REQUIRED_FOR_SERVICE": null
+      }
+    },
+    {
+      "value": "30",
+      "parentValue": null,
+      "title": "штабелер",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 30,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 30
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "EQUIPMENT_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "штабелер",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "штабелер"
+          },
+          "valueAsOfType": "штабелер"
+        },
+        {
+          "name": "IS_OWNERSHIP_FORM_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "CATEGORY_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 1,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 1
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "REQUIRED_FOR_SERVICE",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14681,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14681
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_EQUIPMENT_NAME_RZ_30_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_EQUIPMENT_NAME_RZ_30_1047796244396"
+          },
+          "valueAsOfType": "CONC_EQUIPMENT_NAME_RZ_30_1047796244396"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "CATEGORY_ID": null,
+        "IS_OWNERSHIP_FORM_REQUIRED": "false",
+        "IS_FACTORY_NUMBER_OPTIONAL": "false",
+        "IS_REG_NUMBER_REQUIRED": "false",
+        "LIC_DEPARTMENT_OGRN": "1047796244396",
+        "EQUIPMENT_NAME": "штабелер",
+        "IS_REG_NUMBER_OPTIONAL": "false",
+        "autokey": "CONC_EQUIPMENT_NAME_RZ_30_1047796244396",
+        "ID": null,
+        "IS_FACTORY_NUMBER_REQUIRED": "false",
+        "REQUIRED_FOR_SERVICE": null
+      }
+    },
+    {
+      "value": "31",
+      "parentValue": null,
+      "title": "электроштабелер",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 31,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 31
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "EQUIPMENT_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "электроштабелер",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "электроштабелер"
+          },
+          "valueAsOfType": "электроштабелер"
+        },
+        {
+          "name": "IS_OWNERSHIP_FORM_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_REQUIRED",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "CATEGORY_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 1,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 1
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "REQUIRED_FOR_SERVICE",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14681,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14681
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_EQUIPMENT_NAME_RZ_31_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_EQUIPMENT_NAME_RZ_31_1047796244396"
+          },
+          "valueAsOfType": "CONC_EQUIPMENT_NAME_RZ_31_1047796244396"
+        },
+        {
+          "name": "IS_FACTORY_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "IS_REG_NUMBER_OPTIONAL",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "CATEGORY_ID": null,
+        "IS_OWNERSHIP_FORM_REQUIRED": "false",
+        "IS_FACTORY_NUMBER_OPTIONAL": "false",
+        "IS_REG_NUMBER_REQUIRED": "false",
+        "LIC_DEPARTMENT_OGRN": "1047796244396",
+        "EQUIPMENT_NAME": "электроштабелер",
+        "IS_REG_NUMBER_OPTIONAL": "false",
+        "autokey": "CONC_EQUIPMENT_NAME_RZ_31_1047796244396",
+        "ID": null,
+        "IS_FACTORY_NUMBER_REQUIRED": "false",
+        "REQUIRED_FOR_SERVICE": null
+      }
+    }
+  ]
+}

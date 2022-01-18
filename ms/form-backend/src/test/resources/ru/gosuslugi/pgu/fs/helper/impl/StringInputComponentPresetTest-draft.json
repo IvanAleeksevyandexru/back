@@ -1,0 +1,388 @@
+{
+  "orderId": 1071963872,
+  "type": "10000000105",
+  "locked": false,
+  "updated": "2021-02-12T06:29:54.268Z",
+  "body": {
+    "serviceCode": "10000000105",
+    "targetCode": "-10000000105",
+    "orderId": 1071963872,
+    "currentScenarioId": 1,
+    "currentUrl": "https://www.gosuslugi.ru/600105/1/form/order/1071963872",
+    "finishedAndCurrentScreens": [
+      "s25",
+      "s26",
+      "s65",
+      "s66",
+      "s59",
+      "s27",
+      "s34",
+      "s35",
+      "s36",
+      "s28",
+      "s29",
+      "s30",
+      "s32"
+    ],
+    "cachedAnswers": {
+      "w1": {
+        "visited": true,
+        "value": ""
+      },
+      "q1": {
+        "visited": true,
+        "value": "Нет"
+      },
+      "q3": {
+        "visited": true,
+        "value": "Да"
+      },
+      "d1": {
+        "visited": true,
+        "value": ""
+      },
+      "pd1": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Чуприна Надежда Владимировна\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"07.02.1986\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"4014 149420\"},{\"label\":\"Дата выдачи:\",\"value\":\"12.11.2014\"},{\"label\":\"Кем выдан:\",\"value\":\"ТП №51 отдела УФМС России по Санкт-Петербургу и Ленинградской области в Московском районе г. Санкт-Петербург\"},{\"label\":\"Код подразделения:\",\"value\":\"780-051\"},{\"label\":\"Место рождения:\",\"value\":\"г. Ленинград\"}]}],\"storedValues\":{\"firstName\":\"Надежда\",\"lastName\":\"Чуприна\",\"middleName\":\"Владимировна\",\"birthDate\":\"07.02.1986\",\"birthPlace\":\"г. Ленинград\",\"gender\":\"F\",\"rfPasportSeries\":\"4014\",\"rfPasportNumber\":\"149420\",\"rfPasportIssueDate\":\"12.11.2014\",\"rfPasportIssuedBy\":\"ТП №51 отдела УФМС России по Санкт-Петербургу и Ленинградской области в Московском районе г. Санкт-Петербург\",\"rfPasportIssuedById\":\"780051\",\"citizenship\":\"РОССИЯ\",\"citizenshipCode\":\"RUS\"}}"
+      },
+      "pd2": {
+        "visited": true,
+        "value": "+7(921)7528652"
+      },
+      "pd3": {
+        "visited": true,
+        "value": "nadezhda19@yandex.ru"
+      },
+      "pd4": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":\"\",\"streetShortType\":\"пр-кт\",\"additionalStreetShortType\":\"\",\"districtType\":\"\",\"geoLat\":\"59.8506272\",\"building2Type\":\"\",\"okato\":\"40284563000\",\"building1Type\":\"корпус\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"59.8506272\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"проспект\",\"town\":\"\",\"lng\":\"30.2979349\",\"index\":\"196247\",\"townShortType\":\"\",\"district\":\"\",\"fullAddress\":\"196247, г. Санкт-Петербург, пр-кт. Ленинский, д. 147, к. 5, кв. 55\",\"houseCheckbox\":false,\"region\":\"Санкт-Петербург\",\"geoLon\":\"30.2979349\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"147\",\"apartmentCheckbox\":false,\"townType\":\"\",\"additionalAreaType\":\"\",\"regionShortType\":\"г\",\"regionCode\":\"78\",\"districtShortType\":\"\",\"street\":\"Ленинский\",\"additionalStreetType\":\"\",\"inCityDistShortType\":\"\",\"additionalAreaShortType\":\"\",\"cityShortType\":\"\",\"kladrCode\":\"78000000000069100\",\"building1ShortType\":\"к\",\"fiasCode\":\"09b41a6c-b80c-4a01-b14e-99648d2f8432\",\"hasErrors\":0,\"inCityDistType\":\"\",\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Санкт-Петербург, пр-кт. Ленинский\",\"building1\":\"5\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":\"\",\"apartment\":\"55\"}}"
+      },
+      "fai16": {
+        "visited": true,
+        "value": "{\"id\":\"1\",\"text\":\"Русская\",\"formatted\":\"\",\"originalItem\":{\"value\":\"1\",\"parentValue\":null,\"title\":\"Русская\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "fai17": {
+        "visited": true,
+        "value": "{\"id\":\"3\",\"text\":\"Профессиональное среднее\",\"formatted\":\"\",\"originalItem\":{\"value\":\"3\",\"parentValue\":null,\"title\":\"Профессиональное среднее\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "fai19": {
+        "visited": true,
+        "value": "1"
+      },
+      "ai5i": {
+        "visited": true,
+        "value": "Веневидова"
+      },
+      "sn1a": {
+        "visited": true,
+        "value": "{\"birthDate\":\"05.02.1979\",\"gender\":\"M\",\"trusted\":true,\"citizenship\":\"RUS\",\"snils\":\"057-551-458 77\",\"biomStu\":false,\"oid\":\"1056214947\",\"exists\":true,\"age\":42}"
+      },
+      "sn2a": {
+        "visited": true,
+        "value": "venevidovgeorgii@mail.ru"
+      },
+      "pd6": {
+        "visited": true,
+        "value": "{\"code\":\"c2deb16a-0330-4f05-821f-1d09c93331e6\",\"address\":{\"fiasCode\":\"c2deb16a-0330-4f05-821f-1d09c93331e6\",\"numericFiasCode\":null,\"fullAddress\":\"г Санкт-Петербург\",\"postIndex\":\"190000\",\"elements\":[{\"level\":1,\"levelType\":null,\"fiasCode\":\"c2deb16a-0330-4f05-821f-1d09c93331e6\",\"elmCode\":null,\"kladrCode\":\"7800000000000\",\"oktmoCode\":null,\"data\":\"Санкт-Петербург\",\"type\":\"город\",\"shortType\":\"г\",\"numericFiasCode\":\"78-0-000-000-000-000-0000-0000-000\"}]},\"level\":1,\"id\":\"c2deb16a-0330-4f05-821f-1d09c93331e6\",\"text\":\"г Санкт-Петербург\",\"error\":{\"code\":0,\"message\":\"operation completed\"},\"dadataQc\":\"0\",\"dadataQcComplete\":\"3\",\"dadataQcHouse\":\"10\",\"unparsedParts\":null,\"fiasLevel\":\"1\",\"postalCode\":\"190000\",\"postalBox\":null,\"regionKladrId\":\"7800000000000\",\"okato\":\"40000000000\",\"tax_office\":\"7800\",\"oktmo\":\"40000000\",\"geo_lat\":\"59.9391313\",\"geo_lon\":\"30.3159004\",\"regionCode\":\"78\"}"
+      },
+      "ms1": {
+        "visited": true,
+        "value": "{\"value\":\"R7800019\",\"parentValue\":null,\"title\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"ZAGS_NAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"valueAsOfType\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},{\"name\":\"zags_address\",\"type\":\"STRING\",\"value\":{\"asString\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},\"valueAsOfType\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},{\"name\":\"TYPE\",\"type\":\"STRING\",\"value\":{\"asString\":\"ZAGS\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"ZAGS\"},\"valueAsOfType\":\"ZAGS\"},{\"name\":\"SHOW_ON_MAP\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"SOLEMN\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"AREA_DESCR\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"AREA_NAME\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R7800019\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R7800019\"},\"valueAsOfType\":\"R7800019\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"valueAsOfType\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},\"valueAsOfType\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"(812)570-03-53\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"(812)570-03-53\"},\"valueAsOfType\":\"(812)570-03-53\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"dv1@kzags.gov.spb.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"dv1@kzags.gov.spb.ru\"},\"valueAsOfType\":\"dv1@kzags.gov.spb.ru\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"GET_CONSENT\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null}],\"source\":null,\"attributeValues\":{\"ZAGS_NAME\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"AREA_NAME\":null,\"PHONE\":\"(812)570-03-53\",\"SOLEMN\":\"true\",\"zags_address\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"EMAIL\":\"dv1@kzags.gov.spb.ru\",\"GET_CONSENT\":null,\"PR2\":\"true\",\"CODE\":\"R7800019\",\"SHOW_ON_MAP\":\"true\",\"ADDRESS\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"DATAK\":null,\"TYPE\":\"ZAGS\",\"AREA_DESCR\":null,\"FULLNAME\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"idForMap\":15,\"center\":[30.293868,59.933961],\"baloonContent\":[{\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"label\":\"Адрес\"},{\"value\":\"(812)570-03-53\",\"label\":\"Телефон\"},{\"value\":\"dv1@kzags.gov.spb.ru\",\"label\":\"Email\"}],\"agreement\":true,\"expanded\":true,\"okato\":\"40000000000\"}"
+      },
+      "pd11": {
+        "visited": true,
+        "value": "{\"id\":\"2021-04-01\",\"text\":\"Апрель 2021\",\"formatted\":\"\",\"originalItem\":{\"value\":\"2021-04-01\",\"parentValue\":null,\"title\":\"Апрель 2021\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "ts1": {
+        "visited": true,
+        "value": "{\"bookId\":\"b5f66a63-c2b6-4ec2-a7d5-4194de289834\",\"esiaId\":\"1003694858\",\"status\":{\"statusCode\":201,\"statusMessage\":\"Забронировано\"},\"timeSlot\":{\"slotId\":\"91200505\",\"serviceId\":\"ЗагсБрак\",\"organizationId\":\"R7800019\",\"areaId\":\"Большой зал\",\"visitTime\":1619364600000,\"visitTimeStr\":\"2021-04-25T18:30:00.000\",\"visitTimeISO\":\"2021-04-25T18:30:00+03:00\",\"queueNumber\":null,\"duration\":null,\"attributes\":[]},\"error\":null,\"timeStart\":\"2021-02-11T19:03:13.508Z\",\"timeFinish\":\"2021-02-12T19:03:13.508Z\",\"department\":{\"value\":\"R7800019\",\"parentValue\":null,\"title\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"ZAGS_NAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"valueAsOfType\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},{\"name\":\"zags_address\",\"type\":\"STRING\",\"value\":{\"asString\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},\"valueAsOfType\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},{\"name\":\"TYPE\",\"type\":\"STRING\",\"value\":{\"asString\":\"ZAGS\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"ZAGS\"},\"valueAsOfType\":\"ZAGS\"},{\"name\":\"SHOW_ON_MAP\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"SOLEMN\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"AREA_DESCR\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"AREA_NAME\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R7800019\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R7800019\"},\"valueAsOfType\":\"R7800019\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"valueAsOfType\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},\"valueAsOfType\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"(812)570-03-53\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"(812)570-03-53\"},\"valueAsOfType\":\"(812)570-03-53\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"dv1@kzags.gov.spb.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"dv1@kzags.gov.spb.ru\"},\"valueAsOfType\":\"dv1@kzags.gov.spb.ru\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"GET_CONSENT\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null}],\"source\":null,\"attributeValues\":{\"ZAGS_NAME\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"AREA_NAME\":null,\"PHONE\":\"(812)570-03-53\",\"SOLEMN\":\"true\",\"zags_address\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"EMAIL\":\"dv1@kzags.gov.spb.ru\",\"GET_CONSENT\":null,\"PR2\":\"true\",\"CODE\":\"R7800019\",\"SHOW_ON_MAP\":\"true\",\"ADDRESS\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"DATAK\":null,\"TYPE\":\"ZAGS\",\"AREA_DESCR\":null,\"FULLNAME\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"idForMap\":15,\"center\":[30.293868,59.933961],\"baloonContent\":[{\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"label\":\"Адрес\"},{\"value\":\"(812)570-03-53\",\"label\":\"Телефон\"},{\"value\":\"dv1@kzags.gov.spb.ru\",\"label\":\"Email\"}],\"agreement\":true,\"expanded\":true,\"okato\":\"40000000000\"}}"
+      },
+      "sentTime": {
+        "value": "2021-02-11T22:03:15+03:00"
+      },
+      "da": {
+        "visited": true,
+        "value": "Подтвердить"
+      },
+      "pd5": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Веневидов Георгий Александрович\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"05.02.1979\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"8909 124388\"},{\"label\":\"Дата выдачи:\",\"value\":\"17.09.2009\"},{\"label\":\"Кем выдан:\",\"value\":\"ТП УФМС РОССИИ ПО РЕСПУБЛИКЕ МОРДОВИЯ В ИЧАЛКОВСКОМ МУНИЦИПАЛЬНОМ РАЙОНЕ\"},{\"label\":\"Код подразделения:\",\"value\":\"130-013\"},{\"label\":\"Место рождения:\",\"value\":\"Республика Мордовия г. Саранск\"}]}],\"storedValues\":{\"firstName\":\"Георгий\",\"lastName\":\"Веневидов\",\"middleName\":\"Александрович\",\"birthDate\":\"05.02.1979\",\"birthPlace\":\"Республика Мордовия г. Саранск\",\"gender\":\"M\",\"rfPasportSeries\":\"8909\",\"rfPasportNumber\":\"124388\",\"rfPasportIssueDate\":\"17.09.2009\",\"rfPasportIssuedBy\":\"ТП УФМС РОССИИ ПО РЕСПУБЛИКЕ МОРДОВИЯ В ИЧАЛКОВСКОМ МУНИЦИПАЛЬНОМ РАЙОНЕ\",\"rfPasportIssuedById\":\"130013\",\"citizenship\":\"РОССИЯ\",\"citizenshipCode\":\"RUS\"}}"
+      },
+      "pd65": {
+        "visited": true,
+        "value": "+7(911)1993059"
+      },
+      "pd66": {
+        "visited": true,
+        "value": "venevidovgeorgii@mail.ru"
+      },
+      "pd12": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":\"\",\"streetShortType\":\"ул\",\"additionalStreetShortType\":\"\",\"districtType\":\"\",\"geoLat\":\"59.8652323\",\"building2Type\":\"\",\"okato\":\"40285563000\",\"building1Type\":\"\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"59.8652323\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"30.4548627\",\"index\":\"192174\",\"townShortType\":\"\",\"district\":\"\",\"fullAddress\":\"192174, г. Санкт-Петербург, ул. Бабушкина, д. 64, кв. 129\",\"houseCheckbox\":false,\"region\":\"Санкт-Петербург\",\"geoLon\":\"30.4548627\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"64\",\"apartmentCheckbox\":false,\"townType\":\"\",\"additionalAreaType\":\"\",\"regionShortType\":\"г\",\"regionCode\":\"78\",\"districtShortType\":\"\",\"street\":\"Бабушкина\",\"additionalStreetType\":\"\",\"inCityDistShortType\":\"\",\"additionalAreaShortType\":\"\",\"cityShortType\":\"\",\"kladrCode\":\"78000000000012700\",\"building1ShortType\":\"\",\"fiasCode\":\"8870e271-5544-4794-9dd8-51554c0c137e\",\"hasErrors\":0,\"inCityDistType\":\"\",\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Санкт-Петербург, ул. Бабушкина\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":\"\",\"apartment\":\"129\"}}"
+      },
+      "q6": {
+        "visited": true,
+        "value": "Да"
+      },
+      "q7": {
+        "visited": true,
+        "value": "0"
+      },
+      "q8": {
+        "visited": true,
+        "value": "Свидетельство о расторжении брака"
+      },
+      "ai5o": {
+        "visited": true,
+        "value": "2020-08-19T00:00:00.000+03:00"
+      },
+      "ai5n": {
+        "visited": true,
+        "value": "130209780001200992000"
+      },
+      "act2": {
+        "visited": true,
+        "value": "{\"id\":\"R7800012\",\"text\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\",\"formatted\":\"\",\"originalItem\":{\"value\":\"R7800012\",\"parentValue\":null,\"title\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\",\"isLeaf\":true,\"children\":[],\"attributes\":[{\"name\":\"PR4\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR5\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR6\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR7\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"CITE\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"DATAN\",\"type\":\"STRING\",\"value\":{\"asString\":\"2020-10-05\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"2020-10-05\"},\"valueAsOfType\":\"2020-10-05\"},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R7800012\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R7800012\"},\"valueAsOfType\":\"R7800012\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\"},\"valueAsOfType\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"Российская Федерация, г. Санкт-Петербург, ул. Народная, д. 2\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Российская Федерация, г. Санкт-Петербург, ул. Народная, д. 2\"},\"valueAsOfType\":\"Российская Федерация, г. Санкт-Петербург, ул. Народная, д. 2\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"(812)447-21-78\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"(812)447-21-78\"},\"valueAsOfType\":\"(812)447-21-78\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"nev@kzags.gov.spb.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"nev@kzags.gov.spb.ru\"},\"valueAsOfType\":\"nev@kzags.gov.spb.ru\"},{\"name\":\"OKTMO\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"PR1\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR3\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"INN\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"OGRN\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"PR8\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR9\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"}],\"source\":null,\"attributeValues\":{\"OKTMO\":null,\"PHONE\":\"(812)447-21-78\",\"CITE\":null,\"INN\":null,\"EMAIL\":\"nev@kzags.gov.spb.ru\",\"PR1\":\"true\",\"PR3\":\"true\",\"OGRN\":null,\"PR2\":\"true\",\"PR5\":\"true\",\"CODE\":\"R7800012\",\"PR4\":\"true\",\"PR7\":\"false\",\"PR6\":\"true\",\"PR9\":\"false\",\"ADDRESS\":\"Российская Федерация, г. Санкт-Петербург, ул. Народная, д. 2\",\"PR8\":\"false\",\"DATAN\":\"2020-10-05\",\"DATAK\":null,\"FULLNAME\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\"}}}"
+      },
+      "fai20": {
+        "visited": true,
+        "value": "{\"id\":\"1\",\"text\":\"Русский\",\"formatted\":\"\",\"originalItem\":{\"value\":\"1\",\"parentValue\":null,\"title\":\"Русский\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "fai21": {
+        "visited": true,
+        "value": "{\"id\":\"3\",\"text\":\"Профессиональное среднее\",\"formatted\":\"\",\"originalItem\":{\"value\":\"3\",\"parentValue\":null,\"title\":\"Профессиональное среднее\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "ai5k": {
+        "visited": true,
+        "value": "Веневидов"
+      },
+      "ai5l": {
+        "visited": true,
+        "value": "Веневидова"
+      },
+      "pd9": {
+        "visited": true,
+        "value": "Оплатить"
+      }
+    },
+    "currentValue": {},
+    "errors": {},
+    "applicantAnswers": {
+      "pd5": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Веневидов Георгий Александрович\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"05.02.1979\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"8909 124388\"},{\"label\":\"Дата выдачи:\",\"value\":\"17.09.2009\"},{\"label\":\"Кем выдан:\",\"value\":\"ТП УФМС РОССИИ ПО РЕСПУБЛИКЕ МОРДОВИЯ В ИЧАЛКОВСКОМ МУНИЦИПАЛЬНОМ РАЙОНЕ\"},{\"label\":\"Код подразделения:\",\"value\":\"130-013\"},{\"label\":\"Место рождения:\",\"value\":\"Республика Мордовия г. Саранск\"}]}],\"storedValues\":{\"firstName\":\"Георгий\",\"lastName\":\"Веневидов\",\"middleName\":\"Александрович\",\"birthDate\":\"05.02.1979\",\"birthPlace\":\"Республика Мордовия г. Саранск\",\"gender\":\"M\",\"rfPasportSeries\":\"8909\",\"rfPasportNumber\":\"124388\",\"rfPasportIssueDate\":\"17.09.2009\",\"rfPasportIssuedBy\":\"ТП УФМС РОССИИ ПО РЕСПУБЛИКЕ МОРДОВИЯ В ИЧАЛКОВСКОМ МУНИЦИПАЛЬНОМ РАЙОНЕ\",\"rfPasportIssuedById\":\"130013\",\"citizenship\":\"РОССИЯ\",\"citizenshipCode\":\"RUS\"}}"
+      },
+      "pd66": {
+        "visited": true,
+        "value": "venevidovgeorgii@mail.ru"
+      },
+      "pd4": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":\"\",\"streetShortType\":\"пр-кт\",\"additionalStreetShortType\":\"\",\"districtType\":\"\",\"geoLat\":\"59.8506272\",\"building2Type\":\"\",\"okato\":\"40284563000\",\"building1Type\":\"корпус\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"59.8506272\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"проспект\",\"town\":\"\",\"lng\":\"30.2979349\",\"index\":\"196247\",\"townShortType\":\"\",\"district\":\"\",\"fullAddress\":\"196247, г. Санкт-Петербург, пр-кт. Ленинский, д. 147, к. 5, кв. 55\",\"houseCheckbox\":false,\"region\":\"Санкт-Петербург\",\"geoLon\":\"30.2979349\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"147\",\"apartmentCheckbox\":false,\"townType\":\"\",\"additionalAreaType\":\"\",\"regionShortType\":\"г\",\"regionCode\":\"78\",\"districtShortType\":\"\",\"street\":\"Ленинский\",\"additionalStreetType\":\"\",\"inCityDistShortType\":\"\",\"additionalAreaShortType\":\"\",\"cityShortType\":\"\",\"kladrCode\":\"78000000000069100\",\"building1ShortType\":\"к\",\"fiasCode\":\"09b41a6c-b80c-4a01-b14e-99648d2f8432\",\"hasErrors\":0,\"inCityDistType\":\"\",\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Санкт-Петербург, пр-кт. Ленинский\",\"building1\":\"5\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":\"\",\"apartment\":\"55\"}}"
+      },
+      "pd6": {
+        "visited": true,
+        "value": "{\"code\":\"c2deb16a-0330-4f05-821f-1d09c93331e6\",\"address\":{\"fiasCode\":\"c2deb16a-0330-4f05-821f-1d09c93331e6\",\"numericFiasCode\":null,\"fullAddress\":\"г Санкт-Петербург\",\"postIndex\":\"190000\",\"elements\":[{\"level\":1,\"levelType\":null,\"fiasCode\":\"c2deb16a-0330-4f05-821f-1d09c93331e6\",\"elmCode\":null,\"kladrCode\":\"7800000000000\",\"oktmoCode\":null,\"data\":\"Санкт-Петербург\",\"type\":\"город\",\"shortType\":\"г\",\"numericFiasCode\":\"78-0-000-000-000-000-0000-0000-000\"}]},\"level\":1,\"id\":\"c2deb16a-0330-4f05-821f-1d09c93331e6\",\"text\":\"г Санкт-Петербург\",\"error\":{\"code\":0,\"message\":\"operation completed\"},\"dadataQc\":\"0\",\"dadataQcComplete\":\"3\",\"dadataQcHouse\":\"10\",\"unparsedParts\":null,\"fiasLevel\":\"1\",\"postalCode\":\"190000\",\"postalBox\":null,\"regionKladrId\":\"7800000000000\",\"okato\":\"40000000000\",\"tax_office\":\"7800\",\"oktmo\":\"40000000\",\"geo_lat\":\"59.9391313\",\"geo_lon\":\"30.3159004\",\"regionCode\":\"78\"}"
+      },
+      "fai21": {
+        "visited": true,
+        "value": "{\"id\":\"3\",\"text\":\"Профессиональное среднее\",\"formatted\":\"\",\"originalItem\":{\"value\":\"3\",\"parentValue\":null,\"title\":\"Профессиональное среднее\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "pd65": {
+        "visited": true,
+        "value": "+7(911)1993059"
+      },
+      "fai20": {
+        "visited": true,
+        "value": "{\"id\":\"1\",\"text\":\"Русский\",\"formatted\":\"\",\"originalItem\":{\"value\":\"1\",\"parentValue\":null,\"title\":\"Русский\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "ms1": {
+        "visited": true,
+        "value": "{\"value\":\"R7800019\",\"parentValue\":null,\"title\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"ZAGS_NAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"valueAsOfType\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},{\"name\":\"zags_address\",\"type\":\"STRING\",\"value\":{\"asString\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},\"valueAsOfType\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},{\"name\":\"TYPE\",\"type\":\"STRING\",\"value\":{\"asString\":\"ZAGS\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"ZAGS\"},\"valueAsOfType\":\"ZAGS\"},{\"name\":\"SHOW_ON_MAP\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"SOLEMN\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"AREA_DESCR\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"AREA_NAME\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R7800019\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R7800019\"},\"valueAsOfType\":\"R7800019\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"valueAsOfType\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},\"valueAsOfType\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"(812)570-03-53\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"(812)570-03-53\"},\"valueAsOfType\":\"(812)570-03-53\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"dv1@kzags.gov.spb.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"dv1@kzags.gov.spb.ru\"},\"valueAsOfType\":\"dv1@kzags.gov.spb.ru\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"GET_CONSENT\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null}],\"source\":null,\"attributeValues\":{\"ZAGS_NAME\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"AREA_NAME\":null,\"PHONE\":\"(812)570-03-53\",\"SOLEMN\":\"true\",\"zags_address\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"EMAIL\":\"dv1@kzags.gov.spb.ru\",\"GET_CONSENT\":null,\"PR2\":\"true\",\"CODE\":\"R7800019\",\"SHOW_ON_MAP\":\"true\",\"ADDRESS\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"DATAK\":null,\"TYPE\":\"ZAGS\",\"AREA_DESCR\":null,\"FULLNAME\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"idForMap\":15,\"center\":[30.293868,59.933961],\"baloonContent\":[{\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"label\":\"Адрес\"},{\"value\":\"(812)570-03-53\",\"label\":\"Телефон\"},{\"value\":\"dv1@kzags.gov.spb.ru\",\"label\":\"Email\"}],\"agreement\":true,\"expanded\":true,\"okato\":\"40000000000\"}"
+      },
+      "d1": {
+        "visited": true,
+        "value": ""
+      },
+      "act2": {
+        "visited": true,
+        "value": "{\"id\":\"R7800012\",\"text\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\",\"formatted\":\"\",\"originalItem\":{\"value\":\"R7800012\",\"parentValue\":null,\"title\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\",\"isLeaf\":true,\"children\":[],\"attributes\":[{\"name\":\"PR4\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR5\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR6\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR7\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"CITE\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"DATAN\",\"type\":\"STRING\",\"value\":{\"asString\":\"2020-10-05\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"2020-10-05\"},\"valueAsOfType\":\"2020-10-05\"},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R7800012\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R7800012\"},\"valueAsOfType\":\"R7800012\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\"},\"valueAsOfType\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"Российская Федерация, г. Санкт-Петербург, ул. Народная, д. 2\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Российская Федерация, г. Санкт-Петербург, ул. Народная, д. 2\"},\"valueAsOfType\":\"Российская Федерация, г. Санкт-Петербург, ул. Народная, д. 2\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"(812)447-21-78\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"(812)447-21-78\"},\"valueAsOfType\":\"(812)447-21-78\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"nev@kzags.gov.spb.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"nev@kzags.gov.spb.ru\"},\"valueAsOfType\":\"nev@kzags.gov.spb.ru\"},{\"name\":\"OKTMO\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"PR1\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"PR3\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"INN\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"OGRN\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"PR8\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"},{\"name\":\"PR9\",\"type\":\"STRING\",\"value\":{\"asString\":\"false\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"false\"},\"valueAsOfType\":\"false\"}],\"source\":null,\"attributeValues\":{\"OKTMO\":null,\"PHONE\":\"(812)447-21-78\",\"CITE\":null,\"INN\":null,\"EMAIL\":\"nev@kzags.gov.spb.ru\",\"PR1\":\"true\",\"PR3\":\"true\",\"OGRN\":null,\"PR2\":\"true\",\"PR5\":\"true\",\"CODE\":\"R7800012\",\"PR4\":\"true\",\"PR7\":\"false\",\"PR6\":\"true\",\"PR9\":\"false\",\"ADDRESS\":\"Российская Федерация, г. Санкт-Петербург, ул. Народная, д. 2\",\"PR8\":\"false\",\"DATAN\":\"2020-10-05\",\"DATAK\":null,\"FULLNAME\":\"Отдел записи актов гражданского состояния Невского района Комитета по делам записи актов гражданского состояния\"}}}"
+      },
+      "ai5i": {
+        "visited": true,
+        "value": "Веневидова"
+      },
+      "ai5l": {
+        "visited": true,
+        "value": "Веневидова"
+      },
+      "ts1": {
+        "visited": true,
+        "value": "{\"bookId\":\"b5f66a63-c2b6-4ec2-a7d5-4194de289834\",\"esiaId\":\"1003694858\",\"status\":{\"statusCode\":201,\"statusMessage\":\"Забронировано\"},\"timeSlot\":{\"slotId\":\"91200505\",\"serviceId\":\"ЗагсБрак\",\"organizationId\":\"R7800019\",\"areaId\":\"Большой зал\",\"visitTime\":1619364600000,\"visitTimeStr\":\"2021-04-25T18:30:00.000\",\"visitTimeISO\":\"2021-04-25T18:30:00+03:00\",\"queueNumber\":null,\"duration\":null,\"attributes\":[]},\"error\":null,\"timeStart\":\"2021-02-11T19:03:13.508Z\",\"timeFinish\":\"2021-02-12T19:03:13.508Z\",\"department\":{\"value\":\"R7800019\",\"parentValue\":null,\"title\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"ZAGS_NAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"valueAsOfType\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},{\"name\":\"zags_address\",\"type\":\"STRING\",\"value\":{\"asString\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},\"valueAsOfType\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},{\"name\":\"TYPE\",\"type\":\"STRING\",\"value\":{\"asString\":\"ZAGS\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"ZAGS\"},\"valueAsOfType\":\"ZAGS\"},{\"name\":\"SHOW_ON_MAP\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"SOLEMN\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"AREA_DESCR\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"DATAK\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"AREA_NAME\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"R7800019\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"R7800019\"},\"valueAsOfType\":\"R7800019\"},{\"name\":\"FULLNAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"valueAsOfType\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},\"valueAsOfType\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\"},{\"name\":\"PHONE\",\"type\":\"STRING\",\"value\":{\"asString\":\"(812)570-03-53\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"(812)570-03-53\"},\"valueAsOfType\":\"(812)570-03-53\"},{\"name\":\"EMAIL\",\"type\":\"STRING\",\"value\":{\"asString\":\"dv1@kzags.gov.spb.ru\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"dv1@kzags.gov.spb.ru\"},\"valueAsOfType\":\"dv1@kzags.gov.spb.ru\"},{\"name\":\"PR2\",\"type\":\"STRING\",\"value\":{\"asString\":\"true\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"true\"},\"valueAsOfType\":\"true\"},{\"name\":\"GET_CONSENT\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null}],\"source\":null,\"attributeValues\":{\"ZAGS_NAME\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\",\"AREA_NAME\":null,\"PHONE\":\"(812)570-03-53\",\"SOLEMN\":\"true\",\"zags_address\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"EMAIL\":\"dv1@kzags.gov.spb.ru\",\"GET_CONSENT\":null,\"PR2\":\"true\",\"CODE\":\"R7800019\",\"SHOW_ON_MAP\":\"true\",\"ADDRESS\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"DATAK\":null,\"TYPE\":\"ZAGS\",\"AREA_DESCR\":null,\"FULLNAME\":\"Отдел регистрации актов гражданского состояния о браке - дворец бракосочетания №1 Комитета по делам записи актов гражданского состояния\"},\"idForMap\":15,\"center\":[30.293868,59.933961],\"baloonContent\":[{\"value\":\"Российская Федерация, г. Санкт-Петербург, наб. Английская, д. 28\",\"label\":\"Адрес\"},{\"value\":\"(812)570-03-53\",\"label\":\"Телефон\"},{\"value\":\"dv1@kzags.gov.spb.ru\",\"label\":\"Email\"}],\"agreement\":true,\"expanded\":true,\"okato\":\"40000000000\"}}"
+      },
+      "ai5k": {
+        "visited": true,
+        "value": "Веневидов"
+      },
+      "w1": {
+        "visited": true,
+        "value": ""
+      },
+      "sn1a": {
+        "visited": true,
+        "value": "{\"birthDate\":\"05.02.1979\",\"gender\":\"M\",\"trusted\":true,\"citizenship\":\"RUS\",\"snils\":\"057-551-458 77\",\"biomStu\":false,\"oid\":\"1056214947\",\"exists\":true,\"age\":42}"
+      },
+      "state15": {
+        "value": "false"
+      },
+      "q1": {
+        "visited": true,
+        "value": "Нет"
+      },
+      "pd11": {
+        "visited": true,
+        "value": "{\"id\":\"2021-04-01\",\"text\":\"Апрель 2021\",\"formatted\":\"\",\"originalItem\":{\"value\":\"2021-04-01\",\"parentValue\":null,\"title\":\"Апрель 2021\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "pd12": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":\"\",\"streetShortType\":\"ул\",\"additionalStreetShortType\":\"\",\"districtType\":\"\",\"geoLat\":\"59.8652323\",\"building2Type\":\"\",\"okato\":\"40285563000\",\"building1Type\":\"\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"59.8652323\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"30.4548627\",\"index\":\"192174\",\"townShortType\":\"\",\"district\":\"\",\"fullAddress\":\"192174, г. Санкт-Петербург, ул. Бабушкина, д. 64, кв. 129\",\"houseCheckbox\":false,\"region\":\"Санкт-Петербург\",\"geoLon\":\"30.4548627\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"64\",\"apartmentCheckbox\":false,\"townType\":\"\",\"additionalAreaType\":\"\",\"regionShortType\":\"г\",\"regionCode\":\"78\",\"districtShortType\":\"\",\"street\":\"Бабушкина\",\"additionalStreetType\":\"\",\"inCityDistShortType\":\"\",\"additionalAreaShortType\":\"\",\"cityShortType\":\"\",\"kladrCode\":\"78000000000012700\",\"building1ShortType\":\"\",\"fiasCode\":\"8870e271-5544-4794-9dd8-51554c0c137e\",\"hasErrors\":0,\"inCityDistType\":\"\",\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Санкт-Петербург, ул. Бабушкина\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":\"\",\"apartment\":\"129\"}}"
+      },
+      "q3": {
+        "visited": true,
+        "value": "Да"
+      },
+      "q6": {
+        "visited": true,
+        "value": "Да"
+      },
+      "q7": {
+        "visited": true,
+        "value": "0"
+      },
+      "q8": {
+        "visited": true,
+        "value": "Свидетельство о расторжении брака"
+      },
+      "ai5n": {
+        "visited": true,
+        "value": "130209780001200992000"
+      },
+      "ai5o": {
+        "visited": true,
+        "value": "2020-08-19T00:00:00.000+03:00"
+      },
+      "fai16": {
+        "visited": true,
+        "value": "{\"id\":\"1\",\"text\":\"Русская\",\"formatted\":\"\",\"originalItem\":{\"value\":\"1\",\"parentValue\":null,\"title\":\"Русская\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "sentTime": {
+        "value": "2021-02-11T22:03:15+03:00"
+      },
+      "pd1": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Чуприна Надежда Владимировна\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"07.02.1986\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"4014 149420\"},{\"label\":\"Дата выдачи:\",\"value\":\"12.11.2014\"},{\"label\":\"Кем выдан:\",\"value\":\"ТП №51 отдела УФМС России по Санкт-Петербургу и Ленинградской области в Московском районе г. Санкт-Петербург\"},{\"label\":\"Код подразделения:\",\"value\":\"780-051\"},{\"label\":\"Место рождения:\",\"value\":\"г. Ленинград\"}]}],\"storedValues\":{\"firstName\":\"Надежда\",\"lastName\":\"Чуприна\",\"middleName\":\"Владимировна\",\"birthDate\":\"07.02.1986\",\"birthPlace\":\"г. Ленинград\",\"gender\":\"F\",\"rfPasportSeries\":\"4014\",\"rfPasportNumber\":\"149420\",\"rfPasportIssueDate\":\"12.11.2014\",\"rfPasportIssuedBy\":\"ТП №51 отдела УФМС России по Санкт-Петербургу и Ленинградской области в Московском районе г. Санкт-Петербург\",\"rfPasportIssuedById\":\"780051\",\"citizenship\":\"РОССИЯ\",\"citizenshipCode\":\"RUS\"}}"
+      },
+      "fai19": {
+        "visited": true,
+        "value": "1"
+      },
+      "da": {
+        "visited": true,
+        "value": "Подтвердить"
+      },
+      "pd3": {
+        "visited": true,
+        "value": "nadezhda19@yandex.ru"
+      },
+      "pd2": {
+        "visited": true,
+        "value": "+7(921)7528652"
+      },
+      "fai17": {
+        "visited": true,
+        "value": "{\"id\":\"3\",\"text\":\"Профессиональное среднее\",\"formatted\":\"\",\"originalItem\":{\"value\":\"3\",\"parentValue\":null,\"title\":\"Профессиональное среднее\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "sn2a": {
+        "visited": true,
+        "value": "venevidovgeorgii@mail.ru"
+      },
+      "pd9": {
+        "visited": true,
+        "value": "Оплатить"
+      }
+    },
+    "cycledApplicantAnswers": {
+      "answerlist": []
+    },
+    "participants": {
+      "1056214947": {
+        "role": "Coapplicant",
+        "mode": "MentionedApplicant",
+        "component": "sn1a"
+      }
+    },
+    "display": {
+      "id": "s32",
+      "name": "Оплата госпошлины торжественный",
+      "type": "UNIQUE",
+      "header": "Оплата госпошлины",
+      "components": [
+        {
+          "id": "p2",
+          "type": "PaymentScr",
+          "label": "<p>Переход на ЕПШ</p><p>245₽ <strike class='text-color--text-helper'>350₽</strike></p>",
+          "attrs": {
+            "nsi": "fns_zgs_getpay_80652",
+            "dictItemCode": "01",
+            "ref": {
+              "fiasCode": "ms1.value"
+            },
+            "refs": {}
+          },
+          "linkedValues": [],
+          "arguments": {},
+          "value": "",
+          "required": true
+        }
+      ],
+      "infoComponents": [],
+      "terminal": false,
+      "accepted": true,
+      "firstScreen": false,
+      "impasse": false
+    },
+    "userData": {
+      "citizenship": "РОССИЯ",
+      "citizenshipCode": "RUS"
+    },
+    "serviceInfo": {},
+    "attachmentInfo": {},
+    "additionalParameters": {
+      "orderId": "1071963872",
+      "oid": "1056214947",
+      "snils": "108-624-987 76",
+      "firstName": "Надежда",
+      "lastName": "Чуприна",
+      "middleName": "Владимировна",
+      "birthDate": "07.02.1986",
+      "gender": "F",
+      "citizenship": "РОССИЯ",
+      "citizenshipCode": "RUS",
+      "serviceId": "10000000105",
+      "timezone": "+3",
+      "masterId": "1071964319",
+      "masterOid": "1003694858",
+      "masterSnils": "108-624-987 76",
+      "masterFirstName": "Надежда",
+      "masterLastName": "Чуприна",
+      "masterMiddleName": "Владимировна",
+      "masterBirthDate": "07.02.1986",
+      "masterGender": "F",
+      "masterCitizenship": "РОССИЯ",
+      "masterCitizenshipCode": "RUS",
+      "masterTimezone": "+3"
+    },
+    "generatedFiles": [],
+    "gender": "M"
+  }
+}

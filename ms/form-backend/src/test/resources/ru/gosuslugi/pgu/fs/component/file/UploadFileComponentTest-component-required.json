@@ -1,0 +1,47 @@
+{
+  "id": "fu1",
+  "type": "FileUploadComponent",
+  "label": "",
+  "attrs": {
+    "isCycledComponent": true,
+    "archiveTypes": [
+      "SIG"
+    ],
+    "uploads": [
+      {
+        "uploadId": "passport",
+        "fileRequired": true,
+        "label": "<b>Скан или фото паспорта</b>",
+        "fileType": [
+          "JPEG",
+          "JPG",
+          "PNG",
+          "PDF"
+        ],
+        "maxSize": 5242880,
+        "maxFileCount": 10
+      },
+      {
+        "uploadId": "snils",
+        "label": "<b>Скан или фото СНИЛС</b>",
+        "fileType": [
+          "JPEG",
+          "JPG",
+          "PNG",
+          "PDF"
+        ],
+        "maxSize": 5242880,
+        "maxFileCount": 2
+      },
+      {
+        "uploadId": "signature",
+        "label": "<b>Файл УКЭП</b>",
+        "fileType": [
+          "SIG"
+        ],
+        "maxSize": 5242880,
+        "maxFileCount": 1
+      }
+    ]
+  }
+}

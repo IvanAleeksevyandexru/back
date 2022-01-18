@@ -1,0 +1,16 @@
+{
+  "id": "fai1",
+  "type": "StringInput",
+  "label": "С какого месяца",
+  "attrs": {
+    "validation": [
+      {
+        "type": "CalculatedPredicate",
+        "expr": "(${PurchaseFullCost.value} - 0.1 * ${PurchasePaid.value}) / 2.5 >= ${PurchasePaid.value} + 3.1",
+        "errorMsg": "Полная стоимость путёвки должна превышать оплаченную"
+      }
+    ]
+  },
+  "value": "",
+  "visited": false
+}

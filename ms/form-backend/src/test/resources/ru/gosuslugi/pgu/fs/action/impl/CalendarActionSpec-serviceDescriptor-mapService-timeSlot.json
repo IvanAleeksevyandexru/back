@@ -1,0 +1,20 @@
+{
+  "applicationFields": [
+    {
+      "id": "mapService",
+      "type": "MapService",
+      "label": "",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "timeSlot",
+      "type": "TimeSlot",
+      "label": "",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    }
+  ]
+}

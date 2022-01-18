@@ -1,0 +1,38 @@
+{
+  "code": "c2deb16a-0330-4f05-821f-1d09c93331e6",
+  "address": {
+    "fiasCode": "c2deb16a-0330-4f05-821f-1d09c93331e6",
+    "fullAddress": "г Санкт-Петербург",
+    "postIndex": "190000",
+    "elements": [
+      {
+        "level": 1,
+        "fiasCode": "c2deb16a-0330-4f05-821f-1d09c93331e6",
+        "kladrCode": "7800000000000",
+        "data": "Санкт-Петербург",
+        "type": "город",
+        "shortType": "г",
+        "numericFiasCode": "78-0-000-000-000-000-0000-0000-000"
+      }
+    ]
+  },
+  "level": 1,
+  "id": "c2deb16a-0330-4f05-821f-1d09c93331e6",
+  "text": "г Санкт-Петербург",
+  "error": {
+    "code": 0,
+    "message": "operation completed"
+  },
+  "dadataQc": "0",
+  "dadataQcComplete": "3",
+  "dadataQcHouse": "10",
+  "fiasLevel": "1",
+  "postalCode": "190000",
+  "regionKladrId": "4400000000000",
+  "okato": "40000000000",
+  "tax_office": "7800",
+  "oktmo": "40000000",
+  "geo_lat": "59.9391313",
+  "geo_lon": "30.3159004",
+  "regionCode": "78"
+}

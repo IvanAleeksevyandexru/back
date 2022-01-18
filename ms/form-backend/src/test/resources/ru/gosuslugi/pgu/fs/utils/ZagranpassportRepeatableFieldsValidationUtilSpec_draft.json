@@ -1,0 +1,737 @@
+{
+  "orderId": 763571639,
+  "type": "10000000101",
+  "locked": false,
+  "updated": "2020-12-26T05:50:40.358Z",
+  "body": {
+    "serviceCode": "10000000101",
+    "targetCode": "-10000000101",
+    "orderId": 763571639,
+    "currentScenarioId": 1,
+    "currentUrl": "http://local.test.gosuslugi.ru:4200/",
+    "finishedAndCurrentScreens": [
+      "s1",
+      "s2",
+      "s3",
+      "s4",
+      "s66",
+      "s203",
+      "s19",
+      "s19_a",
+      "s20",
+      "s21",
+      "s8_1",
+      "s24",
+      "s39"
+    ],
+    "cachedAnswers": {
+      "w1": {
+        "visited": true,
+        "value": ""
+      },
+      "q1": {
+        "visited": true,
+        "value": "Нового образца"
+      },
+      "q2": {
+        "visited": true,
+        "value": "Детям"
+      },
+      "q3": {
+        "visited": true,
+        "value": "До 14 лет"
+      },
+      "q20": {
+        "visited": true,
+        "value": "По месту пребывания"
+      },
+      "d43": {
+        "visited": true,
+        "value": ""
+      },
+      "pd1": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Каменев Игорь Витальевич\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"01.01.1993\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"5300 535353\"},{\"label\":\"Дата выдачи:\",\"value\":\"02.06.2015\"},{\"label\":\"Кем выдан:\",\"value\":\"Кем выдан\"},{\"label\":\"Код подразделения:\",\"value\":\"787-878\"},{\"label\":\"Место рождения:\",\"value\":\"просьба не менять фио УЗ\"}]}],\"storedValues\":{\"firstName\":\"Игорь\",\"lastName\":\"Каменев\",\"birthPlace\":\"просьба не менять фио УЗ\",\"rfPasportIssuedBy\":\"Кем выдан\",\"gender\":\"M\",\"rfPasportIssuedById\":\"787878\",\"rfPasportSeries\":\"5300\",\"middleName\":\"Витальевич\",\"birthDate\":\"01.01.1993\",\"rfPasportNumber\":\"535353\",\"rfPasportIssueDate\":\"02.06.2015\"}}"
+      },
+      "cb1": {
+        "visited": true,
+        "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "pd2": {
+        "visited": true,
+        "value": "+7(968)9469209"
+      },
+      "pd3": {
+        "visited": true,
+        "value": "test1@ingling.ru"
+      },
+      "pd44": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"пер\",\"additionalStreetShortType\":null,\"districtType\":\"район\",\"geoLat\":\"45.1131444\",\"building2Type\":null,\"okato\":\"35247000010\",\"building1Type\":null,\"regionType\":\"республика\",\"additionalStreet\":\"\",\"lat\":\"45.1131444\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"переулок\",\"town\":\"Гвардейское\",\"lng\":\"34.0361259\",\"index\":\"297513\",\"townShortType\":\"пгт\",\"district\":\"Симферопольский\",\"fullAddress\":\"297513, Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский, д. 5, кв. 5\",\"houseCheckbox\":false,\"region\":\"Крым\",\"geoLon\":\"34.0361259\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"5\",\"apartmentCheckbox\":false,\"townType\":\"поселок городского типа\",\"additionalAreaType\":null,\"regionShortType\":\"Респ\",\"regionCode\":\"91\",\"districtShortType\":\"р-н\",\"street\":\"Симферопольский\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"91012000001005900\",\"building1ShortType\":null,\"fiasCode\":\"b7fc854d-5979-41c3-81af-5eb963742a7a\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"5\"},\"regDate\":\"02.12.2020\"}"
+      },
+      "pd6": {
+        "visited": true,
+        "value": "{\"regionType\":\"область\",\"regionShortType\":\"обл\",\"region\":\"Свердловская\",\"city\":\"\",\"districtType\":\"район\",\"districtShortType\":\"р-н\",\"district\":\"Талицкий\",\"townType\":\"село\",\"townShortType\":\"с\",\"town\":\"Бутка\",\"inCityDist\":\"\",\"streetType\":\"улица\",\"streetShortType\":\"ул\",\"street\":\"Ленина\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"houseType\":\"дом\",\"houseShortType\":\"д\",\"house\":\"15\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1Type\":\"корпус\",\"building1ShortType\":\"к\",\"building1\":\"2\",\"building2Type\":\"строение\",\"building2ShortType\":\"стр\",\"building2\":\"14\",\"apartmentType\":\"квартира\",\"apartmentShortType\":\"кв\",\"apartment\":\"3\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"623610\",\"geoLat\":\"56.7172303\",\"geoLon\":\"63.7783514\",\"fullAddress\":\"623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3\",\"addressStr\":\"обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина\",\"lat\":\"56.7172303\",\"lng\":\"63.7783514\",\"fiasCode\":\"a532f63d-624a-4fbe-9cef-f9923ce7a19f\",\"okato\":\"65249000016\",\"hasErrors\":0,\"kladrCode\":\"66028000018003400\",\"regionCode\":\"66\"}"
+      },
+      "pd9": {
+        "visited": true,
+        "value": ""
+      },
+      "pd7": {
+        "visited": true,
+        "value": "2020-12-01T00:00:00.000+06:00"
+      },
+      "pd8": {
+        "visited": true,
+        "value": "2021-01-03T00:00:00.000+06:00"
+      },
+      "ai18": {
+        "visited": true,
+        "value": "[{\"ai18_4\":\"Иван\",\"ai18_5\":\"Игоревич\",\"ai18_6\":\"false\",\"pd13\":{\"streetShortType\":\"ул\",\"city\":\"\",\"districtType\":\"район\",\"geoLat\":\"56.7172303\",\"building2Type\":\"строение\",\"apartmentShortType\":\"кв\",\"house\":\"15\",\"apartmentCheckbox\":false,\"townType\":\"село\",\"okato\":\"65249000016\",\"regionShortType\":\"обл\",\"regionCode\":\"66\",\"building1Type\":\"корпус\",\"regionType\":\"область\",\"districtShortType\":\"р-н\",\"street\":\"Ленина\",\"kladrCode\":\"66028000018003400\",\"additionalStreet\":\"\",\"lat\":\"56.7172303\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"building1ShortType\":\"к\",\"streetType\":\"улица\",\"fiasCode\":\"a532f63d-624a-4fbe-9cef-f9923ce7a19f\",\"hasErrors\":0,\"town\":\"Бутка\",\"lng\":\"63.7783514\",\"houseType\":\"дом\",\"inCityDist\":\"\",\"index\":\"623610\",\"townShortType\":\"с\",\"addressStr\":\"обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина\",\"building1\":\"2\",\"building2\":\"14\",\"district\":\"Талицкий\",\"houseShortType\":\"д\",\"fullAddress\":\"623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3\",\"houseCheckbox\":false,\"building2ShortType\":\"стр\",\"region\":\"Свердловская\",\"geoLon\":\"63.7783514\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"apartment\":\"3\"},\"pd14\":\"2020-12-01T00:00:00.000+06:00\",\"ai17\":\"[{\\\"rf51\\\":\\\"Каменев\\\",\\\"rf52\\\":\\\"Иван\\\",\\\"rf53\\\":\\\"Игоревич\\\",\\\"rf54\\\":\\\"С\\\",\\\"rf55\\\":\\\"2020-12-02T00:00:00.000+06:00\\\"},{\\\"rf51\\\":\\\"Каменев\\\",\\\"rf52\\\":\\\"Иван\\\",\\\"rf53\\\":\\\"Игоревич\\\",\\\"rf54\\\":\\\"С1\\\",\\\"rf55\\\":\\\"2020-12-16T00:00:00.000+06:00\\\"}]\",\"ai18_0\":\"7459906\",\"d34\":{\"name\":\"ACDC.jpg\",\"mnemonic\":\"d34.PhotoUploadComponent.child_passport_photo.7459906\",\"mimeType\":\"image/jpeg\",\"objectId\":763571639,\"objectType\":2},\"ai18_1\":\"2017-01-01T00:00:00Z\",\"ai18_2\":\"M\",\"ai18_3\":\"Каменев\",\"pd21\":{\"storedValues\":{\"firstName\":\"Иван\",\"lastName\":\"Каменев\",\"rfBirthCertificateIssuedBy\":\"Спб\",\"rfBirthCertificateIssueDate\":\"09.01.2017\",\"rfBirthCertificateSeries\":\"V-ДД\",\"middleName\":\"Игоревич\",\"rfBirthCertificateNumber\":\"123456\",\"birthDate\":\"01.01.2017\",\"rfBirthCertificateActNumber\":\"-\"},\"states\":[{\"groupName\":\"Каменев Иван Игоревич\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"01.01.2017\"}]},{\"groupName\":\"Свидетельство о рождении\",\"fields\":[{\"label\":\"Серия и Номер\",\"value\":\"V-ДД 123456\"},{\"label\":\"Дата выдачи\",\"value\":\"09.01.2017\"},{\"label\":\"Кем выдан\",\"value\":\"Спб\"},{\"label\":\"Актовый номер\",\"value\":\"-\"}]}]},\"clr2\":{\"regDate\":\"01.12.2020\",\"regAddr\":{\"streetShortType\":\"пер\",\"districtType\":\"район\",\"geoLat\":\"45.1131444\",\"okato\":\"35247000010\",\"regionType\":\"республика\",\"additionalStreet\":\"\",\"lat\":\"45.1131444\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"переулок\",\"town\":\"Гвардейское\",\"lng\":\"34.0361259\",\"index\":\"297513\",\"townShortType\":\"пгт\",\"district\":\"Симферопольский\",\"fullAddress\":\"297513, Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский, д. 5, кв. 5\",\"houseCheckbox\":false,\"region\":\"Крым\",\"geoLon\":\"34.0361259\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"5\",\"apartmentCheckbox\":false,\"townType\":\"поселок городского типа\",\"regionShortType\":\"Респ\",\"regionCode\":\"91\",\"districtShortType\":\"р-н\",\"street\":\"Симферопольский\",\"kladrCode\":\"91012000001005900\",\"fiasCode\":\"b7fc854d-5979-41c3-81af-5eb963742a7a\",\"hasErrors\":0,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"apartment\":\"5\"}},\"pd15\":\"2020-12-26T00:00:00.000+06:00\",\"pd16\":\"\",\"pd21_1\":{\"formatted\":\"\",\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"originalItem\":{\"value\":\"RUS\",\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"q26\":\"Да\",\"pd21_4\":\"Омск\"},{\"ai18_4\":\"Дамир\",\"ai18_5\":\"Маратович\",\"ai18_6\":\"true\",\"ai18_0\":\"d8ff18d7-5c24-422c-88e8-0092d4094e3f\",\"ai18_1\":\"2020-12-01T00:00:00.000+06:00\",\"ai18_2\":\"M\",\"ai18_3\":\"Хабибулин\"}]"
+      },
+      "ai18_4": {
+        "visited": true,
+        "value": "Иван"
+      },
+      "ai18_5": {
+        "visited": true,
+        "value": "Игоревич"
+      },
+      "ai18_6": {
+        "visited": true,
+        "value": "false"
+      },
+      "ai18_0": {
+        "visited": true,
+        "value": "7459906"
+      },
+      "ai18_1": {
+        "visited": true,
+        "value": "2017-01-01T00:00:00Z"
+      },
+      "ai18_2": {
+        "visited": true,
+        "value": "M"
+      },
+      "ai18_3": {
+        "visited": true,
+        "value": "Каменев"
+      },
+      "pd21": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Каменев Иван Игоревич\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"01.01.2017\"}]},{\"groupName\":\"Свидетельство о рождении\",\"fields\":[{\"label\":\"Серия и Номер\",\"value\":\"V-ДД 123456\"},{\"label\":\"Дата выдачи\",\"value\":\"09.01.2017\"},{\"label\":\"Кем выдан\",\"value\":\"Спб\"},{\"label\":\"Актовый номер\",\"value\":\"-\"}]}],\"storedValues\":{\"firstName\":\"Иван\",\"lastName\":\"Каменев\",\"rfBirthCertificateIssuedBy\":\"Спб\",\"rfBirthCertificateIssueDate\":\"09.01.2017\",\"rfBirthCertificateSeries\":\"V-ДД\",\"middleName\":\"Игоревич\",\"rfBirthCertificateNumber\":\"123456\",\"birthDate\":\"01.01.2017\",\"rfBirthCertificateActNumber\":\"-\"}}"
+      },
+      "pd21_1": {
+        "visited": true,
+        "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "pd21_4": {
+        "visited": true,
+        "value": "Омск"
+      },
+      "clr2": {
+        "visited": true,
+        "value": "{\"regDate\":\"01.12.2020\",\"regAddr\":{\"cityType\":null,\"streetShortType\":\"пер\",\"additionalStreetShortType\":null,\"districtType\":\"район\",\"geoLat\":\"45.1131444\",\"building2Type\":null,\"okato\":\"35247000010\",\"building1Type\":null,\"regionType\":\"республика\",\"additionalStreet\":\"\",\"lat\":\"45.1131444\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"переулок\",\"town\":\"Гвардейское\",\"lng\":\"34.0361259\",\"index\":\"297513\",\"townShortType\":\"пгт\",\"district\":\"Симферопольский\",\"fullAddress\":\"297513, Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский, д. 5, кв. 5\",\"houseCheckbox\":false,\"region\":\"Крым\",\"geoLon\":\"34.0361259\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"5\",\"apartmentCheckbox\":false,\"townType\":\"поселок городского типа\",\"additionalAreaType\":null,\"regionShortType\":\"Респ\",\"regionCode\":\"91\",\"districtShortType\":\"р-н\",\"street\":\"Симферопольский\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"91012000001005900\",\"building1ShortType\":null,\"fiasCode\":\"b7fc854d-5979-41c3-81af-5eb963742a7a\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"5\"}}"
+      },
+      "pd13": {
+        "visited": true,
+        "value": "{\"regionType\":\"область\",\"regionShortType\":\"обл\",\"region\":\"Свердловская\",\"city\":\"\",\"districtType\":\"район\",\"districtShortType\":\"р-н\",\"district\":\"Талицкий\",\"townType\":\"село\",\"townShortType\":\"с\",\"town\":\"Бутка\",\"inCityDist\":\"\",\"streetType\":\"улица\",\"streetShortType\":\"ул\",\"street\":\"Ленина\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"houseType\":\"дом\",\"houseShortType\":\"д\",\"house\":\"15\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1Type\":\"корпус\",\"building1ShortType\":\"к\",\"building1\":\"2\",\"building2Type\":\"строение\",\"building2ShortType\":\"стр\",\"building2\":\"14\",\"apartmentType\":\"квартира\",\"apartmentShortType\":\"кв\",\"apartment\":\"3\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"623610\",\"geoLat\":\"56.7172303\",\"geoLon\":\"63.7783514\",\"fullAddress\":\"623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3\",\"addressStr\":\"обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина\",\"lat\":\"56.7172303\",\"lng\":\"63.7783514\",\"fiasCode\":\"a532f63d-624a-4fbe-9cef-f9923ce7a19f\",\"okato\":\"65249000016\",\"hasErrors\":0,\"kladrCode\":\"66028000018003400\",\"regionCode\":\"66\"}"
+      },
+      "pd16": {
+        "visited": true,
+        "value": ""
+      },
+      "pd14": {
+        "visited": true,
+        "value": "2020-12-01T00:00:00.000+06:00"
+      },
+      "pd15": {
+        "visited": true,
+        "value": "2020-12-26T00:00:00.000+06:00"
+      },
+      "d34": {
+        "visited": true,
+        "value": "{\"mnemonic\":\"d34.PhotoUploadComponent.child_passport_photo.7459906\",\"name\":\"ACDC.jpg\",\"objectType\":2,\"objectId\":763571639,\"mimeType\":\"image/jpeg\"}"
+      },
+      "q26": {
+        "visited": true,
+        "value": "Да"
+      },
+      "ai17": {
+        "visited": true,
+        "value": "[{\"rf51\":\"Каменев\",\"rf52\":\"Иван\",\"rf53\":\"Игоревич\",\"rf54\":\"С\",\"rf55\":\"2020-12-02T00:00:00.000+06:00\"},{\"rf51\":\"Каменев\",\"rf52\":\"Иван\",\"rf53\":\"Игоревич\",\"rf54\":\"С1\",\"rf55\":\"2020-12-16T00:00:00.000+06:00\"}]"
+      },
+      "q27": {
+        "visited": true,
+        "value": "Нет"
+      },
+      "q28_2": {
+        "visited": true,
+        "value": "Получение впервые"
+      },
+      "bd20_0": {
+        "visited": true,
+        "value": ""
+      },
+      "bd20": {
+        "visited": true,
+        "value": "{\"series\":\"11\",\"number\":\"11\",\"date\":\"2020-12-01T00:00:00.000+06:00\",\"emitter\":\"вуу\"}"
+      },
+      "q22": {
+        "visited": true,
+        "value": "Нет"
+      }
+    },
+    "currentValue": {},
+    "errors": {},
+    "applicantAnswers": {
+      "q1": {
+        "visited": true,
+        "value": "Нового образца"
+      },
+      "pd44": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"пер\",\"additionalStreetShortType\":null,\"districtType\":\"район\",\"geoLat\":\"45.1131444\",\"building2Type\":null,\"okato\":\"35247000010\",\"building1Type\":null,\"regionType\":\"республика\",\"additionalStreet\":\"\",\"lat\":\"45.1131444\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"переулок\",\"town\":\"Гвардейское\",\"lng\":\"34.0361259\",\"index\":\"297513\",\"townShortType\":\"пгт\",\"district\":\"Симферопольский\",\"fullAddress\":\"297513, Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский, д. 5, кв. 5\",\"houseCheckbox\":false,\"region\":\"Крым\",\"geoLon\":\"34.0361259\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"5\",\"apartmentCheckbox\":false,\"townType\":\"поселок городского типа\",\"additionalAreaType\":null,\"regionShortType\":\"Респ\",\"regionCode\":\"91\",\"districtShortType\":\"р-н\",\"street\":\"Симферопольский\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"91012000001005900\",\"building1ShortType\":null,\"fiasCode\":\"b7fc854d-5979-41c3-81af-5eb963742a7a\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"5\"},\"regDate\":\"02.12.2020\"}"
+      },
+      "q2": {
+        "visited": true,
+        "value": "Детям"
+      },
+      "q3": {
+        "visited": true,
+        "value": "До 14 лет"
+      },
+      "d43": {
+        "visited": true,
+        "value": ""
+      },
+      "pd7": {
+        "visited": true,
+        "value": "2020-12-01T00:00:00.000+06:00"
+      },
+      "ai18": {
+        "visited": true,
+        "value": "[{\"ai18_4\":\"Иван\",\"ai18_5\":\"Игоревич\",\"ai18_6\":\"false\",\"pd13\":{\"streetShortType\":\"ул\",\"city\":\"\",\"districtType\":\"район\",\"geoLat\":\"56.7172303\",\"building2Type\":\"строение\",\"apartmentShortType\":\"кв\",\"house\":\"15\",\"apartmentCheckbox\":false,\"townType\":\"село\",\"okato\":\"65249000016\",\"regionShortType\":\"обл\",\"regionCode\":\"66\",\"building1Type\":\"корпус\",\"regionType\":\"область\",\"districtShortType\":\"р-н\",\"street\":\"Ленина\",\"kladrCode\":\"66028000018003400\",\"additionalStreet\":\"\",\"lat\":\"56.7172303\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"building1ShortType\":\"к\",\"streetType\":\"улица\",\"fiasCode\":\"a532f63d-624a-4fbe-9cef-f9923ce7a19f\",\"hasErrors\":0,\"town\":\"Бутка\",\"lng\":\"63.7783514\",\"houseType\":\"дом\",\"inCityDist\":\"\",\"index\":\"623610\",\"townShortType\":\"с\",\"addressStr\":\"обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина\",\"building1\":\"2\",\"building2\":\"14\",\"district\":\"Талицкий\",\"houseShortType\":\"д\",\"fullAddress\":\"623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3\",\"houseCheckbox\":false,\"building2ShortType\":\"стр\",\"region\":\"Свердловская\",\"geoLon\":\"63.7783514\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"apartment\":\"3\"},\"pd14\":\"2020-12-01T00:00:00.000+06:00\",\"ai17\":\"[{\\\"rf51\\\":\\\"Каменев\\\",\\\"rf52\\\":\\\"Иван\\\",\\\"rf53\\\":\\\"Игоревич\\\",\\\"rf54\\\":\\\"С\\\",\\\"rf55\\\":\\\"2020-12-02T00:00:00.000+06:00\\\"},{\\\"rf51\\\":\\\"Каменев\\\",\\\"rf52\\\":\\\"Иван\\\",\\\"rf53\\\":\\\"Игоревич\\\",\\\"rf54\\\":\\\"С1\\\",\\\"rf55\\\":\\\"2020-12-16T00:00:00.000+06:00\\\"}]\",\"ai18_0\":\"7459906\",\"d34\":{\"name\":\"ACDC.jpg\",\"mnemonic\":\"d34.PhotoUploadComponent.child_passport_photo.7459906\",\"mimeType\":\"image/jpeg\",\"objectId\":763571639,\"objectType\":2},\"ai18_1\":\"2017-01-01T00:00:00Z\",\"ai18_2\":\"M\",\"ai18_3\":\"Каменев\",\"pd21\":{\"storedValues\":{\"firstName\":\"Иван\",\"lastName\":\"Каменев\",\"rfBirthCertificateIssuedBy\":\"Спб\",\"rfBirthCertificateIssueDate\":\"09.01.2017\",\"rfBirthCertificateSeries\":\"V-ДД\",\"middleName\":\"Игоревич\",\"rfBirthCertificateNumber\":\"123456\",\"birthDate\":\"01.01.2017\",\"rfBirthCertificateActNumber\":\"-\"},\"states\":[{\"groupName\":\"Каменев Иван Игоревич\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"01.01.2017\"}]},{\"groupName\":\"Свидетельство о рождении\",\"fields\":[{\"label\":\"Серия и Номер\",\"value\":\"V-ДД 123456\"},{\"label\":\"Дата выдачи\",\"value\":\"09.01.2017\"},{\"label\":\"Кем выдан\",\"value\":\"Спб\"},{\"label\":\"Актовый номер\",\"value\":\"-\"}]}]},\"clr2\":{\"regDate\":\"01.12.2020\",\"regAddr\":{\"streetShortType\":\"пер\",\"districtType\":\"район\",\"geoLat\":\"45.1131444\",\"okato\":\"35247000010\",\"regionType\":\"республика\",\"additionalStreet\":\"\",\"lat\":\"45.1131444\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"переулок\",\"town\":\"Гвардейское\",\"lng\":\"34.0361259\",\"index\":\"297513\",\"townShortType\":\"пгт\",\"district\":\"Симферопольский\",\"fullAddress\":\"297513, Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский, д. 5, кв. 5\",\"houseCheckbox\":false,\"region\":\"Крым\",\"geoLon\":\"34.0361259\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"5\",\"apartmentCheckbox\":false,\"townType\":\"поселок городского типа\",\"regionShortType\":\"Респ\",\"regionCode\":\"91\",\"districtShortType\":\"р-н\",\"street\":\"Симферопольский\",\"kladrCode\":\"91012000001005900\",\"fiasCode\":\"b7fc854d-5979-41c3-81af-5eb963742a7a\",\"hasErrors\":0,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"apartment\":\"5\"}},\"pd15\":\"2020-12-26T00:00:00.000+06:00\",\"pd16\":\"\",\"pd21_1\":{\"formatted\":\"\",\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"originalItem\":{\"value\":\"RUS\",\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"q26\":\"Да\",\"pd21_4\":\"Омск\"},{\"ai18_4\":\"Дамир\",\"ai18_5\":\"Маратович\",\"ai18_6\":\"true\",\"ai18_0\":\"d8ff18d7-5c24-422c-88e8-0092d4094e3f\",\"ai18_1\":\"2020-12-01T00:00:00.000+06:00\",\"ai18_2\":\"M\",\"ai18_3\":\"Хабибулин\"}]"
+      },
+      "pd6": {
+        "visited": true,
+        "value": "{\"regionType\":\"область\",\"regionShortType\":\"обл\",\"region\":\"Свердловская\",\"city\":\"\",\"districtType\":\"район\",\"districtShortType\":\"р-н\",\"district\":\"Талицкий\",\"townType\":\"село\",\"townShortType\":\"с\",\"town\":\"Бутка\",\"inCityDist\":\"\",\"streetType\":\"улица\",\"streetShortType\":\"ул\",\"street\":\"Ленина\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"houseType\":\"дом\",\"houseShortType\":\"д\",\"house\":\"15\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1Type\":\"корпус\",\"building1ShortType\":\"к\",\"building1\":\"2\",\"building2Type\":\"строение\",\"building2ShortType\":\"стр\",\"building2\":\"14\",\"apartmentType\":\"квартира\",\"apartmentShortType\":\"кв\",\"apartment\":\"3\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"623610\",\"geoLat\":\"56.7172303\",\"geoLon\":\"63.7783514\",\"fullAddress\":\"623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3\",\"addressStr\":\"обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина\",\"lat\":\"56.7172303\",\"lng\":\"63.7783514\",\"fiasCode\":\"a532f63d-624a-4fbe-9cef-f9923ce7a19f\",\"okato\":\"65249000016\",\"hasErrors\":0,\"kladrCode\":\"66028000018003400\",\"regionCode\":\"66\"}"
+      },
+      "pd9": {
+        "visited": true,
+        "value": ""
+      },
+      "pd8": {
+        "visited": true,
+        "value": "2021-01-03T00:00:00.000+06:00"
+      },
+      "q20": {
+        "visited": true,
+        "value": "По месту пребывания"
+      },
+      "cb1": {
+        "visited": true,
+        "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "w1": {
+        "visited": true,
+        "value": ""
+      },
+      "pd1": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Каменев Игорь Витальевич\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"01.01.1993\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"5300 535353\"},{\"label\":\"Дата выдачи:\",\"value\":\"02.06.2015\"},{\"label\":\"Кем выдан:\",\"value\":\"Кем выдан\"},{\"label\":\"Код подразделения:\",\"value\":\"787-878\"},{\"label\":\"Место рождения:\",\"value\":\"просьба не менять фио УЗ\"}]}],\"storedValues\":{\"firstName\":\"Игорь\",\"lastName\":\"Каменев\",\"birthPlace\":\"просьба не менять фио УЗ\",\"rfPasportIssuedBy\":\"Кем выдан\",\"gender\":\"M\",\"rfPasportIssuedById\":\"787878\",\"rfPasportSeries\":\"5300\",\"middleName\":\"Витальевич\",\"birthDate\":\"01.01.1993\",\"rfPasportNumber\":\"535353\",\"rfPasportIssueDate\":\"02.06.2015\"}}"
+      },
+      "pd3": {
+        "visited": true,
+        "value": "test1@ingling.ru"
+      },
+      "pd2": {
+        "visited": true,
+        "value": "+7(968)9469209"
+      },
+      "ai18_4": {
+        "visited": true,
+        "value": "Иван"
+      },
+      "ai18_5": {
+        "visited": true,
+        "value": "Игоревич"
+      },
+      "ai18_6": {
+        "visited": true,
+        "value": "false"
+      },
+      "ai18_0": {
+        "visited": true,
+        "value": "7459906"
+      },
+      "ai18_1": {
+        "visited": true,
+        "value": "2017-01-01T00:00:00Z"
+      },
+      "ai18_2": {
+        "visited": true,
+        "value": "M"
+      },
+      "ai18_3": {
+        "visited": true,
+        "value": "Каменев"
+      },
+      "pd21": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Каменев Иван Игоревич\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"01.01.2017\"}]},{\"groupName\":\"Свидетельство о рождении\",\"fields\":[{\"label\":\"Серия и Номер\",\"value\":\"V-ДД 123456\"},{\"label\":\"Дата выдачи\",\"value\":\"09.01.2017\"},{\"label\":\"Кем выдан\",\"value\":\"Спб\"},{\"label\":\"Актовый номер\",\"value\":\"-\"}]}],\"storedValues\":{\"firstName\":\"Иван\",\"lastName\":\"Каменев\",\"rfBirthCertificateIssuedBy\":\"Спб\",\"rfBirthCertificateIssueDate\":\"09.01.2017\",\"rfBirthCertificateSeries\":\"V-ДД\",\"middleName\":\"Игоревич\",\"rfBirthCertificateNumber\":\"123456\",\"birthDate\":\"01.01.2017\",\"rfBirthCertificateActNumber\":\"-\"}}"
+      },
+      "pd21_1": {
+        "visited": true,
+        "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "pd21_4": {
+        "visited": true,
+        "value": "Омск"
+      },
+      "clr2": {
+        "visited": true,
+        "value": "{\"regDate\":\"01.12.2020\",\"regAddr\":{\"cityType\":null,\"streetShortType\":\"пер\",\"additionalStreetShortType\":null,\"districtType\":\"район\",\"geoLat\":\"45.1131444\",\"building2Type\":null,\"okato\":\"35247000010\",\"building1Type\":null,\"regionType\":\"республика\",\"additionalStreet\":\"\",\"lat\":\"45.1131444\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"переулок\",\"town\":\"Гвардейское\",\"lng\":\"34.0361259\",\"index\":\"297513\",\"townShortType\":\"пгт\",\"district\":\"Симферопольский\",\"fullAddress\":\"297513, Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский, д. 5, кв. 5\",\"houseCheckbox\":false,\"region\":\"Крым\",\"geoLon\":\"34.0361259\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"5\",\"apartmentCheckbox\":false,\"townType\":\"поселок городского типа\",\"additionalAreaType\":null,\"regionShortType\":\"Респ\",\"regionCode\":\"91\",\"districtShortType\":\"р-н\",\"street\":\"Симферопольский\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"91012000001005900\",\"building1ShortType\":null,\"fiasCode\":\"b7fc854d-5979-41c3-81af-5eb963742a7a\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"5\"}}"
+      },
+      "pd13": {
+        "visited": true,
+        "value": "{\"regionType\":\"область\",\"regionShortType\":\"обл\",\"region\":\"Свердловская\",\"city\":\"\",\"districtType\":\"район\",\"districtShortType\":\"р-н\",\"district\":\"Талицкий\",\"townType\":\"село\",\"townShortType\":\"с\",\"town\":\"Бутка\",\"inCityDist\":\"\",\"streetType\":\"улица\",\"streetShortType\":\"ул\",\"street\":\"Ленина\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"houseType\":\"дом\",\"houseShortType\":\"д\",\"house\":\"15\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1Type\":\"корпус\",\"building1ShortType\":\"к\",\"building1\":\"2\",\"building2Type\":\"строение\",\"building2ShortType\":\"стр\",\"building2\":\"14\",\"apartmentType\":\"квартира\",\"apartmentShortType\":\"кв\",\"apartment\":\"3\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"623610\",\"geoLat\":\"56.7172303\",\"geoLon\":\"63.7783514\",\"fullAddress\":\"623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3\",\"addressStr\":\"обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина\",\"lat\":\"56.7172303\",\"lng\":\"63.7783514\",\"fiasCode\":\"a532f63d-624a-4fbe-9cef-f9923ce7a19f\",\"okato\":\"65249000016\",\"hasErrors\":0,\"kladrCode\":\"66028000018003400\",\"regionCode\":\"66\"}"
+      },
+      "pd16": {
+        "visited": true,
+        "value": ""
+      },
+      "pd14": {
+        "visited": true,
+        "value": "2020-12-01T00:00:00.000+06:00"
+      },
+      "pd15": {
+        "visited": true,
+        "value": "2020-12-26T00:00:00.000+06:00"
+      },
+      "d34": {
+        "visited": true,
+        "value": "{\"mnemonic\":\"d34.PhotoUploadComponent.child_passport_photo.7459906\",\"name\":\"ACDC.jpg\",\"objectType\":2,\"objectId\":763571639,\"mimeType\":\"image/jpeg\"}"
+      },
+      "q26": {
+        "visited": true,
+        "value": "Да"
+      },
+      "ai17": {
+        "visited": true,
+        "value": "[{\"rf51\":\"Каменев\",\"rf52\":\"Иван\",\"rf53\":\"Игоревич\",\"rf54\":\"С\",\"rf55\":\"2020-12-02T00:00:00.000+06:00\"},{\"rf51\":\"Каменев\",\"rf52\":\"Иван\",\"rf53\":\"Игоревич\",\"rf54\":\"С1\",\"rf55\":\"2020-12-16T00:00:00.000+06:00\"}]"
+      }
+    },
+    "cycledApplicantAnswers": {
+      "currentAnswerId": "ai18",
+      "answerlist": [
+        {
+          "id": "ai18",
+          "initScreen": "s39",
+          "currentItemId": "7459906",
+          "items": [
+            {
+              "id": "7459906",
+              "itemAnswers": {
+                "ai18_4": {
+                  "visited": true,
+                  "value": "Иван"
+                },
+                "ai18_5": {
+                  "visited": true,
+                  "value": "Игоревич"
+                },
+                "ai18_6": {
+                  "visited": true,
+                  "value": "false"
+                },
+                "ai18_0": {
+                  "visited": true,
+                  "value": "7459906"
+                },
+                "ai18_1": {
+                  "visited": true,
+                  "value": "2017-01-01T00:00:00Z"
+                },
+                "ai18_2": {
+                  "visited": true,
+                  "value": "M"
+                },
+                "ai18_3": {
+                  "visited": true,
+                  "value": "Каменев"
+                },
+                "pd21": {
+                  "visited": true,
+                  "value": "{\"states\":[{\"groupName\":\"Каменев Иван Игоревич\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"01.01.2017\"}]},{\"groupName\":\"Свидетельство о рождении\",\"fields\":[{\"label\":\"Серия и Номер\",\"value\":\"V-ДД 123456\"},{\"label\":\"Дата выдачи\",\"value\":\"09.01.2017\"},{\"label\":\"Кем выдан\",\"value\":\"Спб\"},{\"label\":\"Актовый номер\",\"value\":\"-\"}]}],\"storedValues\":{\"firstName\":\"Иван\",\"lastName\":\"Каменев\",\"rfBirthCertificateIssuedBy\":\"Спб\",\"rfBirthCertificateIssueDate\":\"09.01.2017\",\"rfBirthCertificateSeries\":\"V-ДД\",\"middleName\":\"Игоревич\",\"rfBirthCertificateNumber\":\"123456\",\"birthDate\":\"01.01.2017\",\"rfBirthCertificateActNumber\":\"-\"}}"
+                },
+                "pd21_1": {
+                  "visited": true,
+                  "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+                },
+                "pd21_4": {
+                  "visited": true,
+                  "value": "Омск"
+                },
+                "clr2": {
+                  "visited": true,
+                  "value": "{\"regDate\":\"01.12.2020\",\"regAddr\":{\"cityType\":null,\"streetShortType\":\"пер\",\"additionalStreetShortType\":null,\"districtType\":\"район\",\"geoLat\":\"45.1131444\",\"building2Type\":null,\"okato\":\"35247000010\",\"building1Type\":null,\"regionType\":\"республика\",\"additionalStreet\":\"\",\"lat\":\"45.1131444\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"переулок\",\"town\":\"Гвардейское\",\"lng\":\"34.0361259\",\"index\":\"297513\",\"townShortType\":\"пгт\",\"district\":\"Симферопольский\",\"fullAddress\":\"297513, Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский, д. 5, кв. 5\",\"houseCheckbox\":false,\"region\":\"Крым\",\"geoLon\":\"34.0361259\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"5\",\"apartmentCheckbox\":false,\"townType\":\"поселок городского типа\",\"additionalAreaType\":null,\"regionShortType\":\"Респ\",\"regionCode\":\"91\",\"districtShortType\":\"р-н\",\"street\":\"Симферопольский\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"91012000001005900\",\"building1ShortType\":null,\"fiasCode\":\"b7fc854d-5979-41c3-81af-5eb963742a7a\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"5\"}}"
+                },
+                "pd13": {
+                  "visited": true,
+                  "value": "{\"regionType\":\"область\",\"regionShortType\":\"обл\",\"region\":\"Свердловская\",\"city\":\"\",\"districtType\":\"район\",\"districtShortType\":\"р-н\",\"district\":\"Талицкий\",\"townType\":\"село\",\"townShortType\":\"с\",\"town\":\"Бутка\",\"inCityDist\":\"\",\"streetType\":\"улица\",\"streetShortType\":\"ул\",\"street\":\"Ленина\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"houseType\":\"дом\",\"houseShortType\":\"д\",\"house\":\"15\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1Type\":\"корпус\",\"building1ShortType\":\"к\",\"building1\":\"2\",\"building2Type\":\"строение\",\"building2ShortType\":\"стр\",\"building2\":\"14\",\"apartmentType\":\"квартира\",\"apartmentShortType\":\"кв\",\"apartment\":\"3\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"623610\",\"geoLat\":\"56.7172303\",\"geoLon\":\"63.7783514\",\"fullAddress\":\"623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3\",\"addressStr\":\"обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина\",\"lat\":\"56.7172303\",\"lng\":\"63.7783514\",\"fiasCode\":\"a532f63d-624a-4fbe-9cef-f9923ce7a19f\",\"okato\":\"65249000016\",\"hasErrors\":0,\"kladrCode\":\"66028000018003400\",\"regionCode\":\"66\"}"
+                },
+                "pd16": {
+                  "visited": true,
+                  "value": ""
+                },
+                "pd14": {
+                  "visited": true,
+                  "value": "2020-12-01T00:00:00.000+06:00"
+                },
+                "pd15": {
+                  "visited": true,
+                  "value": "2020-12-26T00:00:00.000+06:00"
+                },
+                "d34": {
+                  "visited": true,
+                  "value": "{\"mnemonic\":\"d34.PhotoUploadComponent.child_passport_photo.7459906\",\"name\":\"ACDC.jpg\",\"objectType\":2,\"objectId\":763571639,\"mimeType\":\"image/jpeg\"}"
+                },
+                "q26": {
+                  "visited": true,
+                  "value": "Да"
+                },
+                "ai17": {
+                  "visited": true,
+                  "value": "[{\"rf51\":\"Каменев\",\"rf52\":\"Иван\",\"rf53\":\"Игоревич\",\"rf54\":\"С\",\"rf55\":\"2020-12-02T00:00:00.000+06:00\"},{\"rf51\":\"Каменев\",\"rf52\":\"Иван\",\"rf53\":\"Игоревич\",\"rf54\":\"С1\",\"rf55\":\"2020-12-16T00:00:00.000+06:00\"}]"
+                }
+              },
+              "cachedAnswers": {
+                "ai18_4": {
+                  "visited": true,
+                  "value": "Иван"
+                },
+                "ai18_5": {
+                  "visited": true,
+                  "value": "Игоревич"
+                },
+                "ai18_6": {
+                  "visited": true,
+                  "value": "false"
+                },
+                "ai18_0": {
+                  "visited": true,
+                  "value": "7459906"
+                },
+                "ai18_1": {
+                  "visited": true,
+                  "value": "2017-01-01T00:00:00Z"
+                },
+                "ai18_2": {
+                  "visited": true,
+                  "value": "M"
+                },
+                "ai18_3": {
+                  "visited": true,
+                  "value": "Каменев"
+                },
+                "pd21": {
+                  "visited": true,
+                  "value": "{\"states\":[{\"groupName\":\"Каменев Иван Игоревич\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"01.01.2017\"}]},{\"groupName\":\"Свидетельство о рождении\",\"fields\":[{\"label\":\"Серия и Номер\",\"value\":\"V-ДД 123456\"},{\"label\":\"Дата выдачи\",\"value\":\"09.01.2017\"},{\"label\":\"Кем выдан\",\"value\":\"Спб\"},{\"label\":\"Актовый номер\",\"value\":\"-\"}]}],\"storedValues\":{\"firstName\":\"Иван\",\"lastName\":\"Каменев\",\"rfBirthCertificateIssuedBy\":\"Спб\",\"rfBirthCertificateIssueDate\":\"09.01.2017\",\"rfBirthCertificateSeries\":\"V-ДД\",\"middleName\":\"Игоревич\",\"rfBirthCertificateNumber\":\"123456\",\"birthDate\":\"01.01.2017\",\"rfBirthCertificateActNumber\":\"-\"}}"
+                },
+                "pd21_1": {
+                  "visited": true,
+                  "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+                },
+                "pd21_4": {
+                  "visited": true,
+                  "value": "Омск"
+                },
+                "clr2": {
+                  "visited": true,
+                  "value": "{\"regDate\":\"01.12.2020\",\"regAddr\":{\"cityType\":null,\"streetShortType\":\"пер\",\"additionalStreetShortType\":null,\"districtType\":\"район\",\"geoLat\":\"45.1131444\",\"building2Type\":null,\"okato\":\"35247000010\",\"building1Type\":null,\"regionType\":\"республика\",\"additionalStreet\":\"\",\"lat\":\"45.1131444\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"переулок\",\"town\":\"Гвардейское\",\"lng\":\"34.0361259\",\"index\":\"297513\",\"townShortType\":\"пгт\",\"district\":\"Симферопольский\",\"fullAddress\":\"297513, Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский, д. 5, кв. 5\",\"houseCheckbox\":false,\"region\":\"Крым\",\"geoLon\":\"34.0361259\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"5\",\"apartmentCheckbox\":false,\"townType\":\"поселок городского типа\",\"additionalAreaType\":null,\"regionShortType\":\"Респ\",\"regionCode\":\"91\",\"districtShortType\":\"р-н\",\"street\":\"Симферопольский\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"91012000001005900\",\"building1ShortType\":null,\"fiasCode\":\"b7fc854d-5979-41c3-81af-5eb963742a7a\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"5\"}}"
+                },
+                "pd13": {
+                  "visited": true,
+                  "value": "{\"regionType\":\"область\",\"regionShortType\":\"обл\",\"region\":\"Свердловская\",\"city\":\"\",\"districtType\":\"район\",\"districtShortType\":\"р-н\",\"district\":\"Талицкий\",\"townType\":\"село\",\"townShortType\":\"с\",\"town\":\"Бутка\",\"inCityDist\":\"\",\"streetType\":\"улица\",\"streetShortType\":\"ул\",\"street\":\"Ленина\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"houseType\":\"дом\",\"houseShortType\":\"д\",\"house\":\"15\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1Type\":\"корпус\",\"building1ShortType\":\"к\",\"building1\":\"2\",\"building2Type\":\"строение\",\"building2ShortType\":\"стр\",\"building2\":\"14\",\"apartmentType\":\"квартира\",\"apartmentShortType\":\"кв\",\"apartment\":\"3\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"623610\",\"geoLat\":\"56.7172303\",\"geoLon\":\"63.7783514\",\"fullAddress\":\"623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3\",\"addressStr\":\"обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина\",\"lat\":\"56.7172303\",\"lng\":\"63.7783514\",\"fiasCode\":\"a532f63d-624a-4fbe-9cef-f9923ce7a19f\",\"okato\":\"65249000016\",\"hasErrors\":0,\"kladrCode\":\"66028000018003400\",\"regionCode\":\"66\"}"
+                },
+                "pd16": {
+                  "visited": true,
+                  "value": ""
+                },
+                "pd14": {
+                  "visited": true,
+                  "value": "2020-12-01T00:00:00.000+06:00"
+                },
+                "pd15": {
+                  "visited": true,
+                  "value": "2020-12-26T00:00:00.000+06:00"
+                },
+                "d34": {
+                  "visited": true,
+                  "value": "{\"mnemonic\":\"d34.PhotoUploadComponent.child_passport_photo.7459906\",\"name\":\"ACDC.jpg\",\"objectType\":2,\"objectId\":763571639,\"mimeType\":\"image/jpeg\"}"
+                },
+                "q26": {
+                  "visited": true,
+                  "value": "Да"
+                },
+                "ai17": {
+                  "visited": true,
+                  "value": "[{\"rf51\":\"Каменев\",\"rf52\":\"Иван\",\"rf53\":\"Игоревич\",\"rf54\":\"С\",\"rf55\":\"2020-12-02T00:00:00.000+06:00\"},{\"rf51\":\"Каменев\",\"rf52\":\"Иван\",\"rf53\":\"Игоревич\",\"rf54\":\"С1\",\"rf55\":\"2020-12-16T00:00:00.000+06:00\"}]"
+                },
+                "q27": {
+                  "visited": true,
+                  "value": "Нет"
+                },
+                "q28_2": {
+                  "visited": true,
+                  "value": "Получение впервые"
+                },
+                "bd20_0": {
+                  "visited": true,
+                  "value": ""
+                },
+                "bd20": {
+                  "visited": true,
+                  "value": "{\"series\":\"11\",\"number\":\"11\",\"date\":\"2020-12-01T00:00:00.000+06:00\",\"emitter\":\"вуу\"}"
+                },
+                "q22": {
+                  "visited": true,
+                  "value": "Нет"
+                }
+              },
+              "esiaData": {
+                "lastName": "Каменев",
+                "rfBirthCertificateIssueDate": "2017-01-09T00:00:00Z",
+                "gender": "M",
+                "regDate": "",
+                "isNew": false,
+                "relationshipToChild": "",
+                "birthDate": "2017-01-01T00:00:00Z",
+                "regAddr": "",
+                "firstName": "Иван",
+                "rfBirthCertificateIssuedBy": "Спб",
+                "rfBirthCertificateSeries": "V-ДД",
+                "middleName": "Игоревич",
+                "id": "7459906",
+                "rfBirthCertificateNumber": "123456",
+                "rfBirthCertificateActNumber": "-",
+                "birthPlaceLocality": "Омск"
+              },
+              "finishedScreens": [
+                "scrchld16",
+                "scrchld16_1",
+                "scrchld4",
+                "scrchld8",
+                "scrchld9",
+                "scrchld11",
+                "scrchld12"
+              ]
+            },
+            {
+              "id": "d8ff18d7-5c24-422c-88e8-0092d4094e3f",
+              "itemAnswers": {
+                "ai18_4": {
+                  "visited": true,
+                  "value": "Дамир"
+                },
+                "ai18_5": {
+                  "visited": true,
+                  "value": "Маратович"
+                },
+                "ai18_6": {
+                  "visited": true,
+                  "value": "true"
+                },
+                "ai18_0": {
+                  "visited": true,
+                  "value": "d8ff18d7-5c24-422c-88e8-0092d4094e3f"
+                },
+                "ai18_1": {
+                  "visited": true,
+                  "value": "2020-12-01T00:00:00.000+06:00"
+                },
+                "ai18_2": {
+                  "visited": true,
+                  "value": "M"
+                },
+                "ai18_3": {
+                  "visited": true,
+                  "value": "Хабибулин"
+                }
+              },
+              "cachedAnswers": {
+                "ai18_4": {
+                  "visited": true,
+                  "value": "Дамир"
+                },
+                "ai18_5": {
+                  "visited": true,
+                  "value": "Маратович"
+                },
+                "ai18_6": {
+                  "visited": true,
+                  "value": "true"
+                },
+                "ai18_0": {
+                  "visited": true,
+                  "value": "d8ff18d7-5c24-422c-88e8-0092d4094e3f"
+                },
+                "ai18_1": {
+                  "visited": true,
+                  "value": "2020-12-01T00:00:00.000+06:00"
+                },
+                "ai18_2": {
+                  "visited": true,
+                  "value": "M"
+                },
+                "ai18_3": {
+                  "visited": true,
+                  "value": "Хабибулин"
+                },
+                "q13": {
+                  "visited": true,
+                  "value": "Свидетельство о рождении, выданное на территории РФ"
+                },
+                "bd1": {
+                  "visited": true,
+                  "value": "{\"series\":\"XX-вв\",\"number\":\"112222\",\"date\":\"2020-12-01T00:00:00.000+06:00\",\"emitter\":\"у\"}"
+                },
+                "bd1_1": {
+                  "visited": true,
+                  "value": "1"
+                },
+                "bd5": {
+                  "visited": true,
+                  "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+                },
+                "bd7": {
+                  "visited": true,
+                  "value": "Увау"
+                },
+                "clr2": {
+                  "visited": true,
+                  "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"пер\",\"additionalStreetShortType\":null,\"districtType\":\"район\",\"geoLat\":\"45.1131444\",\"building2Type\":null,\"okato\":\"35247000010\",\"building1Type\":null,\"regionType\":\"республика\",\"additionalStreet\":\"\",\"lat\":\"45.1131444\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"переулок\",\"town\":\"Гвардейское\",\"lng\":\"34.0361259\",\"index\":\"297513\",\"townShortType\":\"пгт\",\"district\":\"Симферопольский\",\"fullAddress\":\"297513, Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский, д. 5, кв. 5\",\"houseCheckbox\":false,\"region\":\"Крым\",\"geoLon\":\"34.0361259\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"5\",\"apartmentCheckbox\":false,\"townType\":\"поселок городского типа\",\"additionalAreaType\":null,\"regionShortType\":\"Респ\",\"regionCode\":\"91\",\"districtShortType\":\"р-н\",\"street\":\"Симферопольский\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"91012000001005900\",\"building1ShortType\":null,\"fiasCode\":\"b7fc854d-5979-41c3-81af-5eb963742a7a\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"Респ. Крым, р-н. Симферопольский, пгт. Гвардейское, пер. Симферопольский\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"5\"},\"regDate\":\"09.12.2020\"}"
+                },
+                "pd13": {
+                  "visited": true,
+                  "value": "{\"regionType\":\"область\",\"regionShortType\":\"обл\",\"region\":\"Свердловская\",\"city\":\"\",\"districtType\":\"район\",\"districtShortType\":\"р-н\",\"district\":\"Талицкий\",\"townType\":\"село\",\"townShortType\":\"с\",\"town\":\"Бутка\",\"inCityDist\":\"\",\"streetType\":\"улица\",\"streetShortType\":\"ул\",\"street\":\"Ленина\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"houseType\":\"дом\",\"houseShortType\":\"д\",\"house\":\"15\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1Type\":\"корпус\",\"building1ShortType\":\"к\",\"building1\":\"2\",\"building2Type\":\"строение\",\"building2ShortType\":\"стр\",\"building2\":\"14\",\"apartmentType\":\"квартира\",\"apartmentShortType\":\"кв\",\"apartment\":\"3\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"623610\",\"geoLat\":\"56.7172303\",\"geoLon\":\"63.7783514\",\"fullAddress\":\"623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3\",\"addressStr\":\"обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина\",\"lat\":\"56.7172303\",\"lng\":\"63.7783514\",\"fiasCode\":\"a532f63d-624a-4fbe-9cef-f9923ce7a19f\",\"okato\":\"65249000016\",\"hasErrors\":0,\"kladrCode\":\"66028000018003400\",\"regionCode\":\"66\"}"
+                },
+                "pd16": {
+                  "visited": true,
+                  "value": ""
+                },
+                "pd14": {
+                  "visited": true,
+                  "value": "2020-12-01T00:00:00.000+06:00"
+                },
+                "pd15": {
+                  "visited": true,
+                  "value": "2021-01-02T00:00:00.000+06:00"
+                },
+                "d34": {
+                  "visited": true,
+                  "value": "{\"mnemonic\":\"d34.PhotoUploadComponent.child_passport_photo.d8ff18d7-5c24-422c-88e8-0092d4094e3f\",\"name\":\"ACDC.jpg\",\"objectType\":2,\"objectId\":763571639,\"mimeType\":\"image/jpeg\"}"
+                },
+                "q26": {
+                  "visited": true,
+                  "value": "Да"
+                },
+                "ai17": {
+                  "visited": true,
+                  "value": "[{\"rf51\":\"Хабибулин\",\"rf52\":\"Дамир\",\"rf53\":\"Маратович\",\"rf54\":\"Вс\",\"rf55\":\"2020-12-08T00:00:00.000+06:00\"}]"
+                }
+              },
+              "esiaData": {
+                "firstName": "Дамир",
+                "lastName": "Хабибулин",
+                "middleName": "Маратович",
+                "id": "d8ff18d7-5c24-422c-88e8-0092d4094e3f",
+                "birthPlaceLocality": "Увау"
+              },
+              "finishedScreens": []
+            }
+          ]
+        }
+      ]
+    },
+    "participants": {
+      "-10001": {
+        "role": "Coapplicant",
+        "mode": "SlaveApplicant",
+        "component": "ai18",
+        "index": 1
+      },
+      "-10000": {
+        "role": "Coapplicant",
+        "mode": "SlaveApplicant",
+        "component": "ai18",
+        "index": 0
+      }
+    },
+    "display": {
+      "id": "scrchld13",
+      "name": "У ребенка есть действующий загранпаспорт?",
+      "type": "QUESTION",
+      "header": "У ребенка есть действующий загранпаспорт?",
+      "components": [
+        {
+          "id": "q27",
+          "type": "QuestionScr",
+          "label": "<p>Даже если паспорт был утерян, до окончания срока его действия или замены он считается действующим</p><p>Если вы не сообщите о наличии действующего паспорта, новый паспорт не выдадут</p>",
+          "attrs": {
+            "fields": [
+              {
+                "fieldName": "ChildHasPass"
+              }
+            ],
+            "actions": [
+              {
+                "label": "Да",
+                "value": "Да",
+                "type": "nextStep",
+                "action": "getNextScreen"
+              },
+              {
+                "label": "Нет",
+                "value": "Нет",
+                "type": "nextStep",
+                "action": "getNextScreen"
+              }
+            ],
+            "refs": {}
+          },
+          "linkedValues": [],
+          "arguments": {},
+          "value": "",
+          "required": true
+        }
+      ],
+      "firstScreen": false,
+      "terminal": false,
+      "impasse": false,
+      "accepted": true
+    },
+    "attachmentInfo": {
+      "d34": [
+        {
+          "uploadId": "child_passport_photo",
+          "uploadMnemonic": "d34.PhotoUploadComponent.child_passport_photo.d8ff18d7-5c24-422c-88e8-0092d4094e3f",
+          "uploadFilename": "ACDC.jpg",
+          "objectId": "763571639",
+          "objectTypeId": "2"
+        },
+        {
+          "uploadId": "child_passport_photo",
+          "uploadMnemonic": "d34.PhotoUploadComponent.child_passport_photo.7459906",
+          "uploadFilename": "ACDC.jpg",
+          "objectId": "763571639",
+          "objectTypeId": "2"
+        }
+      ]
+    },
+    "additionalParameters": {},
+    "generatedFiles": [],
+    "gender": "M"
+  }
+}

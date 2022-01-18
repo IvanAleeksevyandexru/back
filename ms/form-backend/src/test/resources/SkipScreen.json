@@ -1,0 +1,39 @@
+{"service": "Skip Screen Test",
+  "init": "s1",
+  "draftTtl": 90,
+  "saveDraftModeEnabled": true,
+  "screens": [
+    {"id": "s1", "isFirstScreen": true, "name": "Приветствие", "type": "INFO", "header": "", "components": ["w1"]},
+    {"id": "BeforeSkipScreenId", "name": "Условный вопрос", "type": "QUESTION", "header": "", "components": ["q1"]},
+    {"id": "SkipScreenId", "name": "Экран для пропуска", "type": "CUSTOM", "header": "", "skipConditions": [{"field":"q1.value", "fieldType": "String", "predicate": "equals", "args": [{"type": "UserConst", "value": "2"}]}], "components": ["SkipComponentId1","SkipComponentId2"]},
+    {"id": "AfterSkipScreenId", "name": "Экран после пропуска", "type": "COMPONENT", "header": "", "components": ["w2"]},
+    {"id": "finishscreen", "name": "Финальная страница ", "type": "INFO", "header": "", "components": ["finishcomponent"], "isTerminal": true}
+  ],
+  "applicationFields": [
+    {"id": "w1", "type": "InfoScr", "label": ""},
+    {"id": "q1", "type": "QuestionScr", "label": "Вопрос", "attrs": {"actions": [{"label": "Вариант 1", "value": "1", "type": "nextStep", "action": "getNextScreen"}, {"label": "Вариант 2", "value": "2", "type": "nextStep", "action": "getNextScreen"}]}, "value": "", "visited": false},
+    {"id": "SkipComponentId1", "type": "StringInput", "required": true, "label": "", "attrs": {}, "value": "Дефолтное значение", "visited": false},
+    {"id": "SkipComponentId2", "type": "StringInput", "required": true, "label": "", "attrs": {}, "value": "", "visited": false},
+    {"id": "w2", "type": "InfoScr", "label": ""},
+    {"id": "finishcomponent", "type": "GInfoScr","label": "","attrs": {}, "value": "", "visited": false}
+  ],
+  "screenRules":{
+    "s1":[
+      {"conditions":[
+        {"field":"w1","visited":true,"value":null}
+      ],"nextDisplay":"BeforeSkipScreenId"}],
+    "BeforeSkipScreenId" : [
+      {"conditions":[
+        {"field":"q1","visited":true,"value":null}
+      ],"nextDisplay":"SkipScreenId"}],
+    "SkipScreenId" : [
+      {"conditions":[
+        {"field":"SkipComponentId1","visited":true,"value":null}
+      ],"nextDisplay":"AfterSkipScreenId"}],
+    "AfterSkipScreenId" : [
+      {"conditions":[
+        {"field":"w2","visited":true,"value":null}
+      ],"nextDisplay":"finishscreen"}
+    ]
+  }
+}

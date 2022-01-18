@@ -1,0 +1,143 @@
+{
+  "name": "warning",
+  "modals": {
+    "DEFAULT_WARNING": {
+      "content": {
+        "header": "Что-то пошло не так",
+        "helperText": "Запрашиваемое действие недоступно",
+        "statusIcon": "warning"
+      },
+      "showCloseButton": false,
+      "showCrossButton": true,
+      "closeHandlerCase": "prevStep",
+      "buttons": [
+        {"label": "Вернуться", "closeModal": true}
+      ]
+    },
+    "COUNT": {
+      "content": {
+        "header": "Невозможно создать заявление",
+        "helperText": "Вы не можете создать новое заявление. Дождитесь рассмотрения или отмените ранее поданное заявление. Статусы заявлений можно посмотреть в <a target='_lk' href='https://lk.gosuslugi.ru/orders/'>личном кабинете</a>",
+        "statusIcon": "warning"
+      },
+      "closeHandlerCase": "prevStep",
+      "actionButtons": [
+        {"label": "На главную", "value": "На главную", "type": "home", "action": "getNextScreen"}
+      ]
+    },
+    "NO_RIGHTS_FOR_SENDING_APPLICATION": {
+      "content": {
+        "header": "Нет прав на отправку заявления",
+        "helperText": "Отправить заявление могут руководитель организации или сотрудник с электронной доверенностью, подписанной руководителем.<br/> До отправки заявление сохранено в черновиках — вы и другие сотрудники можете его отредактировать.<br/><a target=\"_blank\" href=\"https://www.gosuslugi.ru/help/faq/delegirovanie_polnomochij\">Как получить электронную доверенность</a>",
+        "statusIcon": "warning"
+      },
+      "showCloseButton": false,
+      "showCrossButton": true,
+      "closeHandlerCase": "redirectToLK",
+      "buttons": [
+        {"label": "В личный кабинет", "closeModal": true, "color": "white", "value": "redirectToLk"},
+        {"label": "Закрыть", "closeModal": true}
+      ]
+    },
+    "DRAFT_NOT_FOUND": {
+      "content": {
+        "statusIcon": "warning",
+        "header": "Черновик заявления не найден",
+        "helperText": "Проверьте в личном кабинете или создайте заявление заново."
+      },
+      "showCloseButton": false,
+      "showCrossButton": true,
+      "closeHandlerCase": "redirectToLK",
+      "buttons": [
+        {"label": "В личный кабинет", "closeModal": true, "value": "redirectToLk"}
+      ]
+    },
+    "GEPS": {
+      "content": {
+        "header": "Вы уже проверили данные и отправили заявление",
+        "helperText": "Дождитесь его обработки. Вы получите уведомление в личный кабинет",
+        "statusIcon": "warning"
+      },
+      "showCloseButton": false,
+      "showCrossButton": false,
+      "closeHandlerCase": "prevStep",
+      "buttons": [
+        {"label": "В личный кабинет", "value": "В личный кабинет", "closeModal": false, "action": {"type": "redirectToLK", "action": "getNextScreen"}}
+      ]
+    },
+    "LOADING_ERROR": {
+      "content": {
+        "header": "Ошибка загрузки",
+        "helperText": "Произошла неизвестная ошибка, попробуйте ещё раз. Если ошибка повторится, обратитесь в службу поддержки",
+        "statusIcon": "warning"
+      },
+      "showCloseButton": false,
+      "showCrossButton": true,
+      "closeHandlerCase": "prevStep",
+      "buttons": [
+        {"label": "Попробовать еще раз", "closeModal": true, "action": {"type": "reload"}}
+      ]
+    },
+    "TOO_MANY_REQUESTS_PHONE": {
+      "content": {
+        "header": "Код подтверждения не введен",
+        "helperText": "Ваш номер телефона заблокируется на 60 дней, если количество попыток запроса СМС-кода превысит 6 раз. Получить код повторно можно через 15 минут",
+        "statusIcon": "warning"
+      },
+      "showCloseButton": false,
+      "showCrossButton": true,
+      "buttons": [
+        {"label": "Закрыть", "closeModal": true}
+      ]
+    },
+    "TOO_MANY_REQUESTS_EMAIL": {
+      "content": {
+        "header": "Код подтверждения не введен",
+        "helperText": "Возможность подать заявление будет заблокирована на 60 дней, если количество запросов кода превысит 6 раз. Получить код повторно можно через 15 минут",
+        "statusIcon": "warning"
+      },
+      "showCloseButton": false,
+      "showCrossButton": true,
+      "buttons": [
+        {"label": "Закрыть", "closeModal": true}
+      ]
+    },
+    "REQUESTED_ORDER_DOES_NOT_EXIST": {
+      "content": {
+        "statusIcon": "warning",
+        "header": "Запрашиваемого черновика не существует",
+        "helperText": "Попробуйте снова или зайдите позже. Если ничего не изменится — напишите в <a target=\"_blank\" href=\"https://www.gosuslugi.ru/feedback\">службу поддержки</a> и передайте код ошибки:"
+      },
+      "showCloseButton": false,
+      "showCrossButton": true,
+      "closeHandlerCase": "reload",
+      "buttons": [
+        {"label": "Попробовать снова", "closeModal": true, "value": "reload"}
+      ]
+    },
+    "SNILS": {
+      "content": {
+        "header": "Нашлось несколько учётных записей",
+        "helperText": "Проверьте СНИЛС или напишите в службу поддержки",
+        "statusIcon": "warning"
+      },
+      "closeHandlerCase": "prevStep",
+      "buttons": [
+        {"label": "Написать в поддержку", "color": "white", "action": {"type": "redirect", "value": "https://www.gosuslugi.ru/feedback"}},
+        {"label": "Ввести заново", "closeModal": true}
+      ]
+    },
+    "PASSPORT": {
+      "content": {
+        "header": "Нашлось несколько учётных записей",
+        "helperText": "Проверьте паспортные данные или напишите в службу поддержки",
+        "statusIcon": "warning"
+      },
+      "closeHandlerCase": "prevStep",
+      "buttons": [
+        {"label": "Написать в поддержку", "color": "white", "action": {"type": "redirect", "value": "https://www.gosuslugi.ru/feedback"}},
+        {"label": "Ввести заново", "closeModal": true}
+      ]
+    }
+  }
+}

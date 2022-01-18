@@ -1,0 +1,11 @@
+{
+  "orderId": 1,
+  "type": "new_service",
+  "locked": false,
+  "updated": "2019-03-11T21:34:22.151+0300",
+  "body": {
+    "orderId": 1,
+    "userId": 1000001,
+    "accept": false
+  }
+}

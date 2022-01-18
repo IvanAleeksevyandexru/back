@@ -1,0 +1,87 @@
+{
+  "error": {
+    "code": 0,
+    "message": "operation completed"
+  },
+  "dadataQc": "0",
+  "dadataQcComplete": "0",
+  "dadataQcHouse": "2",
+  "unparsedParts": null,
+  "fiasLevel": "8",
+  "postalCode": "142116",
+  "postalBox": null,
+  "address": {
+    "fiasCode": "b924607a-e2ea-438a-bdbf-a20579df8de3",
+    "numericFiasCode": null,
+    "fullAddress": "Московская обл, г Подольск, пр-кт Революционный, д 2/14, кв 5",
+    "postIndex": "142116",
+    "elements": [
+      {
+        "level": 1,
+        "levelType": null,
+        "fiasCode": "29251dcf-00a1-4e34-98d4-5c47484a36d4",
+        "elmCode": null,
+        "kladrCode": "5000000000000",
+        "oktmoCode": null,
+        "data": "Московская",
+        "type": "область",
+        "shortType": "обл",
+        "numericFiasCode": "50-0-000-024-000-000-0382-0000-000"
+      },
+      {
+        "level": 4,
+        "levelType": null,
+        "fiasCode": "b22cf685-e391-42c8-aab5-a9aadb9193d4",
+        "elmCode": null,
+        "kladrCode": "5000002400000",
+        "oktmoCode": null,
+        "data": "Подольск",
+        "type": "город",
+        "shortType": "г",
+        "numericFiasCode": "50-0-000-024-000-000-0382-0000-000"
+      },
+      {
+        "level": 7,
+        "levelType": null,
+        "fiasCode": "6eaafb0a-0274-4c63-9620-f40104e0cb1a",
+        "elmCode": null,
+        "kladrCode": "50000024000038200",
+        "oktmoCode": null,
+        "data": "Революционный",
+        "type": "проспект",
+        "shortType": "пр-кт",
+        "numericFiasCode": "50-0-000-024-000-000-0382-0000-000"
+      },
+      {
+        "level": 11,
+        "levelType": null,
+        "fiasCode": "b924607a-e2ea-438a-bdbf-a20579df8de3",
+        "elmCode": null,
+        "kladrCode": "5000002400003820014",
+        "oktmoCode": null,
+        "data": "2/14",
+        "type": "дом",
+        "shortType": "д",
+        "numericFiasCode": "50-0-000-024-000-000-0382-0000-000"
+      },
+      {
+        "level": 14,
+        "levelType": null,
+        "fiasCode": "b924607a-e2ea-438a-bdbf-a20579df8de3",
+        "elmCode": null,
+        "kladrCode": "5000002400003820014",
+        "oktmoCode": null,
+        "data": "5",
+        "type": "квартира",
+        "shortType": "кв",
+        "numericFiasCode": "50-0-000-024-000-000-0382-0000-000"
+      }
+    ]
+  },
+  "regionKladrId": null,
+  "okato": "46460000000",
+  "tax_office": "5074",
+  "oktmo": "46760000001",
+  "geo_lat": "55.4323067",
+  "geo_lon": "37.5619233"
+}

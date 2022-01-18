@@ -1,0 +1,131 @@
+{
+  "id": "fu1",
+  "type": "FileUploadComponent",
+  "uploads": [
+    {
+      "uploadId": "passport",
+      "value": [
+        {
+          "fileName": "58586218e8c9a439c54c3c977fffc418.png",
+          "fileSize": 497288,
+          "mnemonic": "fu1.FileUploadComponent.passport.2",
+          "objectId": 763665281,
+          "objectTypeId": 2,
+          "uploaded": true,
+          "hasError": false,
+          "mimeType": "image/png",
+          "fileUid": 1882216029,
+          "metaId": 1873987740,
+          "fileExt": "png",
+          "hasSign": false,
+          "created": "2021-02-11",
+          "updated": "2021-02-11",
+          "realPath": "7/0/0/18/82/21/60/k3AGdASI6s79",
+          "deleted": false,
+          "bucket": "epgu202102",
+          "nodeId": "f_dc",
+          "userId": 1000299353,
+          "alternativeMimeTypes": []
+        },
+        {
+          "fileName": "77fb8dccdc.jpg",
+          "fileSize": 72373,
+          "mnemonic": "fu1.FileUploadComponent.passport.1",
+          "objectId": 763665281,
+          "objectTypeId": 2,
+          "uploaded": true,
+          "hasError": false,
+          "mimeType": "image/jpeg",
+          "fileUid": 1882215971,
+          "metaId": 1873987681,
+          "fileExt": "jpg",
+          "hasSign": false,
+          "created": "2021-02-11",
+          "updated": "2021-02-11",
+          "realPath": "59/0/0/18/82/21/59/ywlfExM18UAV",
+          "deleted": false,
+          "bucket": "epgu202102",
+          "nodeId": "f_dc",
+          "userId": 1000299353,
+          "alternativeMimeTypes": []
+        }
+      ]
+    },
+    {
+      "uploadId": "snils",
+      "value": [
+        {
+          "fileName": "58586218e8c9a439c54c3c977fffc418.png",
+          "fileSize": 497288,
+          "mnemonic": "fu1.FileUploadComponent.snils.2",
+          "objectId": 763665281,
+          "objectTypeId": 2,
+          "uploaded": true,
+          "hasError": false,
+          "mimeType": "image/png",
+          "fileUid": 1882216029,
+          "metaId": 1873987740,
+          "fileExt": "png",
+          "hasSign": false,
+          "created": "2021-02-11",
+          "updated": "2021-02-11",
+          "realPath": "7/0/0/18/82/21/60/k3AGdASI6s79",
+          "deleted": false,
+          "bucket": "epgu202102",
+          "nodeId": "f_dc",
+          "userId": 1000299353,
+          "alternativeMimeTypes": []
+        },
+        {
+          "fileName": "77fb8dccdc.jpg",
+          "fileSize": 72373,
+          "mnemonic": "fu1.FileUploadComponent.snils.1",
+          "objectId": 763665281,
+          "objectTypeId": 2,
+          "uploaded": true,
+          "hasError": false,
+          "mimeType": "image/jpeg",
+          "fileUid": 1882215971,
+          "metaId": 1873987681,
+          "fileExt": "jpg",
+          "hasSign": false,
+          "created": "2021-02-11",
+          "updated": "2021-02-11",
+          "realPath": "59/0/0/18/82/21/59/ywlfExM18UAV",
+          "deleted": false,
+          "bucket": "epgu202102",
+          "nodeId": "f_dc",
+          "userId": 1000299353,
+          "alternativeMimeTypes": []
+        }
+      ]
+    },
+    {
+      "uploadId": "signature",
+      "value": [
+        {
+          "fileName": "58586218e8c9a439c54c3c977fffc418.sig",
+          "fileSize": 497288,
+          "mnemonic": "fu1.FileUploadComponent.signature.2",
+          "objectId": 763665281,
+          "objectTypeId": 2,
+          "uploaded": true,
+          "hasError": false,
+          "mimeType": "application/signature",
+          "fileUid": 1882216029,
+          "metaId": 1873987740,
+          "fileExt": "sig",
+          "hasSign": false,
+          "created": "2021-02-11",
+          "updated": "2021-02-11",
+          "realPath": "7/0/0/18/82/21/60/k3AGdASI6s79",
+          "deleted": false,
+          "bucket": "epgu202102",
+          "nodeId": "f_dc",
+          "userId": 1000299353,
+          "alternativeMimeTypes": []
+        }
+      ]
+    }
+  ]
+}

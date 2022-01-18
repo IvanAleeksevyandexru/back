@@ -1,0 +1,99 @@
+{
+  "orderId": 1091204183,
+  "type": "10000000103",
+  "locked": false,
+  "updated": "2021-03-01T09:16:57.859Z",
+  "body": {
+    "serviceCode": "10000000103",
+    "targetCode": "-10000000103",
+    "orderId": 1091204183,
+    "currentScenarioId": 1,
+    "currentUrl": "https://pgu-uat-fed.test.gosuslugi.ru/600103/1/form",
+    "finishedAndCurrentScreens": [
+      "s1",
+      "s2",
+      "s3",
+      "s19",
+      "s88",
+      "s89",
+      "s90",
+      "s91",
+      "s92",
+      "sd2",
+      "sd3",
+      "s97"
+    ],
+    "cachedAnswers": {},
+    "currentValue": {},
+    "errors": {},
+    "applicantAnswers": {
+      "q1": {
+        "visited": true,
+        "value": "Электронная справка"
+      },
+      "q2": {
+        "visited": true,
+        "value": "{\"a1\":\"somestring\",\"b2\":{\"c2\":\"115533, г. Москва, пр-кт. Андропова, д. 1, кв. 2\"}}"
+      }
+    },
+    "cycledApplicantAnswers": {
+      "answerlist": []
+    },
+    "participants": {},
+    "display": {
+      "id": "s97",
+      "name": "Загрузка документов",
+      "type": "UNIQUE",
+      "header": "Загрузите документы",
+      "components": [
+        {
+          "id": "fu1",
+          "type": "FileUploadComponent",
+          "label": "Загрузите документы",
+          "attrs": {
+            "maxSize": 5242880,
+            "maxFileCount": 10,
+            "uploads": [
+              {
+                "uploadId": "passport",
+                "type": "single",
+                "title": "Паспорт (развороты страниц)",
+                "label": "<p>Фото или сканы должны быть без обрезанных краев и хорошо видны</br></p><ul><li>Личные данные, стр. 2-3</li><li>Регистрация, стр. 5, даже если не заполнена (стр. 6-12, если заполнены)</li><li>Семейное положение, стр. 14-15, даже если не заполнены</li></ul><p><center><a id=\"thelaw\"></a></center></p></p>",
+                "fileType": [
+                  "JPEG",
+                  "PDF",
+                  "JPG",
+                  "PNG",
+                  "TIFF",
+                  "TIF",
+                  "BMP",
+                  "ZIP",
+                  "RAR"
+                ],
+                "maxSize": 5242880,
+                "maxFileCount": 10
+              }
+            ],
+            "refs": {}
+          },
+          "linkedValues": [],
+          "arguments": {},
+          "value": "",
+          "required": true
+        }
+      ],
+      "infoComponents": [],
+      "terminal": false,
+      "impasse": false,
+      "accepted": true,
+      "firstScreen": false
+    },
+    "serviceInfo": {
+      "statusId": 0
+    },
+    "attachmentInfo": {},
+    "additionalParameters": {},
+    "generatedFiles": [],
+    "gender": "F"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "pd2",
+  "name": "Контактный телефон",
+  "type": "ConfirmPersonalUserPhone",
+  "label": "Контактный телефон",
+  "attrs": {
+    "refs": {}
+  },
+  "arguments": {},
+  "value": "+7(913)6860728",
+  "required": true
+}

@@ -1,0 +1,20 @@
+{
+  "id": "pd1",
+  "type": "ConfirmLegalNewEmail",
+  "label": "Электронная почта",
+  "attrs": {
+    "actions": [
+      {
+        "label": "Редактировать",
+        "value": "",
+        "type": "nextStepModal",
+        "action": "service/actions/editUserEmail"
+      }
+    ]
+  },
+  "arguments": {
+    "email": "test@test.com"
+  },
+  "value": "",
+  "visited": false
+}

@@ -1,0 +1,290 @@
+{
+  "error": {
+    "code": 0,
+    "message": "operation completed"
+  },
+  "fieldErrors": [],
+  "total": 2,
+  "items": [
+    {
+      "value": "3",
+      "parentValue": null,
+      "title": "Оборудование (средства измерений) для контроля или мониторинга условий хранения лекарственных средств",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 3,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 3
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "CATEGORY_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "Оборудование (средства измерений) для контроля или мониторинга условий хранения лекарственных средств",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "Оборудование (средства измерений) для контроля или мониторинга условий хранения лекарственных средств"
+          },
+          "valueAsOfType": "Оборудование (средства измерений) для контроля или мониторинга условий хранения лекарственных средств"
+        },
+        {
+          "name": "MIN_AMOUNT_EQUIPMENT",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": 1,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": 1
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "ACTIVITY_KIND_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 1,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 1
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_TYPE_CODE",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 4,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 4
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_EQUIPMENT_CATEGORY_RZ_3_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_EQUIPMENT_CATEGORY_RZ_3_1047796244396"
+          },
+          "valueAsOfType": "CONC_EQUIPMENT_CATEGORY_RZ_3_1047796244396"
+        },
+        {
+          "name": "SERVICE_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14682,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14682
+          },
+          "valueAsOfType": null
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "MIN_AMOUNT_EQUIPMENT": null,
+        "ACTIVITY_KIND_ID": null,
+        "LIC_DEPARTMENT_OGRN": "1047796244396",
+        "SERVICE_ID": null,
+        "autokey": "CONC_EQUIPMENT_CATEGORY_RZ_3_1047796244396",
+        "ID": null,
+        "LIC_TYPE_CODE": null,
+        "CATEGORY_NAME": "Оборудование (средства измерений) для контроля или мониторинга условий хранения лекарственных средств"
+      }
+    },
+    {
+      "value": "1",
+      "parentValue": null,
+      "title": "Оборудование для защиты от воздействия погодных условий",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 1,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 1
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "CATEGORY_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "Оборудование для защиты от воздействия погодных условий",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "Оборудование для защиты от воздействия погодных условий"
+          },
+          "valueAsOfType": "Оборудование для защиты от воздействия погодных условий"
+        },
+        {
+          "name": "MIN_AMOUNT_EQUIPMENT",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": 1,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": 1
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "ACTIVITY_KIND_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 1,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 1
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_TYPE_CODE",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 4,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 4
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_EQUIPMENT_CATEGORY_RZ_1_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_EQUIPMENT_CATEGORY_RZ_1_1047796244396"
+          },
+          "valueAsOfType": "CONC_EQUIPMENT_CATEGORY_RZ_1_1047796244396"
+        },
+        {
+          "name": "SERVICE_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14682,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14682
+          },
+          "valueAsOfType": null
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "MIN_AMOUNT_EQUIPMENT": null,
+        "ACTIVITY_KIND_ID": null,
+        "LIC_DEPARTMENT_OGRN": "1047796244396",
+        "SERVICE_ID": null,
+        "autokey": "CONC_EQUIPMENT_CATEGORY_RZ_1_1047796244396",
+        "ID": null,
+        "LIC_TYPE_CODE": null,
+        "CATEGORY_NAME": "Оборудование для защиты от воздействия погодных условий"
+      }
+    }
+  ]
+}

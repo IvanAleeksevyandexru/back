@@ -1,0 +1,27 @@
+{
+  "series": {
+    "label": "серия",
+    "type": "input",
+    "required": true,
+    "attrs": {
+      "validation": [
+        {
+          "type": "RegExp",
+          "value": ".+",
+          "ref": "",
+          "dataType": "",
+          "condition": "",
+          "errorMsg": "Поле не может быть пустым"
+        },
+        {
+          "type": "RegExp",
+          "value": "^[0-9]+$",
+          "ref": "",
+          "dataType": "",
+          "condition": "",
+          "errorMsg": "Поле может содержать только цифры"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,654 @@
+{
+  "error": {
+    "code": 0,
+    "message": "operation completed"
+  },
+  "fieldErrors": [],
+  "total": 7,
+  "items": [
+    {
+      "value": "14688",
+      "parentValue": null,
+      "title": "Изготовление лекарственных препаратов для медицинского применения",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14688,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14688
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "SERVICE_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "Изготовление лекарственных препаратов для медицинского применения",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "Изготовление лекарственных препаратов для медицинского применения"
+          },
+          "valueAsOfType": "Изготовление лекарственных препаратов для медицинского применения"
+        },
+        {
+          "name": "ACTIVITY_KIND_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 2,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 2
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_SERVICE_TYPE_RZ_14688_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_SERVICE_TYPE_RZ_14688_1047796244396"
+          },
+          "valueAsOfType": "CONC_SERVICE_TYPE_RZ_14688_1047796244396"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "SERVICE_NAME": "Изготовление лекарственных препаратов для медицинского применения",
+        "autokey": "CONC_SERVICE_TYPE_RZ_14688_1047796244396",
+        "ID": null,
+        "ACTIVITY_KIND_ID": null,
+        "LIC_DEPARTMENT_OGRN": "1047796244396"
+      }
+    },
+    {
+      "value": "14687",
+      "parentValue": null,
+      "title": "Отпуск лекарственных препаратов для медицинского применения",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14687,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14687
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "SERVICE_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "Отпуск лекарственных препаратов для медицинского применения",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "Отпуск лекарственных препаратов для медицинского применения"
+          },
+          "valueAsOfType": "Отпуск лекарственных препаратов для медицинского применения"
+        },
+        {
+          "name": "ACTIVITY_KIND_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 2,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 2
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_SERVICE_TYPE_RZ_14687_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_SERVICE_TYPE_RZ_14687_1047796244396"
+          },
+          "valueAsOfType": "CONC_SERVICE_TYPE_RZ_14687_1047796244396"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "SERVICE_NAME": "Отпуск лекарственных препаратов для медицинского применения",
+        "autokey": "CONC_SERVICE_TYPE_RZ_14687_1047796244396",
+        "ID": null,
+        "ACTIVITY_KIND_ID": null,
+        "LIC_DEPARTMENT_OGRN": "1047796244396"
+      }
+    },
+    {
+      "value": "14685",
+      "parentValue": null,
+      "title": "Перевозка лекарственных препаратов для медицинского применения",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14685,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14685
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "SERVICE_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "Перевозка лекарственных препаратов для медицинского применения",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "Перевозка лекарственных препаратов для медицинского применения"
+          },
+          "valueAsOfType": "Перевозка лекарственных препаратов для медицинского применения"
+        },
+        {
+          "name": "ACTIVITY_KIND_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 2,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 2
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_SERVICE_TYPE_RZ_14685_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_SERVICE_TYPE_RZ_14685_1047796244396"
+          },
+          "valueAsOfType": "CONC_SERVICE_TYPE_RZ_14685_1047796244396"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "SERVICE_NAME": "Перевозка лекарственных препаратов для медицинского применения",
+        "autokey": "CONC_SERVICE_TYPE_RZ_14685_1047796244396",
+        "ID": null,
+        "ACTIVITY_KIND_ID": null,
+        "LIC_DEPARTMENT_OGRN": "1047796244396"
+      }
+    },
+    {
+      "value": "14684",
+      "parentValue": null,
+      "title": "Перевозка лекарственных средств для медицинского применения",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14684,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14684
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "SERVICE_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "Перевозка лекарственных средств для медицинского применения",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "Перевозка лекарственных средств для медицинского применения"
+          },
+          "valueAsOfType": "Перевозка лекарственных средств для медицинского применения"
+        },
+        {
+          "name": "ACTIVITY_KIND_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 2,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 2
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_SERVICE_TYPE_RZ_14684_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_SERVICE_TYPE_RZ_14684_1047796244396"
+          },
+          "valueAsOfType": "CONC_SERVICE_TYPE_RZ_14684_1047796244396"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "SERVICE_NAME": "Перевозка лекарственных средств для медицинского применения",
+        "autokey": "CONC_SERVICE_TYPE_RZ_14684_1047796244396",
+        "ID": null,
+        "ACTIVITY_KIND_ID": null,
+        "LIC_DEPARTMENT_OGRN": "1047796244396"
+      }
+    },
+    {
+      "value": "14686",
+      "parentValue": null,
+      "title": "Розничная торговля лекарственными препаратами для медицинского применения",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14686,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14686
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "SERVICE_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "Розничная торговля лекарственными препаратами для медицинского применения",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "Розничная торговля лекарственными препаратами для медицинского применения"
+          },
+          "valueAsOfType": "Розничная торговля лекарственными препаратами для медицинского применения"
+        },
+        {
+          "name": "ACTIVITY_KIND_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 2,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 2
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_SERVICE_TYPE_RZ_14686_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_SERVICE_TYPE_RZ_14686_1047796244396"
+          },
+          "valueAsOfType": "CONC_SERVICE_TYPE_RZ_14686_1047796244396"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "SERVICE_NAME": "Розничная торговля лекарственными препаратами для медицинского применения",
+        "autokey": "CONC_SERVICE_TYPE_RZ_14686_1047796244396",
+        "ID": null,
+        "ACTIVITY_KIND_ID": null,
+        "LIC_DEPARTMENT_OGRN": "1047796244396"
+      }
+    },
+    {
+      "value": "14683",
+      "parentValue": null,
+      "title": "Хранение лекарственных препаратов для медицинского применения",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14683,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14683
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "SERVICE_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "Хранение лекарственных препаратов для медицинского применения",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "Хранение лекарственных препаратов для медицинского применения"
+          },
+          "valueAsOfType": "Хранение лекарственных препаратов для медицинского применения"
+        },
+        {
+          "name": "ACTIVITY_KIND_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 2,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 2
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_SERVICE_TYPE_RZ_14683_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_SERVICE_TYPE_RZ_14683_1047796244396"
+          },
+          "valueAsOfType": "CONC_SERVICE_TYPE_RZ_14683_1047796244396"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "SERVICE_NAME": "Хранение лекарственных препаратов для медицинского применения",
+        "autokey": "CONC_SERVICE_TYPE_RZ_14683_1047796244396",
+        "ID": null,
+        "ACTIVITY_KIND_ID": null,
+        "LIC_DEPARTMENT_OGRN": "1047796244396"
+      }
+    },
+    {
+      "value": "14682",
+      "parentValue": null,
+      "title": "Хранение лекарственных средств для медицинского применения",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 14682,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 14682
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "SERVICE_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "Хранение лекарственных средств для медицинского применения",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "Хранение лекарственных средств для медицинского применения"
+          },
+          "valueAsOfType": "Хранение лекарственных средств для медицинского применения"
+        },
+        {
+          "name": "ACTIVITY_KIND_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 2,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 2
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_SERVICE_TYPE_RZ_14682_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_SERVICE_TYPE_RZ_14682_1047796244396"
+          },
+          "valueAsOfType": "CONC_SERVICE_TYPE_RZ_14682_1047796244396"
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "SERVICE_NAME": "Хранение лекарственных средств для медицинского применения",
+        "autokey": "CONC_SERVICE_TYPE_RZ_14682_1047796244396",
+        "ID": null,
+        "ACTIVITY_KIND_ID": null,
+        "LIC_DEPARTMENT_OGRN": "1047796244396"
+      }
+    }
+  ]
+}

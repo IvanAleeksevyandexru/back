@@ -1,0 +1,27 @@
+{
+  "datasource": "f5807226-8be0-4ea8-91fc-39d053aec1e2",
+  "program": {
+    "name": "Программа «БиоТех»",
+    "fiasMunicipal": "6b1bab7d-ee45-4168-a2a6-4ce2880d90d3",
+    "municipalityName": "г Ярославль",
+    "fiasRegion": "a84b2ef4-db03-474b-b552-6229e801ae9b",
+    "regionName": "Ярославская область",
+    "typeOfBudget": "other"
+  },
+  "group": {
+    "groupGUID": "c30351b8-4bca-4e3c-ae30-6c8b977a2a7d",
+    "name": "Группа 1Е (артикул 10325)",
+    "financialSource": {
+      "none": false,
+      "budget": true,
+      "paid": false,
+      "pfdod_certificate": true,
+      "private": true
+    },
+    "financialSourceBudget": {
+      "paid": null,
+      "pfdod_certificate": 1200.00,
+      "private": 1000.00
+    }
+  }
+}

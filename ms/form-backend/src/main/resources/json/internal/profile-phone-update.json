@@ -1,0 +1,184 @@
+{
+  "init": "editPhoneNumber_s1",
+  "saveDraftModeEnabled": false,
+  "serviceName": "editPhoneNumber",
+  "presetFieldTypes": [
+    "ConfirmPersonalUserPhone"
+  ],
+  "screens": [
+    {
+      "id": "editPhoneNumber_s1",
+      "name": "Укажите новый контактный телефон",
+      "type": "CUSTOM",
+      "header": "Укажите новый контактный телефон",
+      "components": [
+        "wn1",
+        "pd1"
+      ],
+      "buttons": [
+        {
+          "label": "Получить код",
+          "type": "nextStepModal"
+        }
+      ]
+    },
+    {
+      "id": "editPhoneNumber_s2",
+      "name": "Введите код подтверждения из SMS-сообщения",
+      "type": "UNIQUE",
+      "header": "",
+      "components": [
+        "cn1"
+      ]
+    },
+    {
+      "id": "editPhoneNumber_s3",
+      "name": "Телефон успешно изменен",
+      "type": "INFO",
+      "header": "",
+      "components": [
+        "d1"
+      ],
+      "buttons": [
+        {
+          "label": "Вернуться к заявлению",
+          "type": "nextStepModal",
+          "value": "Вернуться к заявлению",
+          "action": "goBackToMainScenario"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "name": "Ошибка подтверждения телефона",
+      "type": "INFO",
+      "header": "",
+      "components": [
+        "d2"
+      ],
+      "buttons": [
+        {
+          "label": "Вернуться к заявлению",
+          "type": "nextStepModal",
+          "value": "Вернуться к заявлению",
+          "action": "goBackToMainScenario"
+        }
+      ]
+    }
+  ],
+  "applicationFields": [
+    {
+      "id": "wn1",
+      "type": "HtmlString",
+      "label": "<div><b><svg width=\"32\" height=\"4\" viewBox=\"0 0 32 4\" xmlns=\"http://www.w3.org/2000/svg\" style=\" margin-right: 8px; vertical-align: middle; \"> <path d=\"M32 0H0V4H32V0Z\" fill=\"#FED13E\"></path> </svg>Обратите внимание!</b><p style=\" margin-top: 4px; margin-bottom: 24px; color: #66727F; \">Изменение телефона произойдет и в вашей учетной записи</p></div>",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "pd1",
+      "type": "PhoneNumberChangeInput",
+      "label": "Контактный телефон",
+      "attrs": {
+        "updateOnValidation": "change",
+        "checkedPhoneNumber": "",
+        "hint": "На этот номер будет отправлено СМС с кодом подтверждения",
+        "validation": [
+          {
+            "type": "RegExp",
+            "value": "\\+7\\s?\\(\\d{3}\\)\\s?[\\d\\-]{9}",
+            "ref": "",
+            "dataType": "",
+            "condition": "",
+            "errorMsg": "Неправильный формат данных",
+            "updateOn": "blur"
+          }
+        ],
+        "mask": [
+          "+",
+          "7",
+          " ",
+          "(",
+          "/[1-9]/",
+          "/\\d/",
+          "/\\d/",
+          ")",
+          " ",
+          "/\\d/",
+          "/\\d/",
+          "/\\d/",
+          "-",
+          "/\\d/",
+          "/\\d/",
+          "-",
+          "/\\d/",
+          "/\\d/"
+        ]
+      },
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "cn1",
+      "type": "PhoneNumberConfirmCodeInput",
+      "label": "код подтверждения",
+      "attrs": {
+        "codeLength": 4,
+        "characterMask": "\\d",
+        "resendCodeUrl": "service/actions/resendPhoneConfirmationCode"
+      },
+      "linkedValues": [
+        {
+          "argument": "phoneNumber",
+          "source": "pd1"
+        }
+      ],
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "d1",
+      "type": "GInfoScr",
+      "label": "<div class=\"info__status-image\"><img src='{staticDomainAssetsPath}/assets/icons/svg/ok.svg' /></div><h4 class=\"info__end-screen-text\">Телефон успешно изменен</h4>",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "d2",
+      "type": "GInfoScr",
+      "label": "<div class=\"info__status-image\"><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg' /></div><h4 class=\"info__end-screen-text\">Ошибка подтверждения телефона</h4>",
+      "attrs": {},
+      "value": "",
+      "visited": false
+    }
+  ],
+  "roleToInitScreen": {
+    "Applicant": "editPhoneNumber_s1"
+  },
+  "screenRules": {
+    "editPhoneNumber_s1": [
+      {
+        "conditions": [
+          {
+            "field": "pd1",
+            "visited": true
+          }
+        ],
+        "nextDisplay": "editPhoneNumber_s2"
+      }
+    ],
+    "editPhoneNumber_s2": [
+      {
+        "conditions": [
+          {
+            "field": "cn1",
+            "visited": true
+          }
+        ],
+        "nextDisplay": "editPhoneNumber_s3"
+      }
+    ]
+  },
+  "parameters": {}
+}

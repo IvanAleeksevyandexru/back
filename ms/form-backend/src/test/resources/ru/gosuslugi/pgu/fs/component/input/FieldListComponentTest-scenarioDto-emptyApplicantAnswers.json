@@ -1,0 +1,302 @@
+{
+  "serviceCode": "local",
+  "targetCode": "10000000100",
+  "orderId": 84674,
+  "currentScenarioId": 1,
+  "currentUrl": "http://local.test.gosuslugi.ru:4200/",
+  "finishedAndCurrentScreens": [
+    "s1",
+    "s2",
+    "s3",
+    "s8",
+    "s4",
+    "s64",
+    "s88",
+    "s89",
+    "s90",
+    "s91",
+    "s92",
+    "s93",
+    "s95",
+    "s5",
+    "s104",
+    "fileuploadscr17",
+    "s97",
+    "finishscreen20full",
+    "redirectscreenpersonalpage",
+    "SCRspouse_first",
+    "s88_parent",
+    "s89_parent",
+    "s90_parent",
+    "s91_parent",
+    "s95_parent",
+    "SCRspouse_approv_YN",
+    "SCRuniversal_approved_alone"
+  ],
+  "cachedAnswers": {},
+  "currentValue": {},
+  "errors": {},
+  "applicantAnswers": {},
+  "cycledApplicantAnswers": {
+    "currentAnswerId": "ai7",
+    "answerlist": [
+      {
+        "id": "ai7",
+        "initScreen": "s104",
+        "currentItemId": "7481346",
+        "items": [
+          {
+            "id": "7481346",
+            "itemAnswers": {
+              "ai7_6": {
+                "visited": true,
+                "value": "false"
+              },
+              "ai7_5": {
+                "visited": true,
+                "value": "тест"
+              },
+              "ai7_4": {
+                "visited": true,
+                "value": "сидр"
+              },
+              "ai7_3": {
+                "visited": true,
+                "value": "петров"
+              },
+              "ai7_2": {
+                "visited": true,
+                "value": "M"
+              },
+              "ai7_1": {
+                "visited": true,
+                "value": "2018-12-06T00:00:00Z"
+              },
+              "ai7_0": {
+                "visited": true,
+                "value": "7481346"
+              },
+              "bd6": {
+                "visited": true,
+                "value": "{\"states\":[{\"groupName\":\"петров сидр тест\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"2018-12-06T00:00:00Z\"}]},{\"groupName\":\"Свидетельство о рождении\",\"fields\":[{\"label\":\"Серия и номер\",\"value\":\"XI-ИВ-111111\"},{\"label\":\"Дата выдачи\",\"value\":\"2011-11-11T00:00:00Z\"},{\"label\":\"Кем выдан\"},{\"label\":\"Актовый номер\",\"value\":\"111\"}]}],\"storedValues\":{\"firstName\":\"сидр\",\"lastName\":\"петров\",\"rfBirthCertificateIssueDate\":\"2011-11-11T00:00:00Z\",\"rfBirthCertificateSeries\":\"XI-ИВ\",\"middleName\":\"тест\",\"rfBirthCertificateNumber\":\"111111\",\"birthDate\":\"2018-12-06T00:00:00Z\",\"rfBirthCertificateActNumber\":\"111\"}}"
+              },
+              "qс1": {
+                "visited": true,
+                "value": "0"
+              },
+              "cl2": {
+                "visited": true,
+                "value": "{\"regAddr\":{\"region\":\"Москва\",\"city\":\"\",\"district\":\"\",\"town\":\"\",\"inCityDist\":\"\",\"street\":\"Басманная Нов.\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"house\":\"12\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1\":\"\",\"building2\":\"2\",\"apartment\":\"\",\"apartmentCheckbox\":true,\"apartmentCheckboxClosed\":true,\"index\":\"107078\",\"geoLat\":\"55.7689738\",\"geoLon\":\"37.6571772\",\"fullAddress\":\"107078, г. Москва, ул. Басманная Нов., д. 12, стр. 2\",\"addressStr\":\"г. Москва, ул. Басманная Нов.\",\"lat\":\"55.7689738\",\"lng\":\"37.6571772\",\"fiasCode\":\"28bd6495-c940-4d77-9667-402b3d2f119a\",\"okato\":\"45286555000\",\"hasErrors\":0,\"kladrCode\":\"7700000000006270055\",\"regionCode\":\"77\"},\"regDate\":\"30.09.2020\"}"
+              },
+              "cai0": {
+                "visited": true,
+                "value": ""
+              },
+              "crb1": {
+                "visited": true,
+                "value": "false"
+              },
+              "сrb2": {
+                "visited": true,
+                "value": "false"
+              },
+              "cai1": {
+                "visited": true,
+                "value": ""
+              },
+              "cai2": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai5": {
+                "visited": true,
+                "value": ""
+              },
+              "cfai6": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai10": {
+                "visited": true,
+                "value": "{\"id\":\"2020-0\",\"text\":2020,\"unselectable\":false,\"originalItem\":{\"label\":2020}}"
+              }
+            },
+            "cachedAnswers": {},
+            "esiaData": {
+              "lastName": "петров",
+              "rfBirthCertificateIssueDate": "2011-11-11T00:00:00Z",
+              "gender": "M",
+              "regDate": "",
+              "isNew": false,
+              "relationshipToChild": "",
+              "birthDate": "2018-12-06T00:00:00Z",
+              "regAddr": "",
+              "firstName": "сидр",
+              "rfBirthCertificateIssuedBy": "111",
+              "rfBirthCertificateSeries": "XI-ИВ",
+              "middleName": "тест",
+              "id": "7481346",
+              "rfBirthCertificateNumber": "111111",
+              "rfBirthCertificateActNumber": "-"
+            },
+            "finishedScreens": [
+              "scrchld2_1",
+              "scrchld3",
+              "scrchld4",
+              "scrchld5"
+            ]
+          },
+          {
+            "id": "7481347",
+            "itemAnswers": {
+              "ai7_6": {
+                "visited": true,
+                "value": "false"
+              },
+              "ai7_5": {
+                "visited": true,
+                "value": "тест_еще"
+              },
+              "ai7_4": {
+                "visited": true,
+                "value": "коньяк"
+              },
+              "ai7_3": {
+                "visited": true,
+                "value": "петров"
+              },
+              "ai7_2": {
+                "visited": true,
+                "value": "M"
+              },
+              "ai7_1": {
+                "visited": true,
+                "value": "2018-12-06T00:00:00Z"
+              },
+              "ai7_0": {
+                "visited": true,
+                "value": "7481346"
+              },
+              "bd6": {
+                "visited": true,
+                "value": "{\"states\":[{\"groupName\":\"петров коньяк тест_еще\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"2018-12-06T00:00:00Z\"}]},{\"groupName\":\"Свидетельство о рождении\",\"fields\":[{\"label\":\"Серия и номер\",\"value\":\"XI-ИВ-111111\"},{\"label\":\"Дата выдачи\",\"value\":\"2011-11-11T00:00:00Z\"},{\"label\":\"Кем выдан\"},{\"label\":\"Актовый номер\",\"value\":\"111\"}]}],\"storedValues\":{\"firstName\":\"коньяк\",\"lastName\":\"петров\",\"rfBirthCertificateIssueDate\":\"2011-11-11T00:00:00Z\",\"rfBirthCertificateSeries\":\"XI-ИВ\",\"middleName\":\"тестеще\",\"rfBirthCertificateNumber\":\"111111\",\"birthDate\":\"2018-12-06T00:00:00Z\",\"rfBirthCertificateActNumber\":\"111\"}}"
+              },
+              "qс1": {
+                "visited": true,
+                "value": "0"
+              },
+              "cl2": {
+                "visited": true,
+                "value": "{\"regAddr\":{\"region\":\"Москва\",\"city\":\"\",\"district\":\"\",\"town\":\"\",\"inCityDist\":\"\",\"street\":\"Басманная Нов.\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"house\":\"12\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1\":\"\",\"building2\":\"2\",\"apartment\":\"\",\"apartmentCheckbox\":true,\"apartmentCheckboxClosed\":true,\"index\":\"107078\",\"geoLat\":\"55.7689738\",\"geoLon\":\"37.6571772\",\"fullAddress\":\"107078, г. Москва, ул. Басманная Нов., д. 12, стр. 2\",\"addressStr\":\"г. Москва, ул. Басманная Нов.\",\"lat\":\"55.7689738\",\"lng\":\"37.6571772\",\"fiasCode\":\"28bd6495-c940-4d77-9667-402b3d2f119a\",\"okato\":\"45286555000\",\"hasErrors\":0,\"kladrCode\":\"7700000000006270055\",\"regionCode\":\"77\"},\"regDate\":\"30.09.2020\"}"
+              },
+              "cai0": {
+                "visited": true,
+                "value": ""
+              },
+              "crb1": {
+                "visited": true,
+                "value": "false"
+              },
+              "сrb2": {
+                "visited": true,
+                "value": "false"
+              },
+              "cai1": {
+                "visited": true,
+                "value": ""
+              },
+              "cai2": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai5": {
+                "visited": true,
+                "value": ""
+              },
+              "cfai6": {
+                "visited": true,
+                "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+              },
+              "cfai10": {
+                "visited": true,
+                "value": "{\"id\":\"2020-0\",\"text\":2020,\"unselectable\":false,\"originalItem\":{\"label\":2020}}"
+              }
+            },
+            "cachedAnswers": {},
+            "esiaData": {
+              "lastName": "петров",
+              "rfBirthCertificateIssueDate": "2011-11-11T00:00:00Z",
+              "gender": "M",
+              "regDate": "",
+              "isNew": false,
+              "relationshipToChild": "",
+              "birthDate": "2018-12-06T00:00:00Z",
+              "regAddr": "",
+              "firstName": "коньяк",
+              "rfBirthCertificateIssuedBy": "111",
+              "rfBirthCertificateSeries": "XI-ИВ",
+              "middleName": "тестеще",
+              "id": "7481347",
+              "rfBirthCertificateNumber": "111111",
+              "rfBirthCertificateActNumber": "-"
+            },
+            "finishedScreens": [
+              "scrchld2_1",
+              "scrchld3",
+              "scrchld4",
+              "scrchld5"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "participants": {
+    "1000298933": {
+      "role": "Coapplicant",
+      "mode": "MentionedApplicant",
+      "component": "ai19"
+    }
+  },
+  "display": {
+    "id": "SCRuniversal_approved_alone",
+    "name": "Скрин с сообщением о том, что согласие на регистрацию дано(используется собственником, нанимателем)",
+    "type": "INFO",
+    "header": "Вы дали согласие на регистрацию по месту пребывания",
+    "components": [
+      {
+        "id": "CMPuniversal_approved_alone",
+        "type": "InfoScr",
+        "label": "",
+        "attrs": {
+          "actions": [
+            {
+              "label": "Перейти в личный кабинет",
+              "value": "Подтвердить",
+              "type": "redirectToLK",
+              "action": "getNextScreen"
+            }
+          ]
+        },
+        "value": "",
+        "required": true,
+        "cycled": false
+      }
+    ],
+    "accepted": true,
+    "terminal": false,
+    "firstScreen": false
+  },
+  "attachmentInfo": {},
+  "additionalParameters": {
+    "masterOid": "1000305286",
+    "masterId": "84674",
+    "citizenshipCode": "RUS",
+    "gender": "F",
+    "orderId": "84674",
+    "citizenship": "RUS",
+    "oid": "1000305286",
+    "snils": "010-000-303 20"
+  },
+  "gender": "F"
+}

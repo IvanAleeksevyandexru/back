@@ -1,0 +1,235 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+pgu:
+  order-url: https://pgu-uat-fed.test.gosuslugi.ru/
+  dictionary-url: https://pgu-uat-fed.test.gosuslugi.ru/
+  dictionary-sop-url: http://sop.test.gosuslugi.ru/
+  dictionary-sop-api-key: 90a6c2a6-d748-46f5-8885-ca5109a49fa2
+  dadata-url: https://pgu-uat-fed.test.gosuslugi.ru/
+  payment-url: https://pgu-uat-fed.test.gosuslugi.ru/
+  payment-ipsh-url: http://ipsh-uat.test.gosuslugi.ru/
+  timer-url: https://pgu-dev-fed.test.gosuslugi.ru/
+  gibdd-url: http://pgu-uat-fednlb.test.gosuslugi.ru/
+  lkapi-url: http://pgu-uat-fedlkapinlb.test.gosuslugi.ru/
+  catalog-url: http://pgu-uat-fednlb.test.gosuslugi.ru/
+  eaisdo-url: http://stage.eaisdo.inlearno.info/
+  eaisdo-dict-url: https://dev01.pgu2-pub.test.gosuslugi.ru/
+  barbarbok-url: http://pgu-uat-fednlb.test.gosuslugi.ru/
+  empowerment-service-url: https://esia-portal1.test.gosuslugi.ru/
+  marital-status-url: https://esia-portal1.test.gosuslugi.ru/
+  rest-call-url: https://pgu-uat-fed.test.gosuslugi.ru
+  smev-adapter-url: https://pgu-uat-fed.test.gosuslugi.ru
+  smev-converter-url: http://local.test.gosuslugi.ru:8092/api
+mock:
+  enabled: true
+  payment:
+    #пропуск валидациии оплаты на беке, не забыть выключить в проде
+    skip: true
+  host: dev-l11.pgu2-pub.test.gosuslugi.ru
+  url: http://dev-l11.pgu2-pub.test.gosuslugi.ru/mock
+  billing:
+    enabled: false
+    url: http://dev-l11.pgu2-pub.test.gosuslugi.ru/mock/billing/
+  gibdd:
+    enabled: true
+    url: http://dev-l11.pgu2-pub.test.gosuslugi.ru/mock/gibdd/
+
+ratelimit:
+  # Максимальное количество обращений за контролируемый период времени
+  limit: 1000
+  # Период времени, в течение, которого считаются обращения пользователя к услуге. Измеряется в секундах
+  ttl: 86400
+  pgu-url: http://pgu-uat-fednlb.test.gosuslugi.ru/ratelimit-api/internal/api/ratelimit/
+
+ru:
+  nvg:
+    idecs:
+      uddi:
+        inquiryUrl: http://pgu-dev-fednlb.test.gosuslugi.ru/juddiv3/services/inquiry?wsdl
+spring:
+  application:
+    name: form-service
+    env: dev
+  kafka:
+    # для трейсинга в Zipkin
+    bootstrap-servers: localhost:9092
+    # для бизнес сервисов
+    brokers: localhost:9092
+    consumer:
+      sp-adapter:
+        enabled: true
+        group-id: 0
+        processing-threads: 1
+        batch-processing: true
+        max-poll-records: 100
+        poll-timeout: 345600s
+        fetch-max-size: 52428800
+        partition-fetch-bytes: 1048576
+        error-topic-name: self-eror-topic
+        response-topic-name: sp-result
+    producer:
+      suggests:
+        enabled: false
+        topic-name: dev01-form-serviceToSuggests-drafts
+        auto-create-topics: false
+        topic-partitions: 1
+        topic-replication-factor: 1
+      sp-adapter:
+        enabled: false
+        topic-name: sp-adapter
+        auto-create-topics: false
+        topic-partitions: 1
+        topic-replication-factor: 1
+      sp-adapter-batch:
+        enabled: false
+        topic-name: sp-adapter-batch
+        auto-create-topics: false
+        topic-partitions: 1
+        topic-replication-factor: 1
+      rate-limit-analytic:
+        enabled: true
+        topic-name: dev01-form-serviceToRatelimitOverhead-request
+        auto-create-topics: false
+        topic-partitions: 1
+        topic-replication-factor: 1
+
+delirium:
+  enabled: true
+  client:
+    # через port forwarding
+    # ssh -L 15155:10.81.4.30:15155 -L 15018:10.81.4.30:15018 pgu-dev@10.68.8.100 -p 20430
+    url: http://pgu-uat-fednlb.test.gosuslugi.ru
+
+
+# Конфигурация RestTemplate для подключения к внешним REST сервисам
+rest-client:
+# Таймаут подключения по http, мс
+#  connection.so.timeout: 1000
+# Таймаут ожидания ответа на запрос, мс
+#  http.request.timeout: 5000
+
+esia-rest:
+  url: https://esia-portal1.test.gosuslugi.ru/esia-rs/api/public
+  version: v2
+
+draft-client:
+  # Включение интеграции с сервисом черновиков. Если выключено, то черновики не сохраняются.
+  enabled: true
+  # url сервиса черновиков
+  url: http://pgu-uat-fednlb.test.gosuslugi.ru/drafts2
+
+service-descriptor-storage-client:
+  # url сервиса-дескриптор хранилища
+  url: http://pgu-uat-fednlb.test.gosuslugi.ru/service-descriptor-storage/
+
+service-generator:
+  integration:
+    url: http://localhost:8093/api
+    enabled: true
+
+sp:
+  integration:
+    url: http://pgu-uat-fednlb.test.gosuslugi.ru/sp-adapter/
+    enabled: true
+# url адартера Восхода (для подписания файлов)
+voshod:
+  integration: http://localhost:8095
+esia:
+  personSearchStub:
+    # Использовать заглушку вместо сервиса обращения в ЕСИА при поиске.При отсутствии enabled = false
+    enabled: false
+  auth:
+    exclude-urls: /api/getService,/api/setService,/api/actuator
+  #this url used only for RtLabs development environment
+  #uddi.url: http://d00nlbservices/juddi/services/inquiry?wsdl
+  # через port forwarding
+  # ssh -L 15155:10.81.4.30:15155 -L 15018:10.81.4.30:15018 pgu-dev@10.68.8.100 -p 20430
+
+  uddi.url: http://pgu-uat-fednlb.test.gosuslugi.ru/juddiv3/services/inquiry?wsdl
+  system.token.host: http://pgu-uat-fedlkapinlb.test.gosuslugi.ru/lk-api/internal/api/lk/v1/users/system/token
+  keystore:
+    passwd: 111111
+    pk:
+      passwd: 111111
+    alias: epgu
+  token:
+    instance:
+      code: epgu
+    jmsGroupDenominator: 200
+  url: https://esia-portal1.test.gosuslugi.ru
+  redirect:
+    url: https://pgu-uat-fed.test.gosuslugi.ru/ pgu/esia/oauth/auth_code_receiver
+    portal:
+      url: personcab
+  crt: classpath:esia/esia-epgu-major.cert
+  rs:
+    certificate: classpath:esia/rs-esia.cert
+  pd:
+    proxy:
+      url: http://pgu-uat-fednlb.test.gosuslugi.ru/pds/api/pds/v1
+  cache: http://pgu-uat-fednlb.test.gosuslugi.ru/pds/api/pds/v1
+
+esia.keystore: classpath:esia/esia-keystore.jks
+
+jms:
+  queue:
+    esia:
+      request: esiaRefreshTokenRequest
+      response: queue:esiaRefreshTokenResponse
+      response.timeout: 10000
+      concurrent.consumers: 20
+
+signer:
+  private:
+    key:
+      alias: RaUser-bb9e617c-53a9-429f-88c8-339f1b5e851c
+      password: 1234567890
+
+
+internal.api.lk.users: http://pgu-uat-fednlb.test.gosuslugi.ru/lk-api/internal/api/lk/v1/users/token
+offline.system.api.lk.token: http://pgu-dev-fednlb.test.gosuslugi.ru/lk-api/internal/api/lk/v1/users/offline/token
+instance.code: epgu
+sf.instance.code: epgu
+
+logging:
+  remote-rest:
+    # максимальный размер логируемого тела запросов и ответов. Например, 1 = 1B, 1KB, 1MB, 1GB
+    body-max-length: 1536KB
+
+orderid:
+  integration: true
+
+terrabyte:
+  client:
+    storage-url: https://pgu-uat-fed.test.gosuslugi.ru/api/storage/v1
+    internal-storage-url: https://pgu-uat-fed.test.gosuslugi.ru/storageservice/internal/api/storage
+    internal-dataservice-url: https://pgu-uat-fed.test.gosuslugi.ru/storageservice/internal/api/dataservice
+
+mask-password-properties: esia.keystore.passwd,esia.keystore.pk.passwd
+
+booking:
+  lkapi-url: http://pgu-dev-fedlkapinlb.test.gosuslugi.ru
+
+#  Настройка работы сервиса с СМЭВ
+barbarbok:
+  smevVersion: SMEV30MESSAGE
+
+lk-notifier:
+  integration:
+    enabled: false
+    url: http://local.test.gosuslugi.ru:8097
+
+disclaimers:
+  integration:
+    enabled: true
+    url: http://pgu-uat-fednlb.test.gosuslugi.ru/
+
+eaisdo:
+  uploader-token: 24d9592665dcd9debb1fe79f6b052965
+
+draft-converter:
+  integration:
+    enabled: true
+    url: http://local.test.gosuslugi.ru:8097/api

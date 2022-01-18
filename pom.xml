@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.gosuslugi</groupId>
+    <artifactId>pgu2-form-backend-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>ms</module>
+        <module>lib/pgu-kafka-cli</module>
+        <module>lib/components</module>
+        <module>lib/pgu-fs-common</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <lombok.version>1.18.12</lombok.version>
+        <org.springframework.cloud.version>2.2.3.RELEASE</org.springframework.cloud.version>
+        <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
+        <carcass-common.version>3.356</carcass-common.version>
+        <carcass-security.version>3.366</carcass-security.version>
+        <nvision-portal.version>3.0</nvision-portal.version>
+        <jsonpath.version>2.4.0</jsonpath.version>
+        <org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
+        <org.codehaus.gmavenplus.version>1.9.0</org.codehaus.gmavenplus.version>
+        <maven.surefire.version>3.0.0-M5</maven.surefire.version>
+        <spock.version>2.0-M3-groovy-2.5</spock.version>
+        <pgu.core.nsi.version>3.0</pgu.core.nsi.version>
+        <springfox.version>2.9.2</springfox.version>
+    </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.2.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>ru.atc.idecs.refregistry</groupId>
+                <artifactId>refregistry-api</artifactId>
+                <version>${pgu.core.nsi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ru.nvg.idecs.common</groupId>
+                <artifactId>common-ws-types</artifactId>
+                <version>${pgu.core.nsi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ru.gosuslugi.pgu.core</groupId>
+                <artifactId>nsi-rest-client</artifactId>
+                <version>${pgu.core.nsi.version}</version>
+            </dependency>
+
+            <!--        security-carcass-dependencies-->
+            <dependency>
+                <groupId>ru.atc.carcass.common</groupId>
+                <artifactId>carcass-common</artifactId>
+                <version>${carcass-common.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>*</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>ru.atc.carcass.common</groupId>
+                <artifactId>carcass-common-uddi</artifactId>
+                <version>${carcass-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.atc.carcass.security</groupId>
+                <artifactId>security-esia-integration</artifactId>
+                <version>${carcass-security.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>org.springframework.beans</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>ru.atc.carcass.common</groupId>
+                        <artifactId>carcass-common</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>ru.nvg.idecs.uddi</groupId>
+                        <artifactId>idecs-uddi-ws-client</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>2.16.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>2.16.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-jul</artifactId>
+                <version>2.16.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-layout-template-json</artifactId>
+                <version>2.16.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>2.16.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-to-slf4j</artifactId>
+                <version>2.16.0</version>
+            </dependency>
+            <!--        security-carcass-dependencies-->
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2</url>
+        </repository>
+<!--        <repository>
+            <id>nexus</id>
+            <url>http://nexus.gosuslugi.local/nexus/content/groups/public/</url>
+        </repository>-->
+        <repository>
+            <id>nexus-2</id>
+            <url>http://nexus.gosuslugi.local/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+</project>

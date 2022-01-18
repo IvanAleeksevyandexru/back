@@ -1,0 +1,389 @@
+{
+  "serviceCode": "10000000204",
+  "targetCode": "-10000000204",
+  "orderId": 764013769,
+  "currentScenarioId": 1,
+  "serviceDescriptorId": "10000000204",
+  "currentUrl": "http://local.test.gosuslugi.ru:4200/",
+  "finishedAndCurrentScreens": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8_smev3",
+    "s8_0_smev3"
+  ],
+  "cachedAnswers": {},
+  "currentValue": {},
+  "errors": {},
+  "uniquenessErrors": [],
+  "applicantAnswers": {
+    "w1": {
+      "visited": true,
+      "value": "Начать"
+    },
+    "q1": {
+      "visited": true,
+      "value": "Себя"
+    },
+    "pd1": {
+      "visited": true,
+      "value": "{\"states\":[{\"groupName\":\"Каменев Игорь Витальевич\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"01.06.1995\"},{\"label\":\"СНИЛС\",\"value\":\"112-233-446 96\"}]}],\"storedValues\":{\"firstName\":\"Игорь\",\"lastName\":\"Каменев\",\"middleName\":\"Витальевич\",\"birthDate\":\"01.06.1995\",\"gender\":\"M\",\"citizenship\":\"RUS\",\"citizenshipCode\":\"RUS\",\"snils\":\"112-233-446 96\"},\"errors\":[]}"
+    },
+    "pd2": {
+      "visited": true,
+      "value": "{\"states\":[{\"groupName\":\"Каменев Игорь Витальевич\",\"fields\":[{\"label\":\"Номер полиса ОМС\",\"value\":\"7700007012345678\"}]}],\"storedValues\":{\"firstName\":\"Игорь\",\"lastName\":\"Каменев\",\"middleName\":\"Витальевич\",\"gender\":\"M\",\"citizenship\":\"RUS\",\"citizenshipCode\":\"RUS\",\"omsNumber\":\"7700007012345678\"},\"errors\":[]}"
+    },
+    "pd3": {
+      "visited": true,
+      "value": "+7(963)7651646"
+    },
+    "reg1": {
+      "visited": true,
+      "value": "{\"originalItem\":{\"value\":\"84\",\"title\":\"г. Байконур\",\"isLeaf\":true,\"children\":[],\"attributes\":[{\"name\":\"Reg_Code\",\"type\":\"STRING\",\"value\":{\"asString\":\"84\",\"typeOfValue\":\"STRING\",\"value\":\"84\"},\"valueAsOfType\":\"84\"},{\"name\":\"Reg_Name\",\"type\":\"STRING\",\"value\":{\"asString\":\"г. Байконур\",\"typeOfValue\":\"STRING\",\"value\":\"г. Байконур\"},\"valueAsOfType\":\"г. Байконур\"},{\"name\":\"OKATO\",\"type\":\"STRING\",\"value\":{\"asString\":\"55000000000\",\"typeOfValue\":\"STRING\",\"value\":\"55000000000\"},\"valueAsOfType\":\"55000000000\"},{\"name\":\"KLADR\",\"type\":\"STRING\",\"value\":{\"asString\":\"9900000000000\",\"typeOfValue\":\"STRING\",\"value\":\"9900000000000\"},\"valueAsOfType\":\"9900000000000\"},{\"name\":\"Type_Screenplay\",\"type\":\"STRING\",\"value\":{\"asString\":\"0\",\"typeOfValue\":\"STRING\",\"value\":\"0\"},\"valueAsOfType\":\"0\"},{\"name\":\"Referral\",\"type\":\"STRING\",\"value\":{\"asString\":\"3\",\"typeOfValue\":\"STRING\",\"value\":\"3\"},\"valueAsOfType\":\"3\"}],\"attributeValues\":{\"KLADR\":\"9900000000000\",\"Reg_Code\":\"84\",\"OKATO\":\"55000000000\",\"Type_Screenplay\":\"0\",\"Referral\":\"3\",\"Reg_Name\":\"г. Байконур\"}},\"id\":\"84\",\"text\":\"г. Байконур\",\"medicalInfo\":{\"smevVersion\":3,\"sessionId\":\"61965db9-5bb2-4fa7-9528-eb4c3a5ca7a8\",\"eserviceId\":\"10000025167\",\"medicalData\":{\"error\":{\"errorDetail\":{\"errorCode\":0,\"errorMessage\":\"Operation completed\"}},\"totalItems\":5,\"items\":[{\"attributes\":[{\"name\":\"referralId\",\"value\":\"205206\"},{\"name\":\"referralNumber\",\"value\":\"445\"},{\"name\":\"referralTypeId\",\"value\":\"6\"},{\"name\":\"referralStartDate\",\"value\":\"2020-01-10\"},{\"name\":\"referralEndDate\",\"value\":\"2021-12-31\"},{\"name\":\"paymentSourceId\",\"value\":\"1\"},{\"name\":\"toMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\"},{\"name\":\"toMoName\",\"value\":\"Женская консультация, ГАУЗ &quot;Городская поликлиника № 21&quot;\"},{\"name\":\"toSpecsId\",\"value\":\"34\"},{\"name\":\"toSpecsName\",\"value\":\"врач-кардиолог\"},{\"name\":\"toResourceName\",\"value\":\"Пушкина Анна Ивановна\"},{\"name\":\"fromMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\"},{\"name\":\"fromMoName\",\"value\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\"},{\"name\":\"fromSpecsId\",\"value\":\"109\"},{\"name\":\"fromSpecsName\",\"value\":\"врач-терапевт\"},{\"name\":\"fromResourceName\",\"value\":\"Николаева Яна Семеновна\"}],\"convertedAttributes\":{\"toMoOid\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\",\"toSpecsName\":\"врач-кардиолог\",\"fromResourceName\":\"Николаева Яна Семеновна\",\"referralStartDate\":\"2020-01-10\",\"referralId\":\"205206\",\"fromSpecsId\":\"109\",\"fromSpecsName\":\"врач-терапевт\",\"paymentSourceId\":\"1\",\"toMoName\":\"Женская консультация, ГАУЗ &quot;Городская поликлиника № 21&quot;\",\"referralNumber\":\"445\",\"fromMoOid\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\",\"referralEndDate\":\"2021-12-31\",\"toResourceName\":\"Пушкина Анна Ивановна\",\"fromMoName\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\",\"toSpecsId\":\"34\",\"referralTypeId\":\"6\"}},{\"attributes\":[{\"name\":\"referralId\",\"value\":\"206789\"},{\"name\":\"referralNumber\",\"value\":\"558\"},{\"name\":\"referralTypeId\",\"value\":\"8\"},{\"name\":\"referralStartDate\",\"value\":\"2020-01-10\"},{\"name\":\"referralEndDate\",\"value\":\"2021-12-31\"},{\"name\":\"paymentSourceId\",\"value\":\"1\"},{\"name\":\"toMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\"},{\"name\":\"toMoName\",\"value\":\"Женская консультация, ГАУЗ &quot;Городская поликлиника № 21&quot;\"},{\"name\":\"toSpecsId\",\"value\":\"53\"},{\"name\":\"toSpecsName\",\"value\":\"врач-оториноларинголог\"},{\"name\":\"toResourceName\",\"value\":\"Нестерова Карина Ивановна\"},{\"name\":\"fromMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\"},{\"name\":\"fromMoName\",\"value\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\"},{\"name\":\"fromSpecsId\",\"value\":\"109\"},{\"name\":\"fromSpecsName\",\"value\":\"врач-терапевт\"},{\"name\":\"fromResourceName\",\"value\":\"Иванов Петр Иванович\"},{\"name\":\"toServiceId\",\"value\":\"A16.08.010.001\"},{\"name\":\"toServiceName\",\"value\":\"Подслизистая вазотомия нижних носовых раковин\"}],\"convertedAttributes\":{\"toMoOid\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\",\"toSpecsName\":\"врач-оториноларинголог\",\"fromResourceName\":\"Иванов Петр Иванович\",\"referralStartDate\":\"2020-01-10\",\"referralId\":\"206789\",\"fromSpecsId\":\"109\",\"fromSpecsName\":\"врач-терапевт\",\"paymentSourceId\":\"1\",\"toMoName\":\"Женская консультация, ГАУЗ &quot;Городская поликлиника № 21&quot;\",\"toServiceId\":\"A16.08.010.001\",\"referralNumber\":\"558\",\"fromMoOid\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\",\"referralEndDate\":\"2021-12-31\",\"toResourceName\":\"Нестерова Карина Ивановна\",\"fromMoName\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\",\"toSpecsId\":\"53\",\"toServiceName\":\"Подслизистая вазотомия нижних носовых раковин\",\"referralTypeId\":\"8\"}},{\"attributes\":[{\"name\":\"referralId\",\"value\":\"335335\"},{\"name\":\"referralNumber\",\"value\":\"335\"},{\"name\":\"referralTypeId\",\"value\":\"6\"},{\"name\":\"referralStartDate\",\"value\":\"2020-01-10\"},{\"name\":\"referralEndDate\",\"value\":\"2021-12-31\"},{\"name\":\"paymentSourceId\",\"value\":\"1\"},{\"name\":\"toSpecsId\",\"value\":\"13\"},{\"name\":\"toSpecsName\",\"value\":\"врач-акушер-гинеколог\"},{\"name\":\"toResourceName\",\"value\":\"Куприянова Ирина Семеновна\"},{\"name\":\"fromMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\"},{\"name\":\"fromMoName\",\"value\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\"},{\"name\":\"fromSpecsId\",\"value\":\"109\"},{\"name\":\"fromSpecsName\",\"value\":\"врач-терапевт\"},{\"name\":\"fromResourceName\",\"value\":\"Николаева Яна Семеновна\"}],\"convertedAttributes\":{\"toSpecsName\":\"врач-акушер-гинеколог\",\"fromResourceName\":\"Николаева Яна Семеновна\",\"referralStartDate\":\"2020-01-10\",\"referralId\":\"335335\",\"fromSpecsId\":\"109\",\"fromSpecsName\":\"врач-терапевт\",\"paymentSourceId\":\"1\",\"referralNumber\":\"335\",\"fromMoOid\":\"1.2.643.5.1.13.13.12.2.16.1080.0.368844\",\"referralEndDate\":\"2021-12-31\",\"toResourceName\":\"Куприянова Ирина Семеновна\",\"fromMoName\":\"Отделение узких специалистов, ГАУЗ &quot;Городская поликлиника №18&quot;\",\"toSpecsId\":\"13\",\"referralTypeId\":\"6\"}},{\"attributes\":[{\"name\":\"referralId\",\"value\":\"55544433\"},{\"name\":\"referralNumber\",\"value\":\"1589\"},{\"name\":\"referralTypeId\",\"value\":\"4\"},{\"name\":\"referralStartDate\",\"value\":\"2020-06-30\"},{\"name\":\"referralEndDate\",\"value\":\"2022-09-30\"},{\"name\":\"paymentSourceId\",\"value\":\"1\"},{\"name\":\"toMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.59.6018.0.74664\"},{\"name\":\"toMoName\",\"value\":\"Поликлиника №1, ГБУЗ ПК &quot; ГКП №4&quot;\"},{\"name\":\"fromMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.59.10097.0.273023\"},{\"name\":\"fromMoName\",\"value\":\"Поликлиника №1, ГБУЗ ПК &quot;ГП №7&quot;\"},{\"name\":\"fromSpecsId\",\"value\":\"34\"},{\"name\":\"fromSpecsName\",\"value\":\"врач-кардиолог\"},{\"name\":\"fromResourceName\",\"value\":\"Пушнина Любовь Аркадьевна\"},{\"name\":\"toServiceId\",\"value\":\"A04.10.002.010\"},{\"name\":\"toServiceName\",\"value\":\"Эхокардиография с допплерографией\"}],\"convertedAttributes\":{\"toMoOid\":\"1.2.643.5.1.13.13.12.2.59.6018.0.74664\",\"fromResourceName\":\"Пушнина Любовь Аркадьевна\",\"referralStartDate\":\"2020-06-30\",\"referralId\":\"55544433\",\"fromSpecsId\":\"34\",\"fromSpecsName\":\"врач-кардиолог\",\"paymentSourceId\":\"1\",\"toMoName\":\"Поликлиника №1, ГБУЗ ПК &quot; ГКП №4&quot;\",\"toServiceId\":\"A04.10.002.010\",\"referralNumber\":\"1589\",\"fromMoOid\":\"1.2.643.5.1.13.13.12.2.59.10097.0.273023\",\"referralEndDate\":\"2022-09-30\",\"fromMoName\":\"Поликлиника №1, ГБУЗ ПК &quot;ГП №7&quot;\",\"toServiceName\":\"Эхокардиография с допплерографией\",\"referralTypeId\":\"4\"}},{\"attributes\":[{\"name\":\"referralId\",\"value\":\"5554443322\"},{\"name\":\"referralNumber\",\"value\":\"158922\"},{\"name\":\"referralTypeId\",\"value\":\"4\"},{\"name\":\"referralStartDate\",\"value\":\"2020-06-30\"},{\"name\":\"referralEndDate\",\"value\":\"2022-09-30\"},{\"name\":\"paymentSourceId\",\"value\":\"1\"},{\"name\":\"toMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.59.6018.0.74664\"},{\"name\":\"toMoName\",\"value\":\"Поликлиника №1, ГБУЗ ПК &quot; ГКП №4&quot;\"},{\"name\":\"toSpecsId\",\"value\":\"13\"},{\"name\":\"toSpecsName\",\"value\":\"врач-акушер-гинеколог\"},{\"name\":\"fromMoOid\",\"value\":\"1.2.643.5.1.13.13.12.2.59.10097.0.273023\"},{\"name\":\"fromMoName\",\"value\":\"Поликлиника №1, ГБУЗ ПК &quot;ГП №7&quot;\"},{\"name\":\"fromSpecsId\",\"value\":\"34\"},{\"name\":\"fromSpecsName\",\"value\":\"врач-кардиолог\"},{\"name\":\"fromResourceName\",\"value\":\"Пушнина Любовь Аркадьевна\"}],\"convertedAttributes\":{\"toMoOid\":\"1.2.643.5.1.13.13.12.2.59.6018.0.74664\",\"toSpecsName\":\"врач-акушер-гинеколог\",\"fromResourceName\":\"Пушнина Любовь Аркадьевна\",\"referralStartDate\":\"2020-06-30\",\"referralId\":\"5554443322\",\"fromSpecsId\":\"34\",\"fromSpecsName\":\"врач-кардиолог\",\"paymentSourceId\":\"1\",\"toMoName\":\"Поликлиника №1, ГБУЗ ПК &quot; ГКП №4&quot;\",\"referralNumber\":\"158922\",\"fromMoOid\":\"1.2.643.5.1.13.13.12.2.59.10097.0.273023\",\"referralEndDate\":\"2022-09-30\",\"fromMoName\":\"Поликлиника №1, ГБУЗ ПК &quot;ГП №7&quot;\",\"toSpecsId\":\"13\",\"referralTypeId\":\"4\"}}]},\"bookAttributes\":[{\"name\":\"Session_Id\",\"value\":\"61965db9-5bb2-4fa7-9528-eb4c3a5ca7a8\"}]}}"
+    },
+    "q2": {
+      "visited": true,
+      "value": "Выбрать врача"
+    },
+    "ms_smev3": {
+      "visited": true,
+      "value": "{\"value\":\"221\",\"parentValue\":null,\"title\":\"Женская консультация, ГАУЗ \\\"Городская поликлиника № 21\\\"\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"MO_Oid\",\"type\":\"STRING\",\"value\":{\"asString\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\"},\"valueAsOfType\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\"},{\"name\":\"Address_MO\",\"type\":\"STRING\",\"value\":{\"asString\":\"Республика Татарстан, г.Казань, ул.Рихарда Зорге, д.107\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Республика Татарстан, г.Казань, ул.Рихарда Зорге, д.107\"},\"valueAsOfType\":\"Республика Татарстан, г.Казань, ул.Рихарда Зорге, д.107\"},{\"name\":\"Reg_Phone\",\"type\":\"STRING\",\"value\":{\"asString\":\"(843) 466-60-67\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"(843) 466-60-67\"},\"valueAsOfType\":\"(843) 466-60-67\"}],\"source\":null,\"attributeValues\":{\"Address_MO\":\"Республика Татарстан, г.Казань, ул.Рихарда Зорге, д.107\",\"MO_Oid\":\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\",\"Reg_Phone\":\"(843) 466-60-67\"},\"objectId\":0,\"center\":[49.225593,55.744064],\"baloonContent\":[{\"value\":\"Республика Татарстан, г.Казань, ул.Рихарда Зорге, д.107\",\"label\":\"Адрес\"},{\"value\":\"(843) 466-60-67\",\"label\":\"Телефон\"}],\"agreement\":true,\"idForMap\":0,\"expanded\":true,\"okato\":\"55000000000\"}"
+    }
+  },
+  "cycledApplicantAnswers": {
+    "answerlist": []
+  },
+  "participants": {},
+  "display": {
+    "id": "s8_0_smev3",
+    "name": "Врач СМЭВ3",
+    "type": "UNIQUE",
+    "header": "Выберите врача",
+    "components": [
+      {
+        "id": "ts_doctor_smev3",
+        "name": "",
+        "type": "TimeSlotDoctor",
+        "label": "",
+        "attrs": {
+          "specLookup": {
+            "label": "Выбор специальности",
+            "dictionaryType": "v1/equeue/agg/ref/items",
+            "dictionaryUrlType": "lkApi",
+            "mappingParams": {
+              "idPath": "attributes[0].value",
+              "textPath": "attributes[1].value"
+            },
+            "searchProvider": {
+              "turnOffStartFilter": true,
+              "dictionaryFilter": [
+                {
+                  "attributeName": "MO_Id",
+                  "condition": "EQUALS",
+                  "value": "ms_smev3.value.value",
+                  "valueType": "ref",
+                  "excludeWrapper": true
+                },
+                {
+                  "attributeName": "Session_Id",
+                  "condition": "EQUALS",
+                  "value": "reg1.value.medicalInfo.sessionId",
+                  "valueType": "ref",
+                  "excludeWrapper": true
+                }
+              ],
+              "dictionaryOptions": {
+                "selectAttributes": [
+                  "Service_Id",
+                  "Service_Name"
+                ],
+                "additionalParams": [
+                  {
+                    "name": "eserviceId",
+                    "value": "reg1.value.medicalInfo.eserviceId",
+                    "type": "ref"
+                  },
+                  {
+                    "name": "refName",
+                    "value": "ServiceOrSpecs",
+                    "type": "value"
+                  }
+                ],
+                "excludedParams": [
+                  "parentRefItemValue",
+                  "tx"
+                ]
+              }
+            },
+            "ref": [],
+            "required": true,
+            "validation": [
+              {
+                "type": "RegExp",
+                "value": ".+",
+                "errorMsg": "Поле не может быть пустым"
+              }
+            ]
+          },
+          "docLookup": {
+            "label": "Выбор врача",
+            "dictionaryType": "v1/equeue/agg/ref/items",
+            "dictionaryUrlType": "lkApi",
+            "mappingParams": {
+              "idPath": "attributes[0].value",
+              "textPath": "attributes[1].value"
+            },
+            "searchProvider": {
+              "turnOffStartFilter": true,
+              "dictionaryFilter": [
+                {
+                  "attributeName": "Session_Id",
+                  "condition": "EQUALS",
+                  "value": "reg1.value.medicalInfo.sessionId",
+                  "valueType": "ref",
+                  "excludeWrapper": true
+                }
+              ],
+              "dictionaryOptions": {
+                "selectAttributes": [
+                  "Resource_Id",
+                  "Resource_Name"
+                ],
+                "additionalParams": [
+                  {
+                    "name": "eserviceId",
+                    "value": "reg1.value.medicalInfo.eserviceId",
+                    "type": "ref"
+                  },
+                  {
+                    "name": "refName",
+                    "value": "Resource",
+                    "type": "value"
+                  }
+                ],
+                "excludedParams": [
+                  "parentRefItemValue",
+                  "tx"
+                ]
+              }
+            },
+            "ref": [],
+            "required": true,
+            "validation": [
+              {
+                "type": "RegExp",
+                "value": ".+",
+                "errorMsg": "Поле не может быть пустым"
+              }
+            ]
+          },
+          "ts": {
+            "attributeNameWithAddress": "Address_MO",
+            "daysToShow": 15,
+            "startSection": "today",
+            "isMonthsRangeVisible": true,
+            "timeSlotType": {
+              "type": "CONST",
+              "value": "DOCTOR"
+            },
+            "department": {
+              "type": "REF",
+              "value": "ms_smev3"
+            }
+          },
+          "calculations": [
+            {
+              "attributeName": "eserviceId",
+              "expr": [
+                "$reg1.value.medicalInfo.eserviceId"
+              ],
+              "valueType": "preset",
+              "value": "eserviceId"
+            },
+            {
+              "attributeName": "serviceId",
+              "expr": [
+                "'10001000603'"
+              ],
+              "valueType": "preset",
+              "value": "serviceId"
+            },
+            {
+              "attributeName": "serviceCode",
+              "expr": [
+                "'-10001000603'"
+              ],
+              "valueType": "preset",
+              "value": "serviceCode"
+            },
+            {
+              "attributeName": "organizationId",
+              "expr": [
+                "$ms_smev3.value.value"
+              ],
+              "valueType": "preset",
+              "value": "organizationId"
+            },
+            {
+              "attributeName": "bookAttributes",
+              "expr": [
+                "$reg1.value.medicalInfo.bookAttributes"
+              ],
+              "valueType": "preset",
+              "value": "bookAttributes"
+            },
+            {
+              "attributeName": "Session_Id",
+              "expr": [
+                "$reg1.value.medicalInfo.sessionId"
+              ],
+              "valueType": "preset",
+              "value": "Session_Id"
+            },
+            {
+              "attributeName": "MO_Id",
+              "expr": [
+                "$ms_smev3.value.value"
+              ],
+              "valueType": "preset",
+              "value": "MO_Id"
+            },
+            {
+              "attributeName": "Starttime",
+              "expr": [
+                "'00:00'"
+              ],
+              "valueType": "preset",
+              "value": "Starttime"
+            },
+            {
+              "attributeName": "Endtime",
+              "expr": [
+                "'23:59'"
+              ],
+              "valueType": "preset",
+              "value": "Endtime"
+            },
+            {
+              "attributeName": "userSelectedRegion",
+              "expr": [
+                "$reg1.value.originalItem.attributeValues.OKATO"
+              ],
+              "valueType": "preset",
+              "value": "userSelectedRegion"
+            },
+            {
+              "attributeName": "anotherperson",
+              "expr": [
+                "$q1.value == 'Себя' ? 'N' : 'Y'"
+              ],
+              "valueType": "preset",
+              "value": "anotherperson"
+            },
+            {
+              "attributeName": "genderperson",
+              "expr": [
+                "($q1.value == 'Себя' && $pd1.value.storedValues.gender == 'M') ? 'Мужской' : ''",
+                "($q1.value == 'Себя' && $pd1.value.storedValues.gender == 'F') ? 'Женский' : ''",
+                "($q1.value == 'Ребенка' && $cld1.value[0].cld1_5 == 'M') ? 'Мужской' : ''",
+                "($q1.value == 'Ребенка' && $cld1.value[0].cld1_5 == 'F') ? 'Женский' : ''",
+                "($q1.value == 'Другого человека' && $pd5_6.value == 'M') ? 'Мужской' : ''",
+                "($q1.value == 'Другого человека' && $pd5_6.value == 'F') ? 'Женский' : 'Мужской'"
+              ],
+              "valueType": "preset",
+              "value": "genderperson"
+            }
+          ],
+          "refs": {}
+        },
+        "linkedValues": [
+          {
+            "argument": "ageperson",
+            "jsonLogic": {
+              "if": [
+                {
+                  "==": [
+                    "answer.q1.value",
+                    "Себя"
+                  ]
+                },
+                "answer.pd1.value.storedValues.birthDate",
+                {
+                  "==": [
+                    "answer.q1.value",
+                    "Ребенка"
+                  ]
+                },
+                "answer.cld1.value[0].pd_cld1.storedValues.birthDate",
+                "answer.pd5_4.value"
+              ]
+            },
+            "converterSettings": {
+              "converter": "DATE_TO_AGE",
+              "path": ""
+            },
+            "jsonSource": false
+          },
+          {
+            "argument": "pacientname",
+            "jsonLogic": {
+              "if": [
+                {
+                  "==": [
+                    "answer.q1.value",
+                    "Себя"
+                  ]
+                },
+                "answer.pd1.value.storedValues.lastName",
+                {
+                  "==": [
+                    "answer.q1.value",
+                    "Ребенка"
+                  ]
+                },
+                "answer.cld1.value[0].cld1_1",
+                "answer.pd5_1.value"
+              ]
+            },
+            "jsonSource": false
+          }
+        ],
+        "arguments": {
+          "ageperson": "26",
+          "pacientname": "Каменев"
+        },
+        "value": "{\"orderId\":764013769,\"eserviceId\":\"10000025167\",\"serviceId\":\"10001000603\",\"serviceCode\":\"-10001000603\",\"department\":\"{\\\"value\\\":\\\"221\\\",\\\"parentValue\\\":null,\\\"title\\\":\\\"Женская консультация, ГАУЗ \\\\\\\"Городская поликлиника № 21\\\\\\\"\\\",\\\"isLeaf\\\":true,\\\"children\\\":null,\\\"attributes\\\":[{\\\"name\\\":\\\"MO_Oid\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\\\"},\\\"valueAsOfType\\\":\\\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\\\"},{\\\"name\\\":\\\"Address_MO\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"Республика Татарстан, г.Казань, ул.Рихарда Зорге, д.107\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"Республика Татарстан, г.Казань, ул.Рихарда Зорге, д.107\\\"},\\\"valueAsOfType\\\":\\\"Республика Татарстан, г.Казань, ул.Рихарда Зорге, д.107\\\"},{\\\"name\\\":\\\"Reg_Phone\\\",\\\"type\\\":\\\"STRING\\\",\\\"value\\\":{\\\"asString\\\":\\\"(843) 466-60-67\\\",\\\"asLong\\\":null,\\\"asDecimal\\\":null,\\\"asDateTime\\\":null,\\\"asDate\\\":null,\\\"asBoolean\\\":null,\\\"typeOfValue\\\":\\\"STRING\\\",\\\"value\\\":\\\"(843) 466-60-67\\\"},\\\"valueAsOfType\\\":\\\"(843) 466-60-67\\\"}],\\\"source\\\":null,\\\"attributeValues\\\":{\\\"Address_MO\\\":\\\"Республика Татарстан, г.Казань, ул.Рихарда Зорге, д.107\\\",\\\"MO_Oid\\\":\\\"1.2.643.5.1.13.13.12.2.16.1179.0.221506\\\",\\\"Reg_Phone\\\":\\\"(843) 466-60-67\\\"},\\\"objectId\\\":0,\\\"center\\\":[49.225593,55.744064],\\\"baloonContent\\\":[{\\\"value\\\":\\\"Республика Татарстан, г.Казань, ул.Рихарда Зорге, д.107\\\",\\\"label\\\":\\\"Адрес\\\"},{\\\"value\\\":\\\"(843) 466-60-67\\\",\\\"label\\\":\\\"Телефон\\\"}],\\\"agreement\\\":true,\\\"idForMap\\\":0,\\\"expanded\\\":true,\\\"okato\\\":\\\"55000000000\\\"}\",\"timeSlotRequestAttrs\":[{\"name\":\"Startdate\",\"value\":\"23.07.2021\"},{\"name\":\"Starttime\",\"value\":\"00:00\"},{\"name\":\"Enddate\",\"value\":\"06.08.2021\"},{\"name\":\"Endtime\",\"value\":\"23:59\"},{\"name\":\"Session_Id\",\"value\":\"61965db9-5bb2-4fa7-9528-eb4c3a5ca7a8\"},{\"name\":\"Service_Id\",\"value\":\"\"},{\"name\":\"ServiceSpec_Id\",\"value\":\"\"},{\"name\":\"MO_Id\",\"value\":\"221\"}],\"bookingRequestAttrs\":[{\"name\":\"doctor\",\"value\":\"\"},{\"name\":\"anotherperson\",\"value\":\"N\"},{\"name\":\"genderperson\",\"value\":\"Мужской\"},{\"name\":\"ageperson\",\"value\":\"26\"},{\"name\":\"pacientname\",\"value\":\"Каменев\"}],\"organizationId\":\"221\",\"bookAttributes\":\"[{\\\"name\\\":\\\"Session_Id\\\",\\\"value\\\":\\\"61965db9-5bb2-4fa7-9528-eb4c3a5ca7a8\\\"}]\",\"userSelectedRegion\":\"55000000000\"}",
+        "required": true
+      }
+    ],
+    "buttons": [
+      {
+        "label": "Записаться к врачу",
+        "type": "nextStep",
+        "action": "getNextScreen"
+      }
+    ],
+    "hideBackButton": false,
+    "infoComponents": [],
+    "arguments": {},
+    "terminal": false,
+    "impasse": false,
+    "accepted": true,
+    "firstScreen": false
+  },
+  "logicComponents": [],
+  "serviceInfo": {
+    "statusId": 0
+  },
+  "signInfoMap": {},
+  "attachmentInfo": {},
+  "additionalParameters": {},
+  "serviceParameters": {},
+  "generatedFiles": [],
+  "cycledApplicantAnswerContext": {},
+  "gender": "M"
+}

@@ -1,0 +1,32 @@
+logging:
+    file:
+        name: logs/pgu-kafka-cli.log
+        path: logs
+    level:
+        root: WARN
+        ru.gosuslugi.pgu.kafkacli: INFO
+
+spring:
+    application.name: pgu-kafka-cli
+    kafka:
+        bootstrap-servers: localhost:9092
+        consumer:
+            properties:
+                allow.auto.create.topics: false
+            auto-offset-reset: earliest
+            group-id: pgu-kafka-cli
+        streams:
+            properties:
+                default.deserialization.exception.handler: org.apache.kafka.streams.errors.LogAndContinueExceptionHandler
+
+app:
+    topic: form-serviceToSp-adapter-self-errors
+    dest: form-serviceToSp-adapter-request
+    service-id:
+        exclude: 10000000204
+    restart: false
+    readUntilTimeout: false
+    timeout: PT2S
+    log-all: false
+    dry-run: false
+

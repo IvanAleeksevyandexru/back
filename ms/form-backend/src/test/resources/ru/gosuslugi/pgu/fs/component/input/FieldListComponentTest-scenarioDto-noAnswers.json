@@ -1,0 +1,87 @@
+{
+  "serviceCode": "local",
+  "targetCode": "10000000100",
+  "orderId": 84674,
+  "currentScenarioId": 1,
+  "currentUrl": "http://local.test.gosuslugi.ru:4200/",
+  "finishedAndCurrentScreens": [
+    "s1",
+    "s2",
+    "s3",
+    "s8",
+    "s4",
+    "s64",
+    "s88",
+    "s89",
+    "s90",
+    "s91",
+    "s92",
+    "s93",
+    "s95",
+    "s5",
+    "s104",
+    "fileuploadscr17",
+    "s97",
+    "finishscreen20full",
+    "redirectscreenpersonalpage",
+    "SCRspouse_first",
+    "s88_parent",
+    "s89_parent",
+    "s90_parent",
+    "s91_parent",
+    "s95_parent",
+    "SCRspouse_approv_YN",
+    "SCRuniversal_approved_alone"
+  ],
+  "cachedAnswers": {},
+  "currentValue": {},
+  "errors": {},
+  "participants": {
+    "1000298933": {
+      "role": "Coapplicant",
+      "mode": "MentionedApplicant",
+      "component": "ai19"
+    }
+  },
+  "display": {
+    "id": "SCRuniversal_approved_alone",
+    "name": "Скрин с сообщением о том, что согласие на регистрацию дано(используется собственником, нанимателем)",
+    "type": "INFO",
+    "header": "Вы дали согласие на регистрацию по месту пребывания",
+    "components": [
+      {
+        "id": "CMPuniversal_approved_alone",
+        "type": "InfoScr",
+        "label": "",
+        "attrs": {
+          "actions": [
+            {
+              "label": "Перейти в личный кабинет",
+              "value": "Подтвердить",
+              "type": "redirectToLK",
+              "action": "getNextScreen"
+            }
+          ]
+        },
+        "value": "",
+        "required": true,
+        "cycled": false
+      }
+    ],
+    "accepted": true,
+    "terminal": false,
+    "firstScreen": false
+  },
+  "attachmentInfo": {},
+  "additionalParameters": {
+    "masterOid": "1000305286",
+    "masterId": "84674",
+    "citizenshipCode": "RUS",
+    "gender": "F",
+    "orderId": "84674",
+    "citizenship": "RUS",
+    "oid": "1000305286",
+    "snils": "010-000-303 20"
+  },
+  "gender": "F"
+}

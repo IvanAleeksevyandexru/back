@@ -1,0 +1,981 @@
+{
+  "service": "Регистрация брака",
+  "init": "s30",
+  "draftTtl": 90,
+  "saveDraftModeEnabled": true,
+  "screens": [
+    {"id": "s29", "name": "Установвка полей", "type": "COMPONENT", "header": "Подтвердите бронирование", "components": ["place-id", "address-id", "time-id", "timer-start-id", "timer-finish-id"]},
+    {"id": "s30", "name": "Подтвердите бронирование", "type": "COMPONENT", "header": "Подтвердите бронирование", "components": ["da1"]},
+    {"id": "s31", "name": "Подтвердите бронирование", "type": "COMPONENT", "header": "Подтвердите бронирование", "components": ["da2"]}
+  ],
+  "applicationFields": [
+    {"id": "w1", "type": "InfoScr", "label": "<p>Вы решили создать семью и узаконить свои отношения</p><a id='detalize'>Узнать подробнее</a><p>Подайте заявление в ЗАГС, выберите удобное время церемонии бракосочетания и оплатите пошлину</p><p>Вам нужно ответить на несколько вопросов, чтобы мы показали необходимые действия</p>", "attrs": {"clarifications": {"detalize": {"text": "<p>Заявление подается от двух человек, у каждого должна быть подтвержденнная учетная запись на портале Госуслуги</p><p>В соответствии с Конституцией Российской Федерации заключение брака возможно только между мужчиной и женщиной</p><ol><li>Жених или невеста - заполняет данные о себе, выбирает удобный ЗАГС, дату и время регистрации и отправляет приглашение своему избраннику</li><li>Второй заявитель получает на электронную почту пригласительную ссылку, переходит по ней, заполняет свою часть заявления и оплачивает пошлину</li></ol><p>Жених и невеста заполняют совместное заявление каждый в своем Личном кабинете. Процедуру необходимо завершить в течение 24 часов</p><p>Напоминаем, что в России действует принцип единобрачия. Регистрация нового брака возможна только при наличии документов о прекращении предыдущего брака</p>"}}}, "value": "", "visited": false},
+    {"id": "q1", "type": "QuestionScr", "label": "<p>Подача заявления невозможна, если один из заявителей состоит в зарегистрированном браке</p>", "attrs": {"actions": [{"label": "Нет", "value": "Нет", "action": "getNextScreen"}, {"label": "Да", "value": "Да", "action": "getNextScreen"}]}, "value": "", "visited": false},
+    {"id": "q2", "type": "GQuestionScr", "label": "", "attrs": {"actions": [{"label": ["Разведен", "Разведена"], "value": "0", "action": "getNextScreen"}, { "label": ["Вдовец", "Вдова"], "value": "1", "action": ""}]}, "value": "", "visited": false},
+    {"id": "q3", "type": "QuestionScr", "label": "<p>Торжественная церемония проходит в укрешенном зале с музыкальным сопровождением и поздравлениями в адрес жениха и невесты</p><p>Простая регистрация предполагает лишь упрощенную процедуру заключения брака</p>", "attrs": {"actions": [{ "label": "Да", "value": "Да", "action": "getNextScreen"}, {"label": "Нет", "value": "Нет", "action": "getNextScreen"}]}, "value": "", "visited": false},
+    {"id": "d1", "type": "GInfoScr", "label": "[\"<ul><li>паспорт</li><li>данные невесты (СНИЛС и ее электронная почта)</li></ul><p>Процедуру подачи заявления нужно завершить в течение 24 часов</p><p>Сумма платежа составляет <s>350 рублей</s> 245 рублей</p><p>Скидка 30% при оплате через Госуслуги</p><p>После получения согласия от невесты и оплаты пошлины Вам придет подтверждение со временем проведения церемонии бракосочетания</p>\", \"<ul><li>паспорт</li><li>данные жениха (СНИЛС и его электронная почта)</li></ul><p>Процедуру подачи заявления нужно завершить в течение 24 часов</p><p>Сумма платежа составляет <s>350 рублей</s> 245 рублей</p><p>Скидка 30% при оплате через Госуслуги</p><p>После получения согласия от жениха и оплаты пошлины Вам придет подтверждение со временем проведения церемонии бракосочетания</p>\"]", "value": "", "visited": false},
+    {"id": "d2", "type": "GInfoScr", "label": "[\"<ul><li>паспорт</li><li>свидетельство о расторжении предыдущего брака, <a id='received'>выданное на Ваше имя</a></li><li>данные невесты (СНИЛС и ее электронная почта)</li></ul><p>Процедуру подачи заявления нужно завершить в течение 24 часов</p><p>Сумма платежа составляет <s>350 рублей</s> 245 рублей</p><p>Скидка 30% при оплате через Госуслуги</p><p>После получения согласия от невесты и оплаты пошлины Вам придет подтверждение со временем проведения церемонии бракосочетания</p>\", \"<ul><li>паспорт</li><li>свидетельство о расторжении предыдущего брака, <a id='received'>выданное на Ваше имя</a></li><li>данные жениха (СНИЛС и его электронная почта)</li></ul><p>Процедуру подачи заявления нужно завершить в течение 24 часов</p><p>Сумма платежа составляет <s>350 рублей</s> 245 рублей</p><p>Скидка 30% при оплате через Госуслуги</p><p>После получения согласия от жениха и оплаты пошлины Вам придет подтверждение со временем проведения церемонии бракосочетания</p>\"]", "attrs": {"clarifications": {"received": {"text": "<p>Используйте свидетельство о расторжении брака, выданное на Ваше имя. Документ, принадлежащий бывшему супругу, не будет принят в ЗАГС и регистрация брака не состоится</p>"}}}, "value": "", "visited": false},
+    {"id": "d3", "type": "GInfoScr", "label": "[\"<ul><li>паспорт</li><li>свидетельство о смерти предыдущего супруга</li><li>данные невесты (СНИЛС и ее электронная почта)</li></ul><p>Процедуру подачи заявления нужно завершить в течение 24 часов</p><p>Сумма платежа составляет <s>350 рублей</s> 245 рублей</p><p>Скидка 30% при оплате через Госуслуги</p><p>После получения согласия от невесты и оплаты пошлины Вам придет подтверждение со временем проведения церемонии бракосочетания</p>\", \"<ul><li>паспорт</li><li>свидетельство о смерти предыдущего супруга</li><li>данные жениха (СНИЛС и его электронная почта)</li></ul><p>Процедуру подачи заявления нужно завершить в течение 24 часов</p><p>Сумма платежа составляет <s>350 рублей</s> 245 рублей</p><p>Скидка 30% при оплате через Госуслуги</p><p>После получения согласия от жениха и оплаты пошлины Вам придет подтверждение со временем проведения церемонии бракосочетания</p>\"]", "value": "", "visited": false},
+    {"id": "pd1", "type": "ConfirmPersonalUserData", "label": "", "attrs": {"actions": [{"label": "Изменить", "value": "", "action": "editPassportData"}], "fields": [{"fieldName": "lastName", "label": ""}, {"fieldName": "firstName", "label": ""}, {"fieldName": "middleName","label": ""}, {"fieldName": "birthDate", "label": "Дата рождения:"}, {"fieldName": "birthPlace", "label": "Место рождения:"},{"fieldName": "rfPasportSeries", "label": "Серия:"}, {"fieldName": "rfPasportNumber", "label": "Номер:"}, {"fieldName": "rfPasportIssueDate", "label": "Дата выдачи:"}, {"fieldName": "rfPasportIssuedBy", "label": "Кем выдан:"}, {"fieldName": "rfPasportIssuedById","label": "Код подразделения:"},{"fieldName": "gender", "label": "Пол:"}]}, "value": "", "visited": false},
+    {"id": "pd2", "type": "ConfirmPersonalUserPhone", "label": "контактный телефон", "attrs": {"actions": [{"label": "Изменить", "value": "", "action": "editUserPhone"}]},  "value": "", "visited": false},
+    {"id": "pd3", "type": "ConfirmPersonalUserEmail", "label": "электронная почта", "attrs": {"actions": [{"label": "Изменить", "value": "", "action": "editUserEmail"}]}, "value": "", "visited": false},
+    {"id": "pd4", "type": "ConfirmPersonalUserRegAddr", "label": "", "attrs": {"fields": [{"fieldName": "regAddr", "label": "адрес"}], "actions": [{"label": "Изменить", "value": "", "action": "editUserRegAddr"}]},  "value": "", "visited": false},
+    {"id": "q4", "type": "QuestionScr", "label": "", "attrs": {"actions": [{"label": "Свидетельство о расторжении брака", "value": "Свидетельство о расторжении брака", "action": "getNextScreen"}, {"label": "Иное", "value": "Иное", "action": "getNextScreen"}]}, "value": "", "visited": false},
+    {"id": "q5", "type": "QuestionScr", "label": "", "attrs": {"actions": [{"label": "Свидетельство о смерти РФ", "value": "Свидетельство о смерти РФ", "action": "getNextScreen"}, {"label": "Иное", "value": "Иное", "action": "getNextScreen"}]}, "value": "", "visited": false},
+
+    {"id": "fai16", "type": "GDictionary", "label": "Укажите Вашу национальность", "attrs": {"dictionaryType": ["zags_nationalityMan", "zags_nationalityWoman"], "ref": []}, "value": "", "visited": false},
+    {"id": "fai17", "type": "Dictionary", "label": "Какое у Вас образование",  "attrs": {"dictionaryType": "ZAGS_educations", "ref": []}, "value": "", "visited": false},
+    {"id": "fai19", "type": "StringInput", "label": "Количество общих детей от Вашего жениха, не достигших 18 лет", "attrs": {}, "value": "", "visited": false},
+
+    {"id": "ai5a", "type": "InfoScr", "label": "<a id='example'>Посмотреть пример</a>", "attrs": {"clarifications": {"example": {"text": "<p><img src='scan_divorce_act'></img></p><p>*свидетельство о расторжении брака должно быть выдано на Ваше имя, а не на имя бывшего супруга</p>"}}}, "value": "", "visited": false},
+    {"id": "ai5с", "type": "InfoScr", "label": "<a id='example'>Посмотреть пример</a>", "attrs": {"clarifications": {"example": {"text": "<p><img src='scan_death_act'></img></p>"}}}, "value": "", "visited": false},
+    {"id": "ai5b", "type": "StringInput", "label": "номер актовой записи", "attrs": {"validation":[{"type":"RegExp","value":".+","ref":"","dataType":"","condition":"","errorMsg":"Поле не может быть пустым"}]},  "value": "", "visited": false},
+    {"id": "ai5d","type": "DateInput", "label":"дата актовой записи", "attrs": {"validation":{"type": "RegExp", "value":".*", "ref":"", "condition":"", "errorMsg":"Поле должно быть заполено"}}, "value":"", "visited":false},
+    {"id": "ai5f", "type": "StringInput", "label": "орган ЗАГС, составивший актовую запись", "attrs": {"validation":[{"type":"RegExp","value":".+","ref":"","dataType":"","condition":"","errorMsg":"Поле не может быть пустым"}]},  "value": "", "visited": false},
+
+    {"id": "ai5h", "type": "InfoScr", "label": "<a id='detalize'>Узнать подробнее</a>", "attrs": {"clarifications": {"detalize": {"text": "<p>По <a id='thelaw'>закону</a> возможны следующие варианты выбора фамилии супругов:</p><ol><li>сохранить добрачную фамилию</li><li>взять фамилию мужа (жены)</li><li>использовать двойную фамилию, записанную через дефис, (первой в составной фамилии всегда должна стоять фамилия мужа)</li></ol><p>Взять двойную фамилию не получится, в случаях, если:</p><ul><li>у кого-то из новобрачных уже есть двойная фамилия</li><li>добрачные фамилия супругов являются одинаковыми</li><li>один из супругов не согласен носить двойную фамилию (назначить двойную фамилию можно только обоим супругам)</li></ul>"}, "thelaw": {"text": "<p>В соответствии со ст.28 Федерального закона \"Об актах гражданского состояния\" от 15.11.1997 № 143-ФЗ</p><ol><li>При государственной регистрации заключения брака супругам в записи акта о заключении брака по выбору супругов записывается общая фамилия супругов или добрачная фамилия каждого из супругов</li><li>В качестве общей фамилии супругов может быть записана фамилия одного из супругов или, если иное не предусмотрено законом субъекта Российской Федерации, фамилия, образованная посредством присоединения фамилии жены к фамилии мужа. Общая фамилия может состоять не более чем из двух фамилий, соединенных при написании дефисом</li></ol>"}}}, "value": "", "visited": false},
+    {"id": "ai5i", "type": "StringInput", "label": "Фамилия", "attrs": {}, "value": "", "visited": false},
+
+    {"id": "sn1a", "type": "SnilsInput", "label": "СНИЛС", "attrs": { "role": "Сoapplicant"}, "value": "", "visited": false},
+    {"id": "finishcomponent34", "type": "InfoScr","label": "<p>К сожалению, заявление на регистрацию брака не может быть подано из-за того, что указанный гражданин имеет тот же пол, что и Вы</p><p>В соответствии с Конституцией Российской Федерации заключение брака возможно только между мужчиной и женщиной.</p>", "attrs": { "hints":[], "image":{"src":"rocket_start"}},"value": "", "visited": false},
+    {"id": "finishcomponent35", "type": "InfoScr","label": "<p>Указанный гражданин не достиг 18 лет</p><p>Для подачи заявления Вам нужно посетить ЗАГС с разрешением на брак, выданным органами местного самоуправления</p>", "attrs": { "hints":[], "image":{"src":"rocket_start"}},"value": "", "visited": false},
+    {"id": "finishcomponent36", "type": "InfoScr", "label": "<p>Указанный гражданин является иностранцем</p><p>Для подачи заявления Вам нужно посетить ЗАГС</p><p>Документы иностранного гражданина должны быть <a id='legalized'>легализованы</a> и переведены на русский язык, перевод должен быть нотариально заверен</p>", "attrs": { "hints":[], "image":{"src":"rocket_start"}, "clarifications": {"legalized": {"text": "<p>Легализация - это узаконивание и придание юридической силы документам на территории других государств</p><p>Документы должны быть переведены на русский язык, а перевод заверен у нотариуса. Это нужно даже в случаях, когда легализация документов не требуется согласно международным договорам об отмене легализации</p><p>Услуга по консульской легализации документов осуществляется Министерством иностранных дел Российской Федерации</p><p><a target='_blanc' href='https://www.kdmid.ru/content/cnslfunkrf_doc/Spisok%20stran-uchastnits%20Gaagskoy%20konventsii%20(iyul%202020).pdf'>Список стран-участниц Гаагской конференции от 5 октября 1961, отменяющей требование легализации иностранных официальных документов</a></p><p><a target='_blanc' href='http://www.kdmid.ru/content/cnslfunkrf_doc/%d0%bb%d0%b5%d0%b3%d0%b0%d0%bb%d0%b8%d0%b7%d0%b0%d1%86%d0%b8%d1%8f/%d0%a1%d0%bf%d0%b8%d1%81%d0%be%d0%ba%20%d0%b3%d0%be%d1%81%d1%83%d0%b4%d0%b0%d1%80%d1%81%d1%82%d0%b2%20-%20%d0%bb%d0%b5%d0%b3%d0%b0%d0%bb%d0%b8%d0%b7%d0%b0%d1%86%d0%b8%d1%8f.doc'>Список государств, с которыми Российская Федерация заключила договоры о правовой помощи, предусматривающие отмену легализации</a></p><p><a target='_blanc' href='http://www.kdmid.ru/content/cnslfunkrf_doc/%d0%bb%d0%b5%d0%b3%d0%b0%d0%bb%d0%b8%d0%b7%d0%b0%d1%86%d0%b8%d1%8f/%d0%a1%d0%bf%d0%b8%d1%81%d0%be%d0%ba%20%d0%b3%d0%be%d1%81%d1%83%d0%b4%d0%b0%d1%80%d1%81%d1%82%d0%b2%20-%20%d0%bb%d0%b5%d0%b3%d0%bf%d0%bb%d0%b8%d0%b7%d0%b0%d1%86%d0%b8%d1%8f2.doc'>Список стран-участниц Конвенции о правовой помощи и правовых отношениях по гражданским, семейным и уголовным делам</a></p>"}}}, "value": "", "visited": false},
+    {"id": "finishcomponent37", "type": "GInfoScr", "label": "[\"<p><img src='woman_picture'></img></p><p>К сожалению, указанный гражданин не зарегистрирован на портале Госуслуги</p><p>Для подачи заявления необходимо иметь подтвержденную учетную запись</p><p>Возможно, неверно указаны данные невесты, проверьте правильность введенной информации</p>\", \"<p><img src='man_picture'></img></p><p>К сожалению, указанный гражданин не зарегистрирован на портале Госуслуги</p><p>Для подачи заявления необходимо иметь подтвержденную учетную запись</p><p>Возможно, неверно указаны данные невесты, проверьте правильность введенной информации</p>\"]", "value": "", "visited": false},
+    {"id": "finishcomponent38", "type": "GInfoScr", "label": "[\"<p><img src='woman_picture'></img></p><p>К сожалению, у указанного гражданина не подтвержденная учетная запись на портале Госуслуги</p><p>Для подачи заявления необходимо иметь подтвержденную учетную запись</p><p>Возможно, неверно указаны данные невесты, проверьте правильность введенной информации</p>\", \"<p><img src='man_picture'></img></p><p>К сожалению, у указанного гражданина не подтвержденная учетная запись на портале Госуслуги</p><p>Для подачи заявления необходимо иметь подтвержденную учетную запись</p><p>Возможно, неверно указаны данные невесты, проверьте правильность введенной информации</p>\"]", "value": "", "visited": false},
+
+    {"id": "redirectcomponentpp", "type": "Redirect","label": "", "attrs": {"link":"Ссылка на личный кабинет"},"value": "", "visited": false},
+
+    {"id": "sn2a", "type": "StringInput", "label": "Электронная почта", "attrs": {}, "value": "", "visited": false},
+    {"id": "pd6", "type": "RegistrationAddr", "label": "", "attrs": {"fields": {"fieldName": "regAddr", "label": "город", "type": "input"}, "actions": []},  "value": "", "visited": false},
+
+    {
+      "id": "ms1", "type":"MapService",
+      "label": "<p>Выберите ЗАГС</p>",
+      "attrs": {"dictionaryType": "FNS_ZAGS_ORGANIZATION_AREA",
+        "dictionaryFilter":[
+          {
+            "attributeName":"SHOW_ON_MAP",
+            "condition":"EQUALS",
+            "value":"{\"asString\":\"true\"}",
+            "valueType":"value"
+          },
+          {
+            "attributeName":"SOLEMN",
+            "condition":"EQUALS",
+            "value":"{\"asString\":\"true\"}",
+            "valueType":"value"
+          },
+          {
+            "attributeName":"CODE",
+            "condition":"CONTAINS",
+            "value":"regCode",
+            "valueType":"preset"
+          },
+          {
+            "attributeName":"PR2",
+            "condition":"EQUALS",
+            "value":"{\"asString\":\"true\"}",
+            "valueType":"value"
+          }
+        ],
+        "baloonContent": [
+          { "name": "ADDRESS", "label": "Адрес"},
+          { "name": "PHONE", "label": "Телефон"},
+          { "name": "EMAIL", "label": "Email"}
+        ],
+        "actions": [],
+        "fields": [],
+        "addressString": {
+          "type": "REF",
+          "value": "pd4.regAddr"
+        },
+        "value": "",
+        "visited": false
+      }
+    },
+
+    {
+      "id": "ms2", "type":"MapService",
+      "label": "<p>Выберите ЗАГС</p>",
+      "attrs": {"dictionaryType": "FNS_ZAGS_ORGANIZATION_AREA",
+        "dictionaryFilter":[
+          {
+            "attributeName":"SHOW_ON_MAP",
+            "condition":"EQUALS",
+            "value":"{\"asString\":\"true\"}",
+            "valueType":"value"
+          },
+          {
+            "attributeName":"CODE",
+            "condition":"CONTAINS",
+            "value":"regCode",
+            "valueType":"preset"
+          },
+          {
+            "attributeName":"PR2",
+            "condition":"EQUALS",
+            "value":"{\"asString\":\"true\"}",
+            "valueType":"value"
+          }
+        ],
+        "baloonContent": [
+          { "name": "ADDRESS", "label": "Адрес"},
+          { "name": "PHONE", "label": "Телефон"},
+          { "name": "EMAIL", "label": "Email"}
+        ],
+        "actions": [],
+        "fields": [],
+        "addressString": {
+          "type": "REF",
+          "value": "pd4.regAddr"
+        },
+        "value": "",
+        "visited": false
+      }
+    },
+
+
+    {"id": "pd11", "type": "Dictionary", "label": "", "attrs": {"dictionaryType": "zags_year", "ref": []}, "value": "", "visited": false},
+
+    {
+      "id": "ts1",
+      "type": "TimeSlot",
+      "label": "",
+      "attrs": {
+        "timeSlotType": {"type": "CONST", "value": "BRAK"},
+        "department": {"type": "REF", "value": "ms1"},
+        "solemn": {"type": "REF", "value": "q3"},
+        "slotsPeriod": {"type": "REF", "value": "pd11"}
+      },
+      "actions": [],
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "ts2",
+      "type": "TimeSlot",
+      "label": "",
+      "attrs": {
+        "timeSlotType": {"type": "CONST", "value": "BRAK"},
+        "department": {"type": "REF", "value": "ms2"},
+        "solemn": {"type": "REF", "value": "q3"},
+        "slotsPeriod": {"type": "REF", "value": "pd11"}
+      },
+      "actions": [],
+      "value": "",
+      "visited": false
+    },
+    {"id": "interimcomponent1", "type": "GInfoScr", "label": "[\"<p>Заявление отправлено невесте для подтверждения согласия и оплаты пошлины.</p><p>Забронировано проведение торжественной регистрации брака ${reference_to_date} в ${reference_to_time}</p><p>Место регистрации:</p>${reference_to_name}<p></p><p>по адресу</p><p><a href='${reference_to_url}'>${reference_to_address}</a></p>\", \"<p>Заявление отправлено жениху для подтверждения согласия и оплаты пошлины.</p><p>Забронировано проведение торжественной регистрации брака ${reference_to_date} в ${reference_to_time}</p><p>Место регистрации:</p>${reference_to_name}<p></p><p>по адресу</p><p><a href='${reference_to_url}'>${reference_to_address}</a></p>\"]", "attrs": {"image": {"src": "link_to_img_success"}, "refs": ["reference_to_date", "reference_to_time", "reference_to_name", "reference_to_url", "reference_to_address"]}, "value": "", "visited": false},
+
+    {"id": "da", "type": "GQuestionScr", "label": "[\"<p>Жених</p><p>${pd1.lastName} ${pd1.firstName}${pd1.middleName}</p><p>Дата рождения</p><p>${pd1.birthDate}</p><p>Место бракосочетания</p><p>${cal1.departmentRef}</p><p>Адрес места регистрации</p><p>${ms1.addr}</p><p>Дата и время регистрации</p><p>${cal1.date}${cal1.time}</p>\", \"<p>Невеста</p><p>${pd1.lastName} ${pd1.firstName}${pd1.middleName}</p><p>Дата рождения</p><p>${pd1.birthDate}</p><p>Место бракосочетания</p><p>${cal1.departmentRef}</p><p>Адрес места регистрации</p><p>${ms1.addr}</p><p>Дата и время регистрации</p><p>${cal1.date}${cal1.time}</p>\"]", "attrs": {"actions": [{"label": "Подтвердить", "value": "", "action": "getNextScreen"}, {"label": "Отклонить", "value": "", "action": "getNextScreen"}], "fields": []}, "value": "", "visited": false},
+    {"id": "pd5", "type": "ConfirmPersonalUserData", "label": "", "attrs": {"actions": [{"label": "Изменить", "value": "", "action": "editPassportData"}], "fields": [{"fieldName": "lastName", "label": ""}, {"fieldName": "firstName", "label": ""}, {"fieldName": "middleName","label": ""}, {"fieldName": "birthDate", "label": "Дата рождения:"}, {"fieldName": "rfPasportSeries", "label": "Серия"}, {"fieldName": "rfPasportNumber", "label": "и номер:"}, {"fieldName": "rfPasportIssueDate", "label": "Дата выдачи:"}, {"fieldName": "rfPasportIssuedBy", "label": "Кем выдан:"}, {"fieldName": "rfPasportIssuedById","label": "Код подразделения:"}, {"fieldName": "birthPlace", "label": "Место рождения:"}]}, "value": "", "visited": false},
+    {"id": "q6", "type": "QuestionScr", "label": "<p>Подача заявления невозможна, если один из заявителей находится в зарегистрированном браке</p>", "attrs": {"actions": [{"label": "Нет", "value": "Нет", "action": "getNextScreen"}, {"label": "Да", "value": "Да", "action": "getNextScreen"}]}, "value": "", "visited": false},
+    {"id": "q7", "type": "GQuestionScr", "label": "", "attrs": {"actions": [{"label": ["Разведен", "Разведена"], "value": "0", "action": "getNextScreen"}, { "label": ["Вдовец", "Вдова"], "value": "1", "action": ""}]}, "value": "", "visited": false},
+    {"id": "q8", "type": "QuestionScr", "label": "", "attrs": {"actions": [{"label": "Свидетельство о расторжении брака", "value": "Свидетельство о расторжении брака", "action": "getNextScreen"}, {"label": "Иное", "value": "Иное", "action": "getNextScreen"}]}, "value": "", "visited": false},
+    {"id": "q9", "type": "QuestionScr", "label": "", "attrs": {"actions": [{"label": "Свидетельство о смерти РФ", "value": "Свидетельство о смерти РФ", "action": "getNextScreen"}, {"label": "Иное", "value": "Иное", "action": "getNextScreen"}]}, "value": "", "visited": false},
+
+    {"id": "ai5m", "type": "InfoScr", "label": "<a id='example'>Посмотреть пример</a>", "attrs": {"clarifications": [{"example": {"text": "<p><img src='scan_divorce_act'></img></p><p>*свидетельство о расторжении брака должно быть выдано на Ваше имя, а не на имя бывшего супруга</p>"}}]}, "value": "", "visited": false},
+    {"id": "ai5n", "type": "StringInput", "label": "номер актовой записи", "attrs": {"validation":[{"type":"RegExp","value":".+","ref":"","dataType":"","condition":"","errorMsg":"Поле не может быть пустым"}]},  "value": "", "visited": false},
+    {"id": "ai5o","type": "DateInput", "label":"дата актовой записи", "attrs": {"validation":{"type": "RegExp", "value":".*", "ref":"", "condition":"", "errorMsg":"Поле должно быть заполено"}}, "value":"", "visited":false},
+    {"id": "ai5p", "type": "StringInput", "label": "орган ЗАГС, составивший актовую запись", "attrs": {"validation":[{"type":"RegExp","value":".+","ref":"","dataType":"","condition":"","errorMsg":"Поле не может быть пустым"}]},  "value": "", "visited": false},
+
+    {"id": "ai5q", "type": "InfoScr", "label": "<a id='example'>Посмотреть пример</a>", "attrs": {"clarifications": {"example": {"text": "<p><img src='scan_death_act'></img></p>"}}}, "value": "", "visited": false},
+
+    {"id": "fai20", "type": "GDictionary", "label": "Укажите Вашу национальность", "attrs": {"dictionaryType": ["zags_nationalityMan", "zags_nationalityWoman"], "ref": []}, "value": "", "visited": false},
+    {"id": "fai21", "type": "Dictionary", "label": "Какое у Вас образование",  "attrs": {"dictionaryType": "ZAGS_educations", "ref": []}, "value": "", "visited": false},
+
+    {"id": "ai5j", "type": "InfoScr", "label": "<a id='detalize'>Узнать подробнее</a>", "attrs": {"clarifications": {"detalize": {"text": "<p>По <a id='thelaw'>закону</a> возможны следующие варианты выбора фамилии супругов:</p><ol><li>сохранить добрачную фамилию</li><li>взять фамилию мужа (жены)</li><li>использовать двойную фамилию, записанную через дефис, (первой в составной фамилии всегда должна стоять фамилия мужа)</li></ol><p>Взять двойную фамилию не получится, в случаях, если:</p><ul><li>у кого-то из новобрачных уже есть двойная фамилия</li><li>добрачные фамилия супругов являются одинаковыми</li><li>один из супругов не согласен носить двойную фамилию (назначить двойную фамилию можно только обоим супругам)</li></ul>"}, "thelaw": {"text": "<p>В соответствии со ст.28 Федерального закона \"Об актах гражданского состояния\" от 15.11.1997 № 143-ФЗ</p><ol><li>При государственной регистрации заключения брака супругам в записи акта о заключении брака по выбору супругов записывается общая фамилия супругов или добрачная фамилия каждого из супругов</li><li>В качестве общей фамилии супругов может быть записана фамилия одного из супругов или, если иное не предусмотрено законом субъекта Российской Федерации, фамилия, образованная посредством присоединения фамилии жены к фамилии мужа. Общая фамилия может состоять не более чем из двух фамилий, соединенных при написании дефисом</li></ol>"}}}, "value": "", "visited": false},
+    {"id": "ai5k", "type": "StringInput", "label": "Фамилия", "attrs": {}, "value": "", "visited": false},
+    {"id": "ai5l", "type": "GInfoScr", "label": "[\"<p>${reference_to_lastNameSelected}</p><p>Фамилия, выбранная невестой</p>\", \"<p>${reference_to_lastNameSelected}</p><p>Фамилия, выбранная женихом</p>\"]", "attrs": {"refs": ["reference_to_lastNameSelected"]}, "value": "", "visited": false},
+
+    {"id": "da1", "type": "InfoScr", "label": "<p>Место регистрации:</p><p>${ts1.departmentRef}</p><p>Адрес места регистрации:</p><p>${ms1.addr}</p><p>Тип церемонии:</p><p>Торжественная регистрация брака</p><p>Выбранное время</p><p>${ts1.date}${ts1.time}</p><p>На оплату пошлины для подтверждения осталось</p>", "attrs": {},"value": "", "visited": false},
+    {"id": "da2", "type": "InfoScr", "label": "<p>Место регистрации:</p><p>${ts2.departmentRef}</p><p>Адрес места регистрации:</p><p>${ms2.addr}</p><p>Тип церемонии:</p><p>Неторжественная регистрация брака</p><p>Выбранное время</p><p>${ts2.date}${ts2.time}</p><p>На оплату пошлины для подтверждения осталось</p>", "attrs": {},"value": "", "visited": false},
+    {"id": "p2","type": "PaymentScr","label": "<p>Переход на ЕПШ</p><p>245 рублей <s>350 рублей</s></p><p><a id='paymentData'>Реквизиты начисления</a></p>","attrs": {"nsi": ["fns_zgs_getpay_79272"],"dictItemCode": "01"}},
+    {"id": "finalcomponent1", "type": "InfoScr", "label": "<p>Государственная регистрация брака ${ts1.date}</p><p>Место регистрации:</p>${ts1.departmentRef}<p></p><p>по адресу</p><p><a href='${reference_to_url}'>${ms1.addr}</a></p><p>Дождитесь подтверждения о приеме заявления в Личном кабинете</p><p>Возбмите паспорта, проверьте наличие свободной страницы для штампа</p>", "attrs": {"image": {"src": "link_to_img_success"}, "refs": ["reference_to_date", "reference_to_time", "reference_to_name", "reference_to_url", "reference_to_address"]}, "value": "", "visited": false},
+    {"id": "finalcomponent2", "type": "InfoScr", "label": "<p>Государственная регистрация брака ${ts2.date}</p><p>Место регистрации:</p>$${ts2.departmentRef}<p></p><p>по адресу</p><p><a href='${reference_to_url}'>${ms2.addr}</a></p><p>Дождитесь подтверждения о приеме заявления в Личном кабинете</p><p>Возбмите паспорта, проверьте наличие свободной страницы для штампа</p>", "attrs": {"image": {"src": "link_to_img_success"}, "refs": ["reference_to_date", "reference_to_time", "reference_to_name", "reference_to_url", "reference_to_address"]}, "value": "", "visited": false},
+
+    {
+      "id":"pd9",
+      "type":"ConfirmMarriage",
+      "label":"На оплату пошлины для подтверждения бронирования осталось:",
+      "attrs":{
+        "place":{
+          "label":"Место регистрации:",
+          "type":"ref",
+          "value":""
+        },
+        "address":{
+          "label":"Адрес места регистрации:",
+          "type":"ref",
+          "value":""
+        },
+        "time":{
+          "label":"Выбранное время:",
+          "type":"ref",
+          "value": ""
+        },
+        "timer": {
+          "start": {
+            "type":"ref",
+            "value": ""
+          },
+          "finish": {
+            "type":"ref",
+            "value": ""
+          }
+        }
+      },
+      "value":"",
+      "visited":false
+    },
+
+    {"id": "place-id", "type": "StringInput", "label": "Введите место регистрации:", "attrs": {}, "value": "", "visited": false},
+    {"id": "address-id", "type": "StringInput", "label": "Введите адрес места регистрации:", "attrs": {}, "value": "", "visited": false},
+    {"id": "time-id","type": "DateInput", "label":"дата актовой записи", "attrs": {}, "value": "", "visited": false},
+    {"id": "timer-start-id","type": "DateInput", "label":"дата актовой записи", "attrs": {}, "value": "", "visited": false},
+    {"id": "timer-finish-id","type": "DateInput", "label":"дата актовой записи", "attrs": {}, "value": "", "visited": false}
+  ],
+  "scenarios": [
+
+    {
+      "id": 10000101,
+      "desc": "Сценарий 1. Гендерная проверка - Заявители не были в браке ранее, проведение торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Нет"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s5"},
+        {"conditions": [{"field": "d1", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "equals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"finishscreen34"},
+        {"conditions":[{"field":"finishcomponent34", "visited": true, "value":null}], "display":"redirectscreenpersonalpage"}
+      ]
+    },
+
+    {
+      "id": 1,
+      "desc": "Сценарий 1. Заявители не были в браке ранее, проведение торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Нет"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s5"},
+        {"conditions": [{"field": "d1", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s20"},
+        {"conditions": [{"field": "ms1", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s31"},
+        {"conditions": [{"field": "ts2", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {     "id": 100001,
+      "desc" : "Сценарий 1а. Созаявитель", "role": "Сoapplicant",
+      "rules": [
+        {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+        {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+        {"conditions": [{"field": "q6", "visited": true, "value": "Нет"}], "display": "s28"},
+        {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+        {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+        {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+        {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+      ]
+    },
+
+    {
+      "id": 2,
+      "desc": "Сценарий 2. Заявитель ранее был разведен, второй не был в браке ранее, проведение торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Разведена"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s6"},
+        {"conditions": [{"field": "d2", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s12"},
+        {"conditions": [{"field": "q4", "visited": true, "value": null}], "display": "s13"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s20"},
+        {"conditions": [{"field": "ms1", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s23"},
+        {"conditions": [{"field": "ts1", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100002,  "desc" : "Сценарий 2а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Нет"}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+
+    {
+      "id": 3,
+      "desc": "Сценарий 3. Заявитель вдовец или вдова, второй не был в браке ранее, проведение торжественной церемонии (первый заявитель невеста, второй - жених",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Вдова"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s6"},
+        {"conditions": [{"field": "d3", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s14"},
+        {"conditions": [{"field": "q5", "visited": true, "value": null}], "display": "s15"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "420"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s20"},
+        {"conditions": [{"field": "ms1", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s23"},
+        {"conditions": [{"field": "ts1", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100003,  "desc" : "Сценарий 3а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Нет"}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 4,
+      "desc": "Сценарий 4. Заявитель не был в браке ранее, второй разведен, проведение торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Нет"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s5"},
+        {"conditions": [{"field": "d1", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s20"},
+        {"conditions": [{"field": "ms1", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s23"},
+        {"conditions": [{"field": "ts1", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100004,  "desc" : "Сценарий 4а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Да"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "0"}], "display": "s35"},
+      {"conditions": [{"field": "q8", "visited": true, "value": "Свидетельство о расторжении брака"}], "display": "s36"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 5,
+      "desc": "Сценарий 5. Оба заявителя ранее были в браке и разведены, проведение торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Разведена"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s6"},
+        {"conditions": [{"field": "d2", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s12"},
+        {"conditions": [{"field": "q4", "visited": true, "value": null}], "display": "s13"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s20"},
+        {"conditions": [{"field": "ms1", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s23"},
+        {"conditions": [{"field": "ts1", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100005,  "desc" : "Сценарий 5а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Да"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "0"}], "display": "s35"},
+      {"conditions": [{"field": "q8", "visited": true, "value": "Свидетельство о расторжении брака"}], "display": "s36"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 6,
+      "desc": "Сценарий 6. Заявитель вдовец или вдова, второй разведен, проведение торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Вдова"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s6"},
+        {"conditions": [{"field": "d3", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s14"},
+        {"conditions": [{"field": "q5", "visited": true, "value": null}], "display": "s15"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s20"},
+        {"conditions": [{"field": "ms1", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s23"},
+        {"conditions": [{"field": "ts1", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100006,  "desc" : "Сценарий 6а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Да"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "0"}], "display": "s35"},
+      {"conditions": [{"field": "q8", "visited": true, "value": "Свидетельство о расторжении брака"}], "display": "s36"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 7,
+      "desc": "Сценарий 7. Заявитель не были в браке ранее, второй вдовец или вдова, проведение торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Нет"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s5"},
+        {"conditions": [{"field": "d1", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s20"},
+        {"conditions": [{"field": "ms1", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s23"},
+        {"conditions": [{"field": "ts1", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100007,  "desc" : "Сценарий 7а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Да"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "1"}], "display": "s37"},
+      {"conditions": [{"field": "q9", "visited": true, "value": "Свидетельство о смерти РФ"}], "display": "s38"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 8,
+      "desc": "Сценарий 8. Заявитель ранее были разведен, второй вдовец или вдова, проведение торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Разведена"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s6"},
+        {"conditions": [{"field": "d2", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s12"},
+        {"conditions": [{"field": "q4", "visited": true, "value": null}], "display": "s13"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s20"},
+        {"conditions": [{"field": "ms1", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s23"},
+        {"conditions": [{"field": "ts1", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100008,  "desc" : "Сценарий 8а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Да"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "1"}], "display": "s37"},
+      {"conditions": [{"field": "q9", "visited": true, "value": "Свидетельство о смерти РФ"}], "display": "s38"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 9,
+      "desc": "Сценарий 9. Оба заявителя вдовцы, проведение торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Вдова"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s6"},
+        {"conditions": [{"field": "d3", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s14"},
+        {"conditions": [{"field": "q5", "visited": true, "value": null}], "display": "s15"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s20"},
+        {"conditions": [{"field": "ms1", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s23"},
+        {"conditions": [{"field": "ts1", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100009,  "desc" : "Сценарий 9а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Нет"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "1"}], "display": "s37"},
+      {"conditions": [{"field": "q9", "visited": true, "value": "Свидетельство о смерти РФ"}], "display": "s38"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 10,
+      "desc": "Сценарий 10. Заявители не были в браке ранее, проведение не торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Нет"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Нет"}], "display": "s5"},
+        {"conditions": [{"field": "d1", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s21"},
+        {"conditions": [{"field": "ms2", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s31"},
+        {"conditions": [{"field": "ts2", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100010,  "desc" : "Сценарий 10а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Нет"}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 11,
+      "desc": "Сценарий 11. Заявитель ранее был разведен, второй не был в браке ранее, проведение не торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Разведена"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Нет"}], "display": "s6"},
+        {"conditions": [{"field": "d2", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s12"},
+        {"conditions": [{"field": "q4", "visited": true, "value": null}], "display": "s13"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s21"},
+        {"conditions": [{"field": "ms2", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s31"},
+        {"conditions": [{"field": "ts2", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100011,  "desc" : "Сценарий 11а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Нет"}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 12,
+      "desc": "Сценарий 12. Заявитель вдовец или вдова, второй не был в браке ранее, проведение не торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Вдова"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Нет"}], "display": "s6"},
+        {"conditions": [{"field": "d3", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s14"},
+        {"conditions": [{"field": "q5", "visited": true, "value": null}], "display": "s15"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s21"},
+        {"conditions": [{"field": "ms2", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s31"},
+        {"conditions": [{"field": "ts2", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100012,  "desc" : "Сценарий 12а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Нет"}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 13,
+      "desc": "Сценарий 13. Заявитель не был в браке ранее, второй разведен, проведение не торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Нет"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Нет"}], "display": "s5"},
+        {"conditions": [{"field": "d1", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s21"},
+        {"conditions": [{"field": "ms2", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s31"},
+        {"conditions": [{"field": "ts2", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100013,  "desc" : "Сценарий 13а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Да"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "0"}], "display": "s35"},
+      {"conditions": [{"field": "q8", "visited": true, "value": "Свидетельство о расторжении брака"}], "display": "s36"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 14,
+      "desc": "Сценарий 14. Оба заявителя ранее были в браке и разведены, проведение не торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Разведена"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Нет"}], "display": "s6"},
+        {"conditions": [{"field": "d2", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s12"},
+        {"conditions": [{"field": "q4", "visited": true, "value": null}], "display": "s13"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s21"},
+        {"conditions": [{"field": "ms2", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s31"},
+        {"conditions": [{"field": "ts2", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100014,  "desc" : "Сценарий 14а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Да"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "0"}], "display": "s35"},
+      {"conditions": [{"field": "q8", "visited": true, "value": "Свидетельство о расторжении брака"}], "display": "s36"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 15,
+      "desc": "Сценарий 15. Заявитель вдовец или вдова, второй разведен, проведение не торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Вдова"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Нет"}], "display": "s6"},
+        {"conditions": [{"field": "d3", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s14"},
+        {"conditions": [{"field": "q5", "visited": true, "value": null}], "display": "s15"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s21"},
+        {"conditions": [{"field": "ms2", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s31"},
+        {"conditions": [{"field": "ts2", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100015,  "desc" : "Сценарий 15а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Да"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "0"}], "display": "s35"},
+      {"conditions": [{"field": "q8", "visited": true, "value": "Свидетельство о расторжении брака"}], "display": "s36"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 16,
+      "desc": "Сценарий 16. Заявитель не были в браке ранее, второй вдовец или вдова, проведение не торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Нет"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s5"},
+        {"conditions": [{"field": "d1", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s21"},
+        {"conditions": [{"field": "ms2", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s31"},
+        {"conditions": [{"field": "ts2", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100016,  "desc" : "Сценарий 16а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Нет"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "1"}], "display": "s37"},
+      {"conditions": [{"field": "q9", "visited": true, "value": "Свидетельство о смерти РФ"}], "display": "s38"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 17,
+      "desc": "Сценарий 17. Заявитель ранее были разведен, второй вдовец или вдова, проведение не торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Разведена"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s6"},
+        {"conditions": [{"field": "d2", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s12"},
+        {"conditions": [{"field": "q4", "visited": true, "value": null}], "display": "s13"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s21"},
+        {"conditions": [{"field": "ms2", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s31"},
+        {"conditions": [{"field": "ts1", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100017,  "desc" : "Сценарий 8а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Нет"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "1"}], "display": "s37"},
+      {"conditions": [{"field": "q9", "visited": true, "value": "Свидетельство о смерти РФ"}], "display": "s38"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    },
+
+    {
+      "id": 18,
+      "desc": "Сценарий 18. Оба заявителя вдовцы, проведение не торжественной церемонии (первый заявитель невеста, второй - жених)",
+      "rules": [
+        {"conditions": [{"field": "w1", "visited": true, "value": ""}], "display": "s2"},
+        {"conditions": [{"field": "q1", "visited": true, "value": "Да"}], "display": "s3"},
+        {"conditions": [{"field": "q2", "visited": true, "value": "Вдова"}], "display": "s4"},
+        {"conditions": [{"field": "q3", "visited": true, "value": "Да"}], "display": "s6"},
+        {"conditions": [{"field": "d3", "visited": true, "value": ""}], "display": "s8"},
+        {"conditions": [{"field": "pd1", "visited": true, "value": null}], "display": "s9"},
+        {"conditions": [{"field": "pd2", "visited": true, "value": null}], "display": "s10"},
+        {"conditions": [{"field": "pd3", "visited": true, "value": null}], "display": "s11"},
+        {"conditions": [{"field": "pd4", "visited": true, "value": null}], "display": "s14"},
+        {"conditions": [{"field": "q5", "visited": true, "value": null}], "display": "s15"},
+        {"conditions": [{"field": "ai5f", "visited": true, "value": null}], "display": "s16"},
+        {"conditions": [{"field": "fai19", "visited": true, "value": null}], "display": "s17"},
+        {"conditions": [{"field": "ai5i", "visited": true, "value": null}], "display": "s18"},
+        {"conditions":[{"field":"sn1a.value", "fieldType": "String", "predicate": "notEquals", "args": [{"type": "RequestData", "value": "pd1.value"}]}], "display":"s19"},
+
+        {"conditions": [{"field": "sn2a", "visited": true, "value": null}], "display": "s40"},
+        {"conditions":[{"field":"pd6", "visited": true, "value":null}], "display":"s21"},
+        {"conditions": [{"field": "ms2", "visited": true, "value": null}], "display": "s22"},
+        {"conditions": [{"field": "pd11", "visited": true, "value": null}], "display": "s31"},
+        {"conditions": [{"field": "ts2", "visited": true, "value": "Забронировать"}], "display": "s24"},
+        {"conditions": [{"field": "interimcomponent1", "visited": true, "value": ""}], "display": "s25"}
+      ]
+    },
+    {"id": 100018,  "desc" : "Сценарий 18а. Созаявитель", "role": "Сoapplicant", "rules":
+    [
+      {"conditions": [{"field": "da", "visited": true, "value": "Подтвердить"}], "display": "s26"},
+      {"conditions": [{"field": "pd5", "visited": true, "value": "Верно"}], "display": "s27"},
+      {"conditions": [{"field": "q6", "visited": true, "value": "Нет"}], "display": "s34"},
+      {"conditions": [{"field": "q7", "visited": true, "value": "1"}], "display": "s37"},
+      {"conditions": [{"field": "q9", "visited": true, "value": "Свидетельство о смерти РФ"}], "display": "s38"},
+      {"conditions": [{"field": "ai5p", "visited": true, "value": null}], "display": "s28"},
+      {"conditions": [{"field": "fai21", "visited": true, "value": ""}], "display": "s29"},
+      {"conditions": [{"field": "ai5l", "visited": true, "value": null}], "display": "s30"},
+      {"conditions": [{"field": "da1", "visited": true, "value": null}], "display": "s32"},
+      {"conditions": [{"field": "p2", "visited": true, "value": null}], "display": "s33"}
+    ]
+    }
+  ]
+}

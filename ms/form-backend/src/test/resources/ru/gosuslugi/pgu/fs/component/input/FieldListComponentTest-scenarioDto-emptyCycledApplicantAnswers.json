@@ -1,0 +1,290 @@
+{
+  "serviceCode": "local",
+  "targetCode": "10000000100",
+  "orderId": 84674,
+  "currentScenarioId": 1,
+  "currentUrl": "http://local.test.gosuslugi.ru:4200/",
+  "finishedAndCurrentScreens": [
+    "s1",
+    "s2",
+    "s3",
+    "s8",
+    "s4",
+    "s64",
+    "s88",
+    "s89",
+    "s90",
+    "s91",
+    "s92",
+    "s93",
+    "s95",
+    "s5",
+    "s104",
+    "fileuploadscr17",
+    "s97",
+    "finishscreen20full",
+    "redirectscreenpersonalpage",
+    "SCRspouse_first",
+    "s88_parent",
+    "s89_parent",
+    "s90_parent",
+    "s91_parent",
+    "s95_parent",
+    "SCRspouse_approv_YN",
+    "SCRuniversal_approved_alone"
+  ],
+  "cachedAnswers": {},
+  "currentValue": {},
+  "errors": {},
+  "applicantAnswers": {
+    "w1": {
+      "visited": true,
+      "value": ""
+    },
+    "q1": {
+      "visited": true,
+      "value": "Зарегистрироваться"
+    },
+    "q2": {
+      "visited": true,
+      "value": "Меня, супруга (супругу) и детей"
+    },
+    "q6": {
+      "visited": true,
+      "value": "До 14 лет"
+    },
+    "q3": {
+      "visited": true,
+      "value": "Да"
+    },
+    "d46": {
+      "visited": true,
+      "value": ""
+    },
+    "pd1": {
+      "visited": true,
+      "value": "{\"states\":[{\"groupName\":\"Петрова Анна Петровна\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"01.01.1991\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер\",\"value\":\"1234 123456\"},{\"label\":\"Дата выдачи\",\"value\":\"01.08.2014\"},{\"label\":\"Кем выдан\",\"value\":\"Тестовый центр выдачи\"},{\"label\":\"Код подразделения\",\"value\":\"123-123\"},{\"label\":\"Место рождения\",\"value\":\"!\\\"№;%:?*()_+-=\\\\/.Тест  Тестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТе\"}]}],\"storedValues\":{\"firstName\":\"Анна\",\"lastName\":\"Петрова\",\"birthPlace\":\"!\\\"№;%:?*()_+-=\\\\/.Тест  Тестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТестовое место рожденияТе\",\"rfPasportIssuedBy\":\"Тестовый центр выдачи\",\"rfPasportIssuedById\":\"123123\",\"rfPasportSeries\":\"1234\",\"middleName\":\"Петровна\",\"birthDate\":\"01.01.1991\",\"rfPasportNumber\":\"123456\",\"rfPasportIssueDate\":\"01.08.2014\"}}"
+    },
+    "pd2": {
+      "visited": true,
+      "value": "+7(985)4388141"
+    },
+    "pd3": {
+      "visited": true,
+      "value": "barashihina-anas@mail.ru"
+    },
+    "pd4": {
+      "visited": true,
+      "value": "{\"regDate\":\"10.10.1990\",\"regAddr\":{\"region\":\"Оренбургская\",\"city\":\"Оренбург\",\"district\":\"\",\"town\":\"\",\"inCityDist\":\"\",\"street\":\"Новая\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"house\":\"25\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1\":\"\",\"building2\":\"\",\"apartment\":\"1\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"460050\",\"geoLat\":\"51.8093961\",\"geoLon\":\"55.1034099\",\"fullAddress\":\"460050, обл. Оренбургская, г. Оренбург, ул. Новая, д. 25, кв. 1\",\"addressStr\":\"обл. Оренбургская, г. Оренбург, ул. Новая\",\"lat\":\"51.8093961\",\"lng\":\"55.1034099\",\"fiasCode\":\"587d18ae-d114-4670-97cf-2bac3c2a566d\",\"okato\":\"53401368000\",\"hasErrors\":0,\"kladrCode\":\"5600000100010110015\",\"regionCode\":\"56\"}}"
+    },
+    "pd5": {
+      "visited": true,
+      "value": "{\"regAddr\":{\"region\":\"Москва\",\"city\":\"\",\"district\":\"\",\"town\":\"\",\"inCityDist\":\"\",\"street\":\"Басманная Нов.\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"house\":\"12\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1\":\"\",\"building2\":\"2\",\"apartment\":\"12\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"107078\",\"geoLat\":\"55.7689738\",\"geoLon\":\"37.6571772\",\"fullAddress\":\"107078, г. Москва, ул. Басманная Нов., д. 12, стр. 2, кв. 12\",\"addressStr\":\"г. Москва, ул. Басманная Нов.\",\"lat\":\"55.7689738\",\"lng\":\"37.6571772\",\"fiasCode\":\"28bd6495-c940-4d77-9667-402b3d2f119a\",\"okato\":\"45286555000\",\"hasErrors\":0,\"kladrCode\":\"7700000000006270055\",\"regionCode\":\"77\"},\"regDate\":\"2021-10-26T06:30:28.326Z\"}"
+    },
+    "pd6": {
+      "visited": true,
+      "value": "Выписка из ЕГРН"
+    },
+    "fai0": {
+      "visited": true,
+      "value": ""
+    },
+    "rb1": {
+      "visited": true,
+      "value": "false"
+    },
+    "rb2": {
+      "visited": true,
+      "value": "false"
+    },
+    "fai1": {
+      "visited": true,
+      "value": ""
+    },
+    "fai2": {
+      "visited": true,
+      "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+    },
+    "fai5": {
+      "visited": true,
+      "value": ""
+    },
+    "fai6": {
+      "visited": true,
+      "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+    },
+    "fai10": {
+      "visited": true,
+      "value": "{\"id\":\"2020-0\",\"text\":2020,\"unselectable\":false,\"originalItem\":{\"label\":2020}}"
+    },
+    "fai12": {
+      "visited": true,
+      "value": "{\"id\":\"2\",\"text\":\"в связи с учебой\",\"unselectable\":false,\"originalItem\":{\"label\":\"в связи с учебой\",\"disable\":false,\"code\":\"2\"}}"
+    },
+    "fai13": {
+      "visited": true,
+      "value": ""
+    },
+    "fai14": {
+      "visited": true,
+      "value": "{\"id\":\"0\",\"text\":\"Военнослужащие (за исключением военнослужащих срочной службы по призыву)\",\"unselectable\":false,\"originalItem\":{\"label\":\"Военнослужащие (за исключением военнослужащих срочной службы по призыву)\",\"disable\":false,\"code\":\"0\"}}"
+    },
+    "fai15": {
+      "visited": true,
+      "value": "{\"id\":\"36\",\"text\":\"магистр\",\"unselectable\":false,\"originalItem\":{\"label\":\"магистр\",\"disable\":false,\"code\":\"36\"}}"
+    },
+    "fai16": {
+      "visited": true,
+      "value": "{\"id\":\"34\",\"text\":\"женат (замужем)\",\"unselectable\":false,\"originalItem\":{\"label\":\"женат (замужем)\",\"disable\":false,\"code\":\"34\"}}"
+    },
+    "ai19": {
+      "visited": true,
+      "value": "{\"rfPasportSeries\":\"5300\",\"oid\":\"1000298933\",\"rfPasportNumber\":\"535353\"}"
+    },
+    "ai7": {
+      "visited": true,
+      "value": "[{\"ai7_6\":\"false\",\"ai7_5\":\"тест\",\"ai7_4\":\"сидр\",\"qс1\":\"0\",\"ai7_3\":\"петров\",\"ai7_2\":\"M\",\"ai7_1\":\"2018-12-06T00:00:00Z\",\"ai7_0\":\"7481346\",\"cl2\":{\"regDate\":\"30.09.2020\",\"regAddr\":{\"region\":\"Москва\",\"city\":\"\",\"district\":\"\",\"town\":\"\",\"inCityDist\":\"\",\"street\":\"Басманная Нов.\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"house\":\"12\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1\":\"\",\"building2\":\"2\",\"apartment\":\"\",\"apartmentCheckbox\":true,\"apartmentCheckboxClosed\":true,\"index\":\"107078\",\"geoLat\":\"55.7689738\",\"geoLon\":\"37.6571772\",\"fullAddress\":\"107078, г. Москва, ул. Басманная Нов., д. 12, стр. 2\",\"addressStr\":\"г. Москва, ул. Басманная Нов.\",\"lat\":\"55.7689738\",\"lng\":\"37.6571772\",\"fiasCode\":\"28bd6495-c940-4d77-9667-402b3d2f119a\",\"okato\":\"45286555000\",\"hasErrors\":0,\"kladrCode\":\"7700000000006270055\",\"regionCode\":\"77\"}},\"cai1\":\"\",\"cfai5\":\"\",\"cai2\":{\"formatted\":\"\",\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"originalItem\":{\"value\":\"ABH\",\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cfai6\":{\"formatted\":\"\",\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"originalItem\":{\"value\":\"ABH\",\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cai0\":\"\",\"crb1\":\"false\",\"cfai10\":{\"unselectable\":false,\"id\":\"2020-0\",\"text\":2020,\"originalItem\":{\"label\":2020}},\"сrb2\":\"false\",\"bd6\":{\"storedValues\":{\"firstName\":\"сидр\",\"lastName\":\"петров\",\"rfBirthCertificateIssueDate\":\"2011-11-11T00:00:00Z\",\"rfBirthCertificateSeries\":\"XI-ИВ\",\"middleName\":\"тест\",\"rfBirthCertificateNumber\":\"111111\",\"birthDate\":\"2018-12-06T00:00:00Z\",\"rfBirthCertificateActNumber\":\"111\"},\"states\":[{\"groupName\":\"петров сидр тест\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"2018-12-06T00:00:00Z\"}]},{\"groupName\":\"Свидетельство о рождении\",\"fields\":[{\"label\":\"Серия и номер\",\"value\":\"XI-ИВ-111111\"},{\"label\":\"Дата выдачи\",\"value\":\"2011-11-11T00:00:00Z\"},{\"label\":\"Кем выдан\"},{\"label\":\"Актовый номер\",\"value\":\"111\"}]}]}}]"
+    },
+    "fu17": {
+      "visited": true,
+      "value": ""
+    },
+    "si2": {
+      "visited": true,
+      "value": "{\"value\":\"10000605927\",\"parentValue\":null,\"title\":\"ОГИБДД МУ МВД России \\\"Красногорское\\\"\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"ADDRESS_OUT\",\"type\":\"STRING\",\"value\":{\"asString\":\"Московская обл, Красногорский район, Красногорск г., Гаррибальди ул, д 7\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"Московская обл, Красногорский район, Красногорск г., Гаррибальди ул, д 7\"},\"valueAsOfType\":\"Московская обл, Красногорский район, Красногорск г., Гаррибальди ул, д 7\"},{\"name\":\"phone\",\"type\":\"STRING\",\"value\":{\"asString\":\"+7 496 453-5521\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"+7 496 453-5521\"},\"valueAsOfType\":\"+7 496 453-5521\"}],\"attributeValues\":{\"ADDRESS_OUT\":\"Московская обл, Красногорский район, Красногорск г., Гаррибальди ул, д 7\",\"phone\":\"+7 496 453-5521\"},\"idForMap\":2,\"center\":[37.330192,55.831099],\"baloonContent\":[{\"value\":\"Московская обл, Красногорский район, Красногорск г., Гаррибальди ул, д 7\",\"label\":\"Адрес\"},{\"value\":\"+7 496 453-5521\",\"label\":\"Телефон\"}],\"agreement\":true,\"expanded\":true,\"btnName\":\"Выбрать\"}"
+    },
+    "finishcomponent20full": {
+      "visited": true,
+      "value": ""
+    },
+    "CMPspouse_first": {
+      "visited": true,
+      "value": ""
+    },
+    "pd1_parent": {
+      "visited": true,
+      "value": "{\"states\":[{\"groupName\":\"Каменев Игорь Витальевич\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"01.01.1995\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер\",\"value\":\"5300 535353\"},{\"label\":\"Дата выдачи\",\"value\":\"02.06.2015\"},{\"label\":\"Кем выдан\",\"value\":\"Кем выдан\"},{\"label\":\"Код подразделения\",\"value\":\"787-878\"},{\"label\":\"Место рождения\",\"value\":\"просьба не менять фио УЗ\"}]}],\"storedValues\":{\"firstName\":\"Игорь\",\"lastName\":\"Каменев\",\"birthPlace\":\"просьба не менять фио УЗ\",\"rfPasportIssuedBy\":\"Кем выдан\",\"rfPasportIssuedById\":\"787878\",\"rfPasportSeries\":\"5300\",\"middleName\":\"Витальевич\",\"birthDate\":\"01.01.1995\",\"rfPasportNumber\":\"535353\",\"rfPasportIssueDate\":\"02.06.2015\"}}"
+    },
+    "pd2_parent": {
+      "visited": true,
+      "value": "+7(920)2505091"
+    },
+    "pd3_parent": {
+      "visited": true,
+      "value": "jonnydeppmyloveactot@gmail.com"
+    },
+    "pd4_parent": {
+      "visited": true,
+      "value": "{\"regDate\":\"10.10.1990\",\"regAddr\":{\"region\":\"Санкт-Петербург\",\"city\":\"Петергоф\",\"district\":\"\",\"town\":\"\",\"inCityDist\":\"\",\"street\":\"Санкт-Петербургское\",\"additionalArea\":\"\",\"additionalStreet\":\"\",\"house\":\"44\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1\":\"1\",\"building2\":\"\",\"apartment\":\"34\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"198510\",\"geoLat\":\"59.8678415\",\"geoLon\":\"29.9766918\",\"fullAddress\":\"198510, г. Санкт-Петербург, г. Петергоф, ш. Санкт-Петербургское, д. 44, к. 1, кв. 34\",\"addressStr\":\"г. Санкт-Петербург, г. Петергоф, ш. Санкт-Петербургское\",\"lat\":\"59.8678415\",\"lng\":\"29.9766918\",\"fiasCode\":\"f9b24363-9e4b-4d39-9522-9c9a852321cd\",\"okato\":\"40290501000\",\"hasErrors\":0,\"kladrCode\":\"7800000800003190106\",\"regionCode\":\"78\"}}"
+    },
+    "fai0_parent": {
+      "visited": true,
+      "value": ""
+    },
+    "rb1_parent": {
+      "visited": true,
+      "value": "false"
+    },
+    "rb2_parent": {
+      "visited": true,
+      "value": "false"
+    },
+    "fai1_parent": {
+      "visited": true,
+      "value": ""
+    },
+    "fai2_parent": {
+      "visited": true,
+      "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+    },
+    "fai5_parent": {
+      "visited": true,
+      "value": ""
+    },
+    "fai6_parent": {
+      "visited": true,
+      "value": "{\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}}"
+    },
+    "fai10_parent": {
+      "visited": true,
+      "value": "{\"id\":\"2020-0\",\"text\":2020,\"unselectable\":false,\"originalItem\":{\"label\":2020}}"
+    },
+    "fai12_parent": {
+      "visited": true,
+      "value": "{\"id\":\"2\",\"text\":\"в связи с учебой\",\"unselectable\":false,\"originalItem\":{\"label\":\"в связи с учебой\",\"disable\":false,\"code\":\"2\"}}"
+    },
+    "fai13_parent": {
+      "visited": true,
+      "value": ""
+    },
+    "fai14_parent": {
+      "visited": true,
+      "value": "{\"id\":\"0\",\"text\":\"Военнослужащие (за исключением военнослужащих срочной службы по призыву)\",\"unselectable\":false,\"originalItem\":{\"label\":\"Военнослужащие (за исключением военнослужащих срочной службы по призыву)\",\"disable\":false,\"code\":\"0\"}}"
+    },
+    "fai15_parent": {
+      "visited": true,
+      "value": "{\"id\":\"36\",\"text\":\"магистр\",\"unselectable\":false,\"originalItem\":{\"label\":\"магистр\",\"disable\":false,\"code\":\"36\"}}"
+    },
+    "fai16_parent": {
+      "visited": true,
+      "value": "{\"id\":\"34\",\"text\":\"женат (замужем)\",\"unselectable\":false,\"originalItem\":{\"label\":\"женат (замужем)\",\"disable\":false,\"code\":\"34\"}}"
+    },
+    "CMPspouse_approv_YN": {
+      "visited": true,
+      "value": "Подтвердить"
+    },
+    "confirm_data": {
+      "visited": true,
+      "value": "7481347"
+    }
+  },
+  "cycledApplicantAnswers": {},
+  "participants": {
+    "1000298933": {
+      "role": "Coapplicant",
+      "mode": "MentionedApplicant",
+      "component": "ai19"
+    }
+  },
+  "display": {
+    "id": "SCRuniversal_approved_alone",
+    "name": "Скрин с сообщением о том, что согласие на регистрацию дано(используется собственником, нанимателем)",
+    "type": "INFO",
+    "header": "Вы дали согласие на регистрацию по месту пребывания",
+    "components": [
+      {
+        "id": "CMPuniversal_approved_alone",
+        "type": "InfoScr",
+        "label": "",
+        "attrs": {
+          "actions": [
+            {
+              "label": "Перейти в личный кабинет",
+              "value": "Подтвердить",
+              "type": "redirectToLK",
+              "action": "getNextScreen"
+            }
+          ]
+        },
+        "value": "",
+        "required": true,
+        "cycled": false
+      }
+    ],
+    "accepted": true,
+    "terminal": false,
+    "firstScreen": false
+  },
+  "attachmentInfo": {},
+  "additionalParameters": {
+    "masterOid": "1000305286",
+    "masterId": "84674",
+    "citizenshipCode": "RUS",
+    "gender": "F",
+    "orderId": "84674",
+    "citizenship": "RUS",
+    "oid": "1000305286",
+    "snils": "010-000-303 20"
+  },
+  "gender": "F"
+}

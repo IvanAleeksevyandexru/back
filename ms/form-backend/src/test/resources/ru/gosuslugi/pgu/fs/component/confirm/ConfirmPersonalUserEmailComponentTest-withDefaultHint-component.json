@@ -1,0 +1,13 @@
+{
+  "id": "pd3",
+  "type": "ConfirmPersonalUserEmail",
+  "label": "Электронная почта",
+  "attrs": {
+    "defaultHint": {
+      "title": "defaultHintTitle",
+      "value": "defaultHintValue"
+    }
+  },
+  "value": "",
+  "visited": false
+}

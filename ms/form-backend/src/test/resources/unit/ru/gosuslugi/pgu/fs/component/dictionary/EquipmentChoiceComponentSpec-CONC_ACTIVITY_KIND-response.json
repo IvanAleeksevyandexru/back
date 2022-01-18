@@ -1,0 +1,150 @@
+{
+  "error": {
+    "code": 0,
+    "message": "operation completed"
+  },
+  "fieldErrors": [],
+  "total": 1,
+  "items": [
+    {
+      "value": "1",
+      "parentValue": null,
+      "title": "Оптовая торговля",
+      "isLeaf": true,
+      "children": [],
+      "attributes": [
+        {
+          "name": "ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 1,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 1
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "ACTIVITY_NAME",
+          "type": "STRING",
+          "value": {
+            "asString": "Оптовая торговля",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "Оптовая торговля"
+          },
+          "valueAsOfType": "Оптовая торговля"
+        },
+        {
+          "name": "PARENT_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": null
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "HAS_A_CHILD",
+          "type": "STRING",
+          "value": {
+            "asString": "false",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "false"
+          },
+          "valueAsOfType": "false"
+        },
+        {
+          "name": "LIC_TYPE_CODE",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": 4,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "DECIMAL",
+            "value": 4
+          },
+          "valueAsOfType": null
+        },
+        {
+          "name": "LIC_DEPARTMENT_OGRN",
+          "type": "STRING",
+          "value": {
+            "asString": "1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "1047796244396"
+          },
+          "valueAsOfType": "1047796244396"
+        },
+        {
+          "name": "autokey",
+          "type": "STRING",
+          "value": {
+            "asString": "CONC_ACTIVITY_KIND_RZ_1_1047796244396",
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": "CONC_ACTIVITY_KIND_RZ_1_1047796244396"
+          },
+          "valueAsOfType": "CONC_ACTIVITY_KIND_RZ_1_1047796244396"
+        },
+        {
+          "name": "FORM_CONFIG_ID",
+          "type": "STRING",
+          "value": {
+            "asString": null,
+            "asLong": null,
+            "asDecimal": null,
+            "asDateTime": null,
+            "asDate": null,
+            "asBoolean": null,
+            "typeOfValue": "STRING",
+            "value": null
+          },
+          "valueAsOfType": null
+        }
+      ],
+      "source": null,
+      "attributeValues": {
+        "ACTIVITY_NAME": "Оптовая торговля",
+        "HAS_A_CHILD": "false",
+        "FORM_CONFIG_ID": null,
+        "LIC_DEPARTMENT_OGRN": "1047796244396",
+        "autokey": "CONC_ACTIVITY_KIND_RZ_1_1047796244396",
+        "ID": null,
+        "LIC_TYPE_CODE": null,
+        "PARENT_ID": null
+      }
+    }
+  ]
+}

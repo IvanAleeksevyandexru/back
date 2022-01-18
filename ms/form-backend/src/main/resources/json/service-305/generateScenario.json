@@ -1,0 +1,473 @@
+{
+  "serviceName": "generateScenario",
+  "screens": [
+    {
+      "id": "99",
+      "isFirstScreen": true,
+      "name": "Внутренняя ошибка сервиса 99",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Обновить",
+          "value": "Обновить",
+          "type": "redirectToPayByUin",
+          "action": "redirectToPayByUin"
+        }
+      ],
+      "components": [
+        "ce99and98"
+      ]
+    },
+    {
+      "id": "98",
+      "isFirstScreen": true,
+      "name": "Неустранимая ошибка на стороне ведомства 99",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Обновить",
+          "value": "Обновить",
+          "type": "redirectToPayByUin",
+          "action": "redirectToPayByUin"
+        }
+      ],
+      "components": [
+        "ce99and98"
+      ]
+    },
+    {
+      "id": "97",
+      "isFirstScreen": true,
+      "name": "Ошибка маршрутизации 97",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "К деталям штрафа",
+          "value": "К деталям штрафа",
+          "type": "redirectToPayByUin",
+          "action": "redirectToPayByUin"
+        }
+      ],
+      "components": [
+        "ce97"
+      ]
+    },
+    {
+      "id": "96",
+      "isFirstScreen": true,
+      "name": "Постановление не найдено 96",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "К деталям штрафа",
+          "value": "К деталям штрафа",
+          "type": "redirectToPayByUin",
+          "action": "redirectToPayByUin"
+        }
+      ],
+      "components": [
+        "ce96"
+      ]
+    },
+    {
+      "id": "198",
+      "isFirstScreen": true,
+      "name": "Запрос уже находится на рассмотрении 198",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Узнать статус",
+          "value": "Узнать статус",
+          "type": "redirectToLK",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "ce198"
+      ]
+    },
+    {
+      "id": "199",
+      "isFirstScreen": true,
+      "name": "Некорректные данные заявителя 199",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "К деталям штрафа",
+          "value": "К деталям штрафа",
+          "type": "redirectToPayByUin",
+          "action": "redirectToPayByUin"
+        }
+      ],
+      "components": [
+        "ce199"
+      ]
+    },
+    {
+      "id": "200",
+      "isFirstScreen": true,
+      "name": "Запрос уже находится на рассмотрении",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Узнать статус",
+          "value": "Узнать статус",
+          "type": "redirectToLK",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "ce198"
+      ]
+    },
+    {
+      "id": "201",
+      "isFirstScreen": true,
+      "name": "Запрос уже находится на рассмотрении",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Узнать статус",
+          "value": "Узнать статус",
+          "type": "redirectToLK",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "ce198"
+      ]
+    },
+    {
+      "id": "202",
+      "isFirstScreen": true,
+      "name": "Запрос уже находится на рассмотрении",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Узнать статус",
+          "value": "Узнать статус",
+          "type": "redirectToLK",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "ce198"
+      ]
+    },
+    {
+      "id": "203",
+      "isFirstScreen": true,
+      "name": "Запрос уже находится на рассмотрении",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Узнать статус",
+          "value": "Узнать статус",
+          "type": "redirectToLK",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "ce198"
+      ]
+    },
+    {
+      "id": "210",
+      "isFirstScreen": true,
+      "name": "Решение по жалобе принято",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "К деталям штрафа",
+          "value": "К деталям штрафа",
+          "type": "redirectToPayByUin",
+          "action": "redirectToPayByUin"
+        }
+      ],
+      "components": [
+        "ce210"
+      ]
+    },
+    {
+      "id": "211",
+      "isFirstScreen": true,
+      "name": "Решение по жалобе принято",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "К деталям штрафа",
+          "value": "К деталям штрафа",
+          "type": "redirectToPayByUin",
+          "action": "redirectToPayByUin"
+        }
+      ],
+      "components": [
+        "ce210"
+      ]
+    },
+    {
+      "id": "212",
+      "isFirstScreen": true,
+      "name": "Решение по жалобе принято",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "К деталям штрафа",
+          "value": "К деталям штрафа",
+          "type": "redirectToPayByUin",
+          "action": "redirectToPayByUin"
+        }
+      ],
+      "components": [
+        "ce210"
+      ]
+    },
+    {
+      "id": "300",
+      "isFirstScreen": true,
+      "name": "Запрос уже находится на рассмотрении",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Узнать статус",
+          "value": "Узнать статус",
+          "type": "redirectToLK",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "ce198"
+      ]
+    },
+    {
+      "id": "1001",
+      "isFirstScreen": true,
+      "name": "Нет полномочий (код 1001)",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "ce1001"
+      ]
+    },
+    {
+      "id": "default",
+      "isFirstScreen": true,
+      "name": "Внутренняя ошибка сервиса",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "В личный кабинет",
+          "value": "В личный кабинет",
+          "type": "redirectToLK",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "def1"
+      ]
+    }
+  ],
+  "applicationFields": [
+    {
+      "id": "ce99and98",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg'><h3>Сервис временно недоступен</h3><span class='text-color--text-helper'>Обновите страницу или зайдите позже. <br>Если ничего не изменится — напишите <a target='_blanc' href='https://www.gosuslugi.ru/feedback'>в службу поддержки</a></span></center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      }
+    },
+    {
+      "id": "ce97",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg'><h3>Данные не найдены</h3><span class='text-color--text-helper'>По УИН не найдено отделений. <br>Обратитесь в отделение, выписавшее штраф — адрес можно найти в деталях начисления</span></center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      }
+    },
+    {
+      "id": "ce96",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg'><h3>Постановление не  найдено</h3><span class='text-color--text-helper'>Обратитесь в подразделение, выписавшее штраф — адрес можно найти в деталях штрафа</span></center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      }
+    },
+    {
+      "id": "ce198",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/warn.svg'><h3>Жалоба на рассмотрении</h3><span class='text-color--text-helper'>Вы уже подали жалобу. За её статусом можно следить в личном кабинете</span></center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      }
+    },
+    {
+      "id": "ce199",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg'><h3>Обжалование недоступно</h3><span class='text-color--text-helper'>Данные постановления и учетной записи не совпадают. <br>Если начисление ваше, обратитесь в отделение, выписавшее штраф — адрес можно найти в деталях штрафа</span></center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      }
+    },
+    {
+      "id": "ce210",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/warn.svg'><h3>Решение по жалобе принято</h3><span class='text-color--text-helper'>Жалоба уже рассмотрена. За её статусом можно следить в личном кабинете</span></center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      }
+    },
+    {
+      "id": "ce1001",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/warn.svg'><h3>Нет полномочий</h3><span class='text-color--text-helper'>Вы не являетесь доверенным лицом для обращения за данной услугой. Обратитесь к руководству компании</span></center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      }
+    },
+    {
+      "id": "def1",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg'><p>Не сработало</p><span class='text-color--text-helper'>Попробуйте снова или зайдите позже. Если ничего не изменится — напишите в <a target='_blank' href='https://www.gosuslugi.ru/feedback'>службу поддержки</a>.</span></center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      }
+    }
+  ]
+}

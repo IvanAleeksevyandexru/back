@@ -1,0 +1,43 @@
+{
+  "id": "add1",
+  "type": "SnilsInput",
+  "required": true,
+  "label": "Идентификационный номер (VIN)",
+  "attrs": {
+    "preset_from": {
+      "type": "calc",
+      "value": "$q1.value == 'Да' ? $pd4.value.regAddr.fullAddress : $fai17.value.text"
+    },
+    "ref": [
+      {
+        "relatedRel": "add3",
+        "val": true,
+        "relation": "disabled"
+      }
+    ],
+    "validation": [
+      {
+        "type": "RegExp",
+        "value": "^[A-Z0-9]*$",
+        "errorMsg": "Поле может содержать только цифры и заглавные латинские буквы"
+      },
+      {
+        "type": "RegExp",
+        "value": "^[^QIO]*$",
+        "errorMsg": "Не используются буквы Q, I, O"
+      },
+      {
+        "type": "RegExp",
+        "value": "^(|.{17})$",
+        "errorMsg": "Длина поля 17 символов"
+      },
+      {
+        "type": "RegExp",
+        "value": "^(|.{13}[0-9]{4})$",
+        "errorMsg": "Последние 4 символа - цифры"
+      }
+    ]
+  },
+  "value": "",
+  "visited": false
+}

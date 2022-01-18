@@ -1,0 +1,104 @@
+[
+  {
+    "fieldName": "firstName",
+    "label": ""
+  },
+  {
+    "fieldName": "lastName",
+    "label": ""
+  },
+  {
+    "fieldName": "middleName",
+    "label": ""
+  },
+  {
+    "fieldName": "birthDate",
+    "label": "Дата рождения"
+  },
+  {
+    "fieldName": "birthPlace",
+    "label": "Место рождения",
+    "required": "true",
+    "attrs": {
+      "validation": [
+        {
+          "type": "RegExp",
+          "value": ".+",
+          "ref": "",
+          "dataType": "",
+          "condition": "",
+          "errorMsg": "Поле не может быть пустым"
+        }
+      ]
+    }
+  },
+  {
+    "fieldName": "rfPasportSeries",
+    "label": "Серия паспорта"
+  },
+  {
+    "fieldName": "rfPasportNumber",
+    "label": "Номер паспорта"
+  },
+  {
+    "fieldName": "rfPasportIssueDate",
+    "label": "Дата выдачи"
+  },
+  {
+    "fieldName": "rfPasportIssuedBy",
+    "label": "Кем выдан"
+  },
+  {
+    "fieldName": "rfPasportIssuedById",
+    "label": "Код подразделения"
+  },
+  {
+    "fieldName": "firstName",
+    "label": ""
+  },
+  {
+    "fieldName": "lastName",
+    "label": ""
+  },
+  {
+    "fieldName": "middleName",
+    "label": ""
+  },
+  {
+    "fieldName": "birthDate",
+    "label": "Дата рождения"
+  },
+  {
+    "fieldName": "birthPlace",
+    "label": "Место рождения",
+    "required": "true",
+    "attrs": {
+      "validation": [
+        {
+          "type": "RegExp",
+          "value": ".+",
+          "ref": "",
+          "dataType": "",
+          "condition": "",
+          "errorMsg": "Поле не может быть пустым"
+        }
+      ]
+    }
+  },
+  {
+    "fieldName": "foreignPasportSeries",
+    "label": "Серия паспорта"
+  },
+  {
+    "fieldName": "foreignPasportNumber",
+    "label": "Номер паспорта"
+  },
+  {
+    "fieldName": "foreignPasportIssueDate",
+    "label": "Дата выдачи"
+  },
+  {
+    "fieldName": "foreignPasportIssuedBy",
+    "label": "Кем выдан"
+  }
+]

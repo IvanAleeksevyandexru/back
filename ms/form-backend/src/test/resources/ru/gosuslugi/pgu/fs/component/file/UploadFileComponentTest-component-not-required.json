@@ -1,0 +1,42 @@
+{
+  "id": "fu1",
+  "type": "FileUploadComponent",
+  "label": "Загрузите документы",
+  "attrs": {
+    "maxSize": 5242880,
+    "maxFileCount": 10,
+    "archiveTypes": [
+      "SIG"
+    ],
+    "uploads": [
+      {
+        "uploadId": "passport",
+        "type": "single",
+        "title": "Паспорт (развороты страниц)",
+        "label": "<p>Фото или сканы должны быть без обрезанных краев и хорошо видны</br></p><ul><li>Личные данные, стр. 2-3</li><li>Регистрация, стр. 5, даже если не заполнена (стр. 6-12, если заполнены)</li><li>Семейное положение, стр. 14-15, даже если не заполнены</li></ul><p><center><a id=\"thelaw\"></a></center></p></p>",
+        "fileType": [
+          "JPEG",
+          "PDF",
+          "JPG",
+          "PNG",
+          "TIFF",
+          "TIF",
+          "BMP",
+          "ZIP",
+          "RAR"
+        ],
+        "maxSize": 5242880,
+        "maxFileCount": 10
+      },
+      {
+        "uploadId": "signature",
+        "label": "<b>Файл УКЭП</b>",
+        "fileType": [
+          "SIG"
+        ],
+        "maxSize": 5242880,
+        "maxFileCount": 1
+      }
+    ]
+  }
+}

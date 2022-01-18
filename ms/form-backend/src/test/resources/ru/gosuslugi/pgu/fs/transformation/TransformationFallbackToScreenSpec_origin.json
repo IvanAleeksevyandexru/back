@@ -1,0 +1,759 @@
+{
+  "orderId": 763589471,
+  "type": "10000000100",
+  "locked": false,
+  "updated": "2021-01-18T12:08:49.597Z",
+  "body": {
+    "serviceCode": "10000000100",
+    "targetCode": "-10000000100",
+    "orderId": 763589471,
+    "currentScenarioId": 1,
+    "currentUrl": "https://dev-l11.pgu2-pub.test.gosuslugi.ru/",
+    "finishedAndCurrentScreens": [
+      "s88",
+      "SCRowner_approv_YN",
+      "SCRuniversal_approved_alone"
+    ],
+    "cachedAnswers": {
+      "w1": {
+        "visited": true,
+        "value": ""
+      },
+      "q1": {
+        "visited": true,
+        "value": "Зарегистрироваться"
+      },
+      "q2": {
+        "visited": true,
+        "value": "Меня, супруга (супругу) и детей"
+      },
+      "q6": {
+        "visited": true,
+        "value": "До 14 лет"
+      },
+      "q3": {
+        "visited": true,
+        "value": "Нет"
+      },
+      "CMProsreestr": {
+        "visited": true,
+        "value": "Да"
+      },
+      "CMPchildrenborninrussia": {
+        "visited": true,
+        "value": "Да"
+      },
+      "q8": {
+        "visited": true,
+        "value": "Да"
+      },
+      "d47": {
+        "visited": true,
+        "value": ""
+      },
+      "pd1": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Ы Анна Мария\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"25.01.1990\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"0006 234222\"},{\"label\":\"Дата выдачи:\",\"value\":\"19.05.2020\"},{\"label\":\"Кем выдан:\",\"value\":\"ОТДЕЛОМ УФМС РОССИИ ПО СМОЛЕНСКОЙ ОБЛ. В ЛЕНИНСКОМ РАЙОНЕ Г. СМОЛЕНСКА\"},{\"label\":\"Код подразделения:\",\"value\":\"670-001\"}]}],\"storedValues\":{\"firstName\":\"Анна Мария\",\"lastName\":\"Ы\",\"birthDate\":\"25.01.1990\",\"gender\":\"F\",\"rfPasportSeries\":\"0006\",\"rfPasportNumber\":\"234222\",\"rfPasportIssueDate\":\"19.05.2020\",\"rfPasportIssuedBy\":\"ОТДЕЛОМ УФМС РОССИИ ПО СМОЛЕНСКОЙ ОБЛ. В ЛЕНИНСКОМ РАЙОНЕ Г. СМОЛЕНСКА\",\"rfPasportIssuedById\":\"670001\"}}"
+      },
+      "pd2": {
+        "visited": true,
+        "value": "+7(953)2121212"
+      },
+      "pd3": {
+        "visited": true,
+        "value": "irymar@luxoft.com"
+      },
+      "pd4": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":\"город\",\"streetShortType\":\"пр-кт\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.4323067\",\"building2Type\":null,\"okato\":\"46460000000\",\"building1Type\":null,\"regionType\":\"область\",\"additionalStreet\":\"\",\"lat\":\"55.4323067\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"проспект\",\"town\":\"\",\"lng\":\"37.5619233\",\"index\":\"142116\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"142116, обл. Московская, г. Подольск, пр-кт. Революционный, д. 2/14, кв. 5\",\"houseCheckbox\":false,\"region\":\"Московская\",\"geoLon\":\"37.5619233\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"Подольск\",\"apartmentShortType\":\"кв\",\"house\":\"2/14\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"обл\",\"regionCode\":\"50\",\"districtShortType\":null,\"street\":\"Революционный\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":\"г\",\"kladrCode\":\"5000002400003820014\",\"building1ShortType\":null,\"fiasCode\":\"b924607a-e2ea-438a-bdbf-a20579df8de3\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"обл. Московская, г. Подольск, пр-кт. Революционный\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"5\"},\"regDate\":\"30.12.2020\"}"
+      },
+      "pd5": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":\"район\",\"geoLat\":\"56.7172303\",\"building2Type\":\"строение\",\"okato\":\"65249000016\",\"building1Type\":\"корпус\",\"regionType\":\"область\",\"additionalStreet\":\"\",\"lat\":\"56.7172303\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"Бутка\",\"lng\":\"63.7783514\",\"index\":\"623610\",\"townShortType\":\"с\",\"district\":\"Талицкий\",\"fullAddress\":\"623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3\",\"houseCheckbox\":false,\"region\":\"Свердловская\",\"geoLon\":\"63.7783514\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"15\",\"apartmentCheckbox\":false,\"townType\":\"село\",\"additionalAreaType\":null,\"regionShortType\":\"обл\",\"regionCode\":\"66\",\"districtShortType\":\"р-н\",\"street\":\"Ленина\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"66028000018003400\",\"building1ShortType\":\"к\",\"fiasCode\":\"a532f63d-624a-4fbe-9cef-f9923ce7a19f\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина\",\"building1\":\"2\",\"building2\":\"14\",\"houseShortType\":\"д\",\"building2ShortType\":\"стр\",\"apartment\":\"3\"},\"regDate\":\"2021-01-20T18:00:00.000Z\"}"
+      },
+      "ow1": {
+        "visited": true,
+        "value": "[{\"ow1_1\":\"Ёршин\",\"ow1_0\":\"\",\"ow1_4\":{\"firstName\":\"Александр\",\"lastName\":\"Ёршин\",\"rfPasportSeries\":\"5623\",\"exists\":true,\"middleName\":\"Федорович\",\"oid\":\"1000472519\",\"rfPasportNumber\":\"432423\",\"snils\":\"849-614-170 39\"},\"ow1_3\":\"Федорович\",\"ow1_2\":\"Александр\"}]"
+      },
+      "ow1_1": {
+        "visited": true,
+        "value": "Ёршин"
+      },
+      "ow1_0": {
+        "visited": true,
+        "value": ""
+      },
+      "ow1_4": {
+        "visited": true,
+        "value": "{\"firstName\":\"Александр\",\"lastName\":\"Ёршин\",\"rfPasportSeries\":\"5623\",\"exists\":true,\"middleName\":\"Федорович\",\"oid\":\"1000472519\",\"rfPasportNumber\":\"432423\",\"snils\":\"849-614-170 39\"}"
+      },
+      "ow1_3": {
+        "visited": true,
+        "value": "Федорович"
+      },
+      "ow1_2": {
+        "visited": true,
+        "value": "Александр"
+      },
+      "CMPownerinviteinfo": {
+        "visited": true,
+        "value": ""
+      },
+      "pd6": {
+        "visited": true,
+        "value": "Выписка из ЕГРН"
+      },
+      "CMPegrndate": {
+        "visited": true,
+        "value": "2020-12-30T00:00:00.000+06:00"
+      },
+      "CMPegrnnum": {
+        "visited": true,
+        "value": "1"
+      },
+      "CMPegrnexample": {
+        "visited": true,
+        "value": ""
+      },
+      "fai1": {
+        "visited": true,
+        "value": ""
+      },
+      "fai2": {
+        "visited": true,
+        "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "fai3_1": {
+        "visited": true,
+        "value": "{\"id\":\"1\",\"text\":\"Республика Адыгея\",\"unselectable\":false,\"originalItem\":{\"label\":\"Республика Адыгея\",\"disable\":false,\"code\":\"1\"}}"
+      },
+      "fai3_2": {
+        "visited": true,
+        "value": "2"
+      },
+      "fai4": {
+        "visited": true,
+        "value": "2"
+      },
+      "ai19": {
+        "visited": true,
+        "value": "{\"rfPasportSeries\":\"0004\",\"rfPasportNumber\":\"354642\",\"oid\":\"1000466662\",\"snils\":\"000-737-904 15\",\"firstName\":\"Мишка\",\"lastName\":\"Мишкин\",\"middleName\":\"Мишкович\",\"exists\":true}"
+      },
+      "ai7": {
+        "visited": true,
+        "value": "[{\"ai7_6\":\"true\",\"ai7_5\":\"Маратович\",\"ai7_4\":\"Дамир\",\"qс1\":\"0\",\"ai7_3\":\"Хабибулин\",\"ai7_2\":\"M\",\"ai7_1\":\"2020-12-29T00:00:00.000+06:00\",\"ai7_0\":\"0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d\",\"cl2\":{\"regDate\":\"30.12.2020\",\"regAddr\":{\"cityType\":\"город\",\"streetShortType\":\"пр-кт\",\"geoLat\":\"55.4323067\",\"okato\":\"46460000000\",\"regionType\":\"область\",\"additionalStreet\":\"\",\"lat\":\"55.4323067\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"проспект\",\"town\":\"\",\"lng\":\"37.5619233\",\"index\":\"142116\",\"district\":\"\",\"fullAddress\":\"142116, обл. Московская, г. Подольск, пр-кт. Революционный, д. 2/14, кв. 5\",\"houseCheckbox\":false,\"region\":\"Московская\",\"geoLon\":\"37.5619233\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"Подольск\",\"apartmentShortType\":\"кв\",\"house\":\"2/14\",\"apartmentCheckbox\":false,\"regionShortType\":\"обл\",\"regionCode\":\"50\",\"street\":\"Революционный\",\"cityShortType\":\"г\",\"kladrCode\":\"5000002400003820014\",\"fiasCode\":\"b924607a-e2ea-438a-bdbf-a20579df8de3\",\"hasErrors\":0,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"обл. Московская, г. Подольск, пр-кт. Революционный\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"apartment\":\"5\"}},\"cai1\":\"\",\"cai2\":{\"formatted\":\"\",\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"originalItem\":{\"value\":\"RUS\",\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cfai3\":{\"unselectable\":false,\"id\":\"7\",\"text\":\"Кабардино-Балкарская Республика\",\"originalItem\":{\"label\":\"Кабардино-Балкарская Республика\",\"disable\":false,\"code\":\"7\"}},\"cfai4\":\"re\",\"bd1\":\"XX-aa\",\"bd0\":\"\",\"bd3\":\"3424\",\"bd2\":\"22\",\"cfai11\":\"ref\",\"bd5\":\"fvvd\",\"bd4\":\"2021-01-05T00:00:00.000+06:00\",\"fu_childrenunder14\":{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"children0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d\",\"value\":[{\"fileName\":\"ACDC.jpg\",\"objectId\":763589389,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.children0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d.0\",\"fileSize\":53941,\"uploaded\":true,\"hasError\":false,\"mimeType\":\"image/jpeg\"}]}]}}]"
+      },
+      "CMPfamilyinviteinfo": {
+        "visited": true,
+        "value": ""
+      },
+      "fu15": {
+        "visited": true,
+        "value": "{\"id\":\"fu15\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"passport\",\"value\":[{\"fileName\":\"ACDC.jpg\",\"objectId\":763589389,\"objectTypeId\":2,\"mnemonic\":\"fu15.FileUploadComponent.passport.0\",\"fileSize\":53941,\"uploaded\":true,\"hasError\":false,\"mimeType\":\"image/jpeg\"}]},{\"uploadId\":\"additionPassport\",\"value\":[{\"fileName\":\"ACDC.jpg\",\"objectId\":763589389,\"objectTypeId\":2,\"mnemonic\":\"fu15.FileUploadComponent.additionPassport.0\",\"fileSize\":53941,\"uploaded\":true,\"hasError\":false,\"mimeType\":\"image/jpeg\"}]}]}"
+      },
+      "si2": {
+        "visited": true,
+        "value": "{\"value\":\"770-001\",\"parentValue\":null,\"title\":\"ОТДЕЛ АДРЕСНО-СПРАВОЧНОЙ РАБОТЫ УВМ ГУ МВД РОССИИ ПО Г. МОСКВЕ\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"770-001\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"770-001\"},\"valueAsOfType\":\"770-001\"},{\"name\":\"NAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"ОТДЕЛ АДРЕСНО-СПРАВОЧНОЙ РАБОТЫ УВМ ГУ МВД РОССИИ ПО Г. МОСКВЕ\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"ОТДЕЛ АДРЕСНО-СПРАВОЧНОЙ РАБОТЫ УВМ ГУ МВД РОССИИ ПО Г. МОСКВЕ\"},\"valueAsOfType\":\"ОТДЕЛ АДРЕСНО-СПРАВОЧНОЙ РАБОТЫ УВМ ГУ МВД РОССИИ ПО Г. МОСКВЕ\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"г Москва; ул Краснопролетарская\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"г Москва; ул Краснопролетарская\"},\"valueAsOfType\":\"г Москва; ул Краснопролетарская\"},{\"name\":\"HOUSING\",\"type\":\"STRING\",\"value\":{\"asString\":\"д. 10; стр. 1\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"д. 10; стр. 1\"},\"valueAsOfType\":\"д. 10; стр. 1\"},{\"name\":\"DISTRICT\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"ID\",\"type\":\"STRING\",\"value\":{\"asString\":\"300020\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"300020\"},\"valueAsOfType\":\"300020\"}],\"source\":null,\"attributeValues\":{\"HOUSING\":\"д. 10; стр. 1\",\"DISTRICT\":null,\"CODE\":\"770-001\",\"ID\":\"300020\",\"NAME\":\"ОТДЕЛ АДРЕСНО-СПРАВОЧНОЙ РАБОТЫ УВМ ГУ МВД РОССИИ ПО Г. МОСКВЕ\",\"ADDRESS\":\"г Москва; ул Краснопролетарская\"},\"idForMap\":0,\"center\":[37.607008,55.776856],\"baloonContent\":[{\"label\":\"Адрес\"},{\"label\":\"Телефон\"},{\"label\":\"Электронная почта\"}],\"agreement\":true,\"expanded\":true,\"btnName\":\"Выбрать\",\"regOkato\":\"65000000000\",\"okato\":\"65249000016\"}"
+      },
+      "CMPspouse_first": {
+        "visited": true,
+        "value": ""
+      },
+      "pd1_parent": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Мишкин Мишка Мишкович\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"09.10.2000\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"0004 354642\"},{\"label\":\"Дата выдачи:\",\"value\":\"25.06.2019\"},{\"label\":\"Кем выдан:\",\"value\":\"УМВД РОССИИ ПО ЗАБАЙКАЛЬСКОМУ КРАЮ\"},{\"label\":\"Код подразделения:\",\"value\":\"750-001\"},{\"label\":\"Место рождения:\",\"value\":\"г. Орёл\"}]}],\"storedValues\":{\"firstName\":\"Мишка\",\"lastName\":\"Мишкин\",\"middleName\":\"Мишкович\",\"birthDate\":\"09.10.2000\",\"birthPlace\":\"г. Орёл\",\"gender\":\"M\",\"rfPasportSeries\":\"0004\",\"rfPasportNumber\":\"354642\",\"rfPasportIssueDate\":\"25.06.2019\",\"rfPasportIssuedBy\":\"УМВД РОССИИ ПО ЗАБАЙКАЛЬСКОМУ КРАЮ\",\"rfPasportIssuedById\":\"750001\"}}"
+      },
+      "pd2_parent": {
+        "visited": true,
+        "value": "+7(519)6156116"
+      },
+      "pd3_parent": {
+        "visited": true,
+        "value": "esiatest302@yandex.ru"
+      },
+      "pd4_parent": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.791315\",\"building2Type\":null,\"okato\":\"45280569000\",\"building1Type\":\"корпус\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.791315\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.6006282\",\"index\":\"127018\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"127018, г. Москва, ул. Сущёвский Вал, д. 14, к. 3, кв. 4\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.6006282\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"14\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":null,\"street\":\"Сущёвский Вал\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"77000000000060600\",\"building1ShortType\":\"к\",\"fiasCode\":\"84dd3822-f006-435a-bdb3-314670c5812c\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Сущёвский Вал\",\"building1\":\"3\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"4\"},\"regDate\":\"06.01.2021\"}"
+      },
+      "fai1_parent": {
+        "visited": true,
+        "value": ""
+      },
+      "fai2_parent": {
+        "visited": true,
+        "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "fai3_1_parent": {
+        "visited": true,
+        "value": "{\"id\":\"2\",\"text\":\"Республика Башкортостан\",\"unselectable\":false,\"originalItem\":{\"label\":\"Республика Башкортостан\",\"disable\":false,\"code\":\"2\"}}"
+      },
+      "fai3_2_parent": {
+        "visited": true,
+        "value": "уу"
+      },
+      "fai4_parent": {
+        "visited": true,
+        "value": "уу"
+      },
+      "CMPspouse_approv_YN_all_nown": {
+        "visited": true,
+        "value": "Подтвердить"
+      },
+      "CMPowner_approv_YN": {
+        "visited": true,
+        "value": "Подтвердить"
+      }
+    },
+    "currentValue": {},
+    "errors": {},
+    "applicantAnswers": {
+      "q1": {
+        "visited": true,
+        "value": "Зарегистрироваться"
+      },
+      "pd5": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":\"район\",\"geoLat\":\"56.7172303\",\"building2Type\":\"строение\",\"okato\":\"65249000016\",\"building1Type\":\"корпус\",\"regionType\":\"область\",\"additionalStreet\":\"\",\"lat\":\"56.7172303\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"Бутка\",\"lng\":\"63.7783514\",\"index\":\"623610\",\"townShortType\":\"с\",\"district\":\"Талицкий\",\"fullAddress\":\"623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3\",\"houseCheckbox\":false,\"region\":\"Свердловская\",\"geoLon\":\"63.7783514\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"15\",\"apartmentCheckbox\":false,\"townType\":\"село\",\"additionalAreaType\":null,\"regionShortType\":\"обл\",\"regionCode\":\"66\",\"districtShortType\":\"р-н\",\"street\":\"Ленина\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"66028000018003400\",\"building1ShortType\":\"к\",\"fiasCode\":\"a532f63d-624a-4fbe-9cef-f9923ce7a19f\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина\",\"building1\":\"2\",\"building2\":\"14\",\"houseShortType\":\"д\",\"building2ShortType\":\"стр\",\"apartment\":\"3\"},\"regDate\":\"2021-01-20T18:00:00.000Z\"}"
+      },
+      "q2": {
+        "visited": true,
+        "value": "Меня, супруга (супругу) и детей"
+      },
+      "pd4": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":\"город\",\"streetShortType\":\"пр-кт\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.4323067\",\"building2Type\":null,\"okato\":\"46460000000\",\"building1Type\":null,\"regionType\":\"область\",\"additionalStreet\":\"\",\"lat\":\"55.4323067\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"проспект\",\"town\":\"\",\"lng\":\"37.5619233\",\"index\":\"142116\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"142116, обл. Московская, г. Подольск, пр-кт. Революционный, д. 2/14, кв. 5\",\"houseCheckbox\":false,\"region\":\"Московская\",\"geoLon\":\"37.5619233\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"Подольск\",\"apartmentShortType\":\"кв\",\"house\":\"2/14\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"обл\",\"regionCode\":\"50\",\"districtShortType\":null,\"street\":\"Революционный\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":\"г\",\"kladrCode\":\"5000002400003820014\",\"building1ShortType\":null,\"fiasCode\":\"b924607a-e2ea-438a-bdbf-a20579df8de3\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"обл. Московская, г. Подольск, пр-кт. Революционный\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"5\"},\"regDate\":\"30.12.2020\"}"
+      },
+      "q3": {
+        "visited": true,
+        "value": "Нет"
+      },
+      "CMProsreestr": {
+        "visited": true,
+        "value": "Да"
+      },
+      "CMPchildrenborninrussia": {
+        "visited": true,
+        "value": "Да"
+      },
+      "q6": {
+        "visited": true,
+        "value": "До 14 лет"
+      },
+      "d47": {
+        "visited": true,
+        "value": ""
+      },
+      "q8": {
+        "visited": true,
+        "value": "Да"
+      },
+      "ow1": {
+        "visited": true,
+        "value": "[{\"ow1_1\":\"Ёршин\",\"ow1_0\":\"\",\"ow1_4\":{\"firstName\":\"Александр\",\"lastName\":\"Ёршин\",\"rfPasportSeries\":\"5623\",\"exists\":true,\"middleName\":\"Федорович\",\"oid\":\"1000472519\",\"rfPasportNumber\":\"432423\",\"snils\":\"849-614-170 39\"},\"ow1_3\":\"Федорович\",\"ow1_2\":\"Александр\"}]"
+      },
+      "w1": {
+        "visited": true,
+        "value": ""
+      },
+      "pd1": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Ы Анна Мария\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"25.01.1990\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"0006 234222\"},{\"label\":\"Дата выдачи:\",\"value\":\"19.05.2020\"},{\"label\":\"Кем выдан:\",\"value\":\"ОТДЕЛОМ УФМС РОССИИ ПО СМОЛЕНСКОЙ ОБЛ. В ЛЕНИНСКОМ РАЙОНЕ Г. СМОЛЕНСКА\"},{\"label\":\"Код подразделения:\",\"value\":\"670-001\"}]}],\"storedValues\":{\"firstName\":\"Анна Мария\",\"lastName\":\"Ы\",\"birthDate\":\"25.01.1990\",\"gender\":\"F\",\"rfPasportSeries\":\"0006\",\"rfPasportNumber\":\"234222\",\"rfPasportIssueDate\":\"19.05.2020\",\"rfPasportIssuedBy\":\"ОТДЕЛОМ УФМС РОССИИ ПО СМОЛЕНСКОЙ ОБЛ. В ЛЕНИНСКОМ РАЙОНЕ Г. СМОЛЕНСКА\",\"rfPasportIssuedById\":\"670001\"}}"
+      },
+      "pd3": {
+        "visited": true,
+        "value": "irymar@luxoft.com"
+      },
+      "pd2": {
+        "visited": true,
+        "value": "+7(953)2121212"
+      },
+      "ow1_1": {
+        "visited": true,
+        "value": "Ёршин"
+      },
+      "ow1_0": {
+        "visited": true,
+        "value": ""
+      },
+      "ow1_4": {
+        "visited": true,
+        "value": "{\"firstName\":\"Александр\",\"lastName\":\"Ёршин\",\"rfPasportSeries\":\"5623\",\"exists\":true,\"middleName\":\"Федорович\",\"oid\":\"1000472519\",\"rfPasportNumber\":\"432423\",\"snils\":\"849-614-170 39\"}"
+      },
+      "ow1_3": {
+        "visited": true,
+        "value": "Федорович"
+      },
+      "ow1_2": {
+        "visited": true,
+        "value": "Александр"
+      },
+      "CMPownerinviteinfo": {
+        "visited": true,
+        "value": ""
+      },
+      "pd6": {
+        "visited": true,
+        "value": "Выписка из ЕГРН"
+      },
+      "CMPegrndate": {
+        "visited": true,
+        "value": "2020-12-30T00:00:00.000+06:00"
+      },
+      "CMPegrnnum": {
+        "visited": true,
+        "value": "1"
+      },
+      "CMPegrnexample": {
+        "visited": true,
+        "value": ""
+      },
+      "fai1": {
+        "visited": true,
+        "value": ""
+      },
+      "fai2": {
+        "visited": true,
+        "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "fai3_1": {
+        "visited": true,
+        "value": "{\"id\":\"1\",\"text\":\"Республика Адыгея\",\"unselectable\":false,\"originalItem\":{\"label\":\"Республика Адыгея\",\"disable\":false,\"code\":\"1\"}}"
+      },
+      "fai3_2": {
+        "visited": true,
+        "value": "2"
+      },
+      "fai4": {
+        "visited": true,
+        "value": "2"
+      },
+      "ai19": {
+        "visited": true,
+        "value": "{\"rfPasportSeries\":\"0004\",\"rfPasportNumber\":\"354642\",\"oid\":\"1000466662\",\"snils\":\"000-737-904 15\",\"firstName\":\"Мишка\",\"lastName\":\"Мишкин\",\"middleName\":\"Мишкович\",\"exists\":true}"
+      },
+      "ai7": {
+        "visited": true,
+        "value": "[{\"ai7_6\":\"true\",\"ai7_5\":\"Маратович\",\"ai7_4\":\"Дамир\",\"qс1\":\"0\",\"ai7_3\":\"Хабибулин\",\"ai7_2\":\"M\",\"ai7_1\":\"2020-12-29T00:00:00.000+06:00\",\"ai7_0\":\"0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d\",\"cl2\":{\"regDate\":\"30.12.2020\",\"regAddr\":{\"cityType\":\"город\",\"streetShortType\":\"пр-кт\",\"geoLat\":\"55.4323067\",\"okato\":\"46460000000\",\"regionType\":\"область\",\"additionalStreet\":\"\",\"lat\":\"55.4323067\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"проспект\",\"town\":\"\",\"lng\":\"37.5619233\",\"index\":\"142116\",\"district\":\"\",\"fullAddress\":\"142116, обл. Московская, г. Подольск, пр-кт. Революционный, д. 2/14, кв. 5\",\"houseCheckbox\":false,\"region\":\"Московская\",\"geoLon\":\"37.5619233\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"Подольск\",\"apartmentShortType\":\"кв\",\"house\":\"2/14\",\"apartmentCheckbox\":false,\"regionShortType\":\"обл\",\"regionCode\":\"50\",\"street\":\"Революционный\",\"cityShortType\":\"г\",\"kladrCode\":\"5000002400003820014\",\"fiasCode\":\"b924607a-e2ea-438a-bdbf-a20579df8de3\",\"hasErrors\":0,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"обл. Московская, г. Подольск, пр-кт. Революционный\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"apartment\":\"5\"}},\"cai1\":\"\",\"cai2\":{\"formatted\":\"\",\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"originalItem\":{\"value\":\"RUS\",\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"attributeValues\":{}}},\"cfai3\":{\"unselectable\":false,\"id\":\"7\",\"text\":\"Кабардино-Балкарская Республика\",\"originalItem\":{\"label\":\"Кабардино-Балкарская Республика\",\"disable\":false,\"code\":\"7\"}},\"cfai4\":\"re\",\"bd1\":\"XX-aa\",\"bd0\":\"\",\"bd3\":\"3424\",\"bd2\":\"22\",\"cfai11\":\"ref\",\"bd5\":\"fvvd\",\"bd4\":\"2021-01-05T00:00:00.000+06:00\",\"fu_childrenunder14\":{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"children0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d\",\"value\":[{\"fileName\":\"ACDC.jpg\",\"objectId\":763589389,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.children0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d.0\",\"fileSize\":53941,\"uploaded\":true,\"hasError\":false,\"mimeType\":\"image/jpeg\"}]}]}}]"
+      },
+      "CMPfamilyinviteinfo": {
+        "visited": true,
+        "value": ""
+      },
+      "fu15": {
+        "visited": true,
+        "value": "{\"id\":\"fu15\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"passport\",\"value\":[{\"fileName\":\"ACDC.jpg\",\"objectId\":763589389,\"objectTypeId\":2,\"mnemonic\":\"fu15.FileUploadComponent.passport.0\",\"fileSize\":53941,\"uploaded\":true,\"hasError\":false,\"mimeType\":\"image/jpeg\"}]},{\"uploadId\":\"additionPassport\",\"value\":[{\"fileName\":\"ACDC.jpg\",\"objectId\":763589389,\"objectTypeId\":2,\"mnemonic\":\"fu15.FileUploadComponent.additionPassport.0\",\"fileSize\":53941,\"uploaded\":true,\"hasError\":false,\"mimeType\":\"image/jpeg\"}]}]}"
+      },
+      "si2": {
+        "visited": true,
+        "value": "{\"value\":\"770-001\",\"parentValue\":null,\"title\":\"ОТДЕЛ АДРЕСНО-СПРАВОЧНОЙ РАБОТЫ УВМ ГУ МВД РОССИИ ПО Г. МОСКВЕ\",\"isLeaf\":true,\"children\":null,\"attributes\":[{\"name\":\"CODE\",\"type\":\"STRING\",\"value\":{\"asString\":\"770-001\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"770-001\"},\"valueAsOfType\":\"770-001\"},{\"name\":\"NAME\",\"type\":\"STRING\",\"value\":{\"asString\":\"ОТДЕЛ АДРЕСНО-СПРАВОЧНОЙ РАБОТЫ УВМ ГУ МВД РОССИИ ПО Г. МОСКВЕ\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"ОТДЕЛ АДРЕСНО-СПРАВОЧНОЙ РАБОТЫ УВМ ГУ МВД РОССИИ ПО Г. МОСКВЕ\"},\"valueAsOfType\":\"ОТДЕЛ АДРЕСНО-СПРАВОЧНОЙ РАБОТЫ УВМ ГУ МВД РОССИИ ПО Г. МОСКВЕ\"},{\"name\":\"ADDRESS\",\"type\":\"STRING\",\"value\":{\"asString\":\"г Москва; ул Краснопролетарская\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"г Москва; ул Краснопролетарская\"},\"valueAsOfType\":\"г Москва; ул Краснопролетарская\"},{\"name\":\"HOUSING\",\"type\":\"STRING\",\"value\":{\"asString\":\"д. 10; стр. 1\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"д. 10; стр. 1\"},\"valueAsOfType\":\"д. 10; стр. 1\"},{\"name\":\"DISTRICT\",\"type\":\"STRING\",\"value\":{\"asString\":null,\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":null},\"valueAsOfType\":null},{\"name\":\"ID\",\"type\":\"STRING\",\"value\":{\"asString\":\"300020\",\"asLong\":null,\"asDecimal\":null,\"asDateTime\":null,\"asDate\":null,\"asBoolean\":null,\"typeOfValue\":\"STRING\",\"value\":\"300020\"},\"valueAsOfType\":\"300020\"}],\"source\":null,\"attributeValues\":{\"HOUSING\":\"д. 10; стр. 1\",\"DISTRICT\":null,\"CODE\":\"770-001\",\"ID\":\"300020\",\"NAME\":\"ОТДЕЛ АДРЕСНО-СПРАВОЧНОЙ РАБОТЫ УВМ ГУ МВД РОССИИ ПО Г. МОСКВЕ\",\"ADDRESS\":\"г Москва; ул Краснопролетарская\"},\"idForMap\":0,\"center\":[37.607008,55.776856],\"baloonContent\":[{\"label\":\"Адрес\"},{\"label\":\"Телефон\"},{\"label\":\"Электронная почта\"}],\"agreement\":true,\"expanded\":true,\"btnName\":\"Выбрать\",\"regOkato\":\"65000000000\",\"okato\":\"65249000016\"}"
+      },
+      "sentTime": {
+        "value": "2021-01-13T15:12:31+03:00"
+      },
+      "CMPspouse_first": {
+        "visited": true,
+        "value": ""
+      },
+      "pd1_parent": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Мишкин Мишка Мишкович\",\"fields\":[{\"label\":\"Дата рождения:\",\"value\":\"09.10.2000\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер:\",\"value\":\"0004 354642\"},{\"label\":\"Дата выдачи:\",\"value\":\"25.06.2019\"},{\"label\":\"Кем выдан:\",\"value\":\"УМВД РОССИИ ПО ЗАБАЙКАЛЬСКОМУ КРАЮ\"},{\"label\":\"Код подразделения:\",\"value\":\"750-001\"},{\"label\":\"Место рождения:\",\"value\":\"г. Орёл\"}]}],\"storedValues\":{\"firstName\":\"Мишка\",\"lastName\":\"Мишкин\",\"middleName\":\"Мишкович\",\"birthDate\":\"09.10.2000\",\"birthPlace\":\"г. Орёл\",\"gender\":\"M\",\"rfPasportSeries\":\"0004\",\"rfPasportNumber\":\"354642\",\"rfPasportIssueDate\":\"25.06.2019\",\"rfPasportIssuedBy\":\"УМВД РОССИИ ПО ЗАБАЙКАЛЬСКОМУ КРАЮ\",\"rfPasportIssuedById\":\"750001\"}}"
+      },
+      "pd2_parent": {
+        "visited": true,
+        "value": "+7(519)6156116"
+      },
+      "pd3_parent": {
+        "visited": true,
+        "value": "esiatest302@yandex.ru"
+      },
+      "pd4_parent": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":null,\"streetShortType\":\"ул\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.791315\",\"building2Type\":null,\"okato\":\"45280569000\",\"building1Type\":\"корпус\",\"regionType\":\"город\",\"additionalStreet\":\"\",\"lat\":\"55.791315\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"37.6006282\",\"index\":\"127018\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"127018, г. Москва, ул. Сущёвский Вал, д. 14, к. 3, кв. 4\",\"houseCheckbox\":false,\"region\":\"Москва\",\"geoLon\":\"37.6006282\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"\",\"apartmentShortType\":\"кв\",\"house\":\"14\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"г\",\"regionCode\":\"77\",\"districtShortType\":null,\"street\":\"Сущёвский Вал\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":null,\"kladrCode\":\"77000000000060600\",\"building1ShortType\":\"к\",\"fiasCode\":\"84dd3822-f006-435a-bdb3-314670c5812c\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"г. Москва, ул. Сущёвский Вал\",\"building1\":\"3\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"4\"},\"regDate\":\"06.01.2021\"}"
+      },
+      "fai1_parent": {
+        "visited": true,
+        "value": ""
+      },
+      "fai2_parent": {
+        "visited": true,
+        "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+      },
+      "fai3_1_parent": {
+        "visited": true,
+        "value": "{\"id\":\"2\",\"text\":\"Республика Башкортостан\",\"unselectable\":false,\"originalItem\":{\"label\":\"Республика Башкортостан\",\"disable\":false,\"code\":\"2\"}}"
+      },
+      "fai3_2_parent": {
+        "visited": true,
+        "value": "уу"
+      },
+      "fai4_parent": {
+        "visited": true,
+        "value": "уу"
+      },
+      "CMPspouse_approv_YN_all_nown": {
+        "visited": true,
+        "value": "Подтвердить"
+      },
+      "CMPowner_approv_YN": {
+        "visited": true,
+        "value": "Подтвердить"
+      }
+    },
+    "cycledApplicantAnswers": {
+      "currentAnswerId": "ai7",
+      "answerlist": [
+        {
+          "id": "ow1",
+          "initScreen": "s99",
+          "currentItemId": "c8e4cbb7-40b7-429c-90ea-7616ce4e199d",
+          "items": [
+            {
+              "id": "c8e4cbb7-40b7-429c-90ea-7616ce4e199d",
+              "itemAnswers": {
+                "ow1_1": {
+                  "visited": true,
+                  "value": "Ёршин"
+                },
+                "ow1_0": {
+                  "visited": true,
+                  "value": ""
+                },
+                "ow1_4": {
+                  "visited": true,
+                  "value": "{\"firstName\":\"Александр\",\"lastName\":\"Ёршин\",\"rfPasportSeries\":\"5623\",\"exists\":true,\"middleName\":\"Федорович\",\"oid\":\"1000472519\",\"rfPasportNumber\":\"432423\",\"snils\":\"849-614-170 39\"}"
+                },
+                "ow1_3": {
+                  "visited": true,
+                  "value": "Федорович"
+                },
+                "ow1_2": {
+                  "visited": true,
+                  "value": "Александр"
+                }
+              },
+              "cachedAnswers": {
+                "ow1_1": {
+                  "visited": true,
+                  "value": "Ёршин"
+                },
+                "ow1_0": {
+                  "visited": true,
+                  "value": ""
+                },
+                "ow1_4": {
+                  "visited": true,
+                  "value": "{\"firstName\":\"Александр\",\"lastName\":\"Ёршин\",\"rfPasportSeries\":\"5623\",\"exists\":true,\"middleName\":\"Федорович\",\"oid\":\"1000472519\",\"rfPasportNumber\":\"432423\",\"snils\":\"849-614-170 39\"}"
+                },
+                "ow1_3": {
+                  "visited": true,
+                  "value": "Федорович"
+                },
+                "ow1_2": {
+                  "visited": true,
+                  "value": "Александр"
+                }
+              },
+              "esiaData": {},
+              "finishedScreens": []
+            }
+          ]
+        },
+        {
+          "id": "ai7",
+          "initScreen": "s104",
+          "currentItemId": "0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d",
+          "items": [
+            {
+              "id": "0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d",
+              "itemAnswers": {
+                "ai7_6": {
+                  "visited": true,
+                  "value": "true"
+                },
+                "ai7_5": {
+                  "visited": true,
+                  "value": "Маратович"
+                },
+                "ai7_4": {
+                  "visited": true,
+                  "value": "Дамир"
+                },
+                "ai7_3": {
+                  "visited": true,
+                  "value": "Хабибулин"
+                },
+                "ai7_2": {
+                  "visited": true,
+                  "value": "M"
+                },
+                "ai7_1": {
+                  "visited": true,
+                  "value": "2020-12-29T00:00:00.000+06:00"
+                },
+                "ai7_0": {
+                  "visited": true,
+                  "value": "0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d"
+                },
+                "bd0": {
+                  "visited": true,
+                  "value": ""
+                },
+                "bd1": {
+                  "visited": true,
+                  "value": "XX-aa"
+                },
+                "bd2": {
+                  "visited": true,
+                  "value": "22"
+                },
+                "bd3": {
+                  "visited": true,
+                  "value": "3424"
+                },
+                "bd4": {
+                  "visited": true,
+                  "value": "2021-01-05T00:00:00.000+06:00"
+                },
+                "bd5": {
+                  "visited": true,
+                  "value": "fvvd"
+                },
+                "qс1": {
+                  "visited": true,
+                  "value": "0"
+                },
+                "cl2": {
+                  "visited": true,
+                  "value": "{\"regAddr\":{\"cityType\":\"город\",\"streetShortType\":\"пр-кт\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.4323067\",\"building2Type\":null,\"okato\":\"46460000000\",\"building1Type\":null,\"regionType\":\"область\",\"additionalStreet\":\"\",\"lat\":\"55.4323067\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"проспект\",\"town\":\"\",\"lng\":\"37.5619233\",\"index\":\"142116\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"142116, обл. Московская, г. Подольск, пр-кт. Революционный, д. 2/14, кв. 5\",\"houseCheckbox\":false,\"region\":\"Московская\",\"geoLon\":\"37.5619233\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"Подольск\",\"apartmentShortType\":\"кв\",\"house\":\"2/14\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"обл\",\"regionCode\":\"50\",\"districtShortType\":null,\"street\":\"Революционный\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":\"г\",\"kladrCode\":\"5000002400003820014\",\"building1ShortType\":null,\"fiasCode\":\"b924607a-e2ea-438a-bdbf-a20579df8de3\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"обл. Московская, г. Подольск, пр-кт. Революционный\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"5\"},\"regDate\":\"30.12.2020\"}"
+                },
+                "cai1": {
+                  "visited": true,
+                  "value": ""
+                },
+                "cai2": {
+                  "visited": true,
+                  "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+                },
+                "cfai3": {
+                  "visited": true,
+                  "value": "{\"id\":\"7\",\"text\":\"Кабардино-Балкарская Республика\",\"unselectable\":false,\"originalItem\":{\"label\":\"Кабардино-Балкарская Республика\",\"disable\":false,\"code\":\"7\"}}"
+                },
+                "cfai4": {
+                  "visited": true,
+                  "value": "re"
+                },
+                "cfai11": {
+                  "visited": true,
+                  "value": "ref"
+                },
+                "fu_childrenunder14": {
+                  "visited": true,
+                  "value": "{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"children0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d\",\"value\":[{\"fileName\":\"ACDC.jpg\",\"objectId\":763589389,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.children0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d.0\",\"fileSize\":53941,\"uploaded\":true,\"hasError\":false,\"mimeType\":\"image/jpeg\"}]}]}"
+                }
+              },
+              "cachedAnswers": {
+                "ai7_6": {
+                  "visited": true,
+                  "value": "true"
+                },
+                "ai7_5": {
+                  "visited": true,
+                  "value": "Маратович"
+                },
+                "ai7_4": {
+                  "visited": true,
+                  "value": "Дамир"
+                },
+                "ai7_3": {
+                  "visited": true,
+                  "value": "Хабибулин"
+                },
+                "ai7_2": {
+                  "visited": true,
+                  "value": "M"
+                },
+                "ai7_1": {
+                  "visited": true,
+                  "value": "2020-12-29T00:00:00.000+06:00"
+                },
+                "ai7_0": {
+                  "visited": true,
+                  "value": "0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d"
+                },
+                "bd0": {
+                  "visited": true,
+                  "value": ""
+                },
+                "bd1": {
+                  "visited": true,
+                  "value": "XX-aa"
+                },
+                "bd2": {
+                  "visited": true,
+                  "value": "22"
+                },
+                "bd3": {
+                  "visited": true,
+                  "value": "3424"
+                },
+                "bd4": {
+                  "visited": true,
+                  "value": "2021-01-05T00:00:00.000+06:00"
+                },
+                "bd5": {
+                  "visited": true,
+                  "value": "fvvd"
+                },
+                "qс1": {
+                  "visited": true,
+                  "value": "0"
+                },
+                "cl2": {
+                  "visited": true,
+                  "value": "{\"regAddr\":{\"cityType\":\"город\",\"streetShortType\":\"пр-кт\",\"additionalStreetShortType\":null,\"districtType\":null,\"geoLat\":\"55.4323067\",\"building2Type\":null,\"okato\":\"46460000000\",\"building1Type\":null,\"regionType\":\"область\",\"additionalStreet\":\"\",\"lat\":\"55.4323067\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"проспект\",\"town\":\"\",\"lng\":\"37.5619233\",\"index\":\"142116\",\"townShortType\":null,\"district\":\"\",\"fullAddress\":\"142116, обл. Московская, г. Подольск, пр-кт. Революционный, д. 2/14, кв. 5\",\"houseCheckbox\":false,\"region\":\"Московская\",\"geoLon\":\"37.5619233\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"Подольск\",\"apartmentShortType\":\"кв\",\"house\":\"2/14\",\"apartmentCheckbox\":false,\"townType\":null,\"additionalAreaType\":null,\"regionShortType\":\"обл\",\"regionCode\":\"50\",\"districtShortType\":null,\"street\":\"Революционный\",\"additionalStreetType\":null,\"inCityDistShortType\":null,\"additionalAreaShortType\":null,\"cityShortType\":\"г\",\"kladrCode\":\"5000002400003820014\",\"building1ShortType\":null,\"fiasCode\":\"b924607a-e2ea-438a-bdbf-a20579df8de3\",\"hasErrors\":0,\"inCityDistType\":null,\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"обл. Московская, г. Подольск, пр-кт. Революционный\",\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":null,\"apartment\":\"5\"},\"regDate\":\"30.12.2020\"}"
+                },
+                "cai1": {
+                  "visited": true,
+                  "value": ""
+                },
+                "cai2": {
+                  "visited": true,
+                  "value": "{\"id\":\"RUS\",\"text\":\"РОССИЯ\",\"formatted\":\"\",\"originalItem\":{\"value\":\"RUS\",\"parentValue\":null,\"title\":\"РОССИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}}}"
+                },
+                "cfai3": {
+                  "visited": true,
+                  "value": "{\"id\":\"7\",\"text\":\"Кабардино-Балкарская Республика\",\"unselectable\":false,\"originalItem\":{\"label\":\"Кабардино-Балкарская Республика\",\"disable\":false,\"code\":\"7\"}}"
+                },
+                "cfai4": {
+                  "visited": true,
+                  "value": "re"
+                },
+                "cfai11": {
+                  "visited": true,
+                  "value": "ref"
+                },
+                "fu_childrenunder14": {
+                  "visited": true,
+                  "value": "{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"children0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d\",\"value\":[{\"fileName\":\"ACDC.jpg\",\"objectId\":763589389,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.children0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d.0\",\"fileSize\":53941,\"uploaded\":true,\"hasError\":false,\"mimeType\":\"image/jpeg\"}]}]}"
+                }
+              },
+              "esiaData": {
+                "rfBirthCertificateSeries": "XX-aa",
+                "rfBirthCertificateNumber": "22",
+                "rfBirthCertificateActNumber": "3424",
+                "rfBirthCertificateIssuedBy": "fvvd",
+                "birthPlaceDisctrict": "re",
+                "birthPlaceLocality": "ref"
+              },
+              "finishedScreens": [
+                "scrchld2",
+                "scrchld3",
+                "scrchld4",
+                "SCRbirthplacemain_children",
+                "fileuploadscr_childrenunder14"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "participants": {
+      "1000466662": {
+        "role": "Coapplicant",
+        "mode": "MentionedApplicant",
+        "component": "ai19"
+      },
+      "1000472519": {
+        "role": "Approval",
+        "mode": "MentionedApplicant",
+        "component": "ow1_4",
+        "index": 0
+      }
+    },
+    "display": {
+      "id": "SCRuniversal_approved_alone",
+      "name": "Скрин с сообщением о том, что согласие на регистрацию дано(используется собственником, нанимателем)",
+      "type": "INFO",
+      "header": "Вы дали согласие на регистрацию по месту пребывания",
+      "components": [
+        {
+          "id": "CMPuniversal_approved_alone",
+          "type": "InfoScr",
+          "label": "",
+          "attrs": {
+            "actions": [
+              {
+                "label": "Перейти в личный кабинет",
+                "value": "Подтвердить",
+                "type": "redirectToLK",
+                "action": "getNextScreen"
+              }
+            ],
+            "refs": {}
+          },
+          "linkedValues": [],
+          "arguments": {},
+          "value": "",
+          "required": true
+        }
+      ],
+      "terminal": true,
+      "impasse": false,
+      "accepted": true,
+      "firstScreen": false
+    },
+    "attachmentInfo": {
+      "fu_childrenunder14": [
+        {
+          "uploadId": "children0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d",
+          "uploadMnemonic": "fu_childrenunder14.FileUploadComponent.children0857d2bc-c9c1-48ac-bf1c-f022ef5e8a4d.0",
+          "uploadFilename": "ACDC.jpg",
+          "objectId": "763589389",
+          "objectTypeId": "2"
+        }
+      ],
+      "fu15": [
+        {
+          "uploadId": "passport",
+          "uploadMnemonic": "fu15.FileUploadComponent.passport.0",
+          "uploadFilename": "ACDC.jpg",
+          "objectId": "763589389",
+          "objectTypeId": "2"
+        },
+        {
+          "uploadId": "additionPassport",
+          "uploadMnemonic": "fu15.FileUploadComponent.additionPassport.0",
+          "uploadFilename": "ACDC.jpg",
+          "objectId": "763589389",
+          "objectTypeId": "2"
+        }
+      ]
+    },
+    "additionalParameters": {
+      "orderId": 763589471,
+      "oid": 1000472519,
+      "snils": "849-614-170 39",
+      "gender": "M",
+      "citizenship": "РОССИЯ",
+      "citizenshipCode": "RUS",
+      "serviceId": "10000000100",
+      "timezone": "+3",
+      "masterId": "763589389",
+      "masterOid": "1000473351",
+      "masterSnils": "000-234-222 55",
+      "masterGender": "F",
+      "masterCitizenship": "РОССИЯ",
+      "masterCitizenshipCode": "RUS",
+      "masterTimezone": "+3",
+      "firstName": "Александр",
+      "lastName": "Ёршин",
+      "middleName": "Федорович",
+      "birthDate": "01.11.2000"
+    },
+    "generatedFiles": [],
+    "gender": "M",
+    "version": 6,
+    "id": 763589471,
+    "extId": 763589471
+  }
+}

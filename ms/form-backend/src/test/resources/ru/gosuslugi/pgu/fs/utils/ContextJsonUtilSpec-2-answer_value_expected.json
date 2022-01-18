@@ -1,0 +1,85 @@
+{
+  "regAddr": {
+    "additionalArea": "",
+    "additionalAreaShortType": "",
+    "additionalAreaType": "",
+
+    "additionalStreet": "",
+    "additionalStreetShortType": "",
+    "additionalStreetType": "",
+
+    "addressStr": "обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина",
+
+    "apartment": "3",
+    "apartmentCheckbox": false,
+    "apartmentCheckboxClosed": false,
+    "apartmentShortType": "кв",
+    "apartmentType": "квартира",
+
+    "building1": "2",
+    "building1ShortType": "к",
+    "building1Type": "корпус",
+
+    "building2": "14",
+    "building2ShortType": "стр",
+    "building2Type": "строение",
+
+    "city": "",
+    "cityShortType": "",
+    "cityType": "",
+
+    "district": "Талицкий",
+    "districtShortType": "р-н",
+    "districtType": "район",
+
+    "fiasCode": "a532f63d-624a-4fbe-9cef-f9923ce7a19f",
+    "apartmentFias":"",
+    "regionFias": "",
+    "streetFias": "",
+    "houseFias": "",
+    "townFias": "",
+    "fullAddress": "623610, обл. Свердловская, р-н. Талицкий, с. Бутка, ул. Ленина, д. 15, к. 2, стр. 14, кв. 3",
+    "geoLat": "56.7172303",
+    "geoLon": "63.7783514",
+    "hasErrors": 0,
+
+    "house": "15",
+    "houseCheckbox": false,
+    "houseCheckboxClosed": false,
+    "houseShortType": "д",
+    "houseType": "дом",
+
+    "inCityDist": "",
+    "inCityDistShortType": "",
+    "inCityDistType": "",
+
+    "index": "623610",
+    "kladrCode": "66028000018003400",
+    "apartmentKladr": "66028000018003400",
+    "streetKladr": "66028000018003400",
+    "regionKladr": "6602800001800",
+    "townKladr": "",
+    "houseKladr": "",
+    "lat": "56.7172303",
+    "lng": "63.7783514",
+    "okato": "65249000016",
+
+    "region": "Свердловская",
+    "regionCode": "66",
+    "regionShortType": "обл",
+    "regionType": "область",
+
+    "street": "Ленина",
+    "streetShortType": "ул",
+    "streetType": "улица",
+
+    "town": "Бутка",
+    "townShortType": "нп",
+    "townType": "населенный пункт",
+
+    "postalCode": "",
+    "oktmoName": "",
+    "oktmo": ""
+  },
+  "regDate": "28.10.2020"
+}

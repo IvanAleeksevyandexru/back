@@ -1,0 +1,183 @@
+{
+  "serviceName": "setBillToOrder",
+  "screens": [
+    {
+      "id": "2",
+      "isFirstScreen": true,
+      "name": "У вас уже есть заявление по этому УИН",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Повторить",
+          "value": "Повторить",
+          "type": "home",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "ce2"
+      ]
+    },
+    {
+      "id": "7",
+      "isFirstScreen": true,
+      "name": "Внутренняя ошибка сервиса 7.",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Повторить",
+          "value": "Повторить",
+          "type": "home",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "ce7"
+      ]
+    },
+    {
+      "id": "32",
+      "isFirstScreen": true,
+      "name": "Внутренняя ошибка сервиса 32.",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Повторить",
+          "value": "Повторить",
+          "type": "home",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "ce32"
+      ]
+    },
+    {
+      "id": "33",
+      "isFirstScreen": true,
+      "name": "Внутренняя ошибка сервиса 33.",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "Повторить",
+          "value": "Повторить",
+          "type": "home",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "ce33"
+      ]
+    },
+    {
+      "id": "default",
+      "isFirstScreen": true,
+      "name": "Внутренняя ошибка сервиса",
+      "type": "INFO",
+      "header": "",
+      "buttons": [
+        {
+          "label": "На главную",
+          "value": "На главную",
+          "color": "white",
+          "type": "home",
+          "action": "getNextScreen"
+        },
+        {
+          "label": "В личный кабинет",
+          "value": "В личный кабинет",
+          "type": "redirectToLK",
+          "action": "getNextScreen"
+        }
+      ],
+      "components": [
+        "def1"
+      ]
+    }
+  ],
+  "applicationFields": [
+    {
+      "id": "ce2",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg'></center><p><center>Обжалование недоступно</center></p><center><p class='text-color--text-helper'</p>У вас уже есть заявление по этому УИН.</center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      },
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "ce7",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg'></center><p><center>Обжалование недоступно</center></p><center><p class='text-color--text-helper'</p>Начисление не найдено.</center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      },
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "ce32",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg'></center><p><center>Обжалование недоступно</center></p><center><p class='text-color--text-helper'</p>Обжалование данного начисления в электронном виде невозможно. Обратитесь в ведомство, выставившее начисление.</center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      },
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "ce33",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg'></center><p><center>Обжалование недоступно</center></p><center><p class='text-color--text-helper'</p>Срок обжалования данного постановления истёк.</center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      },
+      "value": "",
+      "visited": false
+    },
+    {
+      "id": "def1",
+      "type": "InfoScr",
+      "label": "<center><img src='{staticDomainAssetsPath}/assets/icons/svg/stop.svg'><p>Не сработало</p><span class='text-color--text-helper'>Попробуйте снова или зайдите позже. Если ничего не изменится — напишите в <a target='_blank' href='https://www.gosuslugi.ru/feedback'>службу поддержки</a>.</span></center>",
+      "attrs": {
+        "image": {},
+        "actions": []
+      },
+      "value": "",
+      "visited": false
+    }
+  ]
+}

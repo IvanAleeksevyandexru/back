@@ -1,0 +1,29 @@
+{
+  "name": "error",
+  "modals": {
+    "DEFAULT_ERROR": {
+      "content": {
+        "header": "Что-то пошло не так",
+        "helperText": "Запрашиваемое действие недоступно",
+        "statusIcon": "error"
+      },
+      "showCloseButton": false,
+      "showCrossButton": true,
+      "buttons": [
+        {"label": "Вернуться", "closeModal": true}
+      ]
+    },
+    "DOWNLOAD_FILE_ERROR": {
+      "content": {
+        "header": "Не удалось загрузить файл",
+        "helperText": "Вы добавили файл, но из-за ошибки он не был загружен. Вернитесь и загрузите фото или скан документа ещё раз. Затем отправьте заявление",
+        "statusIcon": "error"
+      },
+      "showCloseButton": false,
+      "showCrossButton": true,
+      "buttons": [
+        {"label": "Вернуться", "closeModal": true}
+      ]
+    }
+  }
+}

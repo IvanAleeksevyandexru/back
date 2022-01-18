@@ -1,0 +1,33 @@
+{
+  "regDate": "15.10.2020",
+  "regAddr": {
+    "region": "Москва",
+    "city": "",
+    "district": "",
+    "town": "",
+    "inCityDist": "",
+    "street": "Андропова",
+    "additionalArea": "",
+    "additionalStreet": "",
+    "house": "5",
+    "houseCheckbox": false,
+    "houseCheckboxClosed": false,
+    "building1": "",
+    "building2": "",
+    "apartment": "25",
+    "apartmentCheckbox": false,
+    "apartmentCheckboxClosed": false,
+    "index": "115533",
+    "geoLat": "55.6934685",
+    "geoLon": "37.6725941",
+    "fullAddress": "",
+    "addressStr": "г. Москва, пр-кт. Андропова",
+    "lat": "55.6934685",
+    "lng": "37.6725941",
+    "fiasCode": "a3c2ee36-a487-41f7-b659-ef145d987fa8",
+    "okato": "45296573000",
+    "hasErrors": 0,
+    "kladrCode": "7700000000007500237",
+    "regionCode": "77"
+  }
+}

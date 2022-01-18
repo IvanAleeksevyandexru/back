@@ -1,0 +1,10 @@
+{
+  "id": "pd3",
+  "type": "ConfirmPersonalUserEmail",
+  "label": "Электронная почта",
+  "attrs": {
+    "refs": {}
+  },
+  "value": "",
+  "visited": false
+}

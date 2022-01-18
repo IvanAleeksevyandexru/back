@@ -1,0 +1,43 @@
+{
+  "id": "CMPspouse_approv_YN",
+  "type": "QuestionScr",
+  "label": "",
+  "attrs": {
+    "actions": [
+      {
+        "label": "Ваши данные",
+        "value": "Ваши данные",
+        "type": "nextStep",
+        "action": "getNextScreen"
+      },
+      {
+        "label": "Данные ребёнка (${CHILD_LAST_NAME})",
+        "type": "nextStep",
+        "action": "getNextScreen",
+        "attrs": {
+          "cycledAnswerId": "ai7"
+        }
+      },
+      {
+        "label": "Реф не в цикле (${NOT_CYCLED_REF})",
+        "value": "Реф не в цикле",
+        "type": "nextStep",
+        "action": "getNextScreen"
+      },
+      {
+        "label": "Несуществующий цикличный компонент",
+        "type": "nextStep",
+        "action": "getNextScreen",
+        "attrs": {
+          "cycledAnswerId": "notExistedId"
+        }
+      }
+    ],
+    "refs": {
+      "CHILD_LAST_NAME": "ai7_4.value",
+      "NOT_CYCLED_REF": "pd1.value.storedValues.firstName"
+    }
+  },
+  "value": "",
+  "visited": false
+}

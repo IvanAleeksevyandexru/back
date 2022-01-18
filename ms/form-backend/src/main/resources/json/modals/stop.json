@@ -1,0 +1,17 @@
+{
+  "name": "stop",
+  "modals": {
+    "REPEATABLE_INVITATION": {
+      "content": {
+        "header": "Пока нельзя отправить",
+        "helperText": "Вы уже выслали приглашение. Подождите, оправить письмо повторно можно через 5 минут.",
+        "statusIcon": "stop"
+      },
+      "showCloseButton": false,
+      "showCrossButton": true,
+      "buttons": [
+        {"label": "Вернуться к заявлению", "closeModal": true}
+      ]
+    }
+  }
+}

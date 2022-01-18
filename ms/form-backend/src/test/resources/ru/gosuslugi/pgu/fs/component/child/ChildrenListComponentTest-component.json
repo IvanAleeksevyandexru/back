@@ -1,0 +1,13 @@
+    {
+      "id": "cl28",
+      "type": "ChildrenList",
+      "label": "",
+      "attrs": {
+        "singleChild": true,
+        "hideAddNewChildButton": true,
+        "cleanParticipantsById": "cl1",
+        "components": ["bb", "cc"]
+      },
+      "value": "",
+      "visited": false
+    }

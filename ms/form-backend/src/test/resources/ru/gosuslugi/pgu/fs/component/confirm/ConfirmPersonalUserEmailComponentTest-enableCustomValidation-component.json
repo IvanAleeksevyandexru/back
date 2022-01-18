@@ -1,0 +1,17 @@
+{
+  "id": "pd3",
+  "type": "ConfirmPersonalUserEmail",
+  "label": "Электронная почта",
+  "attrs": {
+    "enableCustomValidation": "true",
+    "validation": [
+      {
+        "type": "RegExp",
+        "value": "^[0-9а-яА-Яa-zA-Z_.-]{2,30}[@]{1}[0-9а-яА-Яa-zA-Z_.-]{2,30}[.]{1}[а-яА-Яa-zA-Z]{2,5}$",
+        "errorMsg": "Поле должно быть заполнено"
+      }
+    ]
+  },
+  "value": "",
+  "visited": false
+}
