@@ -13,6 +13,7 @@
 
     <groupId>ru.gosuslugi.pgu</groupId>
     <artifactId>pgu-kafka-cli</artifactId>
+    <version>1.0.1</version>
 
     <dependencies>
         <dependency>
@@ -67,7 +68,7 @@
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
             <artifactId>pgu-dto</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>ru.gosuslugi.pgu</groupId>
