@@ -1,0 +1,25 @@
+package ru.gosuslugi.pgu.pgu_common.gibdd.service;
+
+import ru.gosuslugi.pgu.pgu_common.gibdd.dto.FederalNotaryInfo;
+import ru.gosuslugi.pgu.pgu_common.gibdd.dto.FederalNotaryRequest;
+import ru.gosuslugi.pgu.pgu_common.gibdd.dto.GibddServiceResponse;
+import ru.gosuslugi.pgu.pgu_common.gibdd.dto.OwnerVehiclesRequest;
+import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleFullInfo;
+import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleInfo;
+import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleInfoRequest;
+
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
+public interface GibddDataService {
+
+    VehicleFullInfo getVehicleFullInfo(VehicleInfoRequest request);
+
+    List<VehicleFullInfo> getOwnerVehiclesInfo(OwnerVehiclesRequest request);
+
+    FederalNotaryInfo getFederalNotaryInfo(FederalNotaryRequest request);
+
+    CompletableFuture<GibddServiceResponse<VehicleInfo>> getAsyncVehicleInfo(VehicleInfoRequest request);
+
+    CompletableFuture<GibddServiceResponse<FederalNotaryInfo>> getAsyncFederalNotaryInfo(FederalNotaryRequest request);
+}

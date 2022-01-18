@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- edited with XMLSpy v2019 rel. 3 sp1 (x64) (http://www.altova.com) by  (RT LABS, AO) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:tns="http://epgu.gosuslugi.ru/services-get-pf-certificate/1.1.1" 
+targetNamespace="http://epgu.gosuslugi.ru/services-get-pf-certificate/1.1.1" 
+elementFormDefault="qualified" 
+attributeFormDefault="unqualified">
+	<!-- Common types -->
+	<!-- Simple string types-->
+	<xsd:simpleType name="string-1">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-2">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-6">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="6"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-10">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-20">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-50">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-100">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-150">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="150"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-250">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="250"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-500">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="500"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-1000">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-2000">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Other simple types -->
+	<xsd:simpleType name="SNILSType">
+		<xsd:annotation>
+			<xsd:documentation>СНИЛС</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="11"/>
+			<xsd:pattern value="\d{11}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Complex types -->
+	<xsd:complexType name="regAddress">
+		<xsd:annotation>
+			<xsd:documentation>Сведения об адресе регистрации</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="fullAddress" type="tns:string-1000">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Полный адрес</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="postIndex" type="tns:string-6">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Индекс</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="country" type="tns:string-50" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Страна</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="region" type="tns:string-50">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Cубъект РФ (Регион)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="area" type="tns:string-100" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Район</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="city" type="tns:string-150" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Город</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="cityArea" type="tns:string-150" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Внутригородской район</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="place" type="tns:string-150" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Населенный пункт</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="street" type="tns:string-100" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Наименование элемента улично-дорожной сети</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="house" type="tns:string-10" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Номер дома (здания/сооружения)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="building1" type="tns:string-10" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Корпус</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="building2" type="tns:string-10" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Строение</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="apartment" type="tns:string-10" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Квартира</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="fiasCode" type="tns:string-50">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">ФИАС код адреса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="programRegister">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Сведения о том, программы ДО из каких реестров доступны для держателя сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="certificateBalance" type="xsd:double">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Баланс сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="certificateBookedAmount" type="xsd:double">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Забронированая часть сертификата (недоступно к использованию)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="birthCertificateDataType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Сведения о свидетельстве о рождении ребенка</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="recipientBirthCertificateSeries" type="tns:string-10">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Серия свидетельства о рождении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientBirthCertificateNumber" type="tns:string-10">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Номер свидетельства о рождении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientBirthCertificateAgency" type="tns:string-500">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Кем выдано свидетельство о рождении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientBirthCertificateIssueDate" type="tns:string-10">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Когда выдано свидетельство о рождении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="foreignBirthCertificateDataType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Сведения о свидетельстве о рождении иностранного образца</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="recipientForeignBirthCertificateSeries" type="tns:string-10" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Серия свидетельства о рождении иностранного образца</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientForeignBirthCertificateNumber" type="tns:string-50">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Номер свидетельства о рождении иностранного образца</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientForeignBirthCertificateAgency" type="tns:string-500">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Кем выдано свидетельство о рождении иностранного образца</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientForeignBirthCertificateIssueDate" type="tns:string-10">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Когда выдано свидетельство о рождении иностранного образца</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="passportDataType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Данные паспорта</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="passportType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Тип паспорта</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="tns:string-250">
+							<xsd:attribute name="code" type="tns:string-50" use="required"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="passportSeries" type="tns:string-10" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Серия паспорта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="passportNumber" type="tns:string-10">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Номер паспорта</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="passportAgency" type="tns:string-500">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Кем выдан паспорт</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="passportIssueDate" type="tns:string-10">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Когда выдан паспорт</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="passportDepartmentCode" type="tns:string-10" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код подразделения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="certificateRecipientData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Сведения о претенденте на получение сертификата персонифицированного финансирования</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="recipientLastName" type="tns:string-250">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Фамилия ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientFirstName" type="tns:string-250">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Имя ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientPatronymic" type="tns:string-250" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Отчество ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientBirthDate" type="tns:string-10">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата рождения ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientSNILS" type="tns:SNILSType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">СНИЛС ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientGenderType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Пол ребенка (муж. / жен.)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="Male"/>
+						<xsd:enumeration value="Female"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:choice>
+				<xsd:element name="recipientBirthCertificateData" type="tns:birthCertificateDataType">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Сведения о свидетельстве о рождении ребенка</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="recipientForeignBirthCertificateData" type="tns:foreignBirthCertificateDataType">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Сведения о свидетельстве о рождении иностранного образца</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="recipientPassportData" type="tns:passportDataType">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Данные паспорта ребенка</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+			<xsd:element name="recipientRegAddress" type="tns:regAddress">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Адрес регистрации ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="applicantData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Сведения о родителе/представителе ребенка, претендующего на получение сертификата персонифицированного финансирования</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="applicantLastName" type="tns:string-250">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Фамилия родителя/представителя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="applicantFirstName" type="tns:string-250">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Имя родителя/представителя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="applicantPatronymic" type="tns:string-250" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Отчество родителя/представителя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="applicantBirthDate" type="tns:string-10">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата рождения родителя/представителя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="applicantPassportData" type="tns:passportDataType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Данные паспорта родителя/представителя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="applicantRegAddress" type="tns:regAddress">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Адрес регистрации родителя/представителя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="applicantEmail" type="tns:string-250">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Адрес эл. почты родителя/представителя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="applicantPhoneNumber" type="tns:string-20">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Номер телефона родителя/представителя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="applicationDetails">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Детали запроса на получение статуса (создание) сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="municipalityCode" type="tns:string-50">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">ФИАС код муниципалитета, в котором выдают сертификат</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="municipalityName" type="tns:string-250">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Наименование муниципалитета, в котором выдают сертификат</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="regionCode" type="tns:string-50">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">ФИАС код региона, в котором выдают сертификат</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="regionName" type="tns:string-250">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Наименование региона, в котором выдают сертификат</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isFundedCertificate" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Необходим сертификат персонифицированного финансирования? (если true, то ЕПГУ ожидает сведения о выпущенном сертификает с балансом в блоке registerOfPFAE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="recipientDataForSearch">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Сведения о заявителе для поиска сертификата в навигаторе</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="recipientLastName" type="tns:string-250">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Фамилия ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientFirstName" type="tns:string-250">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Имя ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientPatronymic" type="tns:string-250" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Отчество ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:choice>
+				<xsd:element name="recipientBirthCertificateData" type="tns:birthCertificateDataType">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Сведения о свидетельстве о рождении ребенка</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="recipientForeignBirthCertificateData" type="tns:foreignBirthCertificateDataType">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Сведения о свидетельстве о рождении иностранного образца</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="recipientPassportData" type="tns:passportDataType">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Данные паспорта ребенка</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+			<xsd:element name="recipientSNILS" type="tns:SNILSType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">СНИЛС ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientBirthDate" type="tns:string-10" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата рождения ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="getCertificateStatus">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Получение сведений о сертификате</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="certificateRecipientData" type="tns:certificateRecipientData">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о претенденте на получение сертификата персонифицированного финансирования</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="applicantData" type="tns:applicantData">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о родителе/представителе ребенка, претендующего на получение сертификата персонифицированного финансирования</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="applicationDetails" type="tns:applicationDetails">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Детали запроса на получение статуса (создание) сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="getCertificateInformer">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Запрос сведений о сертификате для информера</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="recipientDataForGUID" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Связь данных ребенка и GUID сертификата в запросе для информера</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="certificateGUID" type="tns:string-50"/>
+						<xsd:element name="recipientBirthCertificateData" type="tns:birthCertificateDataType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Сведения о свидетельстве о рождении ребенка</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="recipientSNILS" type="tns:SNILSType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">СНИЛС ребенка</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="universalCertificateRequest">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Запрос на получение сведений о сертификате</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="orderId" type="xsd:long">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор заявления на ЕПГУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="orderTimestamp" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>Дата и время формирования запроса на ЕПГУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:choice>
+				<xsd:element name="searchCertificateRequest" type="tns:recipientDataForSearch" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Запрос на поиск сертификата</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="getCertificateStatusRequest" type="tns:getCertificateStatus">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Запрос с формы на получение сведений о сертификате</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="getCertificateInformerRequest" type="tns:getCertificateInformer">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Запрос сведений о сертификате для отображения в информере</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="certificateData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Сведения о сертификате</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="certificateGUID" type="tns:string-50"/>
+			<xsd:element name="certificateNumber" type="tns:string-50">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Номер сертификата в навигаторе</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="municipalityCode" type="tns:string-50">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код муниципалитета по ФИАС, в котором выдают сертификат</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="regionCode" type="tns:string-50">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код региона по ФИАС, к которому относится муниципалитет, выдающий сертификат</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="certificateType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Тип сертификата: 0 - Сертификат дополнительного образования; 1 - Сертификат перс. финансирования</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:length value="1"/>
+						<xsd:enumeration value="0"/>
+						<xsd:enumeration value="1"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="certificateCategory">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Категория сертификата</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="certificateCategoryCode" type="tns:string-1">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Идентификатор категории сертификата</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="certificateCategoryName" type="tns:string-250">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Наименование категории сертификата</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="registerOfPFAE" type="tns:programRegister" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о балансе сертификата персонифицированного финансирования (сумма денежных средств, доступная к использования для записи на программы ДО из реестра программ персонифицированного финансирования) и сумме денежных средств, недоступной для использования (забронированной)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="registerOfSignificantPrograms" type="tns:programRegister" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о балансе сертификата (количество программ ДО из реестра значимых программ, на которое может записаться держатель сертификата) и количество программ из указанного реестра, уже реализуемых по данному сертификату</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="registerOfPreProfessionalPrograms" type="tns:programRegister" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о балансе сертификата (количество программ ДО из реестра предпрофессиональных программ, на которое может записаться держатель сертификата) и количество программ из указанного реестра, уже реализуемых по данному сертификату</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="registerOfOtherPrograms" type="tns:programRegister" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о балансе сертификата (количество программ ДО из реестра иных программ, на которое может записаться держатель сертификата) и количество программ из указанного реестра, уже реализуемых по данному сертификату</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="isReleasedOnRequestByEPGU" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Ответ на вопрос "Сертификат выпущен в ответ на запрос, поступивший с ЕПГУ, или был найден сертификат, ранее выпущенный региональным навигатором?". Если значение элемента - true, то сертификат выпущен в ответ на запрос, поступивший с ЕПГУ. Если значение элемента - false, значит данный сертификат был ранее выпущен в региональном навигаторе.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="certificateOwnerData">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Информация о владельце сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="recipientLastName" type="tns:string-250">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Фамилия ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientFirstName" type="tns:string-250">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Имя ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientPatronymic" type="tns:string-250" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Отчество ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="recipientSNILS" type="tns:SNILSType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">СНИЛС ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="certificateDataResponse">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Сведения о сертификате, возравщаемые в ответе на универсальный запро</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="certificateData" type="tns:certificateData">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведения о сертификате</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="certificateOwnerData" type="tns:certificateOwnerData">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сведениея о владельце сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="cancelResponse">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Отказ в создании/выдаче сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="cancelReasonCode" type="tns:string-2">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Код причины отказа в создании/выпуске сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="cancelReasonDescription" type="tns:string-2000">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Описание причины отказа в создании/выпуске сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ineffectualSearchResponse">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Безрезультатный ответ по запросу на поиск</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="certificateGUID" type="tns:string-50" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Уникальный идентификатор искомого сертификата в ЕАИС ДО</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="emptySearchResultReason" type="tns:string-2000">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Причина отсутствия результата поиска сертификата</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:choice minOccurs="0">
+				<xsd:element name="recipientBirthCertificateData" type="tns:birthCertificateDataType">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Сведения о свидетельстве о рождении ребенка</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="recipientForeignBirthCertificateData" type="tns:foreignBirthCertificateDataType">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Сведения о свидетельстве о рождении иностранного образца</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="recipientPassportData" type="tns:passportDataType">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="ru">Данные паспорта ребенка</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+			<xsd:element name="recipientSNILS" type="tns:SNILSType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">СНИЛС ребенка</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="universalCertificateResponse">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Универсальный ответ, содержащий информацию о сертификате</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="orderId" type="xsd:long">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор заявления на ЕПГУ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="responseTimestamp" type="xsd:dateTime">
+				<xsd:annotation>
+					<xsd:documentation>Дата и время формирования ответа на запрос ЕПГУ в навигаторе</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="certificateResponse" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Вариативный ответ на запросы сведений сертификата</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="certificateDataResponse" type="tns:certificateDataResponse"/>
+						<xsd:element name="ineffectualSearchResponse" type="tns:ineffectualSearchResponse"/>
+						<xsd:element name="cancelResponse" type="tns:cancelResponse"/>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Request -->
+	<xsd:element name="universalCertificateRequest" type="tns:universalCertificateRequest">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Запрос на получение сведений о сертификате</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<!-- Response -->
+	<xsd:element name="universalCertificateResponse" type="tns:universalCertificateResponse">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Универсальный ответ на запрос сведений/статуса сертификата</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>
+

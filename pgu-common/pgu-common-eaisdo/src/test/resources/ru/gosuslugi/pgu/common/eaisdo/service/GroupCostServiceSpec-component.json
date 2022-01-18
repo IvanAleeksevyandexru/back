@@ -1,0 +1,37 @@
+{
+  "id": "egc1",
+  "name": "Детали оплаты программы",
+  "type": "EaisdoGroupCost",
+  "createOrder": false,
+  "checkForDuplicate": false,
+  "fieldsForCheck": null,
+  "clearCacheForComponentIds": [],
+  "label": "Детали оплаты программы",
+  "attrs": {
+    "refs": {}
+  },
+  "linkedValues": [],
+  "arguments": {
+    "financialSource": "private",
+    "preprofСertificateBookedAmount": 0,
+    "pfdoСertificateBookedAmount": 0,
+    "typeOfBudget": null,
+    "externalIntegration": "eaisdoGroupCostRequest",
+    "certificateGUID": "060c3484-1483-11ec-821d-010000000007",
+    "otherСertificateBalance": 10000,
+    "startEducationDate": "2022-09-15",
+    "valuedСertificateBookedAmount": 0,
+    "timeout": 30,
+    "preprofСertificateBalance": 0,
+    "datasource": "d8327a56-80de-4df2-815c-4f6ab1224c50",
+    "otherСertificateBookedAmount": 0,
+    "valuedСertificateBalance": 0,
+    "groupGUID": "6a6b063c-e61e-11eb-a338-010000000004"
+  },
+  "value": "valid",
+  "required": true,
+  "suggestionId": null,
+  "errors": null,
+  "pronounceText": null,
+  "pronounceTextType": null
+}

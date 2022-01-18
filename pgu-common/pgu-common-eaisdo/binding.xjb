@@ -1,0 +1,23 @@
+<jaxb:bindings jaxb:extensionBindingPrefixes="xjc" version="2.1"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc">
+
+    <jaxb:globalBindings>
+        <xjc:simple/>
+        <xjc:serializable uid="-1" />
+        <jaxb:javaType name="java.util.Calendar" xmlType="xs:dateTime"
+                       parseMethod="javax.xml.bind.DatatypeConverter.parseDateTime"
+                       printMethod="javax.xml.bind.DatatypeConverter.printDateTime" />
+        <jaxb:javaType name="java.util.Calendar" xmlType="xs:date"
+                       parseMethod="javax.xml.bind.DatatypeConverter.parseDate"
+                       printMethod="javax.xml.bind.DatatypeConverter.printDate" />
+    </jaxb:globalBindings>
+
+    <jaxb:bindings schemaLocation="./vsGroupCost.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.gosuslugi.pgu.common.eaisdo.service.model.xsd" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>

@@ -1,0 +1,56 @@
+{
+  "states": [
+    {
+      "groupName": "Николаев Николай Николаевич",
+      "fields": [
+        {
+          "label": "Дата рождения",
+          "value": "03.05.1974"
+        }
+      ]
+    },
+    {
+      "groupName": "Паспорт гражданина РФ",
+      "fields": [
+        {
+          "label": "Серия и номер",
+          "value": "1111 111199"
+        },
+        {
+          "label": "Дата выдачи",
+          "value": "20.05.2021"
+        },
+        {
+          "label": "Кем выдан",
+          "value": "УВД"
+        },
+        {
+          "label": "Код подразделения",
+          "value": "133-333"
+        },
+        {
+          "label": "Место рождения",
+          "value": "Московская область деревня мисайлово"
+        }
+      ]
+    }
+  ],
+  "storedValues": {
+    "firstName": "Николай",
+    "lastName": "Николаев",
+    "middleName": "Николаевич",
+    "birthDate": "03.05.1974",
+    "birthPlace": "Московская область деревня мисайлово",
+    "gender": "M",
+    "docType": "RF_PASSPORT",
+    "rfPasportSeries": "1111",
+    "rfPasportNumber": "111199",
+    "rfPasportIssueDate": "20.05.2021",
+    "rfPasportIssuedBy": "УВД",
+    "rfPasportIssuedById": "133333",
+    "rfPasportIssuedByIdFormatted": "133-333",
+    "citizenship": "РОССИЯ",
+    "citizenshipCode": "RUS"
+  },
+  "errors": []
+}

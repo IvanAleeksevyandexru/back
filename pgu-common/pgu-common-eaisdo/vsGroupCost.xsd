@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:tns="http://epgu.aisdopobr.ru/dataexchanges/group-cost/1.0.0" 
+            targetNamespace="http://epgu.aisdopobr.ru/dataexchanges/group-cost/1.0.0" 
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+<!-- String Simple types-->
+	<xsd:simpleType name="string-50">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-100">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-255">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-500">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="500"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="string-1000">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+<!-- Other Simple types -->
+	<xsd:simpleType name="emailType">
+		<xsd:annotation>
+			<xsd:documentation>Емейл простая валидация</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="tns:string-100">
+			<xsd:pattern value="[0-9a-zA-Z_.\-]{2,50}[@]{1}[0-9a-zA-Z_./-]{2,50}[.]{1}[a-zA-Z]{2,5}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="uuidType">
+		<xsd:annotation>
+			<xsd:documentation>UUID в строковой записи</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="36" fixed="true"/>
+			<xsd:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="datasourceType">
+		<xsd:annotation>
+			<xsd:documentation>Источник данных, он же получатель запросов (какой-то из навигаторов)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="tns:uuidType">
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="financialSourceDictType">
+		<xsd:annotation>
+			<xsd:documentation>Значение code из словаря financialSource</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+
+<!-- Common complex types -->
+
+	<xsd:complexType name="debugInfoType">
+		<xsd:annotation>
+			<xsd:documentation>Данные для отладки</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:any minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="errorInfoType">
+		<xsd:annotation>
+			<xsd:documentation>Ошибка</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="code" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Строковый код ошибки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="message" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Расширенное сообщение об ошибке</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+<!-- Custom complex types -->	
+	
+	<xsd:complexType name="groupCostRequestDataType">
+		<xsd:annotation>
+			<xsd:documentation>Данные запроса</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="groupGUID" type="tns:uuidType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">GUID группы</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="startEducationDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Дата начала обучения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="certificateGUID" type="tns:string-50" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Страна</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="financialSource" type="tns:financialSourceDictType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Тип источника финансирования</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	
+	<xsd:complexType name="costCalculationType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Калькуляция стоимости</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="costPerYear" type="xsd:decimal">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Стоимость за год</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="certificateReservingCost" type="xsd:decimal">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сумма, резирвируемая на сертияикате</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="monthlyCost" type="xsd:decimal">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Приблизительная месячная стоимость</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="monthlyFromCertificate" type="xsd:decimal">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Приблизительная месячная оплата по сертификату</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="monthlyFromApplicant" type="xsd:decimal">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Приблизительная месячная доплата аппликантом</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	
+	<xsd:complexType name="groupCostRequestType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Запрос на рассчёт стоимости обучения для заданных группы и сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="requestData" type="tns:groupCostRequestDataType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Данные запроса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="datasource" type="tns:datasourceType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Навигатор-источник данных, он же целевой получатель запроса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="requestRef" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Идентификатор запроса (не обязательный)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	
+	<xsd:complexType name="groupCostCalculationResponseType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Рассчёт стоимости</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="orderAllowed" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Признак возможности создания заявки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="message" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сообщение пользователю</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="costCalculation" type="tns:costCalculationType">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Калькуляция стоимости</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element name="requestInfo" type="tns:groupCostRequestType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Копия данных запроса (опционально)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="debugInfo" type="tns:debugInfoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Отладочная информация (опционально)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	
+	<xsd:complexType name="groupCostIneffectualResponseType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Недостаточно данных</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="orderAllowed" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Признак возможности создания заявки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="message" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сообщение пользователю</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="requestInfo" type="tns:groupCostRequestType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Копия данных запроса (опционально)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="debugInfo" type="tns:debugInfoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Отладочная информация (опционально)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="groupCostFreeOfChargeResponseType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Бесплатно для апликанта</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="orderAllowed" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Признак возможности создания заявки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="message" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сообщение пользователю</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="certificateBalance">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Баланс сертификата</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="registryBalance" type="xsd:integer">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Баланс по реестру программы</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="registryBookedAmount" type="xsd:integer">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="ru">Использованный баланс по реестру</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="requestInfo" type="tns:groupCostRequestType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Копия данных запроса (опционально)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="debugInfo" type="tns:debugInfoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Отладочная информация (опционально)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="groupCostCertificateExhaustedResponseType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Исчерпаны средства сертификата</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="orderAllowed" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Признак возможности создания заявки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="message" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сообщение пользователю</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="requestInfo" type="tns:groupCostRequestType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Копия данных запроса (опционально)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="debugInfo" type="tns:debugInfoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Отладочная информация (опционально)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="groupCostBadCalculationDataResponseType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Ошибка в вычислениях</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="orderAllowed" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Признак возможности создания заявки</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="message" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Сообщение пользователю</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="errorInfo" type="tns:errorInfoType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Детальное описание ошибки (опционально)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element name="requestInfo" type="tns:groupCostRequestType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Копия данных запроса (опционально)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="debugInfo" type="tns:debugInfoType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="ru">Отладочная информация (опционально)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+
+<!-- Requests -->
+	<xsd:element name="groupCostRequest" type="tns:groupCostRequestType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Запрос на рассчёт стоимости обучения для заданных группы и сертификата</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+
+<!-- Responses -->
+	<xsd:element name="groupCostCalculationResponse" type="tns:groupCostCalculationResponseType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Ответ рассчёт стоимости </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:element name="groupCostIneffectualResponse" type="tns:groupCostIneffectualResponseType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Ответ недостаточно данных </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:element name="groupCostFreeOfChargeResponse" type="tns:groupCostFreeOfChargeResponseType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Ответ бесплатно для апликанта</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:element name="groupCostCertificateExhaustedResponse" type="tns:groupCostCertificateExhaustedResponseType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Ответ исчерпаны средства сертификата </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:element name="groupCostBadCalculationDataResponse" type="tns:groupCostBadCalculationDataResponseType">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="ru">Ответ ошибка в вычислениях </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+</xsd:schema>
