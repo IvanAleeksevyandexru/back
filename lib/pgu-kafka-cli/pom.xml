@@ -68,7 +68,7 @@
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
             <artifactId>pgu-dto</artifactId>
-            <version>${project.version}</version>
+            <version>${epgu2.sf.lib.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>ru.gosuslugi.pgu</groupId>
