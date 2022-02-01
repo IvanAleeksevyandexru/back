@@ -212,8 +212,8 @@ public class KinderGartenDraftHandlerComponent extends AbstractComponent<String>
      * @return ответное сообщение от СМЭВ-адаптера и возможное сообщение с ошибкой
      */
     private BarBarBokResponseDtoBuilder barbarbokSearch(String xmlRequest,
-                                                 FieldComponent component, Map<String, ApplicantAnswer> applicantAnswers,
-                                                 String smevVersion, long orderId, int timeout) {
+                                                        FieldComponent component, Map<String, ApplicantAnswer> applicantAnswers,
+                                                        String smevVersion, long orderId, int timeout) {
         BarBarBokResponseDtoBuilder builder = kinderGartenClient.sendMessage(xmlRequest, smevVersion, orderId, timeout);
         if (builder.build().getData() == null) {
             applicantAnswers.put(component.getId(), new ApplicantAnswer(true, jsonProcessingService.toJson(builder.build())));

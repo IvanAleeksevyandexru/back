@@ -5,23 +5,32 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
-import ru.gosuslugi.pgu.fs.common.exception.FormBaseException;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.core.lk.model.order.Order;
 import ru.gosuslugi.pgu.draft.DraftClient;
 import ru.gosuslugi.pgu.draft.model.DraftHolderDto;
-import ru.gosuslugi.pgu.dto.*;
+import ru.gosuslugi.pgu.dto.ApplicantRole;
+import ru.gosuslugi.pgu.dto.InitServiceDto;
+import ru.gosuslugi.pgu.dto.ScenarioDto;
+import ru.gosuslugi.pgu.dto.ScenarioFromExternal;
+import ru.gosuslugi.pgu.dto.ScenarioRequest;
+import ru.gosuslugi.pgu.dto.ScenarioResponse;
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
 import ru.gosuslugi.pgu.dto.descriptor.types.OrderBehaviourType;
 import ru.gosuslugi.pgu.dto.order.OrderListInfoDto;
 import ru.gosuslugi.pgu.dto.order.ShortOrderData;
 import ru.gosuslugi.pgu.fs.common.descriptor.DescriptorService;
 import ru.gosuslugi.pgu.fs.common.descriptor.MainDescriptorService;
+import ru.gosuslugi.pgu.fs.common.exception.FormBaseException;
 import ru.gosuslugi.pgu.fs.common.service.AbstractScreenService;
 import ru.gosuslugi.pgu.fs.delirium.model.DeliriumStageDto;
 import ru.gosuslugi.pgu.fs.exception.OrderNotFoundException;
 import ru.gosuslugi.pgu.fs.pgu.service.PguOrderService;
-import ru.gosuslugi.pgu.fs.service.*;
+import ru.gosuslugi.pgu.fs.service.DeliriumService;
+import ru.gosuslugi.pgu.fs.service.MainScreenService;
+import ru.gosuslugi.pgu.fs.service.OrderInfoService;
+import ru.gosuslugi.pgu.fs.service.ScenarioInitializerService;
+import ru.gosuslugi.pgu.fs.service.TransformService;
 import ru.gosuslugi.pgu.fs.service.process.ExternalScreenProcess;
 import ru.gosuslugi.pgu.fs.service.process.NextScreenProcess;
 import ru.gosuslugi.pgu.fs.service.process.PrevScreenProcess;
@@ -108,6 +117,7 @@ public class MainScreenServiceImpl extends AbstractScreenService implements Main
                 // если экран не содержит цикличных компонентов ответ еще не установлен
                 .executeIf(PrevScreenProcess::checkResponseIsNull, PrevScreenProcess::calculateNextScreen)
                 .completeIf(PrevScreenProcess::needReInitScreen, PrevScreenProcess::reInitScenario)
+                .execute(PrevScreenProcess::checkEditable)
                 .execute(PrevScreenProcess::saveDraft)
                 .start();
     }
@@ -195,6 +205,7 @@ public class MainScreenServiceImpl extends AbstractScreenService implements Main
                 .executeIf(NextScreenProcess::hasOrderCreateCustomParameter, NextScreenProcess::saveChosenValuesForOrder)
                 .executeIf(NextScreenProcess::isNeedToUpdateAdditionalParameters, NextScreenProcess::updateAdditionalAttributes)
                 .execute(NextScreenProcess::checkPermissions)
+                .execute(NextScreenProcess::checkEditable)
                 .executeIf(NextScreenProcess::draftShouldExist,NextScreenProcess::saveDraft)
                 .executeIf(NextScreenProcess::isTerminalAndNotImpasse, NextScreenProcess::mergePdfDocuments)
                 .execute(NextScreenProcess::performIntegrationSteps)

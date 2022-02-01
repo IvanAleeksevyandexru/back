@@ -39,15 +39,15 @@ public class PersonOkatoServiceImplTest {
     @Test
     public void testNoAddresses() {
         Mockito.when(userPersonalData.getAddresses())
-            .thenReturn(Collections.emptyList());
+                .thenReturn(Collections.emptyList());
 
         Assert.assertEquals(OkatoHolder.DEFAULT_OKATO, personOkatoService.getOkato());
 
         // Проверяем замоканные вызванные функции
         Mockito.verify(userPersonalData, Mockito.times(1))
-            .getAddresses();
+                .getAddresses();
         Mockito.verify(nsiDadataService, Mockito.times(0))
-            .getAddress(Mockito.anyString(), Mockito.anyString());
+                .getAddress(Mockito.anyString(), Mockito.anyString());
     }
 
     @Test
@@ -60,9 +60,9 @@ public class PersonOkatoServiceImplTest {
 
         // Проверяем замоканные вызванные функции
         Mockito.verify(userPersonalData, Mockito.times(1))
-            .getAddresses();
+                .getAddresses();
         Mockito.verify(nsiDadataService, Mockito.times(0))
-            .getAddress(Mockito.anyString(), Mockito.anyString());
+                .getAddress(Mockito.anyString(), Mockito.anyString());
     }
 
     @Test
@@ -70,15 +70,15 @@ public class PersonOkatoServiceImplTest {
         EsiaAddress esiaAddress = new EsiaAddress();
         esiaAddress.setType("1");
         Mockito.when(userPersonalData.getAddresses())
-            .thenReturn(Collections.singletonList(esiaAddress));
+                .thenReturn(Collections.singletonList(esiaAddress));
 
         Assert.assertEquals(OkatoHolder.DEFAULT_OKATO, personOkatoService.getOkato());
 
         // Проверяем замоканные вызванные функции
         Mockito.verify(userPersonalData, Mockito.times(1))
-            .getAddresses();
+                .getAddresses();
         Mockito.verify(nsiDadataService, Mockito.times(0))
-            .getAddress(Mockito.anyString(), Mockito.anyString());
+                .getAddress(Mockito.anyString(), Mockito.anyString());
     }
 
     @Test
@@ -93,9 +93,9 @@ public class PersonOkatoServiceImplTest {
 
         // Проверяем замоканные вызванные функции
         Mockito.verify(userPersonalData, Mockito.times(1))
-            .getAddresses();
+                .getAddresses();
         Mockito.verify(nsiDadataService, Mockito.times(1))
-            .getAddress(ArgumentMatchers.eq(REGISTRATION_ADDRESS), ArgumentMatchers.eq(OkatoHolder.DEFAULT_OKATO));
+                .getAddress(ArgumentMatchers.eq(REGISTRATION_ADDRESS), ArgumentMatchers.eq(OkatoHolder.DEFAULT_OKATO));
     }
 
 
@@ -103,26 +103,7 @@ public class PersonOkatoServiceImplTest {
     public void testAddress() {
         String newOkato = "new_okato";
         Mockito.when(userPersonalData.getAddresses())
-            .thenReturn(Collections.singletonList(getRegEsiaAddress()));
-        DadataAddressResponse response = new DadataAddressResponse();
-        response.setOkato(newOkato);
-        Mockito.when(nsiDadataService.getAddress(Mockito.anyString(), Mockito.anyString()))
-            .thenReturn(response);
-
-        Assert.assertEquals(newOkato, personOkatoService.getOkato());
-
-        // Проверяем замоканные вызванные функции
-        Mockito.verify(userPersonalData, Mockito.times(1))
-            .getAddresses();
-        Mockito.verify(nsiDadataService, Mockito.times(1))
-            .getAddress(ArgumentMatchers.eq(REGISTRATION_ADDRESS), ArgumentMatchers.eq(OkatoHolder.DEFAULT_OKATO));
-    }
-
-    @Test
-    public void testTwoAddresses() {
-        String newOkato = "new_okato";
-        Mockito.when(userPersonalData.getAddresses())
-            .thenReturn(Arrays.asList(getLocalEsiaAddress(),  getRegEsiaAddress()));
+                .thenReturn(Collections.singletonList(getRegEsiaAddress()));
         DadataAddressResponse response = new DadataAddressResponse();
         response.setOkato(newOkato);
         Mockito.when(nsiDadataService.getAddress(Mockito.anyString(), Mockito.anyString()))
@@ -132,9 +113,28 @@ public class PersonOkatoServiceImplTest {
 
         // Проверяем замоканные вызванные функции
         Mockito.verify(userPersonalData, Mockito.times(1))
-            .getAddresses();
+                .getAddresses();
         Mockito.verify(nsiDadataService, Mockito.times(1))
-            .getAddress(ArgumentMatchers.eq(REGISTRATION_ADDRESS), ArgumentMatchers.eq(OkatoHolder.DEFAULT_OKATO));
+                .getAddress(ArgumentMatchers.eq(REGISTRATION_ADDRESS), ArgumentMatchers.eq(OkatoHolder.DEFAULT_OKATO));
+    }
+
+    @Test
+    public void testTwoAddresses() {
+        String newOkato = "new_okato";
+        Mockito.when(userPersonalData.getAddresses())
+                .thenReturn(Arrays.asList(getLocalEsiaAddress(),  getRegEsiaAddress()));
+        DadataAddressResponse response = new DadataAddressResponse();
+        response.setOkato(newOkato);
+        Mockito.when(nsiDadataService.getAddress(Mockito.anyString(), Mockito.anyString()))
+                .thenReturn(response);
+
+        Assert.assertEquals(newOkato, personOkatoService.getOkato());
+
+        // Проверяем замоканные вызванные функции
+        Mockito.verify(userPersonalData, Mockito.times(1))
+                .getAddresses();
+        Mockito.verify(nsiDadataService, Mockito.times(1))
+                .getAddress(ArgumentMatchers.eq(REGISTRATION_ADDRESS), ArgumentMatchers.eq(OkatoHolder.DEFAULT_OKATO));
     }
 
     private EsiaAddress getLocalEsiaAddress() {

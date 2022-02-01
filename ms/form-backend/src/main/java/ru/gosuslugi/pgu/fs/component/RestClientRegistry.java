@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.converter.FormHttpMessageConverter;
+import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import ru.gosuslugi.pgu.common.core.exception.handler.RestResponseErrorHandler;
@@ -27,6 +28,7 @@ public class RestClientRegistry {
     @Autowired
     public RestClientRegistry(RestTemplate restTemplate, RestTemplateBuilder restTemplateBuilder) {
         restTemplate.getMessageConverters().add(new FormHttpMessageConverter());
+        restTemplate.getMessageConverters().add(new GsonHttpMessageConverter());
         registry.put(DEFAULT_TIMEOUT, restTemplate);
         interceptors = restTemplate.getInterceptors();
         this.restTemplateBuilder = restTemplateBuilder;

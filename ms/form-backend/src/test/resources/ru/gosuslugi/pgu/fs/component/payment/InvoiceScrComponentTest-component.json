@@ -1,0 +1,14 @@
+{
+  "id": "pd3",
+  "type": "InvoiceScr",
+  "label": "InvoiceScr",
+  "attrs": {
+    "refs": {}
+  },
+  "arguments": {
+    "billId": "billId",
+    "billNumber": "billNumber"
+  },
+  "value": "",
+  "visited": false
+}

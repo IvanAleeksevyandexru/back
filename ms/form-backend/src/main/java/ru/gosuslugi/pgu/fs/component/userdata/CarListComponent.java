@@ -106,9 +106,9 @@ public class CarListComponent extends AbstractComponent<CarListComponentDto> {
         Person person = userPersonalData.getPerson();
         PersonDoc doc;
         Optional<PersonDoc> passportOptional = userPersonalData.getDocs()
-            .stream()
-            .filter(it -> (it.getType().equals(RF_PASSPORT_ATTR) || it.getType().equals(FID_DOC_ATTR) && it.getVrfStu().equals(VERIFIED_ATTR)))
-            .max(Comparator.comparing(PersonDoc::getType));
+                .stream()
+                .filter(it -> (it.getType().equals(RF_PASSPORT_ATTR) || it.getType().equals(FID_DOC_ATTR) && it.getVrfStu().equals(VERIFIED_ATTR)))
+                .max(Comparator.comparing(PersonDoc::getType));
 
         if (passportOptional.isEmpty()) {
             throw new FormBaseException("У пользователя не найден верифицированный паспорт");
@@ -116,15 +116,15 @@ public class CarListComponent extends AbstractComponent<CarListComponentDto> {
         doc = passportOptional.get();
 
         OwnerVehiclesRequest request = OwnerVehiclesRequest
-            .builder()
-            .lastName(person.getLastName())
-            .firstName(person.getFirstName())
-            .birthDay(person.getBirthDate())
-            .userType(PERSON_RF_USER_TYPE)
-            .documentType(doc.getType().equals(RF_PASSPORT_ATTR) ? OwnerDocumentType.PASSPORT_RF : OwnerDocumentType.FID_DOC)
-            .documentNumSer(doc.getSeries() + doc.getNumber())
-            .tx(tx)
-            .build();
+                .builder()
+                .lastName(person.getLastName())
+                .firstName(person.getFirstName())
+                .birthDay(person.getBirthDate())
+                .userType(PERSON_RF_USER_TYPE)
+                .documentType(doc.getType().equals(RF_PASSPORT_ATTR) ? OwnerDocumentType.PASSPORT_RF : OwnerDocumentType.FID_DOC)
+                .documentNumSer(doc.getSeries() + doc.getNumber())
+                .tx(tx)
+                .build();
 
         CarListComponentDto result = new CarListComponentDto();
         try {

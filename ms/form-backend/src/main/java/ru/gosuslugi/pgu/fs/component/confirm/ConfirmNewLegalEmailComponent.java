@@ -40,7 +40,7 @@ public class ConfirmNewLegalEmailComponent extends AbstractComponent<String> {
     @Override
     public List<ValidationRule> getValidations() {
         return List.of(
-            new NotBlankValidation("Введите адрес электронной почты")
+                new NotBlankValidation("Введите адрес электронной почты")
         );
     }
 

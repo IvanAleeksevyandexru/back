@@ -122,12 +122,12 @@ class FormScenarioDtoServiceImplTest extends Specification {
                 ApplicantRole.Applicant
         ]
         answer << [
-               "Да",
-               "Нет"
+                "Да",
+                "Нет"
         ]
         expectedScreenId << [
-               "s25",
-               "s43"
+                "s25",
+                "s43"
         ]
     }
 
@@ -238,7 +238,7 @@ class FormScenarioDtoServiceImplTest extends Specification {
         ScenarioDto scenarioDto = new ScenarioDto(
                 finishedAndCurrentScreens: ["s1", "s2", "s2a", "s3", "s19", "s13", "s22", "s84"],
                 display: [
-                    id: "s22"
+                        id: "s22"
                 ]
         )
 

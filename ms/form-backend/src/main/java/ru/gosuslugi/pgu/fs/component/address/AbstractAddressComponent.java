@@ -1,21 +1,30 @@
 package ru.gosuslugi.pgu.fs.component.address;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.jayway.jsonpath.PathNotFoundException;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.gosuslugi.pgu.common.core.exception.ValidationException;
+import ru.gosuslugi.pgu.components.ValidationUtil;
 import ru.gosuslugi.pgu.components.descriptor.types.FullAddress;
+import ru.gosuslugi.pgu.components.descriptor.types.ValidationFieldDto;
+import ru.gosuslugi.pgu.components.dto.ErrorDto;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.fs.common.component.AbstractComponent;
-import ru.gosuslugi.pgu.fs.common.utils.AnswerUtil;
 import ru.gosuslugi.pgu.fs.service.LkNotifierService;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.DadataAddressResponse;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.NsiDictionary;
-import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.*;
+import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiDictionaryFilterRequest;
+import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiDictionaryFilterSimple;
+import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiDictionaryFilterUnion;
+import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiDictionaryUnionType;
+import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiSimpleDictionaryFilterContainer;
+import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiUnionDictionaryFilterContainer;
 import ru.gosuslugi.pgu.pgu_common.nsi.service.NsiDadataService;
 import ru.gosuslugi.pgu.pgu_common.nsi.service.NsiDictionaryService;
 
@@ -24,10 +33,9 @@ import java.util.Map;
 import java.util.Objects;
 
 import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
 import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.apache.commons.lang.StringUtils.isNumeric;
-import static org.springframework.util.StringUtils.hasText;
+import static ru.gosuslugi.pgu.components.FieldComponentUtil.FIELDS_KEY;
 
 @Slf4j
 public abstract class AbstractAddressComponent<PreSetModel> extends AbstractComponent<PreSetModel> {
@@ -101,7 +109,7 @@ public abstract class AbstractAddressComponent<PreSetModel> extends AbstractComp
                                           FullAddress fullAddress,
                                           Map.Entry<String, ApplicantAnswer> entry,
                                           FieldComponent fieldComponent
-                                          ){
+    ){
         DadataAddressResponse addressResponse;
 
         if (isNull(fullAddress) || isBlank(fullAddress.getFullAddress())) {
@@ -123,6 +131,24 @@ public abstract class AbstractAddressComponent<PreSetModel> extends AbstractComp
                 return;
             }
             fullAddress.setOktmo(addressResponse.getOktmo());
+        }
+
+        List<ValidationFieldDto> validationFieldDto = objectMapper.convertValue(
+                fieldComponent.getAttrs().get(FIELDS_KEY),
+                new TypeReference<>() {}
+        );
+        Map<String, ErrorDto> errors;
+        try {
+            errors = ValidationUtil.validateFieldsByRegExp(
+                    incorrectAnswers,
+                    entry.getValue().getValue(),
+                    validationFieldDto
+            );
+        } catch (JsonProcessingException e) {
+            throw new ValidationException("Ошибка при попытке валидации адреса", e);
+        }
+        if (!errors.isEmpty()) {
+            incorrectAnswers.put(entry.getKey(), jsonProcessingService.toJson(errors));
         }
     }
 

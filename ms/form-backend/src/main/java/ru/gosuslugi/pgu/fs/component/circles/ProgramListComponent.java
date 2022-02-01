@@ -1,4 +1,4 @@
-package ru.gosuslugi.pgu.fs.component.programlist;
+package ru.gosuslugi.pgu.fs.component.circles;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

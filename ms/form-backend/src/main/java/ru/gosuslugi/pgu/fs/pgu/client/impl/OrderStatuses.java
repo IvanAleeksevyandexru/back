@@ -1,6 +1,8 @@
 package ru.gosuslugi.pgu.fs.pgu.client.impl;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -81,6 +83,8 @@ public enum OrderStatuses {
     DENIED(4L),
     ERROR_SEND_REQUEST(5L),
     ORDER_CANCELED(10),
+    WAITING_FOR_ADDITIONAL_INFO(14L),
+    SHOULD_BE_CORRECTED(15L),
     REGISTERED_ON_PORTAL(17L),
     SEND_ORDER_NOT_POSSIBLE(18L),
     ERROR_RECEIVING(22L),
@@ -140,4 +144,23 @@ public enum OrderStatuses {
         statuses.add(ORDER_NULLIFY.getStatusId());
         return statuses;
     }
+
+    /**
+     * Список редактируемых состояний
+     */
+    static List<Long> editableStatuses = Arrays.asList(
+            OrderStatuses.DRAFT.getStatusId(),
+            OrderStatuses.WAITING_FOR_ADDITIONAL_INFO.getStatusId(),
+            OrderStatuses.SHOULD_BE_CORRECTED.getStatusId()
+    );
+
+    /**
+     * Является ли состояние редактируемым?
+     * @param status - статус черновика
+     * @return - true/false
+     */
+    public static boolean isEditableStatus(Long status){
+        return editableStatuses.contains(status);
+    }
+
 }

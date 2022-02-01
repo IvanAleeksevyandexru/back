@@ -61,8 +61,8 @@ public class DivorceConsentComponent extends AbstractComponent<FormDto> {
 
         if (!refsMap.keySet().containsAll(List.of(PARTICIPANT_1_ATTR, PARTICIPANT_2_ATTR, MARRIAGE_CERTIFICATE_NUMBER_ATTR,
                 MARRIAGE_CERTIFICATE_DATE_ATTR, MARRIAGE_CERTIFICATE_ZAGS_ATTR, DIVORCE_DATE_ATTR, DIVORCE_ZAGS_ATTR))
-            || !(refsMap.get(PARTICIPANT_1_ATTR) instanceof Map)
-            || !(refsMap.get(PARTICIPANT_2_ATTR) instanceof Map)) {
+                || !(refsMap.get(PARTICIPANT_1_ATTR) instanceof Map)
+                || !(refsMap.get(PARTICIPANT_2_ATTR) instanceof Map)) {
 
             throw new FormBaseException("Поле refs задано неверно");
         }
@@ -89,120 +89,120 @@ public class DivorceConsentComponent extends AbstractComponent<FormDto> {
         }
         // код подразделения для паспорта первого заявителя
         String participant1IssueId = PassportUtil.formatIssueId(
-            getStoredValue(map, participant1.get(USER_DATA_ATTR), "rfPasportIssuedById")
+                getStoredValue(map, participant1.get(USER_DATA_ATTR), "rfPasportIssuedById")
         );
 
         // код подразделения для паспорта второго заявителя
         String participant2IssueId = PassportUtil.formatIssueId(
-            getStoredValue(map, participant2.get(USER_DATA_ATTR), "rfPasportIssuedById")
+                getStoredValue(map, participant2.get(USER_DATA_ATTR), "rfPasportIssuedById")
         );
 
         return FormDto
-            .builder()
-            .states(List.of(
-                StateDto
-                    .builder()
-                    .groupName("Данные заявителя")
-                    .fields(List.of(
-                        new FieldDto("ФИО", String.join(" ",
-                            getStoredValue(map, participant1.get(USER_DATA_ATTR), "lastName"),
-                            getStoredValue(map, participant1.get(USER_DATA_ATTR), "firstName"),
-                            getStoredValue(map, participant1.get(USER_DATA_ATTR), "middleName")).trim()),
-                        new FieldDto("Дата рождения", getStoredValue(map, participant1.get(USER_DATA_ATTR), "birthDate")))
-                    ).build(),
+                .builder()
+                .states(List.of(
+                        StateDto
+                                .builder()
+                                .groupName("Данные заявителя")
+                                .fields(List.of(
+                                        new FieldDto("ФИО", String.join(" ",
+                                                getStoredValue(map, participant1.get(USER_DATA_ATTR), "lastName"),
+                                                getStoredValue(map, participant1.get(USER_DATA_ATTR), "firstName"),
+                                                getStoredValue(map, participant1.get(USER_DATA_ATTR), "middleName")).trim()),
+                                        new FieldDto("Дата рождения", getStoredValue(map, participant1.get(USER_DATA_ATTR), "birthDate")))
+                                ).build(),
 
-                StateDto
-                    .builder()
-                    .groupName("Паспорт гражданина РФ")
-                    .fields(List.of(
-                        new FieldDto("Серия и номер", (getStoredValue(map, participant1.get(USER_DATA_ATTR), "rfPasportSeries") + " " +
-                            getStoredValue(map, participant1.get(USER_DATA_ATTR), "rfPasportNumber")).trim()),
-                        new FieldDto("Дата выдачи", getStoredValue(map, participant1.get(USER_DATA_ATTR), "rfPasportIssueDate")),
-                        new FieldDto("Кем выдан", getStoredValue(map, participant1.get(USER_DATA_ATTR), "rfPasportIssuedBy")),
-                        new FieldDto("Код подразделения", participant1IssueId),
-                        new FieldDto("Место рождения", getStoredValue(map, participant1.get(USER_DATA_ATTR), "birthPlace")),
-                        new FieldDto("Гражданство", "Россия"))
-                    ).build(),
+                        StateDto
+                                .builder()
+                                .groupName("Паспорт гражданина РФ")
+                                .fields(List.of(
+                                        new FieldDto("Серия и номер", (getStoredValue(map, participant1.get(USER_DATA_ATTR), "rfPasportSeries") + " " +
+                                                getStoredValue(map, participant1.get(USER_DATA_ATTR), "rfPasportNumber")).trim()),
+                                        new FieldDto("Дата выдачи", getStoredValue(map, participant1.get(USER_DATA_ATTR), "rfPasportIssueDate")),
+                                        new FieldDto("Кем выдан", getStoredValue(map, participant1.get(USER_DATA_ATTR), "rfPasportIssuedBy")),
+                                        new FieldDto("Код подразделения", participant1IssueId),
+                                        new FieldDto("Место рождения", getStoredValue(map, participant1.get(USER_DATA_ATTR), "birthPlace")),
+                                        new FieldDto("Гражданство", "Россия"))
+                                ).build(),
 
-                StateDto
-                    .builder()
-                    .groupName("Место жительства")
-                    .fields(List.of(
-                        new FieldDto("Адрес места жительства",
-                            getValueByPath(map, List.of(participant1.get("regAddr"), "regAddr", "fullAddress"))))
-                    ).build(),
+                        StateDto
+                                .builder()
+                                .groupName("Место жительства")
+                                .fields(List.of(
+                                        new FieldDto("Адрес места жительства",
+                                                getValueByPath(map, List.of(participant1.get("regAddr"), "regAddr", "fullAddress"))))
+                                ).build(),
 
-                StateDto
-                    .builder()
-                    .groupName("Дополнительные сведения")
-                    .fields(List.of(
-                        new FieldDto("Национальность", getValueByPath(map, List.of(participant1.get("nationality"), "text"))),
-                        new FieldDto("Образование", getValueByPath(map, List.of(participant1.get("education"), "text"))),
-                        new FieldDto("Первый или повторный брак", getValueByPath(map, List.of(participant1.get("isFirstMarriage"), "text"))),
-                        new FieldDto("Фамилия после расторжения брака", getValueByPath(map, List.of(participant1.get("newLastName")))))
-                    ).build(),
+                        StateDto
+                                .builder()
+                                .groupName("Дополнительные сведения")
+                                .fields(List.of(
+                                        new FieldDto("Национальность", getValueByPath(map, List.of(participant1.get("nationality"), "text"))),
+                                        new FieldDto("Образование", getValueByPath(map, List.of(participant1.get("education"), "text"))),
+                                        new FieldDto("Первый или повторный брак", getValueByPath(map, List.of(participant1.get("isFirstMarriage"), "text"))),
+                                        new FieldDto("Фамилия после расторжения брака", getValueByPath(map, List.of(participant1.get("newLastName")))))
+                                ).build(),
 
-                StateDto
-                    .builder()
-                    .groupName("Данные о супруге")
-                    .fields(List.of(
-                        new FieldDto("ФИО", String.join(" ",
-                            getStoredValue(map, participant2.get(USER_DATA_ATTR), "lastName"),
-                            getStoredValue(map, participant2.get(USER_DATA_ATTR), "firstName"),
-                            getStoredValue(map, participant2.get(USER_DATA_ATTR), "middleName")).trim()),
-                        new FieldDto("Дата рождения", getStoredValue(map, participant2.get(USER_DATA_ATTR), "birthDate")))
-                    ).build(),
+                        StateDto
+                                .builder()
+                                .groupName("Данные о супруге")
+                                .fields(List.of(
+                                        new FieldDto("ФИО", String.join(" ",
+                                                getStoredValue(map, participant2.get(USER_DATA_ATTR), "lastName"),
+                                                getStoredValue(map, participant2.get(USER_DATA_ATTR), "firstName"),
+                                                getStoredValue(map, participant2.get(USER_DATA_ATTR), "middleName")).trim()),
+                                        new FieldDto("Дата рождения", getStoredValue(map, participant2.get(USER_DATA_ATTR), "birthDate")))
+                                ).build(),
 
-                StateDto
-                    .builder()
-                    .groupName("Паспорт гражданина РФ")
-                    .fields(List.of(
-                        new FieldDto("Серия и номер", (getStoredValue(map, participant2.get(USER_DATA_ATTR), "rfPasportSeries") + " " +
-                            getStoredValue(map, participant2.get(USER_DATA_ATTR), "rfPasportNumber")).trim()),
-                        new FieldDto("Дата выдачи", getStoredValue(map, participant2.get(USER_DATA_ATTR), "rfPasportIssueDate")),
-                        new FieldDto("Кем выдан", getStoredValue(map, participant2.get(USER_DATA_ATTR), "rfPasportIssuedBy")),
-                        new FieldDto("Код подразделения", participant2IssueId),
-                        new FieldDto("Место рождения", getStoredValue(map, participant2.get(USER_DATA_ATTR), "birthPlace")),
-                        new FieldDto("Гражданство", "Россия"))
-                    ).build(),
+                        StateDto
+                                .builder()
+                                .groupName("Паспорт гражданина РФ")
+                                .fields(List.of(
+                                        new FieldDto("Серия и номер", (getStoredValue(map, participant2.get(USER_DATA_ATTR), "rfPasportSeries") + " " +
+                                                getStoredValue(map, participant2.get(USER_DATA_ATTR), "rfPasportNumber")).trim()),
+                                        new FieldDto("Дата выдачи", getStoredValue(map, participant2.get(USER_DATA_ATTR), "rfPasportIssueDate")),
+                                        new FieldDto("Кем выдан", getStoredValue(map, participant2.get(USER_DATA_ATTR), "rfPasportIssuedBy")),
+                                        new FieldDto("Код подразделения", participant2IssueId),
+                                        new FieldDto("Место рождения", getStoredValue(map, participant2.get(USER_DATA_ATTR), "birthPlace")),
+                                        new FieldDto("Гражданство", "Россия"))
+                                ).build(),
 
-                StateDto
-                    .builder()
-                    .groupName("Место жительства")
-                    .fields(List.of(
-                        new FieldDto("Адрес места жительства",
-                            getValueByPath(map, List.of(participant2.get("regAddr"), "regAddr", "fullAddress"))))
-                    ).build(),
+                        StateDto
+                                .builder()
+                                .groupName("Место жительства")
+                                .fields(List.of(
+                                        new FieldDto("Адрес места жительства",
+                                                getValueByPath(map, List.of(participant2.get("regAddr"), "regAddr", "fullAddress"))))
+                                ).build(),
 
-                StateDto
-                    .builder()
-                    .groupName("Дополнительные сведения")
-                    .fields(List.of(
-                        new FieldDto("Национальность", getValueByPath(map, List.of(participant2.get("nationality"), "text"))),
-                        new FieldDto("Образование", getValueByPath(map, List.of(participant2.get("education"), "text"))),
-                        new FieldDto("Первый или повторный брак", getValueByPath(map, List.of(participant2.get("isFirstMarriage"), "text"))),
-                        new FieldDto("Фамилия после расторжения брака", getValueByPath(map, List.of(participant2.get("newLastName")))))
-                    ).build(),
+                        StateDto
+                                .builder()
+                                .groupName("Дополнительные сведения")
+                                .fields(List.of(
+                                        new FieldDto("Национальность", getValueByPath(map, List.of(participant2.get("nationality"), "text"))),
+                                        new FieldDto("Образование", getValueByPath(map, List.of(participant2.get("education"), "text"))),
+                                        new FieldDto("Первый или повторный брак", getValueByPath(map, List.of(participant2.get("isFirstMarriage"), "text"))),
+                                        new FieldDto("Фамилия после расторжения брака", getValueByPath(map, List.of(participant2.get("newLastName")))))
+                                ).build(),
 
-                StateDto
-                    .builder()
-                    .groupName("Свидетельство о заключении брака")
-                    .fields(List.of(
-                        new FieldDto("Номер записи актовой записи", getValueByPath(map, List.of(marriageCertificateNumber))),
-                        new FieldDto("Дата актовой записи", marriedData),
-                        new FieldDto("Отдел ЗАГС, составивший актовую запись", getValueByPath(map, List.of(marriageCertificateZags, "text"))))
-                    ).build(),
+                        StateDto
+                                .builder()
+                                .groupName("Свидетельство о заключении брака")
+                                .fields(List.of(
+                                        new FieldDto("Номер записи актовой записи", getValueByPath(map, List.of(marriageCertificateNumber))),
+                                        new FieldDto("Дата актовой записи", marriedData),
+                                        new FieldDto("Отдел ЗАГС, составивший актовую запись", getValueByPath(map, List.of(marriageCertificateZags, "text"))))
+                                ).build(),
 
-                StateDto
-                    .builder()
-                    .groupName("Дата и место расторжения брака")
-                    .fields(List.of(
-                        new FieldDto("Орган ЗАГС", getValueByPath(map, List.of(divorceZags, "title"))),
-                        new FieldDto("Адрес ЗАГСа", getValueByPath(map, List.of(divorceZags, "attributeValues", "zags_address"))),
-                        new FieldDto("Дата и время регистрации", divorceDate))
-                    ).build()
-                )
-            ).storedValues(new HashMap<>()).build();
+                        StateDto
+                                .builder()
+                                .groupName("Дата и место расторжения брака")
+                                .fields(List.of(
+                                        new FieldDto("Орган ЗАГС", getValueByPath(map, List.of(divorceZags, "title"))),
+                                        new FieldDto("Адрес ЗАГСа", getValueByPath(map, List.of(divorceZags, "attributeValues", "zags_address"))),
+                                        new FieldDto("Дата и время регистрации", divorceDate))
+                                ).build()
+                        )
+                ).storedValues(new HashMap<>()).build();
     }
 
     private String getStoredValue(Map<String, Object> context, String component, String path) {

@@ -13,6 +13,7 @@ import ru.gosuslugi.pgu.fs.common.helper.HelperScreenRegistry
 import ru.gosuslugi.pgu.fs.common.service.ComponentService
 import ru.gosuslugi.pgu.fs.common.service.CycledScreenService
 import ru.gosuslugi.pgu.fs.common.service.DisplayReferenceService
+import ru.gosuslugi.pgu.fs.descriptor.ErrorModalDescriptorService
 import ru.gosuslugi.pgu.fs.service.impl.FormScenarioDtoServiceImpl
 import ru.gosuslugi.pgu.fs.service.process.PrevScreenProcess
 import ru.gosuslugi.pgu.fs.service.process.impl.screen.PrevScreenProcessImpl
@@ -32,6 +33,7 @@ class PrevScreenProcessImplSpec extends Specification {
     FormScenarioDtoServiceImpl scenarioDtoServiceMock
     ServiceDescriptor serviceDescriptorMock
     ComponentRegistry componentRegistry
+    ErrorModalDescriptorService errorModalDescriptorService
     String serviceId = '1'
 
     def setup() {
@@ -42,6 +44,7 @@ class PrevScreenProcessImplSpec extends Specification {
         scenarioDtoServiceMock = Mock(FormScenarioDtoServiceImpl)
         serviceDescriptorMock = Mock(ServiceDescriptor)
         componentRegistry = Mock(ComponentRegistry)
+        errorModalDescriptorService = Mock(ErrorModalDescriptorService)
 
         process = new PrevScreenProcessImpl(
                 mainDescriptorServiceMock,
@@ -50,7 +53,8 @@ class PrevScreenProcessImplSpec extends Specification {
                 componentServiceMock,
                 Stub(DisplayReferenceService),
                 scenarioDtoServiceMock,
-                componentRegistry)
+                componentRegistry,
+                errorModalDescriptorService)
     }
 
     def 'Check only init screen was show'() {
@@ -249,11 +253,11 @@ class PrevScreenProcessImplSpec extends Specification {
         process.of(serviceId, new ScenarioRequest(scenarioDto: scenarioDto))
 
         when:
-            process.setResponseIfScreenHasCycledComponent()
+        process.setResponseIfScreenHasCycledComponent()
 
         then:
-            scenarioDto.cycledApplicantAnswers.currentAnswerId == 'q1'
-            scenarioDto.applicantAnswers['a1_1'].value == 'a1_1_value'
+        scenarioDto.cycledApplicantAnswers.currentAnswerId == 'q1'
+        scenarioDto.applicantAnswers['a1_1'].value == 'a1_1_value'
     }
 
 }

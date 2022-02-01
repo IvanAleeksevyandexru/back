@@ -130,8 +130,8 @@ public class PaymentWayComponent extends AbstractComponent<List<PaymentWayDto>> 
         FINANCIAL_TYPES.forEach(type -> {
             String htmlPropValue = (String) htmlObjRoot.get(type);
             String resolvedValue = componentReferenceService.getValueByContext(htmlPropValue, Function.identity(),
-                componentReferenceService.buildPlaceholderContext(component, scenarioDto),
-                componentReferenceService.getContexts(scenarioDto));
+                    componentReferenceService.buildPlaceholderContext(component, scenarioDto),
+                    componentReferenceService.getContexts(scenarioDto));
             htmlObjRoot.put(type, resolvedValue);
         });
     }

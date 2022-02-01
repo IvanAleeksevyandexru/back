@@ -1,42 +1,30 @@
 package ru.gosuslugi.pgu.fs.pgu.client;
 
-import ru.gosuslugi.pgu.core.lk.model.PersonIdentifier;
-import ru.gosuslugi.pgu.core.lk.model.feed.Feed;
+import org.springframework.http.HttpEntity;
 import ru.gosuslugi.pgu.core.lk.model.order.Order;
 import ru.gosuslugi.pgu.core.lk.model.order.dto.request.SetOrderAttributeDTO;
 import ru.gosuslugi.pgu.fs.pgu.client.impl.OrderStatuses;
-import ru.gosuslugi.pgu.fs.pgu.dto.HighLoadOrderResponseDto;
 import ru.gosuslugi.pgu.fs.pgu.dto.HighLoadOrderRequestDto;
+import ru.gosuslugi.pgu.fs.pgu.dto.HighLoadOrderResponseDto;
+import ru.gosuslugi.pgu.fs.pgu.dto.ListOrderResponse;
 import ru.gosuslugi.pgu.fs.pgu.dto.OrderLight;
-import ru.gosuslugi.pgu.fs.pgu.dto.feed.FeedDto;
-import ru.gosuslugi.pgu.fs.pgu.dto.PguServiceCodes;
 import ru.gosuslugi.pgu.fs.pgu.dto.PoweredOrderWithAuthDTO;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public interface PguClient {
+public interface PguOrderClient {
+
     Order findLastOrder(String serviceCode, String targetCode);
-
     List<Order> findOrders(String serviceCode, String targetCode);
-
     List<Order> findOrders(String serviceCode, String targetCode, Long userId);
-
+    List<Order> findOrders(String serviceCode, String targetCode, HttpEntity<ListOrderResponse> httpEntity);
     List<Order> findOrdersByStatus(String serviceCode, String targetCode, OrderStatuses orderStatus);
-
     List<Order> findOrdersWithoutStatuses(String serviceCode, String targetCode, List<Long> ignoreOrderStatuses);
-
-    Order findOrderById(Long orderId);
-
-    Order createOrder(PoweredOrderWithAuthDTO draftDto);
-
+    Order createOrder(PoweredOrderWithAuthDTO orderDto);
     Boolean deleteOrder(Long orderId);
-
     Boolean deleteOrder(Long orderId, Long userId);
-
-    Boolean sendEmailInvitationToParticipant(Long orderId, PersonIdentifier participant);
-
+    Boolean deleteOrder(Long orderId, HttpEntity<Object> httpEntity);
     Order findOrderWithPayment(Long orderId);
 
     /**
@@ -44,6 +32,10 @@ public interface PguClient {
      *
      * @return {@code false} - в случае, если дубликаты не обнаружены
      */
+    Order findOrderById(Long orderId);
+    Order findOrderByIdAndUserId(Long orderId, Long userId);
+    HighLoadOrderResponseDto createHighloadOrder(HighLoadOrderRequestDto highLoadOrderPguDto);
+    List<OrderLight> findOrdersLight(String serviceCode, String targetCode, Long userId);
     Boolean hasDuplicatesForOrder(String serviceCode, String targetCode, Map<String, Object> userAnswers);
 
     /**
@@ -51,24 +43,7 @@ public interface PguClient {
      * @return
      */
     Boolean saveChoosenValuesForOrder(String serviceCode, String targetCode, Long orderId, Map<String, Object> userAnswers);
-
-    /**
-     * Получить по serviceId и targetId значения соответствующие значения EPGU
-     * @return объект {@link PguServiceCodes} с 2 полями passport и target, которые нужны для кооректных запросов в ЛК
-     */
-    PguServiceCodes getPguServiceCodes(String serviceCode, String targetCode);
-
     void setTechStatusToOrder(Long orderId, Long status);
-
-    /**
-     * Находит запись в ленте событий пользователя по указанному типу и идентификатору
-     * @param type тип записи
-     * @param id идентификатор
-     * @return запись, {@code null}, если запись не найдена
-     */
-    FeedDto findFeed(Feed.FeedType type, Long id);
-
-    boolean checkAuthorityForService(String authorityId, String targetId);
 
     /**
      * Обновляет аттрибуты у ордера
@@ -78,11 +53,4 @@ public interface PguClient {
      */
     ru.gosuslugi.lk.api.order.Order setOrderAttributes(SetOrderAttributeDTO setOrderAttributeDTO, Long orderId);
 
-    HighLoadOrderResponseDto createHighloadOrder(HighLoadOrderRequestDto highLoadOrderPguDto);
-
-    void checkOrderExists(Long orderId);
-
-    List<OrderLight> findOrdersLight(String serviceCode, String targetCode, Long userId);
-
-    Order findOrderByIdAndUserId(Long orderId, Long userId);
 }

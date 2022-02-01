@@ -170,14 +170,14 @@ public class InformationCenterPfrComponent extends AbstractComponent<String> {
     protected void validateAfterSubmit(Map<String, String> incorrectAnswers, Map.Entry<String, ApplicantAnswer> entry, FieldComponent fieldComponent) {
         String answer = AnswerUtil.getValue(entry);
         String dictionaryName = getDictionaryName(fieldComponent);
-            Map<String, Object> answerMap = jsonProcessingService.fromJson(answer, new TypeReference<>() {});
-            Map<String, Object> pfr = (Map<String, Object>) answerMap.getOrDefault("territory", answerMap);
-            String id = (String) pfr.get("id");
-            Optional<NsiDictionaryItem> dictionaryItem = nsiDictionaryService.getDictionaryItemByValue(dictionaryName, "value", id);
-            if (dictionaryItem.isEmpty()) {
-                incorrectAnswers.put(entry.getKey(),
-                        String.format("NSI dictionary %s doesn't contain %s item", dictionaryName, entry.getValue().getValue()));
-            }
+        Map<String, Object> answerMap = jsonProcessingService.fromJson(answer, new TypeReference<>() {});
+        Map<String, Object> pfr = (Map<String, Object>) answerMap.getOrDefault("territory", answerMap);
+        String id = (String) pfr.get("id");
+        Optional<NsiDictionaryItem> dictionaryItem = nsiDictionaryService.getDictionaryItemByValue(dictionaryName, "value", id);
+        if (dictionaryItem.isEmpty()) {
+            incorrectAnswers.put(entry.getKey(),
+                    String.format("NSI dictionary %s doesn't contain %s item", dictionaryName, entry.getValue().getValue()));
+        }
 
     }
 

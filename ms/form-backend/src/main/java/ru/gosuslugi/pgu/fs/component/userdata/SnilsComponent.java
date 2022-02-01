@@ -103,6 +103,9 @@ public class SnilsComponent extends AbstractCycledComponent<String> {
         // Проверка на совпадающие СНИЛС у детей
         if ("true".equals(fieldComponent.getAttrs().get("checkRepeatedChildrenSnils"))) {
             checkRepeatedChildrenSnils(incorrectAnswers, entry, scenarioDto);
+            if (!incorrectAnswers.isEmpty()) {
+                return;
+            }
         }
         PersonWithAge ps;
         try {

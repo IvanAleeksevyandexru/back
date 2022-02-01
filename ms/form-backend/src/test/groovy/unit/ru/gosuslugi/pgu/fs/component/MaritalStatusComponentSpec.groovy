@@ -9,7 +9,7 @@ import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType
 import ru.gosuslugi.pgu.fs.common.component.BaseComponent
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse
-import ru.gosuslugi.pgu.fs.component.userdata.MaritalStatusInput
+import ru.gosuslugi.pgu.fs.component.userdata.MaritalStatusInputComponent
 import ru.gosuslugi.pgu.fs.pgu.client.PguMaritalClient
 import ru.gosuslugi.pgu.fs.pgu.dto.MaritalResponseItem
 import ru.gosuslugi.pgu.fs.pgu.dto.MaritalStatusInputResponseDto
@@ -42,7 +42,7 @@ class MaritalStatusComponentSpec extends Specification {
 
     def "GetInitialValue - checking certificate is found and validated by nsi-suggest"() {
         given:
-        BaseComponent<MaritalStatusInputResponseDto> maritalStatusInputComponent = new MaritalStatusInput(
+        BaseComponent<MaritalStatusInputResponseDto> maritalStatusInputComponent = new MaritalStatusInputComponent(
                 userPersonalData, pguMaritalClientMock, dictionaryFilterServiceMock, nsiDictionaryServiceMock)
         def fieldComponent = new FieldComponent(id: "ai1", type: ComponentType.MaritalStatusInput, attrs: [documentType: 'MARRIED_CERT'], required: true)
         List<MaritalResponseItem> maritalResponseItemList = [new MaritalResponseItem(
@@ -63,7 +63,7 @@ class MaritalStatusComponentSpec extends Specification {
         nsiSuggestDictionaryItem.setId('R7750064')
         nsiSuggestDictionaryItem.setText('Орган ЗАГС Москвы')
         def maritalStatusInputResponseDto = new MaritalStatusInputResponseDto()
-        maritalStatusInputResponseDto.setAct_rec_date('2016-03-01')
+        maritalStatusInputResponseDto.setAct_rec_date('01.03.2016')
         maritalStatusInputResponseDto.setAct_rec_number('R7750064')
         maritalStatusInputResponseDto.setAct_rec_registrator(nsiSuggestDictionaryItem)
         maritalStatusInputResponseDto.setSeries('01')
@@ -92,7 +92,7 @@ class MaritalStatusComponentSpec extends Specification {
 
     def "GetInitialValue - no any certificates"() {
         given:
-        BaseComponent<MaritalStatusInputResponseDto> component = new MaritalStatusInput(
+        BaseComponent<MaritalStatusInputResponseDto> component = new MaritalStatusInputComponent(
                 userPersonalData, pguMaritalClientMock, dictionaryFilterServiceMock, nsiDictionaryServiceMock)
         def fieldComponent = new FieldComponent(id: "ai1", type: ComponentType.MaritalStatusInput, attrs: [documentType: 'MARRIED_CERT'], required: true)
         List<MaritalResponseItem> certificatelist = []
@@ -107,7 +107,7 @@ class MaritalStatusComponentSpec extends Specification {
 
     def "GetInitialValue - checking ZAGS not found in nsi-suggest"() {
         given:
-        BaseComponent<MaritalStatusInputResponseDto> component = new MaritalStatusInput(
+        BaseComponent<MaritalStatusInputResponseDto> component = new MaritalStatusInputComponent(
                 userPersonalData, pguMaritalClientMock, dictionaryFilterServiceMock, nsiDictionaryServiceMock)
         def fieldComponent = new FieldComponent(id: "ai1", type: ComponentType.MaritalStatusInput, attrs: [documentType: 'MARRIED_CERT'], required: true)
         List<MaritalResponseItem> maritalResponseItemList = [new MaritalResponseItem(actDate: '01.03.2016', actNo: 'R7750064', issuedBy: 'Несуществующий', series: '01', number: '02', issueDate: '03.03.2003')]

@@ -45,6 +45,8 @@ class ProtectedFieldServiceImplSpec extends Specification {
                 [type: 'PRG', addressStr: 'обл. Рязанская, р-н. Рязанский, д. Наумово, ул. Заречная, д. 1, кв. 12'] as EsiaAddress,
                 [type: 'PLV', addressStr: 'обл. Самарская, г. Самара, снт. СДНТ Утес, линия. 1-я, д. 22, корп. 22, кв. 22'] as EsiaAddress
         ]
+        userPersonalDataMock.getChief() >> 'CHIEF'
+
         userPersonalDataMock.currentRole >> ([chief: 'CHIEF'] as EsiaRole)
         userOrgDataMock.org >> ([type: OrgType.AGENCY] as Org)
         empowermentServiceMock.userEmpowerments >> ['PWR_1', 'PWR_2', 'PWR_3']

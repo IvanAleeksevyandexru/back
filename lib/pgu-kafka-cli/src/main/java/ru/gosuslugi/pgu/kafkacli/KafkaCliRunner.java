@@ -50,9 +50,9 @@ public class KafkaCliRunner implements ApplicationRunner {
         }
 
         val processor = new MessageProcessor(
-            partitions,
-            consumer.beginningOffsets(partitions),
-            consumer.endOffsets(partitions));
+                partitions,
+                consumer.beginningOffsets(partitions),
+                consumer.endOffsets(partitions));
 
         processor.logOffsets();
 
@@ -100,8 +100,8 @@ public class KafkaCliRunner implements ApplicationRunner {
         private boolean filter(ConsumerRecord<Long, SpRequestErrorDto> record) {
             val dto = record.value();
             return props.getServiceId().includes(dto.getAdapterRequestDto().getServiceId())
-                && props.getOrderId().includes(dto.getAdapterRequestDto().getOrderId())
-                && props.getTimestamp().includes(Instant.ofEpochMilli(record.timestamp()));
+                    && props.getOrderId().includes(dto.getAdapterRequestDto().getOrderId())
+                    && props.getTimestamp().includes(Instant.ofEpochMilli(record.timestamp()));
         }
 
         private void send(ProducerRecord<Long, SpAdapterDto> record) {
@@ -132,9 +132,9 @@ public class KafkaCliRunner implements ApplicationRunner {
 
         public void logOffsets() {
             log.info("Offsets for partitions:\n{}", remainingPartitions.stream()
-                .map(p -> String.format("%s: beg=%d cur=%d end=%d", p,
-                    beginningOffsets.getOrDefault(p, 0L), consumer.position(p), endOffsets.getOrDefault(p, 0L)))
-                .collect(Collectors.joining("\n")));
+                    .map(p -> String.format("%s: beg=%d cur=%d end=%d", p,
+                            beginningOffsets.getOrDefault(p, 0L), consumer.position(p), endOffsets.getOrDefault(p, 0L)))
+                    .collect(Collectors.joining("\n")));
         }
 
     }
@@ -148,8 +148,8 @@ public class KafkaCliRunner implements ApplicationRunner {
     private Set<TopicPartition> getMutablePartitionSet() {
         val infos = consumer.partitionsFor(props.getTopic());
         return (infos != null ? infos.stream() : Stream.<PartitionInfo>empty())
-            .map(i -> new TopicPartition(i.topic(), i.partition()))
-            .collect(Collectors.toCollection(HashSet::new));
+                .map(i -> new TopicPartition(i.topic(), i.partition()))
+                .collect(Collectors.toCollection(HashSet::new));
     }
 
 }

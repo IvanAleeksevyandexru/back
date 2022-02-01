@@ -81,10 +81,10 @@ class EsiaRestContactDataClientImplSpec extends Specification {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .body(
                                         "{" +
-                                        "\"type\": \"PLV\"," +
-                                        "\"addressStr\":\"Свердловская Область, Талицкий Район, Зырянка деревня\",\n" +
-                                        "\"fiasCode\": \"66-0-000-000-000-000-4236-0000-000\"" +
-                                        "}"
+                                                "\"type\": \"PLV\"," +
+                                                "\"addressStr\":\"Свердловская Область, Талицкий Район, Зырянка деревня\",\n" +
+                                                "\"fiasCode\": \"66-0-000-000-000-000-4236-0000-000\"" +
+                                                "}"
                                 )
                 )
 

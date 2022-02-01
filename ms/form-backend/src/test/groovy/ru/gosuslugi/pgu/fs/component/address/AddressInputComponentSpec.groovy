@@ -20,16 +20,16 @@ class AddressInputComponentSpec extends Specification {
 
     def 'Can get initial address value'() {
         given:
-            def addressInputComponent = new AddressInputComponent(userPersonalDataMock)
-            def fieldComponent = new FieldComponent(attrs: [addrType: 'permanentRegistry'])
-            userPersonalDataMock.addresses >> [new EsiaAddress(
-                    type: 'PRG', zipCode: '141070', fiasCode: '11111', addressStr: '129515, г. Москва, ул. Академика Королева, д. 1')]
+        def addressInputComponent = new AddressInputComponent(userPersonalDataMock)
+        def fieldComponent = new FieldComponent(attrs: [addrType: 'permanentRegistry'])
+        userPersonalDataMock.addresses >> [new EsiaAddress(
+                type: 'PRG', zipCode: '141070', fiasCode: '11111', addressStr: '129515, г. Москва, ул. Академика Королева, д. 1')]
         when:
-            def result = addressInputComponent.getInitialValue(fieldComponent)
+        def result = addressInputComponent.getInitialValue(fieldComponent)
         then:
-            result.response.fullAddress == '129515, г. Москва, ул. Академика Королева, д. 1'
-            result.response.fiasCode == '11111'
-            result.response.postalCode == '141070'
+        result.response.fullAddress == '129515, г. Москва, ул. Академика Королева, д. 1'
+        result.response.fiasCode == '11111'
+        result.response.postalCode == '141070'
     }
 
     def 'Check skip validation with or without addresses'() {

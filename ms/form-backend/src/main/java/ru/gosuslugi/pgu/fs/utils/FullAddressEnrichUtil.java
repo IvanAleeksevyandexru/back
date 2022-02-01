@@ -63,8 +63,8 @@ public class FullAddressEnrichUtil {
         Optional<DadataAddress> dadataAddress = Optional.ofNullable(addressResponse)
                 .map(DadataAddressResponse::getAddress);
         List<DadataAddressElement> elements = dadataAddress
-            .map(DadataAddress::getElements)
-            .orElse(Collections.emptyList());
+                .map(DadataAddress::getElements)
+                .orElse(Collections.emptyList());
 
         // Делаем рабочую копию
         Map<Integer, BiConsumer<FullAddress, DadataAddressElement>> consumerMapCopy = new HashMap<>(CONSUMER_MAP);
@@ -92,9 +92,9 @@ public class FullAddressEnrichUtil {
 
             // Полный адрес
             fullAddress.setFullAddress(
-                Stream.of(dadataAddress.get().getPostIndex(), dadataAddress.get().getFullAddress())
-                    .filter(item -> isNotBlank(item))
-                    .collect(Collectors.joining(", "))
+                    Stream.of(dadataAddress.get().getPostIndex(), dadataAddress.get().getFullAddress())
+                            .filter(item -> isNotBlank(item))
+                            .collect(Collectors.joining(", "))
             );
 
             // индекс

@@ -1,19 +1,18 @@
 package ru.gosuslugi.pgu.fs.service.impl
 
+import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData
+import ru.gosuslugi.pgu.draft.DraftClient
 import ru.gosuslugi.pgu.dto.ApplicantDto
 import ru.gosuslugi.pgu.dto.DisplayRequest
 import ru.gosuslugi.pgu.dto.ScenarioDto
 import ru.gosuslugi.pgu.dto.ScenarioResponse
-import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData
 import ru.gosuslugi.pgu.dto.descriptor.ScreenDescriptor
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor
-import ru.gosuslugi.pgu.draft.DraftClient
 import ru.gosuslugi.pgu.fs.booking.service.BookingService
 import ru.gosuslugi.pgu.fs.descriptor.ErrorModalDescriptorService
 import ru.gosuslugi.pgu.fs.pgu.service.OrderAttributesService
 import ru.gosuslugi.pgu.fs.pgu.service.PguOrderService
 import ru.gosuslugi.pgu.fs.service.DeliriumService
-import ru.gosuslugi.pgu.fs.service.EmpowermentService
 import ru.gosuslugi.pgu.fs.service.IntegrationService
 import ru.gosuslugi.pgu.fs.service.ParticipantService
 import ru.gosuslugi.pgu.fs.service.TerrabyteService
@@ -21,13 +20,6 @@ import ru.gosuslugi.pgu.fs.sp.ServiceProcessingClient
 import spock.lang.Specification
 
 class IntegrationServiceImplSpec extends Specification {
-
-    EmpowermentService empowermentService = Mock(EmpowermentService)
-
-    def setup() {
-        empowermentService.hasEmpowerment(_) >> true
-        empowermentService.checkUserUserPermissionForSendOrder(_) >> true
-    }
 
     def "test if delirium was called"() {
         DeliriumService deliriumService = Mock(DeliriumService)
@@ -41,7 +33,6 @@ class IntegrationServiceImplSpec extends Specification {
                 Mock(TerrabyteService),
                 Mock(ParticipantService),
                 Mock(DraftClient),
-                empowermentService,
                 Mock(BookingService),
                 Mock(ErrorModalDescriptorService),
                 Mock(OrderAttributesService)

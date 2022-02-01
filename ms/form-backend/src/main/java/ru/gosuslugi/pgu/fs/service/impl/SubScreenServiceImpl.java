@@ -134,9 +134,9 @@ public class SubScreenServiceImpl extends AbstractScreenService implements SubSc
 
     private ScenarioDto checkAndMoveToNextStep(ScenarioDto internalDto, ScenarioDto scenarioDto, String serviceId) {
         boolean isMoveNextStep = Optional.of(getServiceDescriptor(serviceId, scenarioDto))
-            .map(ServiceDescriptor::getParameters)
-            .filter(parameters -> parameters.containsKey("moveMainScenarioToNextStep"))
-            .isPresent();
+                .map(ServiceDescriptor::getParameters)
+                .filter(parameters -> parameters.containsKey("moveMainScenarioToNextStep"))
+                .isPresent();
 
         ScenarioRequest scenarioRequest = new ScenarioRequest();
         if (isMoveNextStep && internalDto.getApplicantAnswers().containsKey("internalProcessSuccess")) {
@@ -174,11 +174,11 @@ public class SubScreenServiceImpl extends AbstractScreenService implements SubSc
     private ServiceDescriptor copyAndOverrideApplicationFields(ServiceDescriptor descriptor, List<FieldComponent> overrideComponents) {
         ServiceDescriptor newDescriptor = ServiceDescriptor.getCopy(descriptor);
         List<String> replaceComponentIds = overrideComponents.stream()
-            .map(FieldComponent::getId)
-            .collect(Collectors.toList());
+                .map(FieldComponent::getId)
+                .collect(Collectors.toList());
         List<FieldComponent> fields = newDescriptor.getApplicationFields().stream()
-            .filter(it -> !replaceComponentIds.contains(it.getId()))
-            .collect(Collectors.toList());
+                .filter(it -> !replaceComponentIds.contains(it.getId()))
+                .collect(Collectors.toList());
         newDescriptor.setApplicationFields(fields);
         newDescriptor.getApplicationFields().addAll(overrideComponents);
         return newDescriptor;

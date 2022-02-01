@@ -261,7 +261,7 @@ public class CalculatedAttributesHelper {
 
                 var value = (String) item.get(CALCULATIONS_FIELD_VALUE_NAME);
                 var resolvedValue = componentReferenceService.getValueByContext(
-                    value, Function.identity(), placeholderContext, documentContexts);
+                        value, Function.identity(), placeholderContext, documentContexts);
 
                 item.put(CALCULATIONS_FIELD_VALUE_NAME, resolvedValue);
 

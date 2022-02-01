@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import ru.gosuslugi.lk.api.order.Order;
 import ru.gosuslugi.pgu.core.lk.model.order.OrderAttribute;
 import ru.gosuslugi.pgu.core.lk.model.order.dto.request.SetOrderAttributeDTO;
-import ru.gosuslugi.pgu.fs.pgu.client.PguClient;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.PguOrderClientImpl;
 import ru.gosuslugi.pgu.fs.pgu.service.OrderAttributesService;
 
 import java.util.HashMap;
@@ -18,7 +18,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class OrderAttributesServiceImpl implements OrderAttributesService {
 
-    private final PguClient pguClient;
+    private final PguOrderClientImpl orderClient;
 
     @Override
     @CacheEvict(key="#orderId", cacheResolver = "requestCacheResolver", cacheNames = "findOrderById")
@@ -27,7 +27,7 @@ public class OrderAttributesServiceImpl implements OrderAttributesService {
         attributes.put(OrderAttribute.ORG_STATUS_ID, orderStatus);
         final SetOrderAttributeDTO setOrderAttributeDTO = new SetOrderAttributeDTO();
         setOrderAttributeDTO.setOrderAttributeMap(attributes);
-        return pguClient.setOrderAttributes(setOrderAttributeDTO, orderId);
+        return orderClient.setOrderAttributes(setOrderAttributeDTO, orderId);
     }
 
     @Override
@@ -37,6 +37,16 @@ public class OrderAttributesServiceImpl implements OrderAttributesService {
         attributes.put(OrderAttribute.TECH_STATUS_ID, orderStatus);
         final SetOrderAttributeDTO setOrderAttributeDTO = new SetOrderAttributeDTO();
         setOrderAttributeDTO.setOrderAttributeMap(attributes);
-        return pguClient.setOrderAttributes(setOrderAttributeDTO, orderId);
+        return orderClient.setOrderAttributes(setOrderAttributeDTO, orderId);
     }
+
+    @Override
+    public Order updateTechOrderStatusNoCache(Long orderStatus, Long orderId) {
+        final Map<OrderAttribute, Object> attributes = new HashMap<>();
+        attributes.put(OrderAttribute.TECH_STATUS_ID, orderStatus);
+        final SetOrderAttributeDTO setOrderAttributeDTO = new SetOrderAttributeDTO();
+        setOrderAttributeDTO.setOrderAttributeMap(attributes);
+        return orderClient.setOrderAttributes(setOrderAttributeDTO, orderId);
+    }
+
 }

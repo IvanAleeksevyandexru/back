@@ -75,8 +75,8 @@ public class DropDownComponent extends AbstractComponent<String> {
                 List<Map<String, String>> dictionaryList = (List<Map<String, String>>) component.getAttrs().get(DICTIONARY_LIST_KEY);
                 String gender = userPersonalData.getPerson().getGender().equalsIgnoreCase(MAN_GENDER) ? MAN_GENDER_ATTR_VALUE : WOMAN_GENDER_ATTR_VALUE;
                 dictionaryList = dictionaryList.stream()
-                    .filter(it -> !it.containsKey(GENDER_KEY) || it.get(GENDER_KEY).equals(gender))
-                    .collect(Collectors.toList());
+                        .filter(it -> !it.containsKey(GENDER_KEY) || it.get(GENDER_KEY).equals(gender))
+                        .collect(Collectors.toList());
                 component.getAttrs().put(DICTIONARY_LIST_KEY, dictionaryList);
             }
             return;
@@ -118,15 +118,15 @@ public class DropDownComponent extends AbstractComponent<String> {
 
     protected void validateLabel(String name, String labelValue, Map<String, String> incorrectAnswers, FieldComponent fieldComponent) {
         Arrays.<Supplier<Map.Entry<String, String>>>asList(
-            () -> ValidationUtil.validateRegExp(name, labelValue, fieldComponent),
-            () -> ValidationUtil.validateMemberValueOfList(name, labelValue, fieldComponent, "Значение не из списка")
+                () -> ValidationUtil.validateRegExp(name, labelValue, fieldComponent),
+                () -> ValidationUtil.validateMemberValueOfList(name, labelValue, fieldComponent, "Значение не из списка")
         ).forEach(
-            supplier -> {
-                // Если ошибок еще нет, делаем очередную проверку и добавляем ошибку при ненулевом результате
-                if (!incorrectAnswers.containsKey(name)) {
-                    Optional.ofNullable(supplier.get()).ifPresent(pair -> incorrectAnswers.put(pair.getKey(), pair.getValue()));
+                supplier -> {
+                    // Если ошибок еще нет, делаем очередную проверку и добавляем ошибку при ненулевом результате
+                    if (!incorrectAnswers.containsKey(name)) {
+                        Optional.ofNullable(supplier.get()).ifPresent(pair -> incorrectAnswers.put(pair.getKey(), pair.getValue()));
+                    }
                 }
-            }
         );
     }
 
@@ -141,15 +141,15 @@ public class DropDownComponent extends AbstractComponent<String> {
     private void setReferenceValue(ScenarioDto scenarioDto, FieldComponent fieldComponent) {
         Optional.ofNullable((Map<String, Object>) fieldComponent.getAttrs().get(YEAR_GEN))
                 .ifPresent(map -> {
-            Map<String, Object> firstValueNode = (Map<String, Object>) map.get(YEAR_FIRST_KEY);
-            String reference = (String) firstValueNode.getOrDefault(REF_KEY, "");
-            if (StringUtils.isNotBlank(reference)) {
-                Optional<ApplicantAnswer> answer = Optional.ofNullable(scenarioDto.getApplicantAnswers().get(reference));
-                answer.ifPresent(a -> firstValueNode.put("value", extractYear(a.getValue())));
-                answer = Optional.ofNullable(scenarioDto.getCurrentValue().get(reference));
-                answer.ifPresent(a -> firstValueNode.put("value", extractYear(a.getValue())));
-            }
-        });
+                    Map<String, Object> firstValueNode = (Map<String, Object>) map.get(YEAR_FIRST_KEY);
+                    String reference = (String) firstValueNode.getOrDefault(REF_KEY, "");
+                    if (StringUtils.isNotBlank(reference)) {
+                        Optional<ApplicantAnswer> answer = Optional.ofNullable(scenarioDto.getApplicantAnswers().get(reference));
+                        answer.ifPresent(a -> firstValueNode.put("value", extractYear(a.getValue())));
+                        answer = Optional.ofNullable(scenarioDto.getCurrentValue().get(reference));
+                        answer.ifPresent(a -> firstValueNode.put("value", extractYear(a.getValue())));
+                    }
+                });
     }
 
     private static String extractYear(String value) {

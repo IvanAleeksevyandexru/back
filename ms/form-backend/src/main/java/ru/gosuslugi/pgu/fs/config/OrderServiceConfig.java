@@ -12,7 +12,9 @@ import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.fs.common.service.UserCookiesService;
 import ru.gosuslugi.pgu.fs.config.cache.RequestCacheResolver;
-import ru.gosuslugi.pgu.fs.pgu.client.PguClient;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.PguOrderClientImpl;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.PguUtilsClientImpl;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.PguEmailClientImpl;
 import ru.gosuslugi.pgu.fs.pgu.mapper.HighLoadOrderPguMapper;
 import ru.gosuslugi.pgu.fs.pgu.service.CatalogService;
 import ru.gosuslugi.pgu.fs.pgu.service.PguOrderService;
@@ -37,15 +39,17 @@ public class OrderServiceConfig {
 
     private final UserPersonalData userPersonalData;
     private final UserOrgData userOrgData;
-    private final PguClient pguClient;
     private final UserCookiesService userCookiesService;
     private final EmpowermentService empowermentService;
     private final HighLoadOrderPguMapper highLoadOrderPguMapper;
+    private final PguUtilsClientImpl orderUtilsClient;
+    private final PguEmailClientImpl sendEmailInvitationClient;
+    private final PguOrderClientImpl orderClient;
 
     @Bean
     @ConditionalOnProperty(value = "orderid.integration", matchIfMissing = true, havingValue = "true")
     public PguOrderService pguOrderService() {
-        return new PguOrderServiceImpl(userPersonalData, userOrgData, pguClient, userCookiesService, empowermentService, highLoadOrderPguMapper);
+        return new PguOrderServiceImpl(userPersonalData, userOrgData, orderUtilsClient, userCookiesService, empowermentService, highLoadOrderPguMapper, sendEmailInvitationClient, orderClient);
     }
 
     @Bean

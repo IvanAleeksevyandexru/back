@@ -68,7 +68,7 @@ public class CreateUrlAction implements ActionService {
 
         var builder = UriComponentsBuilder.newInstance();
         builder.queryParam("external")
-               .queryParam(SCREEN_ID_ATTR,screenId)
+                .queryParam(SCREEN_ID_ATTR,screenId)
         ;
         answers.forEach(builder::queryParam);
         return builder.buildAndExpand(screenId).toString();

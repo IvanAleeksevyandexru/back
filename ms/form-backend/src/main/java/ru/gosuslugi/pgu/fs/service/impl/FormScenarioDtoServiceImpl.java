@@ -45,7 +45,7 @@ public class FormScenarioDtoServiceImpl extends ScenarioDtoServiceImpl {
                                       DraftClient draftClient,
                                       DisplayReferenceService displayReferenceService,ComputeAnswerService computeAnswerService,
                                       AdditionalAttributesHelper additionalAttributesHelper)
-                                      {
+    {
         super(componentService, screenRegistry, screenFinderService, jsonProcessingService, displayReferenceService, computeAnswerService);
         this.userPersonalData = userPersonalData;
         this.draftClient = draftClient;

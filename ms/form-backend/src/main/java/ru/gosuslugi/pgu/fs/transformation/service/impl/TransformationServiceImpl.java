@@ -28,10 +28,10 @@ public class TransformationServiceImpl implements TransformationService {
 
     @Override
     public TransformationResult transform(
-        TransformationBlock transformationBlock,
-        StatusInfo statusInfo,
-        Order order,
-        DraftHolderDto origin
+            TransformationBlock transformationBlock,
+            StatusInfo statusInfo,
+            Order order,
+            DraftHolderDto origin
     ) {
         // Copping
         DraftHolderDto currentDraft = jsonProcessingService.clone(origin);
@@ -54,7 +54,7 @@ public class TransformationServiceImpl implements TransformationService {
 
         // Добавление отработанного статуса
         if (isNull(currentDraft.getBody().getStatuses())) {
-           currentDraft.getBody().setStatuses(new ArrayList<>());
+            currentDraft.getBody().setStatuses(new ArrayList<>());
         }
         if(!transformationBlock.getOptions().isSkipHistory()){
             currentDraft.getBody().getStatuses().add(statusInfo);

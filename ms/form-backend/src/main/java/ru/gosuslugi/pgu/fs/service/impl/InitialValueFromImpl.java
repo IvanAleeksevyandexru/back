@@ -28,8 +28,8 @@ public class InitialValueFromImpl implements InitialValueFromService {
     @Override
     public String getValue(FieldComponent component, ScenarioDto scenarioDto) {
         Optional<Map<String, Object>> presetStructureMap = Optional.ofNullable(component.getAttrs())
-            .map(attrs -> attrs.get(PRESET_ATTRIBUTE_NAME))
-            .map(obj -> obj instanceof Map ? (Map<String, Object>) obj : null);
+                .map(attrs -> attrs.get(PRESET_ATTRIBUTE_NAME))
+                .map(obj -> obj instanceof Map ? (Map<String, Object>) obj : null);
 
         if (presetStructureMap.isPresent()) {
             return getValue(component, scenarioDto, presetStructureMap.get());
@@ -47,8 +47,8 @@ public class InitialValueFromImpl implements InitialValueFromService {
     @Override
     public String getValue(FieldComponent component, ScenarioDto scenarioDto, Map<String, Object> presetStructureMap) {
         Optional<String> type = Optional.ofNullable(presetStructureMap.get(PRESET_STRUCTURE_TYPE))
-            .map(Object::toString)
-            .map(String::toUpperCase);
+                .map(Object::toString)
+                .map(String::toUpperCase);
         if (type.isEmpty()) {
             return "";
         }

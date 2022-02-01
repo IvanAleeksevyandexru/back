@@ -28,12 +28,15 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.BIRTHDATE_CODE_ATT
 import static ru.gosuslugi.pgu.components.ComponentAttributes.BIRTH_DATE_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.CITIZENSHIP_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.CITIZENSHIP_CODE_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.CONTACT_PHONE;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.EMAIL_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.ESIA_CONTACT_PHONE;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.FIRST_NAME_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.GENDER_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.HOME_PHONE;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.LAST_NAME_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.MIDDLE_NAME_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.MOBILE_PHONE;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ORG_INN_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.SNILS;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.TIMEZONE_ATTR;
@@ -124,17 +127,15 @@ public class AdditionalAttributesHelper {
         if(smevEnv!=null) {
             additionalMap.put(SMEV_ENV_ATTR_NAME, smevEnv);
         }
-        Optional<EsiaContact> homePhone = userPersonalData.getContacts().stream()
-                .filter(c -> {
-                    log.info("Esia contact with id {}; value {}; type {}; verified {};", c.getId(), c.getValue(), c.getType(), c.getVrfStu());
-                    return (c.getType().equals(EsiaContact.Type.PHONE.getCode())) && c.getVrfStu().equals(VERIFIED_ATTR);
-                })
-                .findFirst();
+        String homePhone = getEsiaContactByType(EsiaContact.Type.PHONE.getCode());
+        if (StringUtils.isNotBlank(homePhone)) additionalMap.put(HOME_PHONE, homePhone);
 
-        homePhone.ifPresent(esiaContact -> {
-            log.info("Received optional home phone {} ", esiaContact);
-            additionalMap.put(HOME_PHONE, esiaContact.getValue());
-        });
+        String mobilePhone = getEsiaContactByType(EsiaContact.Type.MOBILE_PHONE.getCode());
+        if (StringUtils.isNotBlank(mobilePhone)) additionalMap.put(MOBILE_PHONE, mobilePhone);
+
+        String contactPhone = getEsiaContactByType(ESIA_CONTACT_PHONE);
+        if (StringUtils.isNotBlank(contactPhone)) additionalMap.put(CONTACT_PHONE, contactPhone);
+
 
         // заполняем email
         Optional<EsiaContact> userEmail = userPersonalData.getContacts().stream()
@@ -252,5 +253,16 @@ public class AdditionalAttributesHelper {
     public void cleanUpAdditionalParameters(ScenarioDto scenarioDto) {
         scenarioDto.getAdditionalParameters().clear();
         fillUserData(scenarioDto);
+    }
+
+    private String getEsiaContactByType(String contactType) {
+        String result = null;
+        if (userPersonalData.getContacts() != null && contactType != null) {
+            Optional<EsiaContact> esiaContact = userPersonalData.getContacts().stream().filter(contact -> contactType.equals(contact.getType()) && VERIFIED_ATTR.equals(contact.getVrfStu())).findFirst();
+            if (esiaContact.isPresent()) {
+                result = esiaContact.get().getValue();
+            }
+        }
+        return result;
     }
 }

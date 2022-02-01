@@ -54,14 +54,14 @@ public class CityInputComponent extends AbstractComponent<DadataAddressResponse>
     @Override
     protected void validateAfterSubmit(Map<String, String> incorrectAnswers, Map.Entry<String, ApplicantAnswer> entry, FieldComponent fieldComponent) {
         DadataAddressResponse dadataAddressResponse = Optional.ofNullable(entry)
-            .map(Map.Entry::getValue)
-            .map(ApplicantAnswer::getValue)
-            .map(this::getDadataAddressFromJsonString)
-            .orElse(null);
+                .map(Map.Entry::getValue)
+                .map(ApplicantAnswer::getValue)
+                .map(this::getDadataAddressFromJsonString)
+                .orElse(null);
         String address = Optional.ofNullable(dadataAddressResponse)
-            .map(DadataAddressResponse::getAddress)
-            .map(DadataAddress::getFullAddress)
-            .orElse(null);
+                .map(DadataAddressResponse::getAddress)
+                .map(DadataAddress::getFullAddress)
+                .orElse(null);
 
         if (isBlank(address)) {
             if (fieldComponent.isRequired()) {
@@ -100,8 +100,8 @@ public class CityInputComponent extends AbstractComponent<DadataAddressResponse>
 
     private static String validateAddress(DadataAddressResponse value) {
         if (
-            value.getDadataQc() != 0
-            && value.getDadataQc() != 3
+                value.getDadataQc() != 0
+                        && value.getDadataQc() != 3
         ) {
             return "Адрес не распознан";
         }

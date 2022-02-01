@@ -118,8 +118,8 @@ public abstract class AbstractScreenProcess<T> extends AbstractProcess<T, Scenar
         initServiceDto.setServiceInfo(scenarioDto.getServiceInfo());
 
         response = response.getIsInviteScenario() ?
-            scenarioInitializerService.getInvitedScenario(initServiceDto, serviceId) :
-            scenarioInitializerService.getExistingScenario(initServiceDto, serviceId);
+                scenarioInitializerService.getInvitedScenario(initServiceDto, serviceId) :
+                scenarioInitializerService.getExistingScenario(initServiceDto, serviceId);
     }
 
     @Override

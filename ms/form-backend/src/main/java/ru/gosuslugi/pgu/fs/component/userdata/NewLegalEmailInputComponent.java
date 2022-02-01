@@ -33,9 +33,9 @@ public class NewLegalEmailInputComponent extends AbstractComponent<String> {
     @Override
     public List<ValidationRule> getValidations() {
         return Arrays.asList(
-            new RequiredNotBlankValidation("Введите адрес электронной почты"),
-            new RegExpValidation(),
-            new MaxLengthValidation()
+                new RequiredNotBlankValidation("Введите адрес электронной почты"),
+                new RegExpValidation(),
+                new MaxLengthValidation()
         );
     }
 

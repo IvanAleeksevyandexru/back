@@ -62,7 +62,7 @@ public class PaymentComponent extends AbstractComponent<BillInfoComponentDto> {
                 billInfoComponentDto.setBillName(billInfo.getBillName());
                 billInfoComponentDto.setBillNumber(billInfo.getBillNumber());
                 billInfoComponentDto.setBillDate(billInfo.getBillDate());
-                billInfoComponentDto.setAmount(String.valueOf(billInfo.getAmount()));
+                billInfoComponentDto.setAmount(billInfo.getAmount());
                 billInfoComponentDto.setBillId(billInfo.getBillId());
                 billInfoComponentDto.setOriginalAmount(getOriginalAmount(billInfo));
                 return ComponentResponse.of(billInfoComponentDto);
@@ -101,12 +101,12 @@ public class PaymentComponent extends AbstractComponent<BillInfoComponentDto> {
         BillInfoResponseWrapper paymentStatus = billingService.getBillInfo(userPersonalData.getToken(), billId);
         if (
                 paymentStatus == null
-                || isNull(paymentStatus.getError())
-                || isNull(paymentStatus.getError().getCode())
-                || (paymentStatus.getError().getCode() != 0)
-                || isNull(paymentStatus.getResponse())
-                || isNull(paymentStatus.getResponse().getBills())
-                || paymentStatus.getResponse().getBills().isEmpty()
+                        || isNull(paymentStatus.getError())
+                        || isNull(paymentStatus.getError().getCode())
+                        || (paymentStatus.getError().getCode() != 0)
+                        || isNull(paymentStatus.getResponse())
+                        || isNull(paymentStatus.getResponse().getBills())
+                        || paymentStatus.getResponse().getBills().isEmpty()
         ) {
             incorrectAnswers.put(fieldComponent.getId(), "Оплата должна быть произведена");
             return;

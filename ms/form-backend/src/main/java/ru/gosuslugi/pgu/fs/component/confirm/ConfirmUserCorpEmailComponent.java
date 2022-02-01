@@ -49,13 +49,13 @@ public class ConfirmUserCorpEmailComponent extends ConfirmPersonalUserEmailCompo
     @Override
     protected Optional<String> getEmail() {
         return  Optional.ofNullable(userOrgData.getOrgRole())
-            .map(EsiaRole::getEmail);
+                .map(EsiaRole::getEmail);
     }
 
     @Override
     protected boolean isPresentAndVerifiedEmail(String value) {
         return getEmail()
-            .filter(email -> email.equals(value))
-            .isPresent();
+                .filter(email -> email.equals(value))
+                .isPresent();
     }
 }

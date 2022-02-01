@@ -94,9 +94,9 @@ class PaymentTypeSelectorBillContainerSpec extends Specification {
         String hashJson = new StringBuilder(json).insert(1, '\"hash\": \"1259539045\",\"billId\": \"12\",\"saleAmount\": \"180\",\"amount\": \"2100\",')
         FieldComponent field = createFieldComponent()
         ScenarioDto scenario = new ScenarioDto(
-            orderId: 1,
-            display: new DisplayRequest(components: []),
-            applicantAnswers: [c1: new ApplicantAnswer(true, hashJson)]
+                orderId: 1,
+                display: new DisplayRequest(components: []),
+                applicantAnswers: [c1: new ApplicantAnswer(true, hashJson)]
         )
 
         when:

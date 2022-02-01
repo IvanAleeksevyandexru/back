@@ -1,5 +1,6 @@
 package ru.gosuslugi.pgu.fs.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ public class BookingController {
     private final InitBookingService bookingService;
 
     @PostMapping
+    @Operation(summary = "Инициализация формы записи на прием для перехода к ней со страницы деталей заявления")
     public InitBookingResponseDto initBooking(@RequestBody InitBookingRequestDto initBookingDto){
         return bookingService.getInitBookingScreen(initBookingDto);
     }

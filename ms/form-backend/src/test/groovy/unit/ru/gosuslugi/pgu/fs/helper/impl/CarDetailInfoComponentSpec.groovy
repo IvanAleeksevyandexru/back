@@ -9,8 +9,8 @@ import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse
 import ru.gosuslugi.pgu.fs.component.userdata.CarDetailInfoComponent
 import ru.gosuslugi.pgu.fs.component.userdata.model.CarInfoComponentDto
-import ru.gosuslugi.pgu.fs.service.ratelimit.RateLimitService
 import ru.gosuslugi.pgu.pgu_common.gibdd.service.GibddDataService
+import ru.gosuslugi.pgu.ratelimit.client.RateLimitService
 import spock.lang.Specification
 
 class CarDetailInfoComponentSpec extends Specification {

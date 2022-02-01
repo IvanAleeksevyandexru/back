@@ -31,11 +31,11 @@ public class SnippetsServiceImpl implements SnippetsClient {
         try {
             var response = restTemplate.exchange(
                     endpoint + PATH, HttpMethod.POST, entity, String.class
-            , Map.of("orderId", orderId));
+                    , Map.of("orderId", orderId));
             if(response.getStatusCode().is2xxSuccessful()) {
                 snippetResult = "Snippet is set";
             }
-        } 
+        }
         catch (Exception e) {
             error(log, () -> String.format("Error while setting custom snippet for orderId %s", orderId), e);
             snippetResult = ExceptionUtils.getRootCauseMessage(e);

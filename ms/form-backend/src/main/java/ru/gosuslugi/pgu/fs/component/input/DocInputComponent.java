@@ -204,8 +204,8 @@ public class DocInputComponent extends AbstractCycledComponent<DocInputDto> {
     private List<PersonDoc> getCycledPersonDocsByType(String type, Map<String, Object> context) {
         if (RF_BRTH_CERT.equals(type)) {
             List<Kids> kids = userPersonalData.getKids().stream()
-                .filter(it -> context.get("id").toString().equals(it.getId()))
-                .collect(Collectors.toList());
+                    .filter(it -> context.get("id").toString().equals(it.getId()))
+                    .collect(Collectors.toList());
             if (!kids.isEmpty()) {
                 Kids kid = kids.get(0);
                 return kid.getDocuments().getDocs();
@@ -217,31 +217,31 @@ public class DocInputComponent extends AbstractCycledComponent<DocInputDto> {
 
     private DocInputDto getDocInputByType(List<PersonDoc> docs, String documentType, Map<String, DocInputField> fields, boolean ignoreVerification) {
         return docs.stream()
-            .filter(x -> (x.getType().equals(documentType) && (ignoreVerification || x.getVrfStu().equals(VERIFIED_ATTR))))
-            .findFirst()
-            .map(document -> {
-                DocInputDto result = new DocInputDto();
-                if (fields.containsKey(SERIES_ATTR)) {
-                    result.setSeries(document.getSeries());
-                }
-                if (fields.containsKey(NUMBER_ATTR)) {
-                    result.setNumber(document.getNumber());
-                }
-                if (fields.containsKey(DATE_ATTR)) {
-                    result.setDate(DateUtil.toOffsetDateTimeString(document.getIssueDate(), DateUtil.ESIA_DATE_FORMAT));
-                }
-                if (fields.containsKey(EMITTER_ATTR)) {
-                    result.setEmitter(document.getIssuedBy());
-                }
-                if (fields.containsKey(ISSUE_ID_ATTR)) {
-                    result.setIssueId(PassportUtil.formatIssueId(document.getIssueId()));
-                }
-                if (fields.containsKey(EXPIRATION_DATE_ATTR)) {
-                    result.setExpirationDate(DateUtil.toOffsetDateTimeString(document.getExpiryDate(), DateUtil.ESIA_DATE_FORMAT));
-                }
-                return result;
-            })
-            .orElse(null);
+                .filter(x -> (x.getType().equals(documentType) && (ignoreVerification || x.getVrfStu().equals(VERIFIED_ATTR))))
+                .findFirst()
+                .map(document -> {
+                    DocInputDto result = new DocInputDto();
+                    if (fields.containsKey(SERIES_ATTR)) {
+                        result.setSeries(document.getSeries());
+                    }
+                    if (fields.containsKey(NUMBER_ATTR)) {
+                        result.setNumber(document.getNumber());
+                    }
+                    if (fields.containsKey(DATE_ATTR)) {
+                        result.setDate(DateUtil.toOffsetDateTimeString(document.getIssueDate(), DateUtil.ESIA_DATE_FORMAT));
+                    }
+                    if (fields.containsKey(EMITTER_ATTR)) {
+                        result.setEmitter(document.getIssuedBy());
+                    }
+                    if (fields.containsKey(ISSUE_ID_ATTR)) {
+                        result.setIssueId(PassportUtil.formatIssueId(document.getIssueId()));
+                    }
+                    if (fields.containsKey(EXPIRATION_DATE_ATTR)) {
+                        result.setExpirationDate(DateUtil.toOffsetDateTimeString(document.getExpiryDate(), DateUtil.ESIA_DATE_FORMAT));
+                    }
+                    return result;
+                })
+                .orElse(null);
     }
 
 

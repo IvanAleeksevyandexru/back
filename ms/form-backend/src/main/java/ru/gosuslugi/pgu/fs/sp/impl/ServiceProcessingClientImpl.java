@@ -3,7 +3,7 @@ package ru.gosuslugi.pgu.fs.sp.impl;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ import ru.gosuslugi.pgu.fs.sp.ServiceProcessingClient;
 
 @Component
 @RequiredArgsConstructor
-@ConditionalOnExpression("!${spring.kafka.producer.sp-adapter.enabled} && !${spring.kafka.producer.sp-adapter-batch.enabled}")
+@ConditionalOnProperty(prefix = "spring.kafka.producer.sp-adapter-batch", name = "enabled", havingValue = "false", matchIfMissing = true)
 public class ServiceProcessingClientImpl implements ServiceProcessingClient {
 
     private final RestTemplate restTemplate;

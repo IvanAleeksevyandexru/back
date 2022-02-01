@@ -7,7 +7,7 @@ import ru.gosuslugi.pgu.pgu_common.nsi.dto.DadataAddressResponse;
 
 @Mapper
 public interface FullAddressMapper {
-    
+
     @Mapping(expression = "java(addressResponse.getGeo_lat())", target = "geoLat")
     @Mapping(expression = "java(addressResponse.getGeo_lon())", target = "geoLon")
     @Mapping(expression = "java(addressResponse.getGeo_lat())", target = "lat")

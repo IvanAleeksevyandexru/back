@@ -25,7 +25,7 @@ import ru.gosuslugi.pgu.pgu_common.gibdd.dto.GibddServiceResponse;
 import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleFullInfo;
 import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleInfoRequest;
 import ru.gosuslugi.pgu.pgu_common.gibdd.service.GibddDataService;
-import ru.gosuslugi.pgu.fs.service.ratelimit.RateLimitService;
+import ru.gosuslugi.pgu.ratelimit.client.RateLimitService;
 
 import java.util.Map;
 import java.util.Objects;
@@ -53,11 +53,11 @@ public class CarDetailInfoComponent extends AbstractComponent<CarDetailInfoCompo
     public static final String GOV_REG_NUMBER = "GovRegNumber";
 
     // Версия сервиса
-    private final String VERSION = "v1";
+    private static final String VERSION = "v1";
     // Максимальное количество обращений за контролируемый период времени
-    private final String LIMIT = "5";
+    private static final String LIMIT = "5";
     // Период времени, в течение, которого считаются обращения пользователя к услуге. Измеряется в секундах
-    private final String TTL = "600";
+    private static final String TTL = "600";
 
     @Override
     public ComponentResponse<CarDetailInfoComponentDto> getInitialValue(FieldComponent component, ScenarioDto scenarioDto) {
@@ -175,7 +175,7 @@ public class CarDetailInfoComponent extends AbstractComponent<CarDetailInfoCompo
     // Проверка возможности обращения к внешнему сервису
     private void checkAccess(FieldComponent component) {
         Map<String, String> params = FieldComponentUtil.getAttrStringMap(component, "rateLimit");
-        var key = component.getId() + "-" + userPersonalData.getToken();
+        var key = component.getId() + "-" + userPersonalData.getUserId();
 
         var rateLimitRequest = new RateLimitRequest();
         rateLimitRequest.setLimit(Long.parseLong(params.getOrDefault("limit",LIMIT)));

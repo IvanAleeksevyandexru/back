@@ -228,8 +228,8 @@ public class PaymentTypeSelectorComponent extends AbstractComponent<String> {
             List<Map<String, String>> actions = (List<Map<String, String>>) state.get(ACTIONS_ATTR_KEY);
             if (!alreadyPaid) {
                 actions = actions.stream()
-                    .filter(it -> !it.containsKey(SHOW_ONLY_FOR_UNUSED_PAYMENTS_KEY))
-                    .collect(Collectors.toList());
+                        .filter(it -> !it.containsKey(SHOW_ONLY_FOR_UNUSED_PAYMENTS_KEY))
+                        .collect(Collectors.toList());
             }
             actions.forEach(action -> {
                 Map<String, String> value = new HashMap<>();
@@ -340,7 +340,7 @@ public class PaymentTypeSelectorComponent extends AbstractComponent<String> {
             String specificPayerId = component.getArgument(FL_SPECIFIC_PAYERID);
 
             PayerInfo payerInfo = getPayerInfoOrDefault(applicantTypeStringValue, currentDocumentContext,
-                previousDocumentContext, new PayerInfo(payerIdType, payerIdNum));
+                    previousDocumentContext, new PayerInfo(payerIdType, payerIdNum));
             if (StringUtils.hasText(specificPayerId)) {
                 payerInfo.setIdType(specificPayerId);
             }
@@ -443,7 +443,7 @@ public class PaymentTypeSelectorComponent extends AbstractComponent<String> {
             // для юр.лиц скидочная сумма совпадает с полной, но не содержит нулей после умножения на 100 (на вход передаем умноженное на 100 fullAmount)
             // поэтому сравнение с ответом делаем всегда с saleAmount, чтобы избежать обратного деления.
             BigDecimal amountDecimal = new BigDecimal(saleAmount);
-           return unusedPayments.stream().anyMatch(it -> Objects.compare(it.getAmount(), amountDecimal, Comparator.nullsLast(BigDecimal::compareTo)) == 0);
+            return unusedPayments.stream().anyMatch(it -> Objects.compare(it.getAmount(), amountDecimal, Comparator.nullsLast(BigDecimal::compareTo)) == 0);
         } catch (ExternalServiceException | RestClientException e) {
             log.error("Не удалось получить ранее оплаченные пошлины", e);
         }

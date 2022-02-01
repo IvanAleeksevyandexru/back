@@ -72,17 +72,17 @@ public class PersonOkatoServiceImpl implements OkatoHolder, PersonOkatoService {
             result = OkatoHolder.DEFAULT_OKATO;
         }
         return result;
-      }
+    }
 
     private Optional<EsiaAddress> getEsiaAddress() {
         return userPersonalData.getAddresses().stream()
-            .filter(
-                a ->
-                    a.getType().equals(EsiaAddress.Type.REGISTRATION.getCode())
-                    || a.getType().equals(EsiaAddress.Type.LOCATION.getCode())
-            )
-            // REGISTRATION to first (Сортируем так, чтобы регистрационные адреса были выбраны первыми)
-            .sorted(Comparator.comparingInt(a -> a.getType().equals(EsiaAddress.Type.REGISTRATION.getCode()) ? 0 : 1))
-            .findFirst();
+                .filter(
+                        a ->
+                                a.getType().equals(EsiaAddress.Type.REGISTRATION.getCode())
+                                        || a.getType().equals(EsiaAddress.Type.LOCATION.getCode())
+                )
+                // REGISTRATION to first (Сортируем так, чтобы регистрационные адреса были выбраны первыми)
+                .sorted(Comparator.comparingInt(a -> a.getType().equals(EsiaAddress.Type.REGISTRATION.getCode()) ? 0 : 1))
+                .findFirst();
     }
 }

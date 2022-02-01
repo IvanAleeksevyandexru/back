@@ -3,7 +3,7 @@ package ru.gosuslugi.pgu.fs.sp.impl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -25,10 +25,9 @@ import java.util.concurrent.ExecutionException;
 @Slf4j
 @Component
 @AllArgsConstructor
-@ConditionalOnExpression("${spring.kafka.producer.sp-adapter.enabled} || ${spring.kafka.producer.sp-adapter-batch.enabled}")
+@ConditionalOnProperty(prefix = "spring.kafka.producer.sp-adapter-batch", name = "enabled")
 public class ServiceProcessingKafkaClientImpl implements ServiceProcessingClient {
 
-    private final Optional<KafkaTemplate<Long, SpAdapterDto>> kafkaTemplate;
     private final Optional<KafkaTemplate<Long, List<SpAdapterDto>>> batchKafkaTemplate;
     private final PguOrderService pguOrderService;
     private final OrderAttributesService orderAttributesService;
@@ -36,7 +35,6 @@ public class ServiceProcessingKafkaClientImpl implements ServiceProcessingClient
 
     @Override
     public void send(SpAdapterDto spAdapterDto, String targetTopic) {
-        sendWithTemplate(spAdapterDto.getOrderId(), spAdapterDto, kafkaTemplate, targetTopic);
         sendWithTemplate(spAdapterDto.getOrderId(), List.of(spAdapterDto), batchKafkaTemplate, targetTopic);
     }
 
@@ -85,7 +83,7 @@ public class ServiceProcessingKafkaClientImpl implements ServiceProcessingClient
                     spRequestErrorDto.getAdapterRequestDto().getOid()
             );
             if(order.getOrderStatusId() == OrderStatuses.REGISTERED_ON_PORTAL.getStatusId()){
-                orderAttributesService.updateTechOrderStatus(
+                orderAttributesService.updateTechOrderStatusNoCache(
                         OrderStatuses.ERROR_SEND_REQUEST.getStatusId(),
                         spRequestErrorDto.getAdapterRequestDto().getOrderId()
                 );

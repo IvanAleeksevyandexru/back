@@ -1,16 +1,11 @@
 package ru.gosuslugi.pgu.fs.component.dictionary;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
-import ru.gosuslugi.pgu.fs.common.component.AbstractComponent;
-import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
-import ru.gosuslugi.pgu.fs.common.utils.AnswerUtil;
 import ru.gosuslugi.pgu.fs.component.medicine.model.MedDictionaryResponse;
 import ru.gosuslugi.pgu.fs.component.medicine.model.MedDictionaryResponseAttribute;
 import ru.gosuslugi.pgu.fs.component.userdata.model.MedicalInfoDto;
@@ -18,7 +13,6 @@ import ru.gosuslugi.pgu.fs.service.DictionaryFilterService;
 import ru.gosuslugi.pgu.fs.service.MedicineService;
 import ru.gosuslugi.pgu.fs.service.RegionInfoService;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -29,12 +23,16 @@ import static ru.gosuslugi.pgu.dto.descriptor.types.ComponentType.Lookup;
 
 @Slf4j
 @Component
-@RequiredArgsConstructor
-public class LookupComponent extends AbstractComponent<String> {
+public class LookupComponent extends SelectedAbstractList {
 
-    private final DictionaryFilterService dictionaryFilterService;
     private final RegionInfoService regionInfoService;
     private final MedicineService medicineService;
+
+    public LookupComponent(DictionaryFilterService dictionaryFilterService, RegionInfoService regionInfoService, MedicineService medicineService) {
+        super(dictionaryFilterService);
+        this.regionInfoService = regionInfoService;
+        this.medicineService = medicineService;
+    }
 
     @Override
     public ComponentType getType() {
@@ -42,26 +40,8 @@ public class LookupComponent extends AbstractComponent<String> {
     }
 
     @Override
-    public ComponentResponse<String> getInitialValue(FieldComponent component, ScenarioDto scenarioDto) {
-        Map<String, Object> presetValues = new HashMap<>(dictionaryFilterService.getInitialValue(component, scenarioDto));
-        return presetValues.isEmpty() ? ComponentResponse.empty() : ComponentResponse.of(jsonProcessingService.toJson(presetValues));
-    }
-
-    @Override
-    public void preloadComponent(FieldComponent component, ScenarioDto scenarioDto) {
-        dictionaryFilterService.preloadComponent(component, scenarioDto, () -> getInitialValue(component, scenarioDto));
-    }
-
-    @Override
     protected void validateAfterSubmit(Map<String, String> incorrectAnswers, Map.Entry<String, ApplicantAnswer> entry, ScenarioDto scenarioDto, FieldComponent fieldComponent) {
-        boolean validationSwitchOn = Boolean.parseBoolean((String) fieldComponent.getAttrs().getOrDefault("validationSwitchOn", "true"));
-        if (!validationSwitchOn) {
-            return;
-        }
-        if (StringUtils.hasText(AnswerUtil.getValue(entry))) {
-            dictionaryFilterService.validateAfterSubmit(incorrectAnswers, entry, scenarioDto, fieldComponent, () -> getInitialValue(fieldComponent, scenarioDto));
-        }
-
+        super.validateAfterSubmit(incorrectAnswers, entry, scenarioDto, fieldComponent);
 
         if ("medicalInfo".equals(fieldComponent.getAttrs().get("externalIntegration"))) {
 

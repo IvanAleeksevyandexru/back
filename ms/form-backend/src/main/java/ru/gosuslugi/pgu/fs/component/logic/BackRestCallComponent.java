@@ -35,9 +35,10 @@ public class BackRestCallComponent extends AbstractComponent<String> {
 
     @Override
     public ComponentResponse<String> getInitialValue(FieldComponent component, ScenarioDto scenarioDto) {
-
-        scenarioDto.getApplicantAnswers().put(component.getId(),
-                new ApplicantAnswer(true, jsonProcessingService.toJson(getResponse(component))));
+        scenarioDto.getApplicantAnswers().put(
+                component.getId(),
+                new ApplicantAnswer(true, jsonProcessingService.toJson(getResponse(component)))
+        );
         clearComponent(component);
         return ComponentResponse.empty();
     }

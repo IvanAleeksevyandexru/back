@@ -25,11 +25,9 @@ import ru.gosuslugi.pgu.fs.common.service.functions.impl.ContextFunctionServiceI
 import ru.gosuslugi.pgu.fs.common.service.impl.*
 import ru.gosuslugi.pgu.fs.common.variable.ServiceIdVariable
 import ru.gosuslugi.pgu.fs.common.variable.VariableRegistry
-import ru.gosuslugi.pgu.fs.descriptor.impl.ErrorModalDescriptorServiceImpl
-import ru.gosuslugi.pgu.fs.pgu.client.impl.PguClientImpl
 import ru.gosuslugi.pgu.fs.pgu.client.impl.PguEmpowermentClientImpl
 import ru.gosuslugi.pgu.fs.pgu.client.impl.PguEmpowermentClientImplV2
-import ru.gosuslugi.pgu.fs.pgu.service.impl.UserTokenServiceImpl
+import ru.gosuslugi.pgu.fs.pgu.client.impl.PguUtilsClientImpl
 import ru.gosuslugi.pgu.fs.service.impl.EmpowermentServiceImpl
 import ru.gosuslugi.pgu.fs.service.impl.InitialValueFromImpl
 import ru.gosuslugi.pgu.fs.service.impl.ProtectedFieldServiceImpl
@@ -80,13 +78,12 @@ class ComponentTestUtil extends Specification {
         def userPersonalData = new UserPersonalData()
         def userOrgData = new UserOrgData()
         def restTemplate = new RestTemplate()
-        def userTokenService = new UserTokenServiceImpl(restTemplate)
         def empowermentService = new EmpowermentServiceImpl(
                 userOrgData,
                 userPersonalData,
                 new PguEmpowermentClientImpl(restTemplate),
                 new PguEmpowermentClientImplV2(restTemplate),
-                new PguClientImpl(restTemplate, userPersonalData, new ErrorModalDescriptorServiceImpl(List.of()), userTokenService)
+                new PguUtilsClientImpl(restTemplate, userPersonalData),
         )
         def variableRegistry = new VariableRegistry()
         def protectedFieldService = new ProtectedFieldServiceImpl(userPersonalData, userOrgData, empowermentService)
@@ -140,13 +137,12 @@ class ComponentTestUtil extends Specification {
         def userPersonalData = new UserPersonalData()
         def userOrgData = new UserOrgData()
         def restTemplate = new RestTemplate()
-        def userTokenService = new UserTokenServiceImpl(restTemplate)
         def empowermentService = new EmpowermentServiceImpl(
                 userOrgData,
                 userPersonalData,
                 new PguEmpowermentClientImpl(restTemplate),
                 new PguEmpowermentClientImplV2(restTemplate),
-                new PguClientImpl(restTemplate, userPersonalData, new ErrorModalDescriptorServiceImpl(List.of()), userTokenService)
+                new PguUtilsClientImpl(restTemplate, userPersonalData),
         )
         def protectedFieldService = new ProtectedFieldServiceImpl(userPersonalData, userOrgData, empowermentService)
         def variableRegistry = new VariableRegistry()
@@ -168,7 +164,7 @@ class ComponentTestUtil extends Specification {
     }
 
     static ScenarioDto mockScenario(Map<String, ApplicantAnswer> currentValue,
-                              Map<String, ApplicantAnswer> applicantAnswers, ServiceInfoDto serviceInfoDto) {
+                                    Map<String, ApplicantAnswer> applicantAnswers, ServiceInfoDto serviceInfoDto) {
         ScenarioDto scenarioDto = new ScenarioDto();
         scenarioDto.setCurrentValue(currentValue)
         scenarioDto.setApplicantAnswers(applicantAnswers)

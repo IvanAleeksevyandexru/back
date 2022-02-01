@@ -8,7 +8,7 @@ public class OrderBehaviourTypeUtil {
 
     public static boolean getSmevOrderDraftFlag(ServiceDescriptor descriptor, Order order, boolean statusContains) {
         return descriptor.getOrderBehaviourType() == OrderBehaviourType.SMEV_ORDER
-            && statusContains == descriptor.getSmevOrderStatuses().contains(order.getOrderStatusId());
+                && statusContains == descriptor.getSmevOrderStatuses().contains(order.getOrderStatusId());
     }
 
 }

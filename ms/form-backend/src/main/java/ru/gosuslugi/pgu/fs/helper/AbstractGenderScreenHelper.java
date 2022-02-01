@@ -9,7 +9,7 @@ import ru.gosuslugi.pgu.dto.descriptor.types.ScreenType;
 import java.util.Objects;
 
 /**
- * 
+ *
  * Этот абстрактный класс определяет общее поведение для гендерных экранов таких как:
  * {@link ScreenType#GQUESTION}, {@link ScreenType#GCOMPONENT}, {@link ScreenType#GCUSTOM}, 
  * {@link ScreenType#GINFO}, {@link ScreenType#GREPEATABLE},
@@ -21,7 +21,7 @@ public abstract class AbstractGenderScreenHelper extends AbstractScreenHelper im
     protected UserPersonalData userPersonalData;
 
     /**
-     * 
+     *
      * @return не гендерный тип экрана соответствующий данному экрану.
      * Например ScreenType.COMPONENT для экрана ScreenType.GCOMPONENT.
      */

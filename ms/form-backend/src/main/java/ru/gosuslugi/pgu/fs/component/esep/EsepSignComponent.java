@@ -154,12 +154,12 @@ public class EsepSignComponent extends AbstractComponent<EsepSignComponentDto> {
             } else {
                 // если заявление подписано чужой подписью - пересоздаем форму подписания
                 PrepareSignResponse response = prepareSign(
-                    scenarioDto.getOrderId(),
-                    userPersonalData.getUserId(),
-                    userPersonalData.getOrgId(),
-                    prepareReturnUrl(scenarioDto.getCurrentUrl()),
-                    scenarioDto.getAdditionalParameters().get(SP_REQUEST_GUID_ATTR_NAME),
-                    true);
+                        scenarioDto.getOrderId(),
+                        userPersonalData.getUserId(),
+                        userPersonalData.getOrgId(),
+                        prepareReturnUrl(scenarioDto.getCurrentUrl()),
+                        scenarioDto.getAdditionalParameters().get(SP_REQUEST_GUID_ATTR_NAME),
+                        true);
                 signInfoMap.put(scenarioDto.getOrderId(), new SignInfo(response.getOperationID(), response.getUrl(), response.getSignedFileInfos(), false));
                 entry.getValue().setValue(jsonProcessingService.toJson(new EsepSignComponentDto(response.getUrl(), false)));
                 incorrectAnswers.put(entry.getKey(), NOT_SIGNED_BY_USER_SIGNATURE_ERROR);
@@ -212,10 +212,10 @@ public class EsepSignComponent extends AbstractComponent<EsepSignComponentDto> {
 
         esiaSnils = esiaSnils.replaceAll("[^0-9]", "");
         String esiaCommonName = Stream.of(person.getLastName(), person.getFirstName(), person.getMiddleName())
-            .filter(Objects::nonNull)
-            .collect(Collectors.joining(" "))
-            .trim()
-            .toLowerCase(LOCAL_RU);
+                .filter(Objects::nonNull)
+                .collect(Collectors.joining(" "))
+                .trim()
+                .toLowerCase(LOCAL_RU);
 
         for (CertificateInfoDto certificateInfo : certificateInfoList) {
             List<CertificateUserInfoDto> userInfoList = certificateInfo.getCertificateUserInfoList();
@@ -282,11 +282,11 @@ public class EsepSignComponent extends AbstractComponent<EsepSignComponentDto> {
                         certUserInn.equals(inn) || certUserInn.equals(userPersonalInn)
                         : true;
                 if (isInnCheck && ogrn.equals(certUserOgrn) && snils.equals(certUserSnils))
-                  continue;
+                    continue;
 
                 //IP INN + OGRNIP
                 if (isInnCheck && ogrn.equals(certUserOgrnip) && snils.equals(certUserSnils))
-                     continue;
+                    continue;
 
                 return EsepSignCheckResult.NOT_SIGNED_BY_USER_SIGNATURE;
             }

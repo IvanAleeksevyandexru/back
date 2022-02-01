@@ -23,10 +23,12 @@ import java.util.stream.Collectors;
 import static ru.gosuslugi.pgu.common.core.date.util.DateUtil.ESIA_DATE_FORMAT;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ADDRESS_TYPE_PLV;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ADDRESS_TYPE_PRG;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.CONTACT_PHONE;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ESIA_CONTACT_PHONE;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ESIA_EMAIL;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ESIA_MOBILE_PHONE;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.FRGN_PASSPORT_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.MOBILE_PHONE;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ORG_EMAIL_TYPE_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ORG_PHONE_TYPE_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.RF_PASSPORT_ATTR;
@@ -151,11 +153,11 @@ public class ProtectedFieldServiceImpl implements ProtectedFieldService {
             PersonDoc doc = getDocumentByType(userPersonalData, FRGN_PASSPORT_ATTR);
             return doc != null ? doc.getVrfStu() : null;
         });
-        methodMap.put("contactPhoneNumber", userPersonalData -> {
+        methodMap.put(CONTACT_PHONE, userPersonalData -> {
             EsiaContact contact = getContactByType(userPersonalData, ESIA_CONTACT_PHONE);
             return contact != null ? contact.getValue() : null;
         });
-        methodMap.put("mobilePhoneNumber", userPersonalData -> {
+        methodMap.put(MOBILE_PHONE, userPersonalData -> {
             EsiaContact contact = getContactByType(userPersonalData, ESIA_MOBILE_PHONE);
             return contact != null ? contact.getValue() : null;
         });
@@ -193,8 +195,8 @@ public class ProtectedFieldServiceImpl implements ProtectedFieldService {
                 result = userOrgData.getOrg().getType().toString();
             }
         }
-        if (ORGANIZATION_USER_ROLE.equals(name) && Objects.nonNull(userPersonalData.getCurrentRole())) {
-            result = userPersonalData.getCurrentRole().getChief();
+        if (ORGANIZATION_USER_ROLE.equals(name)) {
+            result = userPersonalData.getChief();
         }
         if (ORGANIZATION_PHONE.equals(name)) {
             result = userOrgData.getVerifiedContactValue(ORG_PHONE_TYPE_ATTR);

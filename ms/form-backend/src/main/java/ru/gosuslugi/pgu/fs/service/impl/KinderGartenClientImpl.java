@@ -21,7 +21,7 @@ import ru.gosuslugi.pgu.fs.component.dictionary.dto.kindergarten.EpguRegionRespo
 import ru.gosuslugi.pgu.fs.component.dictionary.dto.kindergarten.KinderGartenInputParams;
 import ru.gosuslugi.pgu.fs.component.dictionary.dto.kindergarten.KinderGartenOutputParams;
 import ru.gosuslugi.pgu.fs.component.dictionary.dto.kindergarten.RequestType;
-import ru.gosuslugi.pgu.fs.pgu.client.PguClient;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.PguOrderClientImpl;
 import ru.gosuslugi.pgu.fs.service.RegionInfoService;
 import ru.gosuslugi.pgu.fs.service.KinderGartenClient;
 
@@ -38,7 +38,7 @@ import static ru.gosuslugi.pgu.dto.kindergarten.KinderGartenHandlerStatus.SmevEr
 public class KinderGartenClientImpl implements KinderGartenClient {
 
     private final KinderGartenXmlMarshaller kinderGartenXmlMarshaller;
-    private final PguClient pguClient;
+    private final PguOrderClientImpl orderClient;
     private final RegionInfoService regionService;
     private final BarbarbokClient barbarbokClient;
 
@@ -91,7 +91,7 @@ public class KinderGartenClientImpl implements KinderGartenClient {
      * @return ОКАТО
      */
     private String getUserSelectedRegion(long orderId) {
-        Order order = pguClient.findOrderById(orderId);
+        Order order = orderClient.findOrderById(orderId);
         return order.getUserSelectedRegion();
     }
 

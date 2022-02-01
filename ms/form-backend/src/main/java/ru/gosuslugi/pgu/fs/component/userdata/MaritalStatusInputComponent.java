@@ -47,7 +47,7 @@ import static ru.gosuslugi.pgu.components.FieldComponentUtil.VALIDATION_ARRAY_KE
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class MaritalStatusInput extends AbstractComponent<MaritalStatusInputResponseDto> {
+public class MaritalStatusInputComponent extends AbstractComponent<MaritalStatusInputResponseDto> {
 
     /** Определят сертификат о браке или разводе. */
     private static final String DOCUMENT_TYPE = "documentType";
@@ -82,7 +82,6 @@ public class MaritalStatusInput extends AbstractComponent<MaritalStatusInputResp
             String maritalStatusType = String.valueOf(fieldComponent.getAttrs().get(DOCUMENT_TYPE));
             //достаем все сертификаты из ЛК
             List<MaritalResponseItem> list = pguMarriageClient.getMaritalStatusCertificate(userPersonalData.getToken(), userPersonalData.getUserId(), maritalStatusType);
-            list.forEach(item->item.setActDate(String.valueOf(DateTimeUtil.parseDate(item.getActDate(), "dd.MM.yyyy"))));
 
             if (!list.isEmpty()) {
                 //достаем последний по дате актовой записи сертификат

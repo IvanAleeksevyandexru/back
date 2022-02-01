@@ -70,7 +70,7 @@ public class LoadResourceConfig {
                 smsConfirmationCodeResource,
                 emailConfirmationCodeResource,
                 criticalErrorScreen
-            ).map(json -> jsonProcessingService.fromResource(json, SubServiceDescriptor.class)).collect(Collectors.toList());
+        ).map(json -> jsonProcessingService.fromResource(json, SubServiceDescriptor.class)).collect(Collectors.toList());
     }
 
     @Bean
@@ -79,7 +79,7 @@ public class LoadResourceConfig {
         return Stream.of(
                 setBillToOrderResource,
                 generateScenarioResource
-            ).map(json -> jsonProcessingService.fromResource(json, SubServiceDescriptor.class)).collect(Collectors.toList());
+        ).map(json -> jsonProcessingService.fromResource(json, SubServiceDescriptor.class)).collect(Collectors.toList());
     }
 
     @Bean
@@ -88,6 +88,6 @@ public class LoadResourceConfig {
                 errorModalsResource,
                 warningModalsResource,
                 stopModalsResource
-                ).map(json -> jsonProcessingService.fromResource(json, ErrorModalDescriptor.class)).collect(Collectors.toList());
+        ).map(json -> jsonProcessingService.fromResource(json, ErrorModalDescriptor.class)).collect(Collectors.toList());
     }
 }

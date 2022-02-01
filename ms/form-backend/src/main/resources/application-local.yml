@@ -32,7 +32,7 @@ mock:
     url: http://dev-l11.pgu2-pub.test.gosuslugi.ru/mock/billing/
   gibdd:
     enabled: true
-    url: http://dev-l11.pgu2-pub.test.gosuslugi.ru/mock/gibdd/
+    path: /gibdd
 
 spring:
   application:
@@ -59,13 +59,6 @@ spring:
       suggests:
         enabled: false
         topic-name: dev01-form-serviceToSuggests-drafts
-        auto-create-topics: false
-        topic-partitions: 1
-        topic-replication-factor: 1
-
-      sp-adapter:
-        enabled: false
-        topic-name: sp-adapter
         auto-create-topics: false
         topic-partitions: 1
         topic-replication-factor: 1

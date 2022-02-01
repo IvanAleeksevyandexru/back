@@ -42,7 +42,7 @@ class EsepSignComponentSpec extends Specification {
 
     def setup() {
         restTemplateMock.exchange("${voshodUrl}/prepareSign", _ as HttpMethod, _ as HttpEntity, _ as Class) >>
-            new ResponseEntity(new PrepareSignResponse(operationID: '1', url: signUrl, signedFileInfos: []), HttpStatus.OK)
+                new ResponseEntity(new PrepareSignResponse(operationID: '1', url: signUrl, signedFileInfos: []), HttpStatus.OK)
 
         userPersonalDataMock.person >> new Person(lastName: 'Иванов', firstName: 'Иван', middleName: 'Иванович', snils: '111-999')
         userPersonalDataMock.userId >> userId

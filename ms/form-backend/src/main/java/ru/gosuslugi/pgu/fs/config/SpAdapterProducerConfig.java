@@ -18,7 +18,6 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 import ru.gosuslugi.pgu.common.kafka.properties.AbstractProducerProps;
 import ru.gosuslugi.pgu.dto.SpAdapterDto;
 import ru.gosuslugi.pgu.fs.config.properties.SpAdapterBatchProducerProps;
-import ru.gosuslugi.pgu.fs.config.properties.SpAdapterProducerProps;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,31 +29,12 @@ public class SpAdapterProducerConfig {
 
     @Value(value = "${spring.kafka.brokers}")
     private String brokers;
-    private final SpAdapterProducerProps producerProps;
     private final SpAdapterBatchProducerProps batchProducerProps;
-
-    @Bean
-    @ConditionalOnProperty("spring.kafka.producer.sp-adapter.auto-create-topics")
-    public NewTopic serviceProcessingTopic() {
-        return createTopic(producerProps);
-    }
 
     @Bean
     @ConditionalOnProperty("spring.kafka.producer.sp-adapter-batch.auto-create-topics")
     public NewTopic serviceProcessingBatchTopic() {
         return createTopic(batchProducerProps);
-    }
-
-    @Bean
-    @ConditionalOnProperty("spring.kafka.producer.sp-adapter.enabled")
-    public ProducerFactory<Long, SpAdapterDto> producerFactory() {
-        return createProducerFactory(new LongSerializer(), new JsonSerializer<>());
-    }
-
-    @Bean
-    @ConditionalOnProperty("spring.kafka.producer.sp-adapter.enabled")
-    public KafkaTemplate<Long, SpAdapterDto> kafkaTemplate() {
-        return createTemplate(producerFactory(), producerProps.getTopicName());
     }
 
     @Bean

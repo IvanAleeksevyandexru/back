@@ -59,6 +59,8 @@ class MainScreenServiceImplSpec extends Specification {
 
         componentRegistry = Mock(ComponentRegistry)
 
+        ErrorModalDescriptorService errorModalDescriptorService = Mock(ErrorModalDescriptorService)
+
         prevScreenProcess = new PrevScreenProcessImpl(
                 mainDescriptorService,
                 cycledScreenService,
@@ -66,7 +68,8 @@ class MainScreenServiceImplSpec extends Specification {
                 Stub(ComponentService),
                 Stub(DisplayReferenceService),
                 scenarioDtoService,
-                componentRegistry
+                componentRegistry,
+                errorModalDescriptorService
         )
 
         computeAnswerService = Mock(ComputeAnswerServiceImpl)
@@ -74,7 +77,6 @@ class MainScreenServiceImplSpec extends Specification {
         additionalAttributesHelper = Mock(AdditionalAttributesHelper)
 
         EmpowermentService empowermentService = Mock(EmpowermentService)
-        ErrorModalDescriptorService errorModalDescriptorService = Mock(ErrorModalDescriptorService)
 
         nextScreenProcess = new NextScreenProcessImpl(
                 mainDescriptorService,

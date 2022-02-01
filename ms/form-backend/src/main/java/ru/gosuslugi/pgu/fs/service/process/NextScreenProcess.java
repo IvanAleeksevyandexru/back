@@ -68,6 +68,11 @@ public interface NextScreenProcess extends ScreenProcess<NextScreenProcess> {
 
     void checkPermissions();
 
+    /**
+     * Проверка черновика на редактируемость
+     */
+    void checkEditable();
+
     boolean hasCheckForDuplicate();
 
     void checkForDuplicate();

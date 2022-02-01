@@ -1,0 +1,17 @@
+{
+  "id": "pd6",
+  "type": "SnilsInput",
+  "label": "СНИЛС",
+  "attrs": {
+    "refs": {},
+    "validation": [
+      {
+        "type": "RegExp",
+        "value": ".{15}",
+        "errorMsg": "Поле должно содержать 15 символов"
+      }]
+  },
+  "value": "",
+  "visited": false,
+  "required": true
+}

@@ -95,7 +95,7 @@ public class DocInputFieldTest {
     private Map<String, DocInputField> getDocInputField() throws IOException {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("DocInputFieldTest_with_RegExp.json");) {
             return objectMapper.readValue(
-                is,
+                    is,
                     new TypeReference<>() {}
             );
         }

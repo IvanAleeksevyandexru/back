@@ -47,18 +47,18 @@ public class CycledInfoComponent extends AbstractCycledComponent<List<Map<String
         //получаем поля из джсон сценария, обявленные внутри CycledInfo компонента
         List<Map<Object, Object>> fieldObjects = FieldComponentUtil.getList(component, FieldComponentUtil.FIELDS_KEY, true);
         List<Map<String, Object>> fields = fieldObjects
-            .stream()
-            .map(FieldComponentUtil::toStringKeyMap)
-            .collect(Collectors.toList());
+                .stream()
+                .map(FieldComponentUtil::toStringKeyMap)
+                .collect(Collectors.toList());
 
         // Возвращаем оригинальные значения(значения, заполненные юзером)
         Map<String, ApplicantAnswer> applicantAnswers = externalData
-            .entrySet()
-            .stream()
-            .filter(entry -> entry.getValue() instanceof ApplicantAnswer)
+                .entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() instanceof ApplicantAnswer)
                 //переводим value мапы из Object в ApplicantAnswer
-            .map(entry -> new AbstractMap.SimpleEntry<String, ApplicantAnswer>(entry.getKey(), (ApplicantAnswer) entry.getValue()))
-            .collect(HashMap::new, (m,v)-> m.put(v.getKey(), v.getValue()), HashMap::putAll);
+                .map(entry -> new AbstractMap.SimpleEntry<String, ApplicantAnswer>(entry.getKey(), (ApplicantAnswer) entry.getValue()))
+                .collect(HashMap::new, (m,v)-> m.put(v.getKey(), v.getValue()), HashMap::putAll);
 
         // создаем контекст поиска (все поля, заполненные юзером)
         DocumentContext applicantAnswersContext = JsonPath.parse(jsonProcessingService.convertAnswersToJsonString(applicantAnswers));
@@ -66,11 +66,11 @@ public class CycledInfoComponent extends AbstractCycledComponent<List<Map<String
         // Ходим по полям и заполняем данныеи, если успешно (заоплняются только те поля что есть в джсон сценарии)
         for (Map<String, Object> field : fields) {
             Optional.of(field)
-                .map(f -> f.get(FIELD_NAME_KEY))
-                .filter(key -> key instanceof String)
-                .map(key -> jsonProcessingService.getFieldFromContext(String.valueOf(key),applicantAnswersContext, Object.class) )
-                .map(value -> field.containsKey(FORMAT_KEY) ? DateUtils.format(field.get(FORMAT_KEY), String.valueOf(value)) :value)
-                .ifPresent(value -> field.put(VALUE_KEY, value));
+                    .map(f -> f.get(FIELD_NAME_KEY))
+                    .filter(key -> key instanceof String)
+                    .map(key -> jsonProcessingService.getFieldFromContext(String.valueOf(key),applicantAnswersContext, Object.class) )
+                    .map(value -> field.containsKey(FORMAT_KEY) ? DateUtils.format(field.get(FORMAT_KEY), String.valueOf(value)) :value)
+                    .ifPresent(value -> field.put(VALUE_KEY, value));
         }
         return ComponentResponse.of(fields);
     }
@@ -106,7 +106,7 @@ public class CycledInfoComponent extends AbstractCycledComponent<List<Map<String
         return answerItem.getItemAnswers()
                 .entrySet()
                 .stream()
-        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue ));
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue ));
     }
 
 }

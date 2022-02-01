@@ -124,7 +124,7 @@ public class ConfirmPersonalUserDataComponent extends AbstractComponent<FormDto<
     /**
      * Набор полей для валидации спецсимволов.
      * @see <a href="https://jira.egovdev.ru/browse/EPGUCORE-74347">Валидация полей со спецсимволами</a>
-      */
+     */
     private static final Set<String> SPECIAL_CHAR_VALIDATION_FIELDSET = Set.of(
             FIRST_NAME_ATTR,
             LAST_NAME_ATTR,
@@ -174,51 +174,51 @@ public class ConfirmPersonalUserDataComponent extends AbstractComponent<FormDto<
         }
         //загран паспорт
         if (StringUtils.hasText(confirmPersonalUserData.getDocType()) && confirmPersonalUserData.getDocType().equals(FRGN_PASSPORT_ATTR)) {
-                errors.addAll(getValidationErrorsForFrgnPassport(confirmPersonalUserData, fieldsComponent));
+            errors.addAll(getValidationErrorsForFrgnPassport(confirmPersonalUserData, fieldsComponent));
         }
         // паспорт ИГ
         if (StringUtils.hasText(confirmPersonalUserData.getDocType()) && confirmPersonalUserData.getDocType().equals(FID_DOC_ATTR)) {
-             errors.addAll(getValidationErrorsForForiegnPassport(confirmPersonalUserData, fieldsComponent));
+            errors.addAll(getValidationErrorsForForiegnPassport(confirmPersonalUserData, fieldsComponent));
         }
-            //основные общие параметры
-            if (fieldsComponent.containsKey(FIRST_NAME_ATTR)) {
-                validateByJsonRule(fieldsComponent.get(FIRST_NAME_ATTR), errors, confirmPersonalUserData.getFirstName());
-            }
+        //основные общие параметры
+        if (fieldsComponent.containsKey(FIRST_NAME_ATTR)) {
+            validateByJsonRule(fieldsComponent.get(FIRST_NAME_ATTR), errors, confirmPersonalUserData.getFirstName());
+        }
 
-            if (fieldsComponent.containsKey(LAST_NAME_ATTR)) {
-                validateByJsonRule(fieldsComponent.get(LAST_NAME_ATTR), errors, confirmPersonalUserData.getLastName());
-            }
+        if (fieldsComponent.containsKey(LAST_NAME_ATTR)) {
+            validateByJsonRule(fieldsComponent.get(LAST_NAME_ATTR), errors, confirmPersonalUserData.getLastName());
+        }
 
-            if (fieldsComponent.containsKey(MIDDLE_NAME_ATTR)) {
-                validateByJsonRule(fieldsComponent.get(MIDDLE_NAME_ATTR), errors, confirmPersonalUserData.getMiddleName());
-            }
+        if (fieldsComponent.containsKey(MIDDLE_NAME_ATTR)) {
+            validateByJsonRule(fieldsComponent.get(MIDDLE_NAME_ATTR), errors, confirmPersonalUserData.getMiddleName());
+        }
 
-            if (fieldsComponent.containsKey(BIRTH_DATE_ATTR)) {
-                validateByJsonRule(fieldsComponent.get(BIRTH_DATE_ATTR), errors, confirmPersonalUserData.getBirthDate());
-            }
+        if (fieldsComponent.containsKey(BIRTH_DATE_ATTR)) {
+            validateByJsonRule(fieldsComponent.get(BIRTH_DATE_ATTR), errors, confirmPersonalUserData.getBirthDate());
+        }
 
-            if (fieldsComponent.containsKey(ORG_INN_ATTR)) {
-                validateByJsonRule(fieldsComponent.get(ORG_INN_ATTR), errors, confirmPersonalUserData.getInn());
-            }
+        if (fieldsComponent.containsKey(ORG_INN_ATTR)) {
+            validateByJsonRule(fieldsComponent.get(ORG_INN_ATTR), errors, confirmPersonalUserData.getInn());
+        }
 
-            if (fieldsComponent.containsKey(OMS_NUMBER_ATTR)) {
-                validateByJsonRule(fieldsComponent.get(OMS_NUMBER_ATTR), errors, confirmPersonalUserData.getOmsNumber());
-            }
+        if (fieldsComponent.containsKey(OMS_NUMBER_ATTR)) {
+            validateByJsonRule(fieldsComponent.get(OMS_NUMBER_ATTR), errors, confirmPersonalUserData.getOmsNumber());
+        }
 
-            BiPredicate<String, String> checkDataPredicate =
-                    (dataName, dataValue) -> namesField.contains(dataName) && !StringUtils.isEmpty(dataValue) && fieldsComponent.containsKey(dataName);
-            if (checkDataPredicate.test(BIRTH_PLACE_ATTR, confirmPersonalUserData.getBirthPlace())) {
-                validateField(fieldsComponent.get(BIRTH_PLACE_ATTR), errors,
-                        BIRTH_PLACE_PATTERN, BIRTH_PLACE_NOT_VALID_TITLE, BIRTH_PLACE_NOT_VALID_DESC, confirmPersonalUserData.getBirthPlace());
-            }
+        BiPredicate<String, String> checkDataPredicate =
+                (dataName, dataValue) -> namesField.contains(dataName) && !StringUtils.isEmpty(dataValue) && fieldsComponent.containsKey(dataName);
+        if (checkDataPredicate.test(BIRTH_PLACE_ATTR, confirmPersonalUserData.getBirthPlace())) {
+            validateField(fieldsComponent.get(BIRTH_PLACE_ATTR), errors,
+                    BIRTH_PLACE_PATTERN, BIRTH_PLACE_NOT_VALID_TITLE, BIRTH_PLACE_NOT_VALID_DESC, confirmPersonalUserData.getBirthPlace());
+        }
 
-            if (fieldsComponent.containsKey(SNILS)) {
-                validateByJsonRule(fieldsComponent.get(SNILS), errors, confirmPersonalUserData.getSnils());
-            }
+        if (fieldsComponent.containsKey(SNILS)) {
+            validateByJsonRule(fieldsComponent.get(SNILS), errors, confirmPersonalUserData.getSnils());
+        }
 
-            if (fieldsComponent.containsKey(CITIZENSHIP_ATTR)) {
-                validateByJsonRule(fieldsComponent.get(CITIZENSHIP_ATTR), errors, confirmPersonalUserData.getCitizenship());
-            }
+        if (fieldsComponent.containsKey(CITIZENSHIP_ATTR)) {
+            validateByJsonRule(fieldsComponent.get(CITIZENSHIP_ATTR), errors, confirmPersonalUserData.getCitizenship());
+        }
 
         return errors;
     }

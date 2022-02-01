@@ -55,8 +55,8 @@ public class CheckingAccountComponent extends AbstractComponent<String> {
     @Override
     public List<ValidationRule> getValidations() {
         return List.of(
-            new CheckBoxEnabledValidation(new RequiredNotBlankValidation("Значение не задано")),
-            new CheckBoxEnabledValidation(new EmptyOr(new RegExpValidation()))
+                new CheckBoxEnabledValidation(new RequiredNotBlankValidation("Значение не задано")),
+                new CheckBoxEnabledValidation(new EmptyOr(new RegExpValidation()))
         );
     }
 
@@ -68,15 +68,15 @@ public class CheckingAccountComponent extends AbstractComponent<String> {
     private String getBikValue(ScenarioDto scenarioDto, FieldComponent fieldComponent) {
         Map<String, String> map = (Map<String, String>) fieldComponent.getAttrs().get(REFS_ATTR);
         if (map.containsKey(BIK_REF)
-            && scenarioDto.getCurrentValue().containsKey(map.get(BIK_REF))
-            && !StringUtils.isEmpty(scenarioDto.getCurrentValue().get(map.get(BIK_REF)).getValue())) {
+                && scenarioDto.getCurrentValue().containsKey(map.get(BIK_REF))
+                && !StringUtils.isEmpty(scenarioDto.getCurrentValue().get(map.get(BIK_REF)).getValue())) {
 
             return scenarioDto.getCurrentValue().get(map.get(BIK_REF)).getValue();
         }
 
         if (map.containsKey(BIK_DICT_REF)
-            && scenarioDto.getCurrentValue().containsKey(map.get(BIK_DICT_REF))
-            && !StringUtils.isEmpty(scenarioDto.getCurrentValue().get(map.get(BIK_DICT_REF)).getValue())) {
+                && scenarioDto.getCurrentValue().containsKey(map.get(BIK_DICT_REF))
+                && !StringUtils.isEmpty(scenarioDto.getCurrentValue().get(map.get(BIK_DICT_REF)).getValue())) {
 
             try {
                 JSONObject valueJson = new JSONObject(scenarioDto.getCurrentValue().get(map.get(BIK_DICT_REF)).getValue());
@@ -116,7 +116,7 @@ public class CheckingAccountComponent extends AbstractComponent<String> {
      */
     private int calculateLSB(List<Integer> items) {
         return IntStream.range(0, items.size())
-            .mapToObj(index -> WEIGHT_COEFFICIENTS.get(index % 3) * items.get(index) % 10)
-            .reduce(0, Integer::sum);
+                .mapToObj(index -> WEIGHT_COEFFICIENTS.get(index % 3) * items.get(index) % 10)
+                .reduce(0, Integer::sum);
     }
 }

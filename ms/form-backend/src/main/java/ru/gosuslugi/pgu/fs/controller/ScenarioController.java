@@ -1,23 +1,29 @@
 package ru.gosuslugi.pgu.fs.controller;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-import ru.gosuslugi.pgu.dto.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import ru.gosuslugi.pgu.common.core.service.HealthHolder;
-import ru.gosuslugi.pgu.dto.order.OrderInfoDto;
+import ru.gosuslugi.pgu.dto.DeliriumActionRequest;
+import ru.gosuslugi.pgu.dto.ExternalServiceRequest;
+import ru.gosuslugi.pgu.dto.InitServiceDto;
+import ru.gosuslugi.pgu.dto.ScenarioFromExternal;
+import ru.gosuslugi.pgu.dto.ScenarioRequest;
+import ru.gosuslugi.pgu.dto.ScenarioResponse;
 import ru.gosuslugi.pgu.dto.order.OrderListInfoDto;
-import ru.gosuslugi.pgu.fs.common.controller.ScenarioApi;
 import ru.gosuslugi.pgu.fs.service.DeliriumService;
 import ru.gosuslugi.pgu.fs.service.MainScreenService;
 import ru.gosuslugi.pgu.fs.service.custom.MainScreenServiceRegistry;
 import ru.gosuslugi.pgu.fs.utils.TracingHelper;
 
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -27,7 +33,7 @@ import java.util.Objects;
 @RestController
 @RequestMapping(value = "service/{serviceId}/scenario", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
-public class ScenarioController implements ScenarioApi {
+public class ScenarioController {
 
     private final DeliriumService deliriumService;
     private final HealthHolder healthHolder;
@@ -39,17 +45,10 @@ public class ScenarioController implements ScenarioApi {
      *
      * @return scenario response
      */
-    @ApiOperation(value = "Инициализация услуги")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 400, message = "Неверные параметры"),
-            @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
-            @ApiResponse(code = 403, message = "Нет прав"),
-            @ApiResponse(code = 500, message = "Внутренняя ошибка")})
-    @Override
+    @Operation(summary = "Инициализация услуги")
     @PostMapping(value = "/getService")
-    public ScenarioResponse getServiceInitScreen(@ApiParam(value = "Id услуги", required = true) @PathVariable String serviceId,
-                                                 @ApiParam(value = "Дополнительная информация для инициализации услуги", required = true) @RequestBody InitServiceDto initServiceDto) {
+    public ScenarioResponse getServiceInitScreen(@Parameter(description = "Id услуги", required = true) @PathVariable String serviceId,
+                                                 @Parameter(description = "Дополнительная информация для инициализации услуги", required = true) @RequestBody InitServiceDto initServiceDto) {
         tracingHelper.addServiceCodeAndOrderId(serviceId, initServiceDto);
         MainScreenService mainScreenService = mainScreenServiceRegistry.getService(initServiceDto.getTargetId());
         if (Objects.isNull(initServiceDto.getOrderId())) {
@@ -61,17 +60,10 @@ public class ScenarioController implements ScenarioApi {
     /**
      * Method for for submit button handle
      */
-    @Override
-    @ApiOperation(value = "Получение следуещего шага в сценарии услуги")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 400, message = "Неверные параметры"),
-            @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
-            @ApiResponse(code = 403, message = "Нет прав"),
-            @ApiResponse(code = 500, message = "Внутренняя ошибка")})
+    @Operation(summary = "Получение следующего шага в сценарии услуги")
     @PostMapping(value = "/getNextStep", produces = "application/json; charset=utf-8")
-    public ScenarioResponse getNextStep(@ApiParam(value = "Id услуги", required = true) @PathVariable String serviceId,
-                                        @ApiParam(value = "ScenarioRequest с текущим шагом сценария", required = true) @RequestBody ScenarioRequest request) {
+    public ScenarioResponse getNextStep(@Parameter(description = "Id услуги", required = true) @PathVariable String serviceId,
+                                        @Parameter(description = "ScenarioRequest с текущим шагом сценария", required = true) @RequestBody ScenarioRequest request) {
         tracingHelper.addServiceCodeAndOrderId(serviceId, request);
         MainScreenService mainScreenService = mainScreenServiceRegistry.getService(request.getScenarioDto().getTargetCode());
         mainScreenService.setStatusId(request.getScenarioDto());
@@ -80,17 +72,10 @@ public class ScenarioController implements ScenarioApi {
         return result;
     }
 
-    @Override
-    @ApiOperation(value = "Сохранение кешированных значений заявления в черновик")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 400, message = "Неверные параметры"),
-            @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
-            @ApiResponse(code = 403, message = "Нет прав"),
-            @ApiResponse(code = 500, message = "Внутренняя ошибка")})
+    @Operation(summary = "Сохранение кешированных значений заявления в черновик")
     @PostMapping(value = "/saveCacheToDraft", produces = "application/json; charset=utf-8")
-    public ScenarioResponse saveCacheToDraft(@ApiParam(value = "Id услуги", required = true) @PathVariable String serviceId,
-                                             @ApiParam(value = "ScenarioRequest с текущим шагом сценария", required = true) @RequestBody ScenarioRequest request) {
+    public ScenarioResponse saveCacheToDraft(@Parameter(description = "Id услуги", required = true) @PathVariable String serviceId,
+                                             @Parameter(description = "ScenarioRequest с текущим шагом сценария", required = true) @RequestBody ScenarioRequest request) {
         tracingHelper.addServiceCodeAndOrderId(serviceId, request);
 
         MainScreenService mainScreenService = mainScreenServiceRegistry.getService(request.getScenarioDto().getTargetCode());
@@ -108,9 +93,11 @@ public class ScenarioController implements ScenarioApi {
     /**
      * Method for calling delirium with action and performing next scenario step.
      */
-    @Override
+    @Operation(summary = "Переход на следующий шаг и выполнение действия в delirium")
     @PostMapping(value = "/deliriumNextStep")
-    public ScenarioResponse deliriumActionAndNextStep(@PathVariable String serviceId, @RequestBody DeliriumActionRequest request) {
+    public ScenarioResponse deliriumActionAndNextStep(
+            @Parameter(description = "Идентификатор услуги") @PathVariable String serviceId,
+            @RequestBody DeliriumActionRequest request) {
         tracingHelper.addServiceCodeAndOrderId(serviceId, request.getScenarioDto());
         MainScreenService mainScreenService = mainScreenServiceRegistry.getService(request.getScenarioDto().getTargetCode());
         mainScreenService.setStatusId(request.getScenarioDto());
@@ -125,6 +112,10 @@ public class ScenarioController implements ScenarioApi {
     /**
      * Method for for submit button handle
      */
+    @Operation(summary = "Пропуск текущего шага", description =
+            "Пропуск шага используется в сценариях отсутствия некоторых необязательных данных\n\n" +
+                    "Например: при отсутствии адреса временной регистрации проживания или при отсутствии электронной подписи"
+    )
     @PostMapping(value = "/skipStep")
     public ScenarioResponse skipStep(@PathVariable String serviceId, @RequestBody ScenarioRequest request) {
         tracingHelper.addServiceCodeAndOrderId(serviceId, request);
@@ -138,18 +129,11 @@ public class ScenarioController implements ScenarioApi {
     /**
      * Method for for submit button handle
      */
-    @Override
-    @ApiOperation(value = "Получение предыдущего шага в сценарии услуги")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 400, message = "Неверные параметры"),
-            @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
-            @ApiResponse(code = 403, message = "Нет прав"),
-            @ApiResponse(code = 500, message = "Внутренняя ошибка")})
+    @Operation(summary = "Получение предыдущего шага в сценарии услуги")
     @PostMapping(value = "/getPrevStep")
-    public ScenarioResponse getPrevStep(@ApiParam(value = "Id услуги", required = true) @PathVariable String serviceId,
-                                        @ApiParam(value = "ScenarioRequest с текущим шагом сценария", required = true) @RequestBody ScenarioRequest request,
-                                        @ApiParam(value = "Количество шагов на которое надо вернуться назад", defaultValue = "1") @RequestParam(defaultValue = "1") Integer stepsBack) {
+    public ScenarioResponse getPrevStep(@Parameter(description = "Id услуги", required = true) @PathVariable String serviceId,
+                                        @Parameter(description = "ScenarioRequest с текущим шагом сценария", required = true) @RequestBody ScenarioRequest request,
+                                        @Parameter(description = "Количество шагов на которое надо вернуться назад", schema = @Schema(defaultValue = "1")) @RequestParam(defaultValue = "1") Integer stepsBack) {
         tracingHelper.addServiceCodeAndOrderId(serviceId, request);
         MainScreenService mainScreenService = mainScreenServiceRegistry.getService(request.getScenarioDto().getTargetCode());
         mainScreenService.setStatusId(request.getScenarioDto());
@@ -161,23 +145,32 @@ public class ScenarioController implements ScenarioApi {
     /**
      * Method for checking if user has already orderId and draft for a service
      * This method also check if it's an invitation scenario case
-     * If orderId for user exists than check if current user is taking part as soapplicant
+     * If orderId for user exists than check if current user is taking part as co-applicant
      * If current user's oid is found in participants than ScenarioResponse is returned with special flag (inviteCase=true)
      *
      * @param serviceId      service ID
      * @param initServiceDto service init parameters
      * @return scenario response
      */
-    @Override
+    @Operation(summary = "Получение информации о наличии заявлений для текущего черновика")
     @PostMapping(value = "checkIfOrderIdExists")
-    public OrderListInfoDto checkIfOrderIdExists(@PathVariable String serviceId, @RequestBody InitServiceDto initServiceDto) {
+    public OrderListInfoDto checkIfOrderIdExists(
+            @Parameter(description = "Id услуги", required = true) @PathVariable String serviceId,
+            @RequestBody InitServiceDto initServiceDto
+    ) {
         tracingHelper.addServiceCodeAndOrderId(serviceId, initServiceDto);
         MainScreenService mainScreenService = mainScreenServiceRegistry.getService(initServiceDto.getTargetId());
         return mainScreenService.getOrderInfo(initServiceDto, serviceId);
     }
 
+    @Operation(summary = "Получение информации по идентификатору заявления", description =
+            "Идентификатор заявления ожидается в теле запроса (orderId)"
+    )
     @PostMapping(value = "getOrderStatus")
-    public OrderListInfoDto getOrderStatusById(@PathVariable String serviceId, @RequestBody InitServiceDto initServiceDto) {
+    public OrderListInfoDto getOrderStatusById(
+            @Parameter(description = "Id услуги", required = true) @PathVariable String serviceId,
+            @RequestBody InitServiceDto initServiceDto
+    ) {
         tracingHelper.addServiceCodeAndOrderId(serviceId, initServiceDto);
         MainScreenService mainScreenService = mainScreenServiceRegistry.getService(initServiceDto.getTargetId());
         return mainScreenService.getOrderInfoById(initServiceDto, serviceId);
@@ -186,6 +179,7 @@ public class ScenarioController implements ScenarioApi {
     /**
      * Метод используется при переходе по прямой ссылке к нам на портал.
      */
+    @Operation(summary = "Инициализации услуги в случае перехода по прямой ссылке на портал")
     @PostMapping(value = "external")
     public ScenarioResponse fromExternal(@RequestBody ExternalServiceRequest externalServiceRequest){
         ScenarioFromExternal scenarioFromExternal = ScenarioFromExternal

@@ -5,9 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
-import ru.gosuslugi.pgu.fs.pgu.client.PguClient;
 import ru.gosuslugi.pgu.fs.pgu.client.PguEmpowermentClient;
 import ru.gosuslugi.pgu.fs.pgu.client.PguEmpowermentClientV2;
+import ru.gosuslugi.pgu.fs.pgu.client.PguUtilsClient;
 import ru.gosuslugi.pgu.fs.service.EmpowermentService;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class EmpowermentServiceImpl implements EmpowermentService {
     private final UserPersonalData userPersonalData;
     private final PguEmpowermentClient pguEmpowermentClient;
     private final PguEmpowermentClientV2 pguEmpowermentClientV2;
-    private final PguClient pguClient;
+    private final PguUtilsClient orderUtilsClient;
 
     @Override
     public boolean hasEmpowerment(List<String> empowerment) {
@@ -62,7 +62,7 @@ public class EmpowermentServiceImpl implements EmpowermentService {
                 || (Objects.nonNull(userPersonalData.getCurrentRole()) && Boolean.parseBoolean(userPersonalData.getCurrentRole().getChief()))){
             return true;
         }
-        return pguClient.checkAuthorityForService(authorityId,targetId);
+        return orderUtilsClient.checkAuthorityForService(authorityId,targetId);
     }
 
     @Override
@@ -77,6 +77,6 @@ public class EmpowermentServiceImpl implements EmpowermentService {
         if(Objects.isNull(authorityId)){
             return false;
         }
-        return pguClient.checkAuthorityForService(authorityId,targetId);
+        return orderUtilsClient.checkAuthorityForService(authorityId,targetId);
     }
 }

@@ -25,14 +25,14 @@ class TerrabyteFileProcessorSpec extends Specification {
         def fileInfo = getFileInfo()
         def zipName = fileInfo.getFileName().substring(0, fileInfo.getFileName().lastIndexOf("." + fileInfo.getFileExt())) + ".zip"
         def zipMimeType = "application/zip"
-
+        def fileMnemonic = fileInfo.getMnemonic() + ".ZIP"
         when:
         terrabyteFileProcessor.replaceByZipped(fileInfo)
 
         then:
         1 * client.getFile(fileInfo, userPersonalData.getUserId(), userPersonalData.getToken()) >> { bytes }
         1 * client.deleteFile(fileInfo, userPersonalData.getUserId(), userPersonalData.getToken())
-        1 * client.internalSaveFile(_ as byte[], zipName, fileInfo.getMnemonic(), zipMimeType, fileInfo.getObjectId(), fileInfo.getObjectTypeId())
+        1 * client.internalSaveFile(_ as byte[], zipName, fileMnemonic, zipMimeType, fileInfo.getObjectId(), fileInfo.getObjectTypeId())
     }
 
     static def getFileInfo() {

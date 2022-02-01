@@ -11,15 +11,12 @@ import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.fs.common.component.AbstractComponent;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
-import ru.gosuslugi.pgu.fs.pgu.client.PguClient;
+import ru.gosuslugi.pgu.fs.pgu.client.PguFeedClient;
 import ru.gosuslugi.pgu.fs.pgu.dto.feed.FeedDto;
 import ru.gosuslugi.pgu.fs.pgu.dto.feed.Params;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.NsiDictionary;
-import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiDictionaryFilterRequest;
 import ru.gosuslugi.pgu.pgu_common.nsi.service.NsiDictionaryService;
-import ru.gosuslugi.pgu.pgu_common.nsi.util.NsiDictionaryFilterRequestUtil;
 
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -33,7 +30,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Slf4j
 public class GepsDataComponent extends AbstractComponent<GepsData> {
-    private final PguClient pguClient;
+    private final PguFeedClient pguFeedClient;
 
     private final NsiDictionaryService nsiDictionaryService;
 
@@ -44,7 +41,7 @@ public class GepsDataComponent extends AbstractComponent<GepsData> {
 
     @Override
     public ComponentResponse<GepsData> getInitialValue(FieldComponent component, ScenarioDto scenarioDto) {
-        FeedDto feed = pguClient.findFeed(Feed.FeedType.GEPS, scenarioDto.getGepsId());
+        FeedDto feed = pguFeedClient.findFeed(Feed.FeedType.GEPS, scenarioDto.getGepsId());
 
         if(hasRequiredData(feed)) {
             Params feedParams = feed.getDetail().getParams();

@@ -38,8 +38,8 @@ public class EnrichAddressTest {
 
         // suppress field orders
         assertEquals(
-            objectMapper.readTree(readFile("ru/gosuslugi/pgu/fs/input/EnrichAddressTest_RegistrationAddrHelper_excpected.json")),
-            objectMapper.readTree(resultAddress)
+                objectMapper.readTree(readFile("ru/gosuslugi/pgu/fs/input/EnrichAddressTest_RegistrationAddrHelper_excpected.json")),
+                objectMapper.readTree(resultAddress)
         );
     }
 

@@ -102,9 +102,9 @@ public class RepeatableFieldsComponent extends AbstractCycledComponent<String> {
     protected void validateAfterSubmit(Map<String, String> incorrectAnswers, Map.Entry<String, ApplicantAnswer> entry, ScenarioDto scenarioDto, FieldComponent fieldComponent) {
         List<Map<String, String>> childrenAnswers = AnswerUtil.toStringMapList(entry, true);
         FieldComponent repeatableFieldsComponent = scenarioDto.getDisplay().getComponents().stream()
-            .filter(f -> f.getId().equals(entry.getKey()))
-            .findAny()
-            .orElse(null);
+                .filter(f -> f.getId().equals(entry.getKey()))
+                .findAny()
+                .orElse(null);
         List<FieldComponent> childrenComponents = FieldComponentUtil.getChildrenList(repeatableFieldsComponent);
 
         List<Map<String, String>> incorrectChildrenAnswerList = validateForms(fieldComponent, scenarioDto, childrenAnswers, childrenComponents);
@@ -117,24 +117,24 @@ public class RepeatableFieldsComponent extends AbstractCycledComponent<String> {
             AnswerUtil.setCycleReferenceValue(scenarioDto, fieldComponent);
 
             Arrays.<Supplier<Map.Entry<String, String>>>asList(
-                () ->  ZagranpassportRepeatableFieldsValidationUtil.childNameChangeAllFieldsEqual(name, childrenAnswers, fieldComponent)
+                    () ->  ZagranpassportRepeatableFieldsValidationUtil.childNameChangeAllFieldsEqual(name, childrenAnswers, fieldComponent)
             ).forEach(
-                supplier -> {
+                    supplier -> {
 
-                    // Если ошибок еще нет, делаем очередную проверку и добавляем ошибку при ненулевом результате
-                    if (!incorrectAnswers.containsKey(name)) {
-                        Optional.ofNullable(supplier.get()).ifPresent(pair -> incorrectAnswers.put(pair.getKey(), pair.getValue()));
+                        // Если ошибок еще нет, делаем очередную проверку и добавляем ошибку при ненулевом результате
+                        if (!incorrectAnswers.containsKey(name)) {
+                            Optional.ofNullable(supplier.get()).ifPresent(pair -> incorrectAnswers.put(pair.getKey(), pair.getValue()));
+                        }
                     }
-                }
             );
         }
     }
 
     private List<Map<String, String>> validateForms(
-        FieldComponent fieldComponent,
-        ScenarioDto scenarioDto,
-        List<Map<String, String>> childrenAnswers,
-        List<FieldComponent> childrenComponents
+            FieldComponent fieldComponent,
+            ScenarioDto scenarioDto,
+            List<Map<String, String>> childrenAnswers,
+            List<FieldComponent> childrenComponents
     ) {
         List<Map<String,String>> result = new ArrayList<>();
         for (int i = 0; i < childrenAnswers.size(); i++) {

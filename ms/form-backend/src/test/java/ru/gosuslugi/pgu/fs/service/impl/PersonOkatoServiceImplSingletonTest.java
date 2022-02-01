@@ -32,20 +32,20 @@ public class PersonOkatoServiceImplSingletonTest {
         String badOkato = "bad_okato";
 
         Mockito.when(personOkatoService.getOkato())
-            .thenCallRealMethod();
+                .thenCallRealMethod();
         Mockito.when(personOkatoService.calculate())
-            .thenAnswer(
-                new Answer<String>() {
-                    private int index = 0;
-                    @Override
-                    public String answer(InvocationOnMock invocationOnMock) throws Throwable {
-                        Thread.sleep(50L);
-                        String result = index == 0 ? newOkato : badOkato;
-                        index++;
-                        return result;
-                    }
-                }
-            );
+                .thenAnswer(
+                        new Answer<String>() {
+                            private int index = 0;
+                            @Override
+                            public String answer(InvocationOnMock invocationOnMock) throws Throwable {
+                                Thread.sleep(50L);
+                                String result = index == 0 ? newOkato : badOkato;
+                                index++;
+                                return result;
+                            }
+                        }
+                );
 
         ExecutorService executorService = Executors.newFixedThreadPool(threadCount);
         Collection<Future<String>> futures = new ArrayList<>();
@@ -70,8 +70,8 @@ public class PersonOkatoServiceImplSingletonTest {
 
         // Проверяем замоканные вызванные функции
         Mockito.verify(personOkatoService, Mockito.times(threadCount))
-            .getOkato();
+                .getOkato();
         Mockito.verify(personOkatoService, Mockito.times(1))
-            .calculate();
+                .calculate();
     }
 }

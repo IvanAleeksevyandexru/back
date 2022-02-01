@@ -60,7 +60,7 @@ public class BillInfoComponent extends AbstractComponent<BillInfoComponentDto> {
                 .filter(attr -> ORIGINAL_AMOUNT_BILL_ATTR.equals(attr.getName()))
                 .findAny()
                 .map(BillInfoAttr::getValue)
-                .orElse(String.valueOf(billInfo.getAmount()));
+                .orElse(billInfo.getAmount());
 
         BillInfoComponentDto billInfoComponentDto = new BillInfoComponentDto();
         billInfoComponentDto.setBillName(billInfo.getBillName());

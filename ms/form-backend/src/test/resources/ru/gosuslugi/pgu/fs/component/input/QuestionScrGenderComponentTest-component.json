@@ -1,0 +1,22 @@
+{
+  "id": "id",
+  "type": "GQuestionScr",
+  "attrs": {
+    "actions": [
+      {
+        "label": [
+          "act_lab_man",
+          "act_lab_woman"
+        ]
+      }
+    ],
+    "answers": [
+      {
+        "label": [
+          "ans_lab_man",
+          "ans_lab_woman"
+        ]
+      }
+    ]
+  }
+}

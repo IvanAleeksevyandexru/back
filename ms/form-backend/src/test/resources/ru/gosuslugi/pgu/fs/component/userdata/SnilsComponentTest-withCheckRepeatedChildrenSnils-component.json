@@ -1,0 +1,12 @@
+{
+  "id": "pd6",
+  "type": "SnilsInput",
+  "label": "СНИЛС",
+  "attrs": {
+    "refs": {},
+    "checkRepeatedChildrenSnils": "true"
+  },
+  "value": "",
+  "visited": false,
+  "required": false
+}

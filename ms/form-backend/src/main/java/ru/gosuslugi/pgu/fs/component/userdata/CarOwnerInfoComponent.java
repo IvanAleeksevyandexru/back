@@ -61,8 +61,8 @@ public class CarOwnerInfoComponent extends AbstractComponent<CarOwnerInfoCompone
             }
             OwnerDocumentDto ownerDocumentInfo = new OwnerDocumentDto(owner.getDocumentNumSer(), date, owner.getIdDocumentType());
             String fullName = Stream.of(owner.getLastName(), owner.getFirstName(), owner.getMiddleName())
-                .filter(Strings::isNotBlank)
-                .collect(Collectors.joining(" "));
+                    .filter(Strings::isNotBlank)
+                    .collect(Collectors.joining(" "));
             OwnerDto ownerInfo = new OwnerDto(fullName, ownerDocumentInfo);
             result.setOwnerInfo(ownerInfo);
         }

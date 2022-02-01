@@ -51,8 +51,8 @@ public class ConfirmPersonalUserRegAddrChangeComponent extends AbstractFullAddre
 
     private Optional<EsiaAddress> getEsiaAddress(AddressType addressType) {
         return userPersonalData.getAddresses().stream()
-            .filter(a -> a.getType().equals(addressType.getEsiaAddressType().getCode()))
-            .findFirst();
+                .filter(a -> a.getType().equals(addressType.getEsiaAddressType().getCode()))
+                .findFirst();
     }
 
     @Override

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.dto.ScenarioDto;
-import ru.gosuslugi.pgu.dto.SmevConverterRequestDto;
+import ru.gosuslugi.pgu.dto.SmevConverterGetRequestDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
@@ -84,7 +84,7 @@ public class BarbarbokMapServiceComponent extends AbstractMapComponent<String> i
         initialValue.putAll(addressData);
         initialValue.putAll(getPersonalDataValues(scenarioDto, attrsDto));
 
-        var smevConverterRequestDto = objectMapper.convertValue(attrs, SmevConverterRequestDto.class);
+        var smevConverterRequestDto = objectMapper.convertValue(attrs, SmevConverterGetRequestDto.class);
         var data = smevConverterRequestDto.getData();
         Object okato = addressData.get(OKATO_ATTR_NAME);
         if (okato != null) {

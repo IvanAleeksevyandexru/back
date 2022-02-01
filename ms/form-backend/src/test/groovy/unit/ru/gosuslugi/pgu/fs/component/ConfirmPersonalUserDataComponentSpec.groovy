@@ -525,10 +525,10 @@ class ConfirmPersonalUserDataComponentSpec extends Specification {
         given:
         def fieldComponent = new FieldComponent(
                 attrs: [fields: [[fieldName: 'birthPlace',attrs: ['validation': [[ 'type'     : 'RegExp', 'value'    : '[а-яА-ЯёЁ\\d\\s().",№:;\\-/\']{1,255}',
-                 'errorMsg' : 'Проверьте место рождения',
-                 'errorDesc': 'Поле может содержать только русские буквы, цифры и символы: «.», «,», «;», «:», «-», «\'», «"», «(», «)», «/», «№»'
-                 ]]]
-                 ]]])
+                                                                                   'errorMsg' : 'Проверьте место рождения',
+                                                                                   'errorDesc': 'Поле может содержать только русские буквы, цифры и символы: «.», «,», «;», «:», «-», «\'», «"», «(», «)», «/», «№»'
+                                                                                 ]]]
+                                 ]]])
 
         when:
         ComponentResponse initialValue = ComponentResponse.of(new FormDto(storedValues: new ConfirmPersonalUserData(birthPlace: 'SGHGHJ R@#^&')))
@@ -635,12 +635,12 @@ class ConfirmPersonalUserDataComponentSpec extends Specification {
     def 'Can get RegExp validation errors'() {
         given:
         def fieldComponent = new FieldComponent(attrs: [fields: [[fieldName: 'birthPlace', attrs: ['validation':[[
-                    'type':'RegExp',
-                    'value':'[а-яА-ЯёЁ\\d\\s().",№:;\\-/\']{1,255}',
-                    'errorMsg':'Проверьте место рождения',
-                    'errorDesc': 'Поле может содержать только русские буквы, цифры и символы: «.», «,», «;», «:», «-», «\'», «"», «(», «)», «/», «№»'
-               ]]]
-            ]]])
+                                                                                                                         'type':'RegExp',
+                                                                                                                         'value':'[а-яА-ЯёЁ\\d\\s().",№:;\\-/\']{1,255}',
+                                                                                                                         'errorMsg':'Проверьте место рождения',
+                                                                                                                         'errorDesc': 'Поле может содержать только русские буквы, цифры и символы: «.», «,», «;», «:», «-», «\'», «"», «(», «)», «/», «№»'
+                                                                                                                 ]]]
+                                                                 ]]])
         ComponentResponse initialValue = ComponentResponse.of(new FormDto(storedValues: new ConfirmPersonalUserData(birthPlace: 'Тамбов R@#^&')))
 
         when:
@@ -655,12 +655,12 @@ class ConfirmPersonalUserDataComponentSpec extends Specification {
     def 'Can get RegExp validation'() {
         given:
         def fieldComponent = new FieldComponent(attrs: [fields: [[fieldName: 'birthPlace', attrs: ['validation':[[
-                     'type':'RegExp',
-                     'value':'[а-яА-ЯёЁ\\d\\s().",№:;\\-/\']{1,255}',
-                     'errorMsg':'Проверьте место рождения',
-                     'errorDesc': 'Поле может содержать только русские буквы, цифры и символы: «.», «,», «;», «:», «-», «\'», «"», «(», «)», «/», «№»'
-                 ]]]
-             ]]])
+                                                                                                                         'type':'RegExp',
+                                                                                                                         'value':'[а-яА-ЯёЁ\\d\\s().",№:;\\-/\']{1,255}',
+                                                                                                                         'errorMsg':'Проверьте место рождения',
+                                                                                                                         'errorDesc': 'Поле может содержать только русские буквы, цифры и символы: «.», «,», «;», «:», «-», «\'», «"», «(», «)», «/», «№»'
+                                                                                                                 ]]]
+                                                                 ]]])
         ComponentResponse initialValue = ComponentResponse.of(new FormDto(storedValues: new ConfirmPersonalUserData(birthPlace: 'Тамбов ')))
 
         when:

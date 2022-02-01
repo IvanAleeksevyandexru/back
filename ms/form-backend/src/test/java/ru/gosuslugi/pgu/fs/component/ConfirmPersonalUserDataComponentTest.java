@@ -29,7 +29,7 @@ public class ConfirmPersonalUserDataComponentTest {
     private List<DocInputField> getFields() throws IOException {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("ConfirmPersonalUserDataComponent.json");) {
             return objectMapper.readValue(
-                is,
+                    is,
                     new TypeReference<>() {}
             );
         }
@@ -38,8 +38,8 @@ public class ConfirmPersonalUserDataComponentTest {
     private StatesField getData() throws IOException {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("States.json");) {
             return objectMapper.readValue(
-                is,
-                StatesField.class
+                    is,
+                    StatesField.class
             );
         }
     }

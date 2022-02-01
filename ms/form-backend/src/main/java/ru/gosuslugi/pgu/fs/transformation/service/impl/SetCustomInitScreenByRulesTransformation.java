@@ -34,16 +34,16 @@ public class SetCustomInitScreenByRulesTransformation implements Transformation 
     public TransformationResult transform(DraftHolderDto current, Order order, Map<String, Object> spec) {
 
         List<ScreenRule> rules = spec != null && spec.containsKey(MappingTransformation.TRANSFORMATION_RULES_ATTR_NAME)
-            ? JsonProcessingUtil.getObjectMapper().convertValue(
+                ? JsonProcessingUtil.getObjectMapper().convertValue(
                 spec.get(MappingTransformation.TRANSFORMATION_RULES_ATTR_NAME),
                 new TypeReference<>() {})
-            : Collections.emptyList();
+                : Collections.emptyList();
 
         val scenarioDto = current.getBody();
         val serviceDescriptor = mainDescriptorService.getServiceDescriptor(scenarioDto.getServiceDescriptorId());
 
         val nextScreen = screenFinderService
-            .findScreenDescriptorByRulesOrEmpty(scenarioDto, serviceDescriptor, rules);
+                .findScreenDescriptorByRulesOrEmpty(scenarioDto, serviceDescriptor, rules);
         if (nextScreen.isEmpty()) {
             return new TransformationResult(false, current, order);
         }

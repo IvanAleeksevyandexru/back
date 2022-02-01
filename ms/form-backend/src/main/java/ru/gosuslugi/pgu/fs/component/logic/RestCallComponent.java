@@ -51,25 +51,26 @@ public class RestCallComponent extends AbstractComponent<RestCallDto> {
         Map<String, String> arguments = component.getArguments();
 
         RestCallDto result = new RestCallDto();
-        result.setMethod(component.getAttrs().get(METHOD_ATTR).toString().toUpperCase());
 
-        String link = Objects.toString(component.getAttrs().get(URL_ATTR), null);
-        if (StringUtils.isEmpty(link)) {
+        result.setMethod(attr.get(METHOD_ATTR).toString().toUpperCase());
+
+        String link = Objects.toString(attr.get(URL_ATTR), null);
+        if (!StringUtils.hasText(link)) {
             link = restCallUrl;
         }
-        String url = link  + component.getAttrs().get(PATH_ATTR);
+        String url = link  + attr.get(PATH_ATTR);
         if (attr.containsKey(QUERY_PARAMETERS)) {
             Map<String, String> queryParams = getAttrAsMap(QUERY_PARAMETERS, attr);
             if (!CollectionUtils.isEmpty(queryParams)) {
                 url = url + "?" + queryParams.entrySet().stream()
-                    .map(it -> it.getKey() + "=" + it.getValue())
-                    .collect(Collectors.joining("&"));
+                        .map(it -> it.getKey() + "=" + it.getValue())
+                        .collect(Collectors.joining("&"));
             }
         }
         result.setUrl(resolveArguments(url, arguments));
 
         if (attr.containsKey(BODY_ATTR)) {
-            result.setBody(resolveArguments(component.getAttrs().get(BODY_ATTR).toString(), arguments));
+            result.setBody(resolveArguments(attr.get(BODY_ATTR).toString(), arguments));
         }
 
         if (attr.containsKey(HEADERS_ATTR)) {
@@ -87,9 +88,9 @@ public class RestCallComponent extends AbstractComponent<RestCallDto> {
 
         if (attr.containsKey(TIMEOUT_ATTR)) {
             try {
-                result.setTimeout(Long.valueOf(component.getAttrs().get(TIMEOUT_ATTR).toString()));
+                result.setTimeout(Long.valueOf(attr.get(TIMEOUT_ATTR).toString()));
             } catch (NumberFormatException e) {
-                log.error("Неверное значение таймаута: {}", component.getAttrs().get(TIMEOUT_ATTR).toString());
+                log.error("Неверное значение таймаута: {}", attr.get(TIMEOUT_ATTR).toString());
             }
         }
 

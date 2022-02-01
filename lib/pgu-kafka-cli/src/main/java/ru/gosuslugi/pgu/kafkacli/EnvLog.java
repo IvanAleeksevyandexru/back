@@ -50,8 +50,8 @@ public class EnvLog {
 
                 val value = Objects.toString(entry.getValue());
                 val valueToLog = maskPatterns.stream().anyMatch(p -> p.matcher(entry.getKey()).matches())
-                    ? "*".repeat(value.length())
-                    : value;
+                        ? "*".repeat(value.length())
+                        : value;
 
                 msg.append("\n").append(entry.getKey()).append(" = ").append(valueToLog);
 

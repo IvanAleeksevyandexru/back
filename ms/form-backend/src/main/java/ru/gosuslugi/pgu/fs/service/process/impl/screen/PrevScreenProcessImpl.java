@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.context.WebApplicationContext;
-import ru.gosuslugi.pgu.fs.common.exception.FormBaseException;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.DisplayRequest;
 import ru.gosuslugi.pgu.dto.InitServiceDto;
@@ -16,19 +15,30 @@ import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.ScenarioResponse;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.ScreenDescriptor;
+import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
 import ru.gosuslugi.pgu.dto.descriptor.types.ScreenType;
 import ru.gosuslugi.pgu.fs.common.component.BaseComponent;
 import ru.gosuslugi.pgu.fs.common.component.ComponentRegistry;
 import ru.gosuslugi.pgu.fs.common.descriptor.MainDescriptorService;
+import ru.gosuslugi.pgu.fs.common.exception.FormBaseException;
 import ru.gosuslugi.pgu.fs.common.helper.HelperScreenRegistry;
 import ru.gosuslugi.pgu.fs.common.helper.ScreenHelper;
 import ru.gosuslugi.pgu.fs.common.service.ComponentService;
 import ru.gosuslugi.pgu.fs.common.service.CycledScreenService;
 import ru.gosuslugi.pgu.fs.common.service.DisplayReferenceService;
+import ru.gosuslugi.pgu.fs.descriptor.ErrorModalDescriptorService;
+import ru.gosuslugi.pgu.fs.exception.DraftNotEditableException;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.OrderStatuses;
 import ru.gosuslugi.pgu.fs.service.impl.FormScenarioDtoServiceImpl;
 import ru.gosuslugi.pgu.fs.service.process.PrevScreenProcess;
 
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -48,6 +58,7 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
     private final DisplayReferenceService displayReferenceService;
     private final FormScenarioDtoServiceImpl scenarioDtoService;
     private final ComponentRegistry componentRegistry;
+    private final ErrorModalDescriptorService errorModalDescriptorService;
 
     @Override
     public Boolean onlyInitScreenWasShow() {
@@ -89,10 +100,10 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
         if (dto.getDisplay().getId().equals(lastScreenId)) {
             serviceDescriptor.getScreenDescriptorById(lastScreenId).ifPresent(screen -> {
                 Map<String, ApplicantAnswer> answersToCache = dto.getApplicantAnswers()
-                    .entrySet()
-                    .stream()
-                    .filter(e -> screen.getComponentIds().contains(e.getKey()))
-                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                        .entrySet()
+                        .stream()
+                        .filter(e -> screen.getComponentIds().contains(e.getKey()))
+                        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
                 dto.getCachedAnswers().putAll(answersToCache);
                 answersToCache.keySet().forEach(dto.getApplicantAnswers()::remove);
@@ -121,10 +132,10 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
                 .filter(entry-> fieldComponentsForScreen.stream().anyMatch(fc -> fc.getId().equals(entry.getKey())))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
         dto.setApplicantAnswers(dto.getApplicantAnswers()
-            .entrySet()
-            .stream()
-            .filter(entry-> fieldComponentsForScreen.stream().noneMatch(fc -> fc.getId().equals(entry.getKey())))
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
+                .entrySet()
+                .stream()
+                .filter(entry-> fieldComponentsForScreen.stream().noneMatch(fc -> fc.getId().equals(entry.getKey())))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
 
     @Override
@@ -132,14 +143,14 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
         ScreenDescriptor screenDescriptor = getScreenDescriptor();
         List<FieldComponent> fieldComponentsForScreen = serviceDescriptor.getFieldComponentsForScreen(screenDescriptor);
         Optional<FieldComponent> cycledFieldComponent = fieldComponentsForScreen.stream()
-            .filter(f -> !CollectionUtils.isEmpty(f.getAttrs()))
-            .filter(f -> (Boolean) f.getAttrs().getOrDefault("isCycled", Boolean.FALSE))
-            .findAny();
+                .filter(f -> !CollectionUtils.isEmpty(f.getAttrs()))
+                .filter(f -> (Boolean) f.getAttrs().getOrDefault("isCycled", Boolean.FALSE))
+                .findAny();
 
         if (cycledFieldComponent.isPresent()) {
             request.getScenarioDto().getCycledApplicantAnswers().setCurrentAnswerId(cycledFieldComponent.get().getId());
             final var lastCycledAnswerItem =
-                request.getScenarioDto().getCycledApplicantAnswerContext().getCycledApplicantAnswerItem();
+                    request.getScenarioDto().getCycledApplicantAnswerContext().getCycledApplicantAnswerItem();
             if (lastCycledAnswerItem != null) {
                 request.getScenarioDto().getApplicantAnswers().putAll(lastCycledAnswerItem.getItemAnswers());
             }
@@ -206,7 +217,36 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
     public void removeCycledAnswers() {
         var dto = request.getScenarioDto();
         dto.getCurrentValue().keySet().forEach(v ->
-            dto.getCycledApplicantAnswers().removeAnswer(v)
+                dto.getCycledApplicantAnswers().removeAnswer(v)
         );
     }
+
+    private Optional<FieldComponent> findComponentForPredicate(ScenarioDto scenarioDto,
+                                                               ServiceDescriptor serviceDescriptor,
+                                                               Predicate<FieldComponent> predicate) {
+        return scenarioDto.getDisplay().getComponents().stream()
+                .map(fieldComponent -> serviceDescriptor.getFieldComponentById(fieldComponent.getId()))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .filter(predicate)
+                .findAny();
+    }
+
+    private boolean hasCheckForDuplicate() {
+        Optional<FieldComponent> component = findComponentForPredicate(response.getScenarioDto(), serviceDescriptor, FieldComponent::getCheckForDuplicate);
+        return component.isPresent();
+    }
+
+    @Override
+    public void checkEditable() {
+        var scenarioDto = this.response.getScenarioDto();
+        var serviceInfo = scenarioDto.getServiceInfo();
+        if(serviceInfo != null && serviceInfo.getStatusId() != null && !OrderStatuses.isEditableStatus(serviceInfo.getStatusId())){
+            throw new DraftNotEditableException(
+                    DraftNotEditableException.createWindow(serviceDescriptor.getService(), hasCheckForDuplicate()),
+                    "Заявление находится в нередактируемом статусе"
+            );
+        }
+    }
+
 }

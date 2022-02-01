@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
 
@@ -49,7 +50,7 @@ public class RequestComponentsUtil {
     }
 
     public static void validateComponentAttrs(List<String> attrsList, Map<String, Object> attrs) {
-        if (!attrsList.stream().allMatch(attrs::containsKey)) {
+        if (!attrsList.stream().allMatch(key -> Objects.nonNull(attrs.get(key)))) {
             throw new FormBaseException("Заданы не все обязательные атрибуты компонента");
         }
 

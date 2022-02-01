@@ -61,17 +61,17 @@ public class TransformServiceImpl implements TransformService {
 
 
             return transformationService.transform(
-                transformationBlocks
-                        .stream()
-                        .filter(e-> e
-                                .getStatusId()
-                                .equals(statusInfo.getStatusId().toString())
-                        )
-                        .findFirst()
-                        .get(),
-                statusInfo,
-                order,
-                draftHolderDto
+                    transformationBlocks
+                            .stream()
+                            .filter(e-> e
+                                    .getStatusId()
+                                    .equals(statusInfo.getStatusId().toString())
+                            )
+                            .findFirst()
+                            .get(),
+                    statusInfo,
+                    order,
+                    draftHolderDto
             );
         }
         return new TransformationResult(false, draftHolderDto, order);
@@ -81,12 +81,15 @@ public class TransformServiceImpl implements TransformService {
     public boolean isAcceptedCode(Long statusCode, String serviceId) {
         ServiceDescriptor descriptor = mainDescriptorService.getServiceDescriptor(serviceId);
         Map<String, List<TransformationRule>> statusTransformationMap = descriptor.getStatusTransformationRules();
-
+        var transformationSection = descriptor.getTransformation();
+        if(Objects.isNull(transformationSection)){
+            transformationSection = new ArrayList<>();
+        }
         // TODO пока только для единоличного заполнителя
         return descriptor.checkOnlyOneApplicantAndStage()
                 && !isNull(statusTransformationMap)
                 && (statusTransformationMap.containsKey(statusCode.toString())
-                || descriptor.getTransformation().stream().anyMatch(e -> e.getStatusId().equals(statusCode.toString()))
+                || transformationSection.stream().anyMatch(e -> e.getStatusId().equals(statusCode.toString()))
         );
     }
 }

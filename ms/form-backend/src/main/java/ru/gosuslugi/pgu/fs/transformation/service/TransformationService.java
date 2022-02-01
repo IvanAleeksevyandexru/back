@@ -20,9 +20,9 @@ public interface TransformationService {
      * @return результат преобразования (проведена ли трансформация и преобразованный (или оригинальный) объект)
      */
     TransformationResult transform(
-        TransformationBlock transformationBlock,
-        StatusInfo statusInfo,
-        Order order,
-        DraftHolderDto origin
+            TransformationBlock transformationBlock,
+            StatusInfo statusInfo,
+            Order order,
+            DraftHolderDto origin
     );
 }

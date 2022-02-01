@@ -183,8 +183,8 @@ public class NsiDictionaryFilterHelper {
      * @throws JSONException исключение в случае ошибки парсинга json
      */
     public NsiDictionaryFilterSimple.Builder getSimpleConditionBuilder(ScenarioDto scenarioDto,
-                                                                        Map<String, Object> simpleFilter,
-                                                                        Map<String, String> presetProperties) throws JSONException {
+                                                                       Map<String, Object> simpleFilter,
+                                                                       Map<String, String> presetProperties) throws JSONException {
         String valueType = simpleFilter.get(DICT_FILTER_VALUE_TYPE).toString();
         if (Objects.isNull(valueType))
             throw new FormBaseException(String.format(NOT_CORRECT_FILTER_VALUE_TYPE, valueType));

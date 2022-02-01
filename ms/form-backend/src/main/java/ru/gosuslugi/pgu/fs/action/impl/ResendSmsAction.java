@@ -16,6 +16,6 @@ public class ResendSmsAction implements ActionService {
 
     @Override
     public ActionResponseDto invoke(ActionRequestDto actionRequestDto) {
-       return new ActionResponseDto();
+        return new ActionResponseDto();
     }
 }

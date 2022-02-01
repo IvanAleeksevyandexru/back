@@ -12,8 +12,10 @@ import ru.gosuslugi.pgu.core.lk.model.order.OrderStatus;
 import ru.gosuslugi.pgu.dto.descriptor.HighloadParameters;
 import ru.gosuslugi.pgu.dto.descriptor.types.OrderType;
 import ru.gosuslugi.pgu.fs.common.service.UserCookiesService;
-import ru.gosuslugi.pgu.fs.pgu.client.PguClient;
 import ru.gosuslugi.pgu.fs.pgu.client.impl.OrderStatuses;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.PguOrderClientImpl;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.PguUtilsClientImpl;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.PguEmailClientImpl;
 import ru.gosuslugi.pgu.fs.pgu.dto.HighLoadOrderRequestDto;
 import ru.gosuslugi.pgu.fs.pgu.dto.OrderLight;
 import ru.gosuslugi.pgu.fs.pgu.dto.PguServiceCodes;
@@ -36,10 +38,12 @@ public class PguOrderServiceImpl implements PguOrderService {
 
     private final UserPersonalData userPersonalData;
     private final UserOrgData userOrgData;
-    private final PguClient pguClient;
+    private final PguUtilsClientImpl orderUtilsClient;
     private final UserCookiesService userCookiesService;
     private final EmpowermentService empowermentService;
     private final HighLoadOrderPguMapper highLoadOrderPguMapper;
+    private final PguEmailClientImpl sendEmailInvitationClient;
+    private final PguOrderClientImpl orderClient;
 
     @Override
     public Long createOrderId(String serviceCode, String targetCode, OrderType orderType, HighloadParameters highloadParameters) {
@@ -52,7 +56,7 @@ public class PguOrderServiceImpl implements PguOrderService {
         }
         info(log, () -> String.format("Creating new %s order for service %s:%s", orderType, serviceCode, targetCode));
         PoweredOrderWithAuthDTO draftDto = createDraftDto(serviceCode, targetCode, orderType);
-        Order order = pguClient.createOrder(draftDto);
+        Order order = orderClient.createOrder(draftDto);
         return order.getId();
     }
 
@@ -63,20 +67,20 @@ public class PguOrderServiceImpl implements PguOrderService {
                 highLoadOrderPguDto.getServiceTargetCode())
         );
 
-        return pguClient.createHighloadOrder(highLoadOrderPguDto).getId();
+        return orderClient.createHighloadOrder(highLoadOrderPguDto).getId();
     }
 
     @Override
     public Order findLastOrder(String serviceCode, String targetCode) {
         info(log, () -> String.format("Checking if orderId exists for user with oid %s service %s:%s", userPersonalData.getUserId(), serviceCode, targetCode));
-        return pguClient.findLastOrder(serviceCode, targetCode);
+        return orderClient.findLastOrder(serviceCode, targetCode);
     }
 
     @Override
     public List<Order> findDrafts(String serviceCode, String targetCode) {
         info(log, () -> String.format("Checking if orderId exists for user with oid %s service %s:%s", userPersonalData.getUserId(), serviceCode, targetCode));
 
-        return pguClient.findOrders(serviceCode, targetCode).stream()
+        return orderClient.findOrders(serviceCode, targetCode).stream()
                 .filter(o -> o.getOrderStatusId() == OrderStatuses.DRAFT.getStatusId())
                 .collect(toList());
     }
@@ -85,7 +89,7 @@ public class PguOrderServiceImpl implements PguOrderService {
     public List<Order> findDrafts(String serviceCode, String targetCode, Long userId) {
         info(log, () -> String.format("Checking if orderId exists for user with oid %s service %s:%s", userId, serviceCode, targetCode));
 
-        return pguClient.findOrders(serviceCode, targetCode, userId).stream()
+        return orderClient.findOrders(serviceCode, targetCode, userId).stream()
                 .filter(o -> o.getOrderStatusId() == OrderStatuses.DRAFT.getStatusId())
                 .collect(toList());
     }
@@ -94,7 +98,7 @@ public class PguOrderServiceImpl implements PguOrderService {
     public List<OrderLight> findDraftsLight(String serviceCode, String targetCode, Long userId) {
         info(log, () -> String.format("Checking if orderId exists for user with oid %s service %s:%s", userId, serviceCode, targetCode));
 
-        return pguClient.findOrdersLight(serviceCode, targetCode, userId).stream()
+        return orderClient.findOrdersLight(serviceCode, targetCode, userId).stream()
                 .filter(o -> o.getStatusId() == OrderStatuses.DRAFT.getStatusId())
                 .collect(toList());
     }
@@ -107,32 +111,32 @@ public class PguOrderServiceImpl implements PguOrderService {
      */
     @Override
     public List<Order> findOrders(String serviceCode, String targetCode) {
-        return pguClient.findOrders(serviceCode, targetCode);
+        return orderClient.findOrders(serviceCode, targetCode);
     }
 
     @Override
     public List<Order> findOrdersByStatus(String serviceCode, String targetCode, OrderStatuses orderStatus) {
-        return pguClient.findOrdersByStatus(serviceCode, targetCode, orderStatus);
+        return orderClient.findOrdersByStatus(serviceCode, targetCode, orderStatus);
     }
 
     @Override
     public List<Order> findOrdersWithoutStatuses(String serviceCode, String targetCode, List<Long> ignoreOrderStatuses) {
-        return pguClient.findOrdersWithoutStatuses(serviceCode, targetCode, ignoreOrderStatuses);
+        return orderClient.findOrdersWithoutStatuses(serviceCode, targetCode, ignoreOrderStatuses);
     }
 
     @Override
     public Boolean hasDuplicatesForOrder(String serviceCode, String targetCode, Map<String, Object> userAnswers) {
-        return pguClient.hasDuplicatesForOrder(serviceCode, targetCode, userAnswers);
+        return orderClient.hasDuplicatesForOrder(serviceCode, targetCode, userAnswers);
     }
 
     @Override
     public Boolean saveChoosenValuesForOrder(String serviceCode, String targetCode, Long orderId, Map<String, Object> userAnswers) {
-        return pguClient.saveChoosenValuesForOrder(serviceCode, targetCode, orderId, userAnswers);
+        return orderClient.saveChoosenValuesForOrder(serviceCode, targetCode, orderId, userAnswers);
     }
 
     @Override
     public PguServiceCodes getPguServiceCodes(String serviceCode, String targetCode) {
-        return pguClient.getPguServiceCodes(serviceCode, targetCode);
+        return orderUtilsClient.getPguServiceCodes(serviceCode, targetCode);
     }
 
     @Override
@@ -146,41 +150,41 @@ public class PguOrderServiceImpl implements PguOrderService {
 
     @Override
     public Boolean sendEmailInvitationToParticipant(Long orderId, PersonIdentifier participant) {
-        return pguClient.sendEmailInvitationToParticipant(orderId,participant);
+        return sendEmailInvitationClient.sendEmailInvitationToParticipant(orderId,participant);
     }
 
     @Override
     public Boolean deleteOrderById(Long orderId) {
-        return pguClient.deleteOrder(orderId);
+        return orderClient.deleteOrder(orderId);
     }
 
     @Override
     public Boolean deleteOrderByIdAndUserId(Long orderId, Long userId) {
-        return pguClient.deleteOrder(orderId, userId);
+        return orderClient.deleteOrder(orderId, userId);
     }
 
     @Override
     public Order findOrderByIdAndUserId(Long orderId, Long userId) {
-        return pguClient.findOrderByIdAndUserId(orderId, userId);
+        return orderClient.findOrderByIdAndUserId(orderId, userId);
     }
 
     @Override
     public Order getOrderWithPaymentInfo(Long orderId) {
         info(log, () -> String.format("Getting order with payment information for id %s", orderId));
-        return pguClient.findOrderWithPayment(orderId);
+        return orderClient.findOrderWithPayment(orderId);
     }
 
     @Override
     @Cacheable(cacheResolver = "requestCacheResolver", cacheNames = "findOrderById")
     public Order findOrderByIdCached(Long orderId) {
         info(log, () -> String.format("Getting order by id %s", orderId));
-        return pguClient.findOrderById(orderId);
+        return orderClient.findOrderById(orderId);
     }
 
     @Override
     public void setTechStatusToOrder(Long orderId, Long status) {
         info(log, () -> String.format("Setting tech status %s to order %s", status, orderId));
-        pguClient.setTechStatusToOrder(orderId, status);
+        orderClient.setTechStatusToOrder(orderId, status);
     }
 
     private PoweredOrderWithAuthDTO createDraftDto(String serviceCode, String targetCode, OrderType orderType) {
@@ -216,6 +220,6 @@ public class PguOrderServiceImpl implements PguOrderService {
 
     @Override
     public void checkOrderExists(Long orderId) {
-        pguClient.checkOrderExists(orderId);
+        orderClient.checkOrderExists(orderId);
     }
 }

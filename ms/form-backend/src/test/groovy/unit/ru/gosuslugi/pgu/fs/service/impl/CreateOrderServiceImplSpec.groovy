@@ -7,7 +7,6 @@ import ru.gosuslugi.pgu.dto.ApplicantAnswer
 import ru.gosuslugi.pgu.dto.DisplayRequest
 import ru.gosuslugi.pgu.dto.ScenarioDto
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
-import ru.gosuslugi.pgu.dto.descriptor.HighloadParameters
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor
 import ru.gosuslugi.pgu.dto.descriptor.types.OrderType
 import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService
@@ -15,16 +14,16 @@ import ru.gosuslugi.pgu.fs.common.service.UserCookiesService
 import ru.gosuslugi.pgu.fs.common.service.impl.JsonProcessingServiceImpl
 import ru.gosuslugi.pgu.fs.common.service.impl.UserCookiesServiceImpl
 import ru.gosuslugi.pgu.fs.exception.DuplicateOrderException
-import ru.gosuslugi.pgu.fs.pgu.client.PguClient
 import ru.gosuslugi.pgu.fs.pgu.client.PguEmpowermentClient
 import ru.gosuslugi.pgu.fs.pgu.client.PguEmpowermentClientV2
+import ru.gosuslugi.pgu.fs.pgu.client.PguUtilsClient
 import ru.gosuslugi.pgu.fs.pgu.service.PguOrderService
 import ru.gosuslugi.pgu.fs.service.EmpowermentService
 import ru.gosuslugi.pgu.fs.service.LkNotifierService
 import ru.gosuslugi.pgu.fs.service.impl.CreateOrderServiceImpl
 import ru.gosuslugi.pgu.fs.service.impl.EmpowermentServiceImpl
 import ru.gosuslugi.pgu.fs.service.ratelimit.RateLimitAnalyticProducer
-import ru.gosuslugi.pgu.fs.service.ratelimit.RateLimitService
+import ru.gosuslugi.pgu.ratelimit.client.RateLimitService
 import spock.lang.Specification
 
 class CreateOrderServiceImplSpec extends Specification {
@@ -43,11 +42,24 @@ class CreateOrderServiceImplSpec extends Specification {
 
     def setup() {
         pguOrderServiceMock = Mock(PguOrderService)
-        empowermentService = new EmpowermentServiceImpl(Mock(UserOrgData), Mock(UserPersonalData), Mock(PguEmpowermentClient), Mock(PguEmpowermentClientV2), Mock(PguClient))
+        empowermentService = new EmpowermentServiceImpl(
+                Mock(UserOrgData),
+                Mock(UserPersonalData),
+                Mock(PguEmpowermentClient),
+                Mock(PguEmpowermentClientV2),
+                Mock(PguUtilsClient))
         jsonProcessingService = new JsonProcessingServiceImpl(new ObjectMapper())
         UserCookiesService userCookiesService = new UserCookiesServiceImpl()
         lkNotifierService = Mock(LkNotifierService)
-        createOrderService = new CreateOrderServiceImpl(pguOrderServiceMock, jsonProcessingService, userCookiesService, empowermentService, lkNotifierService, rateLimitService,userPersonalData, rateLimitAnalyticProducer)
+        createOrderService = new CreateOrderServiceImpl(
+                pguOrderServiceMock,
+                jsonProcessingService,
+                userCookiesService,
+                empowermentService,
+                lkNotifierService,
+                rateLimitService,
+                userPersonalData,
+                rateLimitAnalyticProducer)
     }
 
     def 'Can try to create order: tryToCreateOrderId'() {
@@ -60,7 +72,7 @@ class CreateOrderServiceImplSpec extends Specification {
                 new ScenarioDto(finishedAndCurrentScreens: ['s1'], targetCode: '1', display: new DisplayRequest(
                         components: [new FieldComponent(id: 'test_id')]
                 )),
-               new ServiceDescriptor(applicationFields: [new FieldComponent(id: 'test_id', createOrder: true)])
+                new ServiceDescriptor(applicationFields: [new FieldComponent(id: 'test_id', createOrder: true)])
         )
 
         then:

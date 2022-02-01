@@ -41,7 +41,7 @@ public class TimeSlotDoctorComponent extends AbstractComponent<TimeSlotDoctorInp
     public ComponentResponse<TimeSlotDoctorInput> getInitialValue(FieldComponent component, ScenarioDto scenarioDto) {
         if (Objects.nonNull(component.getAttrs())) {
             val presetValues = calculatedAttributesHelper.getAllCalculatedValues(
-                CALCULATIONS_ATTR, component, scenarioDto
+                    CALCULATIONS_ATTR, component, scenarioDto
             );
             presetValues.putAll(component.getArguments());
 
@@ -51,7 +51,7 @@ public class TimeSlotDoctorComponent extends AbstractComponent<TimeSlotDoctorInp
     }
 
     private TimeSlotDoctorInput toTimeSlotDoctorInput(
-        FieldComponent component, ScenarioDto scenarioDto, Map<String, Object> presetValues
+            FieldComponent component, ScenarioDto scenarioDto, Map<String, Object> presetValues
     ) {
         val orderId = Optional.ofNullable(scenarioDto.getOrderId())
                 .orElse(userPersonalData.generateUniqueUserValue());
@@ -84,24 +84,24 @@ public class TimeSlotDoctorComponent extends AbstractComponent<TimeSlotDoctorInp
         String currentDayOffset = getStringValueOrDefault(presetValues, END_DATE_ATTR, defaultDayOffset);
 
         return List.of(
-            createTimeSlotRequestAttr(START_DATE_ATTR, DATE_TIME_FORMATTER.format(currentDate)),
-            createTimeSlotRequestAttr(TS_START_TIME_ATTR, getStringValueWithEmpty(presetValues, TS_START_TIME_ATTR)),
-            createTimeSlotRequestAttr(END_DATE_ATTR, DATE_TIME_FORMATTER.format(currentDate.plusDays(Long.parseLong(currentDayOffset)))),
-            createTimeSlotRequestAttr(TS_END_TIME_ATTR, getStringValueWithEmpty(presetValues, TS_END_TIME_ATTR)),
-            createTimeSlotRequestAttr(SESSION_ID, getStringValueWithEmpty(presetValues, SESSION_ID)),
-            createTimeSlotRequestAttr(TS_SERVICE_ID_ATTR, getStringValueWithEmpty(presetValues, TS_SERVICE_ID_ATTR)),
-            createTimeSlotRequestAttr(SERVICE_SPEC_ID_ATTR, getStringValueWithEmpty(presetValues, SERVICE_SPEC_ID_ATTR)),
-            createTimeSlotRequestAttr(MO_ID, getStringValueWithEmpty(presetValues, MO_ID))
+                createTimeSlotRequestAttr(START_DATE_ATTR, DATE_TIME_FORMATTER.format(currentDate)),
+                createTimeSlotRequestAttr(TS_START_TIME_ATTR, getStringValueWithEmpty(presetValues, TS_START_TIME_ATTR)),
+                createTimeSlotRequestAttr(END_DATE_ATTR, DATE_TIME_FORMATTER.format(currentDate.plusDays(Long.parseLong(currentDayOffset)))),
+                createTimeSlotRequestAttr(TS_END_TIME_ATTR, getStringValueWithEmpty(presetValues, TS_END_TIME_ATTR)),
+                createTimeSlotRequestAttr(SESSION_ID, getStringValueWithEmpty(presetValues, SESSION_ID)),
+                createTimeSlotRequestAttr(TS_SERVICE_ID_ATTR, getStringValueWithEmpty(presetValues, TS_SERVICE_ID_ATTR)),
+                createTimeSlotRequestAttr(SERVICE_SPEC_ID_ATTR, getStringValueWithEmpty(presetValues, SERVICE_SPEC_ID_ATTR)),
+                createTimeSlotRequestAttr(MO_ID, getStringValueWithEmpty(presetValues, MO_ID))
         );
     }
 
     private List<TimeSlotRequestAttr> createBookingRequestAttrs(Map<String, Object> presetValues) {
         return List.of(
-            createTimeSlotRequestAttr(DOCTOR_ATTR, getStringValueWithEmpty(presetValues, DOCTOR_ATTR)),
-            createTimeSlotRequestAttr(ANOTHER_PERSON_ATTR, getStringValueWithEmpty(presetValues, ANOTHER_PERSON_ATTR)),
-            createTimeSlotRequestAttr(GENDER_PERSON_ATTR, getStringValueWithEmpty(presetValues, GENDER_PERSON_ATTR)),
-            createTimeSlotRequestAttr(AGE_PERSON_ATTR, getStringValueWithEmpty(presetValues, AGE_PERSON_ATTR)),
-            createTimeSlotRequestAttr(PATIENT_NAME_ATTR, getStringValueWithEmpty(presetValues, PATIENT_NAME_ATTR))
+                createTimeSlotRequestAttr(DOCTOR_ATTR, getStringValueWithEmpty(presetValues, DOCTOR_ATTR)),
+                createTimeSlotRequestAttr(ANOTHER_PERSON_ATTR, getStringValueWithEmpty(presetValues, ANOTHER_PERSON_ATTR)),
+                createTimeSlotRequestAttr(GENDER_PERSON_ATTR, getStringValueWithEmpty(presetValues, GENDER_PERSON_ATTR)),
+                createTimeSlotRequestAttr(AGE_PERSON_ATTR, getStringValueWithEmpty(presetValues, AGE_PERSON_ATTR)),
+                createTimeSlotRequestAttr(PATIENT_NAME_ATTR, getStringValueWithEmpty(presetValues, PATIENT_NAME_ATTR))
         );
     }
 

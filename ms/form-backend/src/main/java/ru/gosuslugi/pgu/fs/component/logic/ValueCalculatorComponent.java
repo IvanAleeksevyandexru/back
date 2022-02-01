@@ -45,7 +45,7 @@ public class ValueCalculatorComponent extends AbstractComponent<String> {
 
         if (Objects.nonNull(component.getAttrs())) {
             val calc = calculatedAttributesHelper.getAllCalculatedValues(
-                CALCULATIONS_ATTR, component, scenarioDto
+                    CALCULATIONS_ATTR, component, scenarioDto
             );
             if (!CollectionUtils.isEmpty(calc)) {
                 value.put(CALCULATIONS_ATTR, calc);

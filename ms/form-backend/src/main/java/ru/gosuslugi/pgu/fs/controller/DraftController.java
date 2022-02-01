@@ -1,5 +1,7 @@
 package ru.gosuslugi.pgu.fs.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,11 +26,9 @@ public class DraftController {
     private final DraftClient draftClient;
     private final UserPersonalData personalData;
 
-    /**
-     * Метод обработки входящих запросов черновиков
-     */
+    @Operation(summary = "Метод обработки входящих запросов черновиков")
     @RequestMapping(value = "/{orderId}", method = RequestMethod.GET, produces = "application/json")
-    public DraftHolderDto getDraft(@PathVariable Long orderId) {
+    public DraftHolderDto getDraft(@Parameter(description = "Идентификатор заявления") @PathVariable Long orderId) {
         DraftHolderDto draft = draftClient.getDraftById(orderId, personalData.getUserId(), personalData.getOrgId());
         if (draft == null) {
             throw new EntityNotFoundException("Draft not found");

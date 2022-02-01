@@ -1,5 +1,6 @@
 package ru.gosuslugi.pgu.fs.controller.data;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,12 +24,14 @@ public class GibddController {
     private final CarDetailInfoComponent carDetailInfoComponent;
     private final TracingHelper tracingHelper;
 
+    @Operation(summary = "Получение информации о ТС из ГИБДД по VIN, СТС и гос. номеру")
     @PostMapping(value = "/vehicleFullInfo")
     public GibddServiceResponse<VehicleFullInfo> getVehicleFullInfo(@RequestBody ScenarioDto scenarioDto) {
         tracingHelper.addServiceCodeAndOrderId(scenarioDto.getServiceCode(), scenarioDto);
         return carDetailInfoComponent.getVehicleInfo(getCurrentComponent(scenarioDto), false);
     }
 
+    @Operation(summary = "Получение данных о ТС из Федеральной нотариальной палаты")
     @PostMapping(value = "/notaryInfo")
     public GibddServiceResponse<FederalNotaryInfo> getNotaryInfo(@RequestBody ScenarioDto scenarioDto) {
         tracingHelper.addServiceCodeAndOrderId(scenarioDto.getServiceCode(), scenarioDto);

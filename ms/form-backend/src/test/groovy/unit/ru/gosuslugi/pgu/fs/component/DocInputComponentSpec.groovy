@@ -30,21 +30,21 @@ class DocInputComponentSpec extends Specification {
                         issuedBy: 'ЗАГС г.Магадан',
                         issueDate: '30.10.2010',
                         vrfStu: 'VERIFIED'),
-                 new PersonDoc(
-                         type: 'UNVERIFIED_DOC',
-                         series: '222',
-                         number: '222-777',
-                         issuedBy: 'ЗАГС г.Магадан',
-                         issueDate: '30.10.2010',
-                         vrfStu: 'NONE'),
                 new PersonDoc(
-                         type: 'RF_PASSPORT',
-                         series: '1234',
-                         number: '123456',
-                         issuedBy: 'ЗАГС г.Магадан',
-                         issueId: '888999',
-                         issueDate: '30.10.2010',
-                         vrfStu: 'VERIFIED'
+                        type: 'UNVERIFIED_DOC',
+                        series: '222',
+                        number: '222-777',
+                        issuedBy: 'ЗАГС г.Магадан',
+                        issueDate: '30.10.2010',
+                        vrfStu: 'NONE'),
+                new PersonDoc(
+                        type: 'RF_PASSPORT',
+                        series: '1234',
+                        number: '123456',
+                        issuedBy: 'ЗАГС г.Магадан',
+                        issueId: '888999',
+                        issueDate: '30.10.2010',
+                        vrfStu: 'VERIFIED'
                 )
         ]
 

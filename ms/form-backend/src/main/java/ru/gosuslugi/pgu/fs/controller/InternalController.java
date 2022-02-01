@@ -1,5 +1,8 @@
 package ru.gosuslugi.pgu.fs.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +23,8 @@ public class InternalController {
     private final SubScreenService screenService;
     private final TracingHelper tracingHelper;
 
+    @Operation(summary = "Получение следующего шага для внутренних услуг\n\n" +
+            "Используется для \"внутренних\" услуг, таких как изменение номера телефона, E-Mail и тд")
     @PostMapping(value = "/getNextStep", produces = "application/json; charset=UTF-8")
     public ScenarioResponse getNextStep(@RequestBody ScenarioRequest request) {
         tracingHelper.addServiceCodeAndOrderId(request);
@@ -27,8 +32,15 @@ public class InternalController {
         return screenService.getNextScreen(request, serviceId);
     }
 
+    @Operation(summary = "Получение предыдущего шага в сценарии услуги\n\n" +
+            "Используется для \"внутренних\" услуг, таких как изменение номера телефона, E-Mail и тд")
     @PostMapping(value = "/getPrevStep")
-    public ScenarioResponse getPrevStep(@RequestBody ScenarioRequest request, @RequestParam(defaultValue = "1") Integer stepsBack) {
+    public ScenarioResponse getPrevStep(
+            @RequestBody ScenarioRequest request,
+            @Parameter(description = "Количество шагов на которое надо вернуться назад", schema = @Schema(defaultValue = "1"))
+            @RequestParam(defaultValue = "1")
+                    Integer stepsBack
+    ) {
         tracingHelper.addServiceCodeAndOrderId(request);
         String serviceId = request.getScenarioDto().getServiceId();
         return screenService.getPrevScreen(request, serviceId, stepsBack);

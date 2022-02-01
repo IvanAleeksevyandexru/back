@@ -27,7 +27,7 @@ public class ContextJsonUtil<T> {
 
     private static final ObjectMapper OBJECT_MAPPER = JsonProcessingUtil.getObjectMapper();
     private static final ParseContextImpl PARSE_CONTEXT = new ParseContextImpl(
-        Configuration.builder().mappingProvider(new JacksonMappingProvider(OBJECT_MAPPER)).build()
+            Configuration.builder().mappingProvider(new JacksonMappingProvider(OBJECT_MAPPER)).build()
     );
 
     private final ApplicantAnswer applicantAnswer;
@@ -41,15 +41,15 @@ public class ContextJsonUtil<T> {
         this.clazz = clazz;
 
         this.entryValueContext = Optional.ofNullable(this.applicantAnswer)
-            .map(ApplicantAnswer::getValue)
-            .map(PARSE_CONTEXT::parse)
-            .orElse(null);
+                .map(ApplicantAnswer::getValue)
+                .map(PARSE_CONTEXT::parse)
+                .orElse(null);
     }
 
     public T read() {
         return Optional.ofNullable(entryValueContext)
-            .map(context -> context.read(path, clazz))
-            .orElse(null);
+                .map(context -> context.read(path, clazz))
+                .orElse(null);
     }
 
     public void save(T field) {

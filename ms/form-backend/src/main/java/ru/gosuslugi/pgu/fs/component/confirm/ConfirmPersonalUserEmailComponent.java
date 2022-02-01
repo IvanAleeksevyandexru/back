@@ -43,9 +43,9 @@ public class ConfirmPersonalUserEmailComponent extends AbstractComponent<String>
     public static final String EMPTY_EMAIL_WARRING_DESC = "Подтвердите переходом по ссылке из письма с подтверждением или добавьте новый адрес электронной почты через форму с помощью кнопки \"Редактировать\"";
     public static final String NOT_VERIFIED_EMAIL_ERROR_MSG = "Электронная почта не подтверждена в профиле ЕСИА";
     public static final Map<String, String> DEFAULT_REG_EXP_VALIDATION_PARAMS = Map.of(
-        VALUE_ATTR, DEFAULT_EMAIL_MASK,
-        ERROR_MSG_ATTR, DEFAULT_EMAIL_ERROR_MSG,
-        ERROR_DESC_ATTR, DEFAULT_EMAIL_ERROR_DESC);
+            VALUE_ATTR, DEFAULT_EMAIL_MASK,
+            ERROR_MSG_ATTR, DEFAULT_EMAIL_ERROR_MSG,
+            ERROR_DESC_ATTR, DEFAULT_EMAIL_ERROR_DESC);
 
     protected final UserPersonalData userPersonalData;
     protected final UserOrgData userOrgData;
@@ -104,11 +104,11 @@ public class ConfirmPersonalUserEmailComponent extends AbstractComponent<String>
 
     protected Optional<String> getEmail() {
         return Optional.ofNullable(userPersonalData.getContacts())
-            .flatMap(list -> list.stream()
-                .filter(c -> (Objects.equals(c.getType(), EsiaContact.Type.EMAIL.getCode())
-                    && Objects.equals(c.getVrfStu(), VERIFIED_ATTR)))
-                .findAny())
-            .map(EsiaContact::getValue);
+                .flatMap(list -> list.stream()
+                        .filter(c -> (Objects.equals(c.getType(), EsiaContact.Type.EMAIL.getCode())
+                                && Objects.equals(c.getVrfStu(), VERIFIED_ATTR)))
+                        .findAny())
+                .map(EsiaContact::getValue);
     }
 
     protected boolean isPresentAndVerifiedEmail(String value) {

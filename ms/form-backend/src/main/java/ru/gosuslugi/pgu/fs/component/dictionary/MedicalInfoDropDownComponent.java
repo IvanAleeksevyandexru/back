@@ -92,8 +92,8 @@ public class MedicalInfoDropDownComponent extends AbstractComponent<String> {
         }
         Optional<List<MedicalSimpleFilter>> filtersOptional =
                 Optional.ofNullable(request.getFilter())
-                .map(MedicalItemsFilter::getUnion)
-                .map(MedicalItemsUnion::getSubs);
+                        .map(MedicalItemsFilter::getUnion)
+                        .map(MedicalItemsUnion::getSubs);
         if(filtersOptional.isEmpty()) {
             throw new FormBaseWorkflowException(String.format("Фильтры не заданы, ключ %s", entry.getKey()));
         }
@@ -102,8 +102,8 @@ public class MedicalInfoDropDownComponent extends AbstractComponent<String> {
                 .filter(
                         simpleFilter ->
                                 Optional.ofNullable(simpleFilter.getSimple())
-                                .map(MedicalSimpleItem::getAttributeName)
-                                .filter(MEDICAL_POS_ARGS::contains).isPresent()
+                                        .map(MedicalSimpleItem::getAttributeName)
+                                        .filter(MEDICAL_POS_ARGS::contains).isPresent()
                 )
                 .collect(SIMPLE_FILTER_COLLECTOR);
         if (attrNameSet.size() < MEDICAL_POS_ARGS.size()) {

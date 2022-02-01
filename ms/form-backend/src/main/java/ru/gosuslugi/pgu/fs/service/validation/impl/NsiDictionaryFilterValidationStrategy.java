@@ -63,8 +63,8 @@ public class NsiDictionaryFilterValidationStrategy extends AbstractDictionaryFil
      * @throws JSONException исключение в случае ошибки парсинга json
      */
     public NsiDictionary getDictionaryForFilter(FieldComponent fieldComponent,
-                                                 ScenarioDto scenarioDto,
-                                                 Supplier<ComponentResponse<String>> supplier) throws JSONException {
+                                                ScenarioDto scenarioDto,
+                                                Supplier<ComponentResponse<String>> supplier) throws JSONException {
         // Заполнить предустановленные значения
         Map<String, String> presetProperties = nsiDictionaryFilterHelper.getPresetValue(fieldComponent, supplier);
         String dictionaryName = fieldComponent.getAttrs().get(DICTIONARY_NAME_ATTR).toString();

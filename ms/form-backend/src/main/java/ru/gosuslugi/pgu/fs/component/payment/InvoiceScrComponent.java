@@ -23,5 +23,4 @@ public class InvoiceScrComponent extends AbstractComponent<String> {
         component.getAttrs().put(BILL_ID_ATTR, component.getArgument(BILL_ID_ATTR));
         component.getAttrs().put(BILL_NUMBER_ATTR, component.getArgument(BILL_NUMBER_ATTR));
     }
-
 }

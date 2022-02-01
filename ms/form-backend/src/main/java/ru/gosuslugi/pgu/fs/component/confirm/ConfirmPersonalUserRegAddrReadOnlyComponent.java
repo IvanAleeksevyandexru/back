@@ -1,15 +1,21 @@
 package ru.gosuslugi.pgu.fs.component.confirm;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.atc.carcass.security.rest.model.EsiaAddress;
+import ru.gosuslugi.pgu.common.core.exception.ValidationException;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.components.BasicComponentUtil;
+import ru.gosuslugi.pgu.components.ValidationUtil;
 import ru.gosuslugi.pgu.components.descriptor.types.AddressHideLevels;
 import ru.gosuslugi.pgu.components.descriptor.types.FullAddress;
+import ru.gosuslugi.pgu.components.descriptor.types.ValidationFieldDto;
 import ru.gosuslugi.pgu.components.dto.AddressType;
+import ru.gosuslugi.pgu.components.dto.ErrorDto;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
@@ -19,7 +25,6 @@ import ru.gosuslugi.pgu.fs.common.component.AbstractComponent;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
 import ru.gosuslugi.pgu.fs.component.confirm.mapper.FullAddressMapper;
 import ru.gosuslugi.pgu.fs.component.confirm.model.ConfirmPersonalUserRegAddressReadOnly;
-import ru.gosuslugi.pgu.fs.esia.EsiaRestContactDataClient;
 import ru.gosuslugi.pgu.fs.service.LkNotifierService;
 import ru.gosuslugi.pgu.fs.utils.FullAddressEnrichUtil;
 import ru.gosuslugi.pgu.fs.utils.FullAddressFiasUtil;
@@ -29,13 +34,20 @@ import ru.gosuslugi.pgu.pgu_common.nsi.service.NsiDadataService;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static org.apache.commons.lang.StringUtils.isBlank;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.ADDR_TYPE;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.REG_DATE_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.WARN_ATTR;
+import static ru.gosuslugi.pgu.components.FieldComponentUtil.FIELDS_KEY;
 
 /**
  * Компонент для отображения и валидации адреса регистрации пользователя
@@ -44,14 +56,18 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class ConfirmPersonalUserRegAddrReadOnlyComponent extends AbstractComponent<ConfirmPersonalUserRegAddressReadOnly> {
+public class ConfirmPersonalUserRegAddrReadOnlyComponent
+        extends AbstractComponent<ConfirmPersonalUserRegAddressReadOnly> {
 
-    /** по-умолчанию обновляем Регистрационный адрес <a href="https://jira.egovdev.ru/browse/EPGUCORE-51164">EPGUCORE-51164</a> */
+    /**
+     * по-умолчанию обновляем Регистрационный адрес <a href="https://jira.egovdev.ru/browse/EPGUCORE-51164">EPGUCORE-51164</a>
+     */
     public static final AddressType DEFAULT_ADDRESS_TYPE = AddressType.permanentRegistry;
+    private static final String DATE_IS_NOT_FILLED = "Дата не заполнена";
+    private static final String DISCLAIMER = "disclaimer";
 
     private final UserPersonalData userPersonalData;
     private final NsiDadataService nsiDadataService;
-    private final EsiaRestContactDataClient esiaRestContactDataClient;
     private final LkNotifierService lkNotifierService;
     private final FullAddressMapper fullAddressMapper;
 
@@ -65,27 +81,31 @@ public class ConfirmPersonalUserRegAddrReadOnlyComponent extends AbstractCompone
         Optional<EsiaAddress> esiaAddressOptional = getEsiaAddress(component);
 
         //если в json-е не задан addrType, то по дефолту отображать адрес постоянной регистрации
-        if(!component.getAttrs().containsKey(ADDR_TYPE)) {
-            esiaAddressOptional=userPersonalData.getAddresses().stream()
-                    .filter(a->a.getType().equals(DEFAULT_ADDRESS_TYPE.getEsiaAddressType().getCode()))
+        if (!component.getAttrs().containsKey(ADDR_TYPE)) {
+            esiaAddressOptional = userPersonalData.getAddresses().stream()
+                    .filter(a -> a.getType().equals(DEFAULT_ADDRESS_TYPE.getEsiaAddressType().getCode()))
                     .findFirst();
         }
 
         if (esiaAddressOptional.isPresent()) {
-            EsiaAddress esiaAddress= esiaAddressOptional.get();
+            EsiaAddress esiaAddress = esiaAddressOptional.get();
             String address = esiaAddress.getZipCode() + ", " + esiaAddress.getAddressStr();
 
             DadataAddressResponse addressResponse = nsiDadataService.getAddress(address);
-            if (addressResponse == null || addressResponse.getError() == null || addressResponse.getError().getCode() != 0) {
+            if (
+                    addressResponse == null
+                            || addressResponse.getError() == null
+                            || addressResponse.getError().getCode() != 0
+            ) {
                 if (log.isInfoEnabled()) {
-                    if (addressResponse == null || addressResponse.getError() == null ) {
+                    if (addressResponse == null || addressResponse.getError() == null) {
                         log.info("Не удалось получить проверить адрес в Dadata сервисе для адреса \"{}\": нет ответа", address);
                     } else {
                         log.info(
-                            "Не удалось получить проверить адрес в Dadata сервисе для адреса \"{}\": код = {}, сообщение = \"{}\"",
-                            address,
-                            addressResponse.getError().getCode(),
-                            addressResponse.getError().getMessage()
+                                "Не удалось получить проверить адрес в Dadata сервисе для адреса \"{}\": код = {}, сообщение = \"{}\"",
+                                address,
+                                addressResponse.getError().getCode(),
+                                addressResponse.getError().getMessage()
                         );
                     }
                 }
@@ -102,30 +122,39 @@ public class ConfirmPersonalUserRegAddrReadOnlyComponent extends AbstractCompone
     }
 
     @Override
-    protected void preValidate(ComponentResponse<ConfirmPersonalUserRegAddressReadOnly> initialValue, FieldComponent component, ScenarioDto scenarioDto) {
+    protected void preValidate(
+            ComponentResponse<ConfirmPersonalUserRegAddressReadOnly> initialValue,
+            FieldComponent component,
+            ScenarioDto scenarioDto
+    ) {
         ConfirmPersonalUserRegAddressReadOnly address = initialValue.get();
-        component.getAttrs().remove("disclaimer");
-        if(address.getRegAddr()==null){
+        component.getAttrs().remove(DISCLAIMER);
+        if (isNull(address.getRegAddr())) {
             FieldComponentDisclaimer disclaimer = createDisclaimer(BasicComponentUtil.getAddrType(component));
-            component.getAttrs().put("disclaimer",disclaimer);
+            component.getAttrs().put(DISCLAIMER, disclaimer);
             scenarioDto.getErrors().put(component.getId(), address.getError());
         }
-        if (nonNull(address) && !isBlank(address.getError())) {
+        if (!isBlank(address.getError())) {
             scenarioDto.getErrors().put(component.getId(), address.getError());
         }
     }
 
-    private FieldComponentDisclaimer createDisclaimer(AddressType addrType){
-        String str = (AddressType.actualResidence == addrType)? "Адрес фактического проживания":"Адрес постоянной регистрации";
-        FieldComponentDisclaimer disclaimer = new FieldComponentDisclaimer(
+    private FieldComponentDisclaimer createDisclaimer(AddressType addrType) {
+        String str = AddressType.actualResidence == addrType
+                ? "Адрес фактического проживания"
+                : "Адрес постоянной регистрации";
+        return new FieldComponentDisclaimer(
                 WARN_ATTR,
                 "Добавьте адрес",
                 str + " нужен для отправки заявления. " +
-                        "Этот адрес сохранится в профиле, и в будущих заявлениях не придется вводить его заново");
-       return disclaimer;
+                        "Этот адрес сохранится в профиле, и в будущих заявлениях не придется вводить его заново"
+        );
     }
 
-    private ComponentResponse<ConfirmPersonalUserRegAddressReadOnly> getValue(FieldComponent component, DadataAddressResponse addressResponse) {
+    private ComponentResponse<ConfirmPersonalUserRegAddressReadOnly> getValue(
+            FieldComponent component,
+            DadataAddressResponse addressResponse
+    ) {
         FullAddress fullAddress = FullAddressFiasUtil.addMetaInfoWithOptionalGeoPoints(addressResponse, fullAddressMapper);
         if (isNull(fullAddress)) {
             return getErrorValue("Полнота адреса недостаточна");
@@ -143,31 +172,27 @@ public class ConfirmPersonalUserRegAddrReadOnlyComponent extends AbstractCompone
     }
 
     private Optional<EsiaAddress> getEsiaAddress(FieldComponent component) {
-        Optional<EsiaAddress> esiaAddressOptional = Optional.empty();
-        AddressType addressType = BasicComponentUtil.getAddrType(component);
-        if (!isNull(addressType)) {
-            esiaAddressOptional = userPersonalData.getAddresses().stream()
-                .filter(a -> a.getType().equals(addressType.getEsiaAddressType().getCode()))
-                .findFirst();
-        }
-        return esiaAddressOptional;
+        return Optional.ofNullable(BasicComponentUtil.getAddrType(component))
+                .flatMap(addressType -> userPersonalData.getAddresses().stream()
+                        .filter(a -> a.getType().equals(addressType.getEsiaAddressType().getCode()))
+                        .findFirst());
     }
 
     public static String validateInitialAddress(DadataAddressResponse value, FieldComponent fieldComponent) {
-        if (
-            value.getDadataQc() != 0
-            && value.getDadataQc() != 3
-        ) {
+        if (value.getDadataQc() != 0 && value.getDadataQc() != 3) {
             return "Адрес не распознан";
         }
         List<AddressHideLevels> addressHideLevels = Optional.ofNullable(getAddressHideLevels(fieldComponent))
-            .orElse(
-                Arrays.asList(
-                    AddressHideLevels.street, AddressHideLevels.additionalStreet,
-                    AddressHideLevels.house, AddressHideLevels.building1, AddressHideLevels.building2,
-                    AddressHideLevels.apartment
-                )
-            );
+                .orElse(
+                        Arrays.asList(
+                                AddressHideLevels.street,
+                                AddressHideLevels.additionalStreet,
+                                AddressHideLevels.house,
+                                AddressHideLevels.building1,
+                                AddressHideLevels.building2,
+                                AddressHideLevels.apartment
+                        )
+                );
 
         switch (value.getDadataQcComplete()) {
             case 0:
@@ -176,26 +201,43 @@ public class ConfirmPersonalUserRegAddrReadOnlyComponent extends AbstractCompone
             case 10:
                 return null;
             case 1:
-                return addressHideLevels.contains(AddressHideLevels.region) ? null : "В адресе не указан регион";
+                return addressHideLevels.contains(AddressHideLevels.region)
+                        ? null
+                        : "В адресе не указан регион";
             case 2:
-                return addressHideLevels.contains(AddressHideLevels.town) && addressHideLevels.contains(AddressHideLevels.city) ? null : "В адресе не указан город";
+                return addressHideLevels.contains(AddressHideLevels.town)
+                        && addressHideLevels.contains(AddressHideLevels.city)
+                        ? null
+                        : "В адресе не указан город";
             case 3:
-                return addressHideLevels.contains(AddressHideLevels.street) && addressHideLevels.contains(AddressHideLevels.additionalStreet) ? null : "В адресе не указана улица";
+                return addressHideLevels.contains(AddressHideLevels.street)
+                        && addressHideLevels.contains(AddressHideLevels.additionalStreet)
+                        ? null
+                        : "В адресе не указана улица";
             case 4:
-                return (addressHideLevels.contains(AddressHideLevels.house) && addressHideLevels.contains(AddressHideLevels.building1) && addressHideLevels.contains(AddressHideLevels.building2)) ? null : "В адресе не указан дом" ;
+                return (addressHideLevels.contains(AddressHideLevels.house)
+                        && addressHideLevels.contains(AddressHideLevels.building1)
+                        && addressHideLevels.contains(AddressHideLevels.building2))
+                        ? null
+                        : "В адресе не указан дом";
             case 5:
-                return addressHideLevels.contains(AddressHideLevels.apartment) ? null : "В адресе не указана квартиры";
+                return addressHideLevels.contains(AddressHideLevels.apartment)
+                        ? null
+                        : "В адресе не указана квартиры";
             default:
                 return "Неподходящий адрес";
         }
-   }
+    }
 
+    @SuppressWarnings("unchecked")
     private static List<AddressHideLevels> getAddressHideLevels(FieldComponent fieldComponent) {
-        if (fieldComponent.getAttrs() == null || !fieldComponent.getAttrs().containsKey("hideLevels")) {
+        if (isNull(fieldComponent.getAttrs()) || !fieldComponent.getAttrs().containsKey("hideLevels")) {
             return null;
         }
         List<String> res = (List<String>) fieldComponent.getAttrs().get("hideLevels");
-        return res.stream().map(AddressHideLevels::valueOf).collect(Collectors.toList());
+        return res.stream()
+                .map(AddressHideLevels::valueOf)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -206,21 +248,42 @@ public class ConfirmPersonalUserRegAddrReadOnlyComponent extends AbstractCompone
             return;
         }
 
-        if (entry.getValue() != null && entry.getValue().getValue() != null) {
-            Set<String> fields = BasicComponentUtil.getPreSetFields(fieldComponent);
-            if (fields.contains(REG_DATE_ATTR)) {
-                ConfirmPersonalUserRegAddressReadOnly address = JsonProcessingUtil.fromJson(entry.getValue().getValue(), ConfirmPersonalUserRegAddressReadOnly.class);
-                if (isBlank(address.getRegDate())) {
-                    incorrectAnswers.put(entry.getKey(), "Дата не заполнена");
-                    return;
+        if (entry.getValue() == null || entry.getValue().getValue() == null) {
+            incorrectAnswers.put(entry.getKey(), DATE_IS_NOT_FILLED);
+            return;
+        }
+
+        Set<String> fields = BasicComponentUtil.getPreSetFields(fieldComponent);
+        if (fields.contains(REG_DATE_ATTR)) {
+            ConfirmPersonalUserRegAddressReadOnly address = JsonProcessingUtil.fromJson(
+                    entry.getValue().getValue(),
+                    ConfirmPersonalUserRegAddressReadOnly.class
+            );
+            if (isBlank(address.getRegDate())) {
+                incorrectAnswers.put(entry.getKey(), DATE_IS_NOT_FILLED);
+                return;
+            }
+            try {
+                List<ValidationFieldDto> validationFieldDto = objectMapper.convertValue(
+                        fieldComponent.getAttrs().get(FIELDS_KEY),
+                        new TypeReference<>() {}
+                );
+                Map<String, ErrorDto> errors = ValidationUtil.validateFieldsByRegExp(
+                        incorrectAnswers,
+                        entry.getValue().getValue(),
+                        validationFieldDto
+                );
+                if (!errors.isEmpty()) {
+                    incorrectAnswers.put(entry.getKey(), jsonProcessingService.toJson(errors));
                 }
-                try {
-                    LocalDate.parse(address.getRegDate(), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-                    initialValue.setRegDate(address.getRegDate());
-                } catch (DateTimeParseException e) {
-                    incorrectAnswers.put(entry.getKey(), "Некорректная дата");
-                    return;
-                }
+
+                LocalDate.parse(address.getRegDate(), DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+                initialValue.setRegDate(address.getRegDate());
+            } catch (JsonProcessingException e) {
+                throw new ValidationException("Ошибка при попытке валидации адреса", e);
+            } catch (DateTimeParseException e) {
+                incorrectAnswers.put(entry.getKey(), "Некорректная дата");
+                return;
             }
         }
         // Set Answer
@@ -228,9 +291,16 @@ public class ConfirmPersonalUserRegAddrReadOnlyComponent extends AbstractCompone
     }
 
     @Override
-    protected void postProcess(Map.Entry<String, ApplicantAnswer> entry, ScenarioDto scenarioDto, FieldComponent fieldComponent) {
-        if(fieldComponent.isSendAnalytics()){
-            ConfirmPersonalUserRegAddressReadOnly address = JsonProcessingUtil.fromJson(entry.getValue().getValue(), ConfirmPersonalUserRegAddressReadOnly.class);
+    protected void postProcess(
+            Map.Entry<String, ApplicantAnswer> entry,
+            ScenarioDto scenarioDto,
+            FieldComponent fieldComponent
+    ) {
+        if (fieldComponent.isSendAnalytics()) {
+            ConfirmPersonalUserRegAddressReadOnly address = JsonProcessingUtil.fromJson(
+                    entry.getValue().getValue(),
+                    ConfirmPersonalUserRegAddressReadOnly.class
+            );
             lkNotifierService.updateOrderRegion(scenarioDto.getOrderId(), address.getRegAddr().getOkato());
         }
     }

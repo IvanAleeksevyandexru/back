@@ -102,7 +102,7 @@ public class TerrabyteFileProcessor {
 
     private void saveZipToTerrabyte(FileInfo origFileInfo, File fileToZip, String tempZipFileName) {
         byte[] fileToZipBytes = readAllBytesFromFile(fileToZip);
-        String mnemonic = origFileInfo.getMnemonic();
+        String mnemonic = origFileInfo.getMnemonic() + ".ZIP";
         String mimeType = "application/zip";
         long objectId = origFileInfo.getObjectId();
         int objectTypeId = origFileInfo.getObjectTypeId();

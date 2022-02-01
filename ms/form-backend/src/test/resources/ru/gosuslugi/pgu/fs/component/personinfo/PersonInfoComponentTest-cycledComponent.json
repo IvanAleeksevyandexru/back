@@ -1,0 +1,23 @@
+{
+  "id": "infoComponentSelected",
+  "type": "PersonInfo",
+  "attrs": {
+    "cycledAnswerId": "cl24",
+    "cycledAnswerIndex": "cl28b.value[0].cl24_id",
+    "fields": [
+      {
+        "fieldName": "birthDate"
+      },
+      {
+        "fieldName": "firstName"
+      },
+      {
+        "fieldName": "middleName"
+      },
+      {
+        "fieldName": "gender"
+      }
+    ],
+    "hidden": true
+  }
+}

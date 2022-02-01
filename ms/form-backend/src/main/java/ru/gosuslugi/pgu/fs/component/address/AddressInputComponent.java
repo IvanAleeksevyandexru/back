@@ -53,6 +53,4 @@ public class AddressInputComponent extends AbstractFullAddressComponent<FullAddr
     public ComponentType getType() {
         return ComponentType.AddressInput;
     }
-
-
 }

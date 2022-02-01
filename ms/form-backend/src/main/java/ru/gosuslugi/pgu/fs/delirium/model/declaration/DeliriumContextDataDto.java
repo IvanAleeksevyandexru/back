@@ -17,7 +17,7 @@ public class DeliriumContextDataDto {
      * Код цели обращения в ПГУ
      */
     private String targetCode;
-    
+
     /**
      * Принято или отклонено заявление
      * Если со-заявитель или согласователь отклоняет заявление, то здесь будет false
@@ -39,5 +39,5 @@ public class DeliriumContextDataDto {
     public void addApplicant(DeliriumApplicantDto applicant) {
         applicants.add(applicant);
     }
-    
+
 }

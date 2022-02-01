@@ -121,7 +121,10 @@ public class UploadFileComponent extends AbstractComponent<String> {
                         attachmentInfoList.stream()
                                 .filter(item -> item.getUploadMnemonic().equals(fileInfo.getMnemonic()))
                                 .findFirst()
-                                .ifPresent(attachmentInfo -> attachmentInfo.setUploadFilename(terrabyteFileProcessor.toZipFileName(fileInfo)));
+                                .ifPresent(attachmentInfo -> {
+                                    attachmentInfo.setUploadMnemonic(attachmentInfo.getUploadMnemonic() + ".ZIP");
+                                    attachmentInfo.setUploadFilename(terrabyteFileProcessor.toZipFileName(fileInfo));
+                                });
                     });
         }
     }

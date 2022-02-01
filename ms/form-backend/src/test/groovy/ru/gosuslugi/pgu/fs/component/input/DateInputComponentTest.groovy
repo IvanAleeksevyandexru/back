@@ -82,7 +82,7 @@ class DateInputComponentTest extends Specification {
         ''               | 0    | null                                   | false    | [] as HashMap
         '2019-12-31'     | 0    | null                                   | true     | [] as HashMap
         '2020-12-81'     | 1    | "DateInput field has incorrect " +
-                                  "format according to accuracy"         | true     | [] as HashMap
+                "format according to accuracy"         | true     | [] as HashMap
         '2013-06-14'     | 1    | "Дата не равна 2021-09-22"             | true     | [type: "equalsDate", ref: "dateIssue", errorMsg: "Дата не равна 2021-09-22"]
         '2021-09-22'     | 0    | null                                   | true     | [type: "equalsDate", ref: "dateIssue"]
         '2013-06-14'     | 1    | "Дата меньше 2021-09-22"               | true     | [type: "minDate", ref: "dateIssue", errorMsg: "Дата меньше 2021-09-22"]

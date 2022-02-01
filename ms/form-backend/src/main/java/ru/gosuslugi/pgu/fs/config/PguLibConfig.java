@@ -51,7 +51,7 @@ import java.net.URL;
 @Configuration
 @EnableConfigurationProperties(EsiaServiceProperties.class)
 @ComponentScan(basePackages = {"ru.gosuslugi.pgu.pgu_common.gibdd.service.impl", "ru.gosuslugi.pgu.pgu_common.gibdd.mapper",
-"ru.gosuslugi.pgu.common.eaisdo.service", "ru.gosuslugi.pgu.common.certificate.service"})
+        "ru.gosuslugi.pgu.common.eaisdo.service", "ru.gosuslugi.pgu.common.certificate.service"})
 public class PguLibConfig {
 
     @Bean

@@ -1,5 +1,6 @@
 package ru.gosuslugi.pgu.fs.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -23,11 +24,12 @@ public class ScenarioActionController {
     private final List<ActionService> actionServiceList;
     private final TracingHelper tracingHelper;
 
+    @Operation(summary = "Выполнение действия определенного в параметре `actionType`")
     @PostMapping("/{actionType}")
-    public ActionResponseDto invokeAction(@PathVariable("actionType") String actionType, @RequestBody ActionRequestDto actionRequestDto){
+    public ActionResponseDto invokeAction(@PathVariable("actionType") ActionType actionType, @RequestBody ActionRequestDto actionRequestDto){
         tracingHelper.addServiceCodeAndOrderId(actionRequestDto);
-        Optional<ActionService> optionalActionService = this.getActionServiceByActionType(ActionType.valueOf(actionType));
-        if(optionalActionService.isEmpty()){
+        Optional<ActionService> optionalActionService = this.getActionServiceByActionType(actionType);
+        if (optionalActionService.isEmpty()) {
             return handleActionServiceNotFound();
         }
         return optionalActionService.get().invoke(actionRequestDto);

@@ -21,9 +21,9 @@ public class MedicalInfoDto {
      * @see <a href="https://jira.egovdev.ru/browse/EPGUCORE-59196">EPGUCORE-59196</a>
      */
     public void fillBookAttributes() {
-            bookAttributes = List.of(Map.of(
-                    "name", "Session_Id",
-                    "value", sessionId
-            ));
+        bookAttributes = List.of(Map.of(
+                "name", "Session_Id",
+                "value", sessionId
+        ));
     }
 }

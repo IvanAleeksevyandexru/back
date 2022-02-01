@@ -15,7 +15,7 @@ import ru.gosuslugi.pgu.dto.descriptor.ScreenDescriptor;
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
 import ru.gosuslugi.pgu.fs.common.service.ComponentReferenceService;
 import ru.gosuslugi.pgu.fs.descriptor.SubDescriptorService;
-import ru.gosuslugi.pgu.fs.pgu.client.PguClient;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.PguUtilsClientImpl;
 import ru.gosuslugi.pgu.fs.pgu.dto.PguServiceCodes;
 import ru.gosuslugi.pgu.fs.service.DisclaimersClient;
 import ru.gosuslugi.pgu.fs.service.DisclaimersService;
@@ -30,11 +30,11 @@ public class DisclaimersServiceImpl implements DisclaimersService {
     private final DisclaimersClient disclaimersClient;
     private final SubDescriptorService subDescriptorService;
     private final ComponentReferenceService componentReferenceService;
-    private final PguClient pguClient;
+    private final PguUtilsClientImpl orderUtilsClient;
 
     @Override
     public List<DisclaimerDto> getDisclaimers(String serviceCode, String targetCode) {
-        PguServiceCodes pguServiceCodes = pguClient.getPguServiceCodes(serviceCode, targetCode);
+        PguServiceCodes pguServiceCodes = orderUtilsClient.getPguServiceCodes(serviceCode, targetCode);
         List<PortalDisclaimer> disclaimers = disclaimersClient.getDisclaimers(pguServiceCodes.getPassport(), pguServiceCodes.getTarget());
         return disclaimers.stream().filter(disclaimer -> !disclaimer.getIsHidden() && !disclaimer.getMessages().isEmpty()).map(this::mapToDisclaimerDto).collect(Collectors.toList());
     }

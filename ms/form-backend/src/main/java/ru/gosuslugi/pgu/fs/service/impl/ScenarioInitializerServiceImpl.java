@@ -88,8 +88,8 @@ public class ScenarioInitializerServiceImpl implements ScenarioInitializerServic
 
         // случай когда был создан order, но не было ни одного сохранения в черновик
         if (isNull(draftHolderDto) ||
-            isNull(draftHolderDto.getBody()) ||
-            OrderBehaviourTypeUtil.getSmevOrderDraftFlag(serviceDescriptor, order, true)
+                isNull(draftHolderDto.getBody()) ||
+                OrderBehaviourTypeUtil.getSmevOrderDraftFlag(serviceDescriptor, order, true)
         ) {
             return getInitScreen(serviceId, initServiceDto, order.getServiceTargetId());
         }

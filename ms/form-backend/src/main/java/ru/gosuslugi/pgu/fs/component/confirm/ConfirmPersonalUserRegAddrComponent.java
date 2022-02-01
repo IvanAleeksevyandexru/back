@@ -1,20 +1,14 @@
 package ru.gosuslugi.pgu.fs.component.confirm;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import ru.atc.carcass.security.rest.model.EsiaAddress;
-import ru.gosuslugi.pgu.common.core.exception.ValidationException;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.components.BasicComponentUtil;
-import ru.gosuslugi.pgu.components.ValidationUtil;
-import ru.gosuslugi.pgu.components.descriptor.types.ValidationFieldDto;
 import ru.gosuslugi.pgu.components.dto.AddressType;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
@@ -27,13 +21,17 @@ import ru.gosuslugi.pgu.fs.esia.EsiaRestContactDataClient;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 import static java.util.Objects.isNull;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
-import static ru.gosuslugi.pgu.components.FieldComponentUtil.FIELDS_KEY;
-import static ru.gosuslugi.pgu.components.FieldComponentUtil.VALIDATION_ARRAY_KEY;
-import static ru.gosuslugi.pgu.components.RegExpUtil.*;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.FIAS_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.REG_ADDR_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.REG_ADDR_ZIP_CODE_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.REG_DATE_ATTR;
 
 /**
  * Компонент для отображения и валидации адреса регистрации пользователя
@@ -62,15 +60,15 @@ public class ConfirmPersonalUserRegAddrComponent extends AbstractFullAddressComp
         // Если указан тип не являющийся значением по умолчанию, то делается попытка использовать этот адрес в данном компоненте
         if (!isNull(addressType) && !DEFAULT_ADDRESS_TYPE.equals(addressType)) {
             esiaAddressOptional = userPersonalData.getAddresses().stream()
-                .filter(a -> a.getType().equals(addressType.getEsiaAddressType().getCode()))
-                .findFirst();
+                    .filter(a -> a.getType().equals(addressType.getEsiaAddressType().getCode()))
+                    .findFirst();
         }
 
         // Если адрес остался пустой, то вычитываем по ключю по умолчанию
         if (esiaAddressOptional.isEmpty()) {
             esiaAddressOptional = userPersonalData.getAddresses().stream()
-                .filter(a -> a.getType().equals(DEFAULT_ADDRESS_TYPE.getEsiaAddressType().getCode()))
-                .findFirst();
+                    .filter(a -> a.getType().equals(DEFAULT_ADDRESS_TYPE.getEsiaAddressType().getCode()))
+                    .findFirst();
         }
 
         Set<String> fields = BasicComponentUtil.getPreSetFields(component);
@@ -114,17 +112,6 @@ public class ConfirmPersonalUserRegAddrComponent extends AbstractFullAddressComp
             }
 
             if(requiredAddressParamsIsBlank(fieldComponent, (Map) map.get(REG_ADDR_ATTR), incorrectAnswers)) return;
-
-            List<ValidationFieldDto> validationFieldDto = objectMapper.convertValue(fieldComponent.getAttrs().get(FIELDS_KEY), new TypeReference<>() {});
-            Map<String, String> errors = new HashMap<>();
-            try {
-                errors = ValidationUtil.validateFieldsByRegExp(incorrectAnswers, entry.getValue().getValue(), validationFieldDto);
-            } catch (JsonProcessingException e) {
-                throw new ValidationException("Ошибка при попытке валидации адреса", e);
-            }
-            if (!errors.isEmpty()) {
-                incorrectAnswers.put(entry.getKey(), JsonProcessingUtil.toJson(errors));
-            }
 
             if (fields.contains(REG_DATE_ATTR)) {
                 if (map.get(REG_DATE_ATTR) == null) {

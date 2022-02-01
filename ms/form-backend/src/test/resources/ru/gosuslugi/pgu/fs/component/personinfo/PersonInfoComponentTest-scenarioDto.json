@@ -1,0 +1,588 @@
+{
+  "serviceCode": "10000000101",
+  "targetCode": "-10000000101",
+  "orderId": 1739674170,
+  "currentScenarioId": 1,
+  "serviceDescriptorId": "10000000101",
+  "currentUrl": "https://local.test.gosuslugi.ru:4200/",
+  "finishedAndCurrentScreens": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s66",
+    "s11",
+    "s19",
+    "s19_1",
+    "s20",
+    "s21",
+    "s22",
+    "screen_factAddr",
+    "s53",
+    "s39"
+  ],
+  "cachedAnswers": {
+    "q18": {
+      "visited": true,
+      "value": "Да"
+    }
+  },
+  "currentValue": {
+    "ai18": {
+      "visited": true,
+      "value": "[{\"ai18_4\":\"Колька\",\"ai18_5\":\"\",\"ai18_6\":false,\"ai18_0\":\"7593142\",\"ai18_1\":\"2021-03-05T00:00:00.000Z\",\"ai18_2\":\"M\",\"ai18_01\":\"RF_BRTH_CERT\",\"ai18_3\":\"Романенко\"}]"
+    }
+  },
+  "errors": {},
+  "uniquenessErrors": [],
+  "applicantAnswers": {
+    "q1": {
+      "visited": true,
+      "value": "Нового образца"
+    },
+    "q2": {
+      "visited": true,
+      "value": "Детям"
+    },
+    "pd4": {
+      "visited": true,
+      "value": "{\"regAddr\":{\"regionType\":\"город\",\"regionShortType\":\"г\",\"region\":\"Москва\",\"cityType\":\"\",\"cityShortType\":\"\",\"city\":\"\",\"districtType\":\"\",\"districtShortType\":\"\",\"district\":\"\",\"townType\":\"\",\"townShortType\":\"\",\"town\":\"\",\"inCityDistType\":\"\",\"inCityDistShortType\":\"\",\"inCityDist\":\"\",\"streetType\":\"улица\",\"streetShortType\":\"ул\",\"street\":\"2-я Ямская\",\"additionalAreaType\":\"\",\"additionalAreaShortType\":\"\",\"additionalArea\":\"\",\"additionalStreetType\":\"\",\"additionalStreetShortType\":\"\",\"additionalStreet\":\"\",\"houseType\":\"дом\",\"houseShortType\":\"д\",\"house\":\"45\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1Type\":\"\",\"building1ShortType\":\"\",\"building1\":\"\",\"building2Type\":\"\",\"building2ShortType\":\"\",\"building2\":\"\",\"apartmentType\":\"квартира\",\"apartmentShortType\":\"кв\",\"apartment\":\"67\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"127018\",\"geoLat\":\"55.7950118\",\"geoLon\":\"37.6099256\",\"fullAddress\":\"127018, г Москва, ул 2-я Ямская, д 45, кв 67\",\"lat\":\"55.7950118\",\"lng\":\"37.6099256\",\"kladrCode\":\"77000000000321300\",\"fiasCode\":\"03d6fc48-4e42-4953-9123-094e2a20c38c\",\"regionFias\":\"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\",\"streetFias\":\"03d6fc48-4e42-4953-9123-094e2a20c38c\",\"okato\":\"45280569000\",\"oktmo\":\"45357000\",\"hasErrors\":0,\"regionCode\":\"77\",\"postalCode\":\"127018\"},\"regDate\":\"03.01.2022\"}"
+    },
+    "q3": {
+      "visited": true,
+      "value": "До 14 лет"
+    },
+    "pd1_2": {
+      "visited": true,
+      "value": "Москва"
+    },
+    "q20": {
+      "visited": true,
+      "value": "Где есть прописка"
+    },
+    "d2": {
+      "visited": true,
+      "value": ""
+    },
+    "component_factAddr": {
+      "visited": true,
+      "value": "{\"regAddr\":{\"regionType\":\"город\",\"regionShortType\":\"г\",\"region\":\"Москва\",\"cityType\":\"\",\"cityShortType\":\"\",\"city\":\"\",\"districtType\":\"\",\"districtShortType\":\"\",\"district\":\"\",\"townType\":\"\",\"townShortType\":\"\",\"town\":\"\",\"inCityDistType\":\"\",\"inCityDistShortType\":\"\",\"inCityDist\":\"\",\"streetType\":\"улица\",\"streetShortType\":\"ул\",\"street\":\"Пушкина\",\"additionalAreaType\":\"\",\"additionalAreaShortType\":\"\",\"additionalArea\":\"\",\"additionalStreetType\":\"\",\"additionalStreetShortType\":\"\",\"additionalStreet\":\"\",\"houseType\":\"дом\",\"houseShortType\":\"д\",\"house\":\"67\",\"houseCheckbox\":false,\"houseCheckboxClosed\":false,\"building1Type\":\"\",\"building1ShortType\":\"\",\"building1\":\"\",\"building2Type\":\"\",\"building2ShortType\":\"\",\"building2\":\"\",\"apartmentType\":\"квартира\",\"apartmentShortType\":\"кв\",\"apartment\":\"88\",\"apartmentCheckbox\":false,\"apartmentCheckboxClosed\":false,\"index\":\"127006\",\"geoLat\":\"55.7276281\",\"geoLon\":\"37.5790876\",\"fullAddress\":\"127006, г Москва, ул Пушкина, д 67, кв 88\",\"lat\":\"55.7276281\",\"lng\":\"37.5790876\",\"kladrCode\":\"77000000000420000\",\"fiasCode\":\"b36b0d6a-6c8a-46db-ba85-b5a8c383de97\",\"regionFias\":\"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\",\"streetFias\":\"b36b0d6a-6c8a-46db-ba85-b5a8c383de97\",\"okato\":\"45293594000\",\"oktmo\":\"45909000\",\"hasErrors\":0,\"regionCode\":\"77\",\"postalCode\":\"127006\"}}"
+    },
+    "pd1_1": {
+      "visited": true,
+      "value": "{\"originalItem\":{\"value\":\"SUN\",\"parentValue\":null,\"title\":\"СССР\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}},\"id\":\"SUN\",\"text\":\"СССР\"}"
+    },
+    "w1": {
+      "visited": true,
+      "value": ""
+    },
+    "pd1": {
+      "visited": true,
+      "value": "{\"states\":[{\"groupName\":\"Хищников Пётя Михайлов\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"17.08.1950\"}]},{\"groupName\":\"Паспорт гражданина РФ\",\"fields\":[{\"label\":\"Серия и номер\",\"value\":\"0007 354645\"},{\"label\":\"Дата выдачи\",\"value\":\"25.06.2019\"},{\"label\":\"Кем выдан\",\"value\":\"УМВД РОССИИ ПО ЗАБАЙКАЛЬСКОМУ КРАЮ\"},{\"label\":\"Код подразделения\",\"value\":\"750-001\"}]}],\"storedValues\":{\"firstName\":\"Пётя\",\"lastName\":\"Хищников\",\"middleName\":\"Михайлов\",\"birthDate\":\"17.08.1950\",\"gender\":\"F\",\"genderFull\":\"Женский\",\"docType\":\"RF_PASSPORT\",\"rfPasportSeries\":\"0007\",\"rfPasportNumber\":\"354645\",\"rfPasportIssueDate\":\"25.06.2019\",\"rfPasportIssuedBy\":\"УМВД РОССИИ ПО ЗАБАЙКАЛЬСКОМУ КРАЮ\",\"rfPasportIssuedById\":\"750001\",\"rfPasportIssuedByIdFormatted\":\"750-001\",\"citizenship\":\"РОССИЯ\",\"citizenshipCode\":\"RUS\"},\"errors\":[{\"icon\":\"yellow-line\",\"type\":\"warn\",\"title\":\"Паспортные данные соответствуют паспорту?\",\"desc\":\"Если нет, в услуге откажут.<br><a href='' id='dataediting'>Как отредактировать данные</a>\"}]}"
+    },
+    "pd3": {
+      "visited": true,
+      "value": "yenotov.yenotmki@bk.ru"
+    },
+    "pd2": {
+      "visited": true,
+      "value": "+7(519)6786787"
+    },
+    "q16": {
+      "visited": true,
+      "value": "Нет"
+    }
+  },
+  "cycledApplicantAnswers": {
+    "answerlist": [
+      {
+        "id": "ai18",
+        "items": [
+          {
+            "id": "7586497",
+            "uniqueKeys": [],
+            "fieldToId": {},
+            "itemAnswers": {},
+            "cachedAnswers": {},
+            "esiaData": {
+              "lastName": "Мишкина",
+              "rfBirthCertificateIssueDate": "2010-10-30T00:00:00Z",
+              "gender": "F",
+              "regDate": "",
+              "isNew": false,
+              "relationshipToChild": "",
+              "type": "RF_BRTH_CERT",
+              "birthDate": "2010-10-20T00:00:00.000Z",
+              "actDate": "29.10.2010",
+              "regAddr": "",
+              "firstName": "Машка",
+              "rfBirthCertificateIssuedBy": "ЗАГС",
+              "rfBirthCertificateSeries": "II-КН",
+              "middleName": "",
+              "id": "7586497",
+              "rfBirthCertificateNumber": "123654",
+              "snils": "000-737-811 11",
+              "rfBirthCertificateActNumber": "-"
+            },
+            "finishedScreens": []
+          },
+          {
+            "id": "7598575",
+            "uniqueKeys": [],
+            "fieldToId": {},
+            "itemAnswers": {},
+            "cachedAnswers": {},
+            "esiaData": {
+              "lastName": "Двести",
+              "rfBirthCertificateIssueDate": "2021-08-03T00:00:00Z",
+              "gender": "M",
+              "regDate": "",
+              "isNew": false,
+              "relationshipToChild": "",
+              "type": "RF_BRTH_CERT",
+              "birthDate": "2021-08-02T00:00:00.000Z",
+              "actDate": "03.08.2021",
+              "regAddr": "",
+              "firstName": "Пятьдесят",
+              "rfBirthCertificateIssuedBy": "авыаывавыавыаываыаываываываыва авыаывавыавыаываыаываываываыва авыаывавыавыаываыаываываываыва авыаывавыавыаываыаываываываыва авыаывавыавыаываыаываываываыва авыаывавыавыаываыаываываываыва авыаывавыавыаываыаываываываыва ",
+              "rfBirthCertificateSeries": "XX-КК",
+              "middleName": "",
+              "id": "7598575",
+              "rfBirthCertificateNumber": "265448",
+              "rfBirthCertificateActNumber": "123133"
+            },
+            "finishedScreens": []
+          },
+          {
+            "id": "7593142",
+            "uniqueKeys": [],
+            "fieldToId": {},
+            "itemAnswers": {},
+            "cachedAnswers": {},
+            "esiaData": {
+              "lastName": "Романенко",
+              "rfBirthCertificateIssueDate": "2021-06-03T00:00:00Z",
+              "gender": "M",
+              "regDate": "",
+              "isNew": false,
+              "relationshipToChild": "",
+              "type": "RF_BRTH_CERT",
+              "birthDate": "2021-03-05T00:00:00.000Z",
+              "actDate": "03.06.2021",
+              "regAddr": "",
+              "firstName": "Колька",
+              "rfBirthCertificateIssuedBy": "паа",
+              "rfBirthCertificateSeries": "IIIV-ЛГ",
+              "middleName": "",
+              "id": "7593142",
+              "rfBirthCertificateNumber": "545545",
+              "rfBirthCertificateActNumber": "-"
+            },
+            "finishedScreens": []
+          },
+          {
+            "id": "7598577",
+            "uniqueKeys": [],
+            "fieldToId": {},
+            "itemAnswers": {},
+            "cachedAnswers": {},
+            "esiaData": {
+              "lastName": "Сто",
+              "rfBirthCertificateIssueDate": "2021-08-02T00:00:00Z",
+              "gender": "M",
+              "regDate": "",
+              "isNew": false,
+              "relationshipToChild": "",
+              "type": "RF_BRTH_CERT",
+              "birthDate": "2021-08-02T00:00:00.000Z",
+              "actDate": "02.08.2021",
+              "regAddr": "",
+              "firstName": "Двадцать",
+              "rfBirthCertificateIssuedBy": "авыаывавыавыаываыаываываываыва авыаывавыавыаываыаываываываыва авыаывавыавыаываыаываываываыва авыаывавыавыаываыаываываываыва",
+              "rfBirthCertificateSeries": "XX-КК",
+              "middleName": "",
+              "id": "7598577",
+              "rfBirthCertificateNumber": "435355",
+              "rfBirthCertificateActNumber": "3534536456"
+            },
+            "finishedScreens": []
+          }
+        ]
+      }
+    ]
+  },
+  "participants": {},
+  "display": {
+    "id": "s39",
+    "name": "Какому ребёнку до 14 нужен загранпаспорт",
+    "type": "UNIQUE",
+    "header": "Укажите детей до 14 лет, кому требуется оформить загранпаспорт",
+    "components": [
+      {
+        "id": "ai18",
+        "name": "",
+        "type": "ChildrenList",
+        "label": "",
+        "skipValidation": false,
+        "attrs": {
+          "imaginaryOidBase": 10,
+          "isCycled": true,
+          "minAge": 0,
+          "maxAge": 14,
+          "components": [
+            {
+              "id": "ai18_0",
+              "name": "Идентификатор",
+              "type": "StringInput",
+              "createOrder": false,
+              "checkForDuplicate": false,
+              "clearCacheForComponentIds": [],
+              "label": "Идентификатор",
+              "skipValidation": false,
+              "attrs": {
+                "hidden": true,
+                "fields": [
+                  {
+                    "fieldName": "id"
+                  }
+                ],
+                "validation": [
+                  {
+                    "type": "RegExp",
+                    "value": ".+",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле не может быть пустым"
+                  }
+                ],
+                "hint": "Дату регистрации можно найти на штампе о регистрации на стр. 5-12 паспорта РФ"
+              },
+              "arguments": {},
+              "value": "",
+              "required": true,
+              "sendAnalytics": false
+            },
+            {
+              "id": "ai18_00",
+              "name": "",
+              "type": "LabelSection",
+              "createOrder": false,
+              "checkForDuplicate": false,
+              "clearCacheForComponentIds": [],
+              "label": "",
+              "skipValidation": false,
+              "attrs": {},
+              "arguments": {},
+              "value": "",
+              "required": true,
+              "sendAnalytics": false
+            },
+            {
+              "id": "ai18_01",
+              "type": "StringInput",
+              "createOrder": false,
+              "checkForDuplicate": false,
+              "clearCacheForComponentIds": [],
+              "skipValidation": false,
+              "attrs": {
+                "hidden": true,
+                "fields": [
+                  {
+                    "fieldName": "type"
+                  }
+                ]
+              },
+              "arguments": {},
+              "value": "",
+              "required": false,
+              "sendAnalytics": false
+            },
+            {
+              "id": "ai18_3",
+              "name": "Фамилия",
+              "type": "StringInput",
+              "createOrder": false,
+              "checkForDuplicate": false,
+              "clearCacheForComponentIds": [],
+              "label": "Фамилия",
+              "skipValidation": false,
+              "attrs": {
+                "fstuc": "first",
+                "fields": [
+                  {
+                    "fieldName": "lastName"
+                  }
+                ],
+                "validation": [
+                  {
+                    "type": "RegExp",
+                    "value": "^[а-яА-ЯёЁ\\sIVXLCDM\\'\\-\\.\\(\\)]+$",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле 'Фамилия' может содержать русские буквы, римские цифры, пробел и спецсимволы: . ' - ()",
+                    "updateOn": "blur"
+                  },
+                  {
+                    "type": "RegExp",
+                    "value": "^.{0,34}$",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле может содержать не более 34 символов"
+                  },
+                  {
+                    "type": "RegExp",
+                    "value": ".+",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле не может быть пустым"
+                  }
+                ]
+              },
+              "arguments": {},
+              "value": "",
+              "required": true,
+              "suggestionId": "lastname",
+              "sendAnalytics": false
+            },
+            {
+              "id": "ai18_4",
+              "name": "Имя",
+              "type": "StringInput",
+              "createOrder": false,
+              "checkForDuplicate": false,
+              "clearCacheForComponentIds": [],
+              "label": "Имя",
+              "skipValidation": false,
+              "attrs": {
+                "fstuc": "first",
+                "fields": [
+                  {
+                    "fieldName": "firstName"
+                  }
+                ],
+                "validation": [
+                  {
+                    "type": "RegExp",
+                    "value": "^[а-яА-ЯёЁ\\sIVXLCDM\\'\\-\\.\\(\\)]+$",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле 'Имя' может содержать русские буквы, римские цифры, пробел и спецсимволы: . ' - ()",
+                    "updateOn": "blur"
+                  },
+                  {
+                    "type": "RegExp",
+                    "value": "^.{0,40}$",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле может содержать не более 40 символов"
+                  },
+                  {
+                    "type": "RegExp",
+                    "value": ".+",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле не может быть пустым"
+                  }
+                ]
+              },
+              "arguments": {},
+              "value": "",
+              "required": true,
+              "suggestionId": "firstname",
+              "sendAnalytics": false
+            },
+            {
+              "id": "ai18_5",
+              "name": "Отчество",
+              "type": "StringInput",
+              "createOrder": false,
+              "checkForDuplicate": false,
+              "clearCacheForComponentIds": [],
+              "label": "Отчество",
+              "skipValidation": false,
+              "attrs": {
+                "fstuc": "first",
+                "fields": [
+                  {
+                    "fieldName": "middleName"
+                  }
+                ],
+                "validation": [
+                  {
+                    "type": "RegExp",
+                    "value": "^[а-яА-ЯёЁ\\sIVXLCDM\\'\\-\\.\\(\\)]+$",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле 'Отчество' может содержать русские буквы, римские цифры, пробел и спецсимволы: . ' - ()",
+                    "updateOn": "blur"
+                  },
+                  {
+                    "type": "RegExp",
+                    "value": "^.{0,40}$",
+                    "ref": "",
+                    "dataType": "",
+                    "condition": "",
+                    "errorMsg": "Поле может содержать не более 40 символов"
+                  }
+                ],
+                "customUnrecLabel": "При наличии"
+              },
+              "arguments": {},
+              "value": "",
+              "required": false,
+              "suggestionId": "middlename",
+              "sendAnalytics": false
+            },
+            {
+              "id": "ai18_1",
+              "name": "Дата рождения",
+              "type": "DateInput",
+              "createOrder": false,
+              "checkForDuplicate": false,
+              "clearCacheForComponentIds": [],
+              "label": "Дата рождения",
+              "skipValidation": false,
+              "attrs": {
+                "grid": "grid-col-6 grid-col-12-sm",
+                "brokenDateFixStrategy": "reset",
+                "fields": [
+                  {
+                    "fieldName": "birthDate"
+                  }
+                ],
+                "accuracy": "day",
+                "minDate": "today-14y+1d",
+                "maxDate": "today",
+                "validation": [
+                  {
+                    "type": "RegExp",
+                    "value": ".*",
+                    "ref": "",
+                    "condition": "",
+                    "errorMsg": "Поле должно быть заполнено"
+                  }
+                ]
+              },
+              "arguments": {},
+              "value": "",
+              "required": true,
+              "suggestionId": "birthday",
+              "sendAnalytics": false
+            },
+            {
+              "id": "ai18_2",
+              "name": "Пол",
+              "type": "RadioInput",
+              "createOrder": false,
+              "checkForDuplicate": false,
+              "clearCacheForComponentIds": [],
+              "label": "Пол",
+              "skipValidation": false,
+              "attrs": {
+                "fields": [
+                  {
+                    "fieldName": "gender"
+                  }
+                ],
+                "supportedValues": [
+                  {
+                    "label": "Мальчик",
+                    "value": "M",
+                    "isDefault": true
+                  },
+                  {
+                    "label": "Девочка",
+                    "value": "F"
+                  }
+                ],
+                "isHorizontal": true,
+                "required": true
+              },
+              "arguments": {},
+              "value": "",
+              "required": true,
+              "suggestionId": "gender",
+              "sendAnalytics": false
+            },
+            {
+              "id": "ai18_6",
+              "name": "ребёнок новый?",
+              "type": "RadioInput",
+              "createOrder": false,
+              "checkForDuplicate": false,
+              "clearCacheForComponentIds": [],
+              "label": "ребёнок новый?",
+              "skipValidation": false,
+              "attrs": {
+                "hidden": true,
+                "fields": [
+                  {
+                    "fieldName": "isNew"
+                  }
+                ],
+                "supportedValues": [
+                  {
+                    "label": "Да",
+                    "value": true
+                  },
+                  {
+                    "label": "Нет",
+                    "value": false,
+                    "isDefault": false
+                  }
+                ],
+                "isHorizontal": true
+              },
+              "arguments": {},
+              "value": "",
+              "required": true,
+              "sendAnalytics": false
+            }
+          ],
+          "refs": {}
+        },
+        "arguments": {},
+        "value": "[{\"ai18_4\":\"Колька\",\"ai18_5\":\"\",\"ai18_6\":false,\"ai18_0\":\"7593142\",\"ai18_1\":\"2021-03-05T00:00:00.000Z\",\"ai18_2\":\"M\",\"ai18_01\":\"RF_BRTH_CERT\",\"ai18_3\":\"Романенко\"},{\"ai18_4\":\"Машка\",\"ai18_5\":\"\",\"ai18_6\":false,\"ai18_0\":\"7586497\",\"ai18_1\":\"2010-10-20T00:00:00.000Z\",\"ai18_2\":\"F\",\"ai18_01\":\"RF_BRTH_CERT\",\"ai18_3\":\"Мишкина\"},{\"ai18_4\":\"Пятьдесят\",\"ai18_5\":\"\",\"ai18_6\":false,\"ai18_0\":\"7598575\",\"ai18_1\":\"2021-08-02T00:00:00.000Z\",\"ai18_2\":\"M\",\"ai18_01\":\"RF_BRTH_CERT\",\"ai18_3\":\"Двести\"},{\"ai18_4\":\"Двадцать\",\"ai18_5\":\"\",\"ai18_6\":false,\"ai18_0\":\"7598577\",\"ai18_1\":\"2021-08-02T00:00:00.000Z\",\"ai18_2\":\"M\",\"ai18_01\":\"RF_BRTH_CERT\",\"ai18_3\":\"Сто\"}]",
+        "required": true,
+        "sendAnalytics": false
+      }
+    ],
+    "buttons": [
+      {
+        "label": "Продолжить",
+        "type": "nextStep",
+        "action": "getNextScreen"
+      }
+    ],
+    "suggestion": {
+      "groupId": "kid_data_junior"
+    },
+    "hideBackButton": false,
+    "infoComponents": [],
+    "arguments": {},
+    "accepted": true,
+    "terminal": false,
+    "impasse": false,
+    "firstScreen": false
+  },
+  "logicComponents": [],
+  "serviceInfo": {
+    "statusId": 0
+  },
+  "signInfoMap": {},
+  "attachmentInfo": {},
+  "additionalParameters": {},
+  "serviceParameters": {},
+  "generatedFiles": [],
+  "disclaimers": [],
+  "cycledApplicantAnswerContext": {},
+  "gender": "F"
+}

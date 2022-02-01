@@ -41,16 +41,16 @@ public class ZagranpassportRepeatableFieldsValidationUtil {
             List<String> errors = ValidationUtil.getValidationList(fieldComponent, CHILD_NAME_CHANGE__ALL_FIELDS_EQUAL)
                     .stream()
                     .map(
-                        rule -> (
-                                Objects.equals(getBefore(childrenAnswerMap, BEFORE_SURNAME), getCurrent(rule, CURRENT_SURNAME))
-                                && Objects.equals(getBefore(childrenAnswerMap, BEFORE_NAME), getCurrent(rule, CURRENT_NAME))
-                                && Objects.equals(getBefore(childrenAnswerMap, BEFORE_MIDDLENAME), getCurrent(rule, CURRENT_MIDDLENAME))
+                            rule -> (
+                                    Objects.equals(getBefore(childrenAnswerMap, BEFORE_SURNAME), getCurrent(rule, CURRENT_SURNAME))
+                                            && Objects.equals(getBefore(childrenAnswerMap, BEFORE_NAME), getCurrent(rule, CURRENT_NAME))
+                                            && Objects.equals(getBefore(childrenAnswerMap, BEFORE_MIDDLENAME), getCurrent(rule, CURRENT_MIDDLENAME))
                             )
-                            ? Optional.ofNullable(rule.get(RegExpUtil.REG_EXP_ERROR_MESSAGE)).map(error -> error instanceof String ? (String) error : error.toString()).orElse(null)
-                            : null
-                )
-                .filter(StringUtils::hasText)
-                .collect(Collectors.toList());
+                                    ? Optional.ofNullable(rule.get(RegExpUtil.REG_EXP_ERROR_MESSAGE)).map(error -> error instanceof String ? (String) error : error.toString()).orElse(null)
+                                    : null
+                    )
+                    .filter(StringUtils::hasText)
+                    .collect(Collectors.toList());
             if (!errors.isEmpty()) {
                 result = new AbstractMap.SimpleEntry<>(name, String.join(", ", errors));
             }
@@ -60,19 +60,19 @@ public class ZagranpassportRepeatableFieldsValidationUtil {
 
     private static String getCurrent(Map<Object, Object> rule, String[] keys) {
         return Optional.ofNullable(rule.get(KEY_VALUE))
-            .filter(v -> v instanceof Map)
-            .map(v -> (Map) v)
-            .map(map -> Stream.of(keys).map(key -> map.get(key)).filter(v -> !isNull(v)).findFirst().orElse(null))
-            .filter(v -> v instanceof ApplicantAnswer)
-            .map(v -> (ApplicantAnswer) v)
-            .map(ApplicantAnswer::getValue)
-            .filter(StringUtils::hasText)
-            .orElse(null);
+                .filter(v -> v instanceof Map)
+                .map(v -> (Map) v)
+                .map(map -> Stream.of(keys).map(key -> map.get(key)).filter(v -> !isNull(v)).findFirst().orElse(null))
+                .filter(v -> v instanceof ApplicantAnswer)
+                .map(v -> (ApplicantAnswer) v)
+                .map(ApplicantAnswer::getValue)
+                .filter(StringUtils::hasText)
+                .orElse(null);
     }
 
     private static String getBefore(Map<String, String> childrenAnswerMap, String key) {
         return Optional.ofNullable(childrenAnswerMap.get(key))
-            .filter(StringUtils::hasText)
-            .orElse(null);
+                .filter(StringUtils::hasText)
+                .orElse(null);
     }
 }

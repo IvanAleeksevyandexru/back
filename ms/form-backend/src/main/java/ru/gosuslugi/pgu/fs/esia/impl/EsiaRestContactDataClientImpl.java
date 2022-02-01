@@ -75,15 +75,15 @@ public class EsiaRestContactDataClientImpl implements EsiaRestContactDataClient 
     @Override
     public Boolean isEmailConfirmed(String esiaContactTypeCode, String email) {
         ResponseEntity<EsiaContactState> response = esiaClientRestTemplate
-            .exchange(buildEsiaUrl() + CHECK_CONTACT_CONFIRMED,
-                HttpMethod.GET,
-                new HttpEntity<String>(this.prepareSecurityHeader()),
-                EsiaContactState.class,
-                Map.of(
-                    "value", URLEncoder.encode(email),
-                    "type", esiaContactTypeCode
-                )
-            );
+                .exchange(buildEsiaUrl() + CHECK_CONTACT_CONFIRMED,
+                        HttpMethod.GET,
+                        new HttpEntity<String>(this.prepareSecurityHeader()),
+                        EsiaContactState.class,
+                        Map.of(
+                                "value", URLEncoder.encode(email),
+                                "type", esiaContactTypeCode
+                        )
+                );
         validateResponse(response);
         return response.getBody().isResult();
     }
@@ -111,8 +111,8 @@ public class EsiaRestContactDataClientImpl implements EsiaRestContactDataClient 
                         Map.of(
                                 "value", URLEncoder.encode(phone),
                                 "type", EsiaContact.Type.MOBILE_PHONE.getCode()
-                                )
-                        );
+                        )
+                );
         validateResponse(response);
         return response.getBody();
     }
@@ -198,10 +198,10 @@ public class EsiaRestContactDataClientImpl implements EsiaRestContactDataClient 
         HttpEntity<EsiaAddress> httpEntity = new HttpEntity<>(esiaAddress, this.prepareSecurityHeader());
         try {
             ResponseEntity<EsiaAddress> responseEntity = esiaClientRestTemplate.postForEntity(
-                buildEsiaUrl() + ADD_UPDATE_ADDRESS_URL,
-                httpEntity,
-                EsiaAddress.class,
-                Map.of("prn_oid", userPersonalData.getUserId())
+                    buildEsiaUrl() + ADD_UPDATE_ADDRESS_URL,
+                    httpEntity,
+                    EsiaAddress.class,
+                    Map.of("prn_oid", userPersonalData.getUserId())
             );
             validateResponse(responseEntity);
             return responseEntity.getBody();
@@ -219,10 +219,10 @@ public class EsiaRestContactDataClientImpl implements EsiaRestContactDataClient 
         HttpEntity<EsiaContactDto> httpEntity = new HttpEntity<>(esiaContactDto, this.prepareSecurityHeader());
         try {
             ResponseEntity<EsiaContactDto> esiaContactDtoResponseEntity = esiaClientRestTemplate.postForEntity(
-                buildEsiaUrl() + CREATE_LEGAL_CONTACT_URL,
-                httpEntity,
-                EsiaContactDto.class,
-                Map.of("org_oid", userOrgData.getOrg().getOid())
+                    buildEsiaUrl() + CREATE_LEGAL_CONTACT_URL,
+                    httpEntity,
+                    EsiaContactDto.class,
+                    Map.of("org_oid", userOrgData.getOrg().getOid())
             );
             validateResponse(esiaContactDtoResponseEntity);
             return esiaContactDtoResponseEntity.getBody();
@@ -236,13 +236,13 @@ public class EsiaRestContactDataClientImpl implements EsiaRestContactDataClient 
         HttpEntity<EsiaContactDto> httpEntity = new HttpEntity<>(esiaContactDto, this.prepareSecurityHeader());
         try {
             esiaClientRestTemplate.postForEntity(
-                buildEsiaUrl() + CHANGE_LEGAL_CONTACT_URL,
-                httpEntity,
-                EsiaContactDto.class,
-                Map.of(
-                    "org_oid", userOrgData.getOrg().getOid(),
-                    "id", esiaContactDto.getId()
-                )
+                    buildEsiaUrl() + CHANGE_LEGAL_CONTACT_URL,
+                    httpEntity,
+                    EsiaContactDto.class,
+                    Map.of(
+                            "org_oid", userOrgData.getOrg().getOid(),
+                            "id", esiaContactDto.getId()
+                    )
             );
             return esiaContactDto;
         } catch(RestClientException e) {
@@ -275,14 +275,14 @@ public class EsiaRestContactDataClientImpl implements EsiaRestContactDataClient 
     public Boolean resendLegalCode(String contactId) {
         try {
             ResponseEntity<Object> response = esiaClientRestTemplate
-                .postForEntity(buildEsiaUrl() + RESEND_LEGAL_CODE_URL,
-                    new HttpEntity<String>(this.prepareSecurityHeader()),
-                    Object.class,
-                    Map.of(
-                        "org_oid", userOrgData.getOrg().getOid(),
-                        "id", contactId
-                    )
-                );
+                    .postForEntity(buildEsiaUrl() + RESEND_LEGAL_CODE_URL,
+                            new HttpEntity<String>(this.prepareSecurityHeader()),
+                            Object.class,
+                            Map.of(
+                                    "org_oid", userOrgData.getOrg().getOid(),
+                                    "id", contactId
+                            )
+                    );
             validateResponse(response);
             return response.getStatusCode().is2xxSuccessful();
         } catch (ExternalServiceException e) {

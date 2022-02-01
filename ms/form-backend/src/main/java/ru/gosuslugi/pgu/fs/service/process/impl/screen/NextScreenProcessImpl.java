@@ -30,8 +30,10 @@ import ru.gosuslugi.pgu.fs.common.service.DisplayReferenceService;
 import ru.gosuslugi.pgu.fs.common.service.ScreenFinderService;
 import ru.gosuslugi.pgu.fs.descriptor.ErrorModalDescriptorService;
 import ru.gosuslugi.pgu.fs.descriptor.ErrorModalView;
+import ru.gosuslugi.pgu.fs.exception.DraftNotEditableException;
 import ru.gosuslugi.pgu.fs.exception.DuplicateOrderException;
 import ru.gosuslugi.pgu.fs.exception.NoEmpowermentException;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.OrderStatuses;
 import ru.gosuslugi.pgu.fs.pgu.service.PguOrderService;
 import ru.gosuslugi.pgu.fs.service.CreateOrderService;
 import ru.gosuslugi.pgu.fs.service.EmpowermentService;
@@ -314,7 +316,7 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
                             .ifPresent(component -> serviceDescriptor.getFieldComponentById(component.getId()).get().getClearCacheForComponentIds()
                                     .forEach(componentIdToClearCache -> {
                                         request.getScenarioDto().getCachedAnswers().remove(componentIdToClearCache);
-                    }));
+                                    }));
                 }
         );
     }
@@ -349,6 +351,18 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
     }
 
     @Override
+    public void checkEditable() {
+        var scenarioDto = this.response.getScenarioDto();
+        var serviceInfo = scenarioDto.getServiceInfo();
+        if(serviceInfo != null && serviceInfo.getStatusId() != null && !OrderStatuses.isEditableStatus(serviceInfo.getStatusId())){
+            throw new DraftNotEditableException(
+                    DraftNotEditableException.createWindow(serviceDescriptor.getService(), hasCheckForDuplicate()),
+                    "Заявление находится в нередактируемом статусе"
+            );
+        }
+    }
+
+    @Override
     public void checkPermissions() {
         var scenarioDto = this.response.getScenarioDto();
         var display = scenarioDto.getDisplay();
@@ -371,7 +385,7 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
         }
         if (!empowermentService.checkUserUserPermissionForSendOrder(scenarioDto.getTargetCode())) {
             throw new NoEmpowermentException(errorModalDescriptorService.getErrorModal(ErrorModalView.NO_RIGHTS_FOR_SENDING_APPLICATION),
-                                            "Недостаточно прав для подачи заявления");
+                    "Недостаточно прав для подачи заявления");
         }
 
     }

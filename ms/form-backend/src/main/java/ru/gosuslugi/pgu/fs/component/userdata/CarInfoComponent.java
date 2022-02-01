@@ -68,7 +68,7 @@ public class CarInfoComponent extends AbstractComponent<CarInfoComponentDto> {
             if (fieldBox.isPresent()) {
                 FieldComponent field = fieldBox.get();
                 field.setValue(JsonProcessingUtil.toJson(getCarInfo(scenarioDto.getOrderId().toString(), field.getArguments().get(VIN_ATTR),
-                    String.valueOf(component.getAttrs().get(TX_ATTR)))));
+                        String.valueOf(component.getAttrs().get(TX_ATTR)))));
                 field.setAttrs(component.getAttrs());
             }
 
@@ -84,28 +84,28 @@ public class CarInfoComponent extends AbstractComponent<CarInfoComponentDto> {
     private CarInfoComponentDto getCarInfo(String orderId, String vin, String tx) {
         Person person = userPersonalData.getPerson();
         VehicleInfoRequest vehicleInfoRequest = VehicleInfoRequest
-            .builder()
-            .lastName(person.getLastName())
-            .firstName(person.getFirstName())
-            .middleName(person.getMiddleName())
-            .vin(vin)
-            .tx(tx)
-            .build();
+                .builder()
+                .lastName(person.getLastName())
+                .firstName(person.getFirstName())
+                .middleName(person.getMiddleName())
+                .vin(vin)
+                .tx(tx)
+                .build();
         FederalNotaryRequest federalNotaryRequest = FederalNotaryRequest
-            .builder()
-            .orderId(orderId)
-            .vin(vin)
-            .tx(tx)
-            .build();
+                .builder()
+                .orderId(orderId)
+                .vin(vin)
+                .tx(tx)
+                .build();
 
         CompletableFuture<GibddServiceResponse<VehicleInfo>> vehicleInfoFuture = gibddDataService
-            .getAsyncVehicleInfo(vehicleInfoRequest)
-            .orTimeout(requestTimeout, TimeUnit.SECONDS)
-            .handle((result, ex) -> ex != null ? new GibddServiceResponse<>(null, ExternalServiceCallResult.EXTERNAL_SERVER_ERROR, ex.getMessage()) : result);
+                .getAsyncVehicleInfo(vehicleInfoRequest)
+                .orTimeout(requestTimeout, TimeUnit.SECONDS)
+                .handle((result, ex) -> ex != null ? new GibddServiceResponse<>(null, ExternalServiceCallResult.EXTERNAL_SERVER_ERROR, ex.getMessage()) : result);
         CompletableFuture<GibddServiceResponse<FederalNotaryInfo>> notaryInfoFuture = gibddDataService
-            .getAsyncFederalNotaryInfo(federalNotaryRequest)
-            .orTimeout(requestTimeout, TimeUnit.SECONDS)
-            .handle((result, ex) -> ex != null ? new GibddServiceResponse<>(null, ExternalServiceCallResult.EXTERNAL_SERVER_ERROR, ex.getMessage()) : result);
+                .getAsyncFederalNotaryInfo(federalNotaryRequest)
+                .orTimeout(requestTimeout, TimeUnit.SECONDS)
+                .handle((result, ex) -> ex != null ? new GibddServiceResponse<>(null, ExternalServiceCallResult.EXTERNAL_SERVER_ERROR, ex.getMessage()) : result);
         CompletableFuture<Void> allFuture = CompletableFuture.allOf(vehicleInfoFuture, notaryInfoFuture);
         allFuture.join();
 

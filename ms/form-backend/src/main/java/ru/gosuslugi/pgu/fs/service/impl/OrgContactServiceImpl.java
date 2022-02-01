@@ -48,11 +48,11 @@ public class OrgContactServiceImpl implements OrgContactService {
      */
     private EsiaContactDto createOrUpdateContact(String esiaContactTypeCode, String contactValue) {
         Optional<EsiaContact> esiaContactOptional = userOrgData.getContacts().stream()
-            .filter(c -> c.getType().equals(esiaContactTypeCode))
+                .filter(c -> c.getType().equals(esiaContactTypeCode))
 
-            // VERIFIED to first
-            .sorted(Comparator.comparing(c -> VERIFIED_ATTR.equals(c.getVrfStu()) ? 0 : 1))
-            .findFirst();
+                // VERIFIED to first
+                .sorted(Comparator.comparing(c -> VERIFIED_ATTR.equals(c.getVrfStu()) ? 0 : 1))
+                .findFirst();
         EsiaContactDto esiaContactDto = new EsiaContactDto();
         esiaContactDto.setValue(contactValue);
         if (esiaContactOptional.isEmpty()) {

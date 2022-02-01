@@ -46,9 +46,9 @@ public abstract class AbstractFullAddressComponent<PreSetModel> extends Abstract
 
     private ContextJsonUtil<FullAddress> getFullAddressContext(Map.Entry<String, ApplicantAnswer> entry) {
         return new ContextJsonUtil<>(
-            Optional.ofNullable(entry).map(Map.Entry::getValue).orElse(null),
-            getFullAddressJsonPath(),
-            FullAddress.class
+                Optional.ofNullable(entry).map(Map.Entry::getValue).orElse(null),
+                getFullAddressJsonPath(),
+                FullAddress.class
         );
     }
 

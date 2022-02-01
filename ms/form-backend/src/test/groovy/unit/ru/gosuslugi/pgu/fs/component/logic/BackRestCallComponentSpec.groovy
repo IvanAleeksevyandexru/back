@@ -1,31 +1,33 @@
 package unit.ru.gosuslugi.pgu.fs.component.logic
 
-
+import com.fasterxml.jackson.databind.ObjectMapper
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException
+import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData
+import ru.gosuslugi.pgu.dto.BackRestCallResponseDto
 import ru.gosuslugi.pgu.dto.ScenarioDto
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
 import ru.gosuslugi.pgu.dto.descriptor.LinkedValue
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse
+import ru.gosuslugi.pgu.fs.common.service.impl.JsonProcessingServiceImpl
 import ru.gosuslugi.pgu.fs.component.logic.BackRestCallComponent
 import ru.gosuslugi.pgu.fs.component.logic.RestCallComponent
 import ru.gosuslugi.pgu.fs.component.logic.model.RestCallDto
 import ru.gosuslugi.pgu.fs.service.BackRestCallService
-import spock.lang.Ignore
 import spock.lang.Specification
 
-@Ignore
 class BackRestCallComponentSpec extends Specification {
 
+    @SuppressWarnings("GroovyAccessibility")
     def test() {
         given:
         def scenarioDto = new ScenarioDto()
-        def expectedValue = _ as String
         def restCallComponent = new RestCallComponent(_ as String)
         def restCallService = Stub(BackRestCallService) {
-            it.sendRequest(_ as RestCallDto) >> expectedValue
+            it.sendRequest(_ as RestCallDto) >> new BackRestCallResponseDto(200, Map.<String, Object> of("key", "value"))
         }
-        def component = new BackRestCallComponent(restCallComponent, restCallService)
+        def component = new BackRestCallComponent(restCallComponent, restCallService, Mock(UserPersonalData))
+        component.jsonProcessingService = new JsonProcessingServiceImpl(new ObjectMapper())
         def fieldComponent = getFieldComponent()
 
         when:
@@ -34,7 +36,7 @@ class BackRestCallComponentSpec extends Specification {
         then:
         component.getType() == ComponentType.BackRestCall
         initialValue == ComponentResponse.empty()
-        scenarioDto.getApplicantAnswers().get(fieldComponent.getId()).getValue() == expectedValue
+        scenarioDto.getApplicantAnswers().get(fieldComponent.getId()).getValue() == '{"statusCode":200,"errorMessage":null,"response":{"key":"value"}}'
         fieldComponent.getAttrs().isEmpty()
         fieldComponent.getLinkedValues().isEmpty()
         fieldComponent.getArguments().isEmpty()
@@ -46,7 +48,7 @@ class BackRestCallComponentSpec extends Specification {
         def restCallService = Stub(BackRestCallService) {
             it.sendRequest(_ as RestCallDto) >> { throw new ExternalServiceException(_ as String) }
         }
-        def component = new BackRestCallComponent(restCallComponent, restCallService)
+        def component = new BackRestCallComponent(restCallComponent, restCallService, Mock(UserPersonalData))
 
         when:
         component.getInitialValue(getFieldComponent(), new ScenarioDto())
@@ -59,8 +61,9 @@ class BackRestCallComponentSpec extends Specification {
         [
                 id          : 'brc1',
                 attrs       : [
-                        method: 'POST',
-                        path  : '/',
+                        method   : 'POST',
+                        path     : '/',
+                        esia_auth: false
                 ] as Map,
                 linkedValues: [["argument": "defaultArgument", "defaultValue": "100500"]] as List<LinkedValue>,
                 arguments   : [queryArg: 'hello']

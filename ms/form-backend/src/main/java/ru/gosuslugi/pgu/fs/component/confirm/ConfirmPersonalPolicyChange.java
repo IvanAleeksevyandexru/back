@@ -74,7 +74,7 @@ public class ConfirmPersonalPolicyChange extends AbstractComponent<ConfirmPerson
         if (Objects.nonNull(fieldComponent.getAttrs()) && Objects.nonNull(fieldComponent.getAttrs().get(FIELDS_KEY))) {
             List<ValidationFieldDto> fields = objectMapper.convertValue(fieldComponent.getAttrs().get(FIELDS_KEY), new TypeReference<>() {});
             try {
-                errors = ValidationUtil.validateFieldsByRegExp(incorrectAnswers, entry.getValue().getValue(), fields);
+                errors = validateFieldsByRegExp(incorrectAnswers, entry.getValue().getValue(), fields);
             } catch (IOException e) {
                 throw new ValidationException("Failed to parse OMS field input", e);
             }
@@ -93,6 +93,37 @@ public class ConfirmPersonalPolicyChange extends AbstractComponent<ConfirmPerson
                 incorrectAnswers.put(fieldComponent.getId(), "Не удалось обновить данные ОМС. Попробуйте позже.");
             }
         }
+    }
+
+
+    // TODO Заменить на общую валидацию регулярных выражений
+    public static Map<String, String> validateFieldsByRegExp(Map<String, String> incorrectAnswers, String value,List<ValidationFieldDto> fields) throws JsonProcessingException {
+        JsonNode documentJson = JsonProcessingUtil.getObjectMapper().readTree(value);
+        fields.forEach(field -> Optional.ofNullable(field)
+                .map(ValidationFieldDto::getAttrs)
+                .filter(map -> map.get(VALIDATION_ARRAY_KEY) instanceof List)
+                .map(map -> (List<Map<String, String>>) map.get(VALIDATION_ARRAY_KEY))
+                .stream()
+                .flatMap(Collection::stream)
+                .filter(
+                        validationRule ->
+                                REG_EXP_TYPE.equalsIgnoreCase(validationRule.get("type"))
+                                        && StringUtils.hasText(validationRule.get(REG_EXP_VALUE))
+                )
+                .forEach(
+                        validationRule -> {
+                            JsonNode jsonObj = documentJson.findValue(field.getFieldName());
+                            String stringToCheck = jsonNodeToString(jsonObj);
+                            if (
+                                    !incorrectAnswers.containsKey(field.getFieldName())
+                                            && !isNull(stringToCheck)
+                                            && !stringToCheck.matches(validationRule.get(REG_EXP_VALUE))
+                            ) {
+                                incorrectAnswers.put(field.getFieldName(), validationRule.get(REG_EXP_ERROR_MESSAGE));
+                            }
+                        }
+                ));
+        return incorrectAnswers;
     }
 
     private void updateEsiaOms(Map.Entry<String, ApplicantAnswer> entry) {

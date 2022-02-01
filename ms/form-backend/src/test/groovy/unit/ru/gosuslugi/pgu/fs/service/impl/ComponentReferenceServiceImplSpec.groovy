@@ -79,12 +79,12 @@ class ComponentReferenceServiceImplSpec extends Specification {
     def 'Can get form for component FieldGroups without placeholders'() {
         given:
         def component = new FieldComponent(
-            attrs: [
-                fieldGroups: [
-                    [groupName: 'group name',
-                     fields   : [
-                         [label: 'label1', value: 'value1'],
-                         [label: 'label2', value: 'value2']]]]])
+                attrs: [
+                        fieldGroups: [
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label1', value: 'value1'],
+                                         [label: 'label2', value: 'value2']]]]])
         def scenarioDto = new ScenarioDto()
 
         when:
@@ -137,12 +137,12 @@ class ComponentReferenceServiceImplSpec extends Specification {
     def 'Can get form for component FieldGroups with not exists placeholder'() {
         given:
         def component = new FieldComponent(
-            attrs: [
-                fieldGroups: [
-                    [groupName: 'group name',
-                     fields   : [
-                         [label: 'label2', value: 'Value - ${notExistArgument}']]]]],
-            arguments: [argument1: 'value1'])
+                attrs: [
+                        fieldGroups: [
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label2', value: 'Value - ${notExistArgument}']]]]],
+                arguments: [argument1: 'value1'])
         def scenarioDto = new ScenarioDto()
 
         when:
@@ -205,12 +205,12 @@ class ComponentReferenceServiceImplSpec extends Specification {
     def 'Can get form for component FieldGroups with argument placeholder'() {
         given:
         def component = new FieldComponent(
-            attrs: [
-                fieldGroups: [
-                    [groupName: 'group name - ${argument1}',
-                     fields   : [
-                         [label: 'label1', value: 'Value with argument - ${argument1}']]]]],
-            arguments: [argument1: 'value1'])
+                attrs: [
+                        fieldGroups: [
+                                [groupName: 'group name - ${argument1}',
+                                 fields   : [
+                                         [label: 'label1', value: 'Value with argument - ${argument1}']]]]],
+                arguments: [argument1: 'value1'])
         def scenarioDto = new ScenarioDto()
 
         when:
@@ -307,12 +307,12 @@ class ComponentReferenceServiceImplSpec extends Specification {
     def 'Can get form for component FieldGroups with ref placeholder'() {
         given:
         def component = new FieldComponent(
-            attrs: [
-                fieldGroups: [
-                    [groupName: 'group name',
-                     fields   : [
-                         [label: 'label1', value: 'Value with ref - ${pd1}']]]],
-                refs       : [pd1: 'pd1.value.storedValues.firstName']])
+                attrs: [
+                        fieldGroups: [
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label1', value: 'Value with ref - ${pd1}']]]],
+                        refs       : [pd1: 'pd1.value.storedValues.firstName']])
         def scenarioDto = new ScenarioDto(applicantAnswers: [pd1: new ApplicantAnswer(value: "{\"storedValues\":{\"firstName\":\"Tom\"}}")])
 
         when:
@@ -430,30 +430,30 @@ class ComponentReferenceServiceImplSpec extends Specification {
     def 'Can get form for component FieldGroups with cycled ref placeholder'() {
         given:
         def component = new FieldComponent(
-            attrs: [
-                fieldGroups: [
-                    [groupName: 'group name',
-                     fields   : [
-                         [label: 'label1', value: 'Value - ${nameRef} ${lastNameRef}']],
-                     attrs    : [cycledAnswerId: 'ai7']]],
-                refs       : [nameRef    : 'bd6.value.storedValues.firstName',
-                              lastNameRef: 'bd6.value.storedValues.lastName']])
+                attrs: [
+                        fieldGroups: [
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label1', value: 'Value - ${nameRef} ${lastNameRef}']],
+                                 attrs    : [cycledAnswerId: 'ai7']]],
+                        refs       : [nameRef    : 'bd6.value.storedValues.firstName',
+                                      lastNameRef: 'bd6.value.storedValues.lastName']])
         def scenarioDto = new ScenarioDto(
-            applicantAnswers: [confirm_data: new ApplicantAnswer(value: "1")],
-            cycledApplicantAnswers: new CycledApplicantAnswers(
-                currentAnswerId: 'ai7',
-                answers: [
-                    new CycledApplicantAnswer(
-                        id: "ai7",
-                        items: [
-                            new CycledApplicantAnswerItem(
-                                id: "1",
-                                itemAnswers: [bd6: new ApplicantAnswer(
-                                    value: "{\"storedValues\":{\"firstName\":\"Tom\",\"lastName\":\"Hanks\"}}")]),
-                            new CycledApplicantAnswerItem(
-                                id: "2",
-                                itemAnswers: [bd6: new ApplicantAnswer(
-                                    value: "{\"storedValues\":{\"firstName\":\"Michael\",\"lastName\":\"Douglas\"}}")])])]))
+                applicantAnswers: [confirm_data: new ApplicantAnswer(value: "1")],
+                cycledApplicantAnswers: new CycledApplicantAnswers(
+                        currentAnswerId: 'ai7',
+                        answers: [
+                                new CycledApplicantAnswer(
+                                        id: "ai7",
+                                        items: [
+                                                new CycledApplicantAnswerItem(
+                                                        id: "1",
+                                                        itemAnswers: [bd6: new ApplicantAnswer(
+                                                                value: "{\"storedValues\":{\"firstName\":\"Tom\",\"lastName\":\"Hanks\"}}")]),
+                                                new CycledApplicantAnswerItem(
+                                                        id: "2",
+                                                        itemAnswers: [bd6: new ApplicantAnswer(
+                                                                value: "{\"storedValues\":{\"firstName\":\"Michael\",\"lastName\":\"Douglas\"}}")])])]))
         def formDto
 
         when: "All cycled answers"
@@ -476,12 +476,12 @@ class ComponentReferenceServiceImplSpec extends Specification {
     def 'Can get form for component FieldGroups with cycled ref placeholder with index'() {
         given:
         def component = new FieldComponent(
-            attrs: [
-                fieldGroups: [
-                    [groupName: 'group name',
-                     fields   : [
-                         [label: 'label1', value: 'Value with ref - ${pd1}']]]],
-                refs       : [pd1: 'pd1.value.storedValues.firstName']])
+                attrs: [
+                        fieldGroups: [
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label1', value: 'Value with ref - ${pd1}']]]],
+                        refs       : [pd1: 'pd1.value.storedValues.firstName']])
         def scenarioDto = new ScenarioDto(applicantAnswers: [pd1: new ApplicantAnswer(value: "{\"storedValues\":{\"firstName\":\"Tom\"}}")])
 
         when:
@@ -494,13 +494,13 @@ class ComponentReferenceServiceImplSpec extends Specification {
     def 'Can get form for component FieldGroups with sequential placeholder'() {
         given:
         def component = new FieldComponent(
-            attrs: [
-                fieldGroups : [
-                    [groupName: 'group name',
-                     fields   : [
-                         [label: 'label1', value: 'Value - ${index}'],
-                         [label: 'label2', value: 'Value - ${index}']]]],
-                placeholders: [index: 'sequential']])
+                attrs: [
+                        fieldGroups : [
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label1', value: 'Value - ${index}'],
+                                         [label: 'label2', value: 'Value - ${index}']]]],
+                        placeholders: [index: 'sequential']])
         def scenarioDto = new ScenarioDto()
 
         when:
@@ -514,12 +514,12 @@ class ComponentReferenceServiceImplSpec extends Specification {
     def 'Can get form component FieldGroups with nested placeholder'() {
         given:
         def component = new FieldComponent(
-            attrs: [
-                fieldGroups: [
-                    [groupName: 'group name',
-                     fields   : [
-                         [label: 'label1', value: 'Value: ${argument1}']]]]],
-            arguments: [argument1: 'argument2 - ${argument2}', argument2: 'argument2Value'])
+                attrs: [
+                        fieldGroups: [
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label1', value: 'Value: ${argument1}']]]]],
+                arguments: [argument1: 'argument2 - ${argument2}', argument2: 'argument2Value'])
         def scenarioDto = new ScenarioDto()
 
         when:

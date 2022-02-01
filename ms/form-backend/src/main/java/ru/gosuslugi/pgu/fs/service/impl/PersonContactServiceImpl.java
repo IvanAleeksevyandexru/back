@@ -38,11 +38,11 @@ public class PersonContactServiceImpl implements PersonContactService {
 
     private EsiaContactDto createOrUpdateContact(EsiaContact.Type type, String contactValue) {
         Optional<EsiaContact> esiaContactOptional = userPersonalData.getContacts().stream()
-            .filter(c -> c.getType().equals(type.getCode()))
+                .filter(c -> c.getType().equals(type.getCode()))
 
-            // VERIFIED to first
-            .sorted(Comparator.comparing(c -> VERIFIED_ATTR.equals(c.getVrfStu()) ? 0 : 1))
-            .findFirst();
+                // VERIFIED to first
+                .sorted(Comparator.comparing(c -> VERIFIED_ATTR.equals(c.getVrfStu()) ? 0 : 1))
+                .findFirst();
         EsiaContactDto esiaContactDto = new EsiaContactDto();
         esiaContactDto.setValue(contactValue);
         if (esiaContactOptional.isEmpty()) {

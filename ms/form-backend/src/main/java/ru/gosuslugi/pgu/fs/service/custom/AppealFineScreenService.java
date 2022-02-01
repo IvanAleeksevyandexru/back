@@ -84,9 +84,9 @@ public class AppealFineScreenService extends AbstractCustomScreenService {
         if (billData.getErrorCode() == DUPLICATE_ORDERS_ERROR_CODE && !CollectionUtils.isEmpty(billData.getOrderDuplicates())) {
             Long oldOrderId = billData.getOrderDuplicates().get(0).getId();
             Optional<ScenarioResponse> existingOrderResponse = getExistingOrderScenarioResponse(serviceId, initServiceDto, billData, oldOrderId);
-           if (existingOrderResponse.isPresent()) {
-               return existingOrderResponse.get();
-           }
+            if (existingOrderResponse.isPresent()) {
+                return existingOrderResponse.get();
+            }
         }
         if (billData.getErrorCode() != ResponseCode.OK_RESULT.getCode()) {
             warn(log, () -> String.format("Ошибка вызова внешнего сервиса, код = %s, сообшение = \"%s\"", billData.getErrorCode(), billData.getErrorMessage()));

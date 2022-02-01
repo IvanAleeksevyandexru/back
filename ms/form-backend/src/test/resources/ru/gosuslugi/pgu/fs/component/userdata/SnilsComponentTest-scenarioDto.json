@@ -1,0 +1,31 @@
+{
+  "serviceCode": "10000000355",
+  "targetCode": "-10000000355",
+  "orderId": 1747834266,
+  "currentScenarioId": 1,
+  "serviceDescriptorId": "10000000355",
+  "cycledApplicantAnswers": {
+    "answerlist": [
+      {
+        "id": "111",
+        "initScreen": "222",
+        "currentItemId": "333",
+        "items": [
+          {
+            "id": "444",
+            "uniqueKeys": [],
+            "fieldToId": {},
+            "itemAnswers": {
+              "key": {
+                "visited": true,
+                "value": "{\"snils\":\"123-456-788 63\"}"
+              }
+            },
+            "cachedAnswers": {},
+            "finishedScreens": []
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -5,12 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import ru.gosuslugi.pgu.fs.common.exception.NoRightsForSendingApplicationException;
-import ru.gosuslugi.pgu.fs.common.exception.dto.ErrorModalWindow;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
-import ru.gosuslugi.pgu.core.lk.model.order.OrderAttribute;
-import ru.gosuslugi.pgu.core.lk.model.order.OrderStatus;
-import ru.gosuslugi.pgu.core.lk.model.order.dto.request.SetOrderAttributeDTO;
 import ru.gosuslugi.pgu.draft.DraftClient;
 import ru.gosuslugi.pgu.draft.model.DraftHolderDto;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
@@ -23,15 +18,14 @@ import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.ScreenDescriptor;
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
 import ru.gosuslugi.pgu.fs.booking.service.BookingService;
+import ru.gosuslugi.pgu.fs.common.exception.dto.ErrorModalWindow;
 import ru.gosuslugi.pgu.fs.descriptor.ErrorModalDescriptorService;
 import ru.gosuslugi.pgu.fs.descriptor.ErrorModalView;
-import ru.gosuslugi.pgu.fs.exception.NoEmpowermentException;
 import ru.gosuslugi.pgu.fs.exception.TerrabyteFileCheckException;
 import ru.gosuslugi.pgu.fs.pgu.client.impl.OrderStatuses;
 import ru.gosuslugi.pgu.fs.pgu.service.OrderAttributesService;
 import ru.gosuslugi.pgu.fs.pgu.service.PguOrderService;
 import ru.gosuslugi.pgu.fs.service.DeliriumService;
-import ru.gosuslugi.pgu.fs.service.EmpowermentService;
 import ru.gosuslugi.pgu.fs.service.IntegrationService;
 import ru.gosuslugi.pgu.fs.service.ParticipantService;
 import ru.gosuslugi.pgu.fs.service.TerrabyteService;
@@ -63,12 +57,11 @@ public class IntegrationServiceImpl implements IntegrationService {
     private final TerrabyteService terrabyteService;
     private final ParticipantService participantService;
     private final DraftClient draftClient;
-    private final EmpowermentService empowermentService;
     private final BookingService bookingService;
     private final ErrorModalDescriptorService errorModalDescriptorService;
     private final OrderAttributesService orderAttributesService;
 
-    @Value("${spring.kafka.producer.sp-adapter.enabled}")
+    @Value("${spring.kafka.producer.sp-adapter-batch.enabled}")
     private boolean spKafkaEnabled;
 
     @Override
@@ -157,7 +150,7 @@ public class IntegrationServiceImpl implements IntegrationService {
 
     private void deleteFromPguOrderService(ScenarioResponse scenarioResponse) {
         pguOrderService.findDrafts(scenarioResponse.getScenarioDto().getServiceCode(), scenarioResponse.getScenarioDto().getTargetCode())
-            .forEach(draft -> pguOrderService.deleteOrderById(draft.getId()));
+                .forEach(draft -> pguOrderService.deleteOrderById(draft.getId()));
     }
 
     private void checkTerrabyteForFiles(ScenarioResponse scenarioResponse, ServiceDescriptor serviceDescriptor) {

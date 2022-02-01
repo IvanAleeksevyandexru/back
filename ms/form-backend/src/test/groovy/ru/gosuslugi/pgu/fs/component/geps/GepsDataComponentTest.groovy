@@ -4,7 +4,7 @@ import ru.gosuslugi.pgu.core.lk.model.feed.Feed
 import ru.gosuslugi.pgu.dto.ScenarioDto
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
 import ru.gosuslugi.pgu.fs.common.component.BaseComponent
-import ru.gosuslugi.pgu.fs.pgu.client.PguClient
+import ru.gosuslugi.pgu.fs.pgu.client.PguFeedClient
 import ru.gosuslugi.pgu.fs.pgu.dto.feed.Detail
 import ru.gosuslugi.pgu.fs.pgu.dto.feed.FeedDto
 import ru.gosuslugi.pgu.fs.pgu.dto.feed.Params
@@ -20,22 +20,22 @@ class GepsDataComponentTest extends Specification {
         Long gepsId = 111L
 
         // given objects
-        PguClient pguClient = Mock()
-        NsiDictionaryService nsiDictionaryService = Mock();
+        PguFeedClient findFeedClient = Mock()
+        NsiDictionaryService nsiDictionaryService = Mock()
         ScenarioDto scenarioDto = new ScenarioDto(gepsId: gepsId)
-        BaseComponent<GepsData> gepsComponent = new GepsDataComponent(pguClient,nsiDictionaryService)
+        BaseComponent<GepsData> gepsComponent = new GepsDataComponent(findFeedClient, nsiDictionaryService)
 
         when:"setting initial value"
         gepsComponent.getInitialValue(Mock(FieldComponent), scenarioDto)
 
         then:"pgu client should be called"
-        1 * pguClient.findFeed(Feed.FeedType.GEPS, gepsId)
+        1 * findFeedClient.findFeed(Feed.FeedType.GEPS, gepsId)
 
     }
 
     def "GetInitialValue - checking response values"() {
         given:
-        BaseComponent<GepsData> component = new GepsDataComponent(pguClient, Mock(NsiDictionaryService))
+        BaseComponent<GepsData> component = new GepsDataComponent(pguFindFeedClient, Mock(NsiDictionaryService))
 
         when:
         def actual = component.getInitialValue(Mock(FieldComponent), new ScenarioDto())
@@ -44,7 +44,7 @@ class GepsDataComponentTest extends Specification {
         expected == actual
 
         where:
-        pguClient                                                                                                                | expected
+        pguFindFeedClient                                                                                                                | expected
         // no NPE
         pguStub((FeedDto)null)                                                                                                   | empty()
         pguStub(new FeedDto(detail: new Detail()))                                                                               | empty()
@@ -82,7 +82,7 @@ class GepsDataComponentTest extends Specification {
     }
 
     def pguStub(FeedDto dto) {
-        PguClient client = Stub()
+        PguFeedClient client = Stub()
         client.findFeed(_, _) >> dto
         return client
     }
@@ -99,7 +99,7 @@ class GepsDataComponentTest extends Specification {
         // given objects
         FieldComponent fieldComponent = new FieldComponent(id: componentId, value: componentValue)
         ScenarioDto scenarioDto = new ScenarioDto(applicantAnswers: [:])
-        BaseComponent<GepsData> gepsComponent = new GepsDataComponent(Mock(PguClient), Mock(NsiDictionaryService))
+        BaseComponent<GepsData> gepsComponent = new GepsDataComponent(Mock(PguFeedClient), Mock(NsiDictionaryService))
 
         when:"preloading component"
         gepsComponent.preloadComponent(fieldComponent, scenarioDto)

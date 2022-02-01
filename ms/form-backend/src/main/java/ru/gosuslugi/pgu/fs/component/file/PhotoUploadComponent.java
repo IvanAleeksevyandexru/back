@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import static ru.gosuslugi.pgu.common.core.logger.LoggerUtil.error;
+
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -110,6 +112,8 @@ public class PhotoUploadComponent extends AbstractComponent<String> {
                 attachmentInfoList.add(newAttachmentInfo);
             }
         } catch (Exception e) {
+            error(log, () -> String.format("Error during photo upload: orderId=%s, componentId=%s, currentValue=%s", scenarioDto.getOrderId(),
+                    fieldComponent.getId(), scenarioDto.getCurrentValue()), e);
             incorrectAnswers.put(fieldComponent.getId(), PARSE_ERROR_MESSAGE);
             return;
         }

@@ -8,28 +8,35 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import ru.atc.carcass.common.exception.FaultException;
-import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
-import ru.gosuslugi.pgu.common.core.exception.RateLimitServiceException;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.dto.ratelimit.RateLimitOverHeadDto;
+import ru.gosuslugi.pgu.fs.common.exception.FormBaseException;
 import ru.gosuslugi.pgu.fs.common.exception.NoRightToCreateOrderException;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
+import ru.gosuslugi.pgu.dto.ratelimit.RateLimitOverHeadDto;
+import ru.gosuslugi.pgu.dto.ratelimit.RateLimitRequest;
+import ru.gosuslugi.pgu.fs.common.exception.NoRightToCreateOrderException;
 import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService;
 import ru.gosuslugi.pgu.fs.common.service.UserCookiesService;
 import ru.gosuslugi.pgu.fs.exception.DuplicateOrderException;
 import ru.gosuslugi.pgu.fs.pgu.dto.PguServiceCodes;
-import ru.gosuslugi.pgu.dto.ratelimit.RateLimitRequest;
 import ru.gosuslugi.pgu.fs.pgu.service.PguOrderService;
 import ru.gosuslugi.pgu.fs.service.CreateOrderService;
 import ru.gosuslugi.pgu.fs.service.EmpowermentService;
 import ru.gosuslugi.pgu.fs.service.LkNotifierService;
 import ru.gosuslugi.pgu.fs.service.ratelimit.RateLimitAnalyticProducer;
-import ru.gosuslugi.pgu.fs.service.ratelimit.RateLimitService;
+import ru.gosuslugi.pgu.ratelimit.client.RateLimitService;
+import ru.gosuslugi.pgu.ratelimit.client.exception.RateLimitServiceException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -118,25 +125,25 @@ public class CreateOrderServiceImpl implements CreateOrderService {
     @Override
     public Boolean saveValuesForOrder(ServiceDescriptor descriptor, ScenarioDto scenarioDto) {
         List<FieldComponent> answersForSaving = scenarioDto.getApplicantAnswers().keySet().stream()
-            .map(descriptor::getFieldComponentById)
-            .filter(Optional::isPresent)
-            .map(Optional::get)
-            .filter(fieldComponent -> fieldComponent.getCreateOrder() || fieldComponent.getCheckForDuplicate())
-            .collect(Collectors.toList());
+                .map(descriptor::getFieldComponentById)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .filter(fieldComponent -> fieldComponent.getCreateOrder() || fieldComponent.getCheckForDuplicate())
+                .collect(Collectors.toList());
 
         if (CollectionUtils.isEmpty(answersForSaving)) {
             return true;
         }
         answersForSaving.stream()
-            .filter(FieldComponent::isCycled)
-            .forEach(component -> {
-                String cycledComponent = component.getId() + ".value";
-                List<String> cycledAnswers = getCycledFieldsForCheck(component, cycledComponent);
-                List<String> valuesForCycledComponent = getValuesForCheckForCycledComponent(cycledAnswers, scenarioDto.getApplicantAnswers(), cycledComponent);
-                for (String valueForCheck: valuesForCycledComponent) {
-                    pguOrderService.saveChoosenValuesForOrder(scenarioDto.getServiceCode(), scenarioDto.getTargetCode(), scenarioDto.getOrderId(), Map.of(KEY_FOR_CHECKING_AND_SAVE_VALUES, Map.of(cycledComponent, valueForCheck)));
-                }
-            });
+                .filter(FieldComponent::isCycled)
+                .forEach(component -> {
+                    String cycledComponent = component.getId() + ".value";
+                    List<String> cycledAnswers = getCycledFieldsForCheck(component, cycledComponent);
+                    List<String> valuesForCycledComponent = getValuesForCheckForCycledComponent(cycledAnswers, scenarioDto.getApplicantAnswers(), cycledComponent);
+                    for (String valueForCheck: valuesForCycledComponent) {
+                        pguOrderService.saveChoosenValuesForOrder(scenarioDto.getServiceCode(), scenarioDto.getTargetCode(), scenarioDto.getOrderId(), Map.of(KEY_FOR_CHECKING_AND_SAVE_VALUES, Map.of(cycledComponent, valueForCheck)));
+                    }
+                });
         Map<String, String> valuesToSave = new HashMap<>();
         if (!CollectionUtils.isEmpty(answersForSaving)) {
             for (FieldComponent component: answersForSaving) {
@@ -209,9 +216,9 @@ public class CreateOrderServiceImpl implements CreateOrderService {
             return new ArrayList<>();
         }
         return component.getFieldsForCheck().stream()
-            .filter(Objects::nonNull)
-            .filter(field -> field.startsWith(cycledComponent))
-            .collect(Collectors.toList());
+                .filter(Objects::nonNull)
+                .filter(field -> field.startsWith(cycledComponent))
+                .collect(Collectors.toList());
     }
 
     private List<String> getValuesForCheckForCycledComponent(List<String> cycledAnswers, Map<String, ApplicantAnswer> applicantAnswer, String cycledValues) {
@@ -224,9 +231,9 @@ public class CreateOrderServiceImpl implements CreateOrderService {
         String prefix = cycledValues + ".";
         for (Map<String, String> cycle : cycles) {
             String value = cycledAnswers.stream()
-                .map(field -> field.replaceFirst(prefix, ""))
-                .map(cycle::get)
-                .collect(Collectors.joining(" "));
+                    .map(field -> field.replaceFirst(prefix, ""))
+                    .map(cycle::get)
+                    .collect(Collectors.joining(" "));
             result.add(value);
         }
         return result;
@@ -326,15 +333,15 @@ public class CreateOrderServiceImpl implements CreateOrderService {
         List<Map<String, Object>> answers = (List) attrs.get("answers");
         for (Map<String, Object> answer : answers) {
             if (!StringUtils.hasText((String) answer.get("value"))
-                || !componentValue.equalsIgnoreCase((String) answer.get("value"))
-                || !(answer.get(VALUES_FOR_SAVE_ATTR_ACTION) instanceof List)) {
+                    || !componentValue.equalsIgnoreCase((String) answer.get("value"))
+                    || !(answer.get(VALUES_FOR_SAVE_ATTR_ACTION) instanceof List)) {
                 continue;
             }
             if (CollectionUtils.isEmpty((List<Map>) answer.get(VALUES_FOR_SAVE_ATTR_ACTION))) {
                 valuesToSave.remove(component.getId());
             }
             ((List<Map>) answer.get(VALUES_FOR_SAVE_ATTR_ACTION))
-                .forEach(value -> pguOrderService.saveChoosenValuesForOrder(serviceCode, targetCode, orderId, Map.of(KEY_FOR_CHECKING_AND_SAVE_VALUES, Map.of(value.get("key"), value.get("value")))));
+                    .forEach(value -> pguOrderService.saveChoosenValuesForOrder(serviceCode, targetCode, orderId, Map.of(KEY_FOR_CHECKING_AND_SAVE_VALUES, Map.of(value.get("key"), value.get("value")))));
         }
     }
 
@@ -354,21 +361,26 @@ public class CreateOrderServiceImpl implements CreateOrderService {
         var rateLimitRequest = new RateLimitRequest();
         var rateLimitDescriptor = serviceDescriptor.getRateLimits();
         String key = userPersonalData.getUserId() + "-" + serviceCode;
-        if(Objects.nonNull(rateLimitDescriptor)){
+        if (Objects.nonNull(rateLimitDescriptor)){
             rateLimitRequest.setLimit(rateLimitDescriptor.getLimit());
             rateLimitRequest.setTtl(rateLimitDescriptor.getTtl());
         }
 
-        try{
+        try {
             rateLimitService.apiCheck(rateLimitRequest,key);
-        }catch (RateLimitServiceException e){
+        } catch (RateLimitServiceException e){
             var overhead = new RateLimitOverHeadDto();
             overhead.setRateLimitRequest(rateLimitRequest);
             overhead.setUserId(String.valueOf(userPersonalData.getUserId()));
             overhead.setOrgId(String.valueOf(userPersonalData.getOrgId()));
             overhead.setServiceId(serviceCode);
             rateLimitAnalyticProducer.send(overhead);
-            throw e;
+            /**
+             * Тут был красивый эксепшен
+             * Но теперь нужен не красивый
+             * https://jira.egovdev.ru/browse/EPGUCORE-84549
+             */
+            throw new FormBaseException("Не сработало");
         }
     }
 }

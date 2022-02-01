@@ -54,15 +54,15 @@ public class ScenarioFieldUtil {
         int index = fieldPath.indexOf(QUERY_PARAMS);
         if (index > -1) {
             objectFunction = FIELD_TO_STRING_MAPPER.get(QUERY_PARAMS);
-        if (objectFunction != null) {
+            if (objectFunction != null) {
                 @SuppressWarnings("unchecked")
                 Map<String, String> queryParams = (Map<String, String>) objectFunction.apply(scenarioDto);
                 index += QUERY_PARAMS.length();
                 String fieldName = fieldPath.substring(index + 1);
                 if (Objects.nonNull(queryParams) && queryParams.containsKey(fieldName)) {
                     return queryParams.get(fieldName);
+                }
             }
-        }
         }
         log.error("Ошибка во время формирования условия. fieldName = {}", fieldPath);
         throw new FormBaseException(NOT_CORRECT_CONDITION_PARSING);

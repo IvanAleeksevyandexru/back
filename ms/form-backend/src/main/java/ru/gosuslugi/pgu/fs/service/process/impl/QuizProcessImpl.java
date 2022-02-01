@@ -85,7 +85,7 @@ public class QuizProcessImpl implements QuizProcess {
                 .collect(Collectors.toMap(
                         key-> key.getKey().replaceFirst(getAnswerServicePrefix(qr.getServiceId()), Strings.EMPTY),
                         Map.Entry::getValue
-                        ));
+                ));
         qr.getScenarioDto().setApplicantAnswers(newApplicantAnswer);
         return this;
     }

@@ -129,9 +129,9 @@ class ConfirmEmailCodeInputComponentTest extends Specification {
                 type: "ConfirmEmailCodeInput",
                 label: "код подтверждения",
                 attrs: [
-                    codeLength: 4,
-                    characterMask: "\\d",
-                    resendCodeUrl: "service/actions/resendConfirmationCode"
+                        codeLength: 4,
+                        characterMask: "\\d",
+                        resendCodeUrl: "service/actions/resendConfirmationCode"
                 ],
                 linkedValues: [
                         new LinkedValue(

@@ -26,4 +26,9 @@ public interface PrevScreenProcess extends ScreenProcess<PrevScreenProcess> {
     void removeScreenFromFinished();
 
     void removeCycledAnswers();
+
+    /**
+     * Проверка черновика на редактируемость
+     */
+    void checkEditable();
 }

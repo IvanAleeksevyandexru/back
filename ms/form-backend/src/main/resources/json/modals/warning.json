@@ -33,9 +33,8 @@
       },
       "showCloseButton": false,
       "showCrossButton": true,
-      "closeHandlerCase": "redirectToLK",
       "buttons": [
-        {"label": "В личный кабинет", "closeModal": true, "color": "white", "value": "redirectToLk"},
+        {"label": "В личный кабинет", "closeModal": true, "color": "white", "action": {"type": "redirectToLK"}},
         {"label": "Закрыть", "closeModal": true}
       ]
     },
