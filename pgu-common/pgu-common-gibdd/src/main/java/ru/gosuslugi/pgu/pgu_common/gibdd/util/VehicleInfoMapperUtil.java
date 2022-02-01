@@ -65,9 +65,9 @@ public class VehicleInfoMapperUtil {
 
     public static String convertToLatin(String value) {
         return value.toUpperCase().chars()
-            .mapToObj(i -> ((char) i))
-            .map(it -> SYMBOLS.getOrDefault(it, it).toString())
-            .collect(Collectors.joining());
+                .mapToObj(i -> ((char) i))
+                .map(it -> SYMBOLS.getOrDefault(it, it).toString())
+                .collect(Collectors.joining());
     }
 
     public static String getWheelLocationDesc(String value) {

@@ -39,7 +39,7 @@ public interface DictionaryResponseMapper {
     @Mapping(expression = "java( createContainer(\"TaxPaytKind\",attrs.get(\"TAX_PAY_KIND\")) )", target = "taxPaytKind")
     @Mapping(expression = "java( createContainer(\"DocNumber\",attrs.get(\"DOC_NUMBER\")) )", target = "docNumber")
     PaymentRequisites mapPaymentRequisites(Map<String, String> attrs);
-    
+
     default NameValueContainer createContainer(String name, String value) {
         return new NameValueContainer(name, value);
     }

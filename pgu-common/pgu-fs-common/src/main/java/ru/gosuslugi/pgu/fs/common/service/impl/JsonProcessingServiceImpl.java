@@ -120,9 +120,9 @@ public class JsonProcessingServiceImpl implements JsonProcessingService {
                         // Или массив, или Node объект, или однозначное взаимное преобразование
                         // Пример некорректной работы "readTree" без этих проверок: "55 область" преобразуется в 55 (Integer) без ошибок
                         if (
-                            valueNode.isArray()
-                            || valueNode.isObject()
-                            || answer.getValue().equals(valueNode.toString())
+                                valueNode.isArray()
+                                        || valueNode.isObject()
+                                        || answer.getValue().equals(valueNode.toString())
                         ) {
                             answerNode.set("value", valueNode);
                         } else {

@@ -15,7 +15,7 @@ import ru.gosuslugi.pgu.fs.common.exception.dto.message.DefaultErrorMessageWithM
 import ru.gosuslugi.pgu.fs.common.exception.dto.message.DuplicateValueForOrderFoundError;
 import ru.gosuslugi.pgu.fs.common.exception.dto.message.NoRightsForSendingApplicationError;
 import ru.gosuslugi.pgu.fs.common.exception.dto.message.RateLimitWarningMessageModal;
-import ru.gosuslugi.pgu.common.core.exception.RateLimitServiceException;
+import ru.gosuslugi.pgu.ratelimit.client.exception.RateLimitServiceException;
 
 @Slf4j
 @RestControllerAdvice

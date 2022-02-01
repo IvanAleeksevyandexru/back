@@ -30,50 +30,50 @@ public class RuleConditionServiceImpl implements RuleConditionService {
 
     @Override
     public boolean isRuleApplyToAnswers(
-        Set<RuleCondition> conditions,
-        List<Map<String, ApplicantAnswer>> answersMaps,
-        List<DocumentContext> documentContexts,
-        ScenarioDto scenarioDto
+            Set<RuleCondition> conditions,
+            List<Map<String, ApplicantAnswer>> answersMaps,
+            List<DocumentContext> documentContexts,
+            ScenarioDto scenarioDto
     ) {
         return conditions.stream().allMatch(
-            condition -> {
+                condition -> {
 
-                // Predicate values
-                if(condition.hasPredicate()){
-                    return conditionCheckerHelper.check(condition, documentContexts, scenarioDto);
-                }
-
-                // Protected values
-                if (condition.isConditionWithProtectedField()) {
-                    if(Objects.nonNull(condition.getValue())) {
-                        return condition.getValue().equals(protectedFieldService.getValue(condition.getProtectedField()));
+                    // Predicate values
+                    if(condition.hasPredicate()){
+                        return conditionCheckerHelper.check(condition, documentContexts, scenarioDto);
                     }
-                    return true;
-                }
 
-                if (condition.isConditionWithVariable()) {
-                    if(Objects.nonNull(condition.getValue())) {
-                        return condition.getValue().equals(variableRegistry.getVariable(VariableType.valueOf(condition.getVariable())).getValue(scenarioDto));
-                    }
-                    return true;
-                }
-
-                // Old-style values
-                for (Map<String, ApplicantAnswer> answers : answersMaps) {
-                    if(checkValidInAnswer(condition, answers)) {
+                    // Protected values
+                    if (condition.isConditionWithProtectedField()) {
+                        if(Objects.nonNull(condition.getValue())) {
+                            return condition.getValue().equals(protectedFieldService.getValue(condition.getProtectedField()));
+                        }
                         return true;
                     }
-                }
 
-                return false;
-            }
+                    if (condition.isConditionWithVariable()) {
+                        if(Objects.nonNull(condition.getValue())) {
+                            return condition.getValue().equals(variableRegistry.getVariable(VariableType.valueOf(condition.getVariable())).getValue(scenarioDto));
+                        }
+                        return true;
+                    }
+
+                    // Old-style values
+                    for (Map<String, ApplicantAnswer> answers : answersMaps) {
+                        if(checkValidInAnswer(condition, answers)) {
+                            return true;
+                        }
+                    }
+
+                    return false;
+                }
         );
     }
 
     private boolean checkValidInAnswer(RuleCondition ruleCondition, Map<String, ApplicantAnswer> answers){
         if (
-            answers.containsKey(ruleCondition.getField())
-            && Objects.equals(ruleCondition.getVisited(), answers.get(ruleCondition.getField()).getVisited())
+                answers.containsKey(ruleCondition.getField())
+                        && Objects.equals(ruleCondition.getVisited(), answers.get(ruleCondition.getField()).getVisited())
         ) {
             if (Objects.nonNull(ruleCondition.getValue())) {
                 return ruleCondition.getValue().equals(answers.get(ruleCondition.getField()).getValue());

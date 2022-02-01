@@ -65,14 +65,14 @@ public class NsiDictionaryServiceDictionaryMockTest {
         filterRequest.setPageNum("13");
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
-            .andExpect(method(HttpMethod.POST))
-            .andExpect(content().json("{\"pageNum\":\"13\"}"))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body("{\"error\":{\"code\":0}, \"total\": \"15\"}")
-            );
+                requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
+                .andExpect(method(HttpMethod.POST))
+                .andExpect(content().json("{\"pageNum\":\"13\"}"))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body("{\"error\":{\"code\":0}, \"total\": \"15\"}")
+                );
 
         NsiDictionary response = apiClient.getDictionary("address", filterRequest);
         Assert.assertNotNull(response);
@@ -184,16 +184,16 @@ public class NsiDictionaryServiceDictionaryMockTest {
     private NsiDictionaryFilterRequest getNsiUnionDictionaryFilterContainer(String newOkato) {
         NsiDictionaryFilterRequest filterRequest = new NsiDictionaryFilterRequest();
         NsiDictionaryFilterSimple.Builder conditionBuilder =
-            new NsiDictionaryFilterSimple.Builder()
-                .setAttributeName(NsiDictionaryFilterRequestUtil.OKATO_ATTRIBUTE_NAME)
-                .setCondition(NsiFilterCondition.EQUALS.toString())
-                .setStringValue(newOkato);
+                new NsiDictionaryFilterSimple.Builder()
+                        .setAttributeName(NsiDictionaryFilterRequestUtil.OKATO_ATTRIBUTE_NAME)
+                        .setCondition(NsiFilterCondition.EQUALS.toString())
+                        .setStringValue(newOkato);
 
         filterRequest.setFilter(
-            new NsiUnionDictionaryFilterContainer.Builder()
-                .setFilterBuilders(Collections.singletonList(conditionBuilder))
-                .setNsiDictionaryUnionType(NsiDictionaryUnionType.AND)
-                .build()
+                new NsiUnionDictionaryFilterContainer.Builder()
+                        .setFilterBuilders(Collections.singletonList(conditionBuilder))
+                        .setNsiDictionaryUnionType(NsiDictionaryUnionType.AND)
+                        .build()
         );
         return filterRequest;
     }
@@ -205,14 +205,14 @@ public class NsiDictionaryServiceDictionaryMockTest {
         filterRequest.setPageNum("13");
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
-            .andExpect(method(HttpMethod.POST))
-            .andExpect(content().json("{\"pageNum\":\"13\"}"))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body("{\"error\":{\"code\":1}}")
-            );
+                requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
+                .andExpect(method(HttpMethod.POST))
+                .andExpect(content().json("{\"pageNum\":\"13\"}"))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body("{\"error\":{\"code\":1}}")
+                );
 
         try {
             apiClient.getDictionary("address", filterRequest);
@@ -238,13 +238,13 @@ public class NsiDictionaryServiceDictionaryMockTest {
         filterRequest.setPageNum("13");
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
-            .andExpect(method(HttpMethod.POST))
-            .andExpect(content().json("{\"pageNum\":\"13\"}"))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                    .contentType(MediaType.APPLICATION_JSON)
-            );
+                requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
+                .andExpect(method(HttpMethod.POST))
+                .andExpect(content().json("{\"pageNum\":\"13\"}"))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                );
 
         try {
             apiClient.getDictionary("address", filterRequest);
@@ -302,14 +302,14 @@ public class NsiDictionaryServiceDictionaryMockTest {
         filterRequest.setPageNum("13");
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
-            .andExpect(method(HttpMethod.POST))
-            .andExpect(content().json("{\"pageNum\":\"13\"}"))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body("{\"error\":{\"code\":0}, \"total\": \"many\"}")
-            );
+                requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
+                .andExpect(method(HttpMethod.POST))
+                .andExpect(content().json("{\"pageNum\":\"13\"}"))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body("{\"error\":{\"code\":0}, \"total\": \"many\"}")
+                );
 
         try {
             apiClient.getDictionary("address", filterRequest);

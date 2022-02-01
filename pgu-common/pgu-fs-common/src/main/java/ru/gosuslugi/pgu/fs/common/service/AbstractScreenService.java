@@ -129,7 +129,7 @@ public abstract class AbstractScreenService implements ScreenService {
             scenarioDto.getApplicantAnswers().putAll(scenarioDto.getCurrentValue());
             scenarioDto.setCurrentValue(new HashMap<>());
             DisplayRequest displayRequest = new DisplayRequest(screenDescriptor, componentService.getScreenFields(screenDescriptor,
-                scenarioDto, serviceDescriptor));
+                    scenarioDto, serviceDescriptor));
             displayReferenceService.processDisplayRefs(displayRequest, scenarioDto);
             scenarioDto.setDisplay(displayRequest);
 
@@ -214,7 +214,7 @@ public abstract class AbstractScreenService implements ScreenService {
             screenDescriptor = screenHelper.processScreen(screenDescriptor, dto);
         }
         DisplayRequest displayRequest = new DisplayRequest(screenDescriptor, componentService.getScreenFields(screenDescriptor,
-            dto, serviceDescriptor));
+                dto, serviceDescriptor));
         displayReferenceService.processDisplayRefs(displayRequest, dto);
         dto.setDisplay(displayRequest);
         dto.setCurrentValue(new HashMap<>());
@@ -244,7 +244,7 @@ public abstract class AbstractScreenService implements ScreenService {
 
     protected Boolean hasPrevStep(ScenarioResponse scenarioResponse) {
         return scenarioResponse.getScenarioDto().getFinishedAndCurrentScreens() != null &&
-            scenarioResponse.getScenarioDto().getFinishedAndCurrentScreens().size() > 1;
+                scenarioResponse.getScenarioDto().getFinishedAndCurrentScreens().size() > 1;
     }
 
     protected ScenarioResponse validate(ScenarioDto scenarioDto, ScenarioResponse scenarioResponse, ServiceDescriptor serviceDescriptor) {

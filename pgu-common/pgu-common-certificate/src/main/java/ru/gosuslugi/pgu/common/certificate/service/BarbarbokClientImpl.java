@@ -45,9 +45,9 @@ public class BarbarbokClientImpl implements BarbarbokClient {
     private String host;
 
     public BarbarbokClientImpl(RestTemplateBuilder restTemplateBuilder,
-                                              RestTemplate restTemplate,
-                                              ConfigurableEnvironment env,
-                                              RestTemplateCustomizer... customizers) {
+                               RestTemplate restTemplate,
+                               ConfigurableEnvironment env,
+                               RestTemplateCustomizer... customizers) {
         this.defaultRestTemplate = restTemplate;
         this.restTemplateBuilder = RestTemplateCreator.create(restTemplateBuilder, env, customizers);
     }

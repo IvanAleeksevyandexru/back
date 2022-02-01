@@ -48,14 +48,14 @@ public class FieldComponentUtil {
      */
     public static List<FieldComponent> getChildrenList(FieldComponent fieldComponent) {
         return Optional.ofNullable(fieldComponent)
-            .map(FieldComponent::getAttrs)
-            .filter(attr -> attr.get(COMPONENTS_KEY) instanceof List)
-            .map(attr -> (List<Object>) attr.get(COMPONENTS_KEY))
-            .map(list -> list.stream()
-                    .filter(v -> v instanceof Map)
-                    .map(v -> JsonProcessingUtil.fromJson(JsonProcessingUtil.toJson(v), FieldComponent.class))
-                    .collect(Collectors.toList()))
-            .orElse((List<FieldComponent>) Collections.EMPTY_LIST);
+                .map(FieldComponent::getAttrs)
+                .filter(attr -> attr.get(COMPONENTS_KEY) instanceof List)
+                .map(attr -> (List<Object>) attr.get(COMPONENTS_KEY))
+                .map(list -> list.stream()
+                        .filter(v -> v instanceof Map)
+                        .map(v -> JsonProcessingUtil.fromJson(JsonProcessingUtil.toJson(v), FieldComponent.class))
+                        .collect(Collectors.toList()))
+                .orElse((List<FieldComponent>) Collections.EMPTY_LIST);
     }
 
     /**
@@ -67,12 +67,12 @@ public class FieldComponentUtil {
      */
     public static List<Map<String, String>> getStringList(FieldComponent fieldComponent, String key, boolean elseEmptyList) {
         return Optional.ofNullable(getList(fieldComponent, key, elseEmptyList))
-            .map(
-                list ->
-                    list.stream()
-                        .map(FieldComponentUtil::toStringMap)
-                        .collect(Collectors.toList())
-            ).orElse(null);
+                .map(
+                        list ->
+                                list.stream()
+                                        .map(FieldComponentUtil::toStringMap)
+                                        .collect(Collectors.toList())
+                ).orElse(null);
     }
 
     /**
@@ -83,11 +83,11 @@ public class FieldComponentUtil {
      */
     public static List<Map<Object, Object>> getList(FieldComponent fieldComponent, String key, boolean elseEmptyList) {
         return Optional.ofNullable(fieldComponent)
-            .map(FieldComponent::getAttrs)
-            .filter(attr -> attr.get(key) instanceof List)
-            .map(attr -> (List<Object>) attr.get(key))
-            .map(FieldComponentUtil::toMapList)
-            .orElse(elseEmptyList ? ((List<Map<Object, Object>>) Collections.EMPTY_LIST) : null);
+                .map(FieldComponent::getAttrs)
+                .filter(attr -> attr.get(key) instanceof List)
+                .map(attr -> (List<Object>) attr.get(key))
+                .map(FieldComponentUtil::toMapList)
+                .orElse(elseEmptyList ? ((List<Map<Object, Object>>) Collections.EMPTY_LIST) : null);
     }
 
     /**
@@ -97,10 +97,10 @@ public class FieldComponentUtil {
      */
     public static List<Map<Object, Object>> toMapList(List<Object> list) {
         return list
-            .stream()
-            .filter(item -> item instanceof Map)
-            .map(item -> (Map<Object, Object>) item)
-            .collect(Collectors.toList());
+                .stream()
+                .filter(item -> item instanceof Map)
+                .map(item -> (Map<Object, Object>) item)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -110,8 +110,8 @@ public class FieldComponentUtil {
      */
     public static List<Map<String, String>> toStringMapList(List<Map<Object, Object>> list) {
         return isNull(list)
-            ? null
-            : list
+                ? null
+                : list
                 .stream()
                 .map(FieldComponentUtil::toStringMap)
                 .collect(Collectors.toList());
@@ -124,16 +124,16 @@ public class FieldComponentUtil {
      */
     public static Map<String, String> toStringMap(Map<? extends Object, ? extends Object> map) {
         return map
-            .entrySet()
-            .stream()
-            .map(
-                entry ->
-                    new AbstractMap.SimpleEntry<String, String>(
-                        entry.getKey() instanceof String ? (String) entry.getKey() : entry.getKey().toString(),
-                        entry.getValue() instanceof String ? (String) entry.getValue() : (isNull(entry.getValue()) ? null : JsonProcessingUtil.toJson(entry.getValue()))
-                    )
-            )
-            .collect(HashMap::new, (m,v)-> m.put(v.getKey(), v.getValue()), HashMap::putAll);
+                .entrySet()
+                .stream()
+                .map(
+                        entry ->
+                                new AbstractMap.SimpleEntry<String, String>(
+                                        entry.getKey() instanceof String ? (String) entry.getKey() : entry.getKey().toString(),
+                                        entry.getValue() instanceof String ? (String) entry.getValue() : (isNull(entry.getValue()) ? null : JsonProcessingUtil.toJson(entry.getValue()))
+                                )
+                )
+                .collect(HashMap::new, (m,v)-> m.put(v.getKey(), v.getValue()), HashMap::putAll);
     }
 
     /**
@@ -143,16 +143,16 @@ public class FieldComponentUtil {
      */
     public static Map<String, Object> toStringKeyMap(Map<? extends Object, ? extends Object> map) {
         return map
-            .entrySet()
-            .stream()
-            .map(
-                entry ->
-                    new AbstractMap.SimpleEntry<String, Object>(
-                            entry.getKey() instanceof String ? String.valueOf(entry.getKey()) : entry.getKey().toString(),
-                            entry.getValue()
-                    )
-            )
-            .collect(HashMap::new, (m,v)-> m.put(v.getKey(), v.getValue()), HashMap::putAll);
+                .entrySet()
+                .stream()
+                .map(
+                        entry ->
+                                new AbstractMap.SimpleEntry<String, Object>(
+                                        entry.getKey() instanceof String ? String.valueOf(entry.getKey()) : entry.getKey().toString(),
+                                        entry.getValue()
+                                )
+                )
+                .collect(HashMap::new, (m,v)-> m.put(v.getKey(), v.getValue()), HashMap::putAll);
     }
 
 

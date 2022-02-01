@@ -48,14 +48,14 @@ public class AnswerUtil {
 
     public static Map<Object, Object> toMap(Map.Entry<String, ApplicantAnswer> entry, boolean elseEmptyMap) {
         return getOptionalString(entry)
-            .map(value -> (Map<Object, Object>) JsonProcessingUtil.fromJson(value, Map.class))
-            .orElse(elseEmptyMap ? ((Map<Object, Object>) Collections.EMPTY_MAP) : null);
+                .map(value -> (Map<Object, Object>) JsonProcessingUtil.fromJson(value, Map.class))
+                .orElse(elseEmptyMap ? ((Map<Object, Object>) Collections.EMPTY_MAP) : null);
     }
 
     public static Map<String, String> toStringMap(Map.Entry<String, ApplicantAnswer> entry, boolean elseEmptyMap) {
         return Optional.ofNullable(toMap(entry, elseEmptyMap))
-            .map(FieldComponentUtil::toStringMap)
-            .orElse(null);
+                .map(FieldComponentUtil::toStringMap)
+                .orElse(null);
     }
 
     public static List<Object> toList(Map.Entry<String, ApplicantAnswer> entry, boolean elseEmptyList) {
@@ -68,25 +68,25 @@ public class AnswerUtil {
 
     public static List<Map<Object, Object>> toMapList(Map.Entry<String, ApplicantAnswer> entry, boolean elseEmptyList) {
         return Optional.ofNullable(toList(entry, elseEmptyList))
-            .map(
-                list ->
-                    list.stream()
-                    .filter(item -> item instanceof Map)
-                    .map(item -> (Map<Object, Object>) item)
-                    .collect(Collectors.toList())
-            )
-            .orElse(null);
+                .map(
+                        list ->
+                                list.stream()
+                                        .filter(item -> item instanceof Map)
+                                        .map(item -> (Map<Object, Object>) item)
+                                        .collect(Collectors.toList())
+                )
+                .orElse(null);
     }
 
     public static List<Map<String, String>> toStringMapList(Map.Entry<String, ApplicantAnswer> entry, boolean elseEmptyList) {
         return Optional.ofNullable(toMapList(entry, elseEmptyList))
-            .map(
-                list ->
-                    list.stream()
-                    .map(FieldComponentUtil::toStringMap)
-                    .collect(Collectors.toList())
-            )
-            .orElse(null);
+                .map(
+                        list ->
+                                list.stream()
+                                        .map(FieldComponentUtil::toStringMap)
+                                        .collect(Collectors.toList())
+                )
+                .orElse(null);
     }
 
     public static Map<String, Object> convertAnswersMapToObjectsMap(ObjectMapper mapper, Map<String, ApplicantAnswer> map) {
@@ -153,16 +153,16 @@ public class AnswerUtil {
 
     public static void setCycleReferenceValue(ScenarioDto scenarioDto, FieldComponent fieldComponent) {
         Optional.ofNullable((List<Map<String, Object>>) fieldComponent.getAttrs().get(VALIDATION_ARRAY_KEY))
-            .orElse(Collections.emptyList())
-            .forEach(
-                v -> {
-                    Optional<Map<String, ApplicantAnswer>> answer = Optional.ofNullable(scenarioDto.getCycledApplicantAnswers())
-                        .map(CycledApplicantAnswers::getCurrentAnswer)
-                        .map(CycledApplicantAnswer::getCurrentAnswerItem)
-                        .map(CycledApplicantAnswerItem::getItemAnswers);
-                    v.put(REG_EXP_VALUE, answer.orElse(Collections.emptyMap()));
-                }
-            );
+                .orElse(Collections.emptyList())
+                .forEach(
+                        v -> {
+                            Optional<Map<String, ApplicantAnswer>> answer = Optional.ofNullable(scenarioDto.getCycledApplicantAnswers())
+                                    .map(CycledApplicantAnswers::getCurrentAnswer)
+                                    .map(CycledApplicantAnswer::getCurrentAnswerItem)
+                                    .map(CycledApplicantAnswerItem::getItemAnswers);
+                            v.put(REG_EXP_VALUE, answer.orElse(Collections.emptyMap()));
+                        }
+                );
     }
 
     public static List<CycledApplicantAnswerItem> toCycledApplicantAnswerItem(List<Map<String, String>> listAnswers) {

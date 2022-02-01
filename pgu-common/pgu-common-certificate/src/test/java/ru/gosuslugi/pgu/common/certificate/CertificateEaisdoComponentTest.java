@@ -79,7 +79,7 @@ public class CertificateEaisdoComponentTest {
         CertificateDataResponseDto responseDto = JsonProcessingUtil.fromJson(s, CertificateDataResponseDto.class);
         log.info("{}", responseDto);
         log.info("===================================");
-       Assert.assertEquals("d0a79bf5-ee86-4224-9b22-a1f300ba0e83", responseDto.getCertificateGUID());
+        Assert.assertEquals("d0a79bf5-ee86-4224-9b22-a1f300ba0e83", responseDto.getCertificateGUID());
         Assert.assertEquals(10553.14D, responseDto.getPfdo().getCertificateBalance(), 0.0001);
         Assert.assertEquals(553.14D, responseDto.getPfdo().getCertificateBookedAmount(), 0.0001);
         Assert.assertEquals(10000.0D, responseDto.getPfdo().getCertificateAvailableBalance(), 0.0001);

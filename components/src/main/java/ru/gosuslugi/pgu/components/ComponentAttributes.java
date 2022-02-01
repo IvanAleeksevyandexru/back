@@ -220,6 +220,8 @@ public final class ComponentAttributes {
     public static final String TIMEZONE_ATTR = "timezone";
 
     public static final String HOME_PHONE = "homePhone";
+    public static final String MOBILE_PHONE = "mobilePhoneNumber";
+    public static final String CONTACT_PHONE = "contactPhoneNumber";
     public static final String CITIZENSHIP_ATTR = "citizenship";
     public static final String CITIZENSHIP_CODE_ATTR = "citizenshipCode";
     public static final String BIRTHDATE_CODE_ATTR = "birthdateCode";

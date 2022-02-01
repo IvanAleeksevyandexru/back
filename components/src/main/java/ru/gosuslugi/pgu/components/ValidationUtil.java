@@ -2,9 +2,11 @@ package ru.gosuslugi.pgu.components;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
 import ru.gosuslugi.pgu.components.descriptor.types.ValidationFieldDto;
+import ru.gosuslugi.pgu.components.dto.ErrorDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 
 import java.util.*;
@@ -13,6 +15,8 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 import static ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil.jsonNodeToString;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.ERROR_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.ERROR_DESC_ATTR;
 import static ru.gosuslugi.pgu.components.FieldComponentUtil.VALIDATION_ARRAY_KEY;
 import static ru.gosuslugi.pgu.components.RegExpUtil.*;
 
@@ -20,7 +24,6 @@ public class ValidationUtil {
 
     public static final String VALIDATION_TYPE = "type";
     public static final String MAX_LENGTH_VALIDATION_TYPE = "maxLength";
-
     private ValidationUtil() {
     }
 
@@ -73,19 +76,19 @@ public class ValidationUtil {
      */
     public static Map.Entry<String, String> validateMaxLength(String name, String value, FieldComponent fieldComponent) {
         Optional<Map<String, String>> validation = FieldComponentUtil.getStringList(fieldComponent, FieldComponentUtil.VALIDATION_ARRAY_KEY, true).stream()
-            .filter(
-                validationRule ->
-                    MAX_LENGTH_VALIDATION_TYPE.equalsIgnoreCase(validationRule.get(VALIDATION_TYPE))
-                        && StringUtils.hasText(validationRule.get("value"))
-            )
-            .findFirst();
+                .filter(
+                        validationRule ->
+                                MAX_LENGTH_VALIDATION_TYPE.equalsIgnoreCase(validationRule.get(VALIDATION_TYPE))
+                                        && StringUtils.hasText(validationRule.get("value"))
+                )
+                .findFirst();
 
         Map.Entry<String, String> result = null;
         if (validation.isPresent()) {
             int maxLength = Integer.parseInt(validation.get().get("value"));
             String errorMsg = validation.get().get("errorMsg");
             result = validateRequired(name, value, fieldComponent,
-                errorMsg.replace("${" + MAX_LENGTH_VALIDATION_TYPE + "}", Integer.toString(maxLength)), v -> (v.length() <= maxLength));
+                    errorMsg.replace("${" + MAX_LENGTH_VALIDATION_TYPE + "}", Integer.toString(maxLength)), v -> (v.length() <= maxLength));
         }
 
         return result;
@@ -105,15 +108,15 @@ public class ValidationUtil {
         List<Map<String, String>> members = FieldComponentUtil.getStringList(fieldComponent, FieldComponentUtil.DICTIONARY_LIST_KEY, false);
         if (!isNull(value) && !isNull(members)) {
             boolean existed = members
-                .stream()
-                .anyMatch(
-                    expectedMap ->
-                        expectedMap
-                            .values()
-                            .stream()
-                            .map(v -> isNull(v) ? null : v)
-                            .anyMatch(expectedValue -> Objects.equals(expectedValue, value))
-                );
+                    .stream()
+                    .anyMatch(
+                            expectedMap ->
+                                    expectedMap
+                                            .values()
+                                            .stream()
+                                            .map(v -> isNull(v) ? null : v)
+                                            .anyMatch(expectedValue -> Objects.equals(expectedValue, value))
+                    );
             if (!existed) {
                 result = mapEntry(name, errorMessage);
             }
@@ -122,11 +125,11 @@ public class ValidationUtil {
     }
 
     private static Map.Entry<String, String> validateRequired(
-        String name,
-        String value,
-        FieldComponent fieldComponent,
-        String errorMessage,
-        Predicate<String> validPredicate
+            String name,
+            String value,
+            FieldComponent fieldComponent,
+            String errorMessage,
+            Predicate<String> validPredicate
     ) {
         Map.Entry<String, String> result = null;
         if (!validPredicate.test(value)) {
@@ -142,13 +145,13 @@ public class ValidationUtil {
      * @return list
      */
     public static List<Map<Object, Object>> getValidationList(
-        FieldComponent fieldComponent,
-        String type
+            FieldComponent fieldComponent,
+            String type
     ) {
         return FieldComponentUtil.getList(fieldComponent, FieldComponentUtil.VALIDATION_ARRAY_KEY, true)
-            .stream()
-            .filter(validationRule -> type.equals(validationRule.get(ValidationUtil.VALIDATION_TYPE)))
-            .collect(Collectors.toList());
+                .stream()
+                .filter(validationRule -> type.equals(validationRule.get(ValidationUtil.VALIDATION_TYPE)))
+                .collect(Collectors.toList());
     }
 
     public static Map.Entry<String, String> mapEntry(String key, String value) {
@@ -158,7 +161,17 @@ public class ValidationUtil {
     /**
      * Валидация конкретного field внутри массива fields, заданного через "fieldName"
      */
-    public static Map<String, String> validateFieldsByRegExp(Map<String, String> incorrectAnswers, String value,List<ValidationFieldDto> fields) throws JsonProcessingException {
+    public static Map<String, ErrorDto> validateFieldsByRegExp(
+            Map<String, String> incorrectAnswers,
+            String value,
+            List<ValidationFieldDto> fields
+    ) throws JsonProcessingException {
+        Map<String, ErrorDto> errorsMap = new HashMap<>();
+
+        if (CollectionUtils.isEmpty(fields)) {
+            return errorsMap;
+        }
+
         JsonNode documentJson = JsonProcessingUtil.getObjectMapper().readTree(value);
         fields.forEach(field -> Optional.ofNullable(field)
                 .map(ValidationFieldDto::getAttrs)
@@ -166,25 +179,29 @@ public class ValidationUtil {
                 .map(map -> (List<Map<String, String>>) map.get(VALIDATION_ARRAY_KEY))
                 .stream()
                 .flatMap(Collection::stream)
-                .filter(
-                        validationRule ->
-                                REG_EXP_TYPE.equalsIgnoreCase(validationRule.get("type"))
-                                        && StringUtils.hasText(validationRule.get(REG_EXP_VALUE))
-                )
-                .forEach(
-                        validationRule -> {
-                            JsonNode jsonObj = documentJson.findValue(field.getFieldName());
-                            String stringToCheck = jsonNodeToString(jsonObj);
-                            if (
-                                    !incorrectAnswers.containsKey(field.getFieldName())
-                                            && !isNull(stringToCheck)
-                                            && !stringToCheck.matches(validationRule.get(REG_EXP_VALUE))
-                            ) {
-                                incorrectAnswers.put(field.getFieldName(), validationRule.get(REG_EXP_ERROR_MESSAGE));
-                            }
-                        }
-                ));
-        return incorrectAnswers;
+                .filter(validationRule -> REG_EXP_TYPE.equalsIgnoreCase(validationRule.get("type"))
+                        && StringUtils.hasText(validationRule.get(REG_EXP_VALUE)))
+                .forEach(validationRule -> {
+                    JsonNode jsonObj = documentJson.findValue(field.getFieldName());
+                    String stringToCheck = jsonNodeToString(jsonObj);
+                    if (
+                            !incorrectAnswers.containsKey(field.getFieldName())
+                                    && !isNull(stringToCheck)
+                                    && !stringToCheck.matches(validationRule.get(REG_EXP_VALUE))
+                    ) {
+                        errorsMap.put(
+                                field.getFieldName(),
+                                new ErrorDto(
+                                        "red-line",
+                                        ERROR_ATTR,
+                                        validationRule.get(REG_EXP_ERROR_MESSAGE),
+                                        Optional.ofNullable(validationRule.get(ERROR_DESC_ATTR))
+                                                .orElse(" "),
+                                        null
+                                )
+                        );
+                    }
+                }));
+        return errorsMap;
     }
-
 }

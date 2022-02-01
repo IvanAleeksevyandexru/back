@@ -75,8 +75,8 @@ public class ValidationUtilValidateValidateRegExpTest {
     private FieldComponent getFieldComponentFromFile() throws IOException {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("ValidationUtilValidateValidateRegExpTest.json");) {
             return objectMapper.readValue(
-                is,
-                FieldComponent.class
+                    is,
+                    FieldComponent.class
             );
         }
     }

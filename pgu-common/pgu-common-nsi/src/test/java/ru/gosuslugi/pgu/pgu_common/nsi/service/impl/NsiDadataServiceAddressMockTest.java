@@ -36,8 +36,11 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 public class NsiDadataServiceAddressMockTest {
 
     private static final String OKATO = "okato";
+    private static final String DADATA_NORMALIZE_URL = "http://localhost:8072/api/nsi/v1/dadata/normalize";
+    private static final String FILLED_QUERY_STRING = "?q={q}";
+    private static final String ADDRESS_QUERY_STRING = "?q=address";
 
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
     private MockRestServiceServer mockServer;
 
     protected NsiDadataService apiClient;
@@ -61,13 +64,13 @@ public class NsiDadataServiceAddressMockTest {
     public void testGet() throws URISyntaxException {
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dadata/normalize?q=address")))
-            .andExpect(method(HttpMethod.GET))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body("{\"error\":{\"code\":0}}")
-            );
+                requestTo(new URI(DADATA_NORMALIZE_URL + ADDRESS_QUERY_STRING)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body("{\"error\":{\"code\":0}}")
+                );
 
         DadataAddressResponse response = apiClient.getAddress("address");
         Assert.assertNotNull(response);
@@ -77,7 +80,7 @@ public class NsiDadataServiceAddressMockTest {
         List<DictionayHealthDto> dictionaries = healthHolder.get().getDictionaries();
         Assert.assertEquals(dictionaries.size(), 1);
         Assert.assertEquals("dadataAddress", dictionaries.get(0).getId());
-        Assert.assertEquals("http://localhost:8072/api/nsi/v1/dadata/normalize?q={q}",dictionaries.get(0).getUrl());
+        Assert.assertEquals(DADATA_NORMALIZE_URL + FILLED_QUERY_STRING,dictionaries.get(0).getUrl());
         Assert.assertEquals(HttpMethod.GET,dictionaries.get(0).getMethod());
         Assert.assertEquals(HttpStatus.OK,dictionaries.get(0).getStatus());
         Assert.assertNull(dictionaries.get(0).getError());
@@ -92,7 +95,7 @@ public class NsiDadataServiceAddressMockTest {
     public void testGetByOkato() throws URISyntaxException {
 
         mockServer.expect(ExpectedCount.once(),
-                requestTo(new URI("http://localhost:8072/api/nsi/v1/dadata/normalize?q=address")))
+                requestTo(new URI(DADATA_NORMALIZE_URL + ADDRESS_QUERY_STRING)))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(
                         withStatus(HttpStatus.OK)
@@ -108,7 +111,7 @@ public class NsiDadataServiceAddressMockTest {
         List<DictionayHealthDto> dictionaries = healthHolder.get().getDictionaries();
         Assert.assertEquals(dictionaries.size(), 1);
         Assert.assertEquals("dadataAddress", dictionaries.get(0).getId());
-        Assert.assertEquals("http://localhost:8072/api/nsi/v1/dadata/normalize?q={q}",dictionaries.get(0).getUrl());
+        Assert.assertEquals(DADATA_NORMALIZE_URL + FILLED_QUERY_STRING,dictionaries.get(0).getUrl());
         Assert.assertEquals(HttpMethod.GET,dictionaries.get(0).getMethod());
         Assert.assertEquals(HttpStatus.OK,dictionaries.get(0).getStatus());
         Assert.assertNull(dictionaries.get(0).getError());
@@ -123,13 +126,13 @@ public class NsiDadataServiceAddressMockTest {
     public void testGetWithErrorCode() throws URISyntaxException {
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dadata/normalize?q=address")))
-            .andExpect(method(HttpMethod.GET))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body("{\"error\":{\"code\":1}}")
-            );
+                requestTo(new URI(DADATA_NORMALIZE_URL + ADDRESS_QUERY_STRING)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body("{\"error\":{\"code\":1}}")
+                );
 
         try {
             apiClient.getAddress("address");
@@ -138,7 +141,7 @@ public class NsiDadataServiceAddressMockTest {
             Assert.assertEquals("dadataAddress", e.getMessage());
             Assert.assertNotNull(e.getValue());
             Assert.assertEquals("dadataAddress", e.getValue().getId());
-            Assert.assertEquals("http://localhost:8072/api/nsi/v1/dadata/normalize?q={q}", e.getValue().getUrl());
+            Assert.assertEquals(DADATA_NORMALIZE_URL + FILLED_QUERY_STRING, e.getValue().getUrl());
             Assert.assertEquals(HttpMethod.GET, e.getValue().getMethod());
             Assert.assertEquals("Не удалось получить проверить адрес в Dadata сервисе. Код = " + 1, e.getValue().getMessage());
             Assert.assertEquals(OKATO, e.getValue().getOkato());
@@ -153,12 +156,12 @@ public class NsiDadataServiceAddressMockTest {
     public void testGetWithNull() throws URISyntaxException {
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dadata/normalize?q=address")))
-            .andExpect(method(HttpMethod.GET))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                    .contentType(MediaType.APPLICATION_JSON)
-            );
+                requestTo(new URI(DADATA_NORMALIZE_URL + ADDRESS_QUERY_STRING)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                );
 
         try {
             apiClient.getAddress("address");
@@ -167,7 +170,7 @@ public class NsiDadataServiceAddressMockTest {
             Assert.assertEquals("dadataAddress", e.getMessage());
             Assert.assertNotNull(e.getValue());
             Assert.assertEquals("dadataAddress", e.getValue().getId());
-            Assert.assertEquals("http://localhost:8072/api/nsi/v1/dadata/normalize?q={q}", e.getValue().getUrl());
+            Assert.assertEquals(DADATA_NORMALIZE_URL + FILLED_QUERY_STRING, e.getValue().getUrl());
             Assert.assertEquals(HttpMethod.GET, e.getValue().getMethod());
             Assert.assertEquals("Сервис не вернул результат", e.getValue().getMessage());
             Assert.assertEquals(OKATO, e.getValue().getOkato());
@@ -182,12 +185,12 @@ public class NsiDadataServiceAddressMockTest {
     public void testGetWithException() throws URISyntaxException {
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dadata/normalize?q=address")))
-            .andExpect(method(HttpMethod.GET))
-            .andRespond(
-                withStatus(HttpStatus.NOT_FOUND)
-                .contentType(MediaType.APPLICATION_JSON)
-            );
+                requestTo(new URI(DADATA_NORMALIZE_URL + ADDRESS_QUERY_STRING)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(
+                        withStatus(HttpStatus.NOT_FOUND)
+                                .contentType(MediaType.APPLICATION_JSON)
+                );
 
         try {
             apiClient.getAddress("address");
@@ -196,7 +199,7 @@ public class NsiDadataServiceAddressMockTest {
             Assert.assertEquals("dadataAddress", e.getMessage());
             Assert.assertNotNull(e.getValue());
             Assert.assertEquals("dadataAddress", e.getValue().getId());
-            Assert.assertEquals("http://localhost:8072/api/nsi/v1/dadata/normalize?q={q}", e.getValue().getUrl());
+            Assert.assertEquals(DADATA_NORMALIZE_URL + FILLED_QUERY_STRING, e.getValue().getUrl());
             Assert.assertEquals(HttpMethod.GET, e.getValue().getMethod());
             Assert.assertEquals("Исключение при вызове метода", e.getValue().getMessage());
             Assert.assertEquals(OKATO, e.getValue().getOkato());

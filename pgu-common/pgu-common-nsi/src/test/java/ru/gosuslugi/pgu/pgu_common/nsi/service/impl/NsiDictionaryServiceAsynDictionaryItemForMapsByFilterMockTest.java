@@ -65,14 +65,14 @@ public class NsiDictionaryServiceAsynDictionaryItemForMapsByFilterMockTest {
         filterRequest.setPageNum("13");
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
-            .andExpect(method(HttpMethod.POST))
-            .andExpect(content().json("{\"pageNum\":\"13\"}"))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body("{\"error\":{\"code\":0}, \"total\": \"15\"}")
-            );
+                requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
+                .andExpect(method(HttpMethod.POST))
+                .andExpect(content().json("{\"pageNum\":\"13\"}"))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body("{\"error\":{\"code\":0}, \"total\": \"15\"}")
+                );
 
         Future<NsiDictionary> future = apiClient.asyncGetDictionaryItemForMapsByFilter("address", filterRequest);
         NsiDictionary response = future.get();
@@ -101,14 +101,14 @@ public class NsiDictionaryServiceAsynDictionaryItemForMapsByFilterMockTest {
         filterRequest.setPageNum("13");
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
-            .andExpect(method(HttpMethod.POST))
-            .andExpect(content().json("{\"pageNum\":\"13\"}"))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body("{\"error\":{\"code\":1}}")
-            );
+                requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
+                .andExpect(method(HttpMethod.POST))
+                .andExpect(content().json("{\"pageNum\":\"13\"}"))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body("{\"error\":{\"code\":1}}")
+                );
 
         try {
             apiClient.asyncGetDictionaryItemForMapsByFilter("address", filterRequest);
@@ -134,13 +134,13 @@ public class NsiDictionaryServiceAsynDictionaryItemForMapsByFilterMockTest {
         filterRequest.setPageNum("13");
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
-            .andExpect(method(HttpMethod.POST))
-            .andExpect(content().json("{\"pageNum\":\"13\"}"))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                    .contentType(MediaType.APPLICATION_JSON)
-            );
+                requestTo(new URI("http://localhost:8072/api/nsi/v1/dictionary/address")))
+                .andExpect(method(HttpMethod.POST))
+                .andExpect(content().json("{\"pageNum\":\"13\"}"))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                );
 
         try {
             apiClient.asyncGetDictionaryItemForMapsByFilter("address", filterRequest);

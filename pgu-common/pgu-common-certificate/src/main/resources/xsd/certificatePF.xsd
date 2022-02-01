@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!-- edited with XMLSpy v2019 rel. 3 sp1 (x64) (http://www.altova.com) by  (RT LABS, AO) -->
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-xmlns:tns="http://epgu.gosuslugi.ru/services-get-pf-certificate/1.1.1" 
-targetNamespace="http://epgu.gosuslugi.ru/services-get-pf-certificate/1.1.1" 
-elementFormDefault="qualified" 
-attributeFormDefault="unqualified">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			xmlns:tns="http://epgu.gosuslugi.ru/services-get-pf-certificate/1.1.1"
+			targetNamespace="http://epgu.gosuslugi.ru/services-get-pf-certificate/1.1.1"
+			elementFormDefault="qualified"
+			attributeFormDefault="unqualified">
 	<!-- Common types -->
 	<!-- Simple string types-->
 	<xsd:simpleType name="string-1">

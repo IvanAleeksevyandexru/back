@@ -36,6 +36,8 @@ import static java.util.Objects.nonNull;
 @RequiredArgsConstructor
 public class ComponentServiceImpl implements ComponentService {
 
+    private static final String IMPLEMENTER_REGION = "implementerRegion";
+
     @Lazy
     @Autowired
     private ComponentRegistry componentRegistry;
@@ -60,6 +62,7 @@ public class ComponentServiceImpl implements ComponentService {
                     analyticsTags
                             .stream()
                             .filter(tag -> StringUtils.hasText(tag.getComponentId()))
+                            .filter(tag-> IMPLEMENTER_REGION.equals(tag.getName()))
                             .anyMatch(v -> v.getComponentId().equals(componentId))
             ) {
                 componentOptional.get().setSendAnalytics(true);
@@ -72,6 +75,7 @@ public class ComponentServiceImpl implements ComponentService {
     public List<FieldComponent> getScreenFields(ScreenDescriptor screenDescriptor, ScenarioDto scenarioDto, ServiceDescriptor currentDescriptor) {
         var result  = this.getMainComponents(screenDescriptor,scenarioDto,currentDescriptor);
         result.addAll(getInfoComponents(screenDescriptor,scenarioDto,currentDescriptor));
+        result.addAll(getLogicAfterValidationComponents(screenDescriptor,scenarioDto,currentDescriptor));
         return result;
     }
 
@@ -85,9 +89,9 @@ public class ComponentServiceImpl implements ComponentService {
         List<FieldComponent> logicComponents = new LinkedList<>();
         ids.forEach(id -> {
             List<FieldComponent> fieldComponents = currentDescriptor.getApplicationFields()
-                .stream()
-                .filter(field -> field.getId().equals(id))
-                .collect(Collectors.toList());
+                    .stream()
+                    .filter(field -> field.getId().equals(id))
+                    .collect(Collectors.toList());
             if (CollectionUtils.isEmpty(fieldComponents)) {
                 throw new  ValidationException("Cannot find logic component by id " + id);
             }
@@ -128,10 +132,10 @@ public class ComponentServiceImpl implements ComponentService {
         ScreenDescriptor screenDescriptor = currentDescriptor.getScreens().stream().filter(screen -> screenId.equals(screen.getId())).findFirst().orElse(null);
         if(nonNull(screenDescriptor) && nonNull(screenDescriptor.getPreloadComponents())){
             screenDescriptor.getPreloadComponents().forEach(id ->
-                currentDescriptor.getApplicationFields()
-                    .stream()
-                    .filter(field -> field.getId().equals(id))
-                    .forEach(e -> this.preloadComponent(e, scenarioDto, currentDescriptor)));
+                    currentDescriptor.getApplicationFields()
+                            .stream()
+                            .filter(field -> field.getId().equals(id))
+                            .forEach(e -> this.preloadComponent(e, scenarioDto, currentDescriptor)));
         }
     }
 
@@ -159,6 +163,26 @@ public class ComponentServiceImpl implements ComponentService {
             component.process(fieldComponent, scenarioDto, currentDescriptor);
             component.preloadComponent(fieldComponent, scenarioDto);
         }
+    }
+
+    private List<FieldComponent> getLogicAfterValidationComponents(ScreenDescriptor screenDescriptor, ScenarioDto scenarioDto, ServiceDescriptor currentDescriptor){
+
+        List<String> ids = screenDescriptor.getLogicAfterValidationComponentIds();
+        if (CollectionUtils.isEmpty(ids)) {
+            return new ArrayList<>();
+        }
+        List<FieldComponent> components = new LinkedList<>();
+        ids.forEach(id -> {
+            List<FieldComponent> fieldComponents = currentDescriptor.getApplicationFields()
+                    .stream()
+                    .filter(field -> field.getId().equals(id))
+                    .collect(Collectors.toList());
+            if (CollectionUtils.isEmpty(fieldComponents)) {
+                throw new  ValidationException("Cannot find LogicAfterValidation fieldComponent by id " + id);
+            }
+            fieldComponents.forEach(e -> components.add(this.processField(e, scenarioDto, currentDescriptor)));
+        });
+        return components;
     }
 
     private List<FieldComponent> getInfoComponents(ScreenDescriptor screenDescriptor, ScenarioDto scenarioDto, ServiceDescriptor currentDescriptor){

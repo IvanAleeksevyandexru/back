@@ -10,5 +10,6 @@ public class ErrorContent {
     private StatusIcon statusIcon;
     private String header;
     private String helperText;
+    private boolean hideTraceId;
 
 }

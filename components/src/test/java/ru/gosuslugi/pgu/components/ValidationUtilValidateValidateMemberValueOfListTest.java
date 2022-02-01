@@ -62,8 +62,8 @@ public class ValidationUtilValidateValidateMemberValueOfListTest {
     private FieldComponent getFieldComponentFromFile() throws IOException {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("ValidationUtilValidateValidateMemberValueOfListTest.json");) {
             return objectMapper.readValue(
-                is,
-                FieldComponent.class
+                    is,
+                    FieldComponent.class
             );
         }
     }

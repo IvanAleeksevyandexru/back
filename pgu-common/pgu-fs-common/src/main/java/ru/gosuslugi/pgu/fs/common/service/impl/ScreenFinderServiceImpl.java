@@ -36,15 +36,15 @@ public class ScreenFinderServiceImpl implements ScreenFinderService {
     @Override
     public ScreenDescriptor findScreenDescriptorByRules(ScenarioDto scenarioDto, ServiceDescriptor serviceDescriptor, List<ScreenRule> screenRuleListSupplied){
         return findScreenDescriptorByRulesOrEmpty(scenarioDto, serviceDescriptor, screenRuleListSupplied)
-            .orElseThrow(() -> new NoScreensFoundException("На экране "
-                    + Optional.ofNullable(scenarioDto.getDisplay()).orElse(new DisplayRequest()).getId()
-                    + " не найдено экранов для перехода"));
+                .orElseThrow(() -> new NoScreensFoundException("На экране "
+                        + Optional.ofNullable(scenarioDto.getDisplay()).orElse(new DisplayRequest()).getId()
+                        + " не найдено экранов для перехода"));
     }
 
     public Optional<ScreenDescriptor> findScreenDescriptorByRulesOrEmpty(
-        ScenarioDto scenarioDto,
-        ServiceDescriptor serviceDescriptor,
-        List<ScreenRule> rules
+            ScenarioDto scenarioDto,
+            ServiceDescriptor serviceDescriptor,
+            List<ScreenRule> rules
     ) {
         // удаляем из ответов те, что пришли от пользователя (currentValue)
         var previousAnswers = new HashMap<>(scenarioDto.getApplicantAnswers());
@@ -56,16 +56,16 @@ public class ScreenFinderServiceImpl implements ScreenFinderService {
         DocumentContext cycledCurrentItemContext = JsonPath.parse(jsonProcessingService.toJson(scenarioDto.getCycledApplicantAnswerContext()));
 
         List<ScreenRule> screenRuleList = CollectionUtils.isEmpty(rules)
-            ? serviceDescriptor.getScreenRules().get(scenarioDto.getDisplay().getId())
-            : rules;
+                ? serviceDescriptor.getScreenRules().get(scenarioDto.getDisplay().getId())
+                : rules;
         List<ScreenRule> validScreenRules = screenRuleList
-            .stream()
-            .filter(id -> ruleConditionService.isRuleApplyToAnswers(
-                id.getConditions(),
-                Arrays.asList(scenarioDto.getCurrentValue(), scenarioDto.getApplicantAnswers()),
-                Arrays.asList(currentValueContext, applicantAnswersContext, serviceInfoContext, cycledCurrentItemContext),
-                scenarioDto))
-            .collect(Collectors.toList());
+                .stream()
+                .filter(id -> ruleConditionService.isRuleApplyToAnswers(
+                        id.getConditions(),
+                        Arrays.asList(scenarioDto.getCurrentValue(), scenarioDto.getApplicantAnswers()),
+                        Arrays.asList(currentValueContext, applicantAnswersContext, serviceInfoContext, cycledCurrentItemContext),
+                        scenarioDto))
+                .collect(Collectors.toList());
 
         if(validScreenRules.size() > 1){
             throw new MultipleScreensFoundException("На экране " + Optional.ofNullable(scenarioDto.getDisplay()).orElse(new DisplayRequest()).getId() +" найдено более 1 экрана для перехода " + validScreenRules.stream().map(ScreenRule::getNextDisplay).collect(Collectors.joining(",")));

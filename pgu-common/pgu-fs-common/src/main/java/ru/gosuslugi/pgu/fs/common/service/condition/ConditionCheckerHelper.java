@@ -139,18 +139,18 @@ public class ConditionCheckerHelper {
 
     public <T> T getFirstFromContexts(String field, List<DocumentContext> documentContexts, Class<T> aClass) {
         return documentContexts.stream()
-            .map(
-                documentContext -> {
-                    try {
-                        return documentContext.read("$." + field, aClass);
-                    } catch (PathNotFoundException e) {
-                        return null;
-                    }
-                }
-            )
-            .filter(Objects::nonNull)
-            .findFirst()
-            .orElse(null);
+                .map(
+                        documentContext -> {
+                            try {
+                                return documentContext.read("$." + field, aClass);
+                            } catch (PathNotFoundException e) {
+                                return null;
+                            }
+                        }
+                )
+                .filter(Objects::nonNull)
+                .findFirst()
+                .orElse(null);
     }
 
     /**

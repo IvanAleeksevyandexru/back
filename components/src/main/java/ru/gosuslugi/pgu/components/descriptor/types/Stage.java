@@ -4,7 +4,7 @@ package ru.gosuslugi.pgu.components.descriptor.types;
  * Стадии заполнения заявления
  */
 public enum Stage {
-    
+
     /** Если заявка второго будет удалена после 24ч, то будет такой начальный статус */
     Draft,
 

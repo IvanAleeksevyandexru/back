@@ -46,6 +46,12 @@
             <artifactId>pgu-sd-storage-client</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>ru.gosuslugi.pgu</groupId>
+            <artifactId>pgu-ratelimit-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- inner pgu2-project dependencies-->
 
         <dependency>

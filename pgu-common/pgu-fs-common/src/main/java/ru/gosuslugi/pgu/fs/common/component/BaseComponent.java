@@ -120,12 +120,12 @@ public interface BaseComponent<InitialValueModel> {
      * @see #getValidations()
      */
     Map<String, String> validate(Map.Entry<String, ApplicantAnswer> entry,
-            ScenarioDto scenarioDto,
-            FieldComponent fieldComponent);
-
-    List<List<Map<String, String>>> validateItemsUniqueness(Map.Entry<String, ApplicantAnswer> entry,
                                  ScenarioDto scenarioDto,
                                  FieldComponent fieldComponent);
+
+    List<List<Map<String, String>>> validateItemsUniqueness(Map.Entry<String, ApplicantAnswer> entry,
+                                                            ScenarioDto scenarioDto,
+                                                            FieldComponent fieldComponent);
 
     /**
      * Значение, которое сохраняется в черновик, если экран пропущен (вычисляется по skipConditions)

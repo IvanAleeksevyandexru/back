@@ -23,7 +23,7 @@ import static ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor.CLARIFICATIONS_A
 final class DescriptorClarificationConverter {
 
     private DescriptorClarificationConverter() {}
-    
+
     /**
      * Конвертация описанных в разделе списка InfoScreen.clarifications[] в clarification объекты
      * описанные в разделе clarifications JSON услуги

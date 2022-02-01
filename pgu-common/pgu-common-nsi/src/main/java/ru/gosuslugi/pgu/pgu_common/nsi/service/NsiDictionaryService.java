@@ -20,6 +20,8 @@ public interface NsiDictionaryService {
 
     NsiDictionary getDictionary(String dictionaryName, NsiDictionaryFilterRequest filterRequest);
 
+    NsiDictionary getDictionary(String dictionaryResourceUrl, String dictionaryName, NsiDictionaryFilterRequest filterRequest);
+
     /**
      * Возвращает справочник операторов сотовой связи.
      * Их там до 10 штук

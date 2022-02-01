@@ -18,9 +18,9 @@ public interface RuleConditionService {
      * @return применяется ли правило к текущему экрану
      */
     boolean isRuleApplyToAnswers(
-        Set<RuleCondition> conditions,
-        List<Map<String, ApplicantAnswer>> answersMaps,
-        List<DocumentContext> documentContexts,
-        ScenarioDto scenarioDto
+            Set<RuleCondition> conditions,
+            List<Map<String, ApplicantAnswer>> answersMaps,
+            List<DocumentContext> documentContexts,
+            ScenarioDto scenarioDto
     );
 }

@@ -56,7 +56,7 @@ public class SopDictionaryServiceImpl implements SopDictionaryService {
             throw new SopExternalException(dictionaryName, url, HttpMethod.POST, "Незарегистрированное имя справочника", okato);
         }
         try {
-           result = restTemplate
+            result = restTemplate
                     .exchange(url,
                             HttpMethod.POST,
                             new HttpEntity<>(sopDictionaryRequest, prepareSecurityHeader()),

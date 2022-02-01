@@ -121,7 +121,7 @@ public class GroupCostService implements ExternalService {
                 "responseData", Map.of(
                         "value", response,
                         "type", response.getClass().getSimpleName())
-                );
+        );
         return JsonProcessingUtil.toJson(responseMap);
     }
 

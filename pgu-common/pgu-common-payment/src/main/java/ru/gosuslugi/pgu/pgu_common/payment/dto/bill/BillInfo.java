@@ -17,6 +17,6 @@ public class BillInfo {
     String billName;
     String billDate;
     Boolean isPaid;
-    double amount;
+    String amount;
     List<BillInfoAttr> addAttrs;
 }

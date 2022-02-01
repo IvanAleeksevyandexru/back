@@ -184,14 +184,14 @@ public class DateInputComponentUtil {
     public static void setReferenceValue(ScenarioDto scenarioDto, FieldComponent fieldComponent) {
         Optional.ofNullable((List<Map<String, String>>) fieldComponent.getAttrs().get(VALIDATION_ARRAY_KEY))
                 .orElse(Collections.emptyList()).forEach(v -> {
-                    String reference = v.get(VALUE_REF);
-                    if (StringUtils.hasText(reference)) {
-                        Optional<ApplicantAnswer> answer = Optional.ofNullable(scenarioDto.getApplicantAnswers().get(reference));
-                        answer.ifPresent(a -> v.put("value", a.getValue()));
-                        answer = Optional.ofNullable(scenarioDto.getCurrentValue().get(reference));
-                        answer.ifPresent(a -> v.put("value", a.getValue()));
-                    }
-                });
+            String reference = v.get(VALUE_REF);
+            if (StringUtils.hasText(reference)) {
+                Optional<ApplicantAnswer> answer = Optional.ofNullable(scenarioDto.getApplicantAnswers().get(reference));
+                answer.ifPresent(a -> v.put("value", a.getValue()));
+                answer = Optional.ofNullable(scenarioDto.getCurrentValue().get(reference));
+                answer.ifPresent(a -> v.put("value", a.getValue()));
+            }
+        });
     }
 
     public static void setMinMaxDates(FieldComponent component) {

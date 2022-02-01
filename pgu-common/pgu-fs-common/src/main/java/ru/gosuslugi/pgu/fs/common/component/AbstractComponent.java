@@ -98,8 +98,8 @@ public abstract class AbstractComponent<InitialValueModel> implements BaseCompon
     }
 
     public Map<String, String> validate(Map.Entry<String, ApplicantAnswer> entry,
-                                         ScenarioDto scenarioDto,
-                                         FieldComponent fieldComponent) {
+                                        ScenarioDto scenarioDto,
+                                        FieldComponent fieldComponent) {
         Map<String,String> incorrectAnswers = new HashMap<>();
 
         if (fieldComponent.getSkipValidation()) return Collections.emptyMap();
@@ -129,8 +129,8 @@ public abstract class AbstractComponent<InitialValueModel> implements BaseCompon
     }
 
     public List<List<Map<String, String>>> validateItemsUniqueness(Map.Entry<String, ApplicantAnswer> entry,
-                                                       ScenarioDto scenarioDto,
-                                                       FieldComponent fieldComponent) {
+                                                                   ScenarioDto scenarioDto,
+                                                                   FieldComponent fieldComponent) {
         return Collections.emptyList();
     }
 

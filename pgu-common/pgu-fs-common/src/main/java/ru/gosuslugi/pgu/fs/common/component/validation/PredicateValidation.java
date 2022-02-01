@@ -45,10 +45,10 @@ public class PredicateValidation implements ValidationRule {
         List<String> errors = predicateValidations.stream()
                 .map(predicateMap -> {
                     boolean result = testPredicate(ConditionFieldType.valueOf((String) predicateMap.get(FIELD_TYPE_ATTR)),
-                                                   (String) predicateMap.get(PREDICATE_ATTR),
-                                                   (List<String>) predicateMap.get(AGRS_ATTR),
-                                                   (String) predicateMap.get(FIELD_ATTR),
-                                                   contexts);
+                            (String) predicateMap.get(PREDICATE_ATTR),
+                            (List<String>) predicateMap.get(AGRS_ATTR),
+                            (String) predicateMap.get(FIELD_ATTR),
+                            contexts);
                     return result ? null : (String) predicateMap.get(ERROR_MSG_ATTR);
                 })
                 .filter(StringUtils::hasText)

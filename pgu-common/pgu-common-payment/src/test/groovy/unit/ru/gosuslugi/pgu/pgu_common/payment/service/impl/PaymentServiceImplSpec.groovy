@@ -50,14 +50,14 @@ class PaymentServiceImplSpec extends Specification {
         result.get(0).amount == 300.0
     }
 
-        def "Can get payment"() {
+    def "Can get payment"() {
         given:
         List<PaymentInfo> result
 
         when:
         restTemplateMock.exchange("${mockUrl}api/lk/v3/orders/listpaymentsinfo", HttpMethod.POST, _ as HttpEntity, _ as ParameterizedTypeReference) >>
                 new ResponseEntity(new PaymentsInfo(payment: [new PaymentInfo(amount: 300.0, invitationAddress: "Москва г, Хорошевское ш, д 40А",
-                uin: "1881100000000000020001818", link: "https://lk.gosuslugi.ru/notifications/details/PAYMENT/2406140", title: "Госпошлина за регистрацию автомототранспортных средств и прицепов к ним")]), HttpStatus.OK)
+                        uin: "1881100000000000020001818", link: "https://lk.gosuslugi.ru/notifications/details/PAYMENT/2406140", title: "Госпошлина за регистрацию автомототранспортных средств и прицепов к ним")]), HttpStatus.OK)
         result = service.getUnusedPaymentsV3(orderId, 'orgCode', 'token', 'serviceId', 'applicantType', amount)
 
         then:

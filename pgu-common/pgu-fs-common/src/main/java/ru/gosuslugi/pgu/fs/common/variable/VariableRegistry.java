@@ -21,7 +21,7 @@ public class VariableRegistry {
     private ConcurrentHashMap<VariableType, Variable> variableRegistry = new ConcurrentHashMap<>();
 
     public VariableRegistry() {
-       this.variableRegistry.put(USER_REGION_CODE.getType(), USER_REGION_CODE);
+        this.variableRegistry.put(USER_REGION_CODE.getType(), USER_REGION_CODE);
     }
 
     public void register(Variable variable) {

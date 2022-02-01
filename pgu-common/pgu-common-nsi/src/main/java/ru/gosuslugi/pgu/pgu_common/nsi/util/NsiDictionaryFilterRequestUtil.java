@@ -34,18 +34,18 @@ public class NsiDictionaryFilterRequestUtil {
 
         // Лист параметров
         List<NsiSimpleDictionaryFilterContainer> parameters = Optional.ofNullable(filterRequest.getFilter())
-            .map(NsiDictionaryFilterRequestUtil::toContainerList)
-            .orElse(Collections.emptyList());
+                .map(NsiDictionaryFilterRequestUtil::toContainerList)
+                .orElse(Collections.emptyList());
 
         // Ищем первый непустой параметр с именем атрибута ОКАТО
         return parameters
-            .stream()
-            .map(NsiSimpleDictionaryFilterContainer::getSimple)
-            .filter(simple -> OKATO_ATTRIBUTE_NAME.equalsIgnoreCase(simple.getAttributeName()))
-            .filter(simple -> nonNull(simple.getValue()) && nonNull(simple.getValue().getAttributeValue("asString")))
-            .map(simple -> simple.getValue().getAttributeValue("asString").toString())
-            .findFirst()
-            .orElse(null);
+                .stream()
+                .map(NsiSimpleDictionaryFilterContainer::getSimple)
+                .filter(simple -> OKATO_ATTRIBUTE_NAME.equalsIgnoreCase(simple.getAttributeName()))
+                .filter(simple -> nonNull(simple.getValue()) && nonNull(simple.getValue().getAttributeValue("asString")))
+                .map(simple -> simple.getValue().getAttributeValue("asString").toString())
+                .findFirst()
+                .orElse(null);
     }
 
     private static List<NsiSimpleDictionaryFilterContainer> toContainerList(NsiDictionaryFilter filter) {

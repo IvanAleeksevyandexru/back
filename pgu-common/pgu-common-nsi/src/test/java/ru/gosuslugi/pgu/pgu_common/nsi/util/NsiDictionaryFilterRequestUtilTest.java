@@ -70,16 +70,16 @@ public class NsiDictionaryFilterRequestUtilTest {
     private NsiDictionaryFilterRequest getNsiUnionDictionaryFilterContainer(String okatoAttributeName, String newOkato) {
         NsiDictionaryFilterRequest filterRequest = new NsiDictionaryFilterRequest();
         NsiDictionaryFilterSimple.Builder conditionBuilder =
-            new NsiDictionaryFilterSimple.Builder()
-                .setAttributeName(okatoAttributeName)
-                .setCondition(NsiFilterCondition.EQUALS.toString())
-                .setStringValue(newOkato);
+                new NsiDictionaryFilterSimple.Builder()
+                        .setAttributeName(okatoAttributeName)
+                        .setCondition(NsiFilterCondition.EQUALS.toString())
+                        .setStringValue(newOkato);
 
         filterRequest.setFilter(
-            new NsiUnionDictionaryFilterContainer.Builder()
-                .setFilterBuilders(Collections.singletonList(conditionBuilder))
-                .setNsiDictionaryUnionType(NsiDictionaryUnionType.AND)
-                .build()
+                new NsiUnionDictionaryFilterContainer.Builder()
+                        .setFilterBuilders(Collections.singletonList(conditionBuilder))
+                        .setNsiDictionaryUnionType(NsiDictionaryUnionType.AND)
+                        .build()
         );
         return filterRequest;
     }

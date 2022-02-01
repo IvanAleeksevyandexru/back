@@ -78,7 +78,7 @@ public abstract class InnValidationHelper {
             incorrectAnswers.put(entry.getKey(), errorMessage);
         }
         if (hasText(value) && !value.matches(regExString)) {
-                incorrectAnswers.put(entry.getKey(), errorMessage);
+            incorrectAnswers.put(entry.getKey(), errorMessage);
         }
         return incorrectAnswers;
     }

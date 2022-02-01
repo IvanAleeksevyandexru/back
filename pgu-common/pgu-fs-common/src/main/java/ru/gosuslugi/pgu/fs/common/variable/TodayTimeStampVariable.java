@@ -23,7 +23,7 @@ public class TodayTimeStampVariable extends AbstractVariable {
 
     /** Форматер даты для генерации строки текущего времени для указанной таймзоты */
     public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-        .withZone(TodayTimeStampVariable.ZONE_OFFSET);
+            .withZone(TodayTimeStampVariable.ZONE_OFFSET);
 
     @Override
     public String getValue(ScenarioDto scenarioDto) {

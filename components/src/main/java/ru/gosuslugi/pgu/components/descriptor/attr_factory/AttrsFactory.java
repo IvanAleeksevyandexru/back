@@ -42,8 +42,8 @@ public interface AttrsFactory {
     default List<Reference> getReferences(Map<String, Object> additionalAttrs) {
         var refsMap = getRefsMap();
         return refsMap.entrySet().stream()
-            .map(entry -> getReference(entry.getKey(), entry.getValue(), additionalAttrs))
-            .collect(Collectors.toList());
+                .map(entry -> getReference(entry.getKey(), entry.getValue(), additionalAttrs))
+                .collect(Collectors.toList());
     }
 
 

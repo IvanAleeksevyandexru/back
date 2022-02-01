@@ -39,7 +39,7 @@ public class SopDictionaryRequestUtils {
                 .filter(
                         SopRequestFilter.with().filters(
                                 (StringUtils.isEmpty(filterColumnUid) || StringUtils.isEmpty(attributeValue)) ? null :
-                                List.of(SopFiltersItem.with().columnUid(filterColumnUid).value(attributeValue).build())
+                                        List.of(SopFiltersItem.with().columnUid(filterColumnUid).value(attributeValue).build())
                         ).build()
                 ).build();
 

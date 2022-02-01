@@ -33,11 +33,11 @@ public class NsiDictionaryUtil {
 
         NsiDictionaryFilterRequest.Builder requestBuilder = new NsiDictionaryFilterRequest.Builder();
         requestBuilder
-            .setTreeFiltering("ONELEVEL")
-            .setPageNum("1")
-            .setPageSize("258")
-            .setSelectAttributes(List.of("*"))
-            .setFilter(dictionaryFilter);
+                .setTreeFiltering("ONELEVEL")
+                .setPageNum("1")
+                .setPageSize("258")
+                .setSelectAttributes(List.of("*"))
+                .setFilter(dictionaryFilter);
         NsiDictionaryFilterRequest nsiRequest = requestBuilder.build();
         nsiRequest.setTx(tx);
         nsiRequest.setParentRefItemValue("");

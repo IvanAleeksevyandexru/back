@@ -249,7 +249,7 @@ public class BillingServiceImpl implements BillingService {
         List<NsiDictionaryFilter> amountCodesSimpleFilters = new ArrayList<>();
 
         request.getAmountCodes().forEach(amountCode ->
-            amountCodesSimpleFilters.add(createSimple("AMOUNTCODE", "EQUALS", amountCode)));
+                amountCodesSimpleFilters.add(createSimple("AMOUNTCODE", "EQUALS", amountCode)));
 
         NsiUnionDictionaryFilterContainer unionFilter = createUnion(amountCodesSimpleFilters, NsiDictionaryUnionType.OR);
 
@@ -283,10 +283,10 @@ public class BillingServiceImpl implements BillingService {
             return;
         }
         if(Objects.isNull(result.getPaymentRequisites()) || Objects.isNull(result.getOrganizationRequisites())) {
-                log.error("Empty [OrganizationRequisites, PaymentRequisites] error for bill create request. orderId : {}, organization_code: {}", request.getOrderId(), request.getOrganizationId());
-                result.setState(PaymentPossibilityResponse.PaymentPossibilityRequestState.REQUSITE_ERROR);
-                result.setErrorMessage("Empty [OrganizationRequisites, PaymentRequisites] error for bill create request. orderId: " + request.getOrderId() + ", organization_code: " + request.getOrganizationId());
-                return;
+            log.error("Empty [OrganizationRequisites, PaymentRequisites] error for bill create request. orderId : {}, organization_code: {}", request.getOrderId(), request.getOrganizationId());
+            result.setState(PaymentPossibilityResponse.PaymentPossibilityRequestState.REQUSITE_ERROR);
+            result.setErrorMessage("Empty [OrganizationRequisites, PaymentRequisites] error for bill create request. orderId: " + request.getOrderId() + ", organization_code: " + request.getOrganizationId());
+            return;
         }
         List<NameValueContainer> billParams = new ArrayList<>();
         billParams.add(new NameValueContainer("epgu_order_id", String.valueOf(request.getOrderId())));

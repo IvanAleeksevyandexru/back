@@ -27,13 +27,13 @@ public class RegExpUtil {
      */
     public static List<Map<String, String>> getValidationRegExpList(FieldComponent fieldComponent) {
         return FieldComponentUtil.getStringList(fieldComponent, FieldComponentUtil.VALIDATION_ARRAY_KEY, true)
-            .stream()
-            .filter(
-                validationRule ->
-                    RegExpUtil.REG_EXP_TYPE.equalsIgnoreCase(validationRule.get(ValidationUtil.VALIDATION_TYPE))
-                    && StringUtils.hasText(validationRule.get(RegExpUtil.REG_EXP_VALUE))
-            )
-            .collect(Collectors.toList());
+                .stream()
+                .filter(
+                        validationRule ->
+                                RegExpUtil.REG_EXP_TYPE.equalsIgnoreCase(validationRule.get(ValidationUtil.VALIDATION_TYPE))
+                                        && StringUtils.hasText(validationRule.get(RegExpUtil.REG_EXP_VALUE))
+                )
+                .collect(Collectors.toList());
     }
 
     /**
@@ -47,15 +47,15 @@ public class RegExpUtil {
             result = Collections.emptyList();
         } else {
             result = validationRegExpList
-                .stream()
-                .map(
-                    validationRule ->
-                        value.matches(validationRule.get(REG_EXP_VALUE))
-                        ? null
-                        : validationRule.get(REG_EXP_ERROR_MESSAGE)
-                )
-                .filter(StringUtils::hasText)
-                .collect(Collectors.toList());
+                    .stream()
+                    .map(
+                            validationRule ->
+                                    value.matches(validationRule.get(REG_EXP_VALUE))
+                                            ? null
+                                            : validationRule.get(REG_EXP_ERROR_MESSAGE)
+                    )
+                    .filter(StringUtils::hasText)
+                    .collect(Collectors.toList());
         }
         return result;
     }

@@ -74,15 +74,15 @@ public class CertEaisdoXmlMarshallerTest {
         Assert.assertTrue(marshal.contains("<tns:recipientForeignBirthCertificateData>"));
 
     }
-        private FieldComponent makeComponent() {
+    private FieldComponent makeComponent() {
         ComponentCertEaisdoFixture fixture = new ComponentCertEaisdoFixture();
         return fixture.makeApplicantComponent();
     }
-        private FieldComponent makeFullComponent() {
+    private FieldComponent makeFullComponent() {
         ComponentCertEaisdoFixture fixture = new ComponentCertEaisdoFixture();
         return fixture.makeComponent();
     }
-        private FieldComponent makeComponentWithForeignBirthCertificate() {
+    private FieldComponent makeComponentWithForeignBirthCertificate() {
         ComponentCertEaisdoFixture fixture = new ComponentCertEaisdoFixture();
         return fixture.makeComponentWithForeignBirthCertificate();
     }

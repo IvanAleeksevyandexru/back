@@ -122,20 +122,15 @@ public abstract class AbstractCycledScreenService extends AbstractScreenService 
             }
 
             //если экран первый в цикле - не очищать cachedAnswers при шаге назад на выходе из цикла
-            LinkedList<String> finishedAndCurrentScreens = scenarioDto.getFinishedAndCurrentScreens();
-            String firstCycledScreen = currentAnswer.getInitScreen();
-            if(firstCycledScreen.equals(finishedAndCurrentScreens.getLast())) {
+            LinkedList<String> keys = new LinkedList<>(currentAnswer.getItemsIds());
+            int currentItemIdIndex = keys.lastIndexOf(currentAnswer.getCurrentItemId());
+            if (currentItemIdIndex == 0) {
                 break;
             }
 
             currentAnswerItem.getCachedAnswers().keySet().forEach(scenarioDto.getCachedAnswers()::remove);
             currentAnswerItem.getItemAnswers().keySet().forEach(scenarioDto.getApplicantAnswers()::remove);
 
-            LinkedList<String> keys = new LinkedList<>(currentAnswer.getItemsIds());
-            int currentItemIdIndex = keys.lastIndexOf(currentAnswer.getCurrentItemId());
-            if (currentItemIdIndex == 0) {
-                break;
-            }
             currentAnswer.setCurrentItemId(keys.get(currentItemIdIndex - 1));
             currentAnswerItem = currentAnswer.getCurrentAnswerItem();
             scenarioDto.getApplicantAnswers().putAll(currentAnswerItem.getItemAnswers());

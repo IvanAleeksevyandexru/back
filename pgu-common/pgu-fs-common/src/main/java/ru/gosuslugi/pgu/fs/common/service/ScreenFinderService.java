@@ -31,9 +31,9 @@ public interface ScreenFinderService {
      * @return экран по бизнес-правилам
      */
     Optional<ScreenDescriptor> findScreenDescriptorByRulesOrEmpty(
-        ScenarioDto scenarioDto,
-        ServiceDescriptor serviceDescriptor,
-        List<ScreenRule> screenRuleListSupplied
+            ScenarioDto scenarioDto,
+            ServiceDescriptor serviceDescriptor,
+            List<ScreenRule> screenRuleListSupplied
     );
 
 }

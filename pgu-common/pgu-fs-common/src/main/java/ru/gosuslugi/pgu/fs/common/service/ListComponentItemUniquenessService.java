@@ -24,4 +24,4 @@ public interface ListComponentItemUniquenessService {
 
     void updateDisclaimerForUniquenessErrors(FieldComponent fieldComponent, List<List<Map<String, String>>> uniquenessErrors);
 
-    }
+}

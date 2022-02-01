@@ -30,8 +30,8 @@ public class MainDescriptorServiceImpl implements MainDescriptorService {
     @Override
     public ServiceDescriptor getServiceDescriptor(String serviceId) {
         ServiceDescriptor descriptor = serviceDescriptorMap.containsKey(serviceId)
-            ? serviceDescriptorMap.get(serviceId)
-            : jsonProcessingService.fromJson(
+                ? serviceDescriptorMap.get(serviceId)
+                : jsonProcessingService.fromJson(
                 serviceDescriptorClient.getServiceDescriptor(serviceId),
                 ServiceDescriptor.class
         );

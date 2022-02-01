@@ -36,8 +36,11 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 public class NsiDadataServiceAddressByFiasCodeMockTest {
 
     private static final String OKATO = "okato";
+    private static final String DADATA_URL = "http://localhost:8072/api/nsi/v1/dadata/";
+    private static final String FIAS = "fias";
+    private static final String FIAS_PATH_VARIABLE = "{fias}";
 
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
     private MockRestServiceServer mockServer;
 
     protected NsiDadataService apiClient;
@@ -62,15 +65,15 @@ public class NsiDadataServiceAddressByFiasCodeMockTest {
     public void testGet() throws URISyntaxException {
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dadata/fias")))
-            .andExpect(method(HttpMethod.GET))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body("{\"error\":{\"code\":0}}")
-            );
+                requestTo(new URI(DADATA_URL + FIAS)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body("{\"error\":{\"code\":0}}")
+                );
 
-        DadataAddressResponse response = apiClient.getAddressByFiasCode("fias");
+        DadataAddressResponse response = apiClient.getAddressByFiasCode(FIAS);
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.getError());
         Assert.assertEquals(Integer.valueOf(0), response.getError().getCode());
@@ -78,7 +81,7 @@ public class NsiDadataServiceAddressByFiasCodeMockTest {
         List<DictionayHealthDto> dictionaries = healthHolder.get().getDictionaries();
         Assert.assertEquals(dictionaries.size(), 1);
         Assert.assertEquals("dadataAddressByFiasCode", dictionaries.get(0).getId());
-        Assert.assertEquals("http://localhost:8072/api/nsi/v1/dadata/{fias}",dictionaries.get(0).getUrl());
+        Assert.assertEquals(DADATA_URL + FIAS_PATH_VARIABLE,dictionaries.get(0).getUrl());
         Assert.assertEquals(HttpMethod.GET,dictionaries.get(0).getMethod());
         Assert.assertEquals(HttpStatus.OK,dictionaries.get(0).getStatus());
         Assert.assertNull(dictionaries.get(0).getError());
@@ -93,22 +96,22 @@ public class NsiDadataServiceAddressByFiasCodeMockTest {
     public void testGetWithErrorCode() throws URISyntaxException {
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dadata/fias")))
-            .andExpect(method(HttpMethod.GET))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body("{\"error\":{\"code\":1}}")
-            );
+                requestTo(new URI(DADATA_URL + FIAS)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body("{\"error\":{\"code\":1}}")
+                );
 
         try {
-            apiClient.getAddressByFiasCode("fias");
+            apiClient.getAddressByFiasCode(FIAS);
             fail();
         } catch (NsiExternalException e) {
             Assert.assertEquals("dadataAddressByFiasCode", e.getMessage());
             Assert.assertNotNull(e.getValue());
             Assert.assertEquals("dadataAddressByFiasCode", e.getValue().getId());
-            Assert.assertEquals("http://localhost:8072/api/nsi/v1/dadata/{fias}", e.getValue().getUrl());
+            Assert.assertEquals(DADATA_URL + FIAS_PATH_VARIABLE, e.getValue().getUrl());
             Assert.assertEquals(HttpMethod.GET, e.getValue().getMethod());
             Assert.assertEquals("Не удалось получить проверить фиас код в Dadata сервисе. Код = " + 1, e.getValue().getMessage());
             Assert.assertEquals(OKATO, e.getValue().getOkato());
@@ -123,21 +126,21 @@ public class NsiDadataServiceAddressByFiasCodeMockTest {
     public void testGetWithNull() throws URISyntaxException {
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dadata/fias")))
-            .andExpect(method(HttpMethod.GET))
-            .andRespond(
-                withStatus(HttpStatus.OK)
-                    .contentType(MediaType.APPLICATION_JSON)
-            );
+                requestTo(new URI(DADATA_URL + FIAS)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                                .contentType(MediaType.APPLICATION_JSON)
+                );
 
         try {
-            apiClient.getAddressByFiasCode("fias");
+            apiClient.getAddressByFiasCode(FIAS);
             fail();
         } catch (NsiExternalException e) {
             Assert.assertEquals("dadataAddressByFiasCode", e.getMessage());
             Assert.assertNotNull(e.getValue());
             Assert.assertEquals("dadataAddressByFiasCode", e.getValue().getId());
-            Assert.assertEquals("http://localhost:8072/api/nsi/v1/dadata/{fias}", e.getValue().getUrl());
+            Assert.assertEquals(DADATA_URL + FIAS_PATH_VARIABLE, e.getValue().getUrl());
             Assert.assertEquals(HttpMethod.GET, e.getValue().getMethod());
             Assert.assertEquals("Сервис не вернул результат", e.getValue().getMessage());
             Assert.assertEquals(OKATO, e.getValue().getOkato());
@@ -152,21 +155,21 @@ public class NsiDadataServiceAddressByFiasCodeMockTest {
     public void testGetWithException() throws URISyntaxException {
 
         mockServer.expect(ExpectedCount.once(),
-            requestTo(new URI("http://localhost:8072/api/nsi/v1/dadata/fias")))
-            .andExpect(method(HttpMethod.GET))
-            .andRespond(
-                withStatus(HttpStatus.NOT_FOUND)
-                .contentType(MediaType.APPLICATION_JSON)
-            );
+                requestTo(new URI(DADATA_URL + FIAS)))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(
+                        withStatus(HttpStatus.NOT_FOUND)
+                                .contentType(MediaType.APPLICATION_JSON)
+                );
 
         try {
-            apiClient.getAddressByFiasCode("fias");
+            apiClient.getAddressByFiasCode(FIAS);
             fail();
         } catch (NsiExternalException e) {
             Assert.assertEquals("dadataAddressByFiasCode", e.getMessage());
             Assert.assertNotNull(e.getValue());
             Assert.assertEquals("dadataAddressByFiasCode", e.getValue().getId());
-            Assert.assertEquals("http://localhost:8072/api/nsi/v1/dadata/{fias}", e.getValue().getUrl());
+            Assert.assertEquals(DADATA_URL + FIAS_PATH_VARIABLE, e.getValue().getUrl());
             Assert.assertEquals(HttpMethod.GET, e.getValue().getMethod());
             Assert.assertEquals("Исключение при вызове метода", e.getValue().getMessage());
             Assert.assertEquals(OKATO, e.getValue().getOkato());

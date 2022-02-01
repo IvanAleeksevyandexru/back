@@ -116,6 +116,7 @@ public class ScenarioDtoServiceImpl implements ScenarioDtoService {
             DisplayRequest displayRequest = new DisplayRequest(screenToProcess, componentService.getScreenFields(screenToProcess, scenarioDto, currentDescriptor));
             displayRequest.getComponents().forEach(el -> componentService.fillCycledField(el, scenarioDto));
             displayRequest.getInfoComponents().forEach(el -> componentService.fillCycledField(el, scenarioDto));
+            displayRequest.getLogicAfterValidationComponents().forEach(el -> componentService.fillCycledField(el, scenarioDto));
             displayReferenceService.processDisplayRefs(displayRequest, scenarioDto);
             scenarioDto.setDisplay(displayRequest);
             computeAnswerService.computeValues(screenToProcess, scenarioDto);

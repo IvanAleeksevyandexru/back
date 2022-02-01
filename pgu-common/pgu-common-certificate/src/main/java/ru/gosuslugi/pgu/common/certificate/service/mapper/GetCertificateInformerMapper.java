@@ -14,7 +14,7 @@ import java.util.Map;
 @Mapper
 public abstract class GetCertificateInformerMapper {
 
-   public static final GetCertificateInformerMapper INSTANCE = Mappers.getMapper(GetCertificateInformerMapper.class);
+    public static final GetCertificateInformerMapper INSTANCE = Mappers.getMapper(GetCertificateInformerMapper.class);
 
     protected List<GetCertificateInformer.RecipientDataForGUID> forGUIDList;
 
