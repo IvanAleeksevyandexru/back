@@ -307,7 +307,7 @@
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
             <artifactId>pgu-sp-adapter-client</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${epgu2.sf.lib.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
