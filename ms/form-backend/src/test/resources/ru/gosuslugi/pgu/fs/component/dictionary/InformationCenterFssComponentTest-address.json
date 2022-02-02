@@ -1,0 +1,10 @@
+{
+  "regAddr": {
+    "houseCheckbox": false,
+    "houseCheckboxClosed": false,
+    "apartmentCheckbox": false,
+    "apartmentCheckboxClosed": false,
+    "regionCode": "78"
+  },
+  "regZipCode": "60"
+}
