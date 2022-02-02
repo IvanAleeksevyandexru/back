@@ -2,7 +2,6 @@ package ru.gosuslugi.pgu.fs.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,13 +36,12 @@ public class InternalController {
     @PostMapping(value = "/getPrevStep")
     public ScenarioResponse getPrevStep(
             @RequestBody ScenarioRequest request,
-            @Parameter(description = "Количество шагов на которое надо вернуться назад", schema = @Schema(defaultValue = "1"))
-            @RequestParam(defaultValue = "1")
-                    Integer stepsBack
+            @Parameter(description = "Количество шагов на которое надо вернуться назад") @RequestParam(required = false) Integer stepsBack,
+            @Parameter(description = "Id экрана на который надо вернуться") @RequestParam(required = false) String screenId
     ) {
         tracingHelper.addServiceCodeAndOrderId(request);
         String serviceId = request.getScenarioDto().getServiceId();
-        return screenService.getPrevScreen(request, serviceId, stepsBack);
+        return screenService.getPrevScreen(request, serviceId, stepsBack, screenId);
     }
 
 }

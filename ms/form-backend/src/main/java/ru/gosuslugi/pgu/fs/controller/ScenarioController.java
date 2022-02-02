@@ -2,7 +2,6 @@ package ru.gosuslugi.pgu.fs.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -133,11 +132,13 @@ public class ScenarioController {
     @PostMapping(value = "/getPrevStep")
     public ScenarioResponse getPrevStep(@Parameter(description = "Id услуги", required = true) @PathVariable String serviceId,
                                         @Parameter(description = "ScenarioRequest с текущим шагом сценария", required = true) @RequestBody ScenarioRequest request,
-                                        @Parameter(description = "Количество шагов на которое надо вернуться назад", schema = @Schema(defaultValue = "1")) @RequestParam(defaultValue = "1") Integer stepsBack) {
+                                        @Parameter(description = "Количество шагов на которое надо вернуться назад") @RequestParam(required = false) Integer stepsBack,
+                                        @Parameter(description = "Id экрана на который надо вернуться") @RequestParam(required = false) String screenId
+    ) {
         tracingHelper.addServiceCodeAndOrderId(serviceId, request);
         MainScreenService mainScreenService = mainScreenServiceRegistry.getService(request.getScenarioDto().getTargetCode());
         mainScreenService.setStatusId(request.getScenarioDto());
-        ScenarioResponse result = mainScreenService.getPrevScreen(request, serviceId, stepsBack);
+        ScenarioResponse result = mainScreenService.getPrevScreen(request, serviceId, stepsBack, screenId);
         result.setHealth(healthHolder.get());
         return result;
     }

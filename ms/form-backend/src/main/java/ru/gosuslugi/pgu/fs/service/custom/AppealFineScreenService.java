@@ -187,9 +187,21 @@ public class AppealFineScreenService extends AbstractCustomScreenService {
     }
 
     @Override
+    public ScenarioResponse getPrevScreen(ScenarioRequest request, String serviceId, String screenId) {
+        serviceId = request.getScenarioDto().getServiceDescriptorId();
+        return mainScreenService.getPrevScreen(request, serviceId, screenId);
+    }
+
+    @Override
     public ScenarioResponse getPrevScreen(ScenarioRequest request, String serviceId, Integer stepsBack) {
         serviceId = request.getScenarioDto().getServiceDescriptorId();
         return mainScreenService.getPrevScreen(request, serviceId, stepsBack);
+    }
+
+    @Override
+    public ScenarioResponse getPrevScreen(ScenarioRequest request, String serviceId, Integer stepsBack, String screenId) {
+        serviceId = request.getScenarioDto().getServiceDescriptorId();
+        return mainScreenService.getPrevScreen(request, serviceId, stepsBack, screenId);
     }
 
     private ApplicantAnswer getPreviousDataAsApplicantAnswer(Long orderId) {
