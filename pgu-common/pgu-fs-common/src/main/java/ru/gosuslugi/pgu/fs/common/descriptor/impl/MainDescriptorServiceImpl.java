@@ -5,11 +5,10 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
 import ru.gosuslugi.pgu.fs.common.descriptor.MainDescriptorService;
-import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService;
 import ru.gosuslugi.pgu.sd.storage.ServiceDescriptorClient;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 
 @Primary
@@ -17,10 +16,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class MainDescriptorServiceImpl implements MainDescriptorService {
 
-    private final Map<String, ServiceDescriptor> serviceDescriptorMap = new HashMap<>();
-
+    private static final ConcurrentMap<String, ServiceDescriptor> serviceDescriptorMap = new ConcurrentHashMap<>();
     private final ServiceDescriptorClient serviceDescriptorClient;
-    private final JsonProcessingService jsonProcessingService;
 
     @Override
     public void applyNewServiceDescriptor(String serviceId, ServiceDescriptor serviceDescriptor) {
@@ -29,18 +26,12 @@ public class MainDescriptorServiceImpl implements MainDescriptorService {
 
     @Override
     public ServiceDescriptor getServiceDescriptor(String serviceId) {
-        ServiceDescriptor descriptor = serviceDescriptorMap.containsKey(serviceId)
-                ? serviceDescriptorMap.get(serviceId)
-                : jsonProcessingService.fromJson(
-                serviceDescriptorClient.getServiceDescriptor(serviceId),
-                ServiceDescriptor.class
-        );
-        DescriptorClarificationConverter.convert(descriptor);
-        return descriptor;
+        return serviceDescriptorMap.getOrDefault(serviceId, serviceDescriptorClient.getServiceDescriptor(serviceId));
     }
 
     @Override
     public void clearCachedDescriptor(String serviceId) {
+        serviceDescriptorMap.remove(serviceId);
         serviceDescriptorClient.clearCachedDescriptor(serviceId);
     }
 }
