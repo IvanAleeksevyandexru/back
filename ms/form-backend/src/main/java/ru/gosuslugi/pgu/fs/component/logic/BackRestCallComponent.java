@@ -6,6 +6,7 @@ import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.BackRestCallResponseDto;
 import ru.gosuslugi.pgu.dto.ScenarioDto;
+import ru.gosuslugi.pgu.dto.SqlResponseDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.fs.common.component.AbstractComponent;
@@ -18,7 +19,7 @@ import java.util.Map;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.COOKIES_ATTR;
 
 /**
- * Компонент запроса внешних данных - на бэке вызвается rest-запрос по данным из описания в JSON
+ * Компонент запроса внешних данных - на бэке вызывается rest-запрос по данным из описания в JSON
  * Ответ сохраняется в applicationAnswers
  * Используется для непубличных запросов
  */
@@ -35,9 +36,15 @@ public class BackRestCallComponent extends AbstractComponent<String> {
 
     @Override
     public ComponentResponse<String> getInitialValue(FieldComponent component, ScenarioDto scenarioDto) {
+
+        var responseDto = getResponse(component);
+        if (component.getBooleanAttr("sqlResult")) {
+            responseDto.setResponse(objectMapper.convertValue(responseDto.getResponse(), SqlResponseDto.class));
+        }
+
         scenarioDto.getApplicantAnswers().put(
                 component.getId(),
-                new ApplicantAnswer(true, jsonProcessingService.toJson(getResponse(component)))
+                new ApplicantAnswer(true, jsonProcessingService.toJson(responseDto))
         );
         clearComponent(component);
         return ComponentResponse.empty();
