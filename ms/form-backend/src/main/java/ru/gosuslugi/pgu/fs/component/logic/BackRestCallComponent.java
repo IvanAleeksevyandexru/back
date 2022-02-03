@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static ru.gosuslugi.pgu.components.ComponentAttributes.COOKIES_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.HEADERS_ATTR;
 
 /**
  * Компонент запроса внешних данных - на бэке вызвается rest-запрос по данным из описания в JSON
@@ -28,6 +29,8 @@ public class BackRestCallComponent extends AbstractComponent<String> {
 
     // Признак (boolean), нужно ли в реквест добавить acc_t
     protected static final String ESIA_AUTH_ATTR = "esia_auth";
+    // Признак (boolean), нужно ли в реквест добавить header Authorization с значением "Bearer {acc_t}"
+    public static final String BEARER_AUTH_ATTR = "bearer_auth";
 
     private final RestCallComponent restCallComponent;
     private final BackRestCallService backRestCallService;
@@ -50,12 +53,14 @@ public class BackRestCallComponent extends AbstractComponent<String> {
     }
 
     private void setUserToken(FieldComponent component) {
-        if (component.getAttrs().containsKey(ESIA_AUTH_ATTR)
-                && Boolean.TRUE.equals(component.getAttrs().getOrDefault(ESIA_AUTH_ATTR, Boolean.FALSE))) {
+        if (Boolean.TRUE.equals(component.getAttrs().getOrDefault(ESIA_AUTH_ATTR, Boolean.FALSE))) {
             if (!component.getAttrs().containsKey(COOKIES_ATTR)) {
                 component.getAttrs().put(COOKIES_ATTR, new HashMap<String, String>());
             }
             ((Map<String, String>) component.getAttrs().get(COOKIES_ATTR)).put("acc_t", userPersonalData.getToken());
+        }
+        if (Boolean.TRUE.equals(component.getAttrs().getOrDefault(BEARER_AUTH_ATTR, Boolean.FALSE))) {
+            ((Map<String, String>) component.getAttrs().get(HEADERS_ATTR)).put("Authorization", "Bearer " + userPersonalData.getToken());
         }
     }
 

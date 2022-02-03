@@ -84,7 +84,7 @@ public class DropDownComponent extends AbstractComponent<String> {
 
         //данные приходят из предыдущего компонента
         if(component.getArguments().containsKey(DICTIONARY_REF_KEY)) {
-            dictionaryListPreprocessorService.prepareDictionaryListFromComponent(component);
+            dictionaryListPreprocessorService.prepareDictionaryListFromComponent(component, scenarioDto);
         }
 
         // справочники типа "year" - список с генерацией дат по заданным атрибутам
