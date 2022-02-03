@@ -37,6 +37,7 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
 @RequiredArgsConstructor
 public class ConfirmLegalDataComponent extends AbstractComponent<FormDto<ConfirmLegalData>> {
 
+    private static final String UNABLE_TO_GET_CHIED_DATA = "Невозможно получить данные руководителя";
     public static final String USER_TYPE_ERROR = "Войдите как сотрудник организации или ИП в личном кабинете";
     private static final String DISCLAIMER_DESCRIPTION = "Это можно сделать в налоговой";
     private static final String FIELD_NOT_FOUND_TITLE_START = "Добавьте ";
@@ -180,7 +181,11 @@ public class ConfirmLegalDataComponent extends AbstractComponent<FormDto<Confirm
         ApplicantAnswer answer = entry.getValue();
         FormDto<ConfirmLegalData> formDto = JsonProcessingUtil.fromJson(answer.getValue(), new TypeReference<>() {});
         ConfirmLegalData storedValues = formDto.getStoredValues();
-        storedValues.setChiefOid(userOrgData.getChief().getUserId());
+        storedValues.setChiefOid(
+                Optional.ofNullable(userOrgData.getChief())
+                        .map(Person::getUserId)
+                        .orElseThrow(() -> new FormBaseWorkflowException(UNABLE_TO_GET_CHIED_DATA))
+        );
         answer.setValue(JsonProcessingUtil.toJson(formDto));
     }
 }
