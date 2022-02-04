@@ -17,4 +17,5 @@ public class ErrorModalWindow {
     private List<ModalWindowButton> actionButtons;
     private List<ModalComponentButton> buttons;
     private Boolean isShortModal = true;
+    private boolean hideTraceId = false;
 }
