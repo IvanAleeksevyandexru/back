@@ -41,6 +41,27 @@ public interface ScreenService {
      *                      then updated display section, and move currentValue into applicantAnswers
      * @param serviceId     serviceId
      * @param stepsBack     number of steps back
+     * @param screenId      target screen id
+     * @return              scenario response
+     */
+    ScenarioResponse getPrevScreen(ScenarioRequest request, String serviceId, Integer stepsBack, String screenId);
+
+    /**
+     * Method for getting previous screen based on currents scenario attribute
+     * @param request       receives ServiceRequest dto to get user application fields in order to determine next step according to scenarios
+     *                      then updated display section, and move currentValue into applicantAnswers
+     * @param serviceId     serviceId
+     * @param screenId      target screen id
+     * @return              scenario response
+     */
+    ScenarioResponse getPrevScreen(ScenarioRequest request, String serviceId, String screenId);
+
+    /**
+     * Method for getting previous screen based on currents scenario attribute
+     * @param request       receives ServiceRequest dto to get user application fields in order to determine next step according to scenarios
+     *                      then updated display section, and move currentValue into applicantAnswers
+     * @param serviceId     serviceId
+     * @param stepsBack     number of steps back
      * @return              scenario response
      */
     ScenarioResponse getPrevScreen(ScenarioRequest request, String serviceId, Integer stepsBack);

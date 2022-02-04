@@ -17,6 +17,7 @@ import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.ScreenDescriptor;
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
 import ru.gosuslugi.pgu.fs.common.descriptor.DescriptorService;
+import ru.gosuslugi.pgu.fs.common.exception.NoScreensFoundException;
 import ru.gosuslugi.pgu.fs.common.helper.HelperScreenRegistry;
 import ru.gosuslugi.pgu.fs.common.helper.ScreenHelper;
 
@@ -140,15 +141,40 @@ public abstract class AbstractScreenService implements ScreenService {
     }
 
     @Override
+    public ScenarioResponse getPrevScreen(ScenarioRequest request, String serviceId, Integer stepsBack, String screenId) {
+        if (stepsBack != null && screenId != null) {
+            throw new FormBaseException("Ошибка конфигурации параметров возврата");
+        }
+
+        if (screenId != null) {
+            return getPrevScreen(request, serviceId, screenId);
+        }
+        return getPrevScreen(request, serviceId, stepsBack);
+    }
+
+    @Override
+    public ScenarioResponse getPrevScreen(ScenarioRequest request, String serviceId, String screenId) {
+        if (screenId != null && !request.getScenarioDto().getFinishedAndCurrentScreens().contains(screenId)) {
+            throw new NoScreensFoundException(String.format("Не найден экран перехода с идентификатором %s", screenId));
+        }
+        ScenarioResponse scenarioResponse = null;
+
+        while(scenarioResponse == null || !scenarioResponse.getScenarioDto().getDisplay().getId().equals(screenId)) {
+            scenarioResponse = getPrevScreen(request, serviceId);
+        }
+        return scenarioResponse;
+    }
+
+    @Override
     public ScenarioResponse getPrevScreen(ScenarioRequest request, String serviceId, Integer stepsBack) {
         ScenarioResponse scenarioResponse = null;
+
         for (int i = 0; i < stepsBack; i++) {
             if (scenarioResponse != null && !hasPrevStep(scenarioResponse)) {
                 return scenarioResponse;
             }
             scenarioResponse = getPrevScreen(request, serviceId);
         }
-
         return scenarioResponse;
     }
 
