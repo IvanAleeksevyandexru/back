@@ -10,7 +10,10 @@ import ru.gosuslugi.pgu.dto.ScenarioRequest
 import ru.gosuslugi.pgu.dto.ScenarioResponse
 import ru.gosuslugi.pgu.draft.DraftClient
 import ru.gosuslugi.pgu.fs.FormServiceApp
+import ru.gosuslugi.pgu.fs.common.exception.FormBaseException
+import ru.gosuslugi.pgu.fs.common.exception.NoScreensFoundException
 import ru.gosuslugi.pgu.fs.pgu.service.PguOrderService
+import ru.gosuslugi.pgu.fs.service.impl.MainScreenServiceImpl
 import ru.gosuslugi.pgu.sd.storage.ServiceDescriptorClient
 import spock.lang.Ignore
 import spock.lang.Specification
@@ -22,13 +25,15 @@ import java.nio.file.Paths
 @Ignore
 @SpringBootTest(classes = FormServiceApp.class)
 class AbstractScreenServiceTest extends Specification {
+    private static final String SCREEN_NOT_FOUND_EXCEPTION_MESSAGE = "Не найден экран перехода с идентификатором %s"
+    private static final String PREV_STEP_PARAM_CONFLICT_MESSAGE = "Ошибка конфигурации параметров возврата"
 
     @SpringBean private ServiceDescriptorClient serviceDescriptorClient = Mock()
     @SpringBean private DraftClient draftClient = Mock()
     @SpringBean private PguOrderService pguOrderService = Mock()
 
     @Autowired
-    MainScreenService screenService
+    MainScreenServiceImpl screenService
 
     def "getNextScreen with screen skipping"() {
         given:
@@ -68,6 +73,35 @@ class AbstractScreenServiceTest extends Specification {
         response.getScenarioDto().getDisplay().getId() == "BeforeSkipScreenId"
         !response.getScenarioDto().getApplicantAnswers().containsKey("SkipComponentId1")
         !response.getScenarioDto().getApplicantAnswers().containsKey("SkipComponentId2")
+    }
+
+    def "getPrevScreen with screenId param"() {
+        given:
+        String json = Files.readString(Paths.get(getClass().getClassLoader().getResource("SkipScreen.json").toURI()))
+        serviceDescriptorClient.getServiceDescriptor(_ as String) >> json
+
+        when:
+        def request = getScenarioRequestForPrevStep("1")
+        def response = screenService.getPrevScreen(request, "serviceId", screenId)
+        then:
+        response.getScenarioDto().getDisplay().getId() == screenId
+
+        when:
+        request = getScenarioRequestForPrevStep("1")
+        screenService.getPrevScreen(request, "serviceId", "non-exists-id")
+        then:
+        def e = thrown(NoScreensFoundException)
+        e.getMessage() == String.format(SCREEN_NOT_FOUND_EXCEPTION_MESSAGE, "non-exists-id")
+
+        when:
+        request = getScenarioRequestForPrevStep("1")
+        screenService.getPrevScreen(request, "serviceId", 1, screenId)
+        then:
+        e = thrown(FormBaseException)
+        e.getMessage() == PREV_STEP_PARAM_CONFLICT_MESSAGE
+
+        where:
+        screenId << ["s1","SkipScreenId"]
     }
 
     def getScenarioRequestForNextStep(String conditionAnswer) {

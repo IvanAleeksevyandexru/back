@@ -39,8 +39,13 @@ public class ScenarioController {
     }
 
     @PostMapping(value = "/getPrevStep")
-    public ScenarioResponse getPrevStep(@PathVariable String serviceId, @RequestBody ScenarioRequest request, @RequestParam(defaultValue = "1") Integer stepsBack) {
-        return lightweightScreenService.getPrevScreen(request, serviceId, stepsBack);
+    public ScenarioResponse getPrevStep(
+            @PathVariable String serviceId,
+            @RequestBody ScenarioRequest request,
+            @RequestParam(required = false) Integer stepsBack,
+            @RequestParam(required = false) String screenId
+    ) {
+        return lightweightScreenService.getPrevScreen(request, serviceId, stepsBack, screenId);
     }
 
     @PostMapping(value = "checkIfOrderIdExists")
