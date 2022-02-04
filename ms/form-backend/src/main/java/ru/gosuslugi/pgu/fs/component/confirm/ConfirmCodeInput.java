@@ -66,7 +66,7 @@ public class ConfirmCodeInput extends AbstractComponent<String> {
         if (HttpStatus.TOO_MANY_REQUESTS.equals(requestStatus)) {
             throw new ErrorModalException(
                     errorModalDescriptorService.getErrorModal(ErrorModalView.TOO_MANY_REQUESTS_PHONE),
-                    "Ваш номер телефона заблокируется на 60 дней, если количество попыток запроса СМС-кода превысит 6 раз. Получить код повторно можно через 15 минут"
+                    "Ваш номер телефона заблокируется на 5 дней, если количество попыток запроса СМС-кода превысит 10 раз. Получить код повторно можно через 15 минут"
             );
         }
 

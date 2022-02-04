@@ -19,7 +19,7 @@ import spock.lang.Specification
 
 class ConfirmEmailCodeInputComponentTest extends Specification {
     public static final String ROUTING_CODE = "123"
-    public static final String TOO_MANY_REQUESTS_EMAIL_EXCEPTION_MESSAGE = "Возможность подать заявление будет заблокирована на 60 дней, если количество запросов кода превысит 6 раз. Получить код повторно можно через 15 минут"
+    public static final String TOO_MANY_REQUESTS_EMAIL_EXCEPTION_MESSAGE = "Возможность подать заявление будет заблокирована на 5 дней, если количество запросов кода превысит 10 раз. Получить код повторно можно через 15 минут"
     public static final String EMAIL = "test@txt.ru"
     public static final String SMS_CONFORMATION_SERVICE_ERROR = "Ошибка обращения к сервису"
     public static final String CONFIRMATION_CODE = "9876"

@@ -65,7 +65,7 @@ public class ConfirmEmailCodeInputComponent extends AbstractComponent<String> {
         if (HttpStatus.TOO_MANY_REQUESTS.equals(requestStatus)) {
             throw new ErrorModalException(
                     errorModalDescriptorService.getErrorModal(ErrorModalView.TOO_MANY_REQUESTS_EMAIL),
-                    "Возможность подать заявление будет заблокирована на 60 дней, если количество запросов кода превысит 6 раз. Получить код повторно можно через 15 минут"
+                    "Возможность подать заявление будет заблокирована на 5 дней, если количество запросов кода превысит 10 раз. Получить код повторно можно через 15 минут"
             );
         }
 

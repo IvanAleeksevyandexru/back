@@ -19,7 +19,7 @@ import spock.lang.Specification
 
 class ConfirmCodeInputTest extends Specification {
     public static final String ROUTING_CODE = "123"
-    public static final String TOO_MANY_REQUESTS_PHONE_EXCEPTION_MESSAGE = "Ваш номер телефона заблокируется на 60 дней, если количество попыток запроса СМС-кода превысит 6 раз. Получить код повторно можно через 15 минут"
+    public static final String TOO_MANY_REQUESTS_PHONE_EXCEPTION_MESSAGE = "Ваш номер телефона заблокируется на 5 дней, если количество попыток запроса СМС-кода превысит 10 раз. Получить код повторно можно через 15 минут"
     public static final String MOBILE_PHONE_NUMBER = "123456789"
     public static final String SMS_CONFORMATION_SERVICE_ERROR = "Ошибка обращения к сервису"
     public static final String CONFIRMATION_CODE = "9876"
