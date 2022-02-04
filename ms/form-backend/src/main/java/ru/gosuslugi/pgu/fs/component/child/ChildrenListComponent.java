@@ -212,7 +212,7 @@ public class ChildrenListComponent extends AbstractComponent<String> {
         for (FieldComponent component : fieldComponents) {
             linkedValuesService.fillLinkedValues(component, scenarioDto);
             if (ComponentType.DropDown == component.getType()) {
-                dictionaryListPreprocessorService.prepareDictionaryListFromComponent(component);
+                dictionaryListPreprocessorService.prepareDictionaryListFromComponent(component, scenarioDto);
             }
         }
         List<Map<String, Object>> childrenList = new ArrayList<>();
