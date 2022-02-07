@@ -90,7 +90,7 @@ class ComponentTestUtil extends Specification {
         def parseAttrValuesHelper = new ParseAttrValuesHelper(variableRegistry, jsonProcessingService, protectedFieldService)
 
         def serviceDescriptorClient = new ServiceDescriptorClientImpl(restTemplate, new ServiceDescriptorClientProperties())
-        def mainDescriptorService = new MainDescriptorServiceImpl(serviceDescriptorClient, jsonProcessingService)
+        def mainDescriptorService = new MainDescriptorServiceImpl(serviceDescriptorClient)
 
         def conditionCheckerHelper = new ConditionCheckerHelper(
                 new StringPredicateFactory(),
@@ -165,7 +165,7 @@ class ComponentTestUtil extends Specification {
 
     static ScenarioDto mockScenario(Map<String, ApplicantAnswer> currentValue,
                                     Map<String, ApplicantAnswer> applicantAnswers, ServiceInfoDto serviceInfoDto) {
-        ScenarioDto scenarioDto = new ScenarioDto();
+        ScenarioDto scenarioDto = new ScenarioDto()
         scenarioDto.setCurrentValue(currentValue)
         scenarioDto.setApplicantAnswers(applicantAnswers)
         scenarioDto.setServiceInfo(serviceInfoDto)
