@@ -1,10 +1,15 @@
 package ru.gosuslugi.pgu.fs.component.child;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
+import ru.atc.carcass.security.rest.model.person.Kids;
+import ru.atc.carcass.security.rest.model.person.PersonDoc;
+import ru.gosuslugi.pgu.common.core.date.util.DateUtil;
+import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.components.BasicComponentUtil;
 import ru.gosuslugi.pgu.components.ComponentAttributes;
 import ru.gosuslugi.pgu.components.DateInputComponentUtil;
@@ -31,15 +36,19 @@ import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.BiPredicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static ru.gosuslugi.pgu.components.ComponentAttributes.CHILDREN_ID_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.DESC_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.MDCL_PLCY_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.TITLE_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.WARN_ATTR;
 import static ru.gosuslugi.pgu.dto.descriptor.types.ComponentType.ConfirmChildData;
@@ -64,6 +73,7 @@ import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_SNILS
  */
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<ChildData>> {
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -99,6 +109,8 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
     public static final String RF_BRTH_CERT_TYPE = "RF_BRTH_CERT";
     public static final String BRTH_CERT_TYPE = "BRTH_CERT";
 
+    private final UserPersonalData userPersonalData;
+
     @Override
     public ComponentType getType() {
         return ConfirmChildData;
@@ -115,6 +127,16 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
     public ComponentResponse<FormDto<ChildData>> getCycledInitialValue(FieldComponent component, Map<String, Object> externalData) {
         List<StateDto> states = new ArrayList<>();
         ChildData childData = new ChildData();
+        String childId = externalData.getOrDefault(CHILDREN_ID_ATTR, "").toString();
+
+        if (!StringUtils.isEmpty(childId)) {
+            Optional<Kids> kids = userPersonalData.getKids().stream()
+                    .filter(kid -> childId.equals(kid.getId()))
+                    .findFirst();
+            if (kids.isPresent()) {
+                externalData = kidsToExternalData(kids.get());
+            }
+        }
 
         Map<String, FieldDto> fieldsComponent = BasicComponentUtil.getComponentFields(component);
         FieldsComponent filledFields = new FieldsComponent();
@@ -165,6 +187,34 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
                 .errors(errors)
                 .build()
         );
+    }
+
+    private Map<String, Object> kidsToExternalData(Kids kid) {
+        Map<String, Object> externalData = new HashMap<>();
+        userPersonalData.fillKidsOms();
+        externalData.put(CHILDREN_FIRST_NAME_ATTR.name, kid.getFirstName());
+        externalData.put(CHILDREN_LAST_NAME_ATTR.name, kid.getLastName());
+        externalData.put(CHILDREN_MIDDLE_NAME_ATTR.name, Optional.ofNullable(kid.getMiddleName()).orElse(""));
+        externalData.put(CHILDREN_BIRTH_DATE_ATTR.name, DateUtil.toOffsetDateTimeString(kid.getBirthDate(), DateUtil.ESIA_DATE_FORMAT));
+        externalData.put(CHILDREN_GENDER_ATTR.name, kid.getGender());
+        externalData.put(CHILDREN_SNILS_ATTR.name, Optional.ofNullable(kid.getSnils()).orElse(""));
+        Optional<PersonDoc> brthCertOptional = kid.getDocuments().getDocs().stream().filter(x -> x.getType().contains("BRTH_CERT")).findFirst();
+        if (brthCertOptional.isPresent()) {
+            PersonDoc birthCert = brthCertOptional.get();
+            externalData.put(CHILDREN_RF_BIRTH_CERTIFICATE_SERIES_ATTR.name, birthCert.getSeries());
+            externalData.put(CHILDREN_RF_BIRTH_CERTIFICATE_NUMBER_ATTR.name, birthCert.getNumber());
+            externalData.put(CHILDREN_RF_BIRTH_CERTIFICATE_ACT_NUMBER_ATTR.name, birthCert.getActNo() == null ? "-" : birthCert.getActNo());
+            externalData.put(CHILDREN_RF_BIRTH_CERTIFICATE_ISSUE_DATE_ATTR.name, DateUtil.toOffsetDateTime(birthCert.getIssueDate(), DateUtil.ESIA_DATE_FORMAT));
+            externalData.put(CHILDREN_RF_BIRTH_CERTIFICATE_ISSUED_BY_ATTR.name, birthCert.getIssuedBy());
+            externalData.put(CHILDREN_ACT_DATE_ATTR.name, birthCert.getActDate());
+        }
+        Optional<PersonDoc> omsOptional = kid.getDocuments().getDocs().stream().filter(x -> x.getType().equals(MDCL_PLCY_ATTR)).findFirst();
+        if (omsOptional.isPresent()) {
+            PersonDoc oms = omsOptional.get();
+            externalData.put(CHILDREN_OMS_SERIES_ATTR.name, oms.getSeries());
+            externalData.put(CHILDREN_OMS_NUMBER_ATTR.name, oms.getNumber());
+        }
+        return externalData;
     }
 
     /**
