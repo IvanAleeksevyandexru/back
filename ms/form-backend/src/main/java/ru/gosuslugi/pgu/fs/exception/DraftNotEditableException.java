@@ -12,7 +12,7 @@ import ru.gosuslugi.pgu.fs.common.exception.dto.StatusIcon;
 import java.util.List;
 
 @ResponseStatus(code = HttpStatus.FORBIDDEN, reason = "NOT_EDITABLE_STATUS")
-public class DraftNotEditableException extends ErrorModalException {
+public class DraftNotEditableException  extends ErrorModalException {
 
     public DraftNotEditableException(ErrorModalWindow errorModal, String s) {
         super(errorModal, s);
@@ -30,6 +30,7 @@ public class DraftNotEditableException extends ErrorModalException {
         ErrorModalWindow errorModalWindow = new ErrorModalWindow();
         errorModalWindow.setShowCloseButton(false);
         errorModalWindow.setShowCrossButton(false);
+        errorModalWindow.setHideTraceId(true);
         ErrorContent content = new ErrorContent();
         content.setHeader("Это заявление уже отправлено");
         if(plural){
@@ -40,7 +41,6 @@ public class DraftNotEditableException extends ErrorModalException {
                     "сначала дождитесь решения по уже отправленному или отмените его.<br/>Услуга: " + serviceName);
         }
         content.setStatusIcon(StatusIcon.warning);
-        content.setHideTraceId(true);
         errorModalWindow.setContent(content);
         ModalComponentButton closeButton = new ModalComponentButton();
         closeButton.setLabel("В личный кабинет");
