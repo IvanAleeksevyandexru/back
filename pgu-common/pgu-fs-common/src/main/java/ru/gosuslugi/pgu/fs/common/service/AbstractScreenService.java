@@ -149,12 +149,12 @@ public abstract class AbstractScreenService implements ScreenService {
         if (screenId != null) {
             return getPrevScreen(request, serviceId, screenId);
         }
-        return getPrevScreen(request, serviceId, stepsBack);
+        return getPrevScreen(request, serviceId, Optional.ofNullable(stepsBack).orElse(1));
     }
 
     @Override
     public ScenarioResponse getPrevScreen(ScenarioRequest request, String serviceId, String screenId) {
-        if (screenId != null && !request.getScenarioDto().getFinishedAndCurrentScreens().contains(screenId)) {
+        if (!request.getScenarioDto().getFinishedAndCurrentScreens().contains(screenId)) {
             throw new NoScreensFoundException(String.format("Не найден экран перехода с идентификатором %s", screenId));
         }
         ScenarioResponse scenarioResponse = null;
@@ -169,7 +169,7 @@ public abstract class AbstractScreenService implements ScreenService {
     public ScenarioResponse getPrevScreen(ScenarioRequest request, String serviceId, Integer stepsBack) {
         ScenarioResponse scenarioResponse = null;
 
-        for (int i = 0; i < stepsBack; i++) {
+        for (int i = 0; i < Optional.ofNullable(stepsBack).orElse(1); i++) {
             if (scenarioResponse != null && !hasPrevStep(scenarioResponse)) {
                 return scenarioResponse;
             }
