@@ -6,7 +6,6 @@ import ru.gosuslugi.pgu.dto.BackRestCallResponseDto
 import ru.gosuslugi.pgu.dto.ScenarioDto
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType
-import ru.gosuslugi.pgu.fs.common.exception.FormBaseException
 import ru.gosuslugi.pgu.fs.common.service.impl.JsonProcessingServiceImpl
 import ru.gosuslugi.pgu.fs.component.logic.BarbarbokRestCallComponent
 import ru.gosuslugi.pgu.fs.component.logic.RestCallComponent
@@ -35,6 +34,8 @@ class BarbarbokRestCallComponentSpec extends Specification {
         def objectMapper = new ObjectMapper()
 
         scenarioDto = new ScenarioDto()
+        scenarioDto.setServiceCode("10000000308")
+
         component = new BarbarbokRestCallComponent(
                 restCallComponent,
                 backRestCallService,
@@ -45,18 +46,13 @@ class BarbarbokRestCallComponentSpec extends Specification {
         component.jsonProcessingService = new JsonProcessingServiceImpl(objectMapper)
     }
 
-    def "getInitialValue success"() {
+    def "getInitialValue success for pull"() {
         given:
         def fieldComponent = [
-                id   : "brcc1",
                 attrs: [
                         path  : "path/path",
-                        method: "post",
-                        body  : [
-                                serviceId   : "serviceId",
-                                data        : data,
-                                templateName: templateName
-                        ]
+                        method: "get",
+                        templateName: templateName
                 ] as Map
         ] as FieldComponent
 
@@ -68,17 +64,11 @@ class BarbarbokRestCallComponentSpec extends Specification {
         !fieldComponent.getAttrs().find()
     }
 
-    def "getInitialValue throws FormBaseException"() {
+    def "getInitialValue success for push"() {
         given:
         def fieldComponent = [
-                id   : "brcc1",
                 attrs: [
-                        method: "post",
-                        body  : [
-                                serviceId   : "serviceId",
-                                data        : data,
-                                templateName: templateName
-                        ]
+                        data  : data
                 ] as Map
         ] as FieldComponent
 
@@ -86,41 +76,22 @@ class BarbarbokRestCallComponentSpec extends Specification {
         component.getInitialValue(fieldComponent, scenarioDto)
 
         then:
-        thrown(FormBaseException)
+        !fieldComponent.getAttrs().find()
+    }
 
-        when:
-        fieldComponent = [
-                id   : "brcc1",
+    def "getInitialValue success for get"() {
+        given:
+        def fieldComponent = [
                 attrs: [
-                        path: "path",
-                        body  : [
-                                serviceId   : "serviceId",
-                                data        : data,
-                                templateName: templateName
-                        ]
+                        data  : data,
+                        templateName: templateName
                 ] as Map
         ] as FieldComponent
+
+        when:
         component.getInitialValue(fieldComponent, scenarioDto)
 
         then:
-        thrown(FormBaseException)
-
-        when:
-        fieldComponent = [
-                id   : "brcc1",
-                attrs: [
-                        path: "path",
-                        method: "someMethod",
-                        body  : [
-                                serviceId   : "serviceId",
-                                data        : data,
-                                templateName: templateName
-                        ]
-                ] as Map
-        ] as FieldComponent
-        component.getInitialValue(fieldComponent, scenarioDto)
-
-        then:
-        thrown(FormBaseException)
+        !fieldComponent.getAttrs().find()
     }
 }
