@@ -1,14 +1,9 @@
 package ru.gosuslugi.pgu.fs.component.input
 
-import com.jayway.jsonpath.DocumentContext
 import ru.gosuslugi.pgu.common.core.json.JsonFileUtil
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil
-import ru.gosuslugi.pgu.components.descriptor.attr_factory.AttrsFactory
-import ru.gosuslugi.pgu.dto.DisplayRequest
 import ru.gosuslugi.pgu.dto.ScenarioDto
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
-import ru.gosuslugi.pgu.dto.descriptor.LinkedValue
-import ru.gosuslugi.pgu.fs.common.component.BaseComponent
 import ru.gosuslugi.pgu.fs.common.component.input.QuestionScrComponent
 import ru.gosuslugi.pgu.fs.common.service.ComponentReferenceService
 import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService
@@ -16,39 +11,24 @@ import ru.gosuslugi.pgu.fs.common.service.LinkedValuesService
 import ru.gosuslugi.pgu.fs.common.service.impl.ComponentReferenceServiceImpl
 import ru.gosuslugi.pgu.fs.common.service.impl.JsonProcessingServiceImpl
 import ru.gosuslugi.pgu.fs.common.service.impl.UserCookiesServiceImpl
-import spock.lang.Ignore
-import spock.lang.Shared
+import ru.gosuslugi.pgu.fs.component.ComponentTestUtil
 import spock.lang.Specification
 
-// TODO Tests: Переписать тест
-@Ignore
 class QuestionScrComponentTest extends Specification {
+    JsonProcessingService jsonProcessingService
+    QuestionScrComponent component
+    LinkedValuesService linkedValuesService
+    ComponentReferenceService componentReferenceService
 
-    @Shared
-    JsonProcessingService jsonProcessingService = new JsonProcessingServiceImpl(JsonProcessingUtil.getObjectMapper())
-
-    @Shared
-    LinkedValuesService linkedValuesService = new LinkedValuesService() {
-        @Override
-        void fillLinkedValues(FieldComponent fieldComponent, ScenarioDto scenarioDto, DocumentContext... externalContexts) {
-
-        }
-
-        @Override
-        void fillLinkedValues(DisplayRequest displayRequest, ScenarioDto scenarioDto) {
-
-        }
-
-        @Override
-        String getValue(LinkedValue linkedValue, ScenarioDto scenarioDto, AttrsFactory attrsFactory, DocumentContext... externalContexts) {
-            return null
-        }
+    def setup() {
+        jsonProcessingService = new JsonProcessingServiceImpl(JsonProcessingUtil.objectMapper)
+        linkedValuesService = ComponentTestUtil.getLinkedValuesService(jsonProcessingService)
+        componentReferenceService = new ComponentReferenceServiceImpl(jsonProcessingService, new UserCookiesServiceImpl(), linkedValuesService)
+        component = new QuestionScrComponent()
+        component.linkedValuesService = linkedValuesService
+        component.componentReferenceService = componentReferenceService
+        component.jsonProcessingService = jsonProcessingService
     }
-    @Shared
-    ComponentReferenceService componentReferenceService = new ComponentReferenceServiceImpl(jsonProcessingService, new UserCookiesServiceImpl(), linkedValuesService)
-
-    @Shared
-    BaseComponent<String> component = new QuestionScrComponent(componentReferenceService)
 
     def "PreSetComponentValue"() {
         given:
