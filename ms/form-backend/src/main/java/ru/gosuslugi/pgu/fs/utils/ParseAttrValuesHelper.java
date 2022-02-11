@@ -16,6 +16,7 @@ import ru.gosuslugi.pgu.fs.common.variable.VariableType;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import static java.util.Objects.isNull;
 
@@ -29,7 +30,7 @@ public class ParseAttrValuesHelper {
 
     private static final String TYPE_ATTRIBUTE_NAME = "type";
     private static final String VALUE_ATTRIBUTE_NAME = "value";
-    private static final String ARRAY_CALCULATION_REG_EXP = "[A-Za-z]+\\[[0-9]\\]";
+    private static final Pattern ARRAY_CALCULATION_REG_EXP = Pattern.compile("[A-Za-z]+\\[[0-9]\\]");
 
     private final VariableRegistry variableRegistry;
     private final JsonProcessingService jsonProcessingService;
@@ -52,7 +53,7 @@ public class ParseAttrValuesHelper {
     public String getStringValueOfRefAttribute(String refAttr, ScenarioDto scenarioDto) {
         String returnValue = "";
         if (Objects.isNull(refAttr)) return returnValue;
-        String[] pathElements = refAttr.split("[.]");
+        String[] pathElements = refAttr.split("\\.");
         String appFieldVal = getPrevScreenFieldData(pathElements[0], scenarioDto);
         if (Objects.isNull(appFieldVal) || appFieldVal.isEmpty()) return returnValue;
         if (pathElements.length == 1) return appFieldVal;
@@ -81,7 +82,7 @@ public class ParseAttrValuesHelper {
     public String getStringValueOfRefAttributeByFullPath(String refAttr, ScenarioDto scenarioDto) {
         String returnValue = "";
         if (Objects.isNull(refAttr)) return returnValue;
-        String[] pathElements = refAttr.split("[.]");
+        String[] pathElements = refAttr.split("\\.");
 
         if (pathElements.length == 1)
             return getPrevScreenFieldFullData(pathElements[0], scenarioDto);
@@ -95,7 +96,7 @@ public class ParseAttrValuesHelper {
             JSONObject subLevelObj = new JSONObject(appFieldVal);
             for (int i = 2; i < pathElements.length - 1; i++) {
                 val pathElement = pathElements[i];
-                if (StringUtils.isNotBlank(pathElement) && pathElement.matches(ARRAY_CALCULATION_REG_EXP)) {
+                if (StringUtils.isNotBlank(pathElement) && ARRAY_CALCULATION_REG_EXP.matcher(pathElement).matches()) {
                     val arrayName = pathElement.substring(0, pathElement.indexOf("["));
                     val array = subLevelObj.getJSONArray(arrayName);
                     val index = Integer.valueOf(StringUtils.substringBetween(pathElement, "[", "]"));

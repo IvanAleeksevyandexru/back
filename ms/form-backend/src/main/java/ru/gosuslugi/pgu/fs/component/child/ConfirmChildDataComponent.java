@@ -47,6 +47,7 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.CHILDREN_ID_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.DESC_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.TITLE_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.WARN_ATTR;
+import static ru.gosuslugi.pgu.components.regex.RegExpContext.matchesByRegex;
 import static ru.gosuslugi.pgu.dto.descriptor.types.ComponentType.ConfirmChildData;
 import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_ACT_DATE_ATTR;
 import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_BIRTH_DATE_ATTR;
@@ -566,7 +567,7 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
                     ((List<Map<String, String>>) fieldDto.getAttrs().get(FieldComponentUtil.VALIDATION_ARRAY_KEY))
                             .stream()
                             .filter(v -> RegExpUtil.REG_EXP_TYPE.equalsIgnoreCase(v.get(ComponentAttributes.TYPE_ATTR)))
-                            .filter(v -> !fieldValue.matches(v.get(ComponentAttributes.VALUE_ATTR)))
+                            .filter(v -> !matchesByRegex(fieldValue, v.get(ComponentAttributes.VALUE_ATTR)))
                             .map(v -> new ErrorDto(v.get(ComponentAttributes.ERROR_MSG_ATTR), v.get(ComponentAttributes.ERROR_DESC_ATTR)))
                             .collect(Collectors.toList())
             );
