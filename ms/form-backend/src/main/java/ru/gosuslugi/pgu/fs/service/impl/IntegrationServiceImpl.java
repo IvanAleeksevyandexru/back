@@ -32,6 +32,7 @@ import ru.gosuslugi.pgu.fs.service.TerrabyteService;
 import ru.gosuslugi.pgu.fs.sp.ServiceProcessingClient;
 import ru.gosuslugi.pgu.terrabyte.client.model.FileInfo;
 
+import java.text.Normalizer;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collection;
@@ -40,6 +41,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
 
 @Slf4j
 @Service
@@ -174,14 +177,14 @@ public class IntegrationServiceImpl implements IntegrationService {
                         .flatMap(Collection::stream)
                         .map(FieldComponent::getId)
                         .collect(Collectors.toList());
-                List<String> uploadFileNames = attachmentInfos.entrySet().stream()
+
+                // загруженные файлы
+                final List<AttachmentInfo> uploadFiles = attachmentInfos.entrySet().stream()
                         .filter(entry -> visitedComponentIds.contains(entry.getKey()))
                         .flatMap(stringListEntry -> stringListEntry.getValue().stream())
-                        .map(AttachmentInfo::getUploadFilename)
                         .collect(Collectors.toList());
-
                 // отсутствуют файлы для проверки
-                if (uploadFileNames.isEmpty()) {
+                if (uploadFiles.isEmpty()) {
                     return;
                 }
 
@@ -192,15 +195,31 @@ public class IntegrationServiceImpl implements IntegrationService {
                     throw new TerrabyteFileCheckException(errorModalWindow, FILES_NOT_FOUND_IN_FILE_STORAGE);
                 }
 
-                List<String> storedFileNames = storedFiles.stream()
-                        .map(FileInfo::getFileName)
-                        .collect(Collectors.toList());
+                // true -> файлы, содержащиеся в террабайте, false -> файлы, которых нет в террабайте
+                Map<Boolean, List<AttachmentInfo>> checkMap = uploadFiles.stream()
+                        .collect(partitioningBy(t -> containsAttachment(storedFiles, t)));
 
+                Optional<List<AttachmentInfo>> unsavedFiles = Optional.ofNullable(checkMap.get(false));
                 // необходимые файлы отсутствуют в файловом хранилище
-                if (!storedFileNames.containsAll(uploadFileNames)) {
+                if (unsavedFiles.isPresent() && !unsavedFiles.get().isEmpty()) {
+                    String errorString = FILES_NOT_FOUND_IN_FILE_STORAGE + ": "
+                            + unsavedFiles.get().stream().map(t -> t.getUploadMnemonic() + "/" + t.getUploadFilename() + "/" + t.getObjectId()  + "/" + t.getObjectTypeId())
+                            .collect(joining(",", "", ""));
+                    log.error(errorString);
                     throw new TerrabyteFileCheckException(errorModalWindow, FILES_NOT_FOUND_IN_FILE_STORAGE);
                 }
             }
         }
     }
+
+    private boolean containsAttachment(List<FileInfo> fileInfoList, AttachmentInfo attachmentInfo) {
+        return fileInfoList.stream().anyMatch(f -> equalsFiles(f, attachmentInfo));
+    }
+
+    private boolean equalsFiles(FileInfo fileInfo, AttachmentInfo attachmentInfo) {
+        return Objects.equals(fileInfo.getMnemonic(), attachmentInfo.getUploadMnemonic())
+                && Objects.equals(String.valueOf(fileInfo.getObjectId()), attachmentInfo.getObjectId())
+                && Objects.equals(String.valueOf(fileInfo.getObjectTypeId()), attachmentInfo.getObjectTypeId());
+    }
+
 }
