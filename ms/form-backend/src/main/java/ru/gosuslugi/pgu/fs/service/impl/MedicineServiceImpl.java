@@ -4,15 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
-import ru.gosuslugi.pgu.common.core.exception.EntityNotFoundException;
-import ru.gosuslugi.pgu.fs.common.exception.FormBaseWorkflowException;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
-import ru.gosuslugi.pgu.fs.component.dictionary.dto.kindergarten.EpguRegionResponse;
+import ru.gosuslugi.pgu.fs.common.exception.FormBaseWorkflowException;
 import ru.gosuslugi.pgu.fs.component.medicine.model.MedDictionaryResponse;
 import ru.gosuslugi.pgu.fs.component.medicine.model.MedDictionaryResponseErrorDetail;
 import ru.gosuslugi.pgu.fs.component.userdata.model.*;
@@ -21,6 +18,7 @@ import ru.gosuslugi.pgu.fs.service.MedicineService;
 import java.util.*;
 
 import static ru.gosuslugi.pgu.components.ComponentAttributes.SESSION_ID;
+import static ru.gosuslugi.pgu.components.regex.RegExpContext.getValueByRegex;
 import static ru.gosuslugi.pgu.fs.common.utils.PguAuthHeadersUtil.prepareAuthCookieHeaders;
 
 @Service
@@ -173,9 +171,10 @@ public class MedicineServiceImpl implements MedicineService {
             MedDictionaryResponseErrorDetail errorDetail = response.getError().getErrorDetail();
             if (errorDetail.getErrorCode() != 0) {
                 for (String errorCode: ERROR_CODES) {
-                    if (errorDetail.getErrorMessage().startsWith(errorCode + ":")) {
+                    String regexp = errorCode + ":";
+                    if (errorDetail.getErrorMessage().startsWith(regexp)) {
                         errorDetail.setErrorCodeTxt(errorCode);
-                        errorDetail.setErrorMessage(errorDetail.getErrorMessage().replaceFirst(errorCode + ":", ""));
+                        errorDetail.setErrorMessage(getValueByRegex(regexp, pattern -> pattern.matcher(errorDetail.getErrorMessage()).replaceFirst("")));
                         break;
                     }
                 }

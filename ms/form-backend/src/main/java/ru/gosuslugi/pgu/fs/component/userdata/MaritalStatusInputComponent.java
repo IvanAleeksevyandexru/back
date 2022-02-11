@@ -43,6 +43,7 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.DICTIONARY_NAME_AT
 import static ru.gosuslugi.pgu.components.ComponentAttributes.DICT_URL_TYPE;
 import static ru.gosuslugi.pgu.components.FieldComponentUtil.FIELDS_KEY;
 import static ru.gosuslugi.pgu.components.FieldComponentUtil.VALIDATION_ARRAY_KEY;
+import static ru.gosuslugi.pgu.components.regex.RegExpContext.matchesByRegex;
 
 @Slf4j
 @Component
@@ -193,7 +194,7 @@ public class MaritalStatusInputComponent extends AbstractComponent<MaritalStatus
                             if (
                                     !incorrectAnswers.containsKey(k)
                                             && !isNull(stringToCheck)
-                                            && !stringToCheck.matches(validationRule.get(REG_EXP_VALUE))
+                                            && !matchesByRegex(stringToCheck, validationRule.get(REG_EXP_VALUE))
                             ) {
                                 incorrectAnswers.put(k, validationRule.get(REG_EXP_ERROR_MESSAGE));
                             }

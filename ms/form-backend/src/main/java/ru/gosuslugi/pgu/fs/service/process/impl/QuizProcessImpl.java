@@ -6,20 +6,18 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
+import ru.gosuslugi.pgu.components.descriptor.types.Stage;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.ApplicantRole;
 import ru.gosuslugi.pgu.dto.QuizRequest;
 import ru.gosuslugi.pgu.dto.QuizResponse;
 import ru.gosuslugi.pgu.dto.ScenarioRequest;
 import ru.gosuslugi.pgu.dto.ScenarioResponse;
-import ru.gosuslugi.pgu.dto.catalog.CatalogInfoDtoList;
 import ru.gosuslugi.pgu.dto.descriptor.ScreenDescriptor;
-import ru.gosuslugi.pgu.components.descriptor.types.Stage;
 import ru.gosuslugi.pgu.dto.descriptor.types.OrderType;
 import ru.gosuslugi.pgu.fs.common.descriptor.MainDescriptorService;
 import ru.gosuslugi.pgu.fs.pgu.service.CatalogService;
 import ru.gosuslugi.pgu.fs.pgu.service.PguOrderService;
-import ru.gosuslugi.pgu.fs.service.MainScreenService;
 import ru.gosuslugi.pgu.fs.service.custom.MainScreenServiceRegistry;
 import ru.gosuslugi.pgu.fs.service.process.QuizProcess;
 
@@ -27,6 +25,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static ru.gosuslugi.pgu.components.regex.RegExpContext.getValueByRegex;
 
 
 /**
@@ -83,7 +83,7 @@ public class QuizProcessImpl implements QuizProcess {
                 .entrySet()
                 .stream()
                 .collect(Collectors.toMap(
-                        key-> key.getKey().replaceFirst(getAnswerServicePrefix(qr.getServiceId()), Strings.EMPTY),
+                        key-> getValueByRegex(getAnswerServicePrefix(qr.getServiceId()), pattern -> pattern.matcher(key.getKey()).replaceFirst(Strings.EMPTY)),
                         Map.Entry::getValue
                 ));
         qr.getScenarioDto().setApplicantAnswers(newApplicantAnswer);
@@ -123,7 +123,7 @@ public class QuizProcessImpl implements QuizProcess {
                 .entrySet()
                 .stream()
                 .collect(Collectors.toMap(
-                        key-> key.getKey().replaceFirst(getAnswerServicePrefix(qr.getServiceId()), Strings.EMPTY),
+                        key-> getValueByRegex(getAnswerServicePrefix(qr.getServiceId()), pattern -> pattern.matcher(key.getKey()).replaceFirst(Strings.EMPTY)),
                         Map.Entry::getValue
                 ));
         qr.getScenarioDto().setCachedAnswers(newApplicantAnswer);
@@ -134,7 +134,7 @@ public class QuizProcessImpl implements QuizProcess {
         var newFinishedScreens = qr.getScenarioDto()
                 .getFinishedAndCurrentScreens()
                 .stream()
-                .map(v -> v.replaceFirst(getAnswerServicePrefix(qr.getServiceId()), Strings.EMPTY))
+                .map(v -> getValueByRegex(getAnswerServicePrefix(qr.getServiceId()), pattern -> pattern.matcher(v).replaceFirst(Strings.EMPTY)))
                 .collect(Collectors.toCollection(LinkedList::new));
         qr.getScenarioDto().setFinishedAndCurrentScreens(newFinishedScreens);
         return this;

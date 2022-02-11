@@ -15,6 +15,7 @@ import ru.gosuslugi.pgu.fs.common.component.validation.ValidationRule;
 
 import java.time.YearMonth;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -28,7 +29,7 @@ import static ru.gosuslugi.pgu.common.core.date.util.DateUtil.getYearMonthFromMo
 public class EmployeeHistoryComponent extends AbstractComponent<String> {
 
     private static final List<String> TYPES_WITHOUT_POSITION = Arrays.asList("student", "unemployed");
-    private static final String INVALID_CHARS_PATTERN = "[^a-zA-Zа-яА-ЯёЁ\\d\\s\\[\\]()?\\.\",#№:;\\-\\+/'*<>&\\\\]";
+    private static final Pattern INVALID_CHARS_PATTERN = Pattern.compile("[^a-zA-Zа-яА-ЯёЁ\\d\\s\\[\\]()?\\.\",#№:;\\-\\+/'*<>&\\\\]");
 
     @Override
     public ComponentType getType() {
@@ -150,7 +151,7 @@ public class EmployeeHistoryComponent extends AbstractComponent<String> {
     }
 
     private static String getClearedValue(String initialValue) {
-        return StringUtils.isEmpty(initialValue) ? initialValue : initialValue.replaceAll(INVALID_CHARS_PATTERN, "");
+        return StringUtils.isEmpty(initialValue) ? initialValue : INVALID_CHARS_PATTERN.matcher(initialValue).replaceAll("");
     }
 
 }
