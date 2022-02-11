@@ -88,20 +88,55 @@ class AbstractScreenServiceTest extends Specification {
 
         when:
         request = getScenarioRequestForPrevStep("1")
-        screenService.getPrevScreen(request, "serviceId", "non-exists-id")
+        screenService.getPrevScreen(request, "serviceId", "non-exist-id")
         then:
         def e = thrown(NoScreensFoundException)
-        e.getMessage() == String.format(SCREEN_NOT_FOUND_EXCEPTION_MESSAGE, "non-exists-id")
-
-        when:
-        request = getScenarioRequestForPrevStep("1")
-        screenService.getPrevScreen(request, "serviceId", 1, screenId)
-        then:
-        e = thrown(FormBaseException)
-        e.getMessage() == PREV_STEP_PARAM_CONFLICT_MESSAGE
+        e.getMessage() == String.format(SCREEN_NOT_FOUND_EXCEPTION_MESSAGE, "non-exist-id")
 
         where:
         screenId << ["s1","SkipScreenId"]
+    }
+
+    def "getPrevScreen with stepsBack param"() {
+        given:
+        String json = Files.readString(Paths.get(getClass().getClassLoader().getResource("SkipScreen.json").toURI()))
+        serviceDescriptorClient.getServiceDescriptor(_ as String) >> json
+
+        when:
+        def request = getScenarioRequestForPrevStep("1")
+        def response = screenService.getPrevScreen(request, "serviceId", stepsBack)
+        then:
+        response.getScenarioDto().getDisplay().getId() == screenId
+
+        where:
+        stepsBack || screenId
+        1        || "SkipScreenId"
+        3        || "s1"
+    }
+
+    def "getPrevScreen with stepsBack and screenId param"() {
+        given:
+        String json = Files.readString(Paths.get(getClass().getClassLoader().getResource("SkipScreen.json").toURI()))
+        serviceDescriptorClient.getServiceDescriptor(_ as String) >> json
+
+        when:
+        def request = getScenarioRequestForPrevStep("1")
+        def response = screenService.getPrevScreen(request, "serviceId", stepsBack, screenId)
+        then:
+        response.getScenarioDto().getDisplay().getId() == resultScreenId
+
+        when:
+        request = getScenarioRequestForPrevStep("1")
+        screenService.getPrevScreen(request, "serviceId", 1, "s1")
+        then:
+        def e = thrown(FormBaseException)
+        e.getMessage() == PREV_STEP_PARAM_CONFLICT_MESSAGE
+
+        where:
+        stepsBack || screenId       || resultScreenId
+        1         || null           || "SkipScreenId"
+        null      || "s1"           || "s1"
+        null      || null           || "SkipScreenId"
     }
 
     def getScenarioRequestForNextStep(String conditionAnswer) {
