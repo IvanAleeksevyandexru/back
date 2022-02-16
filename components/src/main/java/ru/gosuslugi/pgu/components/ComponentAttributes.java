@@ -196,6 +196,7 @@ public final class ComponentAttributes {
 
     public static final String MIN_AGE_ATTR = "minAge";
     public static final String MAX_AGE_ATTR = "maxAge";
+    public static final String BORN_AFTER_DATE_ATTR = "bornAfterDate";
 
     // ESIA address attributes
     /** адрес регистрации */
