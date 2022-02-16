@@ -149,8 +149,15 @@ public class ChildrenListComponent extends AbstractComponent<String> {
 
         int minAge = (int) fieldComponent.getAttrs().getOrDefault(MIN_AGE_ATTR, MIN_AGE);
         int maxAge = (int) fieldComponent.getAttrs().getOrDefault(MAX_AGE_ATTR, MAX_AGE);
-
-        Predicate<Integer> ageCheck = age -> age >= minAge && age <= maxAge;
+        Optional<OffsetDateTime> minBirthDate = Optional.ofNullable((String) fieldComponent.getAttrs().get(BORN_AFTER_DATE_ATTR))
+                .filter(StringUtils::hasText)
+                .map(date -> DateUtil.toOffsetDateTime(date, DateUtil.ESIA_DATE_FORMAT));
+        Predicate<OffsetDateTime> birthDateCheck = birthDate -> {
+            int age = (int) YEARS.between(birthDate, OffsetDateTime.now());
+            return minBirthDate.map(date -> birthDate.isAfter(date) || birthDate.isEqual(date)).orElse(true)
+                    && age >= minAge
+                    && age <= maxAge;
+        };
         ChildrenUtilResponse response = new ChildrenUtilResponse();
         ArrayList<HashMap<String, Object>> result= new ArrayList<>();
         userPersonalData.fillKidsOms();
@@ -158,8 +165,7 @@ public class ChildrenListComponent extends AbstractComponent<String> {
         List<Kids> filteredKids = excludeFromKids(fieldComponent, scenarioDto, userPersonalData.getKids());
         for (Kids kid:  filteredKids) {
             OffsetDateTime birthDate = DateUtil.toOffsetDateTime(kid.getBirthDate(), DateUtil.ESIA_DATE_FORMAT);
-            int age = (int) YEARS.between(birthDate, OffsetDateTime.now());
-            if (!ageCheck.test(age)) {
+            if (!birthDateCheck.test(birthDate)) {
                 continue;
             }
 
@@ -173,7 +179,7 @@ public class ChildrenListComponent extends AbstractComponent<String> {
             kidInfo.put(CHILDREN_GENDER_ATTR, kid.getGender());
             kidInfo.put(SNILS, kid.getSnils());
             Optional<PersonDoc> brthCertOptional = kid.getDocuments().getDocs().stream().filter(x -> x.getType().contains("BRTH_CERT")).findFirst();
-            if (ageCheck.test(age) && brthCertOptional.isPresent()) {
+            if (birthDateCheck.test(birthDate) && brthCertOptional.isPresent()) {
                 PersonDoc birthCert = brthCertOptional.get();
                 kidInfo.put(CHILDREN_RF_BIRTH_CERTIFICATE_SERIES_ATTR, birthCert.getSeries());
                 kidInfo.put(CHILDREN_RF_BIRTH_CERTIFICATE_NUMBER_ATTR, birthCert.getNumber());
@@ -184,7 +190,7 @@ public class ChildrenListComponent extends AbstractComponent<String> {
                 kidInfo.put(CHILDREN_BIRTH_CERTIFICATE_TYPE, birthCert.getType());
             }
             Optional<PersonDoc> rfPassportOptional = kid.getDocuments().getDocs().stream().filter(x -> x.getType().equals(RF_PASSPORT_ATTR)).findFirst();
-            if (ageCheck.test(age) && rfPassportOptional.isPresent()) {
+            if (birthDateCheck.test(birthDate) && rfPassportOptional.isPresent()) {
                 PersonDoc rfPassport = rfPassportOptional.get();
                 kidInfo.put(RF_PASSPORT_SERIES_ATTR, rfPassport.getSeries());
                 kidInfo.put(RF_PASSPORT_NUMBER_ATTR, rfPassport.getNumber());
@@ -195,7 +201,7 @@ public class ChildrenListComponent extends AbstractComponent<String> {
             }
 
             Optional<PersonDoc> omsOptional = kid.getDocuments().getDocs().stream().filter(x -> x.getType().equals(MDCL_PLCY_ATTR)).findFirst();
-            if (ageCheck.test(age) && omsOptional.isPresent()) {
+            if (birthDateCheck.test(birthDate) && omsOptional.isPresent()) {
                 PersonDoc oms = omsOptional.get();
                 kidInfo.put(CHILDREN_OMS_SERIES_ATTR, oms.getSeries());
                 kidInfo.put(CHILDREN_OMS_NUMBER_ATTR, oms.getNumber());
