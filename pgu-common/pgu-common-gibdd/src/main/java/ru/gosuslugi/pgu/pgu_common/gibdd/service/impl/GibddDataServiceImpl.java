@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
 import ru.gosuslugi.pgu.pgu_common.gibdd.dto.ExternalServiceCallResult;
 import ru.gosuslugi.pgu.pgu_common.gibdd.dto.FederalNotaryInfo;
@@ -29,18 +30,10 @@ import ru.gosuslugi.pgu.pgu_common.gibdd.util.VehicleInfoMapperUtil;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.NsiDictionary;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.NsiDictionaryItem;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiDictionaryFilterRequest;
-import ru.gosuslugi.pgu.pgu_common.nsi.service.NsiDictionaryService;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
@@ -53,25 +46,25 @@ import java.util.stream.Collectors;
 @Setter
 public class GibddDataServiceImpl implements GibddDataService {
 
+    @Value("${pgu.gibdd-url}")
+    private String pguUrl;
+
     @Value("${mock.gibdd.enabled}")
-    private boolean mockEnabled;
+    private Boolean mockEnabled;
 
-    @Value("${mock.gibdd.path}")
-    private String mockPath;
+    @Value("${mock.gibdd.url:#{null}}")
+    private String mockUrl;
 
-    private final NsiDictionaryService nsiDictionaryService;
+    private final RestTemplate restTemplate;
     private final VehicleInfoMapper vehicleInfoMapper;
     private final VehicleFullInfoMapper vehicleFullInfoMapper;
 
-    private static final String NSI_V2_RESOURCE_URL = "nsiv2/internal/api/nsi/v1/dictionary";
-    private static final String SHOWCASE_VIN_SERVICE_NAME = "ShowcaseVIN";
-    private static final String SHOWCASE_OWNER_SERVICE_NAME = "ShowcaseOwner";
-    private static final String FEDERAL_NOTARY_SERVICE_NAME = "CheckTSinPledge";
-
-    private static final String GIBDD_RECORD_STATUS_DICTIONARY_NAME = "GIBDD_RECORD_STATUS";
-    private static final String GIBDD_OWNER_TYPE_DICTIONARY_NAME = "GIBDD_OWNER_TYPE";
-    private static final String EKOKLASS_MVD_DICTIONARY_NAME = "ekoklass_MVD";
-
+    private static final String SHOWCASE_VIN_SERVICE_URL = "nsiv2/internal/api/nsi/v1/dictionary/ShowcaseVIN";
+    private static final String SHOWCASE_OWNER_SERVICE_URL = "nsiv2/internal/api/nsi/v1/dictionary/ShowcaseOwner";
+    private static final String FEDERAL_NOTARY_SERVICE_URL = "nsiv2/internal/api/nsi/v1/dictionary/CheckTSinPledge";
+    private static final String GIBDD_RECORD_STATUS_DICTIONARY_URL = "api/nsi/v1/dictionary/GIBDD_RECORD_STATUS";
+    private static final String GIBDD_OWNER_TYPE_DICTIONARY_URL = "api/nsi/v1/dictionary/GIBDD_OWNER_TYPE";
+    private static final String EKOKLASS_MVD_DICTIONARY_URL = "api/nsi/v1/dictionary/ekoklass_MVD";
     private static final String FEDERAL_NOTARY_SERVICE_PARAMS_STUB = "1";
     private static final Set<String> FEDERAL_NOTARY_SERVICE_EXPECTED_VALUES = Set.of("OK", "NO_DATA");
 
@@ -126,6 +119,7 @@ public class GibddDataServiceImpl implements GibddDataService {
      */
     @Override
     public List<VehicleFullInfo> getOwnerVehiclesInfo(OwnerVehiclesRequest request) {
+        String url = getRequestUrlByService(SHOWCASE_OWNER_SERVICE_URL);
         Map<String, String> params = Map.of(
                 "LastName",         request.getLastName(),
                 "FirstName",        request.getFirstName(),
@@ -134,12 +128,9 @@ public class GibddDataServiceImpl implements GibddDataService {
                 "NameDoc_Ind",      request.getDocumentType().getCode().toString(),
                 "SerNumDoc_Ind",    request.getDocumentNumSer()
         );
+        NsiDictionaryFilterRequest filterRequest = NsiDictionaryUtil.getFilterRequest(params, request.getTx());
         try {
-            NsiDictionary dictionary = nsiDictionaryService.getDictionary(
-                    getResourceUrl(NSI_V2_RESOURCE_URL),
-                    SHOWCASE_OWNER_SERVICE_NAME,
-                    NsiDictionaryUtil.getFilterRequest(params, request.getTx())
-            );
+            NsiDictionary dictionary = restTemplate.postForObject(url, filterRequest, NsiDictionary.class);
             handleError(dictionary);
             return convertToVehicleFullInfoList(dictionary);
         } catch (RestClientException e) {
@@ -154,6 +145,7 @@ public class GibddDataServiceImpl implements GibddDataService {
      */
     @Override
     public FederalNotaryInfo getFederalNotaryInfo(FederalNotaryRequest request) {
+        String url = getRequestUrlByService(FEDERAL_NOTARY_SERVICE_URL);
         Map<String, String> params = Map.of(
                 "orderId",          request.getOrderId(),
                 "Department",       FEDERAL_NOTARY_SERVICE_PARAMS_STUB,
@@ -163,15 +155,11 @@ public class GibddDataServiceImpl implements GibddDataService {
                 "vin",              VehicleInfoMapperUtil.convertToLatin(request.getVin())
         );
 
+        NsiDictionaryFilterRequest filterRequest = NsiDictionaryUtil.getFilterRequest(params, request.getTx());
         try {
-            NsiDictionary dictionary = nsiDictionaryService.getDictionary(
-                    getResourceUrl(NSI_V2_RESOURCE_URL),
-                    FEDERAL_NOTARY_SERVICE_NAME,
-                    NsiDictionaryUtil.getFilterRequest(params, request.getTx())
-            );
+            NsiDictionary dictionary = restTemplate.postForObject(url, filterRequest, NsiDictionary.class);
             handleError(dictionary);
-            if (dictionary.getItems() == null
-                    || dictionary.getItems().isEmpty()
+            if (dictionary.getItems() == null || dictionary.getItems().isEmpty()
                     || !FEDERAL_NOTARY_SERVICE_EXPECTED_VALUES.contains(dictionary.getItems().get(0).getValue())) {
                 throw new ExternalServiceException("Витрина нотариальной палаты вернула некорректный результат");
             }
@@ -201,6 +189,7 @@ public class GibddDataServiceImpl implements GibddDataService {
             request.setVin(request.getSts() + request.getGovRegNumber());
         }
 
+        String url = getRequestUrlByService(SHOWCASE_VIN_SERVICE_URL);
         Map<String, String> params = new HashMap<>() {{
             put("LastName",     request.getLastName());
             put("FirstName",    request.getFirstName());
@@ -214,11 +203,7 @@ public class GibddDataServiceImpl implements GibddDataService {
         }};
 
         NsiDictionaryFilterRequest filterRequest = NsiDictionaryUtil.getFilterRequest(params, request.getTx());
-        NsiDictionary dictionary = nsiDictionaryService.getDictionary(
-                getResourceUrl(NSI_V2_RESOURCE_URL),
-                SHOWCASE_VIN_SERVICE_NAME,
-                filterRequest
-        );
+        NsiDictionary dictionary = restTemplate.postForObject(url, filterRequest, NsiDictionary.class);
         handleError(dictionary);
         return dictionary;
     }
@@ -226,9 +211,7 @@ public class GibddDataServiceImpl implements GibddDataService {
     private List<VehicleFullInfo> convertToVehicleFullInfoList(NsiDictionary dictionary) {
         List<VehicleFullInfo> result = new ArrayList<>();
         List<NsiDictionaryItem> dictionaryItems = dictionary.getItems();
-        if (CollectionUtils.isEmpty(dictionaryItems)
-                || (dictionaryItems.size() == 1
-                && NO_DATA_VALUE.equals(dictionaryItems.get(0).getValue()))) {
+        if (CollectionUtils.isEmpty(dictionaryItems) || (dictionaryItems.size() == 1 && NO_DATA_VALUE.equals(dictionaryItems.get(0).getValue()))) {
             return result;
         }
 
@@ -236,9 +219,9 @@ public class GibddDataServiceImpl implements GibddDataService {
                 .collect(Collectors.groupingBy(NsiDictionaryItem::getValue))
                 .values();
 
-        Map<String, String> ownerTypeMap = getNsiDictionaryItemsValueMap(GIBDD_OWNER_TYPE_DICTIONARY_NAME);
-        Map<String, String> statusMap = getNsiDictionaryItemsValueMap(GIBDD_RECORD_STATUS_DICTIONARY_NAME);
-        Map<String, String> ecologyClassMap = getNsiDictionaryItemsValueMap(EKOKLASS_MVD_DICTIONARY_NAME);
+        Map<String, String> ownerTypeMap = getNsiDictionaryItemsValueMap(pguUrl + GIBDD_OWNER_TYPE_DICTIONARY_URL);
+        Map<String, String> statusMap = getNsiDictionaryItemsValueMap(pguUrl + GIBDD_RECORD_STATUS_DICTIONARY_URL);
+        Map<String, String> ecologyClassMap = getNsiDictionaryItemsValueMap(pguUrl + EKOKLASS_MVD_DICTIONARY_URL);
         result = vehiclesItems.stream()
                 .map(it -> convertToVehicleFullInfo(it, ownerTypeMap, statusMap, ecologyClassMap, true))
                 .sorted(Comparator.comparing(it -> it.getModelMarkName() != null ? it.getModelMarkName() : it.getMarkName()))
@@ -255,7 +238,7 @@ public class GibddDataServiceImpl implements GibddDataService {
 
         VehicleInfo vehicleInfo = vehicleInfoMapper.toVehicleInfo(joinVehicleNsiAttributeValues(items));
 
-        Map<String, String> ownerTypeMap = getNsiDictionaryItemsValueMap(GIBDD_OWNER_TYPE_DICTIONARY_NAME);
+        Map<String, String> ownerTypeMap = getNsiDictionaryItemsValueMap(pguUrl + GIBDD_OWNER_TYPE_DICTIONARY_URL);
         List<RegAction> regActions = new ArrayList<>();
         List<OwnerPeriod> ownerPeriods = new ArrayList<>();
         for (NsiDictionaryItem item : dictionary.getItems()) {
@@ -275,8 +258,8 @@ public class GibddDataServiceImpl implements GibddDataService {
             }
         }
 
-        setVehicleStatus(vehicleInfo, getNsiDictionaryItemsValueMap(GIBDD_RECORD_STATUS_DICTIONARY_NAME));
-        setVehicleEcologyClassDesc(vehicleInfo, getNsiDictionaryItemsValueMap(EKOKLASS_MVD_DICTIONARY_NAME));
+        setVehicleStatus(vehicleInfo, getNsiDictionaryItemsValueMap(pguUrl + GIBDD_RECORD_STATUS_DICTIONARY_URL));
+        setVehicleEcologyClassDesc(vehicleInfo, getNsiDictionaryItemsValueMap(pguUrl + EKOKLASS_MVD_DICTIONARY_URL));
         setVehicleLastRegActionName(vehicleInfo, regActions);
         setVehicleLegals(vehicleInfo);
         setOwnerPeriods(vehicleInfo, ownerPeriods);
@@ -285,13 +268,10 @@ public class GibddDataServiceImpl implements GibddDataService {
     }
 
     private VehicleFullInfo convertToVehicleFullInfo(NsiDictionary dictionary, boolean hasSensitiveData) {
-        return convertToVehicleFullInfo(
-                dictionary.getItems(),
-                getNsiDictionaryItemsValueMap(GIBDD_OWNER_TYPE_DICTIONARY_NAME),
-                getNsiDictionaryItemsValueMap(GIBDD_RECORD_STATUS_DICTIONARY_NAME),
-                getNsiDictionaryItemsValueMap(EKOKLASS_MVD_DICTIONARY_NAME),
-                hasSensitiveData
-        );
+        Map<String, String> ownerTypeMap = getNsiDictionaryItemsValueMap(pguUrl + GIBDD_OWNER_TYPE_DICTIONARY_URL);
+        Map<String, String> statusMap = getNsiDictionaryItemsValueMap(pguUrl + GIBDD_RECORD_STATUS_DICTIONARY_URL);
+        Map<String, String> ecologyClassMap = getNsiDictionaryItemsValueMap(pguUrl + EKOKLASS_MVD_DICTIONARY_URL);
+        return convertToVehicleFullInfo(dictionary.getItems(), ownerTypeMap, statusMap, ecologyClassMap, hasSensitiveData);
     }
 
     private VehicleFullInfo convertToVehicleFullInfo(
@@ -345,7 +325,8 @@ public class GibddDataServiceImpl implements GibddDataService {
 
     private NsiDictionaryItem joinVehicleNsiAttributeValues(List<NsiDictionaryItem> items) {
         List<String> baseInfoAttrs = List.of(MAIN_ATTR, REGISTRATION_DOC_ATTR, PTS_ATTR);
-        Map<String, String> baseInfoMap = items.stream()
+        Map<String, String> baseInfoMap = items
+                .stream()
                 .filter(item -> item.getValue() == null || (item.getTitle() != null && baseInfoAttrs.contains(item.getTitle())))
                 .flatMap(m -> m.getAttributeValues().entrySet().stream())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
@@ -406,12 +387,9 @@ public class GibddDataServiceImpl implements GibddDataService {
         }
     }
 
-    private Map<String, String> getNsiDictionaryItemsValueMap(String dictionaryName) {
+    private Map<String, String> getNsiDictionaryItemsValueMap(String url) {
         try {
-            NsiDictionary dictionary = nsiDictionaryService.getDictionary(
-                    dictionaryName,
-                    NsiDictionaryUtil.getSimpleRequest()
-            );
+            NsiDictionary dictionary = restTemplate.postForObject(url, NsiDictionaryUtil.getSimpleRequest(), NsiDictionary.class);
             if (dictionary != null && dictionary.getItems() != null) {
                 return dictionary.getItems().stream().collect(Collectors.toMap(NsiDictionaryItem::getValue, NsiDictionaryItem::getTitle));
             }
@@ -421,9 +399,8 @@ public class GibddDataServiceImpl implements GibddDataService {
         }
     }
 
-    private String getResourceUrl(String resourceUrl) {
-        return mockEnabled
-                ? String.format("%s/%s", mockPath, resourceUrl)
-                : resourceUrl;
+    private String getRequestUrlByService(String service) {
+        String serviceLocation = mockEnabled ? mockUrl : pguUrl;
+        return String.format("%s%s", serviceLocation, service);
     }
 }
