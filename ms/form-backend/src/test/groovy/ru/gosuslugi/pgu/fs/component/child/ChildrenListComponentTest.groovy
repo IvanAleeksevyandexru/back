@@ -85,6 +85,24 @@ class ChildrenListComponentTest extends Specification {
         assert result.get() == '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
     }
 
+    def 'Test getInitValue: get init value response is correct with minBirthDate filter'() {
+        given:
+        fieldComponent.getAttrs().put("bornAfterDate", minBirthDate)
+
+        when:
+        def result = component.getInitialValue(fieldComponent, scenarioDto, serviceDescriptor)
+
+        then:
+        result.get() == response
+
+        where:
+        minBirthDate || response
+        null         || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
+        '10.06.2005' || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
+        '01.01.2009' || '[{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
+        '01.01.2020' || '[]'
+    }
+
     def "Should do valid post processing"() {
         given:
         Map.Entry<String, ApplicantAnswer> entry = AnswerUtil.createAnswerEntry('bb', '[{"id":"bb"},{"id":"cc"}]')
