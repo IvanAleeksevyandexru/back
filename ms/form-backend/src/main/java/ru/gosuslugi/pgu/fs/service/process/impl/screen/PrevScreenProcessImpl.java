@@ -26,7 +26,6 @@ import ru.gosuslugi.pgu.fs.common.helper.ScreenHelper;
 import ru.gosuslugi.pgu.fs.common.service.ComponentService;
 import ru.gosuslugi.pgu.fs.common.service.CycledScreenService;
 import ru.gosuslugi.pgu.fs.common.service.DisplayReferenceService;
-import ru.gosuslugi.pgu.fs.descriptor.ErrorModalDescriptorService;
 import ru.gosuslugi.pgu.fs.exception.DraftNotEditableException;
 import ru.gosuslugi.pgu.fs.pgu.client.impl.OrderStatuses;
 import ru.gosuslugi.pgu.fs.service.impl.FormScenarioDtoServiceImpl;
@@ -58,7 +57,6 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
     private final DisplayReferenceService displayReferenceService;
     private final FormScenarioDtoServiceImpl scenarioDtoService;
     private final ComponentRegistry componentRegistry;
-    private final ErrorModalDescriptorService errorModalDescriptorService;
 
     @Override
     public Boolean onlyInitScreenWasShow() {
@@ -98,6 +96,7 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
         String lastScreenId = dto.getFinishedAndCurrentScreens().getLast();
         // если скрин цикличный - пропускаем
         if (dto.getDisplay().getId().equals(lastScreenId)) {
+            log.info("Put answers to cache" + formatScenarioLogFields());
             serviceDescriptor.getScreenDescriptorById(lastScreenId).ifPresent(screen -> {
                 Map<String, ApplicantAnswer> answersToCache = dto.getApplicantAnswers()
                         .entrySet()
@@ -117,12 +116,15 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
         String lastScreenId = dto.getFinishedAndCurrentScreens().getLast();
         // если скрин цикличный его не нужно удалять
         if (dto.getDisplay().getId().equals(lastScreenId)) {
+            log.info("Removing screen from finished" + formatScenarioLogFields());
             dto.getFinishedAndCurrentScreens().removeLastOccurrence(lastScreenId);
         }
     }
 
     @Override
     public void removeAnswersFromDto() {
+        log.info("Removing answers from DTO" + formatScenarioLogFields());
+
         var dto = request.getScenarioDto();
         ScreenDescriptor screenDescriptor = getScreenDescriptor();
         List<FieldComponent> fieldComponentsForScreen = serviceDescriptor.getFieldComponentsForScreen(screenDescriptor);
@@ -156,6 +158,7 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
             }
             ScenarioResponse scenarioResponseForLoopStep = cycledScreenService.getPrevScreen(request, serviceId);
             if (scenarioResponseForLoopStep != null) {
+                log.info("Setting response for cycled component" + formatScenarioLogFields());
                 response = scenarioResponseForLoopStep;
             }
         }
@@ -163,6 +166,8 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
 
     @Override
     public void calculateNextScreen() {
+        log.info("Calculating next screen" + formatScenarioLogFields());
+
         var dto = request.getScenarioDto();
         ScreenDescriptor screenDescriptor = getScreenDescriptor();
         while (screenDescriptor.getType().equals(ScreenType.EMPTY) ) {
@@ -215,6 +220,7 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
 
     @Override
     public void removeCycledAnswers() {
+        log.info("Removing cycled answers" + formatScenarioLogFields());
         var dto = request.getScenarioDto();
         dto.getCurrentValue().keySet().forEach(v ->
                 dto.getCycledApplicantAnswers().removeAnswer(v)

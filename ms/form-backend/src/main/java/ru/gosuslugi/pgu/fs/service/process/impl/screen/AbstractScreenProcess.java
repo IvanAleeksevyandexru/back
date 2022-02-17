@@ -2,6 +2,7 @@ package ru.gosuslugi.pgu.fs.service.process.impl.screen;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -24,6 +25,8 @@ import ru.gosuslugi.pgu.fs.service.process.impl.AbstractProcess;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Процесс перехода между экранами
@@ -111,6 +114,8 @@ public abstract class AbstractScreenProcess<T> extends AbstractProcess<T, Scenar
 
     @Override
     public void reInitScenario() {
+        log.info("Reinitializing scenario" + formatScenarioLogFields());
+
         ScenarioDto scenarioDto = response.getScenarioDto();
         InitServiceDto initServiceDto = new InitServiceDto();
         initServiceDto.setOrderId(scenarioDto.getOrderId().toString());
@@ -128,5 +133,16 @@ public abstract class AbstractScreenProcess<T> extends AbstractProcess<T, Scenar
         if (scenarioDto.getOrderId() != null) {
             draftClient.saveDraft(scenarioDto, serviceId, userPersonalData.getUserId(), userPersonalData.getOrgId(), serviceDescriptor.getDraftTtl(), serviceDescriptor.getOrderTtl());
         }
+    }
+
+    public String formatScenarioLogFields() {
+        final var scenarioDto = request.getScenarioDto();
+        final var joinedParams = Stream.of(
+            Pair.of("serviceId", scenarioDto.getServiceCode()),
+            Pair.of("targetId", scenarioDto.getTargetCode()),
+            Pair.of("orderId", scenarioDto.getOrderId()),
+            Pair.of("screenId", scenarioDto.getDisplay() != null ? scenarioDto.getDisplay().getId() : null)
+        ).filter(e -> e.getValue() != null).map(e -> e.getKey() + "=" + e.getValue()).collect(Collectors.joining(","));
+        return joinedParams.isEmpty() ? joinedParams : " (" + joinedParams + ")";
     }
 }

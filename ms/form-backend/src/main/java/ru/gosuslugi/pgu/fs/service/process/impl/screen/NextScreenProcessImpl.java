@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.context.WebApplicationContext;
-import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.core.lk.model.order.Order;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
@@ -71,7 +70,6 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
     private final DisplayReferenceService displayReferenceService;
     private final HelperScreenRegistry screenRegistry;
     private final UserPersonalData userPersonalData;
-    private final UserOrgData userOrgData;
     private final PguOrderService pguOrderService;
     private final FormScenarioDtoServiceImpl scenarioDtoService;
     private final IntegrationService integrationService;
@@ -83,6 +81,8 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void buildResponse() {
+        log.info("Starting to build scenario response" + formatScenarioLogFields());
+
         ScenarioDto scenarioDto = request.getScenarioDto();
         response = new ScenarioResponse();
         response.setScenarioDto(scenarioDto);
@@ -90,12 +90,16 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void tryToCreateOrderId() {
+        log.info("Trying to create order" + formatScenarioLogFields());
+
         ScenarioDto scenarioDto = response.getScenarioDto();
         response.getScenarioDto().setOrderId(createOrderService.tryToCreateOrderId(serviceId, scenarioDto, serviceDescriptor));
     }
 
     @Override
     public void removeOldAnswers() {
+        log.info("Removing old answers" + formatScenarioLogFields());
+
         response.getScenarioDto().getCurrentValue().keySet().forEach(currentKey-> {
             response.getScenarioDto().getApplicantAnswers().remove(currentKey);
             response.getScenarioDto().getCachedAnswers().remove(currentKey);
@@ -104,17 +108,23 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void removeDisclaimers() {
+        log.info("Removing disclaimers" + formatScenarioLogFields());
+
         response.getScenarioDto().getDisclaimers().clear();
     }
 
     @Override
     public void clearValidateErrors() {
+        log.info("Clearing validation errors" + formatScenarioLogFields());
+
         response.getScenarioDto().getErrors().clear();
         response.getScenarioDto().getUniquenessErrors().clear();
     }
 
     @Override
     public void validate() {
+        log.info("Validating request" + formatScenarioLogFields());
+
         ConcurrentHashMap<String, String> validationErrors = answerValidationService.validateAnswers(response.getScenarioDto(), serviceDescriptor);
         if (!validationErrors.isEmpty()) {
             response.getScenarioDto().setErrors(validationErrors);
@@ -134,11 +144,11 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void preloadComponents() {
+        log.info("Preloading components" + formatScenarioLogFields());
+
         ScenarioDto scenarioDto = request.getScenarioDto();
         componentService.preloadComponents(scenarioDto.getDisplay().getId(), scenarioDto, serviceDescriptor);
     }
-
-
 
     @Override
     public boolean replaceResponseForCycledScreen() {
@@ -153,6 +163,8 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void calculateNextScreen() {
+        log.info("Calculating next screen" + formatScenarioLogFields());
+
         ScenarioDto scenarioDto = response.getScenarioDto();
         ScreenDescriptor screenDescriptor = screenFinderService.findScreenDescriptorByRules(scenarioDto, serviceDescriptor, null);
         if (screenDescriptor == null) {
@@ -180,6 +192,8 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void prepareDisplayAfterValidationErrors() {
+        log.info("Preparing to display validation errors" + formatScenarioLogFields());
+
         ScenarioDto scenarioDto = response.getScenarioDto();
         Optional<ScreenDescriptor> screenDescriptorOptional = serviceDescriptor.getScreenDescriptorById(scenarioDto.getDisplay().getId());
         if (screenDescriptorOptional.isEmpty()) {
@@ -198,9 +212,9 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void fillUserData() {
+        log.info("Filling user data" + formatScenarioLogFields());
         additionalAttributesHelper.fillUserData(response.getScenarioDto());
     }
-
 
     @Override
     public boolean isTerminalAndImpasse() {
@@ -227,6 +241,7 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void deleteOrder() {
+        log.info("Deleting order and draft" + formatScenarioLogFields());
         pguOrderService.deleteOrderById(response.getScenarioDto().getOrderId());
         draftClient.deleteDraft(response.getScenarioDto().getOrderId(), userPersonalData.getUserId());
     }
@@ -273,6 +288,7 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
         if (response.getScenarioDto().getOrderId() == null) {
             throw new DuplicateOrderException("Экран терминальный, но orderId не был создан");
         }
+        log.info("Saving chosen values for order" + formatScenarioLogFields());
         if (!createOrderService.saveValuesForOrder(serviceDescriptor, response.getScenarioDto())) {
             throw new DuplicateOrderException("Ошибка при сохранении выбранных значений для заявления");
         }
@@ -280,11 +296,13 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void updateAdditionalAttributes() {
+        log.info("Updating additional attributes" + formatScenarioLogFields());
         scenarioDtoService.updateAdditionalAttributes(response.getScenarioDto(), serviceDescriptor.getSmevEnv());
     }
 
     @Override
     public void performIntegrationSteps() {
+        log.info("Performing integration steps" + formatScenarioLogFields());
         integrationService.performIntegrationSteps(response, serviceId, serviceDescriptor);
     }
 
@@ -295,11 +313,13 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void mergePdfDocuments() {
+        log.info("Merging PDF documents" + formatScenarioLogFields());
         scenarioDtoService.mergePdfDocuments(response.getScenarioDto(), serviceDescriptor);
     }
 
     @Override
     public void clearCacheForComponents() {
+        log.info("Clearing component cache" + formatScenarioLogFields());
         request.getScenarioDto().getCurrentValue().entrySet()
                 .stream()
                 .filter(entry -> {
@@ -329,6 +349,7 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void checkForDuplicate() {
+        log.info("Checking for order duplicate" + formatScenarioLogFields());
         ScenarioDto scenarioDto = response.getScenarioDto();
         Optional<FieldComponent> fieldComponent = findComponentForPredicate(scenarioDto, serviceDescriptor, FieldComponent::getCheckForDuplicate);
         createOrderService.checkForDuplicate(scenarioDto, fieldComponent, serviceDescriptor);
@@ -364,6 +385,8 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public void checkPermissions() {
+        log.info("Checking permissions" + formatScenarioLogFields());
+
         var scenarioDto = this.response.getScenarioDto();
         var display = scenarioDto.getDisplay();
 
