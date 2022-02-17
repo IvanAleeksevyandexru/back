@@ -18,12 +18,14 @@ public class PguBookingDto {
     public static PguBookingDto createFrom(BookingInfo bookingInfo) {
         var result = new PguBookingDto();
         List<PguBookingObjectDto> orderAttributes = new ArrayList<>();
-        var bookingStatusDto = new PguBookingObjectDto();
 
-        bookingStatusDto.setName("booking-status");
-        bookingStatusDto.setTitle("статус");
-        bookingStatusDto.setNewValue(String.join(",", bookingInfo.getAvailableStatusList()));
-        orderAttributes.add(bookingStatusDto);
+        if (!bookingInfo.getAvailableStatusList().isEmpty()) {
+            var bookingStatusDto = new PguBookingObjectDto();
+            bookingStatusDto.setName("booking-status");
+            bookingStatusDto.setTitle("статус");
+            bookingStatusDto.setNewValue(String.join(",", bookingInfo.getAvailableStatusList()));
+            orderAttributes.add(bookingStatusDto);
+        }
 
         var bookingDto = new PguBookingObjectDto();
         bookingDto.setName("booking");
