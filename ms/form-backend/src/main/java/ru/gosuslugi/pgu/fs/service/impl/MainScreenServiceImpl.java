@@ -126,12 +126,15 @@ public class MainScreenServiceImpl extends AbstractScreenService implements Main
     public OrderListInfoDto getOrderInfo(InitServiceDto initServiceDto, String serviceId) {
 
         List<Order> availableOrders = new ArrayList<>();
-        var ordersLimit = this.getDescriptorService().getServiceDescriptor(serviceId).getOrdersLimit();
+        var serviceDescriptor = this.getDescriptorService().getServiceDescriptor(serviceId);
+        var ordersLimit = serviceDescriptor.getOrdersLimit();
         if(ordersLimit == 1){
             var lastOrder = pguOrderService.findLastOrder(serviceId, initServiceDto.getTargetId());
             if(Objects.isNull(lastOrder)){
                 OrderListInfoDto result = new OrderListInfoDto();
                 result.setLimitOrders(ordersLimit);
+                result.setServiceName(serviceDescriptor.getServiceName());
+                result.setCompareRegions(serviceDescriptor.getCompareRegions());
                 return result;
             }
             availableOrders.add(lastOrder);
@@ -142,6 +145,8 @@ public class MainScreenServiceImpl extends AbstractScreenService implements Main
         if (availableOrders.isEmpty()) {
             OrderListInfoDto result = new OrderListInfoDto();
             result.setLimitOrders(ordersLimit);
+            result.setServiceName(serviceDescriptor.getServiceName());
+            result.setCompareRegions(serviceDescriptor.getCompareRegions());
             return result;
         }
         return fillOrderListStatus(availableOrders, serviceId);
@@ -215,6 +220,7 @@ public class MainScreenServiceImpl extends AbstractScreenService implements Main
     private OrderListInfoDto fillOrderListStatus(List<Order> orders, String serviceId) {
         var orderListInfoDto = new OrderListInfoDto();
         var sd = this.getDescriptorService().getServiceDescriptor(serviceId);
+        orderListInfoDto.setCompareRegions(sd.getCompareRegions());
         orderListInfoDto.setLimitOrders(sd.getOrdersLimit());
         var shortOrdersData = orders.stream().map(order -> {
             var shortOrderData = new ShortOrderData();
