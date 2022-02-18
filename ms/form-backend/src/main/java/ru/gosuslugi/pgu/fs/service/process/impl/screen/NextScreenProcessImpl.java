@@ -188,6 +188,8 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
         displayReferenceService.processDisplayRefs(displayRequest, scenarioDto);
         scenarioDto.setDisplay(displayRequest);
         scenarioDto.setLogicComponents(componentService.getLogicFields(screenDescriptor, scenarioDto, serviceDescriptor));
+
+        log.info("Next screen calculated: {}" + formatScenarioLogFields(), displayRequest.getId());
     }
 
     @Override
@@ -208,6 +210,8 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
         DisplayRequest displayRequest = new DisplayRequest(screenDescriptor, componentService.getScreenFields(screenDescriptor, scenarioDto, serviceDescriptor));
         displayReferenceService.processDisplayRefs(displayRequest, scenarioDto);
         scenarioDto.setDisplay(displayRequest);
+
+        log.info("Screen to display validation errors: {}" + formatScenarioLogFields(), displayRequest.getId());
     }
 
     @Override
