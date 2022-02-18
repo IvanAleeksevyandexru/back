@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ImportBillStatusResponse {
-    String errorCode;
+    Integer errorCode;
     String billNumber;
 }
