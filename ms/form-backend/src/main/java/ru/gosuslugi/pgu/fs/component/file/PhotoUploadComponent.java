@@ -62,8 +62,11 @@ public class PhotoUploadComponent extends AbstractComponent<String> {
         if (uploadedFileMap == null) {
             return;
         }
-        String uploadId = (String) uploadedFileMap.get(UPLOAD_ID_ATTR_NAME);
         String uploadIndex = CycledComponentUtils.getCurrentIndexForComponentId(component, scenarioDto);
+        if (component.isComponentInCycle()) {
+            uploadedFileMap.computeIfPresent(UPLOAD_ID_ATTR_NAME, (uploadId, oldUploadId) -> oldUploadId + uploadIndex);
+        }
+        String uploadId = (String) uploadedFileMap.get(UPLOAD_ID_ATTR_NAME);
         uploadedFileMap.put(FILE_MNEMONIC, String.format(DEFAULT_MNEMONIC_PATTERN, component.getId(), component.getType().name(), uploadId, uploadIndex));
 
         List<FileInfo> files;
@@ -103,6 +106,10 @@ public class PhotoUploadComponent extends AbstractComponent<String> {
             String actualMnemonic = innerObject.get(MNEMONIC_ATTR_NAME).toString();
             String actualFilename = innerObject.get(FILENAME_ATTR_NAME).toString();
             Map<String, Object> uploadedFileMap = getUploadedFileAttributeValue(fieldComponent);
+            String uploadIndex = CycledComponentUtils.getCurrentIndexForComponentId(fieldComponent, scenarioDto);
+            if (fieldComponent.isComponentInCycle()) {
+                uploadedFileMap.computeIfPresent(UPLOAD_ID_ATTR_NAME, (uploadId, oldUploadId) -> oldUploadId + uploadIndex);
+            }
             String uploadId = (String) uploadedFileMap.get(UPLOAD_ID_ATTR_NAME);
             String objectId = innerObject.get(OBJECT_ID_ATTR_NAME).toString();
             String objectTypeId = innerObject.get(OBJECT_TYPE_ATTR_NAME).toString();
