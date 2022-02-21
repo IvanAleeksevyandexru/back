@@ -13,14 +13,13 @@ import org.springframework.web.client.RestTemplate;
 import ru.gosuslugi.pgu.common.core.exception.EntityNotFoundException;
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
 import ru.gosuslugi.pgu.common.core.exception.NsiExternalException;
+import ru.gosuslugi.pgu.common.core.exception.dto.ExternalError;
 import ru.gosuslugi.pgu.common.core.service.HealthHolder;
 import ru.gosuslugi.pgu.common.core.service.OkatoHolder;
 import ru.gosuslugi.pgu.common.core.service.dto.DictionayHealthDto;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.NsiDictionary;
-import ru.gosuslugi.pgu.common.core.exception.dto.ExternalError;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.NsiDictionaryItem;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.NsiSuggestDictionary;
-import ru.gosuslugi.pgu.pgu_common.nsi.dto.NsiSuggestDictionaryItem;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiDictionaryFilterRequest;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiDictionaryFilterSimple;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiFilterCondition;
@@ -81,19 +80,46 @@ public class NsiDictionaryServiceImpl implements NsiDictionaryService {
 
     @Override
     public NsiDictionary getDictionary(String dictionaryName, NsiDictionaryFilterRequest filterRequest) {
+        return getDictionary(DICTIONARY_RESOURCE_URL, dictionaryName, filterRequest);
+    }
+
+    @Override
+    public NsiDictionary getDictionary(
+            String dictionaryResourceUrl,
+            String dictionaryName,
+            NsiDictionaryFilterRequest filterRequest
+    ) {
         NsiDictionary result;
 
         String okato = getOkato(filterRequest);
-        String url = String.format("%s/%s/%s", pguUrl, DICTIONARY_RESOURCE_URL, dictionaryName);
+        String url = String.format("%s/%s/%s", pguUrl, dictionaryResourceUrl, dictionaryName);
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<NsiDictionaryFilterRequest> entity = new HttpEntity<>(filterRequest, headers);
+        if (mockEnabled) {
+            url =  String.format("%s/%s/%s", mockUrl, dictionaryResourceUrl, dictionaryName);
+            headers.setHost(InetSocketAddress.createUnresolved(mockedHost, 80));
+            entity = new HttpEntity<>(filterRequest, headers);
+        }
+
         try {
-            result = restTemplate.postForObject(url, filterRequest, NsiDictionary.class);
+            result = restTemplate.postForObject(url, entity, NsiDictionary.class);
         } catch (EntityNotFoundException | ExternalServiceException e) {
-            throw new NsiExternalException(dictionaryName, DICTIONARY_RESOURCE_URL + "/" + dictionaryName, HttpMethod.POST, "Исключение при вызове метода", okato, e);
+            throw new NsiExternalException(
+                    dictionaryName,
+                    dictionaryResourceUrl + "/" + dictionaryName,
+                    HttpMethod.POST,
+                    "Исключение при вызове метода",
+                    okato,
+                    e
+            );
         }
 
         // validation
-        handleError(result, dictionaryName, DICTIONARY_RESOURCE_URL + "/" + dictionaryName, HttpMethod.POST, okato);
-        healthHolder.addDictionaryHealth(new DictionayHealthDto(dictionaryName, url, HttpMethod.GET, HttpStatus.OK, null, null, okato));
+        handleError(result, dictionaryName, dictionaryResourceUrl + "/" + dictionaryName, HttpMethod.POST, okato);
+        healthHolder.addDictionaryHealth(
+                new DictionayHealthDto(dictionaryName, url, HttpMethod.GET, HttpStatus.OK, null, null, okato)
+        );
         return result;
     }
 

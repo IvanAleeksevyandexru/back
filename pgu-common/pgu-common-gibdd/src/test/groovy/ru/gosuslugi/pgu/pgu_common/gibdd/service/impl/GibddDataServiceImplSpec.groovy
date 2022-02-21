@@ -1,30 +1,32 @@
 package ru.gosuslugi.pgu.pgu_common.gibdd.service.impl
 
-import org.springframework.web.client.RestTemplate
+
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException
+import ru.gosuslugi.pgu.common.core.exception.dto.ExternalError
 import ru.gosuslugi.pgu.pgu_common.gibdd.dto.*
 import ru.gosuslugi.pgu.pgu_common.gibdd.mapper.VehicleFullInfoMapperImpl
 import ru.gosuslugi.pgu.pgu_common.gibdd.mapper.VehicleInfoMapperImpl
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.NsiDictionary
-import ru.gosuslugi.pgu.common.core.exception.dto.ExternalError
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.NsiDictionaryItem
+import ru.gosuslugi.pgu.pgu_common.nsi.dto.filter.NsiDictionaryFilterRequest
+import ru.gosuslugi.pgu.pgu_common.nsi.service.NsiDictionaryService
 import spock.lang.Specification
 
 class GibddDataServiceImplSpec extends Specification {
 
-    GibddDataServiceImpl service
-    RestTemplate restTemplateMock
+    private static final String SHOWCASE_VIN_SERVICE_NAME = "ShowcaseVIN"
+    private static final String SHOWCASE_OWNER_SERVICE_NAME = "ShowcaseOwner"
+    private static final String GIBDD_RECORD_STATUS_DICTIONARY_NAME = "GIBDD_RECORD_STATUS"
+    private static final String GIBDD_OWNER_TYPE_DICTIONARY_NAME = "GIBDD_OWNER_TYPE"
+    private static final String EKOKLASS_MVD_DICTIONARY_NAME = "ekoklass_MVD"
 
-    String pguUrl = 'pguUrl'
-    String mockUrl = 'mockUrl'
+    GibddDataServiceImpl service
+    NsiDictionaryService nsiDictionaryService
 
     def setup() {
-        restTemplateMock = Mock(RestTemplate)
+        nsiDictionaryService = Mock(NsiDictionaryService)
 
-        service = new GibddDataServiceImpl(restTemplateMock, new VehicleInfoMapperImpl(), new VehicleFullInfoMapperImpl())
-        service.mockEnabled = true
-        service.mockUrl = mockUrl
-        service.pguUrl = pguUrl
+        service = new GibddDataServiceImpl(nsiDictionaryService, new VehicleInfoMapperImpl(), new VehicleFullInfoMapperImpl())
     }
 
     def 'If vehicle service by VIN return error'() {
@@ -32,7 +34,8 @@ class GibddDataServiceImplSpec extends Specification {
         GibddServiceResponse<VehicleInfo> result
 
         when:
-        restTemplateMock.postForObject(_ as String, _ as Object, NsiDictionary.class) >> showcaseVINErrorResponse()
+        nsiDictionaryService.getDictionary(_ as String, _ as String, _ as NsiDictionaryFilterRequest) >>
+                showcaseVINErrorResponse()
         result = service.getAsyncVehicleInfo(Stub(VehicleInfoRequest)).join()
 
         then:
@@ -44,7 +47,8 @@ class GibddDataServiceImplSpec extends Specification {
         GibddServiceResponse<VehicleInfo> result
 
         when:
-        restTemplateMock.postForObject(_ as String, _ as Object, NsiDictionary.class) >> showcaseVINNotFoundResponse()
+        nsiDictionaryService.getDictionary(_ as String, _ as String, _ as NsiDictionaryFilterRequest) >>
+                showcaseVINNotFoundResponse()
         result = service.getAsyncVehicleInfo(Stub(VehicleInfoRequest)).join()
 
         then:
@@ -56,14 +60,14 @@ class GibddDataServiceImplSpec extends Specification {
         VehicleInfo result
 
         when:
-        restTemplateMock.postForObject("${pguUrl}api/nsi/v1/dictionary/GIBDD_OWNER_TYPE", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, GIBDD_OWNER_TYPE_DICTIONARY_NAME, _ as NsiDictionaryFilterRequest) >>
                 new NsiDictionary(items: [new NsiDictionaryItem(value: '1', title: 'Юридическое лицо'),
                                           new NsiDictionaryItem(value: '2', title: 'Физическое лицо')])
-        restTemplateMock.postForObject("${pguUrl}api/nsi/v1/dictionary/GIBDD_RECORD_STATUS", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, GIBDD_RECORD_STATUS_DICTIONARY_NAME, _ as NsiDictionaryFilterRequest) >>
                 new NsiDictionary(items: [new NsiDictionaryItem(value: '1', title: 'На учёте')])
-        restTemplateMock.postForObject("${pguUrl}api/nsi/v1/dictionary/ekoklass_MVD", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, EKOKLASS_MVD_DICTIONARY_NAME, _ as NsiDictionaryFilterRequest) >>
                 new NsiDictionary(items: [new NsiDictionaryItem(value: '4', title: 'Четвёртый')])
-        restTemplateMock.postForObject("${mockUrl}nsiv2/internal/api/nsi/v1/dictionary/ShowcaseVIN", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, SHOWCASE_VIN_SERVICE_NAME, _ as NsiDictionaryFilterRequest) >>
                 showcaseVINSuccessResponse()
         result = service.getAsyncVehicleInfo(Stub(VehicleInfoRequest)).join().data
 
@@ -107,14 +111,14 @@ class GibddDataServiceImplSpec extends Specification {
         VehicleFullInfo result
 
         when:
-        restTemplateMock.postForObject("${pguUrl}api/nsi/v1/dictionary/GIBDD_OWNER_TYPE", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, GIBDD_OWNER_TYPE_DICTIONARY_NAME, _ as NsiDictionaryFilterRequest) >>
                 new NsiDictionary(items: [new NsiDictionaryItem(value: '1', title: 'Юридическое лицо'),
                                           new NsiDictionaryItem(value: '2', title: 'Физическое лицо')])
-        restTemplateMock.postForObject("${pguUrl}api/nsi/v1/dictionary/GIBDD_RECORD_STATUS", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, GIBDD_RECORD_STATUS_DICTIONARY_NAME, _ as NsiDictionaryFilterRequest) >>
                 new NsiDictionary(items: [new NsiDictionaryItem(value: '1', title: 'На учёте')])
-        restTemplateMock.postForObject("${pguUrl}api/nsi/v1/dictionary/ekoklass_MVD", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, EKOKLASS_MVD_DICTIONARY_NAME, _ as NsiDictionaryFilterRequest) >>
                 new NsiDictionary(items: [new NsiDictionaryItem(value: '4', title: 'Четвёртый')])
-        restTemplateMock.postForObject("${mockUrl}nsiv2/internal/api/nsi/v1/dictionary/ShowcaseVIN", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, SHOWCASE_VIN_SERVICE_NAME, _ as NsiDictionaryFilterRequest) >>
                 showcaseVINSuccessResponse()
         result = service.getVehicleFullInfo(Stub(VehicleInfoRequest))
 
@@ -136,13 +140,13 @@ class GibddDataServiceImplSpec extends Specification {
         List<VehicleInfo> result
 
         when:
-        restTemplateMock.postForObject("${pguUrl}api/nsi/v1/dictionary/GIBDD_OWNER_TYPE", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, GIBDD_OWNER_TYPE_DICTIONARY_NAME, _ as NsiDictionaryFilterRequest) >>
                 new NsiDictionary(items: [new NsiDictionaryItem(value: '1', title: 'Юридическое лицо')])
-        restTemplateMock.postForObject("${pguUrl}api/nsi/v1/dictionary/GIBDD_RECORD_STATUS", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, GIBDD_RECORD_STATUS_DICTIONARY_NAME, _ as NsiDictionaryFilterRequest) >>
                 new NsiDictionary(items: [new NsiDictionaryItem(value: '1', title: 'На учёте')])
-        restTemplateMock.postForObject("${pguUrl}api/nsi/v1/dictionary/ekoklass_MVD", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, EKOKLASS_MVD_DICTIONARY_NAME, _ as NsiDictionaryFilterRequest) >>
                 new NsiDictionary(items: [new NsiDictionaryItem(value: '4', title: 'Четвёртый')])
-        restTemplateMock. postForObject("${mockUrl}nsiv2/internal/api/nsi/v1/dictionary/ShowcaseOwner", _ as Object, NsiDictionary.class) >>
+        nsiDictionaryService.getDictionary(_ as String, SHOWCASE_OWNER_SERVICE_NAME, _ as NsiDictionaryFilterRequest) >>
                 showcaseOwnerResponse()
         result = service.getOwnerVehiclesInfo(Stub(OwnerVehiclesRequest))
 
@@ -186,7 +190,7 @@ class GibddDataServiceImplSpec extends Specification {
         FederalNotaryInfo result
 
         when:
-        restTemplateMock.postForObject(_ as String, _ as Object, NsiDictionary.class) >> {
+        nsiDictionaryService.getDictionary(_ as String, _ as String, _ as NsiDictionaryFilterRequest) >> {
             new NsiDictionary(error: new ExternalError(code: 0), items: [new NsiDictionaryItem(value: 'OK')])
         }
         result = service.getFederalNotaryInfo(Stub(FederalNotaryRequest))
@@ -200,7 +204,7 @@ class GibddDataServiceImplSpec extends Specification {
         FederalNotaryInfo result
 
         when:
-        restTemplateMock.postForObject(_ as String, _ as Object, NsiDictionary.class) >> {
+        nsiDictionaryService.getDictionary(_ as String, _ as String, _ as NsiDictionaryFilterRequest) >> {
             new NsiDictionary(error: new ExternalError(code: 0), items: [new NsiDictionaryItem(value: 'NO_DATA')])
         }
         result = service.getFederalNotaryInfo(Stub(FederalNotaryRequest))
@@ -211,7 +215,7 @@ class GibddDataServiceImplSpec extends Specification {
 
     def 'Can get federal notary info if service return incorrect value'() {
         when:
-        restTemplateMock.postForObject(_ as String, _ as Object, NsiDictionary.class) >> {
+        nsiDictionaryService.getDictionary(_ as String, _ as String, _ as NsiDictionaryFilterRequest) >> {
             new NsiDictionary(error: new ExternalError(code: 0), items: [new NsiDictionaryItem(value: 'INCORRECT')])
         }
         service.getFederalNotaryInfo(Stub(FederalNotaryRequest))
@@ -222,7 +226,7 @@ class GibddDataServiceImplSpec extends Specification {
 
     def 'Can get federal notary info if service return error'() {
         when:
-        restTemplateMock.postForObject(_ as String, _ as Object, NsiDictionary.class) >> {
+        nsiDictionaryService.getDictionary(_ as String, _ as String, _ as NsiDictionaryFilterRequest) >> {
             new NsiDictionary(error: new ExternalError(code: 500), items: [new NsiDictionaryItem(value: 'OK')])
         }
         service.getFederalNotaryInfo(Stub(FederalNotaryRequest))
@@ -233,7 +237,7 @@ class GibddDataServiceImplSpec extends Specification {
 
     def 'Can get federal notary info if service return empty value'() {
         when:
-        restTemplateMock.postForObject(_ as String, _ as Object, NsiDictionary.class) >> {
+        nsiDictionaryService.getDictionary(_ as String, _ as String, _ as NsiDictionaryFilterRequest) >> {
             new NsiDictionary(error: new ExternalError(code: 0), items: [])
         }
         service.getFederalNotaryInfo(Stub(FederalNotaryRequest))
