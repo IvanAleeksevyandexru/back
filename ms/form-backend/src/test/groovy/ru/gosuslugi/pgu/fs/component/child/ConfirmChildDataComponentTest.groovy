@@ -1,6 +1,10 @@
 package ru.gosuslugi.pgu.fs.component.child
 
-
+import ru.atc.carcass.security.rest.model.DocsCollection
+import ru.atc.carcass.security.rest.model.person.Kids
+import ru.atc.carcass.security.rest.model.person.PersonDoc
+import ru.gosuslugi.pgu.common.core.date.util.DateUtil
+import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData
 import ru.gosuslugi.pgu.dto.cycled.CycledApplicantAnswerItem
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType
@@ -53,6 +57,121 @@ class ConfirmChildDataComponentTest extends Specification {
                 '{"label":"Дата выдачи","value":"10.10.2003"}]}],' +
                 '"storedValues":{"firstName":"Ваня","lastName":"Ванин","birthDate":"09.10.2003","gender":"M","rfBirthCertificateSeries":"XVII-ШЮ",' +
                 '"rfBirthCertificateNumber":"222222","rfBirthCertificateIssueDate":"10.10.2003","docType":"' + certificateType + '"},"errors":[]}'
+
+        where:
+        esiaDataType | certificateType
+        BRTH_CERT_TYPE | BRTH_CERT_TYPE
+        RF_BRTH_CERT_TYPE  | RF_BRTH_CERT_TYPE
+    }
+
+    def 'Confirm child data with update kid info from ESIA test' () {
+        given:
+        def personalData = Mock(UserPersonalData)
+        personalData.docs >> [
+                new PersonDoc(
+                        id: 'person1',
+                        type: 'VERIFIED_DOC',
+                        series: '111',
+                        number: '111-777',
+                        issuedBy: 'ЗАГС г.Магадан',
+                        issueDate: '30.10.2010',
+                        vrfStu: 'VERIFIED'),
+                new PersonDoc(
+                        id: 'person2',
+                        type: 'UNVERIFIED_DOC',
+                        series: '222',
+                        number: '222-777',
+                        issuedBy: 'ЗАГС г.Магадан',
+                        issueDate: '30.10.2010',
+                        vrfStu: 'NONE'),
+                new PersonDoc(
+                        id: 'person3',
+                        type: 'RF_PASSPORT',
+                        series: '1234',
+                        number: '123456',
+                        issuedBy: 'ЗАГС г.Магадан',
+                        issueId: '888999',
+                        issueDate: '30.10.2010',
+                        vrfStu: 'VERIFIED'
+                )
+        ]
+
+        personalData.kids >> List.of(
+                new Kids(id: '1',
+                        firstName: 'Петя', lastName: 'Петечкин', birthDate: '10.06.2005',
+                        gender: 'M',
+                        documents: new DocsCollection(
+                                elements: [new PersonDoc(
+                                        type: esiaDataType,
+                                        series: 'XO044',
+                                        number: '555-777',
+                                        issuedBy: 'ЗАГС г.Магадан',
+                                        issueDate: '30.10.2010',
+                                        vrfStu: 'NONE'
+                                )])
+                ))
+        ConfirmChildDataComponent component = new ConfirmChildDataComponent(personalData)
+        ComponentTestUtil.setAbstractComponentServices(component)
+
+        FieldComponent fieldComponent = new FieldComponent(type: ComponentType.ConfirmChildData, attrs: [fields:[
+                ["fieldName": "firstName", "label": "Имя"],
+                ["fieldName": "lastName", "label": "Фамилия"],
+                ["fieldName": "birthDate", "label": "Дата рождения"],
+                ["fieldName": "gender", "label": "Пол"],
+                ["fieldName": "rfBirthCertificateSeries", "label": "Серия"],
+                ["fieldName": "rfBirthCertificateNumber", "label": "Номер"],
+                ["fieldName": "rfBirthCertificateIssueDate", "label": "Дата выдачи"],
+        ]])
+        CycledApplicantAnswerItem cycledApplicantAnswerItem = new CycledApplicantAnswerItem(
+                esiaData: [
+                        id: '1',
+                        'firstName': 'Ваня',
+                        'lastName': 'Ванин',
+                        'birthDate': '2003-10-09T00:00:00Z',
+                        'gender': 'M',
+                        'type': esiaDataType,
+                        'rfBirthCertificateSeries': 'XVII-ШЮ',
+                        'rfBirthCertificateNumber': '222222',
+                        'rfBirthCertificateIssueDate': '2003-10-10T00:00:00.000+03:00',
+                ]
+        )
+
+        def expectedUpdatedEsiaData = [
+                'actDate': null,
+                'birthDate': '2005-06-10T00:00:00.000Z',
+                'firstName': 'Петя',
+                'gender': 'M',
+                'id': '1',
+                'isNew': false,
+                'lastName': 'Петечкин',
+                'middleName': '',
+                'regAddr': '',
+                'regDate': '',
+                'relationshipToChild': '',
+                'rfBirthCertificateActNumber': '-',
+                'rfBirthCertificateIssueDate': DateUtil.toOffsetDateTime('30.10.2010', DateUtil.ESIA_DATE_FORMAT) ,
+                'rfBirthCertificateIssuedBy': 'ЗАГС г.Магадан',
+                'rfBirthCertificateNumber': '555-777',
+                'rfBirthCertificateSeries': 'XO044',
+                'snils': null,
+                'type': certificateType,
+        ] as HashMap<String, Object>
+
+        when:
+        component.processCycledComponent(fieldComponent, cycledApplicantAnswerItem)
+
+        then:
+        assert component.getType() == ComponentType.ConfirmChildData
+        assert fieldComponent.getValue() ==
+                '{"states":[{"groupName":"Петечкин Петя","fields":[{"label":"Дата рождения","value":"10.06.2005"},' +
+                '{"label":"Пол","value":"M"}]},{"groupName":"Свидетельство о рождении","fields":[{"label":"Серия и номер","value":"XO044 555-777"},' +
+                '{"label":"Дата выдачи","value":"30.10.2010"}]}],' +
+                '"storedValues":{"firstName":"Петя","lastName":"Петечкин","birthDate":"10.06.2005","gender":"M","rfBirthCertificateSeries":"XO044",' +
+                '"rfBirthCertificateNumber":"555-777","rfBirthCertificateIssueDate":"30.10.2010","docType":"' + certificateType + '"},"errors":[]}'
+
+        def actualEsiaData = cycledApplicantAnswerItem.getEsiaData()
+        actualEsiaData.size() == expectedUpdatedEsiaData.size()
+        actualEsiaData == expectedUpdatedEsiaData
 
         where:
         esiaDataType | certificateType
