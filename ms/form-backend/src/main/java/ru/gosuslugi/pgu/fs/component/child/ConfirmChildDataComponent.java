@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import ru.atc.carcass.security.rest.model.person.Kids;
-import ru.atc.carcass.security.rest.model.person.PersonDoc;
-import ru.gosuslugi.pgu.common.core.date.util.DateUtil;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.components.BasicComponentUtil;
 import ru.gosuslugi.pgu.components.ComponentAttributes;
@@ -36,7 +34,6 @@ import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -48,7 +45,6 @@ import java.util.stream.Stream;
 
 import static ru.gosuslugi.pgu.components.ComponentAttributes.CHILDREN_ID_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.DESC_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.MDCL_PLCY_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.TITLE_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.WARN_ATTR;
 import static ru.gosuslugi.pgu.dto.descriptor.types.ComponentType.ConfirmChildData;
@@ -66,6 +62,7 @@ import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_RF_BI
 import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_RF_BIRTH_CERTIFICATE_NUMBER_ATTR;
 import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_RF_BIRTH_CERTIFICATE_SERIES_ATTR;
 import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_SNILS_ATTR;
+import static ru.gosuslugi.pgu.fs.utils.ChildrenInfoUtils.getKidInfo;
 
 /**
  * Компонент подтверждения персональных данных детей
@@ -88,21 +85,14 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
     private static final String RF_FIRST_NAME_PATTERN = "[а-яА-ЯёЁ\\sIVXLCDM'\\.)(\\\"\\-]{1,100}";
     private static final String RF_LAST_NAME_PATTERN = RF_FIRST_NAME_PATTERN;
     private static final String RF_MIDDLE_NAME_PATTERN = RF_FIRST_NAME_PATTERN;
-    private static final String RF_BIRTH_CERTIFICATE_ISUED_BY_PATTERN = "[а-яА-ЯёЁ\\sIVXLCDM0-9'\\.№:/,();\\\"\\-]{1,255}";
-    private static final String RF_BIRTH_CERTIFICATE_SERIES_PATTERN = "^[MDCLXIV]{1,6}\\-[а-яА-Я]{2}$";
-    private static final String RF_BIRTH_CERTIFICATE_NUMBER_PATTERN = "^[0-9]{6,7}$";
     private static final String FIRST_NAME_NOT_VALID_TITLE = "Проверьте имя";
     private static final String FIRST_NAME_NOT_VALID_DESC = "Поле может содержать только русские буквы";
     private static final String LAST_NAME_NOT_VALID_TITLE = "Проверьте фамилию";
     private static final String LAST_NAME_NOT_VALID_DESC = "Поле может содержать только русские буквы";
     private static final String MIDDLE_NAME_NOT_VALID_TITLE = "Проверьте отчество";
     private static final String MIDDLE_NAME_NOT_VALID_DESC = "Поле может содержать только русские буквы";
-    private static final String BIRTH_CERTIFICATE_ISUED_BY_NOT_VALID_TITLE = "Проверьте орган, выдавший свидетельство о рождении";
     private static final String BIRTH_CERTIFICATE_DATA_NOT_VALID_TITLE = "Проверьте указанные данные свидетельства о рождении";
     private static final String BIRTH_CERTIFICATE_TYPE_NOT_VALID_TITLE = "Проверьте тип свидетельства о рождении";
-    private static final String BIRTH_CERTIFICATE_ISUED_BY_NOT_VALID_DESC = "Поле может содержать только русские буквы, цифры и символы: «.», «,», «;», «:», «-», «'», «\"», «(», «)», «/», «№»";
-    private static final String BIRTH_CERTIFICATE_SERIES_NOT_VALID = "Проверьте серию свидетельства о рождении";
-    private static final String BIRTH_CERTIFICATE_NUMBER_NOT_VALID = "Проверьте номер свидетельства о рождении";
     private static final String BIRTH_CERTIFICATE_ISSUED_DATE_NOT_VALID = "Проверьте дату выдачи свидетельства о рождении";
     private static final String BIRTH_CERTIFICATE_TYPE_NOT_VALID = "Проверьте верно ли указан/указан ли тип свидетельства о рождении";
     public static final String FOREIGN_BRTH_CERT_TYPE = "FID_BRTH_CERT";
@@ -134,7 +124,10 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
                     .filter(kid -> childId.equals(kid.getId()))
                     .findFirst();
             if (kids.isPresent()) {
-                externalData = kidsToExternalData(kids.get());
+                userPersonalData.fillKidsOms();
+                Map<String, Object> newExternalData = getKidInfo(kids.get());
+                externalData.clear();
+                externalData.putAll(newExternalData);
             }
         }
 
@@ -187,34 +180,6 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
                 .errors(errors)
                 .build()
         );
-    }
-
-    private Map<String, Object> kidsToExternalData(Kids kid) {
-        Map<String, Object> externalData = new HashMap<>();
-        userPersonalData.fillKidsOms();
-        externalData.put(CHILDREN_FIRST_NAME_ATTR.name, kid.getFirstName());
-        externalData.put(CHILDREN_LAST_NAME_ATTR.name, kid.getLastName());
-        externalData.put(CHILDREN_MIDDLE_NAME_ATTR.name, Optional.ofNullable(kid.getMiddleName()).orElse(""));
-        externalData.put(CHILDREN_BIRTH_DATE_ATTR.name, DateUtil.toOffsetDateTimeString(kid.getBirthDate(), DateUtil.ESIA_DATE_FORMAT));
-        externalData.put(CHILDREN_GENDER_ATTR.name, kid.getGender());
-        externalData.put(CHILDREN_SNILS_ATTR.name, Optional.ofNullable(kid.getSnils()).orElse(""));
-        Optional<PersonDoc> brthCertOptional = kid.getDocuments().getDocs().stream().filter(x -> x.getType().contains("BRTH_CERT")).findFirst();
-        if (brthCertOptional.isPresent()) {
-            PersonDoc birthCert = brthCertOptional.get();
-            externalData.put(CHILDREN_RF_BIRTH_CERTIFICATE_SERIES_ATTR.name, birthCert.getSeries());
-            externalData.put(CHILDREN_RF_BIRTH_CERTIFICATE_NUMBER_ATTR.name, birthCert.getNumber());
-            externalData.put(CHILDREN_RF_BIRTH_CERTIFICATE_ACT_NUMBER_ATTR.name, birthCert.getActNo() == null ? "-" : birthCert.getActNo());
-            externalData.put(CHILDREN_RF_BIRTH_CERTIFICATE_ISSUE_DATE_ATTR.name, DateUtil.toOffsetDateTime(birthCert.getIssueDate(), DateUtil.ESIA_DATE_FORMAT));
-            externalData.put(CHILDREN_RF_BIRTH_CERTIFICATE_ISSUED_BY_ATTR.name, birthCert.getIssuedBy());
-            externalData.put(CHILDREN_ACT_DATE_ATTR.name, birthCert.getActDate());
-        }
-        Optional<PersonDoc> omsOptional = kid.getDocuments().getDocs().stream().filter(x -> x.getType().equals(MDCL_PLCY_ATTR)).findFirst();
-        if (omsOptional.isPresent()) {
-            PersonDoc oms = omsOptional.get();
-            externalData.put(CHILDREN_OMS_SERIES_ATTR.name, oms.getSeries());
-            externalData.put(CHILDREN_OMS_NUMBER_ATTR.name, oms.getNumber());
-        }
-        return externalData;
     }
 
     /**
