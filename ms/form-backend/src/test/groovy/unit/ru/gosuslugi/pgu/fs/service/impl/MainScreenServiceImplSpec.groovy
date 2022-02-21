@@ -68,8 +68,7 @@ class MainScreenServiceImplSpec extends Specification {
                 Stub(ComponentService),
                 Stub(DisplayReferenceService),
                 scenarioDtoService,
-                componentRegistry,
-                errorModalDescriptorService
+                componentRegistry
         )
 
         computeAnswerService = Mock(ComputeAnswerServiceImpl)
@@ -88,7 +87,6 @@ class MainScreenServiceImplSpec extends Specification {
                 Stub(DisplayReferenceService),
                 screenRegistry,
                 Stub(UserPersonalData),
-                Stub(UserOrgData),
                 Stub(PguOrderService),
                 scenarioDtoService,
                 Stub(IntegrationService),

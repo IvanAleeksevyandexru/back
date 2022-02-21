@@ -53,8 +53,7 @@ class PrevScreenProcessImplSpec extends Specification {
                 componentServiceMock,
                 Stub(DisplayReferenceService),
                 scenarioDtoServiceMock,
-                componentRegistry,
-                errorModalDescriptorService)
+                componentRegistry)
     }
 
     def 'Check only init screen was show'() {

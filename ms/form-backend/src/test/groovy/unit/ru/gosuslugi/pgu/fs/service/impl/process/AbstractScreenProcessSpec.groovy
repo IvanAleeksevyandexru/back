@@ -86,7 +86,7 @@ class AbstractScreenProcessSpec extends Specification {
 
     def 'Can reinit scenario'() {
         when:
-        process.of(serviceId, new ScenarioRequest())
+        process.of(serviceId, new ScenarioRequest(scenarioDto: new ScenarioDto(orderId: 1, display: new DisplayRequest(id: 's1'))))
                 .execute({process.reInitScenario()} as Consumer)
                 .start()
 

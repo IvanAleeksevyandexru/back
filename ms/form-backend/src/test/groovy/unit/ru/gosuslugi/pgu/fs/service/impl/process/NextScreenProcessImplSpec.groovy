@@ -60,7 +60,6 @@ class NextScreenProcessImplSpec extends Specification {
                 Stub(DisplayReferenceService),
                 screenRegistryMock,
                 userPersonalDataMock,
-                userOrgDataMock,
                 pguOrderServiceMock,
                 scenarioDtoServiceMock,
                 integrationServiceMock,
