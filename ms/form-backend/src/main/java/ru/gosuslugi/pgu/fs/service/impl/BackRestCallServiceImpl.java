@@ -5,10 +5,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
+import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
+import ru.gosuslugi.pgu.common.core.exception.PguException;
 import ru.gosuslugi.pgu.dto.BackRestCallResponseDto;
 import ru.gosuslugi.pgu.fs.component.RestClientRegistry;
 import ru.gosuslugi.pgu.fs.component.logic.model.RestCallDto;
@@ -47,6 +50,8 @@ public class BackRestCallServiceImpl implements BackRestCallService {
                             Object.class
                     );
             return new BackRestCallResponseDto(responseEntity.getStatusCodeValue(), responseEntity.getBody());
+        } catch (PguException e) {
+            return new BackRestCallResponseDto(HttpStatus.NOT_FOUND.value(), e.getMessage());
         } catch (HttpClientErrorException | HttpServerErrorException e) {
             String message = "";
             if (REQUEST_TIMEOUT.equals(e.getStatusCode())) {
