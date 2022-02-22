@@ -34,7 +34,7 @@ mock:
     url: http://dev-l11.pgu2-pub.test.gosuslugi.ru/mock/billing/
   gibdd:
     enabled: true
-    url: http://dev-l11.pgu2-pub.test.gosuslugi.ru/mock/gibdd/
+    path: /gibdd
 
 ratelimit:
   enabled: false
