@@ -20,7 +20,6 @@ import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
-import ru.gosuslugi.pgu.components.descriptor.types.DocInputField;
 import ru.gosuslugi.pgu.common.core.date.util.DateUtil;
 import ru.gosuslugi.pgu.fs.common.component.AbstractCycledComponent;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
@@ -51,6 +50,7 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.VERIFIED_ATTR;
 import static ru.gosuslugi.pgu.components.FieldComponentUtil.FIELDS_KEY;
 import static ru.gosuslugi.pgu.components.FieldComponentUtil.VALIDATION_ARRAY_KEY;
 import static ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil.jsonNodeToString;
+import static ru.gosuslugi.pgu.components.regex.RegExpContext.matchesByRegex;
 
 @Slf4j
 @Component
@@ -145,7 +145,7 @@ public class DocInputComponent extends AbstractCycledComponent<DocInputDto> {
                                 if (
                                         !incorrectAnswers.containsKey(fieldName)
                                                 && (field.isRequired() ? !isNull(stringToCheck) : !StringUtils.isEmpty(stringToCheck))
-                                                && !stringToCheck.matches(validationRule.get(REG_EXP_VALUE))
+                                                && !matchesByRegex(stringToCheck, validationRule.get(REG_EXP_VALUE))
                                 ) {
                                     incorrectAnswers.put(fieldName, validationRule.get(REG_EXP_ERROR_MESSAGE));
                                 }

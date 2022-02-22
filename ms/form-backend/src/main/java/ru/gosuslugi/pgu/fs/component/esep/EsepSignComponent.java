@@ -16,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 import ru.atc.carcass.security.rest.model.orgs.Org;
 import ru.atc.carcass.security.rest.model.person.Person;
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
-import ru.gosuslugi.pgu.fs.common.exception.FormBaseException;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
@@ -34,6 +33,7 @@ import ru.gosuslugi.pgu.dto.esep.PrepareSignResponse;
 import ru.gosuslugi.pgu.dto.esep.SignedFileInfo;
 import ru.gosuslugi.pgu.fs.common.component.AbstractComponent;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
+import ru.gosuslugi.pgu.fs.common.exception.FormBaseException;
 import ru.gosuslugi.pgu.fs.component.esep.model.EsepSignCheckResult;
 import ru.gosuslugi.pgu.fs.component.esep.model.EsepSignComponentDto;
 import ru.gosuslugi.pgu.fs.service.impl.FormScenarioDtoServiceImpl;
@@ -51,7 +51,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
-import static org.apache.commons.lang.StringUtils.isEmpty;
+import static org.apache.commons.lang3.StringUtils.getDigits;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 /**
  * Компонет для подписания заявления ЭЦП
@@ -210,7 +211,7 @@ public class EsepSignComponent extends AbstractComponent<EsepSignComponentDto> {
             return EsepSignCheckResult.NOT_SIGNED;
         }
 
-        esiaSnils = esiaSnils.replaceAll("[^0-9]", "");
+        esiaSnils = getDigits(esiaSnils);
         String esiaCommonName = Stream.of(person.getLastName(), person.getFirstName(), person.getMiddleName())
                 .filter(Objects::nonNull)
                 .collect(Collectors.joining(" "))
@@ -226,7 +227,7 @@ public class EsepSignComponent extends AbstractComponent<EsepSignComponentDto> {
             boolean found = false;
             for (CertificateUserInfoDto userInfo: userInfoList) {
                 if (userInfo.getSnils() != null && userInfo.getCommonName() != null) {
-                    String certSnils = userInfo.getSnils().replaceAll("[^0-9]", "");
+                    String certSnils = getDigits(userInfo.getSnils());
                     String certCommonName = userInfo.getCommonName().trim().toLowerCase(LOCAL_RU);
                     if (certSnils.equals(esiaSnils) && certCommonName.startsWith(esiaCommonName)) {
                         found = true;
@@ -261,7 +262,7 @@ public class EsepSignComponent extends AbstractComponent<EsepSignComponentDto> {
             return EsepSignCheckResult.NOT_SIGNED;
 
         Org userOrg = userOrgData.getOrg();
-        String snils = userPersonalData.getPerson().getSnils().replaceAll("-", "").replaceAll(" ", "");
+        String snils = userPersonalData.getPerson().getSnils().replace("-", "").replace(" ", "");
         String userPersonalInn = userPersonalData.getPerson().getInn();
         String inn = userOrg.getInn();
         String ogrn = userOrg.getOgrn();
@@ -275,7 +276,7 @@ public class EsepSignComponent extends AbstractComponent<EsepSignComponentDto> {
                 String certUserInn = certUserInfo.getInn();
                 String certUserOgrn = certUserInfo.getOgrn();
                 String certUserOgrnip = certUserInfo.getOgrnip();
-                String certUserSnils = certUserInfo.getSnils().replaceAll("-", "").replaceAll(" ", "");
+                String certUserSnils = certUserInfo.getSnils().replace("-", "").replace(" ", "");
 
                 //UL INN + OGRN
                 boolean isInnCheck = StringUtils.hasText(certUserInn) ?

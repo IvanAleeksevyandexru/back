@@ -42,6 +42,7 @@ import java.util.stream.Collectors;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ARCHIVE_TYPES;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.MAX_FILE_COUNT;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.MAX_SIZE;
+import static ru.gosuslugi.pgu.components.regex.RegExpContext.matchesByRegex;
 
 @Component
 @RequiredArgsConstructor
@@ -256,7 +257,7 @@ public class UploadFileComponent extends AbstractComponent<String> {
         List<String> answerFilesMnemonics = getFilesMnemonics(entry);
         Map<String, List<String>> requiredUploadPatternToAnswerFileMnemonics = requiredUploadMnemonicPatterns.stream()
                 .collect(Collectors.toMap(Function.identity(), pattern ->
-                        answerFilesMnemonics.stream().filter(m -> m.matches(pattern)).collect(Collectors.toList())));
+                        answerFilesMnemonics.stream().filter(m -> matchesByRegex(m, pattern)).collect(Collectors.toList())));
         Collection<List<String>> values = requiredUploadPatternToAnswerFileMnemonics.values();
         if (values.stream().anyMatch(CollectionUtils::isEmpty)) {
             return false;
@@ -275,7 +276,7 @@ public class UploadFileComponent extends AbstractComponent<String> {
             if (FileType.ATTACHMENT.getType() != details.getObjectTypeId()) {
                 return false;
             }
-            return details.getMnemonic().matches(mnemonicType);
+            return matchesByRegex(details.getMnemonic(), mnemonicType);
         }).map(FileInfo::getMnemonic).collect(Collectors.toList());
     }
 

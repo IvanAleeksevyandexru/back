@@ -30,6 +30,7 @@ import ru.gosuslugi.pgu.fs.descriptor.ErrorModalView;
 import ru.gosuslugi.pgu.fs.service.ParticipantService;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static java.lang.String.valueOf;
@@ -49,7 +50,7 @@ public class SnilsComponent extends AbstractCycledComponent<String> {
 
     private static final String VALIDATION_OFF_ATTR = "validationOff";
 
-    private static final String SNILS_REG_EXP = "\\d{3}-\\d{3}-\\d{3}[ ]{1}\\d{2}";
+    private static final Pattern SNILS_REG_EXP = Pattern.compile("\\d{3}-\\d{3}-\\d{3}[ ]{1}\\d{2}");
 
     private final PersonSearchService personSearch;
 
@@ -84,7 +85,7 @@ public class SnilsComponent extends AbstractCycledComponent<String> {
             return;
         }
 
-        if (!value.matches(SNILS_REG_EXP)) {
+        if (!SNILS_REG_EXP.matcher(value).matches()) {
             setNewAnswerValue(initPersonWithAge(entry.getValue().getValue()), entry, fieldComponent);
             incorrectAnswers.put(entry.getKey(), getErrorMessage(fieldComponent, DEFAULT_ERROR_MESSAGE));
             return;

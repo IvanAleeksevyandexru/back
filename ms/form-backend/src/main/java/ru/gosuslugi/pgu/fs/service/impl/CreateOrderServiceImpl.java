@@ -9,15 +9,13 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import ru.atc.carcass.common.exception.FaultException;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
-import ru.gosuslugi.pgu.dto.ratelimit.RateLimitOverHeadDto;
-import ru.gosuslugi.pgu.fs.common.exception.FormBaseException;
-import ru.gosuslugi.pgu.fs.common.exception.NoRightToCreateOrderException;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
 import ru.gosuslugi.pgu.dto.ratelimit.RateLimitOverHeadDto;
 import ru.gosuslugi.pgu.dto.ratelimit.RateLimitRequest;
+import ru.gosuslugi.pgu.fs.common.exception.FormBaseException;
 import ru.gosuslugi.pgu.fs.common.exception.NoRightToCreateOrderException;
 import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService;
 import ru.gosuslugi.pgu.fs.common.service.UserCookiesService;
@@ -39,6 +37,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static ru.gosuslugi.pgu.components.regex.RegExpContext.getValueByRegex;
 
 @Slf4j
 @Service
@@ -231,7 +231,7 @@ public class CreateOrderServiceImpl implements CreateOrderService {
         String prefix = cycledValues + ".";
         for (Map<String, String> cycle : cycles) {
             String value = cycledAnswers.stream()
-                    .map(field -> field.replaceFirst(prefix, ""))
+                    .map(field -> getValueByRegex(prefix, pattern -> pattern.matcher(field).replaceFirst("")))
                     .map(cycle::get)
                     .collect(Collectors.joining(" "));
             result.add(value);
