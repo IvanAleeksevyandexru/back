@@ -21,6 +21,7 @@ pgu:
   birth-certificate-url: https://esia-portal1.test.gosuslugi.ru/
   rest-call-url: https://pgu-uat-fed.test.gosuslugi.ru
   smev-adapter-url: https://pgu-dev-fed.test.gosuslugi.ru
+  smev-converter-url: http://localhost:8092/api
 mock:
   enabled: true
   payment:
