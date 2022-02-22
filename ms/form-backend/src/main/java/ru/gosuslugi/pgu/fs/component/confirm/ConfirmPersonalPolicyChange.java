@@ -13,6 +13,7 @@ import ru.atc.carcass.security.rest.model.person.PersonDoc;
 import ru.gosuslugi.pgu.common.core.exception.ValidationException;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
+import ru.gosuslugi.pgu.components.ValidationUtil;
 import ru.gosuslugi.pgu.components.descriptor.types.ValidationFieldDto;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.ScenarioDto;
@@ -32,7 +33,6 @@ import static java.util.Objects.isNull;
 import static ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil.jsonNodeToString;
 import static ru.gosuslugi.pgu.components.FieldComponentUtil.FIELDS_KEY;
 import static ru.gosuslugi.pgu.components.FieldComponentUtil.VALIDATION_ARRAY_KEY;
-import static ru.gosuslugi.pgu.components.regex.RegExpContext.matchesByRegex;
 
 /**
  * Компонент для отображения и валидации ОМС  пользователя в модальном окне, которое задается в profile-oms-update.json
@@ -117,7 +117,7 @@ public class ConfirmPersonalPolicyChange extends AbstractComponent<ConfirmPerson
                             if (
                                     !incorrectAnswers.containsKey(field.getFieldName())
                                             && !isNull(stringToCheck)
-                                            && !matchesByRegex(stringToCheck, validationRule.get(REG_EXP_VALUE))
+                                            && !stringToCheck.matches(validationRule.get(REG_EXP_VALUE))
                             ) {
                                 incorrectAnswers.put(field.getFieldName(), validationRule.get(REG_EXP_ERROR_MESSAGE));
                             }

@@ -28,7 +28,6 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.ERROR_DESC_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ERROR_MSG_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.VALUE_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.VERIFIED_ATTR;
-import static ru.gosuslugi.pgu.components.regex.RegExpContext.matchesByRegex;
 
 /**
  * Компонент показывает email пользователя из ЕСИА и валидирует что он не изменен
@@ -70,7 +69,7 @@ public class ConfirmPersonalUserEmailComponent extends AbstractComponent<String>
         } else {
             List<Map<String, String>> regExpValidations = getRegExpValidationAttrs(component);
             for (Map<String, String> regExpValidation: regExpValidations) {
-                if (!matchesByRegex(email, regExpValidation.get(VALUE_ATTR))) {
+                if (!email.matches(regExpValidation.get(VALUE_ATTR))) {
                     errors.add(new FieldComponentError(regExpValidation.get(ERROR_MSG_ATTR), regExpValidation.get(ERROR_DESC_ATTR)));
                 }
             }
@@ -92,7 +91,7 @@ public class ConfirmPersonalUserEmailComponent extends AbstractComponent<String>
         // проверяем по регуляркам
         List<Map<String, String>> regExpValidations = getRegExpValidationAttrs(component);
         for (Map<String, String> regExpValidation: regExpValidations) {
-            if (!matchesByRegex(email, regExpValidation.get(VALUE_ATTR))) {
+            if (!email.matches(regExpValidation.get(VALUE_ATTR))) {
                 incorrectAnswers.put(entry.getKey(), regExpValidation.get(ERROR_MSG_ATTR));
                 return;
             }

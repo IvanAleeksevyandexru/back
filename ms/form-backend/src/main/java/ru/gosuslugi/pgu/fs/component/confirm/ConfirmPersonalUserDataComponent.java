@@ -37,7 +37,6 @@ import java.util.stream.Stream;
 
 import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
 import static ru.gosuslugi.pgu.components.FieldComponentUtil.FIELDS_KEY;
-import static ru.gosuslugi.pgu.components.regex.RegExpContext.matchesByRegex;
 
 /**
  * Компонент показывает персональные данные пользователя из ЕСИА
@@ -81,7 +80,7 @@ public class ConfirmPersonalUserDataComponent extends AbstractComponent<FormDto<
     );
 
     private static final String BIRTH_PLACE_PATTERN = "[а-яА-ЯёЁ\\d\\s().\",№:;\\-/']{1,255}";
-    private static final Pattern INVALID_CHARS_PATTERN = Pattern.compile( "[^a-zA-Zа-яА-ЯёЁ\\d\\s\\[\\]()?\\.\",#№:;\\-\\+/'*<>&\\\\]");
+    private static final String INVALID_CHARS_PATTERN = "[^a-zA-Zа-яА-ЯёЁ\\d\\s\\[\\]()?\\.\",#№:;\\-\\+/'*<>&\\\\]";
     private static final Pattern SPECIAL_CHAR_PATTERN = Pattern.compile("[-().,;:'\"/№]+");
 
     private final static Map<String, Function<ConfirmPersonalUserData, String>> methodMap = new HashMap<>() {{
@@ -317,9 +316,9 @@ public class ConfirmPersonalUserDataComponent extends AbstractComponent<FormDto<
                     ((List<Map<String, String>>) fieldDto.getAttrs().get(FieldComponentUtil.VALIDATION_ARRAY_KEY))
                             .stream()
                             //.map(v->)
-                            .filter(v -> RegExpUtil.REG_EXP_TYPE.equalsIgnoreCase(v.get(TYPE_ATTR)))
-                            .filter(v -> !matchesByRegex(stringToCheck, v.get(VALUE_ATTR)))
-                            .map(v -> new ErrorDto(v.get(ERROR_MSG_ATTR), v.get(ERROR_DESC_ATTR)))
+                            .filter(v -> RegExpUtil.REG_EXP_TYPE.equalsIgnoreCase(v.get(ComponentAttributes.TYPE_ATTR)))
+                            .filter(v -> !stringToCheck.matches(v.get(ComponentAttributes.VALUE_ATTR)))
+                            .map(v -> new ErrorDto(v.get(ComponentAttributes.ERROR_MSG_ATTR), v.get(ComponentAttributes.ERROR_DESC_ATTR)))
                             .collect(Collectors.toList())
             );
 
@@ -769,7 +768,7 @@ public class ConfirmPersonalUserDataComponent extends AbstractComponent<FormDto<
     }
 
     private static String getClearedValue(String initialValue) {
-        return StringUtils.isEmpty(initialValue) ? initialValue : INVALID_CHARS_PATTERN.matcher(initialValue).replaceAll("").trim();
+        return StringUtils.isEmpty(initialValue) ? initialValue : initialValue.replaceAll(INVALID_CHARS_PATTERN, "").trim();
     }
 
 }
