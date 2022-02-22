@@ -18,7 +18,6 @@ import ru.gosuslugi.pgu.fs.service.DictionaryListPreprocessorService;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ORIGINAL_ITEM;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.VALUE_ATTR;
@@ -27,8 +26,6 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.VALUE_ATTR;
 @Component
 @RequiredArgsConstructor
 public class MedicalBirthCertificatesComponent extends AbstractComponent<String> {
-
-    private static final Pattern ALL_WHITESPACES = Pattern.compile("\\s");
 
     private final PguMedicalBirthCertificatesClient medicalBirthCertificatesClient;
     private final UserPersonalData userPersonalData;
@@ -57,7 +54,7 @@ public class MedicalBirthCertificatesComponent extends AbstractComponent<String>
     private void processBirthDate(List<MedicalBirthCertificate> certs) {
         for (MedicalBirthCertificate cert : certs) {
             NewBornInfo newBornInfo = cert.getNewBornInfo();
-            String[] dateTime = ALL_WHITESPACES.split(newBornInfo.getBirthDate().trim());
+            String[] dateTime = newBornInfo.getBirthDate().trim().split("\\s");
             if (dateTime.length == 2) {
                 newBornInfo.setBirthDate(dateTime[0]);
                 newBornInfo.setBirthTime(dateTime[1]);
