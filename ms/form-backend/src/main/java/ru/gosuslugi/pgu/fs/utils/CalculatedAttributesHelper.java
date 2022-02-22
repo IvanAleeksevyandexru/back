@@ -70,7 +70,7 @@ public class CalculatedAttributesHelper {
     private static final String CALCULATION_REG_EXP = "["+CALCULATION_VARIABLE_START+"](.*?)([=\\s+|&-)!]|$)";
 
     //This expression restricts use of function, escape symbols for bypass
-    private static final Pattern EXPRESSION_VALIDATION_REG_EXP = Pattern.compile("[0-9A-Za-zА-Яа-яёЁ.\\s&|!$'\"=()?:\\-;,_{}\\[\\]\\\\+<>]+");
+    private static final String EXPRESSION_VALIDATION_REG_EXP = "[0-9A-Za-zА-Яа-яёЁ.\\s&|!$'\"=()?:\\-;,_{}\\[\\]\\\\+<>]+";
 
     /**
      * attributeName для ServiceId
@@ -151,7 +151,7 @@ public class CalculatedAttributesHelper {
         String result = "";
         log.info("Starting calculation filter parameter for component with id {}", component.getId());
 
-        if (!EXPRESSION_VALIDATION_REG_EXP.matcher(expression).matches()) {
+        if (!Pattern.matches(EXPRESSION_VALIDATION_REG_EXP, expression)) {
             log.error("Неверное описание expression = {}", expression);
             throw new FormBaseException(NOT_CORRECT_CONDITION_PARSING);
         }

@@ -120,7 +120,7 @@ public abstract class AbstractPaymentComponent<InitialValueModel> extends Abstra
                 return result;
             }
             result.setIdType(payerInfo[0]);
-            String[] docNumAndSeries = payerInfo[1].split("\\+");
+            String[] docNumAndSeries = payerInfo[1].split("[+]");
             result.setIdNum(getPayerIdNum(docNumAndSeries, current, previous));
         }
 

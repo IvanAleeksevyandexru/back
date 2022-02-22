@@ -4,15 +4,13 @@ import ru.gosuslugi.pgu.dto.ApplicantAnswer
 import ru.gosuslugi.pgu.fs.common.component.validation.RegExpValidation
 import spock.lang.Specification
 
-import java.util.regex.Pattern
-
 import static ru.gosuslugi.pgu.fs.component.confirm.ConfirmPersonalUserEmailComponent.DEFAULT_EMAIL_MASK
 
 class RegExpValidationSpec extends Specification {
 
     def "Validate regex values"() {
         given:
-        def validator = new RegExpValidation(Pattern.compile(DEFAULT_EMAIL_MASK), "errorMessage")
+        def validator = new RegExpValidation(DEFAULT_EMAIL_MASK, "errorMessage")
 
         expect:
         assert validator.validate(answerEntry("key", "test@test.ru"), null) == null
