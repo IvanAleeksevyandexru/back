@@ -56,7 +56,7 @@ public class GibddDataServiceImpl implements GibddDataService {
     @Value("${mock.gibdd.enabled}")
     private boolean mockEnabled;
 
-    @Value("${mock.gibdd.path}")
+    @Value("${mock.gibdd.url:#{null}}")
     private String mockPath;
 
     private final NsiDictionaryService nsiDictionaryService;
