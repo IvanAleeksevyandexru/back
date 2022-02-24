@@ -117,7 +117,7 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
     public ComponentResponse<FormDto<ChildData>> getCycledInitialValue(FieldComponent component, Map<String, Object> externalData) {
         List<StateDto> states = new ArrayList<>();
         ChildData childData = new ChildData();
-        String childId = getOrDefault(externalData, CHILDREN_ID_ATTR);
+        String childId = getAttrOrEmptyString(externalData, CHILDREN_ID_ATTR);
 
         if (!StringUtils.isEmpty(childId)) {
             Optional<Kids> kids = userPersonalData.getKids().stream()
@@ -192,31 +192,30 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
      */
     private void fillBaseData(Map<String, FieldDto> fieldsComponent, Map<String, Object> externalData, ChildData childData, FieldsComponent filledFields) {
         if (fieldsComponent.containsKey(CHILDREN_FIRST_NAME_ATTR.name)) {
-            String valueFirstName = getOrDefault(externalData, CHILDREN_FIRST_NAME_ATTR.name);
+            String valueFirstName = getAttrOrEmptyString(externalData, CHILDREN_FIRST_NAME_ATTR.name);
             fieldsComponent.get(CHILDREN_FIRST_NAME_ATTR.name).setValue(valueFirstName);
             childData.setFirstName(valueFirstName);
         }
 
         if (fieldsComponent.containsKey(CHILDREN_LAST_NAME_ATTR.name)) {
-            String valueLastName = getOrDefault(externalData, CHILDREN_LAST_NAME_ATTR.name);
+            String valueLastName = getAttrOrEmptyString(externalData, CHILDREN_LAST_NAME_ATTR.name);
             fieldsComponent.get(CHILDREN_LAST_NAME_ATTR.name).setValue(valueLastName);
             childData.setLastName(valueLastName);
         }
 
         if (fieldsComponent.containsKey(CHILDREN_MIDDLE_NAME_ATTR.name)) {
-            String valueMiddleName = getOrDefault(externalData, CHILDREN_MIDDLE_NAME_ATTR.name);
+            String valueMiddleName = getAttrOrEmptyString(externalData, CHILDREN_MIDDLE_NAME_ATTR.name);
             fieldsComponent.get(CHILDREN_MIDDLE_NAME_ATTR.name).setValue(valueMiddleName);
             childData.setMiddleName(valueMiddleName);
         }
 
         if (fieldsComponent.containsKey(CHILDREN_BIRTH_DATE_ATTR.name)) {
-            String valueDateBirth = getOrDefault(externalData, CHILDREN_BIRTH_DATE_ATTR.name);
+            var valueDateBirth = getAttrOrEmptyString(externalData, CHILDREN_BIRTH_DATE_ATTR.name);
             fieldsComponent.get(CHILDREN_BIRTH_DATE_ATTR.name).setValue(valueDateBirth);
             try {
                 var dateString = LocalDateTime.parse(
                         fieldsComponent.get(CHILDREN_BIRTH_DATE_ATTR.name).getValue(),
-                        DateTimeFormatter.ISO_DATE_TIME
-                ).format(DATE_FORMATTER);
+                        DateTimeFormatter.ISO_DATE_TIME).format(DATE_FORMATTER);
                 setFieldValue(fieldsComponent.get(CHILDREN_BIRTH_DATE_ATTR.name), dateString, filledFields);
                 childData.setBirthDate(dateString);
             } catch (DateTimeParseException e) {
@@ -226,38 +225,34 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
         }
 
         if (fieldsComponent.containsKey(CHILDREN_GENDER_ATTR.name)) {
-            String valueGender = getOrDefault(externalData, CHILDREN_GENDER_ATTR.name);
+            String valueGender = getAttrOrEmptyString(externalData, CHILDREN_GENDER_ATTR.name);
             fieldsComponent.get(CHILDREN_GENDER_ATTR.name).setValue(valueGender);
             setFieldValue(fieldsComponent.get(CHILDREN_GENDER_ATTR.name), valueGender, filledFields);
             childData.setGender(valueGender);
         }
 
         if (fieldsComponent.containsKey(CHILDREN_SNILS_ATTR.name)) {
-            String valueSnils = getOrDefault(externalData, CHILDREN_SNILS_ATTR.name);
+            String valueSnils = getAttrOrEmptyString(externalData, CHILDREN_SNILS_ATTR.name);
             fieldsComponent.get(CHILDREN_SNILS_ATTR.name).setValue(valueSnils);
             setFieldValue(fieldsComponent.get(CHILDREN_SNILS_ATTR.name), valueSnils, filledFields);
             childData.setSnils(valueSnils);
         }
 
         if (fieldsComponent.containsKey(CHILDREN_OMS_NUMBER_ATTR.name)) {
-            String valueOmsNumber = getOrDefault(externalData, CHILDREN_OMS_NUMBER_ATTR.name);
+            String valueOmsNumber = getAttrOrEmptyString(externalData, CHILDREN_OMS_NUMBER_ATTR.name);
             fieldsComponent.get(CHILDREN_OMS_NUMBER_ATTR.name).setValue(valueOmsNumber);
             setFieldValue(fieldsComponent.get(CHILDREN_OMS_NUMBER_ATTR.name), valueOmsNumber, filledFields);
             childData.setOmsNumber(valueOmsNumber);
         }
 
         if (fieldsComponent.containsKey(CHILDREN_OMS_SERIES_ATTR.name)) {
-            String valueOmsSeries = getOrDefault(externalData, CHILDREN_OMS_SERIES_ATTR.name);
+            String valueOmsSeries = getAttrOrEmptyString(externalData, CHILDREN_OMS_SERIES_ATTR.name);
             fieldsComponent.get(CHILDREN_OMS_SERIES_ATTR.name).setValue(valueOmsSeries);
             setFieldValue(fieldsComponent.get(CHILDREN_OMS_SERIES_ATTR.name), valueOmsSeries, filledFields);
             childData.setOmsSeries(valueOmsSeries);
         }
 
-        childData.setDocType(getOrDefault(externalData, "type"));
-    }
-
-    private String getOrDefault(Map<String, Object> externalData, String attrName) {
-        return Optional.ofNullable(externalData.get(attrName)).orElse("").toString();
+        childData.setDocType(getAttrOrEmptyString(externalData, "type"));
     }
 
     /**
@@ -269,12 +264,10 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
      * @param filledFields заполняемые поля
      */
     private void fillBirthCertificateData(Map<String, FieldDto> fieldsComponent, Map<String, Object> externalData, ChildData childData, FieldsComponent filledFields) {
-        String seriesCertificate = Optional.ofNullable(externalData.get(CHILDREN_RF_BIRTH_CERTIFICATE_SERIES_ATTR.name))
-                .orElse("").toString();
+        String seriesCertificate = getAttrOrEmptyString(externalData, CHILDREN_RF_BIRTH_CERTIFICATE_SERIES_ATTR.name);
         childData.setRfBirthCertificateSeries(seriesCertificate);
 
-        String numberCertificate = Optional.ofNullable(externalData.get(CHILDREN_RF_BIRTH_CERTIFICATE_NUMBER_ATTR.name))
-                .orElse("").toString();
+        String numberCertificate = getAttrOrEmptyString(externalData, CHILDREN_RF_BIRTH_CERTIFICATE_NUMBER_ATTR.name);
         childData.setRfBirthCertificateNumber(numberCertificate);
 
         setFieldValueSeriesAndNumber(fieldsComponent.get(CHILDREN_RF_BIRTH_CERTIFICATE_SERIES_ATTR.name),
@@ -284,15 +277,13 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
                 filledFields);
 
         if (fieldsComponent.containsKey(CHILDREN_RF_BIRTH_CERTIFICATE_ACT_NUMBER_ATTR.name)) {
-            String valueActNumber = Optional.ofNullable(externalData.get(CHILDREN_RF_BIRTH_CERTIFICATE_ACT_NUMBER_ATTR.name))
-                    .orElse("").toString();
+            String valueActNumber = getAttrOrEmptyString(externalData, CHILDREN_RF_BIRTH_CERTIFICATE_ACT_NUMBER_ATTR.name);
             setFieldValue(fieldsComponent.get(CHILDREN_RF_BIRTH_CERTIFICATE_ACT_NUMBER_ATTR.name), valueActNumber, filledFields);
             childData.setRfBirthCertificateActNumber(valueActNumber);
         }
 
         if (fieldsComponent.containsKey(CHILDREN_RF_BIRTH_CERTIFICATE_ISSUE_DATE_ATTR.name)) {
-            String valueBirthCertIssueDate = Optional.ofNullable(externalData.get(CHILDREN_RF_BIRTH_CERTIFICATE_ISSUE_DATE_ATTR.name))
-                    .orElse("").toString();
+            var valueBirthCertIssueDate = getAttrOrEmptyString(externalData, CHILDREN_RF_BIRTH_CERTIFICATE_ISSUE_DATE_ATTR.name);
             fieldsComponent.get(CHILDREN_RF_BIRTH_CERTIFICATE_ISSUE_DATE_ATTR.name).setValue(valueBirthCertIssueDate);
             try {
                 var dateString = LocalDateTime.parse(
@@ -307,15 +298,13 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
         }
 
         if (fieldsComponent.containsKey(CHILDREN_RF_BIRTH_CERTIFICATE_ISSUED_BY_ATTR.name)) {
-            String valueIssuedBy = Optional.ofNullable(externalData.get(CHILDREN_RF_BIRTH_CERTIFICATE_ISSUED_BY_ATTR.name))
-                    .orElse("").toString();
+            String valueIssuedBy = getAttrOrEmptyString(externalData, CHILDREN_RF_BIRTH_CERTIFICATE_ISSUED_BY_ATTR.name);
             setFieldValue(fieldsComponent.get(CHILDREN_RF_BIRTH_CERTIFICATE_ISSUED_BY_ATTR.name), valueIssuedBy, filledFields);
             childData.setRfBirthCertificateIssuedBy(valueIssuedBy);
         }
 
         if (fieldsComponent.containsKey(CHILDREN_ACT_DATE_ATTR.name)) {
-            String valueActDate = Optional.ofNullable(externalData.get(CHILDREN_ACT_DATE_ATTR.name))
-                    .orElse("").toString();
+            String valueActDate = getAttrOrEmptyString(externalData, CHILDREN_ACT_DATE_ATTR.name);
             setFieldValue(fieldsComponent.get(CHILDREN_ACT_DATE_ATTR.name), valueActDate, filledFields);
             childData.setActDate(valueActDate);
         }
@@ -608,5 +597,10 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
          * Поля для заполнения.
          */
         private final List<FieldDto> filledFields = new ArrayList<>();
+    }
+
+    public static String getAttrOrEmptyString(Map<String, Object> map, String key) {
+        final var v = map.get(key);
+        return v != null ? v.toString() : "";
     }
 }
