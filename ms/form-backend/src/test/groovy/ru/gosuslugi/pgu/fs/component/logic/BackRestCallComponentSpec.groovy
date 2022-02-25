@@ -8,6 +8,7 @@ import org.springframework.test.web.client.MockRestServiceServer
 import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.client.RestTemplate
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException
+import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData
 import ru.gosuslugi.pgu.dto.BackRestCallResponseDto
 import ru.gosuslugi.pgu.dto.ScenarioDto
@@ -41,7 +42,7 @@ class BackRestCallComponentSpec extends Specification {
     def setupSpec() {
         restTemplate = new RestTemplate()
         def restClientRegistry = new RestClientRegistry(restTemplate, Mock(RestTemplateBuilder))
-        restCallService = new BackRestCallServiceImpl(restClientRegistry)
+        restCallService = new BackRestCallServiceImpl(restClientRegistry, JsonProcessingUtil.getObjectMapper())
         restCallComponent = new RestCallComponent('http://url_to_service')
         ComponentTestUtil.setAbstractComponentServices(restCallComponent)
     }
@@ -101,7 +102,7 @@ class BackRestCallComponentSpec extends Specification {
             it.getRestTemplate(-1) >> restTemplate
         }
 
-        def restCallService = new BackRestCallServiceImpl(restClientRegistry)
+        def restCallService = new BackRestCallServiceImpl(restClientRegistry, JsonProcessingUtil.getObjectMapper())
 
         def request = new RestCallDto()
         request.setMethod(HttpMethod.POST.toString())
