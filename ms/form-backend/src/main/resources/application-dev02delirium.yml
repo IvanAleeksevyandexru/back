@@ -11,6 +11,7 @@ pgu:
   gibdd-url: https://pgu-dev-fed.test.gosuslugi.ru/
   lkapi-url: http://pgu-dev-fedlkapinlb.test.gosuslugi.ru
   smev-adapter-url: https://pgu-dev-fed.test.gosuslugi.ru
+  smev-converter-url: https://dev02.pgu2-pub.test.gosuslugi.ru/smev-converter
 mock:
   enabled: true
   payment:
@@ -23,7 +24,7 @@ mock:
     url: http://dev-l11.pgu2-pub.test.gosuslugi.ru/mock/billing/
   gibdd:
     enabled: true
-    url: http://dev-l11.pgu2-pub.test.gosuslugi.ru/mock/gibdd/
+    path: /gibdd
 
 spring:
   application:

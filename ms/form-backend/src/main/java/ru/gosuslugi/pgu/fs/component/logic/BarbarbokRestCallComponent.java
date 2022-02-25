@@ -24,8 +24,8 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.URL_ATTR;
 
 /**
  * Компонент запроса внешних данных из барбарбока с конвертированием в драфт-конвертере
- * Ответ сохраняется в applicationAnswers
- * Используется для запросов в барбарбок с конвертировнием через mv-шаблон (smev-converter)
+ * Ответ сохраняется в applicantAnswers.component_id.response
+ * Используется для запросов в барбарбок с конвертировнием через vm-шаблон (smev-converter)
  */
 @Component
 public class BarbarbokRestCallComponent extends BackRestCallComponent {
@@ -50,25 +50,33 @@ public class BarbarbokRestCallComponent extends BackRestCallComponent {
 
     private void prepareAttrs(FieldComponent component, ScenarioDto scenarioDto) {
         Map<String, Object> attrs = component.getAttrs();
-        attrs.put(SERVICE_ID_ATTR, scenarioDto.getServiceCode());
         attrs.putAll(
                 Map.of(
-                        METHOD_ATTR, attrs.getOrDefault(METHOD_ATTR, RequestMethod.POST),
+                        SERVICE_ID_ATTR, scenarioDto.getServiceCode(),
+                        METHOD_ATTR, RequestMethod.POST,
                         URL_ATTR, smevConverterUrl,
-                        PATH_ATTR, attrs.getOrDefault(PATH_ATTR, "/services/get"),
                         ESIA_AUTH_ATTR, true
                 )
         );
-        if (RequestMethod.GET.toString().equalsIgnoreCase(attrs.get(METHOD_ATTR).toString())) {
-            attrs.put(BODY_ATTR, JsonProcessingUtil.toJson(objectMapper.convertValue(attrs, SmevConverterPullRequestDto.class)));
-        } else {
-            var templateName = attrs.getOrDefault("templateName", null);
-            if (templateName == null) {
-                attrs.put(BODY_ATTR, JsonProcessingUtil.toJson(objectMapper.convertValue(attrs, SmevConverterPushRequestDto.class)));
-            } else {
-                attrs.put(BODY_ATTR, JsonProcessingUtil.toJson(objectMapper.convertValue(attrs, SmevConverterGetRequestDto.class)));
-            }
+
+        if (attrs.containsKey("requestId")) {
+            setBodyDto(attrs, SmevConverterPullRequestDto.class);
+            attrs.put(PATH_ATTR, "/services/pull");
+            return;
         }
+
+        if (attrs.containsKey("templateName")) {
+            setBodyDto(attrs, SmevConverterGetRequestDto.class);
+            attrs.put(PATH_ATTR, "/services/get");
+            return;
+        }
+
+        setBodyDto(attrs, SmevConverterPushRequestDto.class);
+        attrs.put(PATH_ATTR, "/services/push");
+    }
+
+    private <T> void setBodyDto(Map<String, Object> attrs, Class<T> converterRequestDto) {
+        attrs.put(BODY_ATTR, JsonProcessingUtil.toJson(objectMapper.convertValue(attrs, converterRequestDto)));
     }
 
     @Override
