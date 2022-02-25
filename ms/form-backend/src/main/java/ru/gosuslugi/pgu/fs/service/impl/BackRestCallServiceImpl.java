@@ -1,5 +1,6 @@
 package ru.gosuslugi.pgu.fs.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
 import ru.gosuslugi.pgu.common.core.exception.PguException;
 import ru.gosuslugi.pgu.dto.BackRestCallResponseDto;
+import ru.gosuslugi.pgu.dto.SqlResponseDto;
 import ru.gosuslugi.pgu.fs.component.RestClientRegistry;
 import ru.gosuslugi.pgu.fs.component.logic.model.RestCallDto;
 import ru.gosuslugi.pgu.fs.service.BackRestCallService;
@@ -31,6 +33,8 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class BackRestCallServiceImpl implements BackRestCallService {
 
     private final RestClientRegistry restClientRegistry;
+    private final ObjectMapper objectMapper;
+    public static final String SQL_RESULT_OPTION = "sqlResult";
 
     @Override
     public BackRestCallResponseDto sendRequest(RestCallDto requestDto) {
@@ -42,18 +46,28 @@ public class BackRestCallServiceImpl implements BackRestCallService {
         }
         requestDto.getCookies().forEach((key, value) -> headers.add(HttpHeaders.COOKIE, key + "=\"" + value + "\""));
 
+        var entity = requestDto.getFormData().isEmpty() ? requestDto.getBody() : requestDto.getFormData();
         try {
             ResponseEntity<Object> responseEntity = restClientRegistry.getRestTemplate(Optional.ofNullable(requestDto.getTimeout()).orElse(-1L).intValue())
                     .exchange(requestDto.getUrl(),
                             Objects.requireNonNull(HttpMethod.resolve(requestDto.getMethod())),
-                            new HttpEntity<>(requestDto.getFormData().isEmpty() ? requestDto.getBody() : requestDto.getFormData(), headers),
+                            new HttpEntity<>(entity, headers),
                             Object.class
                     );
-            return new BackRestCallResponseDto(responseEntity.getStatusCodeValue(), responseEntity.getBody());
-        } catch (PguException e) {
-            return new BackRestCallResponseDto(HttpStatus.NOT_FOUND.value(), e.getMessage());
+
+            var body = OPTIONS.containsKey(SQL_RESULT_OPTION) && OPTIONS.get(SQL_RESULT_OPTION) == Boolean.TRUE
+                    ? objectMapper.convertValue(responseEntity.getBody(), SqlResponseDto.class)
+                    : responseEntity.getBody();
+
+            return new BackRestCallResponseDto(responseEntity.getStatusCodeValue(), body);
+        } catch (ExternalServiceException e) {
+            log.error("Ошибка внешних данных: {} Entity: {}", e.getMessage(), entity);
+            return new BackRestCallResponseDto(e.getStatus().value(), e.getMessage());
+        }  catch (IllegalArgumentException e) {
+            log.error("Преобразование данных: {}", entity);
+            throw new PguException("Ошибка в преобразовании данных");
         } catch (HttpClientErrorException | HttpServerErrorException e) {
-            String message = "";
+            String message;
             if (REQUEST_TIMEOUT.equals(e.getStatusCode())) {
                 log.error("Превышение времени ожидания: " + e.getMessage() + " => " + requestDto);
                 message = "К сожалению, превышено время ожидания запроса и мы не получили необходимые сведения.";
