@@ -6,7 +6,6 @@ import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.BackRestCallResponseDto;
 import ru.gosuslugi.pgu.dto.ScenarioDto;
-import ru.gosuslugi.pgu.dto.SqlResponseDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.fs.common.component.AbstractComponent;
@@ -18,6 +17,7 @@ import java.util.Map;
 
 import static ru.gosuslugi.pgu.components.ComponentAttributes.COOKIES_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.HEADERS_ATTR;
+import static ru.gosuslugi.pgu.fs.service.impl.BackRestCallServiceImpl.SQL_RESULT_OPTION;
 
 /**
  * Компонент запроса внешних данных - на бэке вызывается rest-запрос по данным из описания в JSON
@@ -41,9 +41,6 @@ public class BackRestCallComponent extends AbstractComponent<String> {
     public ComponentResponse<String> getInitialValue(FieldComponent component, ScenarioDto scenarioDto) {
 
         var responseDto = getResponse(component);
-        if (component.getBooleanAttr("sqlResult")) {
-            responseDto.setResponse(objectMapper.convertValue(responseDto.getResponse(), SqlResponseDto.class));
-        }
 
         scenarioDto.getApplicantAnswers().put(
                 component.getId(),
@@ -56,6 +53,10 @@ public class BackRestCallComponent extends AbstractComponent<String> {
     public BackRestCallResponseDto getResponse(FieldComponent component) {
         setUserToken(component);
         var restCallDto = restCallComponent.getInitialValue(component).get();
+
+        if (component.getBooleanAttr(SQL_RESULT_OPTION)) {
+            backRestCallService.setOption(SQL_RESULT_OPTION);
+        }
         return backRestCallService.sendRequest(restCallDto);
     }
 
