@@ -19,6 +19,7 @@ import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService;
 import ru.gosuslugi.pgu.fs.common.utils.AnswerUtil;
 import ru.gosuslugi.pgu.fs.component.file.PhotoUploadComponent;
 import ru.gosuslugi.pgu.fs.component.file.UploadFileComponent;
+import ru.gosuslugi.pgu.fs.component.logic.AttachmentContentComponent;
 import ru.gosuslugi.pgu.fs.service.TerrabyteService;
 import ru.gosuslugi.pgu.terrabyte.client.TerrabyteClient;
 import ru.gosuslugi.pgu.terrabyte.client.model.FileInfo;
@@ -142,6 +143,7 @@ public class TerrabyteServiceImpl implements TerrabyteService {
                 case OrderFileProcessingComponent:
                     mnemonics.addAll(uploadFileComponent.getFilesMnemonics(entry)); break;
                 case PhotoUploadComponent: mnemonics.add(PhotoUploadComponent.getPhotoMnemonic(entry)); break;
+                case AttachmentContent: mnemonics.addAll(AttachmentContentComponent.getAttachmentMnemonics(entry)); break;
             }
 
             if(fieldComponent.get().isCycled()) {
