@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
+import ru.gosuslugi.pgu.common.core.exception.EntityNotFoundException;
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
 import ru.gosuslugi.pgu.common.core.exception.PguException;
 import ru.gosuslugi.pgu.dto.BackRestCallResponseDto;
@@ -60,6 +61,9 @@ public class BackRestCallServiceImpl implements BackRestCallService {
                     : responseEntity.getBody();
 
             return new BackRestCallResponseDto(responseEntity.getStatusCodeValue(), body);
+        } catch (EntityNotFoundException e) {
+            log.error("Данные не найдены: {}", e.getMessage());
+            return new BackRestCallResponseDto(HttpStatus.NOT_FOUND.value(), e.getMessage());
         } catch (ExternalServiceException e) {
             log.error("Ошибка внешних данных: {} Entity: {}", e.getMessage(), entity);
             return new BackRestCallResponseDto(e.getStatus().value(), e.getMessage());
