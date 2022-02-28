@@ -41,7 +41,7 @@ public class DisclaimersServiceImpl implements DisclaimersService {
 
     @Override
     public DisplayRequest getDisplayForCriticalDisclaimer(DisclaimerDto disclaimer, ScenarioDto scenarioDto) {
-        ServiceDescriptor criticalErrorServiceDescriptor = subDescriptorService.getServiceDescriptor("criticalError");
+        ServiceDescriptor criticalErrorServiceDescriptor = ServiceDescriptor.getCopy(subDescriptorService.getServiceDescriptor("criticalError"));
         ScreenDescriptor criticalErrorScreenDescriptor = criticalErrorServiceDescriptor.getScreenDescriptorById(criticalErrorServiceDescriptor.getInit())
                 .orElseThrow(() -> new FormBaseException("Не найден экран для критической ошибки"));
         List<FieldComponent> components = criticalErrorServiceDescriptor.getFieldComponentsForScreen(criticalErrorScreenDescriptor);
