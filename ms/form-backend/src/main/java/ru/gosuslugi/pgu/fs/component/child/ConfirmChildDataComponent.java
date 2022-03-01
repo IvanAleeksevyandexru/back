@@ -232,7 +232,7 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
         }
 
         if (fieldsComponent.containsKey(CHILDREN_SNILS_ATTR.name)) {
-            String valueSnils = getAttrOrEmptyString(externalData, CHILDREN_SNILS_ATTR.name);
+            String valueSnils = getAttrOrNull(externalData, CHILDREN_SNILS_ATTR.name);
             fieldsComponent.get(CHILDREN_SNILS_ATTR.name).setValue(valueSnils);
             setFieldValue(fieldsComponent.get(CHILDREN_SNILS_ATTR.name), valueSnils, filledFields);
             childData.setSnils(valueSnils);
@@ -585,6 +585,16 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
         }
     }
 
+    public static String getAttrOrEmptyString(Map<String, Object> map, String key) {
+        final var v = map.get(key);
+        return v != null ? v.toString() : "";
+    }
+
+    public static String getAttrOrNull(Map<String, Object> map, String key) {
+        final var v = map.get(key);
+        return v != null ? v.toString() : null;
+    }
+
     /**
      * Класс для "фасовки" полей
      */
@@ -597,10 +607,5 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
          * Поля для заполнения.
          */
         private final List<FieldDto> filledFields = new ArrayList<>();
-    }
-
-    public static String getAttrOrEmptyString(Map<String, Object> map, String key) {
-        final var v = map.get(key);
-        return v != null ? v.toString() : "";
     }
 }
