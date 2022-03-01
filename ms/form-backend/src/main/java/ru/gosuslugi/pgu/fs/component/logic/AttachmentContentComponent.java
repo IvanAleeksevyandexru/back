@@ -60,7 +60,7 @@ public class AttachmentContentComponent extends AbstractComponent<List<FileInfo>
             try {
                 FileInfo file = terrabyteClient.zipFiles(
                         scenarioDto.getOrderId(),
-                        true,
+                        false,
                         zipMeta.get("fileName"),
                         mnemonic,
                         componentFiles,
