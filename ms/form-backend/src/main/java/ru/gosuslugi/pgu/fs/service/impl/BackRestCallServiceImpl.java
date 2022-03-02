@@ -67,20 +67,19 @@ public class BackRestCallServiceImpl implements BackRestCallService {
         } catch (ExternalServiceException e) {
             log.error("Ошибка внешних данных: {} Entity: {}", e.getMessage(), entity);
             return new BackRestCallResponseDto(e.getStatus().value(), e.getMessage());
-        }  catch (IllegalArgumentException e) {
-            log.error("Преобразование данных: {}", entity);
-            throw new PguException("Ошибка в преобразовании данных");
         } catch (HttpClientErrorException | HttpServerErrorException e) {
             String message;
             if (REQUEST_TIMEOUT.equals(e.getStatusCode())) {
-                log.error("Превышение времени ожидания: " + e.getMessage() + " => " + requestDto);
+                log.error("Превышение времени ожидания: {} Entity: {}", e.getMessage(), entity);
                 message = "К сожалению, превышено время ожидания запроса и мы не получили необходимые сведения.";
             } else {
-                log.error("Ошибка при обращении к внешнему сервису: " + e.getMessage() + " => " + requestDto);
+                log.error("Ошибка при обращении к внешнему сервису: {} Entity: {}", e.getMessage(), entity);
                 message = "К сожалению, произошла ошибка и мы не получили необходимые сведения из внешнего сервиса.";
             }
-
             return new BackRestCallResponseDto(e.getRawStatusCode(), message + " Пожалуйста, повторите попытку позже.", null);
+        } catch (IllegalArgumentException e) {
+            log.error("Преобразование данных: {}", entity);
+            throw new PguException("Ошибка в преобразовании данных");
         }
     }
 }
