@@ -38,10 +38,10 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.LAST_NAME_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.MIDDLE_NAME_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.MOBILE_PHONE;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ORG_INN_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.REUSE_PAYMENT_UIN;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.SNILS;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.TIMEZONE_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.VERIFIED_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.REUSE_PAYMENT_UIN;
 
 /**
  * Заполняет доп. атрибуты в черновике.
@@ -104,7 +104,11 @@ public class AdditionalAttributesHelper {
         addConditionalAttribute(scenarioDto, SYSTEM_AUTHORITY_ATTR_NAME, () -> !StringUtils.isEmpty(userOrgData.getSystemAuthority()), userOrgData::getSystemAuthority);
         // TODO: аккуратней с написанием Supplier-ов вида userPersonalData.getCurrentRole()::getChief
         // неявно будет вызываться requiredNonNull для userPersonalData.getCurrentRole() в рантайме и будем выхватывать внезапные NPE
-        addConditionalAttribute(scenarioDto, USER_ORG_CHIEF_ATTR, () -> Objects.nonNull(userPersonalData.getCurrentRole()), () -> userPersonalData.getCurrentRole().getChief());
+        addConditionalAttribute(scenarioDto, USER_ORG_CHIEF_ATTR,
+                () -> Objects.nonNull(userPersonalData.getCurrentRole()) && Objects.nonNull(userPersonalData.getCurrentRole().getChief())
+                        || Objects.nonNull(userPersonalData.getPerson()) && Objects.nonNull(userPersonalData.getPerson().isChief()),
+                () -> String.valueOf(userPersonalData.getChief())
+        );
         addConditionalAttribute(scenarioDto, ORG_TYPE_ATTR, () -> Objects.nonNull(userOrgData.getOrg()), this::getOrgType);
         addConditionalAttribute(scenarioDto, LEG_ATTR, () -> Objects.nonNull(userOrgData.getOrg()) && !StringUtils.isBlank(userOrgData.getOrg().getLeg()), () -> userOrgData.getOrg().getLeg());
         addConditionalAttribute(scenarioDto, LEG_CODE_ATTR, () -> Objects.nonNull(userOrgData.getOrg()) && !StringUtils.isBlank(userOrgData.getOrg().getLeg()), () -> userOrgData.getOrg().getLegCode());
