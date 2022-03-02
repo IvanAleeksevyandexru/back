@@ -12,6 +12,7 @@ class ConfirmPersonalPolicyComponentTest extends Specification {
 
     private static final String COMPONENT_SUFFIX = "-component.json"
     private static final String WITH_ERRORS_COMPONENT_SUFFIX = "-withErrors-component.json"
+    private static final String WITH_DEFAULT_HINT_COMPONENT_SUFFIX = "-withDefaultHint-component.json"
 
     private static final String ERRORS_ATTR = "errors"
 
@@ -134,6 +135,24 @@ class ConfirmPersonalPolicyComponentTest extends Specification {
         !checkErrorsInAttrs(fieldComponent)
         !initialValue.states.find()
         !initialValue.errors.find()
+        initialValue.storedValues != null
+        initialValue.storedValues.unitedNumber == null
+        initialValue.storedValues.issuePlace == null
+        initialValue.storedValues.issuedBy == null
+    }
+
+    def "Test getInitialValue fill error with defaultHint if OmsDocument isn`t exists" () {
+        given:
+        def fieldComponent = readComponentFromFile(WITH_DEFAULT_HINT_COMPONENT_SUFFIX)
+
+        when:
+        def initialValue = confirmPolicyComponent.getInitialValue(fieldComponent).get()
+
+        then:
+        1 * userPersonalData.getOmsDocument() >> Optional.empty()
+        fieldComponent.errors.find()
+        fieldComponent.errors.size() == 1
+        !initialValue.states.find()
         initialValue.storedValues != null
         initialValue.storedValues.unitedNumber == null
         initialValue.storedValues.issuePlace == null

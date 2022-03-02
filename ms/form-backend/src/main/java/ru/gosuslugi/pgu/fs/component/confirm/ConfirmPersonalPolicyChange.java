@@ -13,8 +13,9 @@ import ru.atc.carcass.security.rest.model.person.PersonDoc;
 import ru.gosuslugi.pgu.common.core.exception.ValidationException;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
-import ru.gosuslugi.pgu.components.ValidationUtil;
+import ru.gosuslugi.pgu.components.BasicComponentUtil;
 import ru.gosuslugi.pgu.components.descriptor.types.ValidationFieldDto;
+import ru.gosuslugi.pgu.components.dto.FieldDto;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
@@ -49,6 +50,8 @@ public class ConfirmPersonalPolicyChange extends AbstractComponent<ConfirmPerson
     public static final String REG_EXP_TYPE = "RegExp";
     public static final String REG_EXP_VALUE = "value";
     public static final String REG_EXP_ERROR_MESSAGE = "errorMsg";
+    private static final String SERIES = "series";
+    private static final String NUMBER = "number";
 
     @Override
     public ComponentType getType() {
@@ -59,9 +62,14 @@ public class ConfirmPersonalPolicyChange extends AbstractComponent<ConfirmPerson
     public ComponentResponse<ConfirmPersonalOms> getInitialValue(FieldComponent component, ScenarioDto scenarioDto) {
         Optional<PersonDoc> optionalConfirmPersonalOms = userPersonalData.getOmsDocument();
         if(optionalConfirmPersonalOms.isPresent()) {
+            Map<String, FieldDto> fields = BasicComponentUtil.getFieldNameToFieldDtoMap(component);
             ConfirmPersonalOms confirmPersonalOms = new ConfirmPersonalOms();
-            confirmPersonalOms.setSeries(optionalConfirmPersonalOms.get().getSeries());
-            confirmPersonalOms.setNumber(optionalConfirmPersonalOms.get().getNumber());
+            if (fields.containsKey(SERIES)) {
+                confirmPersonalOms.setSeries(optionalConfirmPersonalOms.get().getSeries());
+            }
+            if (fields.containsKey(NUMBER)) {
+                confirmPersonalOms.setNumber(optionalConfirmPersonalOms.get().getNumber());
+            }
             return ComponentResponse.of(confirmPersonalOms);
         }
         return ComponentResponse.empty();
@@ -82,12 +90,12 @@ public class ConfirmPersonalPolicyChange extends AbstractComponent<ConfirmPerson
         if (!errors.isEmpty()) {
             incorrectAnswers.put(entry.getKey(), JsonProcessingUtil.toJson(errors));
         }
-        // Обновление ОМС в ESIA как часть общей  валидации
+        // Обновление ОМС в ESIA как часть общей валидации
         if (incorrectAnswers.isEmpty()) {
             try {
                 updateEsiaOms(entry);
             } catch (Exception e) {
-                if (log.isWarnEnabled()) {//прописать сюда ошиюку от есии
+                if (log.isWarnEnabled()) {//прописать сюда ошибку от есии
                     log.warn("Полис ОМС не задан", e);
                 }
                 incorrectAnswers.put(fieldComponent.getId(), "Не удалось обновить данные ОМС. Попробуйте позже.");
