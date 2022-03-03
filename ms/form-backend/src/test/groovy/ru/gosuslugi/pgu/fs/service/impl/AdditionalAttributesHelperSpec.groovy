@@ -166,6 +166,7 @@ class AdditionalAttributesHelperSpec extends Specification {
         userPersonalData.getCurrentRole() >> new EsiaRole(
                 chief: "chief"
         )
+        userPersonalData.getChief() >> "chief"
 
         ServiceIdVariable serviceIdVariable = Mock(ServiceIdVariable)
         serviceIdVariable.getValue(_) >> serviceId
