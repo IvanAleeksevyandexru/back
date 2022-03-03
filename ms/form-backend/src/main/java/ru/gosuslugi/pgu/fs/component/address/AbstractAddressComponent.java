@@ -119,7 +119,7 @@ public abstract class AbstractAddressComponent<PreSetModel> extends AbstractComp
             return;
         }
         String zipCode = fullAddress.getIndex();
-        if (zipCode.length() != ZIP_CODE_LENGTH || !isNumeric(zipCode)) {
+        if (!isNumeric(zipCode) || zipCode.length() != ZIP_CODE_LENGTH) {
             incorrectAnswers.put(entry.getKey(), "Индекс некорректен, ожидалось " + ZIP_CODE_LENGTH + " цифр");
             return;
         }

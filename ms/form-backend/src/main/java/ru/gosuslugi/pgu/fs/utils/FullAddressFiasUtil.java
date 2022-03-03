@@ -2,7 +2,6 @@ package ru.gosuslugi.pgu.fs.utils;
 
 import lombok.experimental.UtilityClass;
 import ru.gosuslugi.pgu.components.descriptor.types.FullAddress;
-import ru.gosuslugi.pgu.fs.component.confirm.mapper.FullAddressMapper;
 import ru.gosuslugi.pgu.fs.component.confirm.util.FullAddressMapperUtil;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.DadataAddressResponse;
 
@@ -60,18 +59,4 @@ public class FullAddressFiasUtil {
         return null;
     }
 
-    public static FullAddress addMetaInfoWithOptionalGeoPoints(DadataAddressResponse addressResponse, FullAddressMapper fullAddressMapper){
-        if (isNull(addressResponse.getDadataQc())
-                || ( addressResponse.getDadataQc() != 0 && addressResponse.getDadataQc() != 3) ) return null;
-
-        FullAddress fullAddress = fullAddressMapper.createMetaInfo(addressResponse);
-
-        if (nonNull(fullAddress.getFiasCode())
-                && nonNull(fullAddress.getOkato())
-                && nonNull(fullAddress.getOktmo())
-                && nonNull(fullAddress.getKladrCode())
-                && nonNull(fullAddress.getRegionCode()))
-            return fullAddress;
-        return null;
-    }
 }

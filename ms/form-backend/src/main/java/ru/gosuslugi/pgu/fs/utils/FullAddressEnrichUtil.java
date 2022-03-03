@@ -5,42 +5,33 @@ import org.apache.commons.lang.StringUtils;
 import org.mapstruct.factory.Mappers;
 import ru.gosuslugi.pgu.components.descriptor.types.FullAddress;
 import ru.gosuslugi.pgu.fs.service.FullAddressEnrichMapper;
-import ru.gosuslugi.pgu.pgu_common.nsi.dto.DadataAddress;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.DadataAddressElement;
-import ru.gosuslugi.pgu.pgu_common.nsi.dto.DadataAddressResponse;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.function.BiFunction;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static org.apache.commons.lang.StringUtils.isBlank;
 
 @UtilityClass
 public class FullAddressEnrichUtil {
 
     private static final FullAddressEnrichMapper MAPPER = Mappers.getMapper(FullAddressEnrichMapper.class);
 
-    private static final int REGION_LEVEL = 1;
-    private static final int DISTRICT_LEVEL = 3;
-    private static final int CITY_LEVEL = 4;
-    private static final int IN_CITY_DIST_LEVEL = 5;
-    private static final int TOWN_LEVEL = 6;
-    private static final int STREET_LEVEL = 7;
-    private static final int HOUSE_LEVEL = 11;
-    private static final int BUILDING1_LEVEL = 12;
-    private static final int BUILDING2_LEVEL = 13;
-    private static final int APARTMENT_LEVEL = 14;
-    private static final int ADDITIONAL_AREA_LEVEL = 90;
-    private static final int ADDITIONAL_STREET_LEVEL = 91;
+    public static final int REGION_LEVEL = 1;
+    public static final int DISTRICT_LEVEL = 3;
+    public static final int CITY_LEVEL = 4;
+    public static final int IN_CITY_DIST_LEVEL = 5;
+    public static final int TOWN_LEVEL = 6;
+    public static final int STREET_LEVEL = 7;
+    public static final int HOUSE_LEVEL = 11;
+    public static final int BUILDING1_LEVEL = 12;
+    public static final int BUILDING2_LEVEL = 13;
+    public static final int APARTMENT_LEVEL = 14;
+    public static final int ADDITIONAL_AREA_LEVEL = 90;
+    public static final int ADDITIONAL_STREET_LEVEL = 91;
 
     private static final String DISTRICT_CITY_TYPE = "город";
-    private static final String FULL_ADDRESS_DELIMITER = ", ";
 
     private static final Map<Integer, BiFunction<FullAddress, DadataAddressElement, Integer>> CONSUMER_MAP =
             Map.ofEntries(
@@ -62,21 +53,15 @@ public class FullAddressEnrichUtil {
      * Заполнение адресных элементов из addressResponse
      *
      * @param fullAddress     адрес структура для заполнения
-     * @param addressResponse ответ очищенных данных от Dadata
+     * @param elements        список адресных элементов
      * @see <a href="https://jira.egovdev.ru/browse/EPGUCORE-53184">EPGUCORE-53184</a>
      */
-    public static void setAddressParts(FullAddress fullAddress, DadataAddressResponse addressResponse) {
+    public static void setAddressParts(FullAddress fullAddress, List<DadataAddressElement> elements) {
         // Делаем рабочую копию
         Map<Integer, BiFunction<FullAddress, DadataAddressElement, Integer>> consumerMapCopy = new HashMap<>(CONSUMER_MAP);
 
-        Optional<DadataAddress> dadataAddressOptional = Optional.ofNullable(addressResponse)
-                .map(DadataAddressResponse::getAddress);
-
-        List<DadataAddressElement> dadataAddressElements = dadataAddressOptional.map(DadataAddress::getElements)
-                .orElse(Collections.emptyList());
-
         // Заполняем елементы и удаляем заполненные уровни из consumerMapCopy
-        CONSUMER_MAP.forEach((level, enrichFunction) -> dadataAddressElements.stream()
+        CONSUMER_MAP.forEach((level, enrichFunction) -> elements.stream()
                 .filter(element -> Objects.equals(element.getLevel(), level))
                 .findFirst()
                 .ifPresent(element -> consumerMapCopy.remove(enrichFunction.apply(fullAddress, element))));
@@ -89,22 +74,6 @@ public class FullAddressEnrichUtil {
             emptyElement.setShortType(StringUtils.EMPTY);
             emptyElement.setType(StringUtils.EMPTY);
             enrichFunction.apply(fullAddress, emptyElement);
-        });
-
-        // Выставления признаков отсутствия адресных атрибутов
-        fullAddress.setHouseCheckbox(isBlank(fullAddress.getHouse()));
-        fullAddress.setApartmentCheckbox(isBlank(fullAddress.getApartment()));
-
-        dadataAddressOptional.ifPresent(dadataAddress -> {
-            // Полный адрес
-            fullAddress.setFullAddress(
-                    Stream.of(dadataAddress.getPostIndex(), dadataAddress.getFullAddress())
-                            .filter(StringUtils::isNotBlank)
-                            .collect(Collectors.joining(FULL_ADDRESS_DELIMITER))
-            );
-            // индекс
-            fullAddress.setIndex(dadataAddress.getPostIndex());
-            fullAddress.setPostalCode(dadataAddress.getPostIndex());
         });
     }
 
@@ -122,16 +91,13 @@ public class FullAddressEnrichUtil {
 
     private static int setDistrictPart(FullAddress address, DadataAddressElement element) {
         if (element.getType().equalsIgnoreCase(DISTRICT_CITY_TYPE)) {
-            address.setCity(element.getData());
-            address.setCityType(element.getType());
-            address.setCityShortType(element.getShortType());
-            return CITY_LEVEL;
-        } else {
-            address.setDistrict(element.getData());
-            address.setDistrictType(element.getType());
-            address.setDistrictShortType(element.getShortType());
-            return DISTRICT_LEVEL;
+            return setCityPart(address, element);
         }
+
+        address.setDistrict(element.getData());
+        address.setDistrictType(element.getType());
+        address.setDistrictShortType(element.getShortType());
+        return DISTRICT_LEVEL;
     }
 
     private static int setCityPart(FullAddress address, DadataAddressElement element) {
