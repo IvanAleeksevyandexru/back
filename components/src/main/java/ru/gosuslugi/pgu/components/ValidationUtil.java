@@ -186,7 +186,7 @@ public class ValidationUtil {
                     String stringToCheck = jsonNodeToString(jsonObj);
                     if (
                             !incorrectAnswers.containsKey(field.getFieldName())
-                                    && !isNull(stringToCheck)
+                                    && !StringUtils.isEmpty(stringToCheck)
                                     && !stringToCheck.matches(validationRule.get(REG_EXP_VALUE))
                     ) {
                         errorsMap.put(
