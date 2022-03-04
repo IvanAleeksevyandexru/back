@@ -59,7 +59,7 @@ public class BackRestCallServiceImpl implements BackRestCallService {
             var body = OPTIONS.containsKey(SQL_RESULT_OPTION) && OPTIONS.get(SQL_RESULT_OPTION) == Boolean.TRUE
                     ? objectMapper.convertValue(responseEntity.getBody(), SqlResponseDto.class)
                     : responseEntity.getBody();
-
+            clearOptions();
             return new BackRestCallResponseDto(responseEntity.getStatusCodeValue(), body);
         } catch (EntityNotFoundException e) {
             log.error("Данные не найдены: {}", e.getMessage());

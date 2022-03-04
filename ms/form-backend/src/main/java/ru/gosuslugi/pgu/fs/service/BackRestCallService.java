@@ -14,4 +14,8 @@ public interface BackRestCallService {
     default void setOption(String option) {
         OPTIONS.put(option, true);
     }
+
+    default void clearOptions() {
+        OPTIONS.clear();
+    }
 }
