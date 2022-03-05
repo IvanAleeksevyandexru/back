@@ -57,7 +57,7 @@ class BarbarbokRestCallComponentSpec extends Specification {
         ] as FieldComponent
 
         when:
-        component.preProcess(fieldComponent, scenarioDto)
+        component.getInitialValue(fieldComponent, scenarioDto)
 
         then:
         component.getType() == ComponentType.BarbarbokRestCall
@@ -73,7 +73,7 @@ class BarbarbokRestCallComponentSpec extends Specification {
         ] as FieldComponent
 
         when:
-        component.preProcess(fieldComponent, scenarioDto)
+        component.getInitialValue(fieldComponent, scenarioDto)
 
         then:
         !fieldComponent.getAttrs().find()
@@ -89,7 +89,7 @@ class BarbarbokRestCallComponentSpec extends Specification {
         ] as FieldComponent
 
         when:
-        component.preProcess(fieldComponent, scenarioDto)
+        component.getInitialValue(fieldComponent, scenarioDto)
 
         then:
         !fieldComponent.getAttrs().find()

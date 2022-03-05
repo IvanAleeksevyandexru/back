@@ -63,7 +63,6 @@ class BackRestCallComponentSpec extends Specification {
                 .andRespond(withSuccess())
 
         when:
-        component.preProcess(fieldComponent, scenarioDto)
         def initialValue = component.getInitialValue(fieldComponent, scenarioDto)
 
         then:
@@ -85,7 +84,7 @@ class BackRestCallComponentSpec extends Specification {
                 .andRespond(withSuccess())
 
         when:
-        component.preProcess(fieldComponent, new ScenarioDto())
+        component.getInitialValue(fieldComponent, new ScenarioDto())
 
         then:
         mockServer.verify()
