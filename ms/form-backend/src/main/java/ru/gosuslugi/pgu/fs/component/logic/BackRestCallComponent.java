@@ -9,6 +9,7 @@ import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.fs.common.component.AbstractComponent;
+import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
 import ru.gosuslugi.pgu.fs.service.BackRestCallService;
 
 import java.util.HashMap;
@@ -37,13 +38,16 @@ public class BackRestCallComponent extends AbstractComponent<String> {
     private final UserPersonalData userPersonalData;
 
     @Override
-    protected void preProcess(FieldComponent component, ScenarioDto scenarioDto) {
+    public ComponentResponse<String> getInitialValue(FieldComponent component, ScenarioDto scenarioDto) {
+
         var responseDto = getResponse(component);
+
         scenarioDto.getApplicantAnswers().put(
                 component.getId(),
                 new ApplicantAnswer(true, jsonProcessingService.toJson(responseDto))
         );
         clearComponent(component);
+        return ComponentResponse.empty();
     }
 
     public BackRestCallResponseDto getResponse(FieldComponent component) {

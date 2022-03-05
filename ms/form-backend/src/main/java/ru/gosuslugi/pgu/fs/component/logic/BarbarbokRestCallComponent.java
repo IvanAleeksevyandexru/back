@@ -11,6 +11,7 @@ import ru.gosuslugi.pgu.dto.SmevConverterPullRequestDto;
 import ru.gosuslugi.pgu.dto.SmevConverterPushRequestDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
+import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
 import ru.gosuslugi.pgu.fs.service.BackRestCallService;
 
 import java.util.Map;
@@ -42,9 +43,9 @@ public class BarbarbokRestCallComponent extends BackRestCallComponent {
     }
 
     @Override
-    protected void preProcess(FieldComponent component, ScenarioDto scenarioDto) {
+    public ComponentResponse<String> getInitialValue(FieldComponent component, ScenarioDto scenarioDto) {
         prepareAttrs(component, scenarioDto);
-        super.preProcess(component, scenarioDto);
+        return super.getInitialValue(component, scenarioDto);
     }
 
     private void prepareAttrs(FieldComponent component, ScenarioDto scenarioDto) {
