@@ -105,9 +105,9 @@ public class AdditionalAttributesHelper {
         // TODO: аккуратней с написанием Supplier-ов вида userPersonalData.getCurrentRole()::getChief
         // неявно будет вызываться requiredNonNull для userPersonalData.getCurrentRole() в рантайме и будем выхватывать внезапные NPE
         addConditionalAttribute(scenarioDto, USER_ORG_CHIEF_ATTR,
-                () -> Objects.nonNull(userPersonalData.getCurrentRole()) && Objects.nonNull(userPersonalData.getCurrentRole().getChief())
-                        || Objects.nonNull(userPersonalData.getPerson()) && Objects.nonNull(userPersonalData.getPerson().isChief()),
-                () -> String.valueOf(userPersonalData.getChief())
+                () -> Objects.nonNull(userOrgData.getChief()) && Objects.nonNull(userOrgData.getChief().isChief())
+                        || Objects.nonNull(userOrgData.getOrgRole()) && Objects.nonNull(userOrgData.getOrgRole().getChief()),
+                () -> String.valueOf(userOrgData.getOrgChief())
         );
         addConditionalAttribute(scenarioDto, ORG_TYPE_ATTR, () -> Objects.nonNull(userOrgData.getOrg()), this::getOrgType);
         addConditionalAttribute(scenarioDto, LEG_ATTR, () -> Objects.nonNull(userOrgData.getOrg()) && !StringUtils.isBlank(userOrgData.getOrg().getLeg()), () -> userOrgData.getOrg().getLeg());
