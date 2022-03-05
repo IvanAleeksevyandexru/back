@@ -55,7 +55,7 @@ class AdditionalAttributesHelperSpec extends Specification {
 
         then:
         // атрибуты текущего заявителя
-        scenarioDto.getAdditionalParameters().keySet().stream().filter({ key -> !key.startsWith("master") }).count() == 21
+        scenarioDto.getAdditionalParameters().keySet().stream().filter({ key -> !key.startsWith("master") }).count() == 22
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.ORDER_ATTR_NAME) == "1"
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.OID_ATTR_NAME) == person.getUserId()
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.SERVICE_ID_ATTR_NAME) == serviceId
@@ -76,6 +76,7 @@ class AdditionalAttributesHelperSpec extends Specification {
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.ORG_TYPE_ATTR) == "LEGAL"
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.LEG_ATTR) == "leg"
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.LEG_CODE_ATTR) == "legCode"
+        scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.ORG_EMPOWERMENTS_ATTR_NAME) == "1000234"
 
         // атрибуты основного заявителя
         scenarioDto.getAdditionalParameters().keySet().stream().filter({ key -> key.startsWith("master") }).count() == 18
@@ -132,7 +133,7 @@ class AdditionalAttributesHelperSpec extends Specification {
 
         then:
         // атрибуты текущего заявителя
-        scenarioDto.getAdditionalParameters().keySet().stream().filter({ key -> !key.startsWith("master") }).count() == 21
+        scenarioDto.getAdditionalParameters().keySet().stream().filter({ key -> !key.startsWith("master") }).count() == 22
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.ORDER_ATTR_NAME) == "1"
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.OID_ATTR_NAME) == person.getUserId()
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.SERVICE_ID_ATTR_NAME) == serviceId
@@ -153,6 +154,7 @@ class AdditionalAttributesHelperSpec extends Specification {
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.ORG_TYPE_ATTR) == "LEGAL"
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.LEG_ATTR) == "leg"
         scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.LEG_CODE_ATTR) == "legCode"
+        scenarioDto.getAdditionalParameters().get(AdditionalAttributesHelper.ORG_EMPOWERMENTS_ATTR_NAME) == "1000234"
 
         // атрибуты основного заявителя
         scenarioDto.getAdditionalParameters().keySet().stream().filter({ key -> key.startsWith("master") }).count() == 0
@@ -166,7 +168,6 @@ class AdditionalAttributesHelperSpec extends Specification {
         userPersonalData.getCurrentRole() >> new EsiaRole(
                 chief: "chief"
         )
-        userPersonalData.getChief() >> "chief"
 
         ServiceIdVariable serviceIdVariable = Mock(ServiceIdVariable)
         serviceIdVariable.getValue(_) >> serviceId
@@ -184,6 +185,13 @@ class AdditionalAttributesHelperSpec extends Specification {
                 leg: "leg",
                 legCode: "legCode"
         )
+        userOrgData.getOrgRole() >> new EsiaRole(
+                chief: "chief"
+        )
+        userOrgData.getOrgChief() >> "chief"
+
+        def empowermentService = Mock(EmpowermentService)
+        empowermentService.getUserEmpowerments()>>Set.of("1000234")
 
         AdditionalAttributesHelper attributesHelper = new AdditionalAttributesHelper(
                 userPersonalData,
@@ -191,7 +199,7 @@ class AdditionalAttributesHelperSpec extends Specification {
                 userCookiesService,
                 serviceIdVariable,
                 targetIdVariable,
-                Mock(EmpowermentService)
+                empowermentService
         )
         attributesHelper
     }
