@@ -196,7 +196,7 @@ public class ProtectedFieldServiceImpl implements ProtectedFieldService {
             }
         }
         if (ORGANIZATION_USER_ROLE.equals(name)) {
-            result = userPersonalData.getChief();
+            result = userOrgData.getOrgChief();
         }
         if (ORGANIZATION_PHONE.equals(name)) {
             result = userOrgData.getVerifiedContactValue(ORG_PHONE_TYPE_ATTR);
