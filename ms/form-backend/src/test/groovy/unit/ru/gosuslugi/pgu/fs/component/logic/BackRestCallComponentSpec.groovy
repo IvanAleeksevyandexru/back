@@ -31,6 +31,7 @@ class BackRestCallComponentSpec extends Specification {
         def fieldComponent = getFieldComponent()
 
         when:
+        component.preProcess(fieldComponent, scenarioDto)
         def initialValue = component.getInitialValue(fieldComponent, scenarioDto)
 
         then:
@@ -51,7 +52,7 @@ class BackRestCallComponentSpec extends Specification {
         def component = new BackRestCallComponent(restCallComponent, restCallService, Mock(UserPersonalData))
 
         when:
-        component.getInitialValue(getFieldComponent(), new ScenarioDto())
+        component.preProcess(getFieldComponent(), new ScenarioDto())
 
         then:
         thrown(ExternalServiceException.class)
