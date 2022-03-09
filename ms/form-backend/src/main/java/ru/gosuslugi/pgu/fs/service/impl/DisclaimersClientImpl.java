@@ -21,7 +21,7 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 public class DisclaimersClientImpl implements DisclaimersClient {
-    private final static String DISCLAIMERS_PATH = "/cmsservice/api/cms/v1/disclaimers/passport/{passCode}/{epguCode}";
+    private final static String DISCLAIMERS_PATH = "/api/cms/v1/disclaimers/passport/{passCode}/{epguCode}";
     private final RestTemplate restTemplate;
     private final UserPersonalData userPersonalData;
     private final String disclaimersUrl;
