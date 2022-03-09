@@ -25,7 +25,7 @@
     {
       "id": "criticalError",
       "type": "InfoScr",
-      "label": "<center><h3>Не удалось загрузить страницу</h3></center><center class='text-color--text-helper'>${errorMsg}</center>",
+      "label": "<center><h3>${errorHeader}</h3></center><center class='text-color--text-helper'>${errorMsg}</center>",
       "attrs": {
         "image": {
           "src": "https://gu-st.ru/content/catalog/new/i_Helmet.svg"
