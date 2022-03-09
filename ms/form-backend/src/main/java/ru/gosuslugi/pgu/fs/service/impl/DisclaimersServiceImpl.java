@@ -47,6 +47,7 @@ public class DisclaimersServiceImpl implements DisclaimersService {
         List<FieldComponent> components = criticalErrorServiceDescriptor.getFieldComponentsForScreen(criticalErrorScreenDescriptor);
         components.forEach(component -> {
             component.addArgument("errorMsg", disclaimer.getMessage());
+            component.addArgument("errorHeader", disclaimer.getTitle());
             componentReferenceService.processComponentRefs(component, scenarioDto);
         });
 
