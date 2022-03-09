@@ -57,13 +57,19 @@ public class DisclaimersServiceImpl implements DisclaimersService {
     private DisclaimerDto mapToDisclaimerDto(PortalDisclaimer disclaimer) {
         String message;
         Optional<LocalizedDisclaimerMessage> ruMessage = disclaimer.getMessages().stream().filter(msg -> "Ru".equalsIgnoreCase(msg.getLanguage())).findFirst();
+        String title;
         if (ruMessage.isPresent()) {
             message = ruMessage.get().getMessage();
+            title = ruMessage.get().getTitle();
         } else {
-            message = disclaimer.getMessages().get(0).getMessage();
+            LocalizedDisclaimerMessage msg = disclaimer.getMessages().get(0);
+            message = msg.getMessage();
+            title = msg.getTitle();
         }
         DisclaimerLevel level = DisclaimerLevel.valueOf(disclaimer.getLevel());
-        String title = StringUtils.hasText(disclaimer.getTitle()) ? disclaimer.getTitle() : level.getHeader();
+        if (!StringUtils.hasText(title)) {
+            title = level.getHeader();
+        }
         return new DisclaimerDto(disclaimer.getId(), title, message, level, disclaimer.getMnemonic());
     }
 }
