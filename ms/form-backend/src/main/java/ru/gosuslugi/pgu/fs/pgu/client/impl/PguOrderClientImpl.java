@@ -241,7 +241,7 @@ public class PguOrderClientImpl implements PguOrderClient {
             ResponseEntity<Order> response = restTemplate
                     .exchange(pguUrl + LK_API_ORDERS_PATH,
                             HttpMethod.GET,
-                            new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userTokenService.getUserToken(userId))),
+                            new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken())),
                             Order.class,
                             Map.of("orderId", orderId));
             return response.getBody();
