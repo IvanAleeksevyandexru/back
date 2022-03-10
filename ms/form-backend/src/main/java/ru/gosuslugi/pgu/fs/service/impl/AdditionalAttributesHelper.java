@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import ru.atc.carcass.security.rest.model.EsiaContact;
 import ru.atc.carcass.security.rest.model.orgs.OrgType;
+import ru.gosuslugi.pgu.common.esia.search.utils.UserDataUtils;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
@@ -105,9 +106,8 @@ public class AdditionalAttributesHelper {
         // TODO: аккуратней с написанием Supplier-ов вида userPersonalData.getCurrentRole()::getChief
         // неявно будет вызываться requiredNonNull для userPersonalData.getCurrentRole() в рантайме и будем выхватывать внезапные NPE
         addConditionalAttribute(scenarioDto, USER_ORG_CHIEF_ATTR,
-                () -> Objects.nonNull(userOrgData.getChief()) && Objects.nonNull(userOrgData.getChief().isChief())
-                        || Objects.nonNull(userOrgData.getOrgRole()) && Objects.nonNull(userOrgData.getOrgRole().getChief()),
-                () -> String.valueOf(userOrgData.getOrgChief())
+                () -> UserDataUtils.nonNullChief(userPersonalData, userOrgData),
+                () -> String.valueOf(UserDataUtils.isChief(userPersonalData, userOrgData))
         );
         addConditionalAttribute(scenarioDto, ORG_TYPE_ATTR, () -> Objects.nonNull(userOrgData.getOrg()), this::getOrgType);
         addConditionalAttribute(scenarioDto, LEG_ATTR, () -> Objects.nonNull(userOrgData.getOrg()) && !StringUtils.isBlank(userOrgData.getOrg().getLeg()), () -> userOrgData.getOrg().getLeg());
