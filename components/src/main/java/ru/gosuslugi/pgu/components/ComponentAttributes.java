@@ -218,6 +218,7 @@ public final class ComponentAttributes {
     public static final String VERIFIED_ATTR = "VERIFIED";
     public static final String IGNORE_VERIFICATION_ATTR = "ignoreVerification";
     public static final String ESIA_DATE_FORMAT = "dd.M.yyyy";
+    public static final String RF_DRIVING_LICENSE_ATTR = "RF_DRIVING_LICENSE";
 
     // ESIA contact attributes
     public static final String ESIA_CONTACT_PHONE = "CPH";
