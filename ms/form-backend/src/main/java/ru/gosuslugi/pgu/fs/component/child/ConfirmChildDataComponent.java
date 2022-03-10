@@ -117,7 +117,7 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
     public ComponentResponse<FormDto<ChildData>> getCycledInitialValue(FieldComponent component, Map<String, Object> externalData) {
         List<StateDto> states = new ArrayList<>();
         ChildData childData = new ChildData();
-        String childId = externalData.getOrDefault(CHILDREN_ID_ATTR, "").toString();
+        String childId = getAttrOrEmptyString(externalData, CHILDREN_ID_ATTR);
 
         if (!StringUtils.isEmpty(childId)) {
             Optional<Kids> kids = userPersonalData.getKids().stream()
