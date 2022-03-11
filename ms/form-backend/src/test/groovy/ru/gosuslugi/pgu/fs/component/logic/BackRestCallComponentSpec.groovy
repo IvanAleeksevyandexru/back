@@ -1,13 +1,15 @@
 package ru.gosuslugi.pgu.fs.component.logic
 
 import org.springframework.boot.web.client.RestTemplateBuilder
-import org.springframework.http.HttpMethod
-import org.springframework.http.HttpStatus
+import org.springframework.http.*
 import org.springframework.test.web.client.ExpectedCount
 import org.springframework.test.web.client.MockRestServiceServer
+import org.springframework.util.LinkedMultiValueMap
+import org.springframework.util.MultiValueMap
 import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.client.RestTemplate
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException
+import ru.gosuslugi.pgu.common.core.json.JsonFileUtil
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData
 import ru.gosuslugi.pgu.dto.BackRestCallResponseDto
@@ -63,6 +65,7 @@ class BackRestCallComponentSpec extends Specification {
                 .andRespond(withSuccess())
 
         when:
+        component.preProcess(fieldComponent, scenarioDto)
         def initialValue = component.getInitialValue(fieldComponent, scenarioDto)
 
         then:
@@ -84,7 +87,7 @@ class BackRestCallComponentSpec extends Specification {
                 .andRespond(withSuccess())
 
         when:
-        component.getInitialValue(fieldComponent, new ScenarioDto())
+        component.preProcess(fieldComponent, new ScenarioDto())
 
         then:
         mockServer.verify()
@@ -117,6 +120,57 @@ class BackRestCallComponentSpec extends Specification {
         status                           | type
         HttpStatus.REQUEST_TIMEOUT       | ExternalServiceException.class
         HttpStatus.INTERNAL_SERVER_ERROR | ExternalServiceException.class
+    }
+
+    def sqlResult() {
+        given:
+        def id1 = 'cadNumber1'
+        def fieldComponent1 = getFieldComponentWithformData()
+        fieldComponent1.setId(id1)
+        fieldComponent1.getAttrs().put('sqlResult', true)
+
+        def id2 = 'cadNumber2'
+        def fieldComponent2 = getFieldComponentWithformData()
+        fieldComponent2.setId(id2)
+
+        def id3 = 'cadNumber3'
+        def fieldComponent3 = getFieldComponentWithformData()
+        fieldComponent3.setId(id3)
+        fieldComponent3.getAttrs().put('sqlResult', true)
+
+        def id4 = 'cadNumber4'
+        def fieldComponent4 = getFieldComponentWithformData()
+        fieldComponent4.setId(id4)
+        fieldComponent4.getAttrs().put('sqlResult', false)
+
+        def response = JsonFileUtil.getJsonFromFile(this.getClass(), '-sql-response.json')
+
+        def stubRestTemplate = Stub(RestTemplate) {
+            MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+            headers.add("Content-Type", "application/json");
+            it.exchange(_ as String, HttpMethod.POST, _ as HttpEntity, Object.class) >>
+                    new ResponseEntity<Object>(JsonProcessingUtil.fromJson(response, Object.class), new HttpHeaders(headers), HttpStatus.OK)
+        }
+        def restClientRegistry = Stub(RestClientRegistry) {
+            it.getRestTemplate(_ as Integer) >> stubRestTemplate
+        }
+
+        BackRestCallService service = new BackRestCallServiceImpl(restClientRegistry, JsonProcessingUtil.getObjectMapper())
+        component = new BackRestCallComponent(restCallComponent, service, Mock(UserPersonalData))
+        ComponentTestUtil.setAbstractComponentServices(component)
+        def scenarioDto = new ScenarioDto()
+
+        when:
+        component.preProcess(fieldComponent1, scenarioDto)
+        component.preProcess(fieldComponent2, scenarioDto)
+        component.preProcess(fieldComponent3, scenarioDto)
+        component.preProcess(fieldComponent4, scenarioDto)
+
+        then:
+        scenarioDto.getApplicantAnswerByFieldId(id1).getValue().contains('"items":')
+        scenarioDto.getApplicantAnswerByFieldId(id2).getValue().contains('"meta":')
+        scenarioDto.getApplicantAnswerByFieldId(id3).getValue().contains('"items":')
+        scenarioDto.getApplicantAnswerByFieldId(id4).getValue().contains('"meta":')
     }
 
     def static getFieldComponent() {
