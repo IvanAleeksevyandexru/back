@@ -1,5 +1,6 @@
 package unit.ru.gosuslugi.pgu.fs.service.impl.process
 
+import org.springframework.core.env.Environment
 import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData
 import ru.gosuslugi.pgu.core.lk.model.order.Order
@@ -37,7 +38,6 @@ class NextScreenProcessImplSpec extends Specification {
     ScreenFinderService screenFinderServiceMock = Mock(ScreenFinderService)
     HelperScreenRegistry screenRegistryMock = Mock(HelperScreenRegistry)
     UserPersonalData userPersonalDataMock = Mock(UserPersonalData)
-    UserOrgData userOrgDataMock = Mock(UserOrgData)
     PguOrderService pguOrderServiceMock = Mock(PguOrderService)
     FormScenarioDtoServiceImpl scenarioDtoServiceMock = Mock(FormScenarioDtoServiceImpl)
     IntegrationService integrationServiceMock = Mock(IntegrationService)

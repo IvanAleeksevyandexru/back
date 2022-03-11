@@ -15,18 +15,18 @@ class ConfirmPersonalUserRegAddrComponentSpec extends Specification {
 
     def 'Can get initial value'() {
         given:
-        BaseComponent<ConfirmPersonalUserRegAddress> confirmPersonalUserRegAddrComponent = new ConfirmPersonalUserRegAddrComponent(userPersonalDataMock, esiaRestContactDataClient)
+        BaseComponent<ConfirmPersonalUserRegAddress> confirmPersonalUserRegAddrComponent = new ConfirmPersonalUserRegAddrComponent(userPersonalDataMock)
         def fieldComponent = [type: ComponentType.ConfirmPersonalUserRegAddr, attrs: [
                 "addrType": "permanentRegistry",
                 fields    : [
                         [fieldName: "regAddr"]
                 ]]] as FieldComponent
         userPersonalDataMock.addresses >> [new EsiaAddress(
-                type: 'PRG', zipCode: '141070', fiasCode: '00000', addressStr: '414666, г. Саратов, ул. Чапаева, д. 1')]
+                type: 'PRG', zipCode: '141070', fiasCode: '00000', addressStr: 'г. Саратов, ул. Чапаева, д. 1')]
         esiaRestContactDataClient = Mock(EsiaRestContactDataClient)
 
         ConfirmPersonalUserRegAddress expected = new ConfirmPersonalUserRegAddress()
-        expected.setRegAddr("414666, г. Саратов, ул. Чапаева, д. 1")
+        expected.setRegAddr("141070, г. Саратов, ул. Чапаева, д. 1")
 
         when:
         def actual = confirmPersonalUserRegAddrComponent.getInitialValue(fieldComponent)
@@ -39,18 +39,18 @@ class ConfirmPersonalUserRegAddrComponentSpec extends Specification {
 
     def 'Can get initial value not default address type'() {
         given:
-        BaseComponent<ConfirmPersonalUserRegAddress> confirmPersonalUserRegAddrComponent = new ConfirmPersonalUserRegAddrComponent(userPersonalDataMock, esiaRestContactDataClient)
+        BaseComponent<ConfirmPersonalUserRegAddress> confirmPersonalUserRegAddrComponent = new ConfirmPersonalUserRegAddrComponent(userPersonalDataMock)
         def fieldComponent = [type: ComponentType.ConfirmPersonalUserRegAddr, attrs: [
                 "addrType": "actualResidence",
                 fields    : [
                         [fieldName: "regAddr"]
                 ]]] as FieldComponent
         userPersonalDataMock.addresses >> [new EsiaAddress(
-                type: 'PLV', zipCode: '434340', fiasCode: '11111', addressStr: '546324, г. Саратов, ул. Восточная, д. 1')]
+                type: 'PLV', zipCode: '434340', fiasCode: '11111', addressStr: 'г. Саратов, ул. Восточная, д. 1')]
         esiaRestContactDataClient = Mock(EsiaRestContactDataClient)
 
         ConfirmPersonalUserRegAddress expected = new ConfirmPersonalUserRegAddress()
-        expected.setRegAddr("546324, г. Саратов, ул. Восточная, д. 1")
+        expected.setRegAddr("434340, г. Саратов, ул. Восточная, д. 1")
 
         when:
         def actual = confirmPersonalUserRegAddrComponent.getInitialValue(fieldComponent)

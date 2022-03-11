@@ -4,13 +4,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.atc.carcass.security.rest.model.EsiaAddress;
-import ru.gosuslugi.pgu.fs.common.exception.FormBaseWorkflowException;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData;
-import ru.gosuslugi.pgu.components.descriptor.types.FullAddress;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
+import ru.gosuslugi.pgu.fs.common.exception.FormBaseWorkflowException;
+import ru.gosuslugi.pgu.fs.service.FullAddressService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +33,7 @@ public class RegistrationLegalAddrComponent extends AbstractFullAddressComponent
 
 
     private final UserOrgData userOrgData;
+    private final FullAddressService fullAddressService;
 
     @Override
     public ComponentResponse<String> getInitialValue(FieldComponent component) {
@@ -42,10 +43,9 @@ public class RegistrationLegalAddrComponent extends AbstractFullAddressComponent
         Optional<EsiaAddress> esiaAddressOptional = getAddress(component);
         if (esiaAddressOptional.isPresent()) {
             Map<String, Object> result = new HashMap<>();
-            FullAddress address = new FullAddress();
             EsiaAddress esiaAddress = esiaAddressOptional.get();
-            address.setFullAddress(esiaAddress.getAddressStr());
-            result.put("regAddr", address);
+            final var fullAddress = fullAddressService.fromEsiaAddress(esiaAddress);
+            result.put("regAddr", fullAddress);
             return ComponentResponse.of(JsonProcessingUtil.toJson(result));
         }
 

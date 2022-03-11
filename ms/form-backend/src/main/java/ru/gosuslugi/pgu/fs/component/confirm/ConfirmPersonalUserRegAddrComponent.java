@@ -16,7 +16,6 @@ import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
 import ru.gosuslugi.pgu.fs.component.address.AbstractFullAddressComponent;
 import ru.gosuslugi.pgu.fs.component.confirm.model.ConfirmPersonalUserRegAddress;
-import ru.gosuslugi.pgu.fs.esia.EsiaRestContactDataClient;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -26,12 +25,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.FIAS_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.REG_ADDR_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.REG_ADDR_ZIP_CODE_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.REG_DATE_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
 
 /**
  * Компонент для отображения и валидации адреса регистрации пользователя
@@ -45,7 +43,6 @@ public class ConfirmPersonalUserRegAddrComponent extends AbstractFullAddressComp
     public static final AddressType DEFAULT_ADDRESS_TYPE = AddressType.permanentRegistry;
 
     private final UserPersonalData userPersonalData;
-    private final EsiaRestContactDataClient esiaRestContactDataClient;
 
     @Override
     public ComponentType getType() {
@@ -77,7 +74,10 @@ public class ConfirmPersonalUserRegAddrComponent extends AbstractFullAddressComp
             ConfirmPersonalUserRegAddress result = new ConfirmPersonalUserRegAddress();
             EsiaAddress esiaAddress = esiaAddressOptional.get();
             if (fields.contains(REG_ADDR_ATTR)) {
-                result.setRegAddr(esiaAddress.getAddressStr());
+                result.setRegAddr(Stream.of(
+                    esiaAddress.getZipCode(),
+                    esiaAddress.getAddressStr()
+                ).filter(Objects::nonNull).collect(Collectors.joining(", ")));
             }
 
             if (fields.contains(REG_ADDR_ZIP_CODE_ATTR)) {

@@ -3,6 +3,7 @@ package ru.gosuslugi.pgu.fs.service.process.impl.screen;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
@@ -78,6 +79,9 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
     private final SuggestsService suggestsService;
     private final EmpowermentService empowermentService;
     private final ErrorModalDescriptorService errorModalDescriptorService;
+
+    @Value("${orderid.skip-duplicate-check:false}")
+    private boolean skipOrderCheck;
 
     @Override
     public void buildResponse() {
@@ -347,6 +351,10 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
     @Override
     public boolean hasCheckForDuplicate() {
+        if (skipOrderCheck) {
+            return false;
+        }
+
         Optional<FieldComponent> component = findComponentForPredicate(response.getScenarioDto(), serviceDescriptor, FieldComponent::getCheckForDuplicate);
         return component.isPresent();
     }
