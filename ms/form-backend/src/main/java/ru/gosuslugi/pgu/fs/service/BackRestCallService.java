@@ -9,6 +9,7 @@ import java.util.Map;
 public interface BackRestCallService {
 
     Map<String, Boolean> OPTIONS = new HashMap<>();
+
     BackRestCallResponseDto sendRequest(RestCallDto request);
 
     default void setOption(String option) {

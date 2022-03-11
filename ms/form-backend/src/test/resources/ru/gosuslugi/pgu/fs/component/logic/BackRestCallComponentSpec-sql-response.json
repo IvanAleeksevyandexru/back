@@ -1,0 +1,210 @@
+{
+    "created_at": "2022-03-10T14:40:00Z",
+    "query_id": "ec5a05d0-ba2c-4346-8a7d-96bfda5441e6",
+    "meta": [
+        {
+            "name": "egrn_childcarspacecadnumbers_childcarspacecadnumber",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_cadvalcalculationdate",
+            "type": "DATE"
+        },
+        {
+            "name": "egrn_propertyinfo_currentcadastralvalue",
+            "type": "DOUBLE"
+        },
+        {
+            "name": "egrn_propertyinfo_floorscount",
+            "type": "LONG"
+        },
+        {
+            "name": "egrn_propertyinfo_propareavalue",
+            "type": "DOUBLE"
+        },
+        {
+            "name": "egrn_propertyinfo_level1type",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_typecode",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_regionvalue",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_apartmenttype",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_proparea",
+            "type": "DOUBLE"
+        },
+        {
+            "name": "egrn_propertyinfo_apartmentname",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_propyearblt",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_propoccdpth",
+            "type": "DOUBLE"
+        },
+        {
+            "name": "egrn_propertyinfo_parentroomcadnumber",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_cadnumber",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_level3name",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_level3type",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_propbltuparea",
+            "type": "DOUBLE"
+        },
+        {
+            "name": "egrn_propertyinfo_propdpth",
+            "type": "DOUBLE"
+        },
+        {
+            "name": "egrn_propertyinfo_landcategoryvalue",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_permisseduselandvalue",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_propext",
+            "type": "DOUBLE"
+        },
+        {
+            "name": "egrn_propertyinfo_readableaddress",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_propname",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_landareatypevalue",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_landareavalue",
+            "type": "DOUBLE"
+        },
+        {
+            "name": "egrn_propertyinfo_landcategorytype",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_roomtypevalue",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_parentcadnumber",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_propertytypevalue",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_prophght",
+            "type": "DOUBLE"
+        },
+        {
+            "name": "egrn_propertyinfo_roompurposevalue",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_propertyinfo_propyearcom",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_childroomcadnumbers_childroomcadnumber",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_permisseduse_permissedusename",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_materials_buildmatcode",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_materials_buildmatvalue",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_floorinfo_floortypevalue",
+            "type": "STRING"
+        },
+        {
+            "name": "egrn_floorinfo_floornumber",
+            "type": "LONG"
+        },
+        {
+            "name": "egrn_parentlandcadnumbers_parentlandcadnumber",
+            "type": "STRING"
+        }
+    ],
+    "rows": [
+        [
+            null,
+            "2022-01-01T00:00:00Z",
+            "1.26058782305E9",
+            "6",
+            "4071.5",
+            "д",
+            "002001002000",
+            "Москва",
+            null,
+            null,
+            null,
+            "1914",
+            null,
+            null,
+            "77:01:0001030:1006",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            "Москва, Басманный, ул. Жуковского, д. 2",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            "Здание",
+            null,
+            "Многоквартирный дом",
+            "1914",
+            "77:01:0001030:1219",
+            null,
+            "061001001001",
+            "Кирпичные",
+            null,
+            null,
+            "77:01:0001030:56"
+        ]
+    ]
+}
