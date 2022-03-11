@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <pluginGroups>
+  </pluginGroups>
+  <proxies>
+  </proxies>
+  <servers>
+    <server>
+      <id>nexus</id>
+    </server>
+  </servers>
+
+
+  <mirrors>
+    <mirror>
+      <id>insecure-repo</id>
+      <mirrorOf>*,!nexus,!nexus-epgu2,!nexus-plugin</mirrorOf>
+      <name>Pseudo repository to mirror external repositories initially using HTTP.</name>
+      <url>http://nexus.gosuslugi.local/content/groups/public/</url>
+      <blocked>false</blocked>
+    </mirror>
+  </mirrors>
+
+
+  <profiles>
+    <profile>
+      <id>nexus</id>
+      <repositories>
+        <repository>
+          <id>nexus</id>
+          <name>Repository for JDK 1.6 builds</name>
+          <url>http://nexus.gosuslugi.local/nexus/content/groups/public/</url>
+          <layout>default</layout>
+        </repository>
+        <repository>
+          <id>nexus-epgu2</id>
+          <name>Repository for internal builds</name>
+          <url>http://nexus.gosuslugi.local/content/repositories/epgu2/</url>
+        </repository>
+      </repositories>
+
+      <pluginRepositories>
+        <pluginRepository>
+          <id>nexus-plugin</id>
+          <name>Repository for JDK 1.6 builds</name>
+          <url>http://nexus.gosuslugi.local/nexus/content/groups/public/</url>
+          <layout>default</layout>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
+
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>nexus</activeProfile>
+
+  </activeProfiles>
+</settings>

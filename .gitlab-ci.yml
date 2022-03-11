@@ -1,0 +1,86 @@
+include:
+  - template: Code-Quality.gitlab-ci.yml 
+
+image: registry.gosuslugi.local/epgu2-dev/tools/maven:3-liberica-openjdk-11
+
+stages:
+  - Test
+  - Build
+  - Package
+
+variables:
+  MAVEN_CLI_OPTS: "-T 2 -s .m2/settings.ci.xml --batch-mode -Dmaven.repo.local=.m2/repository"
+  MAVEN_OPTS: "-XX:+UseParallelGC -XX:-TieredCompilation -XX:TieredStopAtLevel=1"
+  DOCKER_TAG: ${CI_COMMIT_REF_SLUG}-${CI_BUILD_ID}
+  DOCKER_DRIVER: overlay2
+  DOCKER_HOST: tcp://localhost:2375/
+
+cache:
+  paths:
+    - .m2/repository
+
+code_quality:
+  stage: Test
+  cache: []
+  artifacts:
+    paths: [gl-code-quality-report.json]
+  tags:
+    - k8s
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_NAME =~ /^release/'
+      when: always
+    - if: $CI_COMMIT_REF_NAME !~ /^release/ && $CI_PIPELINE_SOURCE != "merge_request_event"
+      when: manual
+  allow_failure: true
+  interruptible: true
+      
+build:
+  stage: Build
+  script:
+    #- mvn $MAVEN_CLI_OPTS dependency:sources
+    - mvn $MAVEN_CLI_OPTS clean package
+  artifacts:
+    when: always
+    paths:
+      - ms/form-backend/target/*.jar
+      - ms/pgu-scenario-player-service/target/*.jar         
+    reports:
+      junit:
+        - ms/form-backend/target/surefire-reports/TEST-*.xml
+        - ms/pgu-scenario-player-service/target/surefire-reports/TEST-*.xml
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_NAME =~ /^release/'
+      when: always
+    - if: $CI_COMMIT_REF_NAME !~ /^release/ && $CI_PIPELINE_SOURCE != "merge_request_event"
+      when: manual
+  interruptible: true      
+  tags:
+    - k8s
+
+form-backend:
+  cache: []
+  stage: Package
+  image: docker:18.09.7-dind
+  services:
+    - name: docker:18.09.7-dind
+      entrypoint: ["dockerd-entrypoint.sh"]
+      command: ["--insecure-registry", "registry.gosuslugi.local"]
+  script:
+    - docker build --build-arg BUILD_VERSION=${DOCKER_TAG} ms/form-backend/ --tag registry.gosuslugi.local/epgu2-dev/form-backend/form-backend:${DOCKER_TAG}
+    - docker push registry.gosuslugi.local/epgu2-dev/form-backend/form-backend:${DOCKER_TAG}
+  tags:
+    - k8s
+
+pgu-scenario-player-service:
+  cache: []
+  stage: Package
+  image: docker:18.09.7-dind
+  services:
+    - name: docker:18.09.7-dind
+      entrypoint: ["dockerd-entrypoint.sh"]
+      command: ["--insecure-registry", "registry.gosuslugi.local"]
+  script:
+    - docker build --build-arg BUILD_VERSION=${DOCKER_TAG} ms/pgu-scenario-player-service/ --tag registry.gosuslugi.local/epgu2-dev/form-backend/pgu-scenario-player-service:${DOCKER_TAG}
+    - docker push registry.gosuslugi.local/epgu2-dev/form-backend/pgu-scenario-player-service:${DOCKER_TAG}
+  tags:
+    - k8s
