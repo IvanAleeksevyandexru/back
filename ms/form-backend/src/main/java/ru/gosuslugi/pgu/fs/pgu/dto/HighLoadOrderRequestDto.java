@@ -1,5 +1,6 @@
 package ru.gosuslugi.pgu.fs.pgu.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
@@ -11,6 +12,7 @@ public class HighLoadOrderRequestDto {
 
     private String location;
 
+    @JsonProperty("eServiceCode")
     private String eServiceCode;
 
     private String serviceTargetCode;
