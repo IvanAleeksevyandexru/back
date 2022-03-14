@@ -1,0 +1,10 @@
+{
+  "id": "nm",
+  "type": "ConfirmPersonalPolicyChange",
+  "label": "",
+  "attrs": {
+    "fields": []
+  },
+  "value": "",
+  "visited": false
+}
