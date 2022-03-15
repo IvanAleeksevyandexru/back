@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import ru.atc.carcass.security.rest.model.person.PersonDoc;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.components.BasicComponentUtil;
+import ru.gosuslugi.pgu.components.FieldComponentUtil;
 import ru.gosuslugi.pgu.components.dto.ErrorDto;
 import ru.gosuslugi.pgu.components.dto.FieldDto;
 import ru.gosuslugi.pgu.components.dto.StateDto;
@@ -131,6 +132,8 @@ public class ConfirmPersonalPolicyComponent extends AbstractComponent<FormDto<Co
                         .fields(stateFields)
                         .build());
             }
+        } else {
+            FieldComponentUtil.fillComponentErrorFromHint(component);
         }
         return FormDto.<ConfirmPersonalOms>builder()
                 .states(states)

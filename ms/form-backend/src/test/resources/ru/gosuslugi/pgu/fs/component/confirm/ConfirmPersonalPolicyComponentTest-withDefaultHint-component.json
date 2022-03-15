@@ -7,15 +7,6 @@
       "title": "defaultHintTitle",
       "value": "defaultHintValue"
     },
-    "style": {
-      "group": "mb-24",
-      "groupTitle": "mb-12",
-      "value": "",
-      "label": "mb-4",
-      "field": "mb-16",
-      "list": "",
-      "divider": ""
-    },
     "actions": [],
     "fields": [
       {
@@ -32,13 +23,6 @@
         "fieldName": "issuedBy",
         "label": "Страховая организация",
         "required": "true"
-      }
-    ],
-    "errors": [
-      {
-        "title": "Ошибка загрузки данных",
-        "desc": "<a data-action-type='prevStep'>Попробуйте снова</a> или <b data-action-type='nextStep'>заполните данные вручную</b> ",
-        "type": "error"
       }
     ]
   },

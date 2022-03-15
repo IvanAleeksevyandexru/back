@@ -3,6 +3,10 @@
   "type": "ConfirmPersonalPolicy",
   "label": "Подтвердите полис ОМС",
   "attrs": {
+    "defaultHint": {
+      "title": "defaultHintTitle",
+      "value": "defaultHintValue"
+    },
     "style": {
       "group": "mb-24",
       "groupTitle": "mb-12",
