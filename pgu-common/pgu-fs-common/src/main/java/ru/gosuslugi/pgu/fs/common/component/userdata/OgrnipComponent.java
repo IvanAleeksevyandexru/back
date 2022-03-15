@@ -14,30 +14,16 @@ import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 @RequiredArgsConstructor
 public class OgrnipComponent extends OgrnComponent {
 
-    private final String DEFAULT_ERROR_MESSAGE = "Некорректный ОГРНИП";
-
+    private static final String DEFAULT_ERROR_MESSAGE = "Некорректный ОГРНИП";
 
     @Override
     public ComponentType getType() {
         return ComponentType.OgrnipInput;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    protected int getCheckOgrnDivider() {
-        return 13;
-    }
-
-    /**
-     * Маска XXXXXXXXXXXXXXX или X-XX-XX-XXXXXXXXX-X
-     *
-     * @return
-     */
-    @Override
-    protected String getValueRegExp() {
-        return "\\d{15}|\\d-\\d{2}-\\d{2}-\\d{9}-\\d";
+    public boolean isOgrnip() {
+        return true;
     }
 
     /**
