@@ -55,13 +55,13 @@ public class PguOrderClientImpl implements PguOrderClient {
     private String lkApiUrl;
 
     private static final String LK_API_CREATE_ORDER_PATH = "/lk-api/internal/api/lk/v1/orders";
-    private static final String LK_API_FIND_ORDER_PATH = "/internal/api/lk/v1/orders/drafts?_={preventCacheValue}&embed=LAST_INVITATION&pageIndex=1&pageSize={pageSize}&sourceSystems=*&eServiceId={serviceId}&serviceTargetId={targetId}";
+    private static final String LK_API_FIND_ORDER_PATH = "/lk-api/internal/api/lk/v1/drafts?_={preventCacheValue}&embed=LAST_INVITATION&pageIndex=1&pageSize={pageSize}&sourceSystems=*&eServiceId={serviceId}&serviceTargetId={targetId}";
     private static final String LK_API_ORDERS_PATH = "/internal/api/lk/v1/orders/{orderId}";
     private static final String LK_API_CREATE_ORDER_PATH_HIGHLOAD = "/lk-api/internal/api/lk/v1/orders/create-hp";
     private static final String LK_API_CHECK_ORDER_EXISTS = "/lk-api/internal/api/orders/v1/create-hp/{orderId}/check";
     private static final String LK_API_GET_ORDERS_BY_SERVICE_ID = "/internal/api/lk/v1/orders?eserviceCode={serviceId}&serviceTargetExtId={targetId}&pageIndex=1&pageSize=1000&sourceSystems=*";
     private static final String LK_API_FIND_ORDER_WITH_PAYMENT_PATH = "/internal/api/lk/v1/orders/{orderId}?embed=PAYMENT";
-    private static final String LK_API_FIND_ORDER_LIGHT_PATH = "/internal/api/lk/v1/orders/drafts/light?_={preventCacheValue}&embed=LAST_INVITATION&pageIndex=1&pageSize={pageSize}&sourceSystems=*&eServiceId={serviceId}&serviceTargetId={targetId}";
+    private static final String LK_API_FIND_ORDER_LIGHT_PATH = "/lk-api/internal/api/lk/v1/drafts/light?_={preventCacheValue}&embed=LAST_INVITATION&pageIndex=1&pageSize={pageSize}&sourceSystems=*&eServiceId={serviceId}&serviceTargetId={targetId}";
     private static final String LK_API_ORDER_SET_ATTRIBUTES = "lk-api/internal/api/lk/v1/orders/{orderId}/set/attributes";
     private static final String LK_API_CHECK_ORDER = "/api/lk/v1/orders/check/{serviceCode}/{targetCode}";
     private static final String LK_API_SAVE_VALUES = "/api/lk/v1/orders/check/add/";
