@@ -8,6 +8,7 @@ import ru.atc.carcass.security.rest.model.EsiaAddress;
 import ru.atc.carcass.security.rest.model.EsiaContact;
 import ru.atc.carcass.security.rest.model.person.Person;
 import ru.atc.carcass.security.rest.model.person.PersonDoc;
+import ru.gosuslugi.pgu.common.esia.search.utils.UserDataUtils;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.fs.common.service.ProtectedFieldService;
@@ -196,7 +197,7 @@ public class ProtectedFieldServiceImpl implements ProtectedFieldService {
             }
         }
         if (ORGANIZATION_USER_ROLE.equals(name)) {
-            result = userOrgData.getOrgChief();
+            result = UserDataUtils.isChief(userPersonalData, userOrgData);
         }
         if (ORGANIZATION_PHONE.equals(name)) {
             result = userOrgData.getVerifiedContactValue(ORG_PHONE_TYPE_ATTR);

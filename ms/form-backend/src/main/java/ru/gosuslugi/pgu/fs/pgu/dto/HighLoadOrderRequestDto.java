@@ -36,5 +36,10 @@ public class HighLoadOrderRequestDto {
     private String userId;
 
     private Boolean eserviceAttrDeleteDraft = false;
+    @JsonProperty("eserviceAttrPassCode")
+    private String eserviceAttrPassCode;
+
+    @JsonProperty("eserviceAttrPassCode")
+    private String eserviceAttrPassCode;
 
 }

@@ -21,6 +21,7 @@ import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.fs.common.component.AbstractCycledComponent;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
 import ru.gosuslugi.pgu.fs.common.exception.ErrorModalException;
+import ru.gosuslugi.pgu.fs.common.jsonlogic.JsonLogic;
 import ru.gosuslugi.pgu.fs.common.service.InitialValueFromService;
 import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService;
 import ru.gosuslugi.pgu.fs.common.utils.AnswerUtil;
@@ -119,7 +120,7 @@ public class SnilsComponent extends AbstractCycledComponent<String> {
             }
             // Что бы избежать зацикливания в participants, но есть случаи, когда по бизнесу-логике нужно.
             // Например 10000000318 услуга - директор сам может быть инженером с минстроевским сертификатом, поэтому вводит себя
-            boolean validationOwnSnils = Boolean.parseBoolean((String) fieldComponent.getAttrs().getOrDefault("validationOwnSnils", "true"));
+            boolean validationOwnSnils = JsonLogic.isTrue(fieldComponent.getAttrs().getOrDefault("validationOwnSnils", true));
             if (validationOwnSnils && ps.getOid().equals(valueOf(userPersonalData.getUserId()))) {
                 setNewAnswerValue(ps, entry, fieldComponent);
                 incorrectAnswers.put(entry.getKey(), "Нельзя ввести собственный СНИЛС");

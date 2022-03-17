@@ -149,7 +149,10 @@ public class MainScreenServiceImpl extends AbstractScreenService implements Main
             result.setCompareRegions(serviceDescriptor.getCompareRegions());
             return result;
         }
-        return fillOrderListStatus(availableOrders, serviceId);
+        var result = fillOrderListStatus(availableOrders, serviceId);
+        result.setServiceName(serviceDescriptor.getServiceName());
+        result.setCompareRegions(serviceDescriptor.getCompareRegions());
+        return result;
     }
 
     /**

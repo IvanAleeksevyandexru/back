@@ -139,7 +139,7 @@ public class ConfirmPersonalUserRegAddrReadOnlyComponent
         FieldComponent fieldComponent
     ) {
         ConfirmPersonalUserRegAddressReadOnly initialValue = getInitialValue(fieldComponent).get();
-        if (nonNull(initialValue) && !isBlank(initialValue.getError())) {
+        if (nonNull(initialValue) && initialValue.getError() != null) {
             incorrectAnswers.put(entry.getKey(), initialValue.getError());
             return;
         }

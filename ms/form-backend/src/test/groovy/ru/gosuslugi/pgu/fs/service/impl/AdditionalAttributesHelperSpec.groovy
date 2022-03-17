@@ -188,7 +188,7 @@ class AdditionalAttributesHelperSpec extends Specification {
         userOrgData.getOrgRole() >> new EsiaRole(
                 chief: "chief"
         )
-        userOrgData.getOrgChief() >> "chief"
+        userOrgData.getChief() >> "chief"
 
         def empowermentService = Mock(EmpowermentService)
         empowermentService.getUserEmpowerments()>>Set.of("1000234")
