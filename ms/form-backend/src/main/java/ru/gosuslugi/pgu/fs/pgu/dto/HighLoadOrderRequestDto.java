@@ -39,7 +39,4 @@ public class HighLoadOrderRequestDto {
     @JsonProperty("eserviceAttrPassCode")
     private String eserviceAttrPassCode;
 
-    @JsonProperty("eserviceAttrPassCode")
-    private String eserviceAttrPassCode;
-
 }
