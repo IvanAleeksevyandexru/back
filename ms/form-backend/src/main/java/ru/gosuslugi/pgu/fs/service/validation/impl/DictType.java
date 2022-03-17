@@ -11,6 +11,8 @@ public enum DictType {
     childrenClubsApi,
     nsiSuggest,
     lkApi,
+    schoolDictionaryUrl,
+    schoolSearchUrl
     ;
 
     private static final Map<String, DictType> dictTypes =
