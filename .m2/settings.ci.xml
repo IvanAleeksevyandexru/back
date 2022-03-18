@@ -23,6 +23,13 @@
       <url>http://nexus.gosuslugi.local/content/groups/public/</url>
       <blocked>false</blocked>
     </mirror>
+    <mirror>
+      <id>insecure-repo-epgu2</id>
+      <mirrorOf>nexus-epgu2</mirrorOf>
+      <name>Pseudo repository to mirror internal repositories initially using HTTP.</name>
+      <url>http://nexus.gosuslugi.local/content/repositories/epgu2/</url>
+      <blocked>false</blocked>
+    </mirror>
   </mirrors>
 
 
