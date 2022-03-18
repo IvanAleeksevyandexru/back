@@ -13,6 +13,7 @@ import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
 import ru.gosuslugi.pgu.fs.service.BackRestCallService;
+import ru.gosuslugi.pgu.fs.service.RestCallService;
 
 import java.util.Map;
 
@@ -33,12 +34,12 @@ public class BarbarbokRestCallComponent extends BackRestCallComponent {
     private final String smevConverterUrl;
 
     public BarbarbokRestCallComponent(
-            RestCallComponent restCallComponent,
+            RestCallService restCallService,
             BackRestCallService backRestCallService,
             UserPersonalData userPersonalData,
             @Value("${pgu.smev-converter-url}") String smevConverterUrl
     ) {
-        super(restCallComponent, backRestCallService, userPersonalData);
+        super(restCallService, backRestCallService, userPersonalData);
         this.smevConverterUrl = smevConverterUrl;
     }
 

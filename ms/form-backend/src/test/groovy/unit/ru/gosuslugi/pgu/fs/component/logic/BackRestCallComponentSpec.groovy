@@ -14,6 +14,7 @@ import ru.gosuslugi.pgu.fs.component.logic.BackRestCallComponent
 import ru.gosuslugi.pgu.fs.component.logic.RestCallComponent
 import ru.gosuslugi.pgu.fs.component.logic.model.RestCallDto
 import ru.gosuslugi.pgu.fs.service.BackRestCallService
+import ru.gosuslugi.pgu.fs.service.RestCallService
 import spock.lang.Specification
 
 class BackRestCallComponentSpec extends Specification {
@@ -22,15 +23,15 @@ class BackRestCallComponentSpec extends Specification {
     def test() {
         given:
         def scenarioDto = new ScenarioDto()
-        def restCallComponent = new RestCallComponent(_ as String)
         def restCallService = Stub(BackRestCallService) {
             it.sendRequest(_ as RestCallDto) >> new BackRestCallResponseDto(200, Map.<String, Object> of("key", "value"))
         }
-        def component = new BackRestCallComponent(restCallComponent, restCallService, Mock(UserPersonalData))
+        def component = new BackRestCallComponent(Stub(RestCallService), restCallService, Mock(UserPersonalData))
         component.jsonProcessingService = new JsonProcessingServiceImpl(new ObjectMapper())
         def fieldComponent = getFieldComponent()
 
         when:
+        component.preProcess(fieldComponent, scenarioDto)
         def initialValue = component.getInitialValue(fieldComponent, scenarioDto)
 
         then:
@@ -44,11 +45,10 @@ class BackRestCallComponentSpec extends Specification {
 
     def exceptions() {
         given:
-        def restCallComponent = new RestCallComponent(_ as String)
         def restCallService = Stub(BackRestCallService) {
             it.sendRequest(_ as RestCallDto) >> { throw new ExternalServiceException(_ as String) }
         }
-        def component = new BackRestCallComponent(restCallComponent, restCallService, Mock(UserPersonalData))
+        def component = new BackRestCallComponent(Stub(RestCallService), restCallService, Mock(UserPersonalData))
 
         when:
         component.getInitialValue(getFieldComponent(), new ScenarioDto())
