@@ -8,9 +8,9 @@ import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType
 import ru.gosuslugi.pgu.fs.common.service.impl.JsonProcessingServiceImpl
 import ru.gosuslugi.pgu.fs.component.logic.BarbarbokRestCallComponent
-import ru.gosuslugi.pgu.fs.component.logic.RestCallComponent
 import ru.gosuslugi.pgu.fs.component.logic.model.RestCallDto
 import ru.gosuslugi.pgu.fs.service.BackRestCallService
+import ru.gosuslugi.pgu.fs.service.RestCallService
 import spock.lang.Specification
 
 class BarbarbokRestCallComponentSpec extends Specification {
@@ -23,7 +23,6 @@ class BarbarbokRestCallComponentSpec extends Specification {
 
     @SuppressWarnings("GroovyAccessibility")
     def setup() {
-        def restCallComponent = new RestCallComponent("restCallUrl")
         def backRestCallService = Stub(BackRestCallService) {
             it.sendRequest(_ as RestCallDto) >>
                     new BackRestCallResponseDto(200, Map.<String, Object> of("key", "value"))
@@ -37,7 +36,7 @@ class BarbarbokRestCallComponentSpec extends Specification {
         scenarioDto.setServiceCode("10000000308")
 
         component = new BarbarbokRestCallComponent(
-                restCallComponent,
+                Stub(RestCallService),
                 backRestCallService,
                 userPersonalData,
                 "smevConverterUrl"
