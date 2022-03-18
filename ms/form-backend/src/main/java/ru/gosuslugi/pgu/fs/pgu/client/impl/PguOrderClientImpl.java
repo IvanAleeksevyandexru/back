@@ -56,7 +56,7 @@ public class PguOrderClientImpl implements PguOrderClient {
 
     private static final String LK_API_CREATE_ORDER_PATH = "/lk-api/internal/api/lk/v1/orders";
     private static final String LK_API_FIND_ORDER_PATH = "/lk-api/internal/api/lk/v1/drafts?_={preventCacheValue}&embed=LAST_INVITATION&pageIndex=1&pageSize={pageSize}&sourceSystems=*&eServiceId={serviceId}&serviceTargetId={targetId}";
-    private static final String LK_API_ORDERS_PATH = "/internal/api/lk/v1/orders/{orderId}";
+    private static final String LK_API_ORDERS_PATH = "/internal/api/lk/v1/orders/{orderId}?token={userId}@@AL20@@1";
     private static final String LK_API_CREATE_ORDER_PATH_HIGHLOAD = "/lk-api/internal/api/lk/v1/orders/create-hp";
     private static final String LK_API_CHECK_ORDER_EXISTS = "/lk-api/internal/api/orders/v1/create-hp/{orderId}/check";
     private static final String LK_API_GET_ORDERS_BY_SERVICE_ID = "/internal/api/lk/v1/orders?eserviceCode={serviceId}&serviceTargetExtId={targetId}&pageIndex=1&pageSize=1000&sourceSystems=*";
@@ -202,12 +202,11 @@ public class PguOrderClientImpl implements PguOrderClient {
     @Override
     public Boolean deleteOrder(Long orderId, HttpEntity<Object> httpEntity) {
         try {
-            ResponseEntity<Object> response = restTemplate
-                    .exchange(pguUrl + LK_API_ORDERS_PATH,
+            restTemplate.exchange(pguUrl + LK_API_ORDERS_PATH,
                             HttpMethod.DELETE,
                             httpEntity,
                             Object.class,
-                            Map.of("orderId", orderId));
+                            Map.of("orderId", orderId, "userId", userPersonalData.getUserId()));
         } catch (ExternalServiceException e) {
             if (log.isDebugEnabled()) {
                 log.debug("Error from external service", e);
@@ -243,7 +242,7 @@ public class PguOrderClientImpl implements PguOrderClient {
                             HttpMethod.GET,
                             new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken())),
                             Order.class,
-                            Map.of("orderId", orderId));
+                            Map.of("orderId", orderId, "userId", userPersonalData.getUserId()));
             return response.getBody();
         } catch (ExternalServiceException e) {
             if (HttpStatus.NOT_FOUND.equals(e.getStatus())) {
@@ -262,7 +261,7 @@ public class PguOrderClientImpl implements PguOrderClient {
                             HttpMethod.GET,
                             new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userTokenService.getUserToken(userId))),
                             Order.class,
-                            Map.of("orderId", orderId));
+                            Map.of("orderId", orderId, "userId", userPersonalData.getUserId()));
             return response.getBody();
         } catch (ExternalServiceException e) {
             if (HttpStatus.NOT_FOUND.equals(e.getStatus())) {
