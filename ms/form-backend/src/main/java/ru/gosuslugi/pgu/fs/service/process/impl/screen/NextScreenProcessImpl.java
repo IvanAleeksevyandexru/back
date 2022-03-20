@@ -328,10 +328,10 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
         scenario.getCurrentValue().entrySet().stream()
                 .filter(entry -> {
                     if (scenario.getCachedAnswers().containsKey(entry.getKey())) {
-                        return !String.valueOf(scenario.getCachedAnswers().get(entry.getKey()).getValue()).equals(String.valueOf(entry.getValue()));
+                        return !String.valueOf(scenario.getCachedAnswers().get(entry.getKey())).equals(String.valueOf(entry.getValue()));
                     }
                     if (scenario.getApplicantAnswers().containsKey(entry.getKey())) {
-                        return !String.valueOf(scenario.getApplicantAnswers().get(entry.getKey()).getValue()).equals(String.valueOf(entry.getValue()));
+                        return !String.valueOf(scenario.getApplicantAnswers().get(entry.getKey())).equals(String.valueOf(entry.getValue()));
                     }
                     return false;
                 })
