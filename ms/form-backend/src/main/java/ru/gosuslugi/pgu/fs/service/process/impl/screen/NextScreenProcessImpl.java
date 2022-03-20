@@ -324,23 +324,26 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
     @Override
     public void clearCacheForComponents() {
         log.info("Clearing component cache" + formatScenarioLogFields());
-        request.getScenarioDto().getCurrentValue().entrySet()
-                .stream()
+        var scenario = request.getScenarioDto();
+        scenario.getCurrentValue().entrySet().stream()
                 .filter(entry -> {
-                    Map<String, ApplicantAnswer> cached = request.getScenarioDto().getCachedAnswers();
-                    ApplicantAnswer cachedValue = cached.get(entry.getKey());
-                    if (Objects.nonNull(cachedValue)) {
-                        return !String.valueOf(cachedValue).equals(String.valueOf(entry.getValue()));
+                    if (scenario.getCachedAnswers().containsKey(entry.getKey())) {
+                        return !String.valueOf(scenario.getCachedAnswers().get(entry.getKey()).getValue()).equals(String.valueOf(entry.getValue()));
+                    }
+                    if (scenario.getApplicantAnswers().containsKey(entry.getKey())) {
+                        return !String.valueOf(scenario.getApplicantAnswers().get(entry.getKey()).getValue()).equals(String.valueOf(entry.getValue()));
                     }
                     return false;
                 })
                 .map(Map.Entry::getKey).forEach(componentId -> {
-                    var displayComponentOptional = request.getScenarioDto().getDisplay().getComponents().stream().filter(v -> v.getId().equals(componentId)).findAny();
+                    var displayComponentOptional = scenario.getDisplay().getComponents().stream()
+                            .filter(v -> v.getId().equals(componentId))
+                            .findAny();
                     displayComponentOptional
                             .ifPresent(component -> serviceDescriptor.getFieldComponentById(component.getId()).get().getClearCacheForComponentIds()
-                                    .forEach(componentIdToClearCache -> {
-                                        request.getScenarioDto().getCachedAnswers().remove(componentIdToClearCache);
-                                    }));
+                                    .forEach(componentIdToClearCache ->
+                                            scenario.getCachedAnswers().remove(componentIdToClearCache)
+                                    ));
                 }
         );
     }
