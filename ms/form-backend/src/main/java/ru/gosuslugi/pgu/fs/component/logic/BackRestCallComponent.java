@@ -1,6 +1,7 @@
 package ru.gosuslugi.pgu.fs.component.logic;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
@@ -10,6 +11,7 @@ import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.fs.common.component.AbstractComponent;
 import ru.gosuslugi.pgu.fs.service.BackRestCallService;
+import ru.gosuslugi.pgu.fs.service.RestCallService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +34,10 @@ public class BackRestCallComponent extends AbstractComponent<String> {
     // Признак (boolean), нужно ли в реквест добавить header Authorization с значением "Bearer {acc_t}"
     public static final String BEARER_AUTH_ATTR = "bearer_auth";
 
-    private final RestCallComponent restCallComponent;
+    @Value("${pgu.back-rest-call-url}")
+    private String backRestCallUrl;
+
+    private final RestCallService restCallService;
     private final BackRestCallService backRestCallService;
     private final UserPersonalData userPersonalData;
 
@@ -48,7 +53,7 @@ public class BackRestCallComponent extends AbstractComponent<String> {
 
     public BackRestCallResponseDto getResponse(FieldComponent component) {
         setUserToken(component);
-        var restCallDto = restCallComponent.getInitialValue(component).get();
+        var restCallDto = restCallService.fillRestCallDto(component, backRestCallUrl).get();
 
         if (component.getBooleanAttr(SQL_RESULT_OPTION)) {
             backRestCallService.setOption(SQL_RESULT_OPTION);

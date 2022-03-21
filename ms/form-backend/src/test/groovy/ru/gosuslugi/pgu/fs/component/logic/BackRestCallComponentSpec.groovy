@@ -23,6 +23,7 @@ import ru.gosuslugi.pgu.fs.component.RestClientRegistry
 import ru.gosuslugi.pgu.fs.component.logic.model.RestCallDto
 import ru.gosuslugi.pgu.fs.service.BackRestCallService
 import ru.gosuslugi.pgu.fs.service.impl.BackRestCallServiceImpl
+import ru.gosuslugi.pgu.fs.service.impl.RestCallServiceImpl
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -45,12 +46,12 @@ class BackRestCallComponentSpec extends Specification {
         restTemplate = new RestTemplate()
         def restClientRegistry = new RestClientRegistry(restTemplate, Mock(RestTemplateBuilder))
         restCallService = new BackRestCallServiceImpl(restClientRegistry, JsonProcessingUtil.getObjectMapper())
-        restCallComponent = new RestCallComponent('http://url_to_service')
+        restCallComponent = new RestCallComponent('http://url_to_service', new RestCallServiceImpl())
         ComponentTestUtil.setAbstractComponentServices(restCallComponent)
     }
 
     def setup() {
-        component = new BackRestCallComponent(restCallComponent, restCallService, Mock(UserPersonalData))
+        component = new BackRestCallComponent(new RestCallServiceImpl(), restCallService, Mock(UserPersonalData))
         ComponentTestUtil.setAbstractComponentServices(component)
         mockServer = MockRestServiceServer.createServer(restTemplate)
     }

@@ -3,11 +3,12 @@ package unit.ru.gosuslugi.pgu.fs.component.logic
 import ru.gosuslugi.pgu.fs.common.exception.FormBaseException
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
 import ru.gosuslugi.pgu.fs.component.logic.RestCallComponent
+import ru.gosuslugi.pgu.fs.service.impl.RestCallServiceImpl
 import spock.lang.Specification
 
 class RestCallComponentSpec extends Specification {
 
-    RestCallComponent component = new RestCallComponent(_ as String)
+    RestCallComponent component = new RestCallComponent(_ as String, new RestCallServiceImpl())
 
     def 'Can set method'() {
         when: 'method not present'
