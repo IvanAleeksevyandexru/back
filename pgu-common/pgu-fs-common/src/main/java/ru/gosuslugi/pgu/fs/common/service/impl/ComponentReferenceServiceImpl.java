@@ -44,6 +44,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor.CLARIFICATIONS_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.HIDDEN_EMPTY_FIELDS;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.HIDDEN_EMPTY_GROUPS;
 
@@ -78,19 +79,25 @@ public class ComponentReferenceServiceImpl implements ComponentReferenceService 
         component.setLabel(getValueByContext(component.getLabel(), Function.identity(), context, contextArray));
         component.setValue(getValueByContext(component.getValue(), Function.identity(), context, contextArray));
 
-        val attrs = component.getAttrs();
+        var attrs = component.getAttrs();
         if (attrs == null) return;
         processAttrsAsMap(component, attrs, context, contextArray);
 
         replaceTextFields(attrs, contextArray);
 
-        val clarifications = (Map<String, Map<String, Object>>)attrs.get("clarifications");
+        var clarifications = attrs.get(CLARIFICATIONS_ATTR);
         if (clarifications == null) return;
-        clarifications
-                .values()
-                .stream()
-                .parallel()
-                .forEach(clValue -> clarificationsRefProcess(clValue, context, contextArray));
+        if (clarifications instanceof List) {
+            processAttrsAsList(component, (List) clarifications, context, contextArray);
+        } else {
+            @SuppressWarnings("unchecked")
+            Map<String, Map<String, Object>> clarificationMap = (Map<String, Map<String, Object>>) clarifications;
+            clarificationMap
+                    .values()
+                    .stream()
+                    .parallel()
+                    .forEach(clValue -> clarificationsRefProcess(clValue, context, contextArray));
+        }
     }
 
     private void processAttrsAsMap(FieldComponent component, Map<String, Object> map, PlaceholderContext context, DocumentContext[] contextArray) {

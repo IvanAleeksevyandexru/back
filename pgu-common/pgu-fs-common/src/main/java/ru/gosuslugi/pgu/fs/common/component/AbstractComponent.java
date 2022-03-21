@@ -16,6 +16,8 @@ import ru.gosuslugi.pgu.fs.common.utils.AnswerUtil;
 
 import java.util.*;
 
+import static ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor.CLARIFICATIONS_ATTR;
+
 public abstract class AbstractComponent<InitialValueModel> implements BaseComponent<InitialValueModel> {
 
     @Autowired
@@ -41,20 +43,22 @@ public abstract class AbstractComponent<InitialValueModel> implements BaseCompon
         component.setValue(jsonProcessingService.componentDtoToString(initialValue));
     }
 
+    @SuppressWarnings("unchecked")
     private void clarificationLinkedValues(FieldComponent component, ScenarioDto scenarioDto) {
-        val attrs = (Map<String, Object>) component.getAttrs();
+        var attrs = (Map<String, Object>) component.getAttrs();
         if (attrs == null) return;
-        val clarifications = (Map<String, Map<String, Object>>)attrs.get("clarifications");
-        if (clarifications == null) return;
+        var clarifications = attrs.get(CLARIFICATIONS_ATTR);
+        if (clarifications == null || clarifications instanceof List) return;
 
-        clarifications.forEach((clKey, clValue) -> {
-            val linkedValuesList = (List<Object>) clValue.get("linkedValues");
+        var clarificationMap = (Map<String, Map<String, Object>>)attrs.get(CLARIFICATIONS_ATTR);
+        clarificationMap.forEach((clKey, clValue) -> {
+            var linkedValuesList = (List<Object>) clValue.get("linkedValues");
             if (linkedValuesList != null) {
                 linkedValuesList.stream()
                         .map(lvObject -> objectMapper.convertValue(lvObject, LinkedValue.class))
                         .forEach(lv -> {
                             clValue.putIfAbsent("refs", new LinkedHashMap<>());
-                            val value = linkedValuesService.getValue(lv, scenarioDto, new ClarificationAttrsFactory());
+                            var value = linkedValuesService.getValue(lv, scenarioDto, new ClarificationAttrsFactory());
                             ((Map<String, String>) clValue.get("refs")).put(lv.getArgument(), value);
                         });
             }
