@@ -23,6 +23,7 @@ import ru.gosuslugi.pgu.dto.descriptor.ScreenDescriptor;
 import ru.gosuslugi.pgu.dto.descriptor.ScreenRule;
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
+import ru.gosuslugi.pgu.dto.descriptor.types.ScreenType;
 import ru.gosuslugi.pgu.fs.common.component.AbstractCycledComponent;
 import ru.gosuslugi.pgu.fs.common.component.BaseComponent;
 import ru.gosuslugi.pgu.fs.common.component.ComponentRegistry;
@@ -112,36 +113,43 @@ public abstract class AbstractCycledScreenService extends AbstractScreenService 
         scenarioDto.getApplicantAnswers().put(answerEntry.getKey(), answerEntry.getValue());
         CycledApplicantAnswers cycledApplicantAnswers = scenarioDto.getCycledApplicantAnswers();
         CycledApplicantAnswer currentAnswer = cycledApplicantAnswers.getCurrentAnswer();
-        String prevScreenId;
+
+        ServiceDescriptor serviceDescriptor = getDescriptorService(request).getServiceDescriptor(serviceId);
+        ScreenDescriptor prevScreenDescriptor = null;
+
         do {
-            CycledApplicantAnswerItem currentAnswerItem = currentAnswer.getCurrentAnswerItem();
-            LinkedList<String> finishedScreens = currentAnswer.getCurrentAnswerItem().getFinishedScreens();
-            prevScreenId = finishedScreens.pollLast();
+            final CycledApplicantAnswerItem currentAnswerItem = currentAnswer.getCurrentAnswerItem();
+            final LinkedList<String> finishedScreens = currentAnswer.getCurrentAnswerItem().getFinishedScreens();
+
+            final var prevScreenId = finishedScreens.pollLast();
             if (prevScreenId != null) {
+                prevScreenDescriptor = serviceDescriptor.getScreenDescriptorById(prevScreenId).orElse(null);
+                if (prevScreenDescriptor != null && prevScreenDescriptor.getType() == ScreenType.EMPTY) {
+                    prevScreenDescriptor = null;
+                    continue;
+                }
                 break;
             }
 
             //если экран первый в цикле - не очищать cachedAnswers при шаге назад на выходе из цикла
-            LinkedList<String> keys = new LinkedList<>(currentAnswer.getItemsIds());
-            int currentItemIdIndex = keys.lastIndexOf(currentAnswer.getCurrentItemId());
+            final var keys = new LinkedList<>(currentAnswer.getItemsIds());
+            final var currentItemIdIndex = keys.lastIndexOf(currentAnswer.getCurrentItemId());
             if (currentItemIdIndex == 0) {
                 break;
             }
 
-            currentAnswerItem.getCachedAnswers().keySet().forEach(scenarioDto.getCachedAnswers()::remove);
-            currentAnswerItem.getItemAnswers().keySet().forEach(scenarioDto.getApplicantAnswers()::remove);
+            scenarioDto.getCachedAnswers().keySet().removeAll(currentAnswerItem.getCachedAnswers().keySet());
+            scenarioDto.getApplicantAnswers().keySet().removeAll(currentAnswerItem.getItemAnswers().keySet());
 
             currentAnswer.setCurrentItemId(keys.get(currentItemIdIndex - 1));
-            currentAnswerItem = currentAnswer.getCurrentAnswerItem();
-            scenarioDto.getApplicantAnswers().putAll(currentAnswerItem.getItemAnswers());
+            scenarioDto.getApplicantAnswers().putAll(currentAnswer.getCurrentAnswerItem().getItemAnswers());
+
         } while (true);
-        if (Objects.nonNull(prevScreenId)) {
-            ServiceDescriptor serviceDescriptor = getDescriptorService(request).getServiceDescriptor(serviceId);
-            Optional<ScreenDescriptor> prevScreenDescriptorOptional = getDescriptorService(request).getServiceDescriptor(serviceId).getScreenDescriptorById(prevScreenId);
-            if (prevScreenDescriptorOptional.isPresent()) {
-                return getPrevScreenScenarioResponse(request, serviceDescriptor, prevScreenDescriptorOptional.get());
-            }
+
+        if (prevScreenDescriptor != null) {
+            return getPrevScreenScenarioResponse(request, serviceDescriptor, prevScreenDescriptor);
         }
+
         return EMPTY_SCENARIO;
     }
 
