@@ -21,17 +21,19 @@ public class HighLoadOrderRequestDto {
 
     private Long orderStatusId = 17L;
 
-    private String eServiceFullName;
+    private String eserviceFullName;
 
-    private String eServiceStateStructureId;
+    private String eserviceStateStructureId;
 
-    private String eServiceStateStructureName;
+    private String eserviceStateStructureName;
+
+    private String eserviceStateOrgCode;
 
     private String eserviceAttrServiceNameForOrder;
 
-    private String eServicePassportExtId;
+    private String eservicePassportExtId;
 
-    private String eServiceAttrEpguCode;
+    private String eserviceAttrEpguCode;
 
     private String userId;
 

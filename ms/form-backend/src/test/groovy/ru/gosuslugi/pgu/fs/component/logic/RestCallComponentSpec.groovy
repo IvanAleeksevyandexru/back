@@ -5,13 +5,14 @@ import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType
 import ru.gosuslugi.pgu.fs.component.ComponentTestUtil
 import ru.gosuslugi.pgu.fs.component.logic.model.RestCallDto
+import ru.gosuslugi.pgu.fs.service.impl.RestCallServiceImpl
 import spock.lang.Specification
 
 class RestCallComponentSpec extends Specification {
 
     def 'test RestCall component with arument in body'() {
         given:
-        def component = new RestCallComponent(_ as String)
+        def component = new RestCallComponent(_ as String, new RestCallServiceImpl())
         ComponentTestUtil.setAbstractComponentServices(component)
 
         when:
@@ -33,7 +34,7 @@ class RestCallComponentSpec extends Specification {
 
     def 'test default url'() {
         given:
-        def component = new RestCallComponent('http://url_to_pgu')
+        def component = new RestCallComponent('http://url_to_pgu', new RestCallServiceImpl())
 
         when:
         RestCallDto result = component.getInitialValue(getSimpleFieldComponent()).get();
