@@ -4,6 +4,7 @@ import ru.atc.carcass.security.rest.model.person.Person
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData
 import ru.gosuslugi.pgu.dto.ScenarioDto
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
+import ru.gosuslugi.pgu.fs.component.ComponentTestUtil
 import ru.gosuslugi.pgu.fs.component.gender.FieldListGenderComponent
 import spock.lang.Specification
 
@@ -45,6 +46,7 @@ class FieldListGenderComponentSpec extends Specification {
     def 'fails without userPersonalData'() {
         given:
         def component = new FieldListGenderComponent()
+        ComponentTestUtil.setAbstractComponentServices(component)
 
         when:
         component.processGender(fieldComponent, scenario)
