@@ -37,6 +37,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -79,12 +80,15 @@ public class ScenarioInitializerServiceImpl implements ScenarioInitializerServic
         }
         if(sd.getOrdersLimit() == orders.size()){
             log.info("Order limit reached for service {} and user id {}", serviceId,userPersonalData.getUserId());
-            var nonNamedOrders = orders.stream().filter(e-> Strings.isEmpty(e.getDescription()));
-            if(nonNamedOrders.count() == 0){
+            var nonNamedOrders = orders
+                    .stream()
+                    .filter(e-> Strings.isEmpty(e.getDescription()))
+                    .collect(Collectors.toList());
+            if(nonNamedOrders.size() == 0){
                 log.info("Limit of orders reached, but nothing found to be deleted.");
                 throw new DuplicateOrderException("Достигнут лимит заявлений по данной услуге");
             }
-            log.info("Removing non-named orders in count {}",nonNamedOrders.count());
+            log.info("Removing non-named orders in count {}",nonNamedOrders.size());
             nonNamedOrders.forEach(v-> pguOrderService.deleteOrderById(v.getId()));
         }
     }
