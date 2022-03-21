@@ -302,4 +302,9 @@ public final class ComponentAttributes {
 
     /** Аттрибут, описывающий максимально допустимое количество загружаемых файлов по компоненту FileUploadComponent */
     public static final String MAX_FILE_COUNT = "maxFileCount";
+
+    /** Показывать или скрывать группы с полностью пустыми значениями. */
+    public static final String HIDDEN_EMPTY_GROUPS = "hiddenEmptyGroups";
+    /** Показывать или скрывать отдельные поля с пустым значением. */
+    public static final String HIDDEN_EMPTY_FIELDS = "hiddenEmptyFields";
 }

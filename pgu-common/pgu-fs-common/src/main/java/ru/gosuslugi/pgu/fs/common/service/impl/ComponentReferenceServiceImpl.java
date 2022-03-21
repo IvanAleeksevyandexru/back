@@ -37,11 +37,15 @@ import java.nio.charset.StandardCharsets;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static ru.gosuslugi.pgu.components.ComponentAttributes.HIDDEN_EMPTY_FIELDS;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.HIDDEN_EMPTY_GROUPS;
 
 @Service
 @Slf4j
@@ -62,7 +66,7 @@ public class ComponentReferenceServiceImpl implements ComponentReferenceService 
      * @param component компонент
      * @param scenarioDto сценарий
      * @see #processFieldGroups(FieldComponent, ScenarioDto)
-     * @see #getStateDto(PlaceholderContext, FieldGroup, DocumentContext...)
+     * @see #getStateDto(PlaceholderContext, FieldGroup, boolean, boolean, DocumentContext...)
      * @see #getValueByContext(String, Function, PlaceholderContext, DocumentContext...)
      */
     @Override
@@ -242,6 +246,8 @@ public class ComponentReferenceServiceImpl implements ComponentReferenceService 
         // получаем рефы и группы
         FieldComponentAttrsFactory attrsFactory = new FieldComponentAttrsFactory(component);
         List<FieldGroup> fieldGroups = attrsFactory.getComponentFieldGroups();
+        boolean hiddenEmptyGroups = attrsFactory.getBooleanAttr(HIDDEN_EMPTY_GROUPS, true);
+        boolean hiddenEmptyFields = attrsFactory.getBooleanAttr(HIDDEN_EMPTY_FIELDS, false);
 
         // парсинг контекста ответов
         DocumentContext[] contextArray = getContexts(scenarioDto);
@@ -277,13 +283,13 @@ public class ComponentReferenceServiceImpl implements ComponentReferenceService 
                     // обработка и добавление новой группы полей
                     linkedValuesService.fillLinkedValues(component, scenarioDto, cycledApplicationContext);
                     PlaceholderContext context = buildPlaceholderContext(attrsFactory, component, scenarioDto);
-                    getStateDto(context, fg, cycledApplicationContext).ifPresent(formDtoBuilder::state);
+                    getStateDto(context, fg, hiddenEmptyGroups, hiddenEmptyFields, cycledApplicationContext).ifPresent(formDtoBuilder::state);
                 }
             } else {
                 // обработка и добавление новой группы полей (нецикличные ответы)
                 linkedValuesService.fillLinkedValues(component, scenarioDto);
                 PlaceholderContext context = buildPlaceholderContext(attrsFactory, component, scenarioDto);
-                getStateDto(context, fg, contextArray).ifPresent(formDtoBuilder::state);
+                getStateDto(context, fg, hiddenEmptyGroups, hiddenEmptyFields, contextArray).ifPresent(formDtoBuilder::state);
             }
         }
         return formDtoBuilder;
@@ -293,24 +299,39 @@ public class ComponentReferenceServiceImpl implements ComponentReferenceService 
      * Возвращает группу полей
      * @param context контекст для обработки
      * @param fieldGroup группа полей из json-а
+     * @param hiddenEmptyGroups показывать или скрывать группы с полностью пустыми значениями
+     * @param hiddenEmptyFields показывать или скрывать поля с пустым значением
      * @param documentContexts контексты для поиска значений рефов
      * @return группу полей
      */
-    private Optional<StateDto> getStateDto(PlaceholderContext context, FieldGroup fieldGroup, DocumentContext... documentContexts) {
+    private Optional<StateDto> getStateDto(PlaceholderContext context, FieldGroup fieldGroup, boolean hiddenEmptyGroups, boolean hiddenEmptyFields,
+                                           DocumentContext... documentContexts) {
         StateDto.StateDtoBuilder stateDtoBuilder = StateDto.builder();
-        // обрабокта полей внутри группы
+        // обработка полей внутри группы
         for(ComponentField field : fieldGroup.getFields()) {
-            String valueFromContext = getValueByContext(field.getValue(), Function.identity(), context, documentContexts);
-            if (StringUtils.hasText(field.getValue()) && !StringUtils.hasText(valueFromContext)) {
-                continue;
+            String label = getValueByContext(field.getLabel(), Function.identity(), context, documentContexts);
+            String value = getValueByContext(field.getValue(), Function.identity(), context, documentContexts);
+            boolean isLabelHasText = StringUtils.hasText(label);
+            boolean isValueHasText = StringUtils.hasText(value);
+            if (!isLabelHasText && !isValueHasText || !isValueHasText && hiddenEmptyFields) {
+                continue; // полностью отсутствующий field FE не выводит на экран либо нет только значения и выставлен флаг скрытия таких значений
             }
-            FieldDto fieldDto = FieldDto.builder().label(field.getLabel()).value(field.getValue()).rank(field.getRank()).build();
-            fieldDto.setLabel(getValueByContext(fieldDto.getLabel(), Function.identity(), context, documentContexts));
-            fieldDto.setValue(valueFromContext);
+            if (!isValueHasText) {
+                value = null; // null в value FE превращает в дефис
+            } else if (!isLabelHasText) {
+                label = null; // null в label требуется установить, чтобы FE вывел value без label
+            }
+            FieldDto fieldDto = FieldDto.builder().label(label).value(value).rank(field.getRank()).build();
             stateDtoBuilder.field(fieldDto);
         }
         if (stateDtoBuilder.build().getFields().isEmpty()) {
             return Optional.empty();
+        }
+        if (hiddenEmptyGroups) {
+            boolean isEmptyGroup = stateDtoBuilder.build().getFields().stream().map(FieldDto::getValue).allMatch(Objects::isNull);
+            if (isEmptyGroup) {
+                return Optional.empty();
+            }
         }
 
         // обработка наименования группы

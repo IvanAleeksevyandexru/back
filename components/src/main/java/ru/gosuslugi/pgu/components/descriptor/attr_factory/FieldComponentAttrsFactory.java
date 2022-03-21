@@ -3,6 +3,7 @@ package ru.gosuslugi.pgu.components.descriptor.attr_factory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
+import ru.gosuslugi.pgu.components.dto.FieldDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.components.descriptor.ComponentField;
 import ru.gosuslugi.pgu.dto.descriptor.CycledAttrs;
@@ -10,10 +11,12 @@ import ru.gosuslugi.pgu.components.descriptor.FieldGroup;
 import ru.gosuslugi.pgu.dto.descriptor.placeholder.Placeholder;
 import ru.gosuslugi.pgu.components.descriptor.types.Action;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -58,22 +61,33 @@ public class FieldComponentAttrsFactory implements AttrsFactory {
 
     /**
      * Преобразует список из полей (поле {@code fieldGroups}) в первоначальный список List<Map<String, Object>>
+     * @param hiddenEmptyGroups показывать или скрывать группы с полностью пустыми значениями
+     * @param hiddenEmptyFields показывать или скрывать поля с пустым значением
      * @return список Map полей или пустой список Map полей
      */
-    public List<Map<String, Object>> getComponentFieldGroupsMap(List<FieldGroup> fieldGroups) {
+    public List<Map<String, Object>> getComponentFieldGroupsMap(List<FieldGroup> fieldGroups, boolean hiddenEmptyGroups, boolean hiddenEmptyFields) {
         return fieldGroups.stream()
                 .map(fieldGroup -> {
                     Map<String, Object> result = new HashMap<>();
                     if (fieldGroup.getAttrs() != null) {
                         result.put("attrs", fieldGroup.getAttrs());
                     }
+                    List<Map<String, String>> fieldList = null;
                     if (!CollectionUtils.isEmpty(fieldGroup.getFields())) {
-                        result.put("fields", getListOfFieldsMaps(fieldGroup.getFields()));
+                        fieldList = getListOfFieldsMaps(fieldGroup.getFields(), hiddenEmptyFields);
+                        result.put("fields", fieldList);
                     }
                     if (fieldGroup.getNeedDivider() != null) {
                         result.put("needDivider", fieldGroup.getNeedDivider());
                     }
                     result.put("groupName", fieldGroup.getGroupName());
+
+                    if (hiddenEmptyGroups) {
+                        boolean isEmptyGroup = Optional.ofNullable(fieldList).stream().flatMap(Collection::stream).map(map -> map.get("value")).allMatch(Objects::isNull);
+                        if (isEmptyGroup) {
+                            return Collections.<String, Object>emptyMap();
+                        }
+                    }
                     return result;
                 })
                 .collect(Collectors.toList());
@@ -124,9 +138,10 @@ public class FieldComponentAttrsFactory implements AttrsFactory {
     /**
      * Создает аналогичный первоначальному List<Map<String, String> из List<ComponentField>
      * @param fieldList список полей в компоненте
+     * @param hiddenEmptyFields показывать или скрывать поля с пустым значением
      * @return List<Map<String, String> или пустой список
      */
-    public List<Map<String, String>> getListOfFieldsMaps(Object fieldList) {
+    public List<Map<String, String>> getListOfFieldsMaps(Object fieldList, boolean hiddenEmptyFields) {
         if(fieldList instanceof List) {
             return ((List<ComponentField>) fieldList).stream()
                     .map(componentField -> {
@@ -134,15 +149,25 @@ public class FieldComponentAttrsFactory implements AttrsFactory {
                         if (StringUtils.hasText(componentField.getFieldName())) {
                             result.put("fieldName", componentField.getFieldName());
                         }
-                        if (StringUtils.hasText(componentField.getLabel())) {
-                            result.put("label", componentField.getLabel());
-                        }
-                        if (StringUtils.hasText(componentField.getValue())) {
-                            result.put("value", componentField.getValue());
-                        }
+                        String label = componentField.getLabel();
+                        String value = componentField.getValue();
+                        boolean isLabelHasText = StringUtils.hasText(label);
+                        boolean isValueHasText = StringUtils.hasText(value);
                         if (componentField.getRank() != null) {
                             result.put("rank", componentField.getRank().toString());
                         }
+
+                        if (!isLabelHasText && !isValueHasText || !isValueHasText && hiddenEmptyFields) {
+                            return Collections.<String, String>emptyMap(); // полностью отсутствующий field FE не выводит на экран либо нет только значения и выставлен флаг скрытия таких значений
+                        }
+                        if (!isValueHasText) {
+                            value = null; // null в value FE превращает в дефис
+                        } else if (!isLabelHasText) {
+                            label = null; // null в label требуется установить, чтобы FE вывел value без label
+                        }
+                        result.put("label", label);
+                        result.put("value", value);
+
                         return result;
                     }).collect(Collectors.toList());
         }
@@ -183,5 +208,9 @@ public class FieldComponentAttrsFactory implements AttrsFactory {
         action.setAction((String)actionMap.get("action"));
         action.setAttrs(getCycledAttrs(actionMap.get("attrs")));
         return action;
+    }
+
+    public boolean getBooleanAttr(String booleanAttrName, boolean defaultValue) {
+        return fieldComponent.getBooleanAttr(booleanAttrName, defaultValue);
     }
 }
