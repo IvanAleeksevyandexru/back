@@ -41,16 +41,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static java.time.temporal.ChronoUnit.YEARS;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.BORN_AFTER_DATE_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.CHILDREN_IS_NEW_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.CHILDREN_LIST_REF_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.MAX_AGE_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.MIN_AGE_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.SEND_AS_ANOTHER_REQUEST_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
 import static ru.gosuslugi.pgu.components.descriptor.placeholder.Reference.FIELD_ID_INDEX_IN_PATH;
 import static ru.gosuslugi.pgu.fs.utils.ChildrenInfoUtils.getKidInfo;
 
@@ -158,17 +152,6 @@ public class ChildrenListComponent extends AbstractComponent<String> {
             fieldComponent.getAttrs().put(FieldComponentUtil.COMPONENTS_KEY, componentsToShow);
         }
 
-        int minAge = (int) fieldComponent.getAttrs().getOrDefault(MIN_AGE_ATTR, MIN_AGE);
-        int maxAge = (int) fieldComponent.getAttrs().getOrDefault(MAX_AGE_ATTR, MAX_AGE);
-        Optional<OffsetDateTime> minBirthDate = Optional.ofNullable((String) fieldComponent.getAttrs().get(BORN_AFTER_DATE_ATTR))
-                .filter(StringUtils::hasText)
-                .map(date -> DateUtil.toOffsetDateTime(date, DateUtil.ESIA_DATE_FORMAT));
-        Predicate<OffsetDateTime> birthDateCheck = birthDate -> {
-            int age = (int) YEARS.between(birthDate, OffsetDateTime.now());
-            return minBirthDate.map(date -> birthDate.isAfter(date) || birthDate.isEqual(date)).orElse(true)
-                    && age >= minAge
-                    && age <= maxAge;
-        };
         ChildrenUtilResponse response = new ChildrenUtilResponse();
         ArrayList<Map<String, Object>> result = new ArrayList<>();
         userPersonalData.fillKidsOms();
@@ -176,15 +159,12 @@ public class ChildrenListComponent extends AbstractComponent<String> {
         List<Kids> filteredKids = excludeFromKids(fieldComponent, scenarioDto, userPersonalData.getKids());
         for (Kids kid : filteredKids) {
             OffsetDateTime birthDate = DateUtil.toOffsetDateTime(kid.getBirthDate(), DateUtil.ESIA_DATE_FORMAT);
-            if (!birthDateCheck.test(birthDate)) {
-                continue;
+            if (checkBirthDateFilters(birthDate, fieldComponent)) {
+                Map<String, Object> kidInfo = getKidInfo(kid);
+                result.add(kidInfo);
+                response.addChildData(kid.getId(), kidInfo);
             }
-
-            Map<String, Object> kidInfo = getKidInfo(kid);
-            result.add(kidInfo);
-            response.addChildData(kid.getId(), kidInfo);
         }
-
         List<FieldComponent> fieldComponents = (List<FieldComponent>) fieldComponent.getAttrs().get(FieldComponentUtil.COMPONENTS_KEY);
         for (FieldComponent component : fieldComponents) {
             linkedValuesService.fillLinkedValues(component, scenarioDto);
@@ -247,6 +227,24 @@ public class ChildrenListComponent extends AbstractComponent<String> {
             response.setPresetValue(childrenString);
         }
         return response;
+    }
+
+    private boolean checkBirthDateFilters(OffsetDateTime birthDate, FieldComponent fieldComponent) {
+        Map<String, Object> componentAttrs = fieldComponent.getAttrs();
+        int age = (int) YEARS.between(birthDate, OffsetDateTime.now());
+        int minAge = (int) componentAttrs.getOrDefault(MIN_AGE_ATTR, MIN_AGE);
+        int maxAge = (int) componentAttrs.getOrDefault(MAX_AGE_ATTR, MAX_AGE);
+        Optional<OffsetDateTime> minBirthDate = Optional.ofNullable((String) componentAttrs.get(BORN_AFTER_DATE_ATTR))
+                .filter(StringUtils::hasText)
+                .map(date -> DateUtil.toOffsetDateTime(date, DateUtil.ESIA_DATE_FORMAT));
+        Optional<OffsetDateTime> maxBirthDate = Optional.ofNullable((String) componentAttrs.get(BORN_BEFORE_DATE_ATTR))
+                .filter(StringUtils::hasText)
+                .map(date -> DateUtil.toOffsetDateTime(date, DateUtil.ESIA_DATE_FORMAT));
+
+        return minBirthDate.map(date -> birthDate.isAfter(date) || birthDate.isEqual(date)).orElse(true)
+                && maxBirthDate.map(date -> birthDate.isBefore(date) || birthDate.isEqual(date)).orElse(true)
+                && age >= minAge
+                && age <= maxAge;
     }
 
     /**
