@@ -98,6 +98,11 @@ public final class ComponentAttributes {
     public static final String SECONDARY_DICTIONARY_FILTER_NAME_ATTR = "secondaryDictionaryFilter";
     public static final String DICTIONARY_FILTERS_NAME_ATTR = "dictionaryFilters";
     public static final String PREV_STEP_CLEAN_CACHE_ATTR = "prevStepCleanCache";
+    public static final String REF_ATTR = "ref";
+    public static final String DICTIONARY_FILTER_IN_REF = "dictionaryFilterInRef";
+    public static final String DICTIONARY_FILTER_VALUE_TYPE_PRESET = "preset";
+    public static final String DICTIONARY_FILTER_RELATION = "relation";
+    public static final String DICTIONARY_FILTER_RELATION_FILTER_ON = "filterOn";
 
     public static final String MVD_SOURCE_ATTR_NAME = "mvd_source";
 
