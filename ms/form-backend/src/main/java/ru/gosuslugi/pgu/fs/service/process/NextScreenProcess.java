@@ -78,4 +78,6 @@ public interface NextScreenProcess extends ScreenProcess<NextScreenProcess> {
     void checkForDuplicate();
 
     void removeDisclaimers();
+
+    void checkHighLoadOrderExists();
 }

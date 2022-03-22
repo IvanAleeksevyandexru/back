@@ -97,7 +97,7 @@ class MainScreenServiceSpec extends Specification {
 
         then: "проверяем, дубли не запрещены при не терминальных статусах"
         0 * pguOrderService.deleteOrderById(_)
-        1 * descriptorService.getServiceDescriptor(serviceId) >> descriptor
+        2 * descriptorService.getServiceDescriptor(serviceId) >> descriptor
         0 * pguOrderService.allTerminated(serviceId, initDto.getTargetId())
         noExceptionThrown()
     }
@@ -112,7 +112,7 @@ class MainScreenServiceSpec extends Specification {
 
         then: "проверяем, дубли запрещены при не терминальных статусах"
         0 * pguOrderService.deleteOrderById(_)
-        1 * descriptorService.getServiceDescriptor(serviceId) >> descriptorNotMultiple
+        2 * descriptorService.getServiceDescriptor(serviceId) >> descriptorNotMultiple
         1 * pguOrderService.allTerminated(serviceId, initDto.getTargetId()) >> false
         thrown(DuplicateOrderException.class)
     }
