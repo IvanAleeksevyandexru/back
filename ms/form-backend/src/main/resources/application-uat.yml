@@ -24,6 +24,8 @@ pgu:
   back-rest-call-url: https://pgu-uat-fed.test.gosuslugi.ru
   smev-adapter-url: https://pgu-uat-fed.test.gosuslugi.ru
   smev-converter-url: http://pgu-uat-fednlb.test.gosuslugi.ru/smev-converter
+  school-dictionary-url: https://pgu-dev-fed.test.gosuslugi.ru/api/school/v1/dictionary/
+  school-search-url: https://pgu-dev-fed.test.gosuslugi.ru/api/school/v1/search/
 mock:
   enabled: true
   payment:

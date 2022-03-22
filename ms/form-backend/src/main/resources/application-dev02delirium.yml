@@ -12,6 +12,8 @@ pgu:
   lkapi-url: http://pgu-dev-fedlkapinlb.test.gosuslugi.ru
   smev-adapter-url: https://pgu-dev-fed.test.gosuslugi.ru
   smev-converter-url: https://dev02.pgu2-pub.test.gosuslugi.ru/smev-converter
+  school-dictionary-url: https://pgu-dev-fed.test.gosuslugi.ru/api/school/v1/dictionary/
+  school-search-url: https://pgu-dev-fed.test.gosuslugi.ru/api/school/v1/search/
 mock:
   enabled: true
   payment:
