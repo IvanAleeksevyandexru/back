@@ -157,7 +157,7 @@ class BackRestCallComponentSpec extends Specification {
         }
 
         BackRestCallService service = new BackRestCallServiceImpl(restClientRegistry, JsonProcessingUtil.getObjectMapper())
-        component = new BackRestCallComponent(restCallComponent, service, Mock(UserPersonalData))
+        component = new BackRestCallComponent(new RestCallServiceImpl(), service, Mock(UserPersonalData))
         ComponentTestUtil.setAbstractComponentServices(component)
         def scenarioDto = new ScenarioDto()
 
