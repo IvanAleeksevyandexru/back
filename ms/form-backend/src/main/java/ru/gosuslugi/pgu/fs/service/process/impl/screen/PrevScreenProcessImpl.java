@@ -127,6 +127,11 @@ public class PrevScreenProcessImpl extends AbstractScreenProcess<PrevScreenProce
 
         var dto = request.getScenarioDto();
         ScreenDescriptor screenDescriptor = getScreenDescriptor();
+
+        while (screenDescriptor.getType().equals(ScreenType.EMPTY)) {
+            dto.getFinishedAndCurrentScreens().removeLast();
+            screenDescriptor = getScreenDescriptor();
+        }
         List<FieldComponent> fieldComponentsForScreen = serviceDescriptor.getFieldComponentsForScreen(screenDescriptor);
         dto.getCachedAnswers().putAll(dto.getApplicantAnswers()
                 .entrySet()

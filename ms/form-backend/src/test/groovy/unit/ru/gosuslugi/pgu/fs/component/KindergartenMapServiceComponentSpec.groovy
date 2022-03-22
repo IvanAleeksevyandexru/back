@@ -40,7 +40,7 @@ class KindergartenMapServiceComponentSpec extends Specification {
     def parseAttrValuesHelper = new ParseAttrValuesHelper(Mock(VariableRegistry), Mock(JsonProcessingService), Mock(ProtectedFieldService))
     def jsonProcessingService = new JsonProcessingServiceImpl(JsonProcessingUtil.getObjectMapper())
     def componentReferenceService = new ComponentReferenceServiceImpl(jsonProcessingService, new UserCookiesServiceImpl(), Mock(LinkedValuesService))
-    def nsiDictionaryFilterHelper = new NsiDictionaryFilterHelper(parseAttrValuesHelper, componentReferenceService)
+    def nsiDictionaryFilterHelper = new NsiDictionaryFilterHelper(parseAttrValuesHelper, componentReferenceService, jsonProcessingService)
 
     def kindergartenMapServiceComponent = new KindergartenMapServiceComponent(
             lkNotifierService,
