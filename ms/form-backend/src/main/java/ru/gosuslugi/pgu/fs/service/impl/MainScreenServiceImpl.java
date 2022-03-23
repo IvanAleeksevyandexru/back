@@ -196,6 +196,7 @@ public class MainScreenServiceImpl extends AbstractScreenService implements Main
         return nextScreenProcess.of(serviceId, request)
                 .execute(NextScreenProcess::buildResponse)
                 .executeIf(NextScreenProcess::hasCheckForDuplicate, NextScreenProcess::checkForDuplicate)
+                .execute(NextScreenProcess::checkHighLoadOrderExists)
                 .executeIf(NextScreenProcess::orderShouldExists, NextScreenProcess::tryToCreateOrderId)
                 .execute(NextScreenProcess::clearCacheForComponents)
                 .execute(NextScreenProcess::removeOldAnswers)

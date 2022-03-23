@@ -37,6 +37,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
@@ -59,12 +60,39 @@ public class ScenarioInitializerServiceImpl implements ScenarioInitializerServic
 
     @Override
     public ScenarioResponse getInitScreen(InitServiceDto initServiceDto, String serviceId) {
+        var sd = mainDescriptorService.getServiceDescriptor(serviceId);
+        if(sd.isMultipleOrders() && sd.getOrdersLimit() > 1){
+            checkOrderLimit(serviceId,initServiceDto.getTargetId(),sd);
+            return getInitScreen(serviceId, initServiceDto, initServiceDto.getTargetId());
+        }
+
         Order order = pguOrderService.findLastOrder(serviceId, initServiceDto.getTargetId());
         if(nonNull(order)) {
             pguOrderService.deleteOrderById(order.getId());
         }
         return getInitScreen(serviceId, initServiceDto, initServiceDto.getTargetId());
     }
+
+    private void checkOrderLimit(String serviceId, String targetId, ServiceDescriptor sd){
+        var orders = pguOrderService.findDrafts(serviceId,targetId);
+        if(sd.getOrdersLimit() > orders.size()){
+            return;
+        }
+        if(sd.getOrdersLimit() == orders.size()){
+            log.info("Order limit reached for service {} and user id {}", serviceId,userPersonalData.getUserId());
+            var nonNamedOrders = orders
+                    .stream()
+                    .filter(e-> Strings.isEmpty(e.getDescription()))
+                    .collect(Collectors.toList());
+            if(nonNamedOrders.size() == 0){
+                log.info("Limit of orders reached, but nothing found to be deleted.");
+                throw new DuplicateOrderException("Достигнут лимит заявлений по данной услуге");
+            }
+            log.info("Removing non-named orders in count {}",nonNamedOrders.size());
+            nonNamedOrders.forEach(v-> pguOrderService.deleteOrderById(v.getId()));
+        }
+    }
+
 
     @Override
     public ScenarioResponse getInvitedScenario(InitServiceDto initServiceDto, String serviceId) {

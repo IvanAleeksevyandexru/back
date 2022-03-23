@@ -85,9 +85,10 @@ class ChildrenListComponentTest extends Specification {
         assert result.get() == '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
     }
 
-    def 'Test getInitValue: get init value response is correct with minBirthDate filter'() {
+    def 'Test getInitValue: get init value response is correct with birthDate filters'() {
         given:
-        fieldComponent.getAttrs().put("bornAfterDate", minBirthDate)
+        fieldComponent.getAttrs().put("bornAfterDate", bornAfterDate)
+        fieldComponent.getAttrs().put("bornBeforeDate", bornBeforeDate)
 
         when:
         def result = component.getInitialValue(fieldComponent, scenarioDto, serviceDescriptor)
@@ -96,11 +97,15 @@ class ChildrenListComponentTest extends Specification {
         result.get() == response
 
         where:
-        minBirthDate || response
-        null         || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
-        '10.06.2005' || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
-        '01.01.2009' || '[{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
-        '01.01.2020' || '[]'
+        bornAfterDate || bornBeforeDate || response
+        null          || null           || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
+        '10.06.2005'  || null           || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
+        null          || '10.05.2013'   || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
+        '01.01.2009'  || null           || '[{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
+        '01.01.2009'  || '10.05.2013'   || '[{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
+        null          || '11.06.2005'   || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false}]'
+        '01.01.2020'  || '01.01.2022'   || '[]'
+        '01.01.2020'  || null           || '[]'
     }
 
     def "Should do valid post processing"() {

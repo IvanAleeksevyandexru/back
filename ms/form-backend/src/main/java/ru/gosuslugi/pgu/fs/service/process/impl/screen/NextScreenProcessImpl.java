@@ -427,4 +427,12 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
         }
 
     }
+
+    @Override
+    public void checkHighLoadOrderExists() {
+        if(Objects.nonNull(serviceDescriptor.getHighloadParameters()) &&
+                serviceDescriptor.getHighloadParameters().isEnabled() && Objects.nonNull(response.getScenarioDto().getOrderId())){
+            pguOrderService.checkOrderExists(response.getScenarioDto().getOrderId());
+        }
+    }
 }

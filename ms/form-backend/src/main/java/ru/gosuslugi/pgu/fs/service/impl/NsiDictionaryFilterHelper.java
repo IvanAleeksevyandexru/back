@@ -10,11 +10,14 @@ import org.springframework.util.StringUtils;
 import ru.gosuslugi.pgu.common.core.exception.JsonParsingException;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
 import ru.gosuslugi.pgu.components.ComponentAttributes;
+import ru.gosuslugi.pgu.dto.ApplicantAnswer;
 import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
 import ru.gosuslugi.pgu.fs.common.exception.FormBaseException;
 import ru.gosuslugi.pgu.fs.common.service.ComponentReferenceService;
+import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService;
+import ru.gosuslugi.pgu.fs.common.utils.AnswerUtil;
 import ru.gosuslugi.pgu.fs.component.dictionary.dto.DictionaryFilter;
 import ru.gosuslugi.pgu.fs.component.dictionary.dto.MapServiceAttributes;
 import ru.gosuslugi.pgu.fs.utils.AttributeValueTypes;
@@ -37,12 +40,17 @@ import java.util.function.Supplier;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ATTRIBUTE_TYPE;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.DICTIONARY_FILTER_IN_REF;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.DICTIONARY_FILTER_NAME_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.DICTIONARY_FILTER_RELATION;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.DICTIONARY_FILTER_RELATION_FILTER_ON;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.DICTIONARY_FILTER_VALUE_TYPE_PRESET;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.DICTIONARY_OPTIONS;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.DICT_FILTER_ATTRIBUTE_NAME;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.DICT_FILTER_VALUE_NAME;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.DICT_FILTER_VALUE_TYPE;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.NOT_CORRECT_FILTER_VALUE_TYPE;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.REF_ATTR;
 
 @Slf4j
 @Component
@@ -59,6 +67,7 @@ public class NsiDictionaryFilterHelper {
     private final ParseAttrValuesHelper parseAttrValuesHelper;
     private final ComponentReferenceService componentReferenceService;
 
+    private final JsonProcessingService jsonProcessingService;
 
     /**
      * Создаёт запрос, который будет передан в дальнейшем в nsi-сервис.
@@ -81,6 +90,16 @@ public class NsiDictionaryFilterHelper {
                 for (var filter : filters) {
                     if (!filter.containsKey(DICT_FILTER_VALUE_TYPE)) {
                         throw new FormBaseException(NOT_CORRECT_FILTER_CONDITION_DESCRIPTION);
+                    }
+                    NsiDictionaryFilterSimple.Builder filterValueBuilder = getSimpleConditionBuilder(scenarioDto, filter, presetProperties);
+                    conditionBuilders.add(filterValueBuilder);
+                }
+            }
+            if (fieldComponent.getAttrs().containsKey(REF_ATTR) && fieldComponent.getAttrs().containsKey(DICTIONARY_FILTER_IN_REF)) {
+                var filtersList = getDictionaryFiltersListFromRef(fieldComponent);
+                for (var filter : filtersList) {
+                    if (filter.get(DICT_FILTER_VALUE_TYPE).equals(DICTIONARY_FILTER_VALUE_TYPE_PRESET)) {
+                        filter.put(DICT_FILTER_VALUE_NAME, "id");
                     }
                     NsiDictionaryFilterSimple.Builder filterValueBuilder = getSimpleConditionBuilder(scenarioDto, filter, presetProperties);
                     conditionBuilders.add(filterValueBuilder);
@@ -139,6 +158,7 @@ public class NsiDictionaryFilterHelper {
                     }
                     Map<String, Object> filter = new HashMap<>() {{
                         put(ComponentAttributes.DICT_FILTER_VALUE_TYPE, simpleFilter.getValueType());
+                        put(DICT_FILTER_VALUE_TYPE, simpleFilter.getValueType());
                         put(ComponentAttributes.DICT_FILTER_ATTRIBUTE_NAME, simpleFilter.getAttributeName());
                         put(DICT_FILTER_CONDITION, simpleFilter.getCondition());
                         put(ComponentAttributes.DICT_FILTER_VALUE_NAME, simpleFilter.getValue());
@@ -168,7 +188,10 @@ public class NsiDictionaryFilterHelper {
         }
         Map<String, String> presetProperties = null;
         if (Objects.nonNull(presetData)) {
-            presetProperties = JsonProcessingUtil.fromJson(presetData, new TypeReference<>() {});
+            presetProperties = JsonProcessingUtil.fromJson(presetData, new TypeReference<>() {
+            });
+            presetProperties = JsonProcessingUtil.fromJson(presetData, new TypeReference<>() {
+            });
         }
         return presetProperties;
     }
@@ -230,5 +253,41 @@ public class NsiDictionaryFilterHelper {
             throw new FormBaseException(errorMessage);
         }
         return type.getPresetValue(parseAttrValuesHelper, valueType, attributeType, presetAttrNameVal, scenarioDto, presetProperties);
+    }
+
+    /**
+     * Достает dictionaryFilter из ref
+     * @param fieldComponent компонент
+     * @return список фильтров описанных в ref
+     */
+    public List<Map<String, Object>> getDictionaryFiltersListFromRef(FieldComponent fieldComponent) {
+        @SuppressWarnings("unchecked") var refs = (List<Map<String, Object>>) fieldComponent.getAttrs().get(REF_ATTR);
+        for (var ref : refs) {
+            if (ref.containsKey(DICTIONARY_FILTER_RELATION) && ref.get(DICTIONARY_FILTER_RELATION).equals(DICTIONARY_FILTER_RELATION_FILTER_ON)) {
+                return (List<Map<String, Object>>) ref.get(DICTIONARY_FILTER_NAME_ATTR);
+            }
+        }
+        return refs;
+    }
+
+    /**
+     * Подготовливает основной процесс сборки последующего запроса в справочник,
+     * устанавливаем свойства для фильтра, рассчитаных на FE
+     * @param fieldComponent компонент
+     * @param scenarioDto    сценарий
+     * @param entry          ответ
+     * @return запрос к сервису
+     */
+    public NsiDictionaryFilterRequest buildDictionaryFilterRequestFromRef(ScenarioDto scenarioDto,
+                                                                          FieldComponent fieldComponent,
+                                                                          Map.Entry<String, ApplicantAnswer> entry) {
+
+        Map<String, Object> applicantAnswersMap = jsonProcessingService.fromJson(AnswerUtil.getValue(entry),
+                new TypeReference<>() {
+                });
+        Map<String, String> presetProperties = new HashMap<>();
+        presetProperties.put("id", applicantAnswersMap.get("id").toString());
+
+        return buildNsiDictionaryFilterRequest(scenarioDto, fieldComponent, presetProperties);
     }
 }
