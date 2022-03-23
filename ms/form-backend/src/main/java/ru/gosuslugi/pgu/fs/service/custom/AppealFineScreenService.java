@@ -225,4 +225,10 @@ public class AppealFineScreenService extends AbstractCustomScreenService {
         applicantAnswer.setVisited(true);
         return applicantAnswer;
     }
+
+    @Override
+    public ServiceDescriptor getServiceDescriptor(String serviceId) {
+        return mainScreenService.getServiceDescriptor(serviceId);
+    }
+
 }
