@@ -4,12 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.gosuslugi.pgu.common.core.service.HealthHolder;
 import ru.gosuslugi.pgu.dto.DeliriumActionRequest;
 import ru.gosuslugi.pgu.dto.ExternalServiceRequest;
@@ -24,10 +19,12 @@ import ru.gosuslugi.pgu.fs.service.custom.MainScreenServiceRegistry;
 import ru.gosuslugi.pgu.fs.utils.TracingHelper;
 
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Controller that handle all methods for scenarios
  * Next/prev pages
+ * Расширение для https://jira.egovdev.ru/browse/EPGUCORE-90939 - Закрытие услуги кукой через JSON
  */
 @RestController
 @RequestMapping(value = "service/{serviceId}/scenario", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -157,11 +154,16 @@ public class ScenarioController {
     @PostMapping(value = "checkIfOrderIdExists")
     public OrderListInfoDto checkIfOrderIdExists(
             @Parameter(description = "Id услуги", required = true) @PathVariable String serviceId,
-            @RequestBody InitServiceDto initServiceDto
+            @RequestBody InitServiceDto initServiceDto,
+            @CookieValue(value = "newSF") Optional<Object> newSFCookie
     ) {
         tracingHelper.addServiceCodeAndOrderId(serviceId, initServiceDto);
         MainScreenService mainScreenService = mainScreenServiceRegistry.getService(initServiceDto.getTargetId());
-        return mainScreenService.getOrderInfo(initServiceDto, serviceId);
+        // требуется ли выполнить редирект
+        boolean isRedirect = shouldNewSFRedirect(newSFCookie, mainScreenService, serviceId);
+        var orderInfo = mainScreenService.getOrderInfo(initServiceDto, serviceId);
+        orderInfo.setClosedByNewSFСookie(isRedirect);
+        return orderInfo;
     }
 
     @Operation(summary = "Получение информации по идентификатору заявления", description =
@@ -194,4 +196,26 @@ public class ScenarioController {
         return mainScreenService.prepareScenarioFromExternal(scenarioFromExternal);
     }
 
+    /**
+     * Требуется ли выполнить редирект
+     */
+    private boolean shouldNewSFRedirect(Optional<Object> newSFCookie, MainScreenService mainScreenService, String serviceId) {
+
+        boolean closedByNewSFСookie = false;
+        Optional<Boolean> optClosedByNewSFСookie = Optional.ofNullable(mainScreenService.getServiceDescriptor(serviceId).getClosedByNewSFСookie());
+        if (optClosedByNewSFСookie.isPresent()) {
+            closedByNewSFСookie = optClosedByNewSFСookie.get();
+        }
+
+        if (closedByNewSFСookie) {
+            boolean newSFLabel = false;
+            if (newSFCookie.isPresent()) {
+                Object sfValue = newSFCookie.get();
+                newSFLabel = Boolean.valueOf(String.valueOf(sfValue));
+            }
+            return !newSFLabel;
+        } else {
+            return false;
+        }
+    }
 }
