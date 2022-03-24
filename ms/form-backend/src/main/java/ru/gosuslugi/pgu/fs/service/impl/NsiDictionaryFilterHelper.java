@@ -15,6 +15,7 @@ import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
 import ru.gosuslugi.pgu.fs.common.exception.FormBaseException;
+import ru.gosuslugi.pgu.fs.common.jsonlogic.JsonLogic;
 import ru.gosuslugi.pgu.fs.common.service.ComponentReferenceService;
 import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService;
 import ru.gosuslugi.pgu.fs.common.utils.AnswerUtil;
@@ -95,7 +96,8 @@ public class NsiDictionaryFilterHelper {
                     conditionBuilders.add(filterValueBuilder);
                 }
             }
-            if (fieldComponent.getAttrs().containsKey(REF_ATTR) && fieldComponent.getAttrs().containsKey(DICTIONARY_FILTER_IN_REF)) {
+            if (fieldComponent.getAttrs().containsKey(REF_ATTR) &&
+                    JsonLogic.isTrue(fieldComponent.getAttrs().get(DICTIONARY_FILTER_IN_REF))) {
                 var filtersList = getDictionaryFiltersListFromRef(fieldComponent);
                 for (var filter : filtersList) {
                     if (filter.get(DICT_FILTER_VALUE_TYPE).equals(DICTIONARY_FILTER_VALUE_TYPE_PRESET)) {
