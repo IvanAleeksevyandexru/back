@@ -59,7 +59,7 @@ public class AttachmentContentComponent extends AbstractComponent<List<FileInfo>
         if (component.getAttrs().containsKey("toZip")) {
             Map<String, String> zipMeta = (Map<String, String>) component.getAttrs().get("toZip");
             // используем модифицированную мнемонику
-            String mnemonic = buildNewMnemonic(mnemonicsMap, buildDefaultMnemonic(scenarioDto, component), scenarioDto, component);
+            String mnemonic = buildNewMnemonic(mnemonicsMap, scenarioDto, component);
 
             try {
                 FileInfo file = terrabyteClient.zipFiles(
@@ -80,7 +80,7 @@ public class AttachmentContentComponent extends AbstractComponent<List<FileInfo>
             for (FileInfo src: componentFiles) {
                 FileInfo trg = new FileInfo();
                 // используем модифицированную мнемонику
-                String mnemonic = buildNewMnemonic(mnemonicsMap, buildDefaultMnemonic(scenarioDto, component), scenarioDto, component);
+                String mnemonic = buildNewMnemonic(mnemonicsMap, scenarioDto, component);
 
                 trg.setMnemonic(mnemonic);
                 trg.setObjectId(scenarioDto.getOrderId());
@@ -168,15 +168,10 @@ public class AttachmentContentComponent extends AbstractComponent<List<FileInfo>
      * Возвращает новую мнемонику файла
      *
      * @param mnemonicsMap Map, полученный после удаления файлов, ключ: стандартная мнемоника, значение: модифицированная мнемоника
-     * @param currentMnemonic текущая мнемоника
      */
-    private String buildNewMnemonic(Map<String, String> mnemonicsMap, String currentMnemonic, ScenarioDto scenarioDto, FieldComponent component) {
+    private String buildNewMnemonic(Map<String, String> mnemonicsMap, ScenarioDto scenarioDto, FieldComponent component) {
         String defaultMnemonic = buildDefaultMnemonic(scenarioDto, component);
-        String newMnemonic = mnemonicsMap.get(defaultMnemonic);
-        if (newMnemonic == null) {
-            newMnemonic = modifyMnemonic(currentMnemonic, defaultMnemonic);
-        }
-        return newMnemonic;
+        return mnemonicsMap.getOrDefault(defaultMnemonic, modifyMnemonic(defaultMnemonic, defaultMnemonic));
     }
 
     /**
