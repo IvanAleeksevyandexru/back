@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
+import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
@@ -17,6 +18,7 @@ import ru.atc.carcass.common.ws.JaxWSClientFactoryImpl;
 import ru.atc.carcass.common.ws.JaxWsClientFactory;
 import ru.atc.carcass.security.service.impl.EsiaRestClientServiceImpl;
 import ru.atc.carcass.security.service.impl.ThreadLocalTokensContainerManagerService;
+import ru.gosuslugi.pgu.common.core.interceptor.creator.RestTemplateCreator;
 import ru.gosuslugi.pgu.common.core.service.HealthHolder;
 import ru.gosuslugi.pgu.common.core.service.OkatoHolder;
 import ru.gosuslugi.pgu.common.core.service.impl.HealthHolderImpl;
@@ -94,7 +96,8 @@ public class PguLibConfig {
 
 
     @Bean
-    public JaxWSClientFactoryImpl jaxWsClientFactory(AppContextUtil appContextUtil, JaxWsPortProxyFactoryBean uddi) {
+    public JaxWSClientFactoryImpl jaxWsClientFactory(AppContextUtil appContextUtil, JaxWsPortProxyFactoryBean uddi, ConfigurableEnvironment env) {
+        RestTemplateCreator.copyApplicationPropertiesToSystem(env, "uddi");
         JaxWSClientFactoryImpl jaxWSClientFactory = new JaxWSClientFactoryImpl();
         CacheImpl cache = new CacheImpl();
         jaxWSClientFactory.setCacheControlService(cache);
@@ -113,7 +116,8 @@ public class PguLibConfig {
     }
 
     @Bean
-    public EsiaRestClientServiceImpl esiaRestClientService(EsiaServiceProperties properties) {
+    public EsiaRestClientServiceImpl esiaRestClientService(EsiaServiceProperties properties, ConfigurableEnvironment env) {
+        RestTemplateCreator.copyApplicationPropertiesToSystem(env, "esia-pd");
         EsiaRestClientServiceImpl esiaRestClientService = new EsiaRestClientServiceImpl();
         esiaRestClientService.setEsiaUrl(properties.getUrl());
         esiaRestClientService.setProxyUrl(properties.getProxyUrl());
