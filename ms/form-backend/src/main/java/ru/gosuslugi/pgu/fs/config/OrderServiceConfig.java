@@ -2,6 +2,7 @@ package ru.gosuslugi.pgu.fs.config;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +12,9 @@ import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.fs.common.service.UserCookiesService;
 import ru.gosuslugi.pgu.fs.config.cache.RequestCacheResolver;
-import ru.gosuslugi.pgu.fs.pgu.client.impl.PguEmailClientImpl;
 import ru.gosuslugi.pgu.fs.pgu.client.impl.PguOrderClientImpl;
 import ru.gosuslugi.pgu.fs.pgu.client.impl.PguUtilsClientImpl;
+import ru.gosuslugi.pgu.fs.pgu.client.impl.PguEmailClientImpl;
 import ru.gosuslugi.pgu.fs.pgu.mapper.HighLoadOrderPguMapper;
 import ru.gosuslugi.pgu.fs.pgu.service.CatalogService;
 import ru.gosuslugi.pgu.fs.pgu.service.PguOrderService;
@@ -30,6 +31,9 @@ import static org.springframework.web.context.WebApplicationContext.SCOPE_REQUES
 @Configuration
 @RequiredArgsConstructor
 public class OrderServiceConfig {
+
+    @Value("${pgu.order-url}")
+    private String pguUrl;
 
     private final RestTemplate restTemplate;
 
