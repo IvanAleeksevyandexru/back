@@ -19,12 +19,14 @@ import ru.gosuslugi.pgu.terrabyte.client.TerrabyteClient;
 import ru.gosuslugi.pgu.terrabyte.client.model.FileInfo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
  * https://jira.egovdev.ru/browse/EPGUCORE-88600
+ * https://jira.egovdev.ru/browse/EPGUCORE-90208 - изменение постфикса мнемоники файла для возможности повторного сохранения на террабайте
  */
 @Slf4j
 @Component
@@ -48,14 +50,16 @@ public class AttachmentContentComponent extends AbstractComponent<List<FileInfo>
                 .collect(Collectors.toList());
 
         // опция очистки от прикрепленных файлов для ордера
+        Map<String, String> mnemonicsMap = new HashMap<>();
         if (component.getBooleanAttr("cleanUp")) {
-            deleteAttachmentFiles(scenarioDto, component);
+            mnemonicsMap = deleteAttachmentFiles(scenarioDto, component);
         }
 
         // add files to zip
         if (component.getAttrs().containsKey("toZip")) {
             Map<String, String> zipMeta = (Map<String, String>) component.getAttrs().get("toZip");
-            String mnemonic = component.getId() + "." + getType().toString() + "." + component.getAttrs().getOrDefault("mnemonic", "mnemonic") + "." + scenarioDto.getOrderId();
+            // используем модифицированную мнемонику
+            String mnemonic = buildNewMnemonic(mnemonicsMap, scenarioDto, component);
 
             try {
                 FileInfo file = terrabyteClient.zipFiles(
@@ -75,7 +79,9 @@ public class AttachmentContentComponent extends AbstractComponent<List<FileInfo>
             // add files to order
             for (FileInfo src: componentFiles) {
                 FileInfo trg = new FileInfo();
-                String mnemonic = component.getId() + "." + getType().toString() + "." + component.getAttrs().getOrDefault("mnemonic", "mnemonic") + "." + scenarioDto.getOrderId();
+                // используем модифицированную мнемонику
+                String mnemonic = buildNewMnemonic(mnemonicsMap, scenarioDto, component);
+
                 trg.setMnemonic(mnemonic);
                 trg.setObjectId(scenarioDto.getOrderId());
                 trg.setObjectTypeId(2);
@@ -120,12 +126,19 @@ public class AttachmentContentComponent extends AbstractComponent<List<FileInfo>
         );
     }
 
-    private void deleteAttachmentFiles(ScenarioDto scenarioDto, FieldComponent component) {
+    // Кроме удаления строим и возвращаем Map - ключ: стандартная мнемоника, значение: модифицированная мнемоника
+    private Map<String, String> deleteAttachmentFiles(ScenarioDto scenarioDto, FieldComponent component) {
+        Map<String, String> mnemonicsMap = new HashMap<>();
         for (AttachmentInfo attachmentInfo: scenarioDto.getAttachmentInfo().getOrDefault(component.getId(), new ArrayList<>())) {
             FileInfo file = new FileInfo();
             file.setObjectId(Long.parseLong(attachmentInfo.getObjectId()));
             file.setObjectTypeId(Integer.parseInt(attachmentInfo.getObjectTypeId()));
-            file.setMnemonic(attachmentInfo.getUploadMnemonic());
+
+            String defaultMnemonic = buildDefaultMnemonic(scenarioDto, component);
+            String currentMnemonic = attachmentInfo.getUploadMnemonic();
+            mnemonicsMap.put(defaultMnemonic, modifyMnemonic(currentMnemonic, defaultMnemonic));
+
+            file.setMnemonic(currentMnemonic);
             file.setFileName(attachmentInfo.getUploadFilename());
             file.setFileUid(Long.parseLong(attachmentInfo.getUploadId()));
             try {
@@ -135,6 +148,7 @@ public class AttachmentContentComponent extends AbstractComponent<List<FileInfo>
             }
         }
         scenarioDto.getAttachmentInfo().remove(component.getId());
+        return mnemonicsMap;
     }
 
     @Override
@@ -144,5 +158,34 @@ public class AttachmentContentComponent extends AbstractComponent<List<FileInfo>
 
     public static List<String> getAttachmentMnemonics(Map.Entry<String, ApplicantAnswer> entry) {
         return AnswerUtil.toMapList(entry, true).stream().map(e -> e.get("mnemonic").toString()).collect(Collectors.toList());
+    }
+
+    private String buildDefaultMnemonic(ScenarioDto scenarioDto, FieldComponent component) {
+        return component.getId() + "." + getType().toString() + "." + component.getAttrs().getOrDefault("mnemonic", "mnemonic") + "." + scenarioDto.getOrderId();
+    }
+
+    /**
+     * Возвращает новую мнемонику файла
+     *
+     * @param mnemonicsMap Map, полученный после удаления файлов, ключ: стандартная мнемоника, значение: модифицированная мнемоника
+     */
+    private String buildNewMnemonic(Map<String, String> mnemonicsMap, ScenarioDto scenarioDto, FieldComponent component) {
+        String defaultMnemonic = buildDefaultMnemonic(scenarioDto, component);
+        return mnemonicsMap.getOrDefault(defaultMnemonic, modifyMnemonic(defaultMnemonic, defaultMnemonic));
+    }
+
+    /**
+     * Модифицирует мнемонику файла с дополнительным 0 в постфиксе или инкрементом
+     *
+     * @param currentMnemonic текущая мнемоника
+     * @param defaultMnemonic стандартная мнемоника
+     */
+    private String modifyMnemonic(String currentMnemonic, String defaultMnemonic) {
+        if (currentMnemonic.equals(defaultMnemonic)) {
+            return defaultMnemonic + "0";
+        } else {
+            int index = Integer.parseInt(currentMnemonic.substring(defaultMnemonic.length())) + 1;
+            return defaultMnemonic + index;
+        }
     }
 }

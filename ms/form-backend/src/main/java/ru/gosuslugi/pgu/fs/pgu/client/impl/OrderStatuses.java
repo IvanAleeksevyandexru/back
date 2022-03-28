@@ -107,7 +107,9 @@ public enum OrderStatuses {
     ORDER_ACCEPTED(57L),
     ORDER_FAILED(58L),
     ALL_CANCELED(70L),
-    ORDER_NULLIFY(84L);
+    ORDER_NULLIFY(84L),
+    WAITING_APPROVAL(91L),
+    APPROVAL_REQUEST(93L);
 
     private final long statusId;
 
@@ -151,7 +153,9 @@ public enum OrderStatuses {
     static List<Long> editableStatuses = Arrays.asList(
             OrderStatuses.DRAFT.getStatusId(),
             OrderStatuses.WAITING_FOR_ADDITIONAL_INFO.getStatusId(),
-            OrderStatuses.SHOULD_BE_CORRECTED.getStatusId()
+            OrderStatuses.SHOULD_BE_CORRECTED.getStatusId(),
+            OrderStatuses.WAITING_APPROVAL.getStatusId(),
+            OrderStatuses.APPROVAL_REQUEST.getStatusId()
     );
 
     /**

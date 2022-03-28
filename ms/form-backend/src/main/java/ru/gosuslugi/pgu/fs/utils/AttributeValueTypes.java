@@ -46,6 +46,13 @@ public enum AttributeValueTypes {
             return presetProperties.get(presetAttrNameVal);
         }
     },
+    RAWFILTER {
+        @Override
+        public String getPresetValue(ParseAttrValuesHelper parseAttrValuesHelper, String valueType, String attributeType, String presetAttrNameVal, ScenarioDto scenarioDto,
+                                     Map<String, String> presetProperties) {
+            return presetAttrNameVal;
+        }
+    },
     CALC,
     PROTECTED,
     SERVICEINFO,
