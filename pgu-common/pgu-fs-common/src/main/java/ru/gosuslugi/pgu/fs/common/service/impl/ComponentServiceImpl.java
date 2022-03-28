@@ -53,12 +53,11 @@ public class ComponentServiceImpl implements ComponentService {
                 .filter(field -> field.getId().equals(componentId))
                 .map(FieldComponent::getCopy)
                 .findAny();
-        /** Аналитику по компонентам следует отправлять в случае если analyticsTag пустой,
-         *  или в analyticsTag присутствует id компонента
-         *  */
+        // Аналитику по компонентам следует отправлять в случае если analyticsTag пустой,
+        // или в analyticsTag присутствует id компонента
         var analyticsTags = serviceDescriptor.getAnalyticsTags();
         if (componentOptional.isPresent()) {
-            if (analyticsTags.isEmpty() ||
+            if (CollectionUtils.isEmpty(analyticsTags) ||
                     analyticsTags
                             .stream()
                             .filter(tag -> StringUtils.hasText(tag.getComponentId()))
