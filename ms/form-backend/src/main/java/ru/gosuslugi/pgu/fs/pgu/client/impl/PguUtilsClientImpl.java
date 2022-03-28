@@ -23,6 +23,9 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class PguUtilsClientImpl implements PguUtilsClient {
 
+    @Value("${pgu.order-url}")
+    private String pguUrl;
+
     @Value("${pgu.lkapi-url}")
     private String lkApiUrl;
 
@@ -40,7 +43,7 @@ public class PguUtilsClientImpl implements PguUtilsClient {
         if(Objects.isNull(authorityId)){ return false; }
         try {
             restTemplate.exchange(
-                    lkApiUrl + LK_API_USER_AUTHORITY_CHECK,
+                    pguUrl + LK_API_USER_AUTHORITY_CHECK,
                     HttpMethod.GET,
                     new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken())),
                     Object.class,

@@ -48,11 +48,12 @@ import static java.util.Collections.emptyList;
 @RequiredArgsConstructor
 public class PguOrderClientImpl implements PguOrderClient {
 
+    @Value("${pgu.order-url}")
+    private String pguUrl;
+
     @Value("${pgu.lkapi-url}")
     private String lkApiUrl;
 
-    private static final String ORDER_ID_KEY = "orderId";
-    
     private static final String LK_API_CREATE_ORDER_PATH = "/lk-api/internal/api/lk/v1/orders";
     private static final String LK_API_FIND_ORDER_PATH = "/lk-api/internal/api/lk/v1/drafts?_={preventCacheValue}&embed=LAST_INVITATION&pageIndex=1&pageSize={pageSize}&sourceSystems=*&eServiceId={serviceId}&serviceTargetId={targetId}";
     private static final String LK_API_ORDERS_PATH = "/lk-api/internal/api/lk/v1/orders/{orderId}/esia-token";
@@ -81,7 +82,7 @@ public class PguOrderClientImpl implements PguOrderClient {
                 "pageSize", "1");
         try {
             ResponseEntity<ListOrderResponse> response = restTemplate
-                    .exchange(lkApiUrl + LK_API_FIND_ORDER_PATH,
+                    .exchange(pguUrl + LK_API_FIND_ORDER_PATH,
                             HttpMethod.GET,
                             new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken())),
                             ListOrderResponse.class,
@@ -117,7 +118,7 @@ public class PguOrderClientImpl implements PguOrderClient {
                 "preventCacheValue", this.generatePreventCacheValue(),
                 "pageSize", "1000");
         ResponseEntity<ListOrderResponse> response = restTemplate
-                .exchange(lkApiUrl + LK_API_FIND_ORDER_PATH,
+                .exchange(pguUrl + LK_API_FIND_ORDER_PATH,
                         HttpMethod.GET,
                         httpEntity,
                         ListOrderResponse.class,
@@ -134,7 +135,7 @@ public class PguOrderClientImpl implements PguOrderClient {
     public List<Order> findOrdersByStatus(String serviceCode, String targetCode, OrderStatuses orderStatus) {
         Map<String, String> requestParams = Map.of("serviceId", serviceCode,"targetId", targetCode);
         ResponseEntity<ListOrderResponse> response = restTemplate
-                .exchange(lkApiUrl + LK_API_GET_ORDERS_BY_SERVICE_ID,
+                .exchange(pguUrl + LK_API_GET_ORDERS_BY_SERVICE_ID,
                         HttpMethod.GET,
                         new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken())),
                         ListOrderResponse.class,
@@ -150,7 +151,7 @@ public class PguOrderClientImpl implements PguOrderClient {
     public List<Order> findOrdersWithoutStatuses(String serviceCode, String targetCode, List<Long> ignoreOrderStatuses) {
         Map<String, String> requestParams = Map.of("serviceId", serviceCode,"targetId", targetCode);
         ResponseEntity<ListOrderResponse> response = restTemplate
-                .exchange(lkApiUrl + LK_API_GET_ORDERS_BY_SERVICE_ID,
+                .exchange(pguUrl + LK_API_GET_ORDERS_BY_SERVICE_ID,
                         HttpMethod.GET,
                         new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken())),
                         ListOrderResponse.class,
@@ -202,11 +203,11 @@ public class PguOrderClientImpl implements PguOrderClient {
     @Override
     public Boolean deleteOrder(Long orderId, HttpEntity<Object> httpEntity) {
         try {
-            restTemplate.exchange(lkApiUrl + LK_API_TOKEN_ORDERS_PATH,
+            restTemplate.exchange(pguUrl + LK_API_TOKEN_ORDERS_PATH,
                             HttpMethod.DELETE,
                             httpEntity,
                             Object.class,
-                            Map.of(ORDER_ID_KEY, orderId, "userId", userPersonalData.getUserId()));
+                            Map.of("orderId", orderId, "userId", userPersonalData.getUserId()));
         } catch (ExternalServiceException e) {
             if (log.isDebugEnabled()) {
                 log.debug("Error from external service", e);
@@ -220,11 +221,11 @@ public class PguOrderClientImpl implements PguOrderClient {
     public Order findOrderWithPayment(Long orderId) {
         try {
             ResponseEntity<Order> response = restTemplate
-                    .exchange(lkApiUrl + LK_API_FIND_ORDER_WITH_PAYMENT_PATH,
+                    .exchange(pguUrl + LK_API_FIND_ORDER_WITH_PAYMENT_PATH,
                             HttpMethod.GET,
                             new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken())),
                             Order.class,
-                            Map.of(ORDER_ID_KEY, orderId));
+                            Map.of("orderId", orderId));
             return response.getBody();
         } catch (ExternalServiceException e) {
             if (log.isDebugEnabled()) {
@@ -238,11 +239,11 @@ public class PguOrderClientImpl implements PguOrderClient {
     public Order findOrderById(Long orderId) {
         try {
             ResponseEntity<Order> response = restTemplate
-                    .exchange(lkApiUrl + LK_API_ORDERS_PATH,
+                    .exchange(pguUrl + LK_API_ORDERS_PATH,
                             HttpMethod.GET,
                             new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken())),
                             Order.class,
-                            Map.of(ORDER_ID_KEY, orderId));
+                            Map.of("orderId", orderId));
             return response.getBody();
         } catch (ExternalServiceException e) {
             if (HttpStatus.NOT_FOUND.equals(e.getStatus())) {
@@ -257,11 +258,11 @@ public class PguOrderClientImpl implements PguOrderClient {
     public Order findOrderByIdAndUserId(Long orderId, Long userId) {
         try {
             ResponseEntity<Order> response = restTemplate
-                    .exchange(lkApiUrl + LK_API_ORDERS_PATH,
+                    .exchange(pguUrl + LK_API_ORDERS_PATH,
                             HttpMethod.GET,
                             new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userTokenService.getUserToken(userId))),
                             Order.class,
-                            Map.of(ORDER_ID_KEY, orderId));
+                            Map.of("orderId", orderId));
             return response.getBody();
         } catch (ExternalServiceException e) {
             if (HttpStatus.NOT_FOUND.equals(e.getStatus())) {
@@ -307,7 +308,7 @@ public class PguOrderClientImpl implements PguOrderClient {
                     HttpMethod.GET,
                     new HttpEntity<>(PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken())),
                     String.class,
-                    Map.of(ORDER_ID_KEY, orderId)
+                    Map.of("orderId", orderId)
             );
             if(resp.getStatusCode() == HttpStatus.ACCEPTED){
                 throw new OrderNotCreatedException("Заявление не создано");
@@ -331,7 +332,7 @@ public class PguOrderClientImpl implements PguOrderClient {
                 "preventCacheValue", this.generatePreventCacheValue(),
                 "pageSize", "1000");
         ResponseEntity<ListOrderResponseLight> response = restTemplate
-                .exchange(lkApiUrl + LK_API_FIND_ORDER_LIGHT_PATH,
+                .exchange(pguUrl + LK_API_FIND_ORDER_LIGHT_PATH,
                         HttpMethod.GET,
                         httpEntity,
                         ListOrderResponseLight.class,
@@ -352,7 +353,7 @@ public class PguOrderClientImpl implements PguOrderClient {
                     new HttpEntity<>(setOrderAttributeDTO),
                     ru.gosuslugi.lk.api.order.Order.class,
                     Map.of(
-                            ORDER_ID_KEY, orderId
+                            "orderId", orderId
                     )
             );
             return response.getBody();
@@ -375,7 +376,7 @@ public class PguOrderClientImpl implements PguOrderClient {
                 new HttpEntity<>(requestBody),
                 PguServiceCodes.class,
                 Map.of(
-                        ORDER_ID_KEY, orderId
+                        "orderId", orderId
                 )
         );
     }
@@ -384,9 +385,9 @@ public class PguOrderClientImpl implements PguOrderClient {
     public Boolean saveChoosenValuesForOrder(String serviceCode, String targetCode, Long orderId, Map<String, Object> userAnswers) {
         try {
             HashMap<String, Object> requestBody = new HashMap<>(userAnswers);
-            requestBody.put(ORDER_ID_KEY, orderId);
+            requestBody.put("orderId", orderId);
             restTemplate.exchange(
-                    lkApiUrl + LK_API_SAVE_VALUES,
+                    pguUrl + LK_API_SAVE_VALUES,
                     HttpMethod.POST,
                     new HttpEntity<>(requestBody, PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken())),
                     Map.class
@@ -401,7 +402,7 @@ public class PguOrderClientImpl implements PguOrderClient {
     public Boolean hasDuplicatesForOrder(String serviceCode, String targetCode, Map<String, Object> userAnswers) {
         try {
             restTemplate.exchange(
-                    lkApiUrl + LK_API_CHECK_ORDER,
+                    pguUrl + LK_API_CHECK_ORDER,
                     HttpMethod.POST,
                     new HttpEntity<>(userAnswers, PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken())),
                     Map.class,
