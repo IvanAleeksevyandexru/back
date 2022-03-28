@@ -50,7 +50,7 @@ import static java.util.stream.Collectors.*;
 public class IntegrationServiceImpl implements IntegrationService {
 
     private static final String SENT_TIME_KEY = "sentTime";
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX");
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSSZ");
     private static final String FILES_NOT_FOUND_IN_FILE_STORAGE = "В файловом хранилище отсутствуют необходимые файлы";
 
     private final UserPersonalData userPersonalData;
