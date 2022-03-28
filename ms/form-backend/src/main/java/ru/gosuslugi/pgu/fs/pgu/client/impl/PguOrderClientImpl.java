@@ -59,7 +59,7 @@ public class PguOrderClientImpl implements PguOrderClient {
     private static final String LK_API_TOKEN_ORDERS_PATH = "/lk-api/internal/api/lk/v1/orders/{orderId}?token={userId}@@AL20@@1";
     private static final String LK_API_CREATE_ORDER_PATH_HIGHLOAD = "/lk-api/internal/api/lk/v1/orders/create-hp";
     private static final String LK_API_CHECK_ORDER_EXISTS = "/lk-api/internal/api/orders/v1/create-hp/{orderId}/check";
-    private static final String LK_API_GET_ORDERS_BY_SERVICE_ID = "/lk-api/internal/api/lk/v1/orders/?eserviceCode={serviceId}&serviceTargetExtId={targetId}&pageIndex=1&pageSize=1000&sourceSystems=*";
+    private static final String LK_API_GET_ORDERS_BY_SERVICE_ID = "/lk-api/internal/api/lk/v1/orders/listKf?eserviceCode={serviceId}&serviceTargetExtId={targetId}&pageIndex=1&pageSize=1000&sourceSystems=*";
     private static final String LK_API_FIND_ORDER_WITH_PAYMENT_PATH = "/lk-api/internal/api/lk/v1/orders/{orderId}/esia-token?embed=PAYMENT";
     private static final String LK_API_FIND_ORDER_LIGHT_PATH = "/lk-api/internal/api/lk/v1/drafts/light?_={preventCacheValue}&embed=LAST_INVITATION&pageIndex=1&pageSize={pageSize}&sourceSystems=*&eServiceId={serviceId}&serviceTargetId={targetId}";
     private static final String LK_API_ORDER_SET_ATTRIBUTES = "/lk-api/internal/api/lk/v1/orders/{orderId}/set/attributes";
