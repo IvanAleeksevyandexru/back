@@ -120,7 +120,7 @@ public class IntegrationServiceImpl implements IntegrationService {
         ApplicantAnswer answer = new ApplicantAnswer();
         String date;
         if ("10000000368".equals(serviceId)) {
-            date = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSSZ"));
+            date = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX"));
         } else {
             date = ZonedDateTime.now().format(DATE_TIME_FORMATTER);
         }
