@@ -61,45 +61,36 @@ spring:
     # для бизнес сервисов
     brokers: localhost:9092
     consumer:
-      sp-adapter-response:
+      sp-adapter:
         enabled: false
-        topic: sp-result
         group-id: 0
         processing-threads: 1
-        batch-processing: false
+        batch-processing: true
         max-poll-records: 100
         poll-timeout: 345600s
         fetch-max-size: 52428800
         partition-fetch-bytes: 1048576
-      sp-adapter-error:
-        enabled: false
-        topic: self-eror-topic
-        group-id: 0
-        processing-threads: 1
-        batch-processing: false
-        max-poll-records: 100
-        poll-timeout: 345600s
-        fetch-max-size: 52428800
-        partition-fetch-bytes: 1048576
+        error-topic-name: self-eror-topic
+        response-topic-name: sp-result
     producer:
       suggests:
         enabled: false
         topic-name: dev01-form-serviceToSuggests-drafts
         auto-create-topics: false
-        partitions: 1
-        replication-factor: 1
+        topic-partitions: 1
+        topic-replication-factor: 1
       sp-adapter-batch:
         enabled: false
-        topic: sp-adapter-batch
+        topic-name: sp-adapter-batch
         auto-create-topics: false
-        partitions: 1
-        replication-factor: 1
+        topic-partitions: 1
+        topic-replication-factor: 1
       rate-limit-analytic:
         enabled: true
-        topic: dev01-form-serviceToRatelimitOverhead-request
+        topic-name: dev01-form-serviceToRatelimitOverhead-request
         auto-create-topics: false
-        partitions: 1
-        replication-factor: 1
+        topic-partitions: 1
+        topic-replication-factor: 1
 
 delirium:
   enabled: true
