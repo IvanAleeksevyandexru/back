@@ -511,6 +511,146 @@ class ComponentReferenceServiceImplSpec extends Specification {
         formDto.states[0].fields[1].value == 'Value - 2'
     }
 
+    def 'Can get form for component FieldGroups with hidden empty groups and fields sequential placeholder'() {
+        given:
+        def component = new FieldComponent(
+                attrs: [
+                        "hiddenEmptyGroups": true,
+                        "hiddenEmptyFields": true,
+                        fieldGroups : [
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label1', value: 'Value - ${index}'],
+                                         [label: 'label2', value: 'Value - ${index}'],
+                                         [label: 'label3', value: '']
+                                 ]],
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label4', value: ''],
+                                         [label: 'label5', value: '']
+                                 ]],
+                        ],
+                        placeholders: [index: 'sequential']])
+        def scenarioDto = new ScenarioDto()
+
+        when:
+        def formDto = service.processFieldGroups(component, scenarioDto).build()
+
+        then:
+        formDto.states
+        formDto.states.size() == 1
+        formDto.states[0].fields
+        formDto.states[0].fields.size() == 2
+        formDto.states[0].fields[0].value == 'Value - 1'
+        formDto.states[0].fields[1].value == 'Value - 2'
+    }
+
+    def 'Can get form for component FieldGroups with showing empty groups and empty fields sequential placeholder'() {
+        given:
+        def component = new FieldComponent(
+                attrs: [
+                        "hiddenEmptyGroups": false,
+                        "hiddenEmptyFields": false,
+                        fieldGroups : [
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label1', value: 'Value - ${index}'],
+                                         [label: 'label2', value: 'Value - ${index}'],
+                                         [label: 'label3', value: '']
+                                 ]],
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label4', value: ''],
+                                         [label: 'label5', value: '']
+                                 ]],
+                        ],
+                        placeholders: [index: 'sequential']])
+        def scenarioDto = new ScenarioDto()
+
+        when:
+        def formDto = service.processFieldGroups(component, scenarioDto).build()
+
+        then:
+        formDto.states
+        formDto.states.size() == 2
+        formDto.states[0].fields
+        formDto.states[0].fields.size() == 3
+        formDto.states[0].fields[0].value == 'Value - 1'
+        formDto.states[0].fields[1].value == 'Value - 2'
+        formDto.states[0].fields[2].value == null
+        formDto.states[1].fields[0].value == null
+        formDto.states[1].fields[1].value == null
+    }
+
+    def 'Can get form for component FieldGroups with hidden empty groups and show empty fields sequential placeholder'() {
+        given:
+        def component = new FieldComponent(
+                attrs: [
+                        "hiddenEmptyGroups": true,
+                        "hiddenEmptyFields": false,
+                        fieldGroups : [
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label1', value: 'Value - ${index}'],
+                                         [label: 'label2', value: 'Value - ${index}'],
+                                         [label: 'label3', value: '']
+                                 ]],
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label4', value: ''],
+                                         [label: 'label5', value: '']
+                                 ]],
+                        ],
+                        placeholders: [index: 'sequential']])
+        def scenarioDto = new ScenarioDto()
+
+        when:
+        def formDto = service.processFieldGroups(component, scenarioDto).build()
+
+        then:
+        formDto.states
+        formDto.states.size() == 1
+        formDto.states[0].fields
+        formDto.states[0].fields.size() == 3
+        formDto.states[0].fields[0].value == 'Value - 1'
+        formDto.states[0].fields[1].value == 'Value - 2'
+        formDto.states[0].fields[2].value == null
+    }
+
+    def 'Can get form for component FieldGroups with show empty groups(hidden empty fields overload this value) and hidden empty fields sequential placeholder'() {
+        given:
+        def component = new FieldComponent(
+                attrs: [
+                        "hiddenEmptyGroups": false,
+                        "hiddenEmptyFields": true,
+                        fieldGroups : [
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label1', value: 'Value - ${index}'],
+                                         [label: 'label2', value: 'Value - ${index}'],
+                                         [label: 'label3', value: '']
+                                 ]],
+                                [groupName: 'group name',
+                                 fields   : [
+                                         [label: 'label4', value: ''],
+                                         [label: 'label5', value: '']
+                                 ]],
+                        ],
+                        placeholders: [index: 'sequential']])
+        def scenarioDto = new ScenarioDto()
+
+        when:
+        def formDto = service.processFieldGroups(component, scenarioDto).build()
+
+        then:
+        formDto.states
+        formDto.states.size() == 1
+        formDto.states[0].fields
+        formDto.states[0].fields.size() == 2
+        formDto.states[0].fields[0].value == 'Value - 1'
+        formDto.states[0].fields[1].value == 'Value - 2'
+    }
+
     def 'Can get form component FieldGroups with nested placeholder'() {
         given:
         def component = new FieldComponent(
