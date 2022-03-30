@@ -247,3 +247,5 @@ springdoc:
   api-docs:
     enabled: true
   # packagesToScan: ru.gosuslugi.pgu.fs.controller
+
+data.cache.enabled: false
