@@ -118,7 +118,13 @@ public class IntegrationServiceImpl implements IntegrationService {
 
         // Добавление времени отправвки заявления
         ApplicantAnswer answer = new ApplicantAnswer();
-        answer.setValue(ZonedDateTime.now().format(DATE_TIME_FORMATTER));
+        String date;
+        if ("10000000368".equals(serviceId)) {
+            date = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX"));
+        } else {
+            date = ZonedDateTime.now().format(DATE_TIME_FORMATTER);
+        }
+        answer.setValue(date);
         scenarioDto.getApplicantAnswers().put(SENT_TIME_KEY, answer);
 
         // сохранение черновика
