@@ -134,7 +134,7 @@ public class TerrabyteServiceImpl implements TerrabyteService {
     /**
      * Метод проверяет что пользователь в ходе прохождения услуги был на компоненте по работе с фаилами
      */
-    private boolean checkOrderHasFileComponents(ScenarioDto scenarioDto, ServiceDescriptor serviceDescriptor){
+     public boolean checkOrderHasFileComponents(ScenarioDto scenarioDto, ServiceDescriptor serviceDescriptor){
         if(!scenarioDto.getSignInfoMap().isEmpty() || !scenarioDto.getAttachmentInfo().isEmpty()){
             return true;
         }
