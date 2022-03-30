@@ -225,6 +225,7 @@ public class CreateOrderServiceImpl implements CreateOrderService {
         if (CollectionUtils.isEmpty(cycledAnswers) || applicantAnswer == null) {
             return new ArrayList<>();
         }
+        jsonProcessingService.releaseThreadCache();
         DocumentContext currentAnswerContext = JsonPath.parse(jsonProcessingService.convertAnswersToJsonString(applicantAnswer));
         List<String> result = new ArrayList<>();
         List<Map<String, String>> cycles = jsonProcessingService.getFieldFromContext(cycledValues, currentAnswerContext, List.class);
