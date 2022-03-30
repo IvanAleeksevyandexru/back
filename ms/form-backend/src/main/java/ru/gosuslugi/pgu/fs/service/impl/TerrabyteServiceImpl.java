@@ -13,6 +13,7 @@ import ru.gosuslugi.pgu.dto.ScenarioDto;
 import ru.gosuslugi.pgu.dto.SignInfo;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
+import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.dto.esep.SignedFileInfo;
 import ru.gosuslugi.pgu.fs.common.service.ComponentService;
 import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService;
@@ -24,11 +25,7 @@ import ru.gosuslugi.pgu.fs.service.TerrabyteService;
 import ru.gosuslugi.pgu.terrabyte.client.TerrabyteClient;
 import ru.gosuslugi.pgu.terrabyte.client.model.FileInfo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -41,6 +38,13 @@ public class TerrabyteServiceImpl implements TerrabyteService {
     private final ComponentService componentService;
     private final UploadFileComponent uploadFileComponent;
     private final UserPersonalData userPersonalData;
+
+    private final static List<ComponentType> fileComponents = Arrays.asList(
+            ComponentType.FileUploadComponent,
+            ComponentType.OrderFileProcessingComponent,
+            ComponentType.PhotoUploadComponent,
+            ComponentType.AttachmentContent
+    );
 
     public static final String EMPTY_FILES_NOT_ALLOWED = "Запрещена загрузка пустых файлов! Проверьте загружаемый файл";
 
@@ -97,6 +101,9 @@ public class TerrabyteServiceImpl implements TerrabyteService {
 
     @Override
     public void deleteRedundantFiles(ScenarioDto scenarioDto, ServiceDescriptor serviceDescriptor) {
+        if(!checkOrderHasFileComponents(scenarioDto, serviceDescriptor)){
+            return;
+        }
         List<FileInfo> allFilesInfoForOrderId = getAllFilesInfoForOrderId(scenarioDto);
         List<String> fileMnemonics = (scenarioDto.getSignInfoMap().size() > 0) ?
                 getSignedFilesMnemonics(scenarioDto) :
@@ -122,6 +129,41 @@ public class TerrabyteServiceImpl implements TerrabyteService {
         SignInfo userSignInfo = scenarioDto.getSignInfoMap().get(scenarioDto.getOrderId());
         List<String> signedFiles = userSignInfo.getSignedFilesInfo().stream().map(SignedFileInfo::getMnemonic).collect(Collectors.toList());
         return signedFiles;
+    }
+
+    /**
+     * Метод проверяет что пользователь в ходе прохождения услуги был на компоненте по работе с фаилами
+     */
+    private boolean checkOrderHasFileComponents(ScenarioDto scenarioDto, ServiceDescriptor serviceDescriptor){
+        if(!scenarioDto.getSignInfoMap().isEmpty() || !scenarioDto.getAttachmentInfo().isEmpty()){
+            return true;
+        }
+        var fileComponentsInSd = getFileComponentsFromSD(serviceDescriptor);
+        if(fileComponentsInSd.isEmpty()){
+            return false;
+        }
+        var hasFileAnswersInCache = scenarioDto
+                .getCachedAnswers()
+                .keySet()
+                .stream()
+                .anyMatch(fileComponentsInSd::contains);
+        var hasFileAnswersInApplicantAnswer = scenarioDto
+                .getApplicantAnswers()
+                .keySet()
+                .stream()
+                .anyMatch(fileComponentsInSd::contains);
+        return hasFileAnswersInCache || hasFileAnswersInApplicantAnswer;
+    }
+
+    /**
+    * Метод получения всех фаиловых компонентов из услуги
+     */
+    private List<String> getFileComponentsFromSD(ServiceDescriptor sd){
+        return sd.getApplicationFields()
+                .stream()
+                .filter(c-> fileComponents.contains(c.getType()))
+                .map(FieldComponent::getId)
+                .collect(Collectors.toList());
     }
 
     /**
