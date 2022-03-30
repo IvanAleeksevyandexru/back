@@ -240,6 +240,12 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.teketik</groupId>
+            <artifactId>async-health-indicator</artifactId>
+            <version>boot2-v1.1</version>
+        </dependency>
+
 
         <!-- PGU Order client -->
         <dependency>
