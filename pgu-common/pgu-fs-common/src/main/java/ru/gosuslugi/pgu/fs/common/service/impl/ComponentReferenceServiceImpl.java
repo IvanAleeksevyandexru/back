@@ -318,6 +318,12 @@ public class ComponentReferenceServiceImpl implements ComponentReferenceService 
         for(ComponentField field : fieldGroup.getFields()) {
             String label = getValueByContext(field.getLabel(), Function.identity(), context, documentContexts);
             String value = getValueByContext(field.getValue(), Function.identity(), context, documentContexts);
+            if ("null".equals(label)) {
+                label = null;
+            }
+            if ("null".equals(value)) {
+                value = null;
+            }
             boolean isLabelHasText = StringUtils.hasText(label);
             boolean isValueHasText = StringUtils.hasText(value);
             if (!isLabelHasText && !isValueHasText || !isValueHasText && hiddenEmptyFields) {

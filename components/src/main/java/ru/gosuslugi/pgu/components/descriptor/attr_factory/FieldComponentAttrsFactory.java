@@ -151,6 +151,12 @@ public class FieldComponentAttrsFactory implements AttrsFactory {
                         }
                         String label = componentField.getLabel();
                         String value = componentField.getValue();
+                        if ("null".equals(label)) {
+                            label = null;
+                        }
+                        if ("null".equals(value)) {
+                            value = null;
+                        }
                         boolean isLabelHasText = StringUtils.hasText(label);
                         boolean isValueHasText = StringUtils.hasText(value);
                         if (componentField.getRank() != null) {
