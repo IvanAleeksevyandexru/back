@@ -170,6 +170,10 @@ public class IntegrationServiceImpl implements IntegrationService {
         );
 
         if (Objects.nonNull(draft) && Objects.nonNull(draft.getBody())) {
+            if(!terrabyteService.checkOrderHasFileComponents(draft.getBody(), serviceDescriptor)){
+                return;
+            }
+
             List<FileInfo> storedFiles = terrabyteService.getAllFilesInfoForOrderId(scenarioResponse.getScenarioDto());
             Map<String, List<AttachmentInfo>> attachmentInfos = draft.getBody().getAttachmentInfo();
 
