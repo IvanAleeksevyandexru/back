@@ -64,7 +64,7 @@ class FormScenarioDtoServiceImplTest extends Specification {
                 "sa"
         ]
     }
-
+/*
     def "find init screen ID with conditions"() {
         ServiceDescriptor descriptor = ServiceDescriptor.builder().initScreens([
                 Applicant: [
@@ -130,7 +130,7 @@ class FormScenarioDtoServiceImplTest extends Specification {
                 "s43"
         ]
     }
-
+*/
     def "test merge pdf documents"() {
         def cp1 = new FieldComponent(id: "fucMerge1", type: ComponentType.FileUploadComponent)
         def cp2 = new FieldComponent(id: "fucMerge2", type: ComponentType.FileUploadComponent)

@@ -68,7 +68,7 @@ class StringInputComponentTest extends Specification {
     def setupSpec() {
         calculatedAttributesHelper.postConstruct()
         stringInputComponent = new StringInputComponent(initialValueFromService, conditionCheckerHelper, evaluationExpressionService)
-        ComponentTestUtil.setAbstractComponentServices(stringInputComponent)
+        ComponentTestUtil.setAbstractComponentServices(stringInputComponent, jsonProcessingService)
     }
 
     def 'answer validation test'() {
@@ -128,11 +128,13 @@ class StringInputComponentTest extends Specification {
 
         when:
         Map<String, String> map = stringInputComponent.validate(entry, scenarioDto, component)
-
+        jsonProcessingService.releaseThreadCache()
         then:
+        jsonProcessingService.releaseThreadCache()
         map != null
         map.size() == size
         map.get("fai1") == text
+        jsonProcessingService.releaseThreadCache()
 
         where:
         fullCost| purchaseCost   | size | text
