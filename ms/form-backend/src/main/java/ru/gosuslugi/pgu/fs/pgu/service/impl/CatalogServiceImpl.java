@@ -22,10 +22,10 @@ public class CatalogServiceImpl implements CatalogService {
 
     private final RestTemplate restTemplate;
 
-    @Value("${pgu.order-url}")
+    @Value("${pgu.catalog-url}")
     private String pguUrl;
 
-    private final static String CATALOG_INFO = "/api/catalog/v3/targetsInfo/get?targetIdList={targetIdList}";
+    private static final String CATALOG_INFO = "/api/catalog/v3/targetsInfo/get?targetIdList={targetIdList}";
 
     @Override
     public CatalogInfoDtoList getCatalogInfoByTargetId(String targetId) {
