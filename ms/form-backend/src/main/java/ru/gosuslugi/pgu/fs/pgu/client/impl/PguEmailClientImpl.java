@@ -25,10 +25,10 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class PguEmailClientImpl implements PguEmailClient {
 
-    private static final String SEND_INVITATION_URL = "api/lk/v1/orders/{orderId}/invitations/inviteToSign/send";
+    private static final String SEND_INVITATION_URL = "api/lk/v1/orders/{orderId}}/invitations/inviteToSign/send";
 
-    @Value("${pgu.lkapi-url}")
-    private String lkApiUrl;
+    @Value("${pgu.order-url}")
+    private String pguUrl;
 
     private final RestTemplate restTemplate;
     private final UserPersonalData userPersonalData;
@@ -39,7 +39,7 @@ public class PguEmailClientImpl implements PguEmailClient {
         HttpEntity<List<PersonIdentifier>> entity = new HttpEntity<>(List.of(participant),
                 PguAuthHeadersUtil.prepareAuthCookieHeaders(userPersonalData.getToken()));
         try {
-            restTemplate.exchange(lkApiUrl + SEND_INVITATION_URL,
+            restTemplate.exchange(pguUrl + SEND_INVITATION_URL,
                     HttpMethod.POST,
                     entity,
                     new ParameterizedTypeReference<>() {},
