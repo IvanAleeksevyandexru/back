@@ -162,7 +162,7 @@ public class ScenarioController {
         // требуется ли выполнить редирект
         boolean isRedirect = shouldNewSFRedirect(newSFCookie, mainScreenService, serviceId);
         var orderInfo = mainScreenService.getOrderInfo(initServiceDto, serviceId);
-        orderInfo.setClosedByNewSFСookie(isRedirect);
+        orderInfo.setClosedByCookie(isRedirect);
         return orderInfo;
     }
 
