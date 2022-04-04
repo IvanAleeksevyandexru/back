@@ -30,7 +30,7 @@ import static java.util.Objects.isNull;
 @Component
 public class DefinitionResolver {
 
-    private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("\\$\\{([a-zA-Z0-9_.?@&|!><'()=\\[\\]\\s]+)}");
+    private static final Pattern PLACEHOLDER_PATTERN = Pattern.compile("\\$\\{([a-zA-Z0-9_.?@&|!><'()=:\\-\\[\\]\\s]+)}");
     private static final String DEF_EMPTY_VALUE = "EMPTY_VALUE";
     private static final String EMPTY = "empty";
 
