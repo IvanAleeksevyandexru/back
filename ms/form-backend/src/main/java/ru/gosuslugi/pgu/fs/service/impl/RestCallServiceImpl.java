@@ -40,7 +40,7 @@ public class RestCallServiceImpl implements RestCallService {
         Map<String, String> arguments = component.getArguments();
 
         RestCallDto result = new RestCallDto();
-
+        result.setId(component.getId());
         result.setMethod(attr.get(METHOD_ATTR).toString().toUpperCase());
 
         String link = Objects.toString(attr.get(URL_ATTR), null);
