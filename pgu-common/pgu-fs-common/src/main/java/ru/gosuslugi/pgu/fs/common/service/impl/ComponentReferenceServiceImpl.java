@@ -37,6 +37,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -375,11 +376,6 @@ public class ComponentReferenceServiceImpl implements ComponentReferenceService 
             result = getValueByContext(result, Function.identity(), context, answerContext);
         }
         return result;
-    }
-
-    @Override
-    public String getValueByContext(String value, PlaceholderContext context, Map<String, Object> map) {
-        return getValueByContext(value, Function.identity(), context, JsonPath.parse(jsonProcessingService.toJson(map)));
     }
 
     /**

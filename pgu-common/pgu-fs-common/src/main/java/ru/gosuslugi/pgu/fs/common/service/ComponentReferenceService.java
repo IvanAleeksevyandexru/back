@@ -36,8 +36,7 @@ public interface ComponentReferenceService extends ReferenceService {
      * @param answers ответы пользователя
      * @return измененное значение
      */
-    String getValueByContext(String value, PlaceholderContext context, Map<String, ApplicantAnswer>... answers);
-    String getValueByContext(String value, PlaceholderContext context, Map<String, Object> map);
+    String getValueByContext(String value, PlaceholderContext context,  Map<String, ApplicantAnswer>... answers);
     PlaceholderContext buildPlaceholderContext(FieldComponent component, ScenarioDto scenarioDto);
     DocumentContext[] getContexts(ScenarioDto scenarioDto);
 }

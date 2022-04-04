@@ -3,12 +3,13 @@ package ru.gosuslugi.pgu.components.descriptor.attr_factory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
-import ru.gosuslugi.pgu.components.descriptor.ComponentField;
-import ru.gosuslugi.pgu.components.descriptor.FieldGroup;
-import ru.gosuslugi.pgu.components.descriptor.types.Action;
-import ru.gosuslugi.pgu.dto.descriptor.CycledAttrs;
+import ru.gosuslugi.pgu.components.dto.FieldDto;
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent;
+import ru.gosuslugi.pgu.components.descriptor.ComponentField;
+import ru.gosuslugi.pgu.dto.descriptor.CycledAttrs;
+import ru.gosuslugi.pgu.components.descriptor.FieldGroup;
 import ru.gosuslugi.pgu.dto.descriptor.placeholder.Placeholder;
+import ru.gosuslugi.pgu.components.descriptor.types.Action;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -105,14 +106,6 @@ public class FieldComponentAttrsFactory implements AttrsFactory {
             cycledAttrs.setCycledAnswerIndex((String)attrsMap.get("cycledAnswerIndex"));
         }
         return cycledAttrs;
-    }
-
-    public String getPathToArray(Object attrs) {
-        if (attrs instanceof Map) {
-            var attrsMap = (Map<String, Object>) attrs;
-            return (String) attrsMap.get("pathToArray");
-        }
-        return null;
     }
 
     /**
@@ -220,7 +213,6 @@ public class FieldComponentAttrsFactory implements AttrsFactory {
         action.setType((String)actionMap.get("type"));
         action.setAction((String)actionMap.get("action"));
         action.setAttrs(getCycledAttrs(actionMap.get("attrs")));
-        action.setPathToArray(getPathToArray(actionMap.get("attrs")));
         return action;
     }
 

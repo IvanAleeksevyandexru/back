@@ -13,5 +13,4 @@ public class Action {
     private String type;
     private String action;
     private CycledAttrs attrs;
-    private String pathToArray;
 }
