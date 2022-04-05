@@ -11,15 +11,15 @@ import static org.junit.Assert.assertNull;
 public class AddressTypeTest {
 
     /**
-     * {@link AddressType#formString(java.lang.String)}
+     * {@link AddressType#fromString(java.lang.String)}
      */
     @Test
     public void smokeTestFromString() {
-        assertNull(AddressType.formString(null));
-        assertNull(AddressType.formString(""));
-        assertNull(AddressType.formString("Unknown"));
+        assertNull(AddressType.fromString(null));
+        assertNull(AddressType.fromString(""));
+        assertNull(AddressType.fromString("Unknown"));
         for (AddressType addressType : AddressType.values()) {
-            assertEquals(addressType, AddressType.formString(addressType.name()));
+            assertEquals(addressType, AddressType.fromString(addressType.name()));
         }
     }
 }

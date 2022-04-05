@@ -1,45 +1,46 @@
 package ru.gosuslugi.pgu.components.dto;
 
-import ru.atc.carcass.security.rest.model.EsiaAddress;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Адресный тип, который используется в сценарии
  */
+@Getter
+@RequiredArgsConstructor
 public enum AddressType {
 
-    /** Actual */
-    actualResidence("Актуальный", EsiaAddress.Type.LOCATION),
+    actualResidence("Адрес фактического проживания", "PLV"),
+    permanentRegistry("Адрес постоянной регистрации", "PRG"),
+    legalAddress("Юридический адрес организации", "OLG"),
+    factAddress("Фактический адрес организации", "OPS"),
+    tempAddress("Адрес временной регистрации", "PTA");
 
-    /** REGISTRATION */
-    permanentRegistry("Регистрационный", EsiaAddress.Type.REGISTRATION);
+    private static final Map<String, AddressType> addressTypeMap;
 
     private final String description;
-    private final EsiaAddress.Type esiaAddressType;
+    private final String esiaAddressType;
 
-    AddressType(String description, EsiaAddress.Type esiaAddressType) {
-        this.description = description;
-        this.esiaAddressType = esiaAddressType;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public EsiaAddress.Type getEsiaAddressType() {
-        return esiaAddressType;
+    static {
+        addressTypeMap = Arrays.stream(AddressType.values())
+                .collect(Collectors.toUnmodifiableMap(AddressType::name, Function.identity()));
     }
 
     /**
      * Безопасное преобразование строки в AddressType
-     * @param string строка
+     *
+     * @param addressType строка
      * @return AddressType объект или null
      */
-    public static AddressType formString(String string) {
-        for (AddressType candidate : values()) {
-            if (candidate.name().equals(string)) {
-                return candidate;
-            }
-        }
-        return null;
+    public static AddressType fromString(String addressType) {
+        return Optional.ofNullable(addressType)
+                .map(addressTypeMap::get)
+                .orElse(null);
     }
 }
