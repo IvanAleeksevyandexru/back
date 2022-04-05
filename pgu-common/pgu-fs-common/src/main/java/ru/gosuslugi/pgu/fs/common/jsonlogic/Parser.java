@@ -114,24 +114,22 @@ public class Parser {
     }
 
     private String getReferenceValue(String value, ScenarioDto scenarioDto) {
-        Object refValue = null;
+        Object refValue;
         if (value.startsWith("answer.")) {
             String answerRef = value.replace("answer.", "");
             DocumentContext applicantAnswersContext = JsonPath.parse(jsonProcessingService.convertAnswersToJsonString(scenarioDto.getApplicantAnswers()));
             DocumentContext currentValueContext = JsonPath.parse(jsonProcessingService.convertAnswersToJsonString(scenarioDto.getCurrentValue()));
             DocumentContext serviceInfoContext = JsonPath.parse(jsonProcessingService.toJson(scenarioDto.getServiceInfo()));
             refValue = conditionCheckerHelper.getFirstFromContexts(answerRef, List.of(currentValueContext, applicantAnswersContext, serviceInfoContext), Object.class);
-        }
-        if (value.startsWith("protected.")) {
+            return Optional.ofNullable(refValue).map(JsonProcessingUtil::toJson).orElse("");
+        } else if (value.startsWith("protected.")) {
             String protectedField = value.replace("protected.", "");
             refValue = protectedFieldService.getValue(protectedField);
-        }
-        if (value.startsWith("variable.")) {
+            return Optional.ofNullable(refValue).map(JsonProcessingUtil::toJson).orElse("");
+        } else if (value.startsWith("variable.")) {
             String variable = value.replace("variable.", "");
             refValue = variableRegistry.getVariable(VariableType.valueOf(variable)).getValue(scenarioDto);
-        }
-        if (Objects.nonNull(refValue)) {
-            return JsonProcessingUtil.toJson(refValue);
+            return Optional.ofNullable(refValue).map(JsonProcessingUtil::toJson).orElse("");
         }
         return value;
     }

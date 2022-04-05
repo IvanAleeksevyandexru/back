@@ -38,4 +38,14 @@ class IfOperatorTest extends JsonLogicSpec {
         then:
         value == '342452258'
     }
+
+    def "IF with AND conditions"() {
+        given:
+        String json = JsonFileUtil.getJsonFromFile(this.getClass(), "-multipleAndConditions.json")
+        when:
+        Object value = jsonLogic.calculate(json, new ScenarioDto())
+        then:
+        value == 'No'
+    }
+
 }
