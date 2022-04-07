@@ -14,7 +14,9 @@ import ru.gosuslugi.pgu.fs.service.BackRestCallService;
 import ru.gosuslugi.pgu.fs.service.RestCallService;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static ru.gosuslugi.pgu.components.ComponentAttributes.COOKIES_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.HEADERS_ATTR;
@@ -58,7 +60,9 @@ public class BackRestCallComponent extends AbstractComponent<String> {
         if (component.getBooleanAttr(SQL_RESULT_OPTION)) {
             backRestCallService.setOption(SQL_RESULT_OPTION);
         }
-        return backRestCallService.sendRequest(restCallDto);
+        List<String> healthArgs = (List<String>) component.getAttrs().get("healthArgs");
+        Map<String, String> filteredHealthArgs = component.getArguments().entrySet().stream().filter(entry -> healthArgs.contains(entry.getKey())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        return backRestCallService.sendRequest(restCallDto, filteredHealthArgs);
     }
 
     private void setUserToken(FieldComponent component) {

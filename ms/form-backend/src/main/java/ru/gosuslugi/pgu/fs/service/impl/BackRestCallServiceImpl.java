@@ -15,13 +15,14 @@ import ru.gosuslugi.pgu.common.core.exception.EntityNotFoundException;
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
 import ru.gosuslugi.pgu.common.core.exception.PguException;
 import ru.gosuslugi.pgu.common.core.service.HealthHolder;
-import ru.gosuslugi.pgu.common.core.service.dto.DictionayHealthDto;
+import ru.gosuslugi.pgu.common.core.service.dto.RestCallHealthDto;
 import ru.gosuslugi.pgu.dto.BackRestCallResponseDto;
 import ru.gosuslugi.pgu.dto.SqlResponseDto;
 import ru.gosuslugi.pgu.fs.component.RestClientRegistry;
 import ru.gosuslugi.pgu.fs.component.logic.model.RestCallDto;
 import ru.gosuslugi.pgu.fs.service.BackRestCallService;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -42,7 +43,7 @@ public class BackRestCallServiceImpl implements BackRestCallService {
     public static final String SQL_RESULT_OPTION = "sqlResult";
 
     @Override
-    public BackRestCallResponseDto sendRequest(RestCallDto requestDto) {
+    public BackRestCallResponseDto sendRequest(RestCallDto requestDto, Map<String, String> filteredHealthArgs) {
         var headers = new HttpHeaders();
         requestDto.getHeaders().forEach(headers::add);
         if (headers.isEmpty()) {
@@ -53,7 +54,7 @@ public class BackRestCallServiceImpl implements BackRestCallService {
 
         var entity = requestDto.getFormData().isEmpty() ? requestDto.getBody() : requestDto.getFormData();
         HttpMethod httpMethod = HttpMethod.resolve(requestDto.getMethod());
-        DictionayHealthDto dictionayHealthDto = new DictionayHealthDto(requestDto.getId(), null, httpMethod, HttpStatus.OK, null, null, null);
+        RestCallHealthDto restCallHealthDto = new RestCallHealthDto(requestDto.getId(), null, httpMethod, HttpStatus.OK, null, null, filteredHealthArgs);
         try {
             ResponseEntity<Object> responseEntity = restClientRegistry.getRestTemplate(Optional.ofNullable(requestDto.getTimeout()).orElse(-1L).intValue())
                     .exchange(requestDto.getUrl(),
@@ -67,11 +68,11 @@ public class BackRestCallServiceImpl implements BackRestCallService {
             return new BackRestCallResponseDto(responseEntity.getStatusCodeValue(), body);
         } catch (EntityNotFoundException e) {
             log.error("Данные не найдены: {}", e.getMessage());
-            dictionayHealthDto = new DictionayHealthDto(requestDto.getId(), null, httpMethod, HttpStatus.NOT_FOUND, null, "Данные не найдены", null);
+            restCallHealthDto = new RestCallHealthDto(requestDto.getId(), null, httpMethod, HttpStatus.NOT_FOUND, null, "Данные не найдены", filteredHealthArgs);
             return new BackRestCallResponseDto(HttpStatus.NOT_FOUND.value(), e.getMessage());
         } catch (ExternalServiceException e) {
             log.error("Ошибка внешних данных: {} Entity: {}", e.getMessage(), entity);
-            dictionayHealthDto = new DictionayHealthDto(requestDto.getId(), null, httpMethod, e.getStatus(), null, "Ошибка внешних данных", null);
+            restCallHealthDto = new RestCallHealthDto(requestDto.getId(), null, httpMethod, e.getStatus(), null, "Ошибка внешних данных", filteredHealthArgs);
             return new BackRestCallResponseDto(e.getStatus().value(), e.getMessage());
         } catch (HttpClientErrorException | HttpServerErrorException e) {
             String message;
@@ -82,14 +83,14 @@ public class BackRestCallServiceImpl implements BackRestCallService {
                 log.error("Ошибка при обращении к внешнему сервису: {} Entity: {}", e.getMessage(), entity);
                 message = "К сожалению, произошла ошибка и мы не получили необходимые сведения из внешнего сервиса.";
             }
-            dictionayHealthDto = new DictionayHealthDto(requestDto.getId(), null, httpMethod, e.getStatusCode(), null, message, null);
+            restCallHealthDto = new RestCallHealthDto(requestDto.getId(), null, httpMethod, e.getStatusCode(), null, message, filteredHealthArgs);
             return new BackRestCallResponseDto(e.getRawStatusCode(), message + " Пожалуйста, повторите попытку позже.", null);
         } catch (IllegalArgumentException e) {
             log.error("Преобразование данных: {}", entity);
-            dictionayHealthDto = new DictionayHealthDto(requestDto.getId(), null, httpMethod, null, null, "Ошибка в преобразовании данных", null);
+            restCallHealthDto = new RestCallHealthDto(requestDto.getId(), null, httpMethod, null, null, "Ошибка в преобразовании данных", filteredHealthArgs);
             throw new PguException("Ошибка в преобразовании данных");
         } finally {
-            healthHolder.addDictionaryHealth(dictionayHealthDto);
+            healthHolder.addDictionaryHealth(restCallHealthDto);
             clearOptions();
         }
     }
