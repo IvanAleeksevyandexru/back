@@ -86,6 +86,8 @@ public class FullAddressEnrichUtil {
         address.setRegion(element.getData());
         address.setRegionType(element.getType());
         address.setRegionShortType(element.getShortType());
+        address.setRegionFias(element.getFiasCode());
+        address.setRegionKladr(element.getKladrCode());
         return REGION_LEVEL;
     }
 
@@ -118,6 +120,8 @@ public class FullAddressEnrichUtil {
         address.setTown(element.getData());
         address.setTownType(element.getType());
         address.setTownShortType(element.getShortType());
+        address.setTownFias(element.getFiasCode());
+        address.setTownKladr(element.getKladrCode());
         return TOWN_LEVEL;
     }
 
@@ -125,6 +129,8 @@ public class FullAddressEnrichUtil {
         address.setStreet(element.getData());
         address.setStreetType(element.getType());
         address.setStreetShortType(element.getShortType());
+        address.setStreetFias(element.getFiasCode());
+        address.setStreetKladr(element.getKladrCode());
         return STREET_LEVEL;
     }
 
@@ -132,6 +138,8 @@ public class FullAddressEnrichUtil {
         address.setHouse(element.getData());
         address.setHouseType(element.getType());
         address.setHouseShortType(element.getShortType());
+        address.setHouseFias(element.getFiasCode());
+        address.setHouseKladr(element.getKladrCode());
         return HOUSE_LEVEL;
     }
 
@@ -153,6 +161,8 @@ public class FullAddressEnrichUtil {
         address.setApartment(element.getData());
         address.setApartmentType(element.getType());
         address.setApartmentShortType(element.getShortType());
+        address.setApartmentFias(element.getFiasCode());
+        address.setApartmentKladr(element.getKladrCode());
         return APARTMENT_LEVEL;
     }
 
