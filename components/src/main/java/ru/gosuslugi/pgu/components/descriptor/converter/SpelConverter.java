@@ -1,6 +1,5 @@
 package ru.gosuslugi.pgu.components.descriptor.converter;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.util.StringUtils;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
@@ -9,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@Slf4j
 public class SpelConverter implements Converter {
 
     private final static String EXPRESSION_ATTR = "expression";

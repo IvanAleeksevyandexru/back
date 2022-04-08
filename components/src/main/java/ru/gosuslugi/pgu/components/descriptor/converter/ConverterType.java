@@ -15,7 +15,8 @@ public enum ConverterType {
     SPEL(SpelConverter::new),
     DATE_TO_AGE(DateToAgeConverter::new),
     MONTHS_FOR_TODAY(MonthsForTodayConverter::new),
-    TO_UNIXDATE(ToUnixDateConverter::new);
+    TO_UNIXDATE(ToUnixDateConverter::new),
+    RUB_CURRENCY(RubCurrencyConverter::new);
 
     private final Supplier<Converter> converterSupplier;
 
