@@ -201,13 +201,13 @@ public class ScenarioController {
      */
     private boolean shouldNewSFRedirect(Optional<Object> newSFCookie, MainScreenService mainScreenService, String serviceId) {
 
-        boolean closedByNewSFСookie = false;
-        Optional<Boolean> optClosedByNewSFСookie = Optional.ofNullable(mainScreenService.getServiceDescriptor(serviceId).getClosedByNewSFСookie());
-        if (optClosedByNewSFСookie.isPresent()) {
-            closedByNewSFСookie = optClosedByNewSFСookie.get();
+        boolean closedByСookie = false;
+        Optional<Boolean> optClosedByСookie = Optional.ofNullable(mainScreenService.getServiceDescriptor(serviceId).getClosedByCookie());
+        if (optClosedByСookie.isPresent()) {
+            closedByСookie = optClosedByСookie.get();
         }
 
-        if (closedByNewSFСookie) {
+        if (closedByСookie) {
             boolean newSFLabel = false;
             if (newSFCookie.isPresent()) {
                 Object sfValue = newSFCookie.get();
