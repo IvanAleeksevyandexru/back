@@ -60,9 +60,7 @@ public class BackRestCallComponent extends AbstractComponent<String> {
         if (component.getBooleanAttr(SQL_RESULT_OPTION)) {
             backRestCallService.setOption(SQL_RESULT_OPTION);
         }
-        List<String> healthArgs = (List<String>) component.getAttrs().get("healthArgs");
-        Map<String, String> filteredHealthArgs = component.getArguments().entrySet().stream().filter(entry -> healthArgs.contains(entry.getKey())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-        return backRestCallService.sendRequest(restCallDto, filteredHealthArgs);
+        return backRestCallService.sendRequest(restCallDto, getFilteredHealthArgs(component));
     }
 
     private void setUserToken(FieldComponent component) {
@@ -75,6 +73,13 @@ public class BackRestCallComponent extends AbstractComponent<String> {
         if (Boolean.TRUE.equals(component.getAttrs().getOrDefault(BEARER_AUTH_ATTR, Boolean.FALSE))) {
             ((Map<String, String>) component.getAttrs().get(HEADERS_ATTR)).put("Authorization", "Bearer " + userPersonalData.getToken());
         }
+    }
+
+    private Map<String, String> getFilteredHealthArgs(FieldComponent component) {
+        List<String> healthArgs = (List<String>) component.getAttrs().getOrDefault("healthArgs", List.of());
+        return component.getArguments().entrySet().stream()
+                .filter(entry -> healthArgs.contains(entry.getKey()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
     // "Очищает" компонент, чтобы не передавать непубличные данные

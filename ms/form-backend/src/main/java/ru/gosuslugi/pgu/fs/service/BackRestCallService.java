@@ -10,7 +10,7 @@ public interface BackRestCallService {
 
     Map<String, Boolean> OPTIONS = new HashMap<>();
 
-    BackRestCallResponseDto sendRequest(RestCallDto request);
+    BackRestCallResponseDto sendRequest(RestCallDto request, Map<String, String> filteredHealthArgs);
 
     default void setOption(String option) {
         OPTIONS.put(option, true);

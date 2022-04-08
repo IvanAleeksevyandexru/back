@@ -24,7 +24,7 @@ class BarbarbokRestCallComponentSpec extends Specification {
     @SuppressWarnings("GroovyAccessibility")
     def setup() {
         def backRestCallService = Stub(BackRestCallService) {
-            it.sendRequest(_ as RestCallDto) >>
+            it.sendRequest(_ as RestCallDto, Map.of()) >>
                     new BackRestCallResponseDto(200, Map.<String, Object> of("key", "value"))
         }
         def userPersonalData = Stub(UserPersonalData) {
