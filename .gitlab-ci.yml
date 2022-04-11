@@ -1,15 +1,15 @@
-include:
-  - template: Code-Quality.gitlab-ci.yml 
+#include:
+#  - template: Code-Quality.gitlab-ci.yml 
 
-image: registry.gosuslugi.local/epgu2-dev/tools/maven:3-liberica-openjdk-11
+image: registry.gosuslugi.local/epgu2-dev/tools/maven:3-liberica-openjdk-11-beta
 
 stages:
-  - Test
+#  - Test
   - Build
   - Package
 
 variables:
-  MAVEN_CLI_OPTS: "-T 2 -s .m2/settings.ci.xml --batch-mode -Dmaven.repo.local=.m2/repository"
+  MAVEN_CLI_OPTS: "-T 2 -s .m2/settings.ci.xml --batch-mode -Dmaven.repo.local=${CI_PROJECT_DIR}/.m2/repository"
   MAVEN_OPTS: "-XX:+UseParallelGC -XX:-TieredCompilation -XX:TieredStopAtLevel=1"
   DOCKER_TAG: ${CI_COMMIT_REF_SLUG}-${CI_BUILD_ID}
   DOCKER_DRIVER: overlay2
@@ -19,26 +19,54 @@ cache:
   paths:
     - .m2/repository
 
-code_quality:
-  stage: Test
-  cache: []
-  artifacts:
-    paths: [gl-code-quality-report.json]
-  tags:
-    - k8s
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_NAME =~ /^release/'
-      when: always
-    - if: $CI_COMMIT_REF_NAME !~ /^release/ && $CI_PIPELINE_SOURCE != "merge_request_event"
-      when: manual
-  allow_failure: true
-  interruptible: true
+#code_quality:
+#  stage: Test
+#  cache: []
+#  artifacts:
+#    paths: [gl-code-quality-report.json]
+#  tags:
+#    - k8s
+#  rules:
+#    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_COMMIT_REF_NAME =~ /^release/'
+#      when: always
+#    - if: $CI_COMMIT_REF_NAME !~ /^release/ && $CI_PIPELINE_SOURCE != "merge_request_event"
+#      when: manual
+#  allow_failure: true
+#  interruptible: true
       
 build:
   stage: Build
   script:
-    #- mvn $MAVEN_CLI_OPTS dependency:sources
-    - mvn $MAVEN_CLI_OPTS clean package
+    #- $lib_branch_exist = $(git ls-remote http://gitlab-ci-token:$CI_JOB_TOKEN@git.gosuslugi.local/luxoft/epgu2sf-lib.git $CI_COMMIT_BRANCH | wc -l)
+    #- echo $lib_branch_exist
+    - |
+      echo -e "\e[95m#### Check if same branch ($CI_COMMIT_BRANCH) from epgu2sf-lib exist ####\e[0m"
+      lib_branch_exist=$(git ls-remote http://gitlab-ci-token:$CI_JOB_TOKEN@git.gosuslugi.local/luxoft/epgu2sf-lib.git $CI_COMMIT_BRANCH | wc -l)
+      if [[ $lib_branch_exist -eq 1 ]]; then
+        echo -e "\e[95m#### Same branch ($CI_COMMIT_BRANCH) in epgu2sf-lib FOUND ####\e[0m"
+        echo -e "\e[95m#### Build lib branch $CI_COMMIT_BRANCH ####\e[0m"
+        JIRA=$(echo $CI_COMMIT_BRANCH | sed 's/[^0-9]*//g')
+        LIB_VERSION=v0.$JIRA.$CI_BUILD_ID
+        git clone --branch $CI_COMMIT_BRANCH http://gitlab-ci-token:$CI_JOB_TOKEN@git.gosuslugi.local/luxoft/epgu2sf-lib.git
+        cd epgu2sf-lib
+        mvn $MAVEN_CLI_OPTS versions:set -DnewVersion=${LIB_VERSION} -Dmaven.test.skip=true
+        mvn $MAVEN_CLI_OPTS clean package -Dmaven.test.skip=true
+        echo -e "\e[95m#### Deploy to nexus epgu2sf-lib == ${LIB_VERSION} ####\e[0m"
+        mvn $MAVEN_CLI_OPTS deploy -DrepositoryId=nexus -Durl=http://nexus.gosuslugi.local/content/repositories/epgu2/ -Drepo.login=${NEXUS_LOGIN} -Drepo.pwd=${NEXUS_PASSWORD} -Dmaven.test.skip=true
+        echo -e "\e[95m#### Build FORM-BACKEND services with epgu2sf-lib == ${LIB_VERSION} from $CI_COMMIT_BRANCH branch ####\e[0m"
+        cd ${CI_PROJECT_DIR}
+        mvn $MAVEN_CLI_OPTS clean package -Depgu2.sf.lib.version=${LIB_VERSION}
+        echo -e "\e[95m#### Clearing epgu2sf-lib artifacts from local repository ####\e[0m"
+        cd epgu2sf-lib
+        LIBS_TO_PURGE=$(find . -type f -name pom.xml | xargs cat | grep "module>" | sed -E 's|[[:space:]]+<module>([a-z\-]+)</module>|\1|' | awk '{print "ru.gosuslugi.pgu:"$1}' ORS=',' | sed 's/,$//')
+        mvn $MAVEN_CLI_OPTS dependency:purge-local-repository -DactTransitively=false -DreResolve=false -X -DmanualInclude=$LIBS_TO_PURGE
+      else
+        echo -e "\e[95m#### Same branch ($CI_COMMIT_BRANCH) from epgu2sf-lib NOT FOUND ####\e[0m"
+        echo -e "\e[95m#### Build FORM-BACKEND services with relese version of epgu2sf-lib ####\e[0m"
+        cd ${CI_PROJECT_DIR}
+        mvn $MAVEN_CLI_OPTS clean package
+        mvn $MAVEN_CLI_OPTS dependency:purge-local-repository -DactTransitively=false -DreResolve=false -X -DmanualInclude=ru.gosuslugi:epgu2-sf-lib-parent
+      fi
   artifacts:
     when: always
     paths:
