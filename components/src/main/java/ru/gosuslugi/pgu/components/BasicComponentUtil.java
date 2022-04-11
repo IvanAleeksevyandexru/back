@@ -81,10 +81,6 @@ public class BasicComponentUtil {
      * @return AddressType объект или null
      */
     public static AddressType getAddrType(FieldComponent component) {
-        return Optional.ofNullable(component.getAttrs())
-                .map(map -> map.get(PRESET_ADDR_TYPE))
-                .map(Object::toString)
-                .map(AddressType::fromString)
-                .orElse(null);
+        return Optional.ofNullable(component.getAttrs()).map(map -> map.get(PRESET_ADDR_TYPE)).map(Object::toString).map(AddressType::formString).orElse(null);
     }
 }

@@ -1,46 +1,45 @@
 package ru.gosuslugi.pgu.components.dto;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import ru.atc.carcass.security.rest.model.EsiaAddress;
 
 /**
  * Адресный тип, который используется в сценарии
  */
-@Getter
-@RequiredArgsConstructor
 public enum AddressType {
 
-    actualResidence("Адрес фактического проживания", "PLV"),
-    permanentRegistry("Адрес постоянной регистрации", "PRG"),
-    legalAddress("Юридический адрес организации", "OLG"),
-    factAddress("Фактический адрес организации", "OPS"),
-    tempAddress("Адрес временной регистрации", "PTA");
+    /** Actual */
+    actualResidence("Актуальный", EsiaAddress.Type.LOCATION),
 
-    private static final Map<String, AddressType> addressTypeMap;
+    /** REGISTRATION */
+    permanentRegistry("Регистрационный", EsiaAddress.Type.REGISTRATION);
 
     private final String description;
-    private final String esiaAddressType;
+    private final EsiaAddress.Type esiaAddressType;
 
-    static {
-        addressTypeMap = Arrays.stream(AddressType.values())
-                .collect(Collectors.toUnmodifiableMap(AddressType::name, Function.identity()));
+    AddressType(String description, EsiaAddress.Type esiaAddressType) {
+        this.description = description;
+        this.esiaAddressType = esiaAddressType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public EsiaAddress.Type getEsiaAddressType() {
+        return esiaAddressType;
     }
 
     /**
      * Безопасное преобразование строки в AddressType
-     *
-     * @param addressType строка
+     * @param string строка
      * @return AddressType объект или null
      */
-    public static AddressType fromString(String addressType) {
-        return Optional.ofNullable(addressType)
-                .map(addressTypeMap::get)
-                .orElse(null);
+    public static AddressType formString(String string) {
+        for (AddressType candidate : values()) {
+            if (candidate.name().equals(string)) {
+                return candidate;
+            }
+        }
+        return null;
     }
 }

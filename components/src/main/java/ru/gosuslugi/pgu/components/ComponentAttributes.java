@@ -35,7 +35,6 @@ public final class ComponentAttributes {
     public static final String ERROR_ATTR = "error";
     public static final String TITLE_ATTR = "title";
     public static final String DESC_ATTR = "desc";
-    public static final String REG_DATA_ATTR = "regData";
     public static final String REG_ADDR_ATTR = "regAddr";
     public static final String REG_DATE_ATTR = "regDate";
     public static final String REG_ADDR_ZIP_CODE_ATTR = "regZipCode";
