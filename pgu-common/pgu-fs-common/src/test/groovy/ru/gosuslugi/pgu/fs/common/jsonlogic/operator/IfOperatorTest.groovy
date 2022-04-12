@@ -48,4 +48,12 @@ class IfOperatorTest extends JsonLogicSpec {
         value == 'No'
     }
 
+    def "IF with double conditions"() {
+        given:
+        String json = JsonFileUtil.getJsonFromFile(this.getClass(), "-doubleEqualsCondition.json")
+        when:
+        Object value = jsonLogic.calculate(json, new ScenarioDto())
+        then:
+        value == 'ноль'
+    }
 }

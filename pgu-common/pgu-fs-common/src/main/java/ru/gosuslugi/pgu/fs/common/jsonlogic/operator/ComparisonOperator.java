@@ -105,10 +105,8 @@ public class ComparisonOperator implements PreEvaluatedArgumentsOperator {
 
     private int compareNumberToString(Number left, String right) {
         try {
-            if (right.isBlank()) {
-                right = "0";
-            }
-            return Double.compare(left.doubleValue(), Double.parseDouble(right));
+            double rightDouble = right.isBlank() ? Double.NaN : Double.parseDouble(right);
+            return Double.compare(left.doubleValue(), rightDouble);
         } catch (NumberFormatException e) {
             throw new JsonLogicParseException(String.format("Ошибка парсинга числа: %s", right));
         }
