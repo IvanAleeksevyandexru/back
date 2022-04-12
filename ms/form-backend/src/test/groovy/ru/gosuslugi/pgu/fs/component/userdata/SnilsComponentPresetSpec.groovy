@@ -7,6 +7,7 @@ import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Import
 import org.springframework.test.context.ContextConfiguration
+import org.springframework.test.context.TestPropertySource
 import ru.gosuslugi.pgu.common.core.json.JsonFileUtil
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil
 import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData
@@ -43,6 +44,7 @@ import spock.mock.DetachedMockFactory
         ]
 )
 @Import(Configuration)
+@TestPropertySource(properties = "data.cache.enabled=false")
 class SnilsComponentPresetSpec extends Specification {
 
     @MockBean

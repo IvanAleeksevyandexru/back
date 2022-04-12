@@ -10,7 +10,7 @@ import ru.gosuslugi.pgu.player.controller.ScenarioController;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ScenarioPlayerApp.class)
+@SpringBootTest(classes = ScenarioPlayerApp.class, properties = "data.cache.enabled=false")
 public class ScenarioPlayerAppTest {
 
     @Autowired
