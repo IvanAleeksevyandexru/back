@@ -32,6 +32,7 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.FRGN_PASSPORT_ATTR
 import static ru.gosuslugi.pgu.components.ComponentAttributes.MOBILE_PHONE;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ORG_EMAIL_TYPE_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ORG_PHONE_TYPE_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.RF_DRIVING_LICENSE_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.RF_PASSPORT_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.VERIFIED_ATTR;
 
@@ -153,6 +154,26 @@ public class ProtectedFieldServiceImpl implements ProtectedFieldService {
         methodMap.put("foreignPassportVerified", userPersonalData -> {
             PersonDoc doc = getDocumentByType(userPersonalData, FRGN_PASSPORT_ATTR);
             return doc != null ? doc.getVrfStu() : null;
+        });
+        methodMap.put("drivingLicenseSeries", userPersonalData -> {
+            PersonDoc doc = getDocumentByType(userPersonalData, RF_DRIVING_LICENSE_ATTR);
+            return doc != null ? doc.getSeries() : null;
+        });
+        methodMap.put("drivingLicenseNumber", userPersonalData -> {
+            PersonDoc doc = getDocumentByType(userPersonalData, RF_DRIVING_LICENSE_ATTR);
+            return doc != null ? doc.getNumber() : null;
+        });
+        methodMap.put("drivingLicenseIssueDate", userPersonalData -> {
+            PersonDoc doc = getDocumentByType(userPersonalData, RF_DRIVING_LICENSE_ATTR);
+            return doc != null ? doc.getIssueDate() : null;
+        });
+        methodMap.put("drivingLicenseExpireDate", userPersonalData -> {
+            PersonDoc doc = getDocumentByType(userPersonalData, RF_DRIVING_LICENSE_ATTR);
+            return doc != null ? doc.getExpiryDate() : null;
+        });
+        methodMap.put("drivingLicenseIssuedBy", userPersonalData -> {
+            PersonDoc doc = getDocumentByType(userPersonalData, RF_DRIVING_LICENSE_ATTR);
+            return doc != null ? doc.getIssuedBy() : null;
         });
         methodMap.put(CONTACT_PHONE, userPersonalData -> {
             EsiaContact contact = getContactByType(userPersonalData, ESIA_CONTACT_PHONE);
