@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import ru.atc.carcass.security.rest.model.person.Kids;
+import ru.gosuslugi.pgu.common.certificate.service.mapper.GenderNormalizer;
 import ru.gosuslugi.pgu.common.core.date.util.DateUtil;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
@@ -46,6 +47,7 @@ import java.util.stream.Collectors;
 import static java.time.temporal.ChronoUnit.YEARS;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
 import static ru.gosuslugi.pgu.components.descriptor.placeholder.Reference.FIELD_ID_INDEX_IN_PATH;
+import static ru.gosuslugi.pgu.fs.component.child.ChildGenderFilters.BOTH;
 import static ru.gosuslugi.pgu.fs.utils.ChildrenInfoUtils.getKidInfo;
 
 
@@ -158,8 +160,7 @@ public class ChildrenListComponent extends AbstractComponent<String> {
         // exclude previous selected children
         List<Kids> filteredKids = excludeFromKids(fieldComponent, scenarioDto, userPersonalData.getKids());
         for (Kids kid : filteredKids) {
-            OffsetDateTime birthDate = DateUtil.toOffsetDateTime(kid.getBirthDate(), DateUtil.ESIA_DATE_FORMAT);
-            if (checkBirthDateFilters(birthDate, fieldComponent)) {
+            if (checkAttributeFilters(kid, fieldComponent)) {
                 Map<String, Object> kidInfo = getKidInfo(kid);
                 result.add(kidInfo);
                 response.addChildData(kid.getId(), kidInfo);
@@ -229,8 +230,26 @@ public class ChildrenListComponent extends AbstractComponent<String> {
         return response;
     }
 
-    private boolean checkBirthDateFilters(OffsetDateTime birthDate, FieldComponent fieldComponent) {
+    /**
+     * Проверяет ребенка на соответствие требованиям атрибутов фильтрации
+     *
+     * @param kid ребенок из UserPersonalData.kids
+     * @param fieldComponent экземпляр компонента
+     */
+    private boolean checkAttributeFilters(Kids kid, FieldComponent fieldComponent) {
         Map<String, Object> componentAttrs = fieldComponent.getAttrs();
+        OffsetDateTime birthDate = DateUtil.toOffsetDateTime(kid.getBirthDate(), DateUtil.ESIA_DATE_FORMAT);
+        String gender = Optional.ofNullable(kid.getGender())
+                .map(GenderNormalizer::normalizeGenderType)
+                .map(String::toLowerCase)
+                .orElse(BOTH.getName());
+        /* Gender filter */
+        String genderFilter = (String) componentAttrs.getOrDefault(GENDER_ATTR, BOTH.getName());
+        boolean correctGender = Optional.ofNullable(ChildGenderFilters.formString(genderFilter))
+                .map(ChildGenderFilters::getName)
+                .map(filter -> filter.equals(BOTH.getName()) || filter.equalsIgnoreCase(gender))
+                .orElse(false);
+        /* Birth date filters */
         int age = (int) YEARS.between(birthDate, OffsetDateTime.now());
         int minAge = (int) componentAttrs.getOrDefault(MIN_AGE_ATTR, MIN_AGE);
         int maxAge = (int) componentAttrs.getOrDefault(MAX_AGE_ATTR, MAX_AGE);
@@ -244,7 +263,8 @@ public class ChildrenListComponent extends AbstractComponent<String> {
         return minBirthDate.map(date -> birthDate.isAfter(date) || birthDate.isEqual(date)).orElse(true)
                 && maxBirthDate.map(date -> birthDate.isBefore(date) || birthDate.isEqual(date)).orElse(true)
                 && age >= minAge
-                && age <= maxAge;
+                && age <= maxAge
+                && correctGender;
     }
 
     /**
