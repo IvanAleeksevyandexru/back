@@ -87,6 +87,8 @@ build:
 
 form-backend:
   cache: []
+  variables:
+    GIT_STRATEGY: none  
   stage: Package
   image: docker:18.09.7-dind
   services:
@@ -101,6 +103,8 @@ form-backend:
 
 pgu-scenario-player-service:
   cache: []
+  variables:
+    GIT_STRATEGY: none  
   stage: Package
   image: docker:18.09.7-dind
   services:
