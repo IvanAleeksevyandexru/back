@@ -113,7 +113,7 @@ class BackRestCallComponentSpec extends Specification {
         request.setMethod(HttpMethod.POST.toString())
 
         when:
-        def result = restCallService.sendRequest(request)
+        def result = restCallService.sendRequest(request, Map.of())
 
         then:
         result.getStatusCode() == expectedValue.getStatusCode()
