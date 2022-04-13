@@ -38,13 +38,13 @@
       <id>nexus</id>
       <repositories>
         <repository>
-          <id>nexus</id>
+          <id>nexus-2</id>
           <name>Repository for JDK 1.6 builds</name>
           <url>http://nexus.gosuslugi.local/nexus/content/groups/public/</url>
           <layout>default</layout>
         </repository>
         <repository>
-          <id>nexus-epgu2</id>
+          <id>nexus</id>
           <name>Repository for internal builds</name>
           <url>http://nexus.gosuslugi.local/content/repositories/epgu2/</url>
         </repository>
