@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
+import ru.gosuslugi.pgu.common.core.exception.EntityNotFoundException;
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.core.lk.model.order.Order;
@@ -184,11 +185,17 @@ public class MainScreenServiceImpl extends AbstractScreenService implements Main
     @Override
     public void setStatusId(ScenarioDto scenarioDto) {
         if (nonNull(scenarioDto.getOrderId())) {
-            Order order = pguOrderService.findOrderByIdCached(scenarioDto.getOrderId());
-            if (isNull(order)) {
+            try {
+                Order order = pguOrderService.findOrderByIdCached(scenarioDto.getOrderId());
+                setStatusId(scenarioDto, order.getOrderStatusId());
+            }catch (EntityNotFoundException e){
+                //Если ордер не найден, он может быть еще не создан (см Highload Parameters)
+                var sd = mainDescriptorService.getServiceDescriptor(scenarioDto.getServiceCode());
+                if(Objects.nonNull(sd.getHighloadParameters()) && sd.getHighloadParameters().isEnabled()){
+                    return;
+                }
                 throw new OrderNotFoundException(String.format("Заявление %s не найдено", scenarioDto.getOrderId()));
             }
-            setStatusId(scenarioDto, order.getOrderStatusId());
         }
     }
 

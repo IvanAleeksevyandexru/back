@@ -23,6 +23,7 @@ import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.common.logging.service.SpanService;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
+import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService;
 import ru.gosuslugi.pgu.fs.config.properties.EsiaServiceProperties;
 
 import javax.servlet.FilterChain;
@@ -54,6 +55,7 @@ public class EsiaAuthFilter extends OncePerRequestFilter {
     private final SpanService spanService;
     private final UserPersonalData userPersonalData;
     private final UserOrgData userOrgData;
+    private final JsonProcessingService jsonProcessingService;
 
     @Value("${esia.auth.exclude-urls:#{null}}")
     private List<String> excludeUrls;
@@ -66,13 +68,15 @@ public class EsiaAuthFilter extends OncePerRequestFilter {
                           ThreadLocalTokensContainerManagerService threadLocalTokensContainerManagerService,
                           SpanService spanService,
                           UserPersonalData userPersonalData,
-                          UserOrgData userOrgData) {
+                          UserOrgData userOrgData,
+                          JsonProcessingService jsonProcessingService) {
         this.esiaRestClientService = esiaRestClientService;
         this.esiaServiceProperties = esiaServiceProperties;
         this.threadLocalTokensContainerManagerService = threadLocalTokensContainerManagerService;
         this.spanService = spanService;
         this.userPersonalData = userPersonalData;
         this.userOrgData = userOrgData;
+        this.jsonProcessingService = jsonProcessingService;
     }
 
     @Override
@@ -162,7 +166,13 @@ public class EsiaAuthFilter extends OncePerRequestFilter {
             setErrorResponse(BAD_REQUEST, response, "Error on request person info from ESIA", true, e);
             return;
         }
-        filterChain.doFilter(request, response);
+        try{
+            filterChain.doFilter(request, response);
+        }finally {
+            jsonProcessingService.releaseThreadCache();
+        }
+
+
     }
 
     private void setErrorResponse(HttpStatus status, HttpServletResponse response, String message, boolean isLogError, Throwable ex) {

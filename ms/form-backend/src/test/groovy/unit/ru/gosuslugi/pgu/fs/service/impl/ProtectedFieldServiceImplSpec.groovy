@@ -39,7 +39,8 @@ class ProtectedFieldServiceImplSpec extends Specification {
         ]
         userPersonalDataMock.docs >> [
                 [type: 'RF_PASSPORT', vrfStu: 'VERIFIED', series: '1111', number: '111111', issueDate: '01.01.2020', issuedBy: 'УФМС'] as PersonDoc,
-                [type: 'FRGN_PASS', vrfStu: 'VERIFIED', series: '2222', number: '222222', issueDate: '02.02.2020', issuedBy: 'УФМС'] as PersonDoc
+                [type: 'FRGN_PASS', vrfStu: 'VERIFIED', series: '2222', number: '222222', issueDate: '02.02.2020', issuedBy: 'УФМС'] as PersonDoc,
+                [type: 'RF_DRIVING_LICENSE', vrfStu: 'VERIFIED', series: '3333', number: '333333', issueDate: '03.03.2020', issuedBy: 'УФМС', expiryDate: '03.03.2023'] as PersonDoc
         ]
         userPersonalDataMock.addresses >> [
                 [type: 'PRG', addressStr: 'обл. Рязанская, р-н. Рязанский, д. Наумово, ул. Заречная, д. 1, кв. 12'] as EsiaAddress,
@@ -88,5 +89,10 @@ class ProtectedFieldServiceImplSpec extends Specification {
         'foreignPassportIssuedBy'  || 'УФМС'
         'livingAddress'            || 'обл. Самарская, г. Самара, снт. СДНТ Утес, линия. 1-я, д. 22, корп. 22, кв. 22'
         'registrationAddress'      || 'обл. Рязанская, р-н. Рязанский, д. Наумово, ул. Заречная, д. 1, кв. 12'
+        'drivingLicenseSeries'     || '3333'
+        'drivingLicenseNumber'     || '333333'
+        'drivingLicenseIssueDate'  || '03.03.2020'
+        'drivingLicenseExpireDate' || '03.03.2023'
+        'drivingLicenseIssuedBy'   || 'УФМС'
     }
 }

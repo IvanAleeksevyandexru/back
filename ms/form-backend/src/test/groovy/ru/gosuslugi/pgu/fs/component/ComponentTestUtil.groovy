@@ -18,6 +18,7 @@ import ru.gosuslugi.pgu.fs.common.descriptor.impl.MainDescriptorServiceImpl
 import ru.gosuslugi.pgu.fs.common.jsonlogic.JsonLogic
 import ru.gosuslugi.pgu.fs.common.jsonlogic.Parser
 import ru.gosuslugi.pgu.fs.common.service.InitialValueFromService
+import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService
 import ru.gosuslugi.pgu.fs.common.service.LinkedValuesService
 import ru.gosuslugi.pgu.fs.common.service.ProtectedFieldService
 import ru.gosuslugi.pgu.fs.common.service.condition.*
@@ -45,6 +46,29 @@ class ComponentTestUtil extends Specification {
     @SuppressWarnings("GroovyAccessibility")
     static void setAbstractComponentServices(AbstractComponent component) {
         def jsonProcessingService = new JsonProcessingServiceImpl(JsonProcessingUtil.objectMapper)
+        def linkedValuesService = new LinkedValuesService() {
+            @Override
+            void fillLinkedValues(FieldComponent fieldComponent, ScenarioDto scenarioDto, DocumentContext... externalContexts) {
+
+            }
+
+            @Override
+            void fillLinkedValues(DisplayRequest displayRequest, ScenarioDto scenarioDto) {
+
+            }
+
+            @Override
+            String getValue(LinkedValue linkedValue, ScenarioDto scenarioDto, AttrsFactory attrsFactory, DocumentContext... externalContexts) {
+                return null
+            }
+        }
+        component.componentReferenceService = new ComponentReferenceServiceImpl(jsonProcessingService, new UserCookiesServiceImpl(), linkedValuesService)
+        component.jsonProcessingService = jsonProcessingService
+        component.linkedValuesService = getLinkedValuesService(jsonProcessingService)
+    }
+
+    @SuppressWarnings("GroovyAccessibility")
+    static void setAbstractComponentServices(AbstractComponent component, JsonProcessingService jsonProcessingService) {
         def linkedValuesService = new LinkedValuesService() {
             @Override
             void fillLinkedValues(FieldComponent fieldComponent, ScenarioDto scenarioDto, DocumentContext... externalContexts) {

@@ -185,7 +185,9 @@ public class NextScreenProcessImpl extends AbstractScreenProcess<NextScreenProce
 
         computeAnswerService.computeValues(screenDescriptor, scenarioDto);
 
-        scenarioDto.getFinishedAndCurrentScreens().add(screenDescriptor.getId());
+        if (!screenDescriptor.getId().equals(scenarioDto.getFinishedAndCurrentScreens().getLast())){
+            scenarioDto.getFinishedAndCurrentScreens().add(screenDescriptor.getId());
+        }
         scenarioDto.getApplicantAnswers().putAll(scenarioDto.getCurrentValue());
         scenarioDto.setCurrentValue(new HashMap<>());
         DisplayRequest displayRequest = new DisplayRequest(screenDescriptor, componentService.getScreenFields(screenDescriptor, scenarioDto, serviceDescriptor));

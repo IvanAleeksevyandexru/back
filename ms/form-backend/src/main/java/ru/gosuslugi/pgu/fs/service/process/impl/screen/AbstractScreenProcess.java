@@ -4,6 +4,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ import ru.gosuslugi.pgu.fs.service.process.ScreenProcess;
 import ru.gosuslugi.pgu.fs.service.process.impl.AbstractProcess;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -130,6 +132,12 @@ public abstract class AbstractScreenProcess<T> extends AbstractProcess<T, Scenar
     @Override
     public void saveDraft() {
         ScenarioDto scenarioDto = response.getScenarioDto();
+        if(!serviceDescriptor.getSaveDraftsAtScreens().isEmpty()){
+            if(!serviceDescriptor.getSaveDraftsAtScreens().contains(scenarioDto.getDisplay().getId())){
+                return;
+            }
+        }
+
         if (scenarioDto.getOrderId() != null) {
             draftClient.saveDraft(scenarioDto, serviceId, userPersonalData.getUserId(), userPersonalData.getOrgId(), serviceDescriptor.getDraftTtl(), serviceDescriptor.getOrderTtl());
         }

@@ -96,8 +96,7 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
     private static final String BIRTH_CERTIFICATE_ISSUED_DATE_NOT_VALID = "Проверьте дату выдачи свидетельства о рождении";
     private static final String BIRTH_CERTIFICATE_TYPE_NOT_VALID = "Проверьте верно ли указан/указан ли тип свидетельства о рождении";
     public static final String FOREIGN_BRTH_CERT_TYPE = "FID_BRTH_CERT";
-    public static final String RF_BRTH_CERT_TYPE = "RF_BRTH_CERT";
-    public static final String BRTH_CERT_TYPE = "BRTH_CERT";
+    public static final Set<String> RF_LIKE_CERT_TYPES = Set.of("RF_BRTH_CERT", "BRTH_CERT", "OLD_BRTH_CERT");
 
     private final UserPersonalData userPersonalData;
 
@@ -426,7 +425,7 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
     private List<ErrorDto> getValidationErrors(Set<String> namesField, ChildData childData, Map<String, FieldDto> fieldsComponent) {
         List<ErrorDto> errors = new ArrayList<>();
         String docType = childData.getDocType();
-        if (StringUtils.hasText(docType) && (docType.equals(RF_BRTH_CERT_TYPE) || docType.equals(BRTH_CERT_TYPE))) {
+        if (StringUtils.hasText(docType) && RF_LIKE_CERT_TYPES.contains(docType)) {
             errors.addAll(getValidationErrorsForRfBirthCert(namesField, childData, fieldsComponent));
         } else {
             errors.addAll(getValidationErrorsForForeignBirthCert(childData, fieldsComponent));

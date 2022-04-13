@@ -7,6 +7,7 @@ import ru.gosuslugi.pgu.dto.ScenarioDto
 import ru.gosuslugi.pgu.dto.descriptor.Expression
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
 import ru.gosuslugi.pgu.dto.descriptor.LinkedValue
+import ru.gosuslugi.pgu.fs.common.service.JsonProcessingService
 import ru.gosuslugi.pgu.fs.common.service.impl.JsonProcessingServiceImpl
 import ru.gosuslugi.pgu.fs.component.ComponentTestUtil
 import spock.lang.Specification
@@ -14,7 +15,7 @@ import spock.lang.Specification
 class LinkedValuesServiceImplSpec extends Specification {
 
     static service
-    static jsonProcessingService
+    static JsonProcessingService jsonProcessingService
 
     def setupSpec() {
         jsonProcessingService = new JsonProcessingServiceImpl(JsonProcessingUtil.getObjectMapper())
@@ -40,7 +41,7 @@ class LinkedValuesServiceImplSpec extends Specification {
 
         when:
         service.fillLinkedValues(component, scenarioDto)
-
+        jsonProcessingService.releaseThreadCache();
         then:
         component.arguments.get('TEXT') == expectedResult
 
@@ -70,7 +71,7 @@ class LinkedValuesServiceImplSpec extends Specification {
 
         when:
         service.fillLinkedValues(component, scenarioDto)
-
+        jsonProcessingService.releaseThreadCache();
         then:
         component.arguments.get('TEXT') == expectedResult
 
@@ -91,7 +92,7 @@ class LinkedValuesServiceImplSpec extends Specification {
 
         when:
         service.fillLinkedValues(component, scenarioDto)
-
+        jsonProcessingService.releaseThreadCache();
         then:
         component.arguments.get('TEXT') == expectedResult
 
@@ -121,7 +122,7 @@ class LinkedValuesServiceImplSpec extends Specification {
                         )])
         when:
         service.fillLinkedValues(component, scenarioDto)
-
+        jsonProcessingService.releaseThreadCache();
         then:
         component.getArgument('TEXT') == result
 
@@ -155,7 +156,7 @@ class LinkedValuesServiceImplSpec extends Specification {
 
         when:
         service.fillLinkedValues(component, scenarioDto)
-
+        jsonProcessingService.releaseThreadCache();
         then:
         component.arguments.get('number') == expectedResult
 

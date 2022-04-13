@@ -21,4 +21,6 @@ public interface TerrabyteService {
     List<FileInfo> getAllFilesInfoForOrderId(ScenarioDto scenarioDto);
 
     void deleteRedundantFiles(ScenarioDto scenarioDto, ServiceDescriptor serviceDescriptor);
+
+    boolean checkOrderHasFileComponents(ScenarioDto scenarioDto, ServiceDescriptor serviceDescriptor);
 }
