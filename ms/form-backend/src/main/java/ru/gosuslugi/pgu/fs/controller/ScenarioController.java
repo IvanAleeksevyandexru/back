@@ -24,7 +24,7 @@ import java.util.Optional;
 /**
  * Controller that handle all methods for scenarios
  * Next/prev pages
- * Расширение для https://jira.egovdev.ru/browse/EPGUCORE-90939 - Закрытие услуги кукой через JSON
+ * Расширение для https://jira.egovdev.ru/browse/EPGUCORE-90939 - Закрытие услуги кукой через JSON - 404
  */
 @RestController
 @RequestMapping(value = "service/{serviceId}/scenario", produces = MediaType.APPLICATION_JSON_VALUE)
