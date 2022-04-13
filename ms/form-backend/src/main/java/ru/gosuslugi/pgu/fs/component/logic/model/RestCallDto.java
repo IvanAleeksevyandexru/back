@@ -9,6 +9,7 @@ import java.util.Map;
 
 @Data
 public class RestCallDto {
+    private String id;
     private String method;
     private String url;
     private String body;
