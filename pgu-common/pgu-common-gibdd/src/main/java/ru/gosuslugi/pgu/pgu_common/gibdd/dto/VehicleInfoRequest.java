@@ -6,6 +6,7 @@ import lombok.Setter;
 
 /**
  * Запрос для получения данных о ТС из Витрины ГИБДД
+ * https://jira.egovdev.ru/browse/EPGUCORE-90200 - расширение для 1.4+, включение typeId
  */
 @Data
 @Builder
@@ -27,4 +28,6 @@ public class VehicleInfoRequest {
     private String tx;
     /** Идентификатор присутствия конфиденциальных данных */
     private boolean hasSensitiveData;
+    /** TypeId */
+    private String typeId;
 }

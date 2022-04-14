@@ -272,7 +272,7 @@ public final class ComponentAttributes {
     public static final String STS_ATTR = "sts";
     public static final String GOV_REG_NUMBER_ATTR = "govRegNumber";
     public static final String PDF_LINK_ATTR = "pdfLink";
-    public static final String TYPE_ID_ATTR = "TypeID";
+    public static final String TYPE_ID_ATTR = "TypeId";
 
     public static final String PARSE_DESCRIPTION_ATTR = "parseDescription";
 

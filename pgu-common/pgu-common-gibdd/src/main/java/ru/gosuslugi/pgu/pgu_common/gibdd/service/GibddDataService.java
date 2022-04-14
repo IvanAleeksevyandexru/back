@@ -11,6 +11,9 @@ import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleInfoRequest;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * https://jira.egovdev.ru/browse/EPGUCORE-90200 - расширение для 1.4+
+ */
 public interface GibddDataService {
 
     VehicleFullInfo getVehicleFullInfo(VehicleInfoRequest request);
@@ -22,4 +25,7 @@ public interface GibddDataService {
     CompletableFuture<GibddServiceResponse<VehicleInfo>> getAsyncVehicleInfo(VehicleInfoRequest request);
 
     CompletableFuture<GibddServiceResponse<FederalNotaryInfo>> getAsyncFederalNotaryInfo(FederalNotaryRequest request);
+
+    // Не асинхронный метод для последовательного вызова при поиске по ГРЗ
+    VehicleInfo getVehicleInfo(VehicleInfoRequest request);
 }

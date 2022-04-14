@@ -10,6 +10,9 @@ import ru.gosuslugi.pgu.pgu_common.gibdd.dto.RestrictionsInformation;
 import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleInfo;
 import ru.gosuslugi.pgu.pgu_common.nsi.dto.NsiDictionaryItem;
 
+/**
+ * https://jira.egovdev.ru/browse/EPGUCORE-90200 - расширение для 1.4+, включение нормализованных значений
+ */
 @Mapper
 @Qualifier("vehicleInfoMapper")
 public interface VehicleInfoMapper {
@@ -36,7 +39,11 @@ public interface VehicleInfoMapper {
             @Mapping(expression = "java(item.getAttributeValue(\"EcologyClass\"))", target = "ecologyClass"),
             @Mapping(expression = "java(item.getAttributeValue(\"RegDocSeriesNumber\"))", target = "stsSeriesNumber"),
             @Mapping(expression = "java(item.getAttributeValue(\"PTSType\"))", target = "ptsType"),
-            @Mapping(expression = "java(item.getAttributeValue(\"PTSNum\"))", target = "ptsNum")
+            @Mapping(expression = "java(item.getAttributeValue(\"PTSNum\"))", target = "ptsNum"),
+            @Mapping(expression = "java(item.getAttributeValue(\"VIN_norm\"))", target = "vinNorm"),
+            @Mapping(expression = "java(item.getAttributeValue(\"VIN2_norm\"))", target = "vin2Norm"),
+            @Mapping(expression = "java(item.getAttributeValue(\"ChassisNumber_norm\"))", target = "chassisNumberNorm"),
+            @Mapping(expression = "java(item.getAttributeValue(\"CarcaseNumber_norm\"))", target = "carcaseNumberNorm")
     })
     VehicleInfo toVehicleInfo(NsiDictionaryItem item);
 

@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Данные о транспортном средстве из Витрины ГИБДД
+ * https://jira.egovdev.ru/browse/EPGUCORE-90200 - расширение для 1.4+, включение нормализованных значений
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -194,4 +195,21 @@ public class VehicleInfo {
     @Schema(description = "Периоды владения")
     private List<OwnerPeriod> ownerPeriods = new ArrayList<>();
 
+    /** Расширение для версии 1.4+ */
+
+    /** Идентификатор витрины нормализированный */
+    @Schema(description = "Идентификатор витрины нормализированный")
+    private String vinNorm;
+
+    /** Идентификационный номер (VIN2) нормализированный */
+    @Schema(description = "Идентификационный номер (VIN2) нормализированный")
+    private String vin2Norm;
+
+    /** Номер шасси (рамы) нормалированный */
+    @Schema(description = "Номер шасси (рамы) нормалированный")
+    private String chassisNumberNorm;
+
+    /** Номер кузова (кабины) нормазированный */
+    @Schema(description = "Номер кузова (кабины) нормазированный")
+    private String carcaseNumberNorm;
 }

@@ -10,16 +10,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestClientException;
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.ExternalServiceCallResult;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.FederalNotaryInfo;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.FederalNotaryRequest;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.GibddServiceResponse;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.OwnerPeriod;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.OwnerVehiclesRequest;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.RegAction;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleFullInfo;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleInfo;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleInfoRequest;
+import ru.gosuslugi.pgu.pgu_common.gibdd.dto.*;
 import ru.gosuslugi.pgu.pgu_common.gibdd.mapper.VehicleFullInfoMapper;
 import ru.gosuslugi.pgu.pgu_common.gibdd.mapper.VehicleInfoMapper;
 import ru.gosuslugi.pgu.pgu_common.gibdd.service.GibddDataService;
@@ -46,6 +37,7 @@ import java.util.stream.Collectors;
 
 /**
  * Сервис интеграция с витриной ГИБДД
+ * https://jira.egovdev.ru/browse/EPGUCORE-90200 - расширение для 1.4+ - 404
  */
 @Slf4j
 @Service
@@ -197,22 +189,8 @@ public class GibddDataServiceImpl implements GibddDataService {
     }
 
     private NsiDictionary getVehicleNsiDictionary(VehicleInfoRequest request) {
-        // todo - нужно добавить обработку запроса с СТС + гос. номер - пока делаем так
-        if (StringUtils.isEmpty(request.getVin())) {
-            request.setVin(request.getSts() + request.getGovRegNumber());
-        }
 
-        Map<String, String> params = new HashMap<>() {{
-            put("LastName",     request.getLastName());
-            put("FirstName",    request.getFirstName());
-            put("VIN",          VehicleInfoMapperUtil.convertToLatin(request.getVin()));
-            if (Objects.nonNull(request.getGovRegNumber())) {
-                put("GovRegNumber", VehicleInfoMapperUtil.convertToLatin(request.getGovRegNumber()));
-            }
-            if (!StringUtils.isEmpty(request.getMiddleName())) {
-                put("MiddleName", request.getMiddleName());
-            }
-        }};
+        Map<String, String> params = buildRequestParams(request);
 
         NsiDictionaryFilterRequest filterRequest = NsiDictionaryUtil.getFilterRequest(params, request.getTx());
         NsiDictionary dictionary = nsiDictionaryService.getDictionary(
@@ -427,5 +405,71 @@ public class GibddDataServiceImpl implements GibddDataService {
         return mockEnabled
                 ? String.format("%s/%s", mockPath, resourceUrl)
                 : resourceUrl;
+    }
+
+    // ver 1.4+
+    public VehicleInfo getVehicleInfo(VehicleInfoRequest request) {
+        NsiDictionary dictionary = getVehicleNsiDictionary(request);
+        if (!SERVICE_SUCCESS_MESSAGE.equals(dictionary.getError().getMessage())) {
+            return null;
+        }
+        return convertToVehicleInfo(dictionary);
+    }
+
+    /*
+    TypeId - Или не передается, или одно из значений:
+        [VIN, ChassisNumber, CarcaseNumber, GRZ_RegistrationDocNumber]
+    Если параметр не задан:
+        то идентификатор ТС будет передан в комплексном типе (может быть указан или VIN или Номер шасси или номер кузова)
+    Если TypeId = VIN:
+        то в запросе будет указан строго VIN
+    Если TypeId = ChassisNumber:
+        то в запросе будет указан строго Номер шасси
+    Если TypeId = CarcaseNumber:
+        то в запросе будет указан строго номер кузова
+    Если TypeId = GRZ_RegistrationDocNumber: - расширение версии 1.4+
+        то в запросе будет указан строго Государственный регистрационный номер и Серия и номер регистрационного документа,
+     */
+    private Map<String, String> buildRequestParams(VehicleInfoRequest request) {
+        Map<String, String> params = new HashMap<>();
+        if (!StringUtils.isEmpty(request.getLastName())) {
+            params.put("LastName", request.getLastName());
+        }
+        if (!StringUtils.isEmpty(request.getFirstName())) {
+            params.put("FirstName", request.getFirstName());
+        }
+        if (!StringUtils.isEmpty(request.getMiddleName())) {
+            params.put("MiddleName", request.getMiddleName());
+        }
+        String typeId = request.getTypeId();
+        if (StringUtils.isEmpty(typeId)) {
+            params.put("VIN", VehicleInfoMapperUtil.convertToLatin(request.getVin()));
+        } else {
+            params.put("TypeId", typeId);
+            if (typeId.equals(VehicleInfoRequestType.VIN.getId())
+                    || typeId.equals(VehicleInfoRequestType.ChassisNumber.getId())
+                    || typeId.equals(VehicleInfoRequestType.CarcaseNumber.getId())) {
+                putParamAsLatin(params, "VIN", request.getVin());
+            }
+            else if (typeId.equals(VehicleInfoRequestType.GRZ_RegistrationDocNumber.getId())) {
+                if (Objects.nonNull(request.getGovRegNumber())) {
+                    params.put("GovRegNumber", request.getGovRegNumber());
+                }
+                if (Objects.nonNull(request.getSts())) {
+                    params.put("RegDocSeriesNumber", request.getSts());
+                }
+            }
+            else {  // Unknown TypeId
+                log.error("Unknown TypeId = {}", typeId);
+                putParamAsLatin(params, "VIN", request.getVin());
+            }
+        }
+        return params;
+    }
+
+    private void putParamAsLatin(Map<String, String> map, String key, String param) {
+        if (!StringUtils.isEmpty(param)) {
+            map.put(key, VehicleInfoMapperUtil.convertToLatin(param));
+        }
     }
 }
