@@ -83,6 +83,15 @@ public class RestCallServiceImpl implements RestCallService {
             }
         }
 
+        result.setFilteredHealthArgs(getFilteredHealthArgs(component));
+
         return ComponentResponse.of(result);
+    }
+
+    private Map<String, String> getFilteredHealthArgs(FieldComponent component) {
+        List<String> healthArgs = (List<String>) component.getAttrs().getOrDefault("healthArgs", List.of());
+        return component.getArguments().entrySet().stream()
+                .filter(entry -> healthArgs.contains(entry.getKey()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 }

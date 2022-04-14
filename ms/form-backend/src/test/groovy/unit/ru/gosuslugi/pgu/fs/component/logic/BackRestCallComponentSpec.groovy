@@ -23,7 +23,7 @@ class BackRestCallComponentSpec extends Specification {
         given:
         def scenarioDto = new ScenarioDto()
         def restCallService = Stub(BackRestCallService) {
-            it.sendRequest(_ as RestCallDto, Map.of()) >> new BackRestCallResponseDto(200, Map.<String, Object> of("key", "value"))
+            it.sendRequest(_ as RestCallDto) >> new BackRestCallResponseDto(200, Map.<String, Object> of("key", "value"))
         }
         def component = new BackRestCallComponent(Stub(RestCallService), restCallService, Mock(UserPersonalData))
         component.jsonProcessingService = new JsonProcessingServiceImpl(new ObjectMapper())
@@ -45,7 +45,7 @@ class BackRestCallComponentSpec extends Specification {
     def exceptions() {
         given:
         def restCallService = Stub(BackRestCallService) {
-            it.sendRequest(_ as RestCallDto, Map.of()) >> { throw new ExternalServiceException(_ as String) }
+            it.sendRequest(_ as RestCallDto) >> { throw new ExternalServiceException(_ as String) }
         }
         def component = new BackRestCallComponent(Stub(RestCallService), restCallService, Mock(UserPersonalData))
 

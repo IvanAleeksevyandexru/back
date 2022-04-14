@@ -14,9 +14,7 @@ import ru.gosuslugi.pgu.fs.service.BackRestCallService;
 import ru.gosuslugi.pgu.fs.service.RestCallService;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static ru.gosuslugi.pgu.components.ComponentAttributes.COOKIES_ATTR;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.HEADERS_ATTR;
@@ -60,7 +58,7 @@ public class BackRestCallComponent extends AbstractComponent<String> {
         if (component.getBooleanAttr(SQL_RESULT_OPTION)) {
             backRestCallService.setOption(SQL_RESULT_OPTION);
         }
-        return backRestCallService.sendRequest(restCallDto, getFilteredHealthArgs(component));
+        return backRestCallService.sendRequest(restCallDto);
     }
 
     private void setUserToken(FieldComponent component) {
@@ -73,13 +71,6 @@ public class BackRestCallComponent extends AbstractComponent<String> {
         if (Boolean.TRUE.equals(component.getAttrs().getOrDefault(BEARER_AUTH_ATTR, Boolean.FALSE))) {
             ((Map<String, String>) component.getAttrs().get(HEADERS_ATTR)).put("Authorization", "Bearer " + userPersonalData.getToken());
         }
-    }
-
-    private Map<String, String> getFilteredHealthArgs(FieldComponent component) {
-        List<String> healthArgs = (List<String>) component.getAttrs().getOrDefault("healthArgs", List.of());
-        return component.getArguments().entrySet().stream()
-                .filter(entry -> healthArgs.contains(entry.getKey()))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
     // "Очищает" компонент, чтобы не передавать непубличные данные

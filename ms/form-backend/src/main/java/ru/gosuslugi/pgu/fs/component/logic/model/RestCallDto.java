@@ -17,4 +17,5 @@ public class RestCallDto {
     private Map<String, String> headers = new HashMap<>();
     private Map<String, String> cookies = new HashMap<>();
     private MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
+    private Map<String, String> filteredHealthArgs = new HashMap<>();
 }

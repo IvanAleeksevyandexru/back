@@ -43,7 +43,7 @@ public class BackRestCallServiceImpl implements BackRestCallService {
     public static final String SQL_RESULT_OPTION = "sqlResult";
 
     @Override
-    public BackRestCallResponseDto sendRequest(RestCallDto requestDto, Map<String, String> filteredHealthArgs) {
+    public BackRestCallResponseDto sendRequest(RestCallDto requestDto) {
         var headers = new HttpHeaders();
         requestDto.getHeaders().forEach(headers::add);
         if (headers.isEmpty()) {
@@ -54,6 +54,7 @@ public class BackRestCallServiceImpl implements BackRestCallService {
 
         var entity = requestDto.getFormData().isEmpty() ? requestDto.getBody() : requestDto.getFormData();
         HttpMethod httpMethod = HttpMethod.resolve(requestDto.getMethod());
+        Map<String, String> filteredHealthArgs = requestDto.getFilteredHealthArgs();
         RestCallHealthDto restCallHealthDto = new RestCallHealthDto(requestDto.getId(), null, httpMethod, HttpStatus.OK, null, null, filteredHealthArgs);
         try {
             ResponseEntity<Object> responseEntity = restClientRegistry.getRestTemplate(Optional.ofNullable(requestDto.getTimeout()).orElse(-1L).intValue())
@@ -87,7 +88,6 @@ public class BackRestCallServiceImpl implements BackRestCallService {
             return new BackRestCallResponseDto(e.getRawStatusCode(), message + " Пожалуйста, повторите попытку позже.", null);
         } catch (IllegalArgumentException e) {
             log.error("Преобразование данных: {}", entity);
-            restCallHealthDto = new RestCallHealthDto(requestDto.getId(), null, httpMethod, null, null, "Ошибка в преобразовании данных", filteredHealthArgs);
             throw new PguException("Ошибка в преобразовании данных");
         } finally {
             healthHolder.addDictionaryHealth(restCallHealthDto);
