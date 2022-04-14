@@ -1,6 +1,7 @@
 package ru.gosuslugi.pgu.fs.service;
 
 import ru.gosuslugi.pgu.dto.*;
+import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
 import ru.gosuslugi.pgu.dto.order.OrderInfoDto;
 import ru.gosuslugi.pgu.dto.order.OrderListInfoDto;
 import ru.gosuslugi.pgu.fs.common.service.ScreenService;
@@ -28,4 +29,6 @@ public interface MainScreenService extends ScreenService {
     void setStatusId(ScenarioDto scenarioDto);
 
     ScenarioResponse prepareScenarioFromExternal(ScenarioFromExternal scenarioFromExternal);
+
+    ServiceDescriptor getServiceDescriptor(String serviceId);
 }
