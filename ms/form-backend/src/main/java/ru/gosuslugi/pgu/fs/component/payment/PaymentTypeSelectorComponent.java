@@ -55,6 +55,7 @@ import static ru.gosuslugi.pgu.pgu_common.payment.dto.pay.PaymentPossibilityResp
 
 /**
  * Компонент по поддержке способа оплаты госпошлины
+ * https://jira.egovdev.ru/browse/EPGUCORE-91092 - проверка checkShowForUnusedPayments
  */
 @Slf4j
 @Component
@@ -213,10 +214,10 @@ public class PaymentTypeSelectorComponent extends AbstractPaymentComponent<Strin
 
         Map<String, Map<String, Object>> states = (Map<String, Map<String, Object>>) field.getAttrs().getOrDefault(STATES_KEY, Collections.emptyMap());
         states.values().forEach(state -> {
-            List<Map<String, String>> actions = (List<Map<String, String>>) state.get(ACTIONS_ATTR_KEY);
+            List<Map<String, Object>> actions = (List<Map<String, Object>>) state.get(ACTIONS_ATTR_KEY);
             if (!alreadyPaid) {
                 actions = actions.stream()
-                        .filter(it -> !it.containsKey(SHOW_ONLY_FOR_UNUSED_PAYMENTS_KEY))
+                        .filter(this::checkShowForUnusedPayments)
                         .collect(Collectors.toList());
             }
             actions.forEach(action -> {
@@ -225,7 +226,7 @@ public class PaymentTypeSelectorComponent extends AbstractPaymentComponent<Strin
                 value.put(BILL_NUMBER_ATTR, billNumber);
                 value.put(FULL_AMOUNT_ATTR, fullAmount);
                 value.put(SALE_AMOUNT_ATTR, saleAmount);
-                value.put("selected", action.get("label"));
+                value.put("selected", String.valueOf(action.get("label")));
                 value.put(ARGS_HASH_KEY, String.valueOf(request.hashCode()));
                 if (action.containsKey(ACTION_OPERATION_KEY)) {
                     value.put(ACTION_OPERATION_KEY, RETRY_BILL_CREATE);
@@ -234,6 +235,15 @@ public class PaymentTypeSelectorComponent extends AbstractPaymentComponent<Strin
             });
             state.put(ACTIONS_ATTR_KEY, actions);
         });
+    }
+
+    private boolean checkShowForUnusedPayments(Map<String, Object> actions) {
+        Object check = actions.get(SHOW_ONLY_FOR_UNUSED_PAYMENTS_KEY);
+        if (check == null) {
+            return true;
+        } else {
+            return !Boolean.parseBoolean(String.valueOf(check));
+        }
     }
 
     private void saveRequsitesInComponentAttrs(FieldComponent field, PaymentPossibilityRequest request) {
