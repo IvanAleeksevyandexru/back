@@ -1,6 +1,7 @@
 package ru.gosuslugi.pgu.fs.component.child
 
 import ru.atc.carcass.security.rest.model.DocsCollection
+import ru.atc.carcass.security.rest.model.person.Kids
 import ru.atc.carcass.security.rest.model.person.PersonDoc
 import ru.gosuslugi.pgu.common.core.json.JsonFileUtil
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil
@@ -98,7 +99,6 @@ class ChildrenListComponentTest extends Specification {
 
         where:
         bornAfterDate || bornBeforeDate || response
-        null          || null           || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
         '10.06.2005'  || null           || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
         null          || '10.05.2013'   || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
         '01.01.2009'  || null           || '[{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
@@ -106,6 +106,60 @@ class ChildrenListComponentTest extends Specification {
         null          || '11.06.2005'   || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false}]'
         '01.01.2020'  || '01.01.2022'   || '[]'
         '01.01.2020'  || null           || '[]'
+        null          || null           || '[{"bb":{"firstName":"Петя","lastName":"Петечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин"},"cc":false},{"bb":{"firstName":"Вася","lastName":"Васечкин","rfBirthCertificateIssueDate":"2013-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
+    }
+
+    def 'Test getInitValue: get init value response is correct with gender filters'() {
+        given:
+        UserPersonalData userPersonalData = Mock(UserPersonalData)
+        ChildrenListComponent component = new ChildrenListComponent(
+                userPersonalData,
+                Mock(RepeatableFieldsComponent),
+                Mock(ParticipantService),
+                Mock(ListComponentItemUniquenessService),
+                Mock(DictionaryListPreprocessorService)
+        )
+        ComponentTestUtil.setAbstractComponentServices(component)
+        fieldComponent.getAttrs().put("gender", gender)
+        userPersonalData.kids >> List.of(
+                new Kids(id: '1',
+                        firstName: 'Петя', lastName: 'Петечкин', birthDate: '10.06.2010',
+                        gender: 'M',
+                        documents: new DocsCollection(
+                                elements: [new PersonDoc(
+                                        type: 'BRTH_CERT',
+                                        series: '22',
+                                        number: '123-456',
+                                        issuedBy: 'Загс',
+                                        issueDate: '10.10.2010',
+                                )])
+                ),
+                new Kids(id: '2',
+                        firstName: 'Василиса', lastName: 'Петечкина', birthDate: '10.06.2020',
+                        gender: 'F',
+                        documents: new DocsCollection(
+                                elements: [new PersonDoc(
+                                        type: 'BRTH_CERT',
+                                        series: '33',
+                                        number: '123-456',
+                                        issuedBy: 'Загс',
+                                        issueDate: '10.10.2020',
+                                )])
+                ))
+
+        when:
+        def result = component.getInitialValue(fieldComponent, scenarioDto, serviceDescriptor)
+
+        then:
+        result.get() == response
+
+        where:
+        gender   || response
+        ""       || "[]"
+        "male"   || '[{"bb":{"firstName":"Петя","lastName":"Петечкин","rfBirthCertificateIssueDate":"2010-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false}]'
+        "female" || '[{"bb":{"firstName":"Василиса","lastName":"Петечкина","rfBirthCertificateIssueDate":"2020-10-10T00:00:00Z","rfBirthCertificateSeries":"33"},"cc":false}]'
+        "both"   || '[{"bb":{"firstName":"Петя","lastName":"Петечкин","rfBirthCertificateIssueDate":"2010-10-10T00:00:00Z","rfBirthCertificateSeries":"22"},"cc":false},{"bb":{"firstName":"Василиса","lastName":"Петечкина","rfBirthCertificateIssueDate":"2020-10-10T00:00:00Z","rfBirthCertificateSeries":"33"},"cc":false}]'
+        null     || '[]'
     }
 
     def "Should do valid post processing"() {
