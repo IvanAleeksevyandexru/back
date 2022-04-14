@@ -16,7 +16,7 @@ class EqualityOperatorTest extends JsonLogicSpec {
         "{\"==\" : [1, 1]}"             | true
         "{\"==\" : [1, \"1\"]}"         | true
         "{\"==\" : [[], false]}"        | true
-        "{\"==\" : [\" \", 0]}"         | true
+        "{\"==\" : [\" \", 0]}"         | false
         "{\"==\" : [false, \"false\"]}" | true
     }
 
