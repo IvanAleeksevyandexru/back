@@ -40,7 +40,7 @@ public class RestCallServiceImpl implements RestCallService {
         Map<String, String> arguments = component.getArguments();
 
         RestCallDto result = new RestCallDto();
-
+        result.setId(component.getId());
         result.setMethod(attr.get(METHOD_ATTR).toString().toUpperCase());
 
         String link = Objects.toString(attr.get(URL_ATTR), null);
@@ -83,6 +83,15 @@ public class RestCallServiceImpl implements RestCallService {
             }
         }
 
+        result.setFilteredHealthArgs(getFilteredHealthArgs(component));
+
         return ComponentResponse.of(result);
+    }
+
+    private Map<String, String> getFilteredHealthArgs(FieldComponent component) {
+        List<String> healthArgs = (List<String>) component.getAttrs().getOrDefault("healthArgs", List.of());
+        return component.getArguments().entrySet().stream()
+                .filter(entry -> healthArgs.contains(entry.getKey()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 }

@@ -9,6 +9,7 @@ import java.util.Map;
 
 @Data
 public class RestCallDto {
+    private String id;
     private String method;
     private String url;
     private String body;
@@ -16,4 +17,5 @@ public class RestCallDto {
     private Map<String, String> headers = new HashMap<>();
     private Map<String, String> cookies = new HashMap<>();
     private MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
+    private Map<String, String> filteredHealthArgs = new HashMap<>();
 }

@@ -11,7 +11,6 @@ import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse
 import ru.gosuslugi.pgu.fs.common.service.impl.JsonProcessingServiceImpl
 import ru.gosuslugi.pgu.fs.component.logic.BackRestCallComponent
-import ru.gosuslugi.pgu.fs.component.logic.RestCallComponent
 import ru.gosuslugi.pgu.fs.component.logic.model.RestCallDto
 import ru.gosuslugi.pgu.fs.service.BackRestCallService
 import ru.gosuslugi.pgu.fs.service.RestCallService
