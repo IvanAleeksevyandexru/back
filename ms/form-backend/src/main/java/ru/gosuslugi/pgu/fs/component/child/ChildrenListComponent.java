@@ -168,6 +168,7 @@ public class ChildrenListComponent extends AbstractComponent<String> {
         List<FieldComponent> fieldComponents = (List<FieldComponent>) fieldComponent.getAttrs().get(FieldComponentUtil.COMPONENTS_KEY);
         for (FieldComponent component : fieldComponents) {
             linkedValuesService.fillLinkedValues(component, scenarioDto);
+            componentReferenceService.processComponentRefs(component, scenarioDto);
             if (ComponentType.DropDown == component.getType()) {
                 dictionaryListPreprocessorService.prepareDictionaryListFromComponent(component, scenarioDto);
             }
