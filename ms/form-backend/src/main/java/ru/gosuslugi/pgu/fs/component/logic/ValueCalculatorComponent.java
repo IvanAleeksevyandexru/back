@@ -23,7 +23,8 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.CALCULATIONS_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.REFS_ATTR;
 
 @Component
 @RequiredArgsConstructor
