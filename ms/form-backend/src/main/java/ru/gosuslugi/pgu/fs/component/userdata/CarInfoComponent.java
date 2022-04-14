@@ -15,12 +15,7 @@ import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType;
 import ru.gosuslugi.pgu.fs.common.component.AbstractComponent;
 import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
 import ru.gosuslugi.pgu.fs.component.userdata.model.CarInfoComponentDto;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.ExternalServiceCallResult;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.FederalNotaryInfo;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.FederalNotaryRequest;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.GibddServiceResponse;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleInfo;
-import ru.gosuslugi.pgu.pgu_common.gibdd.dto.VehicleInfoRequest;
+import ru.gosuslugi.pgu.pgu_common.gibdd.dto.*;
 import ru.gosuslugi.pgu.pgu_common.gibdd.service.GibddDataService;
 
 import java.util.Map;
@@ -29,13 +24,15 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-import static ru.gosuslugi.pgu.components.ComponentAttributes.TX_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.VIN_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
 
+/**
+ * https://jira.egovdev.ru/browse/EPGUCORE-90200 - расширение для 1.4+ - 404
+ */
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class CarInfoComponent extends AbstractComponent<CarInfoComponentDto> {
+public class CarInfoComponent extends AbstractComponent<CarInfoComponentDto> implements CarInfo {
 
     @Value("${gibdd.request-timeout:20}")
     private Integer requestTimeout;
@@ -49,11 +46,19 @@ public class CarInfoComponent extends AbstractComponent<CarInfoComponentDto> {
     public ComponentResponse<CarInfoComponentDto> getInitialValue(FieldComponent component, ScenarioDto scenarioDto) {
         String vin = component.getArgument(VIN_ATTR);
         String tx = String.valueOf(component.getAttrs().get(TX_ATTR));
+        String typeId = component.getArgument(TYPE_ID_ATTR);
 
         // пытаемся сначало взять данные из кэша
         CarInfoComponentDto carInfo = getStoredValue(vin, component.getId(), scenarioDto);
         if (carInfo == null) {
-            carInfo = getCarInfo(scenarioDto.getOrderId().toString(), vin, tx);
+            // если typeId = GRZ_RegistrationDocNumber, то это версия 1.4+
+            if (VehicleInfoRequestType.GRZ_RegistrationDocNumber.getId().equals(typeId)) {
+                String govRegNumber = component.getArgument(GOV_REG_NUMBER_ATTR);
+                String sts = component.getArgument(STS_ATTR);
+                carInfo = getCarInfo(scenarioDto.getOrderId().toString(), typeId, govRegNumber, sts, tx);
+            } else {
+                carInfo = getCarInfo(scenarioDto.getOrderId().toString(), vin, tx);
+            }
         }
 
         return ComponentResponse.of(carInfo);
@@ -150,4 +155,41 @@ public class CarInfoComponent extends AbstractComponent<CarInfoComponentDto> {
         result.setNotaryInfo(notaryInfoResult.getData());
         result.setNotaryServiceCallResult(notaryInfoResult.getExternalServiceCallResult());
     }
+
+    /**
+     * Расширение для 1.4+
+     * Выполняется последовательный запрос: getVehicleInfo с определением vin, затем getFederalNotaryInfo с этим vin
+     */
+    private CarInfoComponentDto getCarInfo(String orderId, String typeId, String govRegNumber, String sts, String tx) {
+        var person = userPersonalData.getPerson();
+        VehicleInfoRequest vehicleInfoRequest = buildVehicleInfoRequest(person, typeId, null, govRegNumber, sts, tx);
+
+        VehicleInfo vehicleInfo = gibddDataService.getVehicleInfo(vehicleInfoRequest);
+
+        CarInfoComponentDto dtoResult = new CarInfoComponentDto();
+        if (vehicleInfo == null) {
+            setNotFoundError(dtoResult, govRegNumber, sts);
+            return dtoResult;
+        }
+
+        dtoResult.setVehicleInfo(vehicleInfo);
+        String vin = vehicleInfo.getVin();
+
+        if (!StringUtils.isEmpty(vin)) {
+            dtoResult.setVin(vin);
+            var federalNotaryRequest = buildFederalNotaryRequest(orderId, vin, tx);
+            var federalNotaryInfo = gibddDataService.getFederalNotaryInfo(federalNotaryRequest);
+            dtoResult.setNotaryInfo(federalNotaryInfo);
+        } else {
+            setNotFoundError(dtoResult, govRegNumber, sts);
+        }
+        return dtoResult;
+    }
+
+    private void setNotFoundError(CarInfoComponentDto dtoResult, String govRegNumber, String sts) {
+        dtoResult.setVehicleServiceCallResult(ExternalServiceCallResult.NOT_FOUND_ERROR);
+        dtoResult.setNotaryServiceCallResult(ExternalServiceCallResult.NOT_FOUND_ERROR);
+        log.error("Не определен VIN для ГРЗ=" + govRegNumber + " и СТС=" + sts);
+    }
+
 }

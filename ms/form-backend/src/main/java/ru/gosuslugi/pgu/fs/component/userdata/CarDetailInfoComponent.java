@@ -40,17 +40,16 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.VIN_ATTR;
 
 /**
  * Информация о ТС (в другом виде - более детальная)
+ * https://jira.egovdev.ru/browse/EPGUCORE-90200 - расширение для 1.4+
  */
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class CarDetailInfoComponent extends AbstractComponent<CarDetailInfoComponentDto> {
+public class CarDetailInfoComponent extends AbstractComponent<CarDetailInfoComponentDto> implements CarInfo {
 
     protected final GibddDataService gibddDataService;
     protected final UserPersonalData userPersonalData;
     private final RateLimitService rateLimitService;
-
-    public static final String GOV_REG_NUMBER = "GovRegNumber";
 
     // Версия сервиса
     private static final String VERSION = "v1";
@@ -92,22 +91,10 @@ public class CarDetailInfoComponent extends AbstractComponent<CarDetailInfoCompo
         String govRegNumber = component.getArgument(GOV_REG_NUMBER_ATTR);
         String tx = String.valueOf(component.getAttrs().get(TX_ATTR));
         String typeId = component.getArgument(TYPE_ID_ATTR);
-        if (typeId.equals(GOV_REG_NUMBER)) {
-            vin = govRegNumber;
-        }
 
         Person person = userPersonalData.getPerson();
-        VehicleInfoRequest vehicleInfoRequest = VehicleInfoRequest
-                .builder()
-                .lastName(person.getLastName())
-                .firstName(person.getFirstName())
-                .middleName(person.getMiddleName())
-                .vin(vin)
-                .sts(sts)
-                .govRegNumber(govRegNumber)
-                .tx(tx)
-                .hasSensitiveData(hasSensitiveData)
-                .build();
+        VehicleInfoRequest vehicleInfoRequest = buildVehicleInfoRequest(person, typeId, vin, govRegNumber, sts, tx);
+        vehicleInfoRequest.setHasSensitiveData(hasSensitiveData);
 
         GibddServiceResponse<VehicleFullInfo> result = new GibddServiceResponse<>();
         try {
