@@ -203,7 +203,7 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
         }
 
         if (fieldsComponent.containsKey(CHILDREN_MIDDLE_NAME_ATTR.name)) {
-            String valueMiddleName = getAttrOrEmptyString(externalData, CHILDREN_MIDDLE_NAME_ATTR.name);
+            String valueMiddleName = getAttrOrNull(externalData, CHILDREN_MIDDLE_NAME_ATTR.name);
             fieldsComponent.get(CHILDREN_MIDDLE_NAME_ATTR.name).setValue(valueMiddleName);
             childData.setMiddleName(valueMiddleName);
         }
@@ -303,7 +303,7 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
         }
 
         if (fieldsComponent.containsKey(CHILDREN_ACT_DATE_ATTR.name)) {
-            String valueActDate = getAttrOrEmptyString(externalData, CHILDREN_ACT_DATE_ATTR.name);
+            String valueActDate = getAttrOrNull(externalData, CHILDREN_ACT_DATE_ATTR.name);
             setFieldValue(fieldsComponent.get(CHILDREN_ACT_DATE_ATTR.name), valueActDate, filledFields);
             childData.setActDate(valueActDate);
         }
@@ -591,7 +591,7 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
 
     public static String getAttrOrNull(Map<String, Object> map, String key) {
         final var v = map.get(key);
-        return v != null ? v.toString() : null;
+        return v != null && StringUtils.hasText(v.toString()) ? v.toString() : null;
     }
 
     /**
