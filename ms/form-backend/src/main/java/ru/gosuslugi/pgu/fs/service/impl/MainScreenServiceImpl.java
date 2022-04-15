@@ -308,4 +308,9 @@ public class MainScreenServiceImpl extends AbstractScreenService implements Main
         ServiceDescriptor serviceDescriptor = getDescriptorService().getServiceDescriptor(serviceId);
         draftClient.saveDraft(scenarioDto, serviceId, userPersonalData.getUserId(), userPersonalData.getOrgId(), serviceDescriptor.getDraftTtl(), serviceDescriptor.getOrderTtl());
     }
+
+    @Override
+    public ServiceDescriptor getServiceDescriptor(String serviceId) {
+        return getDescriptorService().getServiceDescriptor(serviceId);
+    }
 }
