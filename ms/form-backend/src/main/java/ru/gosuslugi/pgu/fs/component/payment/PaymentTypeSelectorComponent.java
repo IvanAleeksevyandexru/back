@@ -31,22 +31,11 @@ import ru.gosuslugi.pgu.pgu_common.payment.service.BillingService;
 import ru.gosuslugi.pgu.pgu_common.payment.service.PaymentService;
 
 import java.math.BigDecimal;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static ru.gosuslugi.pgu.components.ComponentAttributes.BILL_ID_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.BILL_NUMBER_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.FULL_AMOUNT_ATTR;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.IGNORE_ORGCODE;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.ORGANIZATION_ID_ARG_KEY;
-import static ru.gosuslugi.pgu.components.ComponentAttributes.SALE_AMOUNT_ATTR;
+import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
 import static ru.gosuslugi.pgu.components.FieldComponentUtil.ACTIONS_ATTR_KEY;
 import static ru.gosuslugi.pgu.pgu_common.payment.dto.pay.PaymentPossibilityResponse.PaymentPossibilityRequestState.BILL_PAID;
 import static ru.gosuslugi.pgu.pgu_common.payment.dto.pay.PaymentPossibilityResponse.PaymentPossibilityRequestState.REQUSITE_ERROR;
@@ -55,7 +44,7 @@ import static ru.gosuslugi.pgu.pgu_common.payment.dto.pay.PaymentPossibilityResp
 
 /**
  * Компонент по поддержке способа оплаты госпошлины
- * https://jira.egovdev.ru/browse/EPGUCORE-91092 - проверка checkShowForUnusedPayments
+ * EPGUCORE-89755 - Не подтягивается оплаченная пошлина при редактировании заявления после 15ого статуса
  */
 @Slf4j
 @Component
@@ -108,7 +97,7 @@ public class PaymentTypeSelectorComponent extends AbstractPaymentComponent<Strin
     public void preProcess(FieldComponent component, ScenarioDto scenarioDto) {
         PaymentSelectorProcess paySelectProcess = new PaymentSelectorProcess(billContainerStrategy, this);
         paySelectProcess.of(component, scenarioDto)
-                .completeIf(paySelectProcess::hasDataInDisplay, paySelectProcess::setAttrsFromDisplay)
+                .executeIf(paySelectProcess::hasDataInDisplay, paySelectProcess::setAttrsFromDisplay)
                 .completeIf(paySelectProcess::isSuccessUseBillContainer)
                 .execute(paySelectProcess::componentDefaultInit)
                 .start();
@@ -171,6 +160,10 @@ public class PaymentTypeSelectorComponent extends AbstractPaymentComponent<Strin
                 .requestFullAmount(valueMap.get(FULL_AMOUNT_ATTR))
                 .requestSaleAmount(valueMap.get(SALE_AMOUNT_ATTR))
                 .build();
+    }
+
+    public PaymentPossibilityRequestState getPreviousPaymentState(FieldComponent field, String billId) {
+        return getPreviousPaymentState(field, Map.of(BILL_ID_ATTR, billId));
     }
 
     private PaymentPossibilityRequestState getPreviousPaymentState(FieldComponent field, Map<String, String> valueMap) {
@@ -302,8 +295,8 @@ public class PaymentTypeSelectorComponent extends AbstractPaymentComponent<Strin
                 .retryPaySaleAmount((Integer) displayAttrs.get(RETRY_SALE_AMOUNT))
                 .orgRequisitesResponseVersion(orgRequisitesResponseVersion)
                 .build();
-        request.setDictionaryFilterValues(request.getOrgRequisitesFilters());
-        request.setDictionaryFilterValues(request.getPayRequisitesFilters());
+        request.setDictionaryFilterValues(Objects.requireNonNullElse(request.getOrgRequisitesFilters(), new ArrayList<>()));
+        request.setDictionaryFilterValues(Objects.requireNonNullElse(request.getPayRequisitesFilters(), new ArrayList<>()));
         return request;
     }
 
@@ -341,8 +334,10 @@ public class PaymentTypeSelectorComponent extends AbstractPaymentComponent<Strin
             List<PaymentInfo> unusedPayments = paymentService.getUnusedPaymentsV3(orderId, orgCode, userPersonalData.getToken(), serviceId, applicantType, Long.parseLong(fullAmount));
             // для юр.лиц скидочная сумма совпадает с полной, но не содержит нулей после умножения на 100 (на вход передаем умноженное на 100 fullAmount)
             // поэтому сравнение с ответом делаем всегда с saleAmount, чтобы избежать обратного деления.
-            BigDecimal amountDecimal = new BigDecimal(saleAmount);
-            return unusedPayments.stream().anyMatch(it -> Objects.compare(it.getAmount(), amountDecimal, Comparator.nullsLast(BigDecimal::compareTo)) == 0);
+            if (Objects.nonNull(unusedPayments)) {
+                BigDecimal amountDecimal = new BigDecimal(saleAmount);
+                return unusedPayments.stream().anyMatch(it -> Objects.compare(it.getAmount(), amountDecimal, Comparator.nullsLast(BigDecimal::compareTo)) == 0);
+            }
         } catch (ExternalServiceException | RestClientException e) {
             log.error("Не удалось получить ранее оплаченные пошлины", e);
         }

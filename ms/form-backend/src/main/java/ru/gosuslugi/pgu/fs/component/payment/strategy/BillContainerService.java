@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static ru.gosuslugi.pgu.components.ComponentAttributes.ORGANIZATION_ID_ARG_KEY;
+import ru.gosuslugi.pgu.pgu_common.payment.dto.pay.PaymentPossibilityResponse.PaymentPossibilityRequestState;
 
 @Slf4j
 @Service
@@ -37,10 +38,20 @@ public class BillContainerService {
                     .applicantType(billContainer.getPaymentResponse().getApplicantType())
                     .orderId(billContainer.getOrderId())
                     .build();
+            setPreviousPaymentState(component, billContainer, paymentTypeSelectorComponent);
             paymentTypeSelectorComponent.processResult(component, request, billContainer.getPaymentResponse(), billContainer.getServiceId());
             return true;
         }
         return false;
+    }
+
+    private void setPreviousPaymentState(FieldComponent component, BillContainer billContainer, PaymentTypeSelectorComponent paymentTypeSelectorComponent) {
+        PaymentPossibilityResponse response = billContainer.getPaymentResponse();
+        PaymentPossibilityRequestState state = paymentTypeSelectorComponent.getPreviousPaymentState(component, response.getBillId());
+        if (state.equals(PaymentPossibilityRequestState.SERVICE_ERROR)) {
+            state = PaymentPossibilityRequestState.SUCCESS;
+        }
+        response.setState(state);
     }
 
     public void refreshBillContainer(CommonDataBox<PaymentPossibilityRequest, PaymentPossibilityResponse> box) {

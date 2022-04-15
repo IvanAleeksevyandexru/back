@@ -89,6 +89,32 @@ class PaymentTypeSelectorBillContainerSpec extends Specification {
         successActions[0]['value'] == '{"saleAmount":"80","amount":"100","billId":"12","billNumber":"18","selected":"По квитанции","hash":"1697404277"}'
     }
 
+    def 'данные в кэше и была оплата'() {
+        given:
+        FieldComponent field = createFieldComponent()
+        ScenarioDto scenario = new ScenarioDto(
+                orderId: 1,
+                display: new DisplayRequest(components: [new FieldComponent(id: "pay1", name: "Информация о платеже", type:"PaymentScr",
+                        label:"Информация о платеже")]),
+                cachedAnswers: [billContainer: new ApplicantAnswer(true, json)]
+        )
+
+        when:
+        billingServiceMock.getBillInfo(_ as String , _ as String ) >>
+                new BillInfoResponseWrapper(response: new BillInfoResponse(bills:[new BillInfo(billId: '12', billNumber: '18', isPaid: true, amount: 80)]),
+                        error: new BillInfoError(code: 0))
+        paymentServiceMock.getUnusedPaymentsV3(_ as Long, _ as String, _ as String, _ as String, _ as String, _ as Long) >> []
+
+        component.preProcess(field, scenario)
+
+        then:
+        field.attrs['state'] == 'BILL_PAID'
+        Map states = field.attrs['states'] as Map
+        List valueActions = states['BILL_PAID']['actions'] as List
+        valueActions.size() == 1
+        valueActions[0]['value'] == '{"saleAmount":"80","amount":"100","billId":"12","billNumber":"18","selected":"Подать заявление","hash":"1697404277"}'
+    }
+
     def 'данных в кэше нет, но есть в ответах - берем данные'() {
         given:
         String hashJson = new StringBuilder(json).insert(1, '\"hash\": \"1259539045\",\"billId\": \"12\",\"saleAmount\": \"180\",\"amount\": \"2100\",')
@@ -110,6 +136,29 @@ class PaymentTypeSelectorBillContainerSpec extends Specification {
         List successActions = states['SUCCESS']['actions'] as List
         successActions.size() == 1
         successActions[0]['value'] == '{"saleAmount":"180","amount":"2100","billId":"12","selected":"По квитанции","hash":"1259539045"}'
+    }
+
+    def 'данных в кэше нет, но есть в ответах, и была оплата'() {
+        given:
+        String hashJson = new StringBuilder(json).insert(1, '\"hash\": \"1259539045\",\"billId\": \"12\",\"saleAmount\": \"180\",\"amount\": \"2100\",')
+        FieldComponent field = createFieldComponent()
+        ScenarioDto scenario = new ScenarioDto(
+                orderId: 1,
+                display: new DisplayRequest(components: []),
+                applicantAnswers: [c1: new ApplicantAnswer(true, hashJson)]
+        )
+
+        when:
+        billingServiceMock.getBillInfo(_ as String , _ as String ) >> new BillInfoResponseWrapper(response: new BillInfoResponse(bills:[new BillInfo(billId: '12', billNumber: '18', isPaid: true, amount: 80)]), error: new BillInfoError(code: 0))
+        paymentServiceMock.getUnusedPaymentsV3(_ as Long, _ as String, _ as String, _ as String, _ as String, _ as Long) >> []
+        component.preProcess(field, scenario)
+
+        then:
+        field.attrs['state'] == 'BILL_PAID'
+        Map states = field.attrs['states'] as Map
+        List valueActions = states['BILL_PAID']['actions'] as List
+        valueActions.size() == 1
+        valueActions[0]['value'] == '{"saleAmount":"180","amount":"2100","billId":"12","selected":"Подать заявление","hash":"1259539045"}'
     }
 
     static def createFieldComponent() {
