@@ -8,6 +8,7 @@ import ru.gosuslugi.pgu.dto.ApplicantAnswer
 import ru.gosuslugi.pgu.dto.ScenarioDto
 import ru.gosuslugi.pgu.dto.cycled.CycledApplicantAnswers
 import ru.gosuslugi.pgu.dto.descriptor.FieldComponent
+import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor
 import ru.gosuslugi.pgu.dto.descriptor.types.ComponentType
 import ru.gosuslugi.pgu.fs.common.descriptor.MainDescriptorService
 import ru.gosuslugi.pgu.fs.common.service.*
@@ -15,6 +16,7 @@ import ru.gosuslugi.pgu.fs.common.service.impl.ComponentReferenceServiceImpl
 import ru.gosuslugi.pgu.fs.common.service.impl.JsonProcessingServiceImpl
 import ru.gosuslugi.pgu.fs.common.variable.ServiceIdVariable
 import ru.gosuslugi.pgu.fs.common.variable.VariableRegistry
+import ru.gosuslugi.pgu.fs.service.LkNotifierService
 import ru.gosuslugi.pgu.fs.utils.CalculatedAttributesHelper
 import ru.gosuslugi.pgu.fs.utils.ParseAttrValuesHelper
 import spock.lang.Specification
@@ -34,6 +36,8 @@ class ValueCalculatorComponentSpec extends Specification {
 
     private static JsonProcessingService jsonProcessingService
     private static ValueCalculatorComponent valueCalculatorComponent
+    private static ServiceDescriptor serviceDescriptor
+    private static LkNotifierService lkNotifierService
 
     private static def request = [] as MockHttpServletRequest
 
@@ -45,7 +49,9 @@ class ValueCalculatorComponentSpec extends Specification {
         def calculatedAttributesHelper = new CalculatedAttributesHelper(serviceIdVariable, parseAttrValuesHelper, null)
         def componentReferenceService = new ComponentReferenceServiceImpl(jsonProcessingService, Stub(UserCookiesService), Stub(LinkedValuesService))
         calculatedAttributesHelper.postConstruct()
-        valueCalculatorComponent = new ValueCalculatorComponent(calculatedAttributesHelper, componentReferenceService)
+        lkNotifierService = Mock(LkNotifierService)
+        serviceDescriptor = new ServiceDescriptor()
+        valueCalculatorComponent = new ValueCalculatorComponent(calculatedAttributesHelper, componentReferenceService, lkNotifierService)
         valueCalculatorComponent.jsonProcessingService = jsonProcessingService
     }
 
@@ -60,7 +66,7 @@ class ValueCalculatorComponentSpec extends Specification {
         def scenarioDto = new ScenarioDto()
 
         when:
-        valueCalculatorComponent.getInitialValue(fieldComponent, scenarioDto)
+        valueCalculatorComponent.getInitialValue(fieldComponent, scenarioDto, serviceDescriptor)
         Map<String, Object> result = jsonProcessingService.fromJson(
                 scenarioDto.getApplicantAnswerByFieldId(fieldComponent.getId()).value, Map.class
         )
@@ -75,7 +81,7 @@ class ValueCalculatorComponentSpec extends Specification {
         def scenarioDto = getScenarioDto()
 
         when:
-        valueCalculatorComponent.getInitialValue(fieldComponent, scenarioDto)
+        valueCalculatorComponent.getInitialValue(fieldComponent, scenarioDto, serviceDescriptor)
         Map<String, Object> result = JsonProcessingUtil.fromJson(
                 scenarioDto.getApplicantAnswerByFieldId(fieldComponent.getId()).value, Map.class
         )
@@ -110,7 +116,7 @@ class ValueCalculatorComponentSpec extends Specification {
         scenarioDto.setCycledApplicantAnswers(new CycledApplicantAnswers(currentAnswerId: "anysomeCurrentAnswerId"))
 
         when:
-        valueCalculatorComponent.getInitialValue(fieldComponent, scenarioDto)
+        valueCalculatorComponent.getInitialValue(fieldComponent, scenarioDto, serviceDescriptor)
         def cycledApplicantAnswers = scenarioDto.getCycledApplicantAnswers()
 
         then:
