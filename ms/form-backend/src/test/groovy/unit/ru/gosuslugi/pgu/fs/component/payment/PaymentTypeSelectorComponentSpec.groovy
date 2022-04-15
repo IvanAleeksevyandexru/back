@@ -111,6 +111,7 @@ class PaymentTypeSelectorComponentSpec extends Specification {
         ScenarioDto scenario = new ScenarioDto(orderId: 1, display: new DisplayRequest(components: [new FieldComponent(id: field.id, attrs: [a1: 'old value'])]))
 
         when:
+        paymentServiceMock.getUnusedPaymentsV3(_ as Long, _ as String, _ as String, _ as String, _ as String, _ as Long) >> []
         component.preProcess(field, scenario)
 
         then:
