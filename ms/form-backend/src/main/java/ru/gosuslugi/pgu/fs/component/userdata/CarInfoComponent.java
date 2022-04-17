@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import ru.atc.carcass.security.rest.model.person.Person;
+import ru.gosuslugi.pgu.common.core.exception.NsiExternalException;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
@@ -163,27 +164,39 @@ public class CarInfoComponent extends AbstractComponent<CarInfoComponentDto> imp
     private CarInfoComponentDto getCarInfo(String orderId, String typeId, String govRegNumber, String sts, String tx) {
         var person = userPersonalData.getPerson();
         VehicleInfoRequest vehicleInfoRequest = buildVehicleInfoRequest(person, typeId, null, govRegNumber, sts, tx);
-
-        VehicleInfo vehicleInfo = gibddDataService.getVehicleInfo(vehicleInfoRequest);
-
         CarInfoComponentDto dtoResult = new CarInfoComponentDto();
-        if (vehicleInfo == null) {
-            setNotFoundError(dtoResult, govRegNumber, sts);
+        try {
+            VehicleInfo vehicleInfo = gibddDataService.getVehicleInfo(vehicleInfoRequest);
+            if (vehicleInfo == null) {
+                setNotFoundError(dtoResult, govRegNumber, sts);
+                return dtoResult;
+            }
+
+            dtoResult.setVehicleInfo(vehicleInfo);
+            String vin = vehicleInfo.getVin();
+
+            if (!StringUtils.isEmpty(vin)) {
+                dtoResult.setVin(vin);
+                var federalNotaryRequest = buildFederalNotaryRequest(orderId, vin, tx);
+                try {
+                    var federalNotaryInfo = gibddDataService.getFederalNotaryInfo(federalNotaryRequest);
+                    dtoResult.setNotaryInfo(federalNotaryInfo);
+                } catch (NsiExternalException e) {
+                    log.error("Не удалось получить данные из сервиса Федеральной нотариальной палаты", e);
+                    dtoResult.setNotaryServiceCallResult(ExternalServiceCallResult.EXTERNAL_SERVER_ERROR);
+                    return dtoResult;
+                }
+            } else {
+                setNotFoundError(dtoResult, govRegNumber, sts);
+            }
+            return dtoResult;
+
+        } catch (NsiExternalException e) {
+            log.error("Не удалось получить данные из сервиса", e);
+            dtoResult.setVehicleServiceCallResult(ExternalServiceCallResult.EXTERNAL_SERVER_ERROR);
+            dtoResult.setNotaryServiceCallResult(ExternalServiceCallResult.NOT_FOUND_ERROR);
             return dtoResult;
         }
-
-        dtoResult.setVehicleInfo(vehicleInfo);
-        String vin = vehicleInfo.getVin();
-
-        if (!StringUtils.isEmpty(vin)) {
-            dtoResult.setVin(vin);
-            var federalNotaryRequest = buildFederalNotaryRequest(orderId, vin, tx);
-            var federalNotaryInfo = gibddDataService.getFederalNotaryInfo(federalNotaryRequest);
-            dtoResult.setNotaryInfo(federalNotaryInfo);
-        } else {
-            setNotFoundError(dtoResult, govRegNumber, sts);
-        }
-        return dtoResult;
     }
 
     private void setNotFoundError(CarInfoComponentDto dtoResult, String govRegNumber, String sts) {

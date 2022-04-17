@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestClientException;
 import ru.atc.carcass.security.rest.model.person.Person;
+import ru.gosuslugi.pgu.common.core.exception.NsiExternalException;
 import ru.gosuslugi.pgu.dto.ratelimit.RateLimitRequest;
 import ru.gosuslugi.pgu.common.core.exception.ExternalServiceException;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
@@ -103,7 +104,8 @@ public class CarDetailInfoComponent extends AbstractComponent<CarDetailInfoCompo
             if (vehicleInfo == null) {
                 result.setExternalServiceCallResult(ExternalServiceCallResult.NOT_FOUND_ERROR);
             }
-        } catch (RestClientException | ExternalServiceException e) {
+        } catch (RestClientException | ExternalServiceException | NsiExternalException e)  {
+            log.error("Не удалось получить данные из сервиса", e);
             result.setExternalServiceCallResult(ExternalServiceCallResult.EXTERNAL_SERVER_ERROR);
             result.setErrorMessage(e.getMessage());
         }
@@ -128,7 +130,7 @@ public class CarDetailInfoComponent extends AbstractComponent<CarDetailInfoCompo
         try {
             FederalNotaryInfo notaryInfo = gibddDataService.getFederalNotaryInfo(federalNotaryRequest);
             response.setData(notaryInfo);
-        } catch (ExternalServiceException | RestClientException e) {
+        } catch (ExternalServiceException | RestClientException | NsiExternalException e) {
             log.error("Не удалось получить данные из сервиса Федеральной нотариальной палаты", e);
             response.setExternalServiceCallResult(ExternalServiceCallResult.EXTERNAL_SERVER_ERROR);
             response.setErrorMessage(e.getMessage());
