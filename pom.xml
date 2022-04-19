@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>ms</module>
-        <module>lib/pgu-kafka-cli</module>
+        <module>lib</module>
     </modules>
 
     <properties>
@@ -148,16 +148,12 @@
 
     <repositories>
         <repository>
-            <id>central</id>
-            <url>https://repo1.maven.org/maven2</url>
-        </repository>
-<!--        <repository>
             <id>nexus</id>
-            <url>http://nexus.gosuslugi.local/nexus/content/groups/public/</url>
-        </repository>-->
+            <url>http://nexus.gosuslugi.local/content/repositories/epgu2/</url>
+        </repository>
         <repository>
             <id>nexus-2</id>
-            <url>http://nexus.gosuslugi.local/content/groups/public/</url>
+            <url>http://nexus.gosuslugi.local/nexus/content/groups/public/</url>
         </repository>
     </repositories>
 

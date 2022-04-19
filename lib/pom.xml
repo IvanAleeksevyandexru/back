@@ -4,16 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <artifactId>pgu2-form-backend-parent</artifactId>
         <groupId>ru.gosuslugi</groupId>
+        <artifactId>pgu2-form-backend-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.gosuslugi.pgu</groupId>
-    <artifactId>pgu2-form-backend-parent-ms</artifactId>
+    <artifactId>pgu2-form-backend-parent-lib</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <idesc.version>3.0</idesc.version>
@@ -21,8 +20,15 @@
     </properties>
 
     <modules>
-        <module>form-backend</module>
-        <module>pgu-scenario-player-service</module>
+        <module>pgu-components</module>
+        <module>pgu-common-certificate</module>
+        <module>pgu-common-eaisdo</module>
+        <module>pgu-common-gibdd</module>
+        <module>pgu-common-nsi</module>
+        <module>pgu-common-payment</module>
+        <module>pgu-common-sop</module>
+        <module>pgu-common-fs</module>
+        <module>pgu-kafka-cli</module>
     </modules>
 
     <distributionManagement>

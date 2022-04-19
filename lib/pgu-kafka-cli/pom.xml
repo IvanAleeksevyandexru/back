@@ -5,13 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>ru.gosuslugi</groupId>
-        <artifactId>pgu2-form-backend-parent</artifactId>
+        <groupId>ru.gosuslugi.pgu</groupId>
+        <artifactId>pgu2-form-backend-parent-lib</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <groupId>ru.gosuslugi.pgu</groupId>
     <artifactId>pgu-kafka-cli</artifactId>
     <version>1.0.1</version>
 
