@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>ru.gosuslugi</groupId>
+        <artifactId>pgu2-form-backend-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.gosuslugi.pgu</groupId>
+    <artifactId>pgu2-form-backend-parent-lib</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <idesc.version>3.0</idesc.version>
+        <pgu.portal.version>3.0</pgu.portal.version>
+    </properties>
+
+    <modules>
+        <module>pgu-components</module>
+        <module>pgu-common-certificate</module>
+        <module>pgu-common-eaisdo</module>
+        <module>pgu-common-gibdd</module>
+        <module>pgu-common-nsi</module>
+        <module>pgu-common-payment</module>
+        <module>pgu-common-sop</module>
+        <module>pgu-common-fs</module>
+        <module>pgu-kafka-cli</module>
+    </modules>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>http://nexus.gosuslugi.local/content/repositories/epgu2/</url>
+        </repository>
+    </distributionManagement>
+</project>

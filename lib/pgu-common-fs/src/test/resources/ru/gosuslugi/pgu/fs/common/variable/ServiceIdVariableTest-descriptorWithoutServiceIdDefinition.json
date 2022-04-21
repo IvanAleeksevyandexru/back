@@ -1,0 +1,18 @@
+{"service":"Регистрация по месту пребывания","init":"s1","draftTtl":90,"saveDraftModeEnabled":true,
+  "screens":[
+    {"id":"s1","isFirstScreen":true,"name":"Приветствие","type":"INFO","header":"Регистрация и снятие с регистрации по месту пребывания", "components":["w1"]},
+    {"id":"s2","name":"Цель","type":"QUESTION","header":"Ваша цель?", "components":["q1"]},
+    {"id":"s3","name":"Кого зарегистрировать","type":"QUESTION","header":"Кого необходимо зарегистрировать?", "components":["q2"]}
+  ],
+  "initScreens":{"Coapplicant":{"Coapplicants":"SCRspouse_first"},"Applicant":{"Applicant":"s1"},"ApprovalParent":{"Coapplicants":"SCRparent_approv_YN"},"Approval":{"Approval":"SCRowner_approv_YN"},"ChildrenAbove14":{"Coapplicants":"SCRchildrenfirst_parent"}},
+  "screenRules":{
+    "s1":[
+      {"conditions":[
+        {"field":"w1","visited":true,"value":null}],"nextDisplay":"s2"}],
+    "s2":[
+      {"conditions":[
+        {"field":"q1","visited":true,"value":"Зарегистрироваться"}],"nextDisplay":"s3"},
+      {"conditions":[
+        {"field":"q1","visited":true,"value":"Прекратить регистрацию"}],"nextDisplay":"s17"}]
+  }
+}
