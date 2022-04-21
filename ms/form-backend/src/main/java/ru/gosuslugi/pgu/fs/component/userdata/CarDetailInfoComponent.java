@@ -41,7 +41,7 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.VIN_ATTR;
 
 /**
  * Информация о ТС (в другом виде - более детальная)
- * https://jira.egovdev.ru/browse/EPGUCORE-90200 - расширение для 1.4+
+ * https://jira.egovdev.ru/browse/EPGUCORE-90200 - расширение для 1.4+ - 404
  */
 @Slf4j
 @Component
