@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 import static ru.gosuslugi.pgu.components.ComponentAttributes.*;
 
 /**
- * https://jira.egovdev.ru/browse/EPGUCORE-90200 - расширение для 1.4+ - 404
+ * https://jira.egovdev.ru/browse/EPGUCORE-90200 - расширение для 1.4+
  */
 @Slf4j
 @Component
