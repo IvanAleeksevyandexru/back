@@ -4,10 +4,10 @@ import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.PathNotFoundException;
 import lombok.Data;
 import org.springframework.util.StringUtils;
+import ru.gosuslugi.pgu.common.core.date.util.DateUtil;
 import ru.gosuslugi.pgu.common.core.json.JsonProcessingUtil;
 import ru.gosuslugi.pgu.dto.descriptor.placeholder.Placeholder;
 import ru.gosuslugi.pgu.dto.descriptor.placeholder.PlaceholderType;
-import ru.gosuslugi.pgu.common.core.date.util.DateUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -82,7 +82,7 @@ public class Reference extends Placeholder {
     private String getFieldFromContext(String field, DocumentContext documentContext) {
         try {
             Object objectValue =  documentContext.read("$." + field, Object.class);
-            return JsonProcessingUtil.toJson(objectValue);
+            return StringUtils.isEmpty(objectValue) ? "" : JsonProcessingUtil.toJson(objectValue);
         } catch (PathNotFoundException e) {
             return null;
         }
