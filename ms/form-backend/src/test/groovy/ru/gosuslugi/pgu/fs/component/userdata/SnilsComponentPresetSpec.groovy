@@ -26,6 +26,7 @@ import ru.gosuslugi.pgu.fs.service.EmpowermentService
 import ru.gosuslugi.pgu.fs.service.impl.EmpowermentServiceImpl
 import ru.gosuslugi.pgu.fs.service.impl.InitialValueFromImpl
 import ru.gosuslugi.pgu.fs.service.impl.ProtectedFieldServiceImpl
+import ru.gosuslugi.pgu.fs.service.impl.UserDataServiceImpl
 import ru.gosuslugi.pgu.fs.utils.CalculatedAttributesHelper
 import ru.gosuslugi.pgu.fs.utils.ParseAttrValuesHelper
 import spock.lang.Specification
@@ -37,6 +38,7 @@ import spock.mock.DetachedMockFactory
                 VariableRegistry,
                 UserPersonalData,
                 UserOrgData,
+                UserDataServiceImpl,
                 ProtectedFieldServiceImpl,
                 ParseAttrValuesHelper,
                 CalculatedAttributesHelper,

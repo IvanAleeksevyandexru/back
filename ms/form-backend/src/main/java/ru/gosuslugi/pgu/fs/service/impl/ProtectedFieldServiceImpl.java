@@ -8,11 +8,11 @@ import ru.atc.carcass.security.rest.model.EsiaAddress;
 import ru.atc.carcass.security.rest.model.EsiaContact;
 import ru.atc.carcass.security.rest.model.person.Person;
 import ru.atc.carcass.security.rest.model.person.PersonDoc;
-import ru.gosuslugi.pgu.common.esia.search.utils.UserDataUtils;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.fs.common.service.ProtectedFieldService;
 import ru.gosuslugi.pgu.fs.service.EmpowermentService;
+import ru.gosuslugi.pgu.fs.service.UserDataService;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
@@ -54,6 +54,7 @@ public class ProtectedFieldServiceImpl implements ProtectedFieldService {
 
     private final UserPersonalData userPersonalData;
     private final UserOrgData userOrgData;
+    private final UserDataService userDataService;
     private final EmpowermentService empowermentService;
 
     private final Map<String, Function<UserPersonalData, Object>> methodMap = new HashMap<>();
@@ -218,7 +219,7 @@ public class ProtectedFieldServiceImpl implements ProtectedFieldService {
             }
         }
         if (ORGANIZATION_USER_ROLE.equals(name)) {
-            result = UserDataUtils.isChief(userPersonalData, userOrgData);
+            result = userDataService.isChief();
         }
         if (ORGANIZATION_PHONE.equals(name)) {
             result = userOrgData.getVerifiedContactValue(ORG_PHONE_TYPE_ATTR);

@@ -13,6 +13,7 @@ import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData
 import ru.gosuslugi.pgu.fs.common.service.ProtectedFieldService
 import ru.gosuslugi.pgu.fs.service.EmpowermentService
 import ru.gosuslugi.pgu.fs.service.impl.ProtectedFieldServiceImpl
+import ru.gosuslugi.pgu.fs.service.impl.UserDataServiceImpl
 import spock.lang.Specification
 
 class ProtectedFieldServiceImplSpec extends Specification {
@@ -46,13 +47,15 @@ class ProtectedFieldServiceImplSpec extends Specification {
                 [type: 'PRG', addressStr: 'обл. Рязанская, р-н. Рязанский, д. Наумово, ул. Заречная, д. 1, кв. 12'] as EsiaAddress,
                 [type: 'PLV', addressStr: 'обл. Самарская, г. Самара, снт. СДНТ Утес, линия. 1-я, д. 22, корп. 22, кв. 22'] as EsiaAddress
         ]
-        userOrgDataMock.getChief() >> 'CHIEF'
+        userOrgDataMock.getChiefs() >> ['CHIEF']
 
         userPersonalDataMock.currentRole >> ([chief: 'CHIEF'] as EsiaRole)
         userOrgDataMock.org >> ([type: OrgType.AGENCY] as Org)
         empowermentServiceMock.userEmpowerments >> ['PWR_1', 'PWR_2', 'PWR_3']
 
-        service = new ProtectedFieldServiceImpl(userPersonalDataMock, userOrgDataMock, empowermentServiceMock)
+        def userDataServiceImpl = new UserDataServiceImpl(userPersonalDataMock, userOrgDataMock)
+
+        service = new ProtectedFieldServiceImpl(userPersonalDataMock, userOrgDataMock, userDataServiceImpl, empowermentServiceMock)
         service.init()
     }
 

@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import ru.atc.carcass.security.rest.model.EsiaContact;
 import ru.atc.carcass.security.rest.model.orgs.OrgType;
-import ru.gosuslugi.pgu.common.esia.search.utils.UserDataUtils;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserOrgData;
 import ru.gosuslugi.pgu.common.esia.search.dto.UserPersonalData;
 import ru.gosuslugi.pgu.dto.ApplicantAnswer;
@@ -16,6 +15,7 @@ import ru.gosuslugi.pgu.fs.common.service.UserCookiesService;
 import ru.gosuslugi.pgu.fs.common.variable.ServiceIdVariable;
 import ru.gosuslugi.pgu.fs.common.variable.TargetIdVariable;
 import ru.gosuslugi.pgu.fs.service.EmpowermentService;
+import ru.gosuslugi.pgu.fs.service.UserDataService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,8 +51,10 @@ import static ru.gosuslugi.pgu.components.ComponentAttributes.VERIFIED_ATTR;
 @RequiredArgsConstructor
 @Slf4j
 public class AdditionalAttributesHelper {
+
     private final UserPersonalData userPersonalData;
     private final UserOrgData userOrgData;
+    private final UserDataService userDataService;
     private final UserCookiesService userCookiesService;
     private final ServiceIdVariable serviceIdVariable;
     private final TargetIdVariable targetIdVariable;
@@ -105,10 +107,7 @@ public class AdditionalAttributesHelper {
         addConditionalAttribute(scenarioDto, SYSTEM_AUTHORITY_ATTR_NAME, () -> !StringUtils.isEmpty(userOrgData.getSystemAuthority()), userOrgData::getSystemAuthority);
         // TODO: аккуратней с написанием Supplier-ов вида userPersonalData.getCurrentRole()::getChief
         // неявно будет вызываться requiredNonNull для userPersonalData.getCurrentRole() в рантайме и будем выхватывать внезапные NPE
-        addConditionalAttribute(scenarioDto, USER_ORG_CHIEF_ATTR,
-                () -> UserDataUtils.nonNullChief(userPersonalData, userOrgData),
-                () -> String.valueOf(UserDataUtils.isChief(userPersonalData, userOrgData))
-        );
+        addNullableAttribute(scenarioDto, USER_ORG_CHIEF_ATTR, userDataService::isChief);
         addConditionalAttribute(scenarioDto, ORG_TYPE_ATTR, () -> Objects.nonNull(userOrgData.getOrg()), this::getOrgType);
         addConditionalAttribute(scenarioDto, LEG_ATTR, () -> Objects.nonNull(userOrgData.getOrg()) && !StringUtils.isBlank(userOrgData.getOrg().getLeg()), () -> userOrgData.getOrg().getLeg());
         addConditionalAttribute(scenarioDto, LEG_CODE_ATTR, () -> Objects.nonNull(userOrgData.getOrg()) && !StringUtils.isBlank(userOrgData.getOrg().getLeg()), () -> userOrgData.getOrg().getLegCode());
