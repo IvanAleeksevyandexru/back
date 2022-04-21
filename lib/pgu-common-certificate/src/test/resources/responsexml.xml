@@ -1,0 +1,30 @@
+<tns:universalCertificateResponse xmlns:tns="http://epgu.gosuslugi.ru/services-get-pf-certificate/1.1.1">
+    <tns:orderId>0</tns:orderId>
+    <tns:responseTimestamp>2001-12-17T09:30:47Z</tns:responseTimestamp>
+    <tns:certificateResponse>
+        <tns:certificateDataResponse>
+            <tns:certificateData>
+                <tns:certificateGUID>d0a79bf5-ee86-4224-9b22-a1f300ba0e83</tns:certificateGUID>
+                <tns:certificateNumber>10000000</tns:certificateNumber>
+                <tns:municipalityCode>6b1bab7d-ee45-4168-a2a6-4ce2880d90d3</tns:municipalityCode>
+                <tns:regionCode>a84b2ef4-db03-474b-b552-6229e801ae9b</tns:regionCode>
+                <tns:certificateType>0</tns:certificateType>
+                <tns:certificateCategory>
+                    <tns:certificateCategoryCode>0</tns:certificateCategoryCode>
+                    <tns:certificateCategoryName>От 5до 17лет</tns:certificateCategoryName>
+                </tns:certificateCategory>
+                <tns:registerOfPFAE>
+                    <tns:certificateBalance>10553.14</tns:certificateBalance>
+                    <tns:certificateBookedAmount>553.14</tns:certificateBookedAmount>
+                </tns:registerOfPFAE>
+                <tns:isReleasedOnRequestByEPGU>false</tns:isReleasedOnRequestByEPGU>
+            </tns:certificateData>
+            <tns:certificateOwnerData>
+                <tns:recipientLastName>Иванов</tns:recipientLastName>
+                <tns:recipientFirstName>Андрей</tns:recipientFirstName>
+                <tns:recipientPatronymic>Иванович</tns:recipientPatronymic>
+                <tns:recipientSNILS>55677424739</tns:recipientSNILS>
+            </tns:certificateOwnerData>
+        </tns:certificateDataResponse>
+    </tns:certificateResponse>
+</tns:universalCertificateResponse>

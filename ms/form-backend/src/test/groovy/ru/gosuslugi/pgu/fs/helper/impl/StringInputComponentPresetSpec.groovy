@@ -21,6 +21,7 @@ import ru.gosuslugi.pgu.fs.common.variable.VariableRegistry
 import ru.gosuslugi.pgu.fs.service.EmpowermentService
 import ru.gosuslugi.pgu.fs.service.impl.InitialValueFromImpl
 import ru.gosuslugi.pgu.fs.service.impl.ProtectedFieldServiceImpl
+import ru.gosuslugi.pgu.fs.service.impl.UserDataServiceImpl
 import ru.gosuslugi.pgu.fs.utils.CalculatedAttributesHelper
 import ru.gosuslugi.pgu.fs.utils.ParseAttrValuesHelper
 import spock.lang.Shared
@@ -47,7 +48,12 @@ class StringInputComponentPresetSpec extends Specification {
         ServiceIdVariable serviceIdVariable = Stub(ServiceIdVariable)
         VariableRegistry variableRegistry = new VariableRegistry()
         EmpowermentService empowermentServiceMock = Mock(EmpowermentService)
-        ProtectedFieldService protectedFieldService = new ProtectedFieldServiceImpl(new UserPersonalData(), new UserOrgData(), empowermentServiceMock)
+        ProtectedFieldService protectedFieldService = new ProtectedFieldServiceImpl(
+                new UserPersonalData(),
+                new UserOrgData(),
+                new UserDataServiceImpl(new UserPersonalData(), new UserOrgData()),
+                empowermentServiceMock
+        )
         ParseAttrValuesHelper parseAttrValuesHelper = new ParseAttrValuesHelper(variableRegistry, jsonProcessingService, null)
         CalculatedAttributesHelper calculatedAttributesHelper = new CalculatedAttributesHelper(serviceIdVariable, parseAttrValuesHelper, null)
         calculatedAttributesHelper.postConstruct()
@@ -62,7 +68,7 @@ class StringInputComponentPresetSpec extends Specification {
                 protectedFieldService,
                 variableRegistry
         )
-        EvaluationExpressionService evaluationExpressionService = new EvaluationExpressionServiceImpl();
+        EvaluationExpressionService evaluationExpressionService = new EvaluationExpressionServiceImpl()
 
         stringInputComponent = new StringInputComponent(initialValueFromService, conditionCheckerHelper, evaluationExpressionService)
     }

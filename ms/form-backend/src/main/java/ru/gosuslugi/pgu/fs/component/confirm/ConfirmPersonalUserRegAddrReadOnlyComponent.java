@@ -149,6 +149,12 @@ public class ConfirmPersonalUserRegAddrReadOnlyComponent
             return;
         }
 
+        //TODO Не заполненный индекс может приходить из профиля пользователя. После исправления (EPGUCORE-91536) эту проверку можно удалить.
+        if (nonNull(initialValue) && isBlank(initialValue.getRegAddr().getPostalCode())) {
+            incorrectAnswers.put(entry.getKey(), "Необходимо указать индекс");
+            return;
+        }
+
         Set<String> fields = BasicComponentUtil.getPreSetFields(fieldComponent);
         if (fields.contains(REG_DATE_ATTR)) {
             ConfirmPersonalUserRegAddressReadOnly address = JsonProcessingUtil.fromJson(

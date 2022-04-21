@@ -23,6 +23,7 @@ import ru.gosuslugi.pgu.fs.common.component.ComponentResponse;
 import ru.gosuslugi.pgu.fs.common.exception.FormBaseWorkflowException;
 import ru.gosuslugi.pgu.fs.component.FormDto;
 import ru.gosuslugi.pgu.fs.component.confirm.model.ConfirmLegalData;
+import ru.gosuslugi.pgu.fs.service.UserDataService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +63,7 @@ public class ConfirmLegalDataComponent extends AbstractComponent<FormDto<Confirm
     private static final String RED_LINE_ICON = "red-line";
 
     private final UserOrgData userOrgData;
+    private final UserDataService userDataService;
 
     @Override
     public ComponentType getType() {
@@ -179,11 +181,14 @@ public class ConfirmLegalDataComponent extends AbstractComponent<FormDto<Confirm
             Map<String, FieldDto> fields,
             List<FieldDto> chiefFields
     ) {
-        Person chief = userOrgData.getChief();
+        final Optional<Person> chiefOptional = userDataService.searchChiefIdenticalToCurrentUser()
+                .or(userDataService::searchAnyChief);
 
-        if (Objects.isNull(chief)) {
+        if (chiefOptional.isEmpty()) {
             throw new FormBaseWorkflowException(UNABLE_TO_GET_CHIEF_DATA);
         }
+
+        final Person chief = chiefOptional.get();
 
         if (fields.containsKey(ORG_CHIEF_FIRST_NAME_ATTR)) {
             storedValues.setChiefFirstName(chief.getFirstName());
@@ -232,7 +237,8 @@ public class ConfirmLegalDataComponent extends AbstractComponent<FormDto<Confirm
         FormDto<ConfirmLegalData> formDto = JsonProcessingUtil.fromJson(answer.getValue(), new TypeReference<>() {});
         ConfirmLegalData storedValues = formDto.getStoredValues();
         storedValues.setChiefOid(
-                Optional.ofNullable(userOrgData.getChief())
+                userDataService.searchChiefIdenticalToCurrentUser()
+                        .or(userDataService::searchAnyChief)
                         .map(Person::getUserId)
                         .orElseThrow(() -> new FormBaseWorkflowException(UNABLE_TO_GET_CHIEF_DATA))
         );

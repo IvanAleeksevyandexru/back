@@ -6,13 +6,10 @@
         <artifactId>pgu2-form-backend-parent-ms</artifactId>
         <groupId>ru.gosuslugi.pgu</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.gosuslugi.pgu</groupId>
     <artifactId>pgu-form-backend</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <nvision-portal.version>3.0</nvision-portal.version>
@@ -56,13 +53,13 @@
         <!--        inner dependencies-->
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
-            <artifactId>pgu-fs-common</artifactId>
-            <version>${epgu2.sf.lib.version}</version>
+            <artifactId>pgu-common-fs</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
             <artifactId>pgu-components</artifactId>
-            <version>${epgu2.sf.lib.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
@@ -72,17 +69,17 @@
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
             <artifactId>pgu-common-nsi</artifactId>
-            <version>${epgu2.sf.lib.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
             <artifactId>pgu-common-sop</artifactId>
-            <version>${epgu2.sf.lib.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
             <artifactId>pgu-common-gibdd</artifactId>
-            <version>${epgu2.sf.lib.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
@@ -113,7 +110,6 @@
             <version>${epgu2.sf.lib.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
@@ -140,7 +136,7 @@
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
             <artifactId>pgu-common-payment</artifactId>
-            <version>${epgu2.sf.lib.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
@@ -150,7 +146,7 @@
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
             <artifactId>pgu-common-certificate</artifactId>
-            <version>${epgu2.sf.lib.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
@@ -160,7 +156,7 @@
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
             <artifactId>pgu-common-eaisdo</artifactId>
-            <version>${epgu2.sf.lib.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
@@ -355,8 +351,8 @@
                     </includes>
                 </configuration>
             </plugin>
-            <!-- Code Coverage report generation 
-            see visualized report in /target/site/jacoco/index.html 
+            <!-- Code Coverage report generation
+            see visualized report in /target/site/jacoco/index.html
             look for a jvm compatibility on https://www.jacoco.org/jacoco/trunk/doc/changes.html-->
             <plugin>
                 <groupId>org.jacoco</groupId>

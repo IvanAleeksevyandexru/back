@@ -1,0 +1,25 @@
+{
+  "if": [
+    {
+      "and": [
+        {
+          "notEmpty": [
+            "protected.omsNumber"
+          ]
+        },
+        {
+          "notEmpty": [
+            "protected.omsIssuePlace"
+          ]
+        },
+        {
+          "notEmpty": [
+            "protected.omsIssuedBy"
+          ]
+        }
+      ]
+    },
+    "Yes",
+    "No"
+  ]
+}

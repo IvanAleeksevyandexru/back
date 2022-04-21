@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>pgu-scenario-player-service</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <nvision-portal.version>3.0</nvision-portal.version>
@@ -44,13 +43,13 @@
         <!--        inner dependencies-->
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
-            <artifactId>pgu-fs-common</artifactId>
-            <version>${epgu2.sf.lib.version}</version>
+            <artifactId>pgu-common-fs</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>ru.gosuslugi.pgu</groupId>
             <artifactId>pgu-components</artifactId>
-            <version>${epgu2.sf.lib.version}</version>
+            <version>${project.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>ru.gosuslugi.pgu</groupId>

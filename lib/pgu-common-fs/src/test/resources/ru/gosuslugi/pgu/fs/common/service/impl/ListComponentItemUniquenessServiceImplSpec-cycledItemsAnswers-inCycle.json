@@ -1,0 +1,266 @@
+[
+  {
+    "id": "7459906",
+    "uniqueKeys": [
+      "99e3769a9cf02f4c8a33451d3ae924d5",
+      "92debaaec7301f84889d1df0018ca164",
+      "acd41b5fc27242d19c244185ba6732f2",
+      "acd41b5fc27242d19c244185ba6732f2",
+      "68934a3e9455fa72420237eb05902327"
+    ],
+    "fieldToId": {
+      "isNew": "ai7_6",
+      "middleName": "ai7_5",
+      "firstName": "ai7_4",
+      "lastName": "ai7_3",
+      "gender": "ai7_2",
+      "birthDate": "ai7_1",
+      "id": "ai7_0",
+      "birthPlaceLocality": "cfai11"
+    },
+    "itemAnswers": {
+      "ai7_6": {
+        "visited": true,
+        "value": "false"
+      },
+      "ai7_5": {
+        "visited": true,
+        "value": "Игоревич"
+      },
+      "ai7_4": {
+        "visited": true,
+        "value": "Иван"
+      },
+      "ai7_3": {
+        "visited": true,
+        "value": "Каменев"
+      },
+      "ai7_2": {
+        "visited": true,
+        "value": "M"
+      },
+      "ai7_1": {
+        "visited": true,
+        "value": "2017-01-01T00:00:00.000Z"
+      },
+      "ai7_0": {
+        "visited": true,
+        "value": "7459906"
+      },
+      "bd6": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Каменев Иван Игоревич\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"01.01.2017\"}]},{\"groupName\":\"Свидетельство о рождении\",\"fields\":[{\"label\":\"Серия и Номер\",\"value\":\"V-ДД 123456\"},{\"label\":\"Актовая запись\",\"value\":\"-\"},{\"label\":\"Дата выдачи\",\"value\":\"09.01.2017\"},{\"label\":\"Кем выдан\",\"value\":\"Спб\"}]}],\"storedValues\":{\"firstName\":\"Иван\",\"middleName\":\"Игоревич\",\"lastName\":\"Каменев\",\"birthDate\":\"01.01.2017\",\"rfBirthCertificateSeries\":\"V-ДД\",\"rfBirthCertificateNumber\":\"123456\",\"rfBirthCertificateActNumber\":\"-\",\"rfBirthCertificateIssueDate\":\"09.01.2017\",\"rfBirthCertificateIssuedBy\":\"Спб\"},\"errors\":[]}"
+      },
+      "qc1": {
+        "visited": true,
+        "value": "0"
+      },
+      "cl2": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":\"город\",\"streetShortType\":\"ул\",\"additionalStreetShortType\":\"\",\"postalCode\":null,\"districtType\":\"\",\"geoLat\":\"57.1529744\",\"building2Type\":\"\",\"okato\":\"71401000000\",\"building1Type\":\"\",\"regionType\":\"область\",\"additionalStreet\":\"\",\"lat\":\"57.1529744\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"65.5344099\",\"index\":\"625000\",\"townShortType\":\"\",\"district\":\"\",\"fullAddress\":\"625000, обл. Тюменская, г. Тюмень, ул. Николая Глотова, д. 45, кв. 2\",\"houseCheckbox\":false,\"oktmoName\":null,\"region\":\"Тюменская\",\"geoLon\":\"65.5344099\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"Тюмень\",\"apartmentShortType\":\"кв\",\"house\":\"45\",\"apartmentCheckbox\":false,\"townType\":\"\",\"additionalAreaType\":\"\",\"regionShortType\":\"обл\",\"regionCode\":\"72\",\"districtShortType\":\"\",\"street\":\"Николая Глотова\",\"additionalStreetType\":\"\",\"inCityDistShortType\":\"\",\"additionalAreaShortType\":\"\",\"cityShortType\":\"г\",\"kladrCode\":\"72000001000086400\",\"building1ShortType\":\"\",\"fiasCode\":\"647b9266-25c0-4e7d-b1aa-32697de602ef\",\"hasErrors\":0,\"inCityDistType\":\"\",\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"обл. Тюменская, г. Тюмень, ул. Николая Глотова\",\"oktmo\":null,\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":\"\",\"apartment\":\"2\"},\"regDate\":\"01.06.2021\"}"
+      },
+      "cai1": {
+        "visited": true,
+        "value": ""
+      },
+      "cai2": {
+        "visited": true,
+        "value": "{\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}},\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\"}"
+      },
+      "cfai11": {
+        "visited": true,
+        "value": "Аб"
+      },
+      "infoComponent": {
+        "visited": true,
+        "value": "{\"name\":\"Иван\",\"ageText\":\"4 года\",\"ageType\":\"YOUNG\",\"gender\":\"M\"}"
+      },
+      "fu_childrenunder14": {
+        "visited": true,
+        "value": "{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"children7459906\",\"value\":[{\"fileUid\":1886914141,\"metaId\":1878685252,\"objectId\":763901138,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.children7459906.0\",\"fileName\":\"EjRqctBWAAAHdZ-.jpg\",\"fileExt\":\"jpg\",\"fileSize\":68020,\"mimeType\":\"image/jpeg\",\"hasSign\":false,\"created\":\"2021-06-02\",\"updated\":\"2021-06-02\",\"realPath\":\"14/0/0/0/0/0/377/gbDjDSi9x2Ip\",\"deleted\":false,\"bucket\":\"epgu202106\",\"nodeId\":\"f_dc\",\"userId\":1000298933,\"alternativeMimeTypes\":[],\"uploaded\":true}],\"required\":true}]}"
+      }
+    },
+    "cachedAnswers": {
+      "ai7_6": {
+        "visited": true,
+        "value": "false"
+      },
+      "ai7_5": {
+        "visited": true,
+        "value": "Игоревич"
+      },
+      "ai7_4": {
+        "visited": true,
+        "value": "Иван"
+      },
+      "ai7_3": {
+        "visited": true,
+        "value": "Каменев"
+      },
+      "ai7_2": {
+        "visited": true,
+        "value": "M"
+      },
+      "ai7_1": {
+        "visited": true,
+        "value": "2017-01-01T00:00:00.000Z"
+      },
+      "ai7_0": {
+        "visited": true,
+        "value": "7459906"
+      },
+      "bd6": {
+        "visited": true,
+        "value": "{\"states\":[{\"groupName\":\"Каменев Иван Игоревич\",\"fields\":[{\"label\":\"Дата рождения\",\"value\":\"01.01.2017\"}]},{\"groupName\":\"Свидетельство о рождении\",\"fields\":[{\"label\":\"Серия и Номер\",\"value\":\"V-ДД 123456\"},{\"label\":\"Актовая запись\",\"value\":\"-\"},{\"label\":\"Дата выдачи\",\"value\":\"09.01.2017\"},{\"label\":\"Кем выдан\",\"value\":\"Спб\"}]}],\"storedValues\":{\"firstName\":\"Иван\",\"middleName\":\"Игоревич\",\"lastName\":\"Каменев\",\"birthDate\":\"01.01.2017\",\"rfBirthCertificateSeries\":\"V-ДД\",\"rfBirthCertificateNumber\":\"123456\",\"rfBirthCertificateActNumber\":\"-\",\"rfBirthCertificateIssueDate\":\"09.01.2017\",\"rfBirthCertificateIssuedBy\":\"Спб\"},\"errors\":[]}"
+      },
+      "qc1": {
+        "visited": true,
+        "value": "0"
+      },
+      "cl2": {
+        "visited": true,
+        "value": "{\"regAddr\":{\"cityType\":\"город\",\"streetShortType\":\"ул\",\"additionalStreetShortType\":\"\",\"postalCode\":null,\"districtType\":\"\",\"geoLat\":\"57.1529744\",\"building2Type\":\"\",\"okato\":\"71401000000\",\"building1Type\":\"\",\"regionType\":\"область\",\"additionalStreet\":\"\",\"lat\":\"57.1529744\",\"apartmentCheckboxClosed\":false,\"houseCheckboxClosed\":false,\"streetType\":\"улица\",\"town\":\"\",\"lng\":\"65.5344099\",\"index\":\"625000\",\"townShortType\":\"\",\"district\":\"\",\"fullAddress\":\"625000, обл. Тюменская, г. Тюмень, ул. Николая Глотова, д. 45, кв. 2\",\"houseCheckbox\":false,\"oktmoName\":null,\"region\":\"Тюменская\",\"geoLon\":\"65.5344099\",\"additionalArea\":\"\",\"apartmentType\":\"квартира\",\"city\":\"Тюмень\",\"apartmentShortType\":\"кв\",\"house\":\"45\",\"apartmentCheckbox\":false,\"townType\":\"\",\"additionalAreaType\":\"\",\"regionShortType\":\"обл\",\"regionCode\":\"72\",\"districtShortType\":\"\",\"street\":\"Николая Глотова\",\"additionalStreetType\":\"\",\"inCityDistShortType\":\"\",\"additionalAreaShortType\":\"\",\"cityShortType\":\"г\",\"kladrCode\":\"72000001000086400\",\"building1ShortType\":\"\",\"fiasCode\":\"647b9266-25c0-4e7d-b1aa-32697de602ef\",\"hasErrors\":0,\"inCityDistType\":\"\",\"houseType\":\"дом\",\"inCityDist\":\"\",\"addressStr\":\"обл. Тюменская, г. Тюмень, ул. Николая Глотова\",\"oktmo\":null,\"building1\":\"\",\"building2\":\"\",\"houseShortType\":\"д\",\"building2ShortType\":\"\",\"apartment\":\"2\"},\"regDate\":\"01.06.2021\"}"
+      },
+      "cai1": {
+        "visited": true,
+        "value": ""
+      },
+      "cai2": {
+        "visited": true,
+        "value": "{\"originalItem\":{\"value\":\"ABH\",\"parentValue\":null,\"title\":\"АБХАЗИЯ\",\"isLeaf\":true,\"children\":[],\"attributes\":[],\"source\":null,\"attributeValues\":{}},\"id\":\"ABH\",\"text\":\"АБХАЗИЯ\"}"
+      },
+      "cfai11": {
+        "visited": true,
+        "value": "Аб"
+      },
+      "infoComponent": {
+        "visited": true,
+        "value": "{\"name\":\"Иван\",\"ageText\":\"4 года\",\"ageType\":\"YOUNG\",\"gender\":\"M\"}"
+      },
+      "fu_childrenunder14": {
+        "visited": true,
+        "value": "{\"id\":\"fu_childrenunder14\",\"type\":\"FileUploadComponent\",\"uploads\":[{\"uploadId\":\"children7459906\",\"value\":[{\"fileUid\":1886914141,\"metaId\":1878685252,\"objectId\":763901138,\"objectTypeId\":2,\"mnemonic\":\"fu_childrenunder14.FileUploadComponent.children7459906.0\",\"fileName\":\"EjRqctBWAAAHdZ-.jpg\",\"fileExt\":\"jpg\",\"fileSize\":68020,\"mimeType\":\"image/jpeg\",\"hasSign\":false,\"created\":\"2021-06-02\",\"updated\":\"2021-06-02\",\"realPath\":\"14/0/0/0/0/0/377/gbDjDSi9x2Ip\",\"deleted\":false,\"bucket\":\"epgu202106\",\"nodeId\":\"f_dc\",\"userId\":1000298933,\"alternativeMimeTypes\":[],\"uploaded\":true}],\"required\":true}]}"
+      }
+    },
+    "esiaData": {
+      "lastName": "Каменев",
+      "rfBirthCertificateIssueDate": "2017-01-09T00:00:00Z",
+      "gender": "M",
+      "omsNumber": "7852110823003091",
+      "regDate": "",
+      "isNew": "false",
+      "relationshipToChild": "",
+      "birthDate": "2017-01-01T00:00:00.000Z",
+      "regAddr": "",
+      "firstName": "Иван",
+      "rfBirthCertificateIssuedBy": "Спб",
+      "rfBirthCertificateSeries": "V-ДД",
+      "middleName": "Игоревич",
+      "id": "7459906",
+      "rfBirthCertificateNumber": "123456",
+      "snils": "985-102-088 16",
+      "rfBirthCertificateActNumber": "-",
+      "birthPlaceLocality": "Аб"
+    },
+    "finishedScreens": [
+      "scrchld2_1",
+      "scrchld3",
+      "scrchld4",
+      "SCRbirthplacemain_children",
+      "fileuploadscr_childrenunder14"
+    ]
+  },
+  {
+    "id": "1c9a55ab-e1c8-4622-9fd2-2a95afb6336c",
+    "uniqueKeys": [
+      "",
+      "",
+      "970095abe0b5c87fb9109719a9d2347a",
+      "970095abe0b5c87fb9109719a9d2347a",
+      "b326b5062b2f0e69046810717534cb09"
+    ],
+    "fieldToId": {
+      "isNew": "ai7_6",
+      "middleName": "ai7_5",
+      "firstName": "ai7_4",
+      "lastName": "ai7_3",
+      "gender": "ai7_2",
+      "birthDate": "ai7_1",
+      "id": "ai7_0",
+      "rfBirthCertificateSeries": "bd1",
+      "rfBirthCertificateNumber": "bd2"
+    },
+    "itemAnswers": {
+      "ai7_6": {
+        "visited": true,
+        "value": "true"
+      },
+      "ai7_5": {
+        "visited": true,
+        "value": "Марияновна"
+      },
+      "ai7_4": {
+        "visited": true,
+        "value": "Мария"
+      },
+      "ai7_3": {
+        "visited": true,
+        "value": "Мариевна"
+      },
+      "ai7_2": {
+        "visited": true,
+        "value": "F"
+      },
+      "ai7_1": {
+        "visited": true,
+        "value": "2021-06-01T00:00:00.000+03:00"
+      },
+      "ai7_0": {
+        "visited": true,
+        "value": "1c9a55ab-e1c8-4622-9fd2-2a95afb6336c"
+      }
+    },
+    "cachedAnswers": {
+      "ai7_6": {
+        "visited": true,
+        "value": "true"
+      },
+      "ai7_5": {
+        "visited": true,
+        "value": "Марияновна"
+      },
+      "ai7_4": {
+        "visited": true,
+        "value": "Мария"
+      },
+      "ai7_3": {
+        "visited": true,
+        "value": "Мариевна"
+      },
+      "ai7_2": {
+        "visited": true,
+        "value": "F"
+      },
+      "ai7_1": {
+        "visited": true,
+        "value": "2021-06-01T00:00:00.000+03:00"
+      },
+      "ai7_0": {
+        "visited": true,
+        "value": "1c9a55ab-e1c8-4622-9fd2-2a95afb6336c"
+      }
+    },
+    "esiaData": {
+      "isNew": "true",
+      "middleName": "Марияновна",
+      "firstName": "Мария",
+      "lastName": "Мариевна",
+      "gender": "F",
+      "birthDate": "2021-06-01T00:00:00.000+03:00",
+      "id": "1c9a55ab-e1c8-4622-9fd2-2a95afb6336c",
+      "rfBirthCertificateSeries": "V-ДД",
+      "rfBirthCertificateNumber": "123456"
+    },
+    "finishedScreens": []
+  }
+]

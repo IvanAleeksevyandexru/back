@@ -32,6 +32,7 @@ import ru.gosuslugi.pgu.fs.pgu.client.impl.PguUtilsClientImpl
 import ru.gosuslugi.pgu.fs.service.impl.EmpowermentServiceImpl
 import ru.gosuslugi.pgu.fs.service.impl.InitialValueFromImpl
 import ru.gosuslugi.pgu.fs.service.impl.ProtectedFieldServiceImpl
+import ru.gosuslugi.pgu.fs.service.impl.UserDataServiceImpl
 import ru.gosuslugi.pgu.fs.utils.CalculatedAttributesHelper
 import ru.gosuslugi.pgu.fs.utils.ParseAttrValuesHelper
 import ru.gosuslugi.pgu.sd.storage.client.ServiceDescriptorClientImpl
@@ -110,7 +111,8 @@ class ComponentTestUtil extends Specification {
                 new PguUtilsClientImpl(restTemplate, userPersonalData),
         )
         def variableRegistry = new VariableRegistry()
-        def protectedFieldService = new ProtectedFieldServiceImpl(userPersonalData, userOrgData, empowermentService)
+        def userDataService = new UserDataServiceImpl(userPersonalData, userOrgData)
+        def protectedFieldService = new ProtectedFieldServiceImpl(userPersonalData, userOrgData, userDataService, empowermentService)
         def parseAttrValuesHelper = new ParseAttrValuesHelper(variableRegistry, jsonProcessingService, protectedFieldService)
 
         def serviceDescriptorClient = new ServiceDescriptorClientImpl(restTemplate, new ServiceDescriptorClientProperties())
@@ -168,7 +170,8 @@ class ComponentTestUtil extends Specification {
                 new PguEmpowermentClientImplV2(restTemplate),
                 new PguUtilsClientImpl(restTemplate, userPersonalData),
         )
-        def protectedFieldService = new ProtectedFieldServiceImpl(userPersonalData, userOrgData, empowermentService)
+        def userDataService = new UserDataServiceImpl(userPersonalData, userOrgData)
+        def protectedFieldService = new ProtectedFieldServiceImpl(userPersonalData, userOrgData, userDataService, empowermentService)
         def variableRegistry = new VariableRegistry()
         def conditionCheckerHelper = new ConditionCheckerHelper(
                 new StringPredicateFactory(),
