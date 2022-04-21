@@ -188,7 +188,7 @@ class AdditionalAttributesHelperSpec extends Specification {
         userOrgData.getOrgRole() >> new EsiaRole(
                 chief: "chief"
         )
-        userOrgData.getChief() >> "chief"
+        userOrgData.getChiefs() >> ["chief"]
 
         def empowermentService = Mock(EmpowermentService)
         empowermentService.getUserEmpowerments()>>Set.of("1000234")
@@ -196,6 +196,7 @@ class AdditionalAttributesHelperSpec extends Specification {
         AdditionalAttributesHelper attributesHelper = new AdditionalAttributesHelper(
                 userPersonalData,
                 userOrgData,
+                new UserDataServiceImpl(userPersonalData, userOrgData),
                 userCookiesService,
                 serviceIdVariable,
                 targetIdVariable,
@@ -205,7 +206,7 @@ class AdditionalAttributesHelperSpec extends Specification {
     }
 
     def "getMasterAttributeName"() {
-        AdditionalAttributesHelper attributesHelper = new AdditionalAttributesHelper(null, null, null, null, null, null)
+        AdditionalAttributesHelper attributesHelper = new AdditionalAttributesHelper(null, null, null, null, null, null, null)
 
         when:
         def actualResult = attributesHelper.getMasterAttributeName(attributeName)

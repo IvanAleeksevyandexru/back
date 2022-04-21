@@ -22,6 +22,7 @@ import ru.gosuslugi.pgu.fs.component.ComponentTestUtil
 import ru.gosuslugi.pgu.fs.service.EmpowermentService
 import ru.gosuslugi.pgu.fs.service.impl.InitialValueFromImpl
 import ru.gosuslugi.pgu.fs.service.impl.ProtectedFieldServiceImpl
+import ru.gosuslugi.pgu.fs.service.impl.UserDataServiceImpl
 import ru.gosuslugi.pgu.fs.utils.CalculatedAttributesHelper
 import ru.gosuslugi.pgu.fs.utils.ParseAttrValuesHelper
 import spock.lang.Shared
@@ -38,7 +39,12 @@ class StringInputComponentTest extends Specification {
     @Shared
     EmpowermentService empowermentServiceMock = Mock(EmpowermentService)
     @Shared
-    ProtectedFieldService protectedFieldService = new ProtectedFieldServiceImpl(new UserPersonalData(), new UserOrgData(), empowermentServiceMock)
+    ProtectedFieldService protectedFieldService = new ProtectedFieldServiceImpl(
+            new UserPersonalData(),
+            new UserOrgData(),
+            new UserDataServiceImpl(new UserPersonalData(), new UserOrgData()),
+            empowermentServiceMock
+    )
     @Shared
     ObjectMapper objectMapper = JsonProcessingUtil.getObjectMapper()
     @Shared
