@@ -18,14 +18,20 @@ enum ChildAttributes {
     CHILDREN_SNILS_ATTR("snils"),
     /** Серия свидетельства о рождении */
     CHILDREN_RF_BIRTH_CERTIFICATE_SERIES_ATTR("rfBirthCertificateSeries"),
+    /** Серия иностранного свидетельства о рождении */
+    CHILDREN_FOREIGN_BIRTH_CERTIFICATE_SERIES_ATTR("foreignBirthCertificateSeries"),
     /** Номер свидетельства о рождении */
     CHILDREN_RF_BIRTH_CERTIFICATE_NUMBER_ATTR("rfBirthCertificateNumber"),
+    /** Номер иностранного свидетельства о рождении */
+    CHILDREN_FOREIGN_BIRTH_CERTIFICATE_NUMBER_ATTR("foreignBirthCertificateNumber"),
     /** Номер актовой записи */
     CHILDREN_RF_BIRTH_CERTIFICATE_ACT_NUMBER_ATTR("rfBirthCertificateActNumber"),
     /** Дата выдачи свидетельства */
     CHILDREN_RF_BIRTH_CERTIFICATE_ISSUE_DATE_ATTR("rfBirthCertificateIssueDate"),
     /** Название органа выдавшего свидетельство */
     CHILDREN_RF_BIRTH_CERTIFICATE_ISSUED_BY_ATTR("rfBirthCertificateIssuedBy"),
+    /** Название иностранного органа выдавшего свидетельство */
+    CHILDREN_FOREIGN_BIRTH_CERTIFICATE_ISSUED_BY_ATTR("foreignBirthCertificateIssuedBy"),
     /** Дата актовой записи */
     CHILDREN_ACT_DATE_ATTR("actDate"),
 

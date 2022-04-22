@@ -361,6 +361,7 @@ class ConfirmChildDataComponentTest extends Specification {
         ComponentTestUtil.setAbstractComponentServices(component)
         def seriesErrorMsg = 'Серия свидетельства не более 2 символов'
         def numberErrorMsg = 'Номер свидетельства может содержать только цифры'
+        def foreignBirthErrorMsg = 'Поле может содержать только русские буквы'
 
         def fieldComponent = [type: ComponentType.ConfirmChildData, attrs: [
                 fields: [
@@ -372,6 +373,9 @@ class ConfirmChildDataComponentTest extends Specification {
                         ]]],
                         [fieldName: "foreignBirthCertificateNumber", attrs: ["validation": [
                                 [type: "RegExp", value: '^\\d+$', errorMsg: numberErrorMsg],
+                        ]]],
+                        [fieldName: "foreignBirthCertificateIssuedBy", attrs: ["validation": [
+                                [type: "RegExp", value: '^[-«».,/;:№\'"()а-яА-ЯЁё 0-9]+$', errorMsg: foreignBirthErrorMsg],
                         ]]],
                 ]]] as FieldComponent
 
@@ -388,12 +392,13 @@ class ConfirmChildDataComponentTest extends Specification {
         then:
         seriesValid == !fieldComponent.getValue().contains(seriesErrorMsg)
         numberValid == !fieldComponent.getValue().contains(numberErrorMsg)
+        foreignBirth == !fieldComponent.getValue().contains(foreignBirthErrorMsg)
 
         where:
-        certificateType | seriesValid | numberValid
-        FOREIGN_BRTH_CERT_TYPE | false       | false
-        BRTH_CERT_TYPE | true       | true
-        RF_BRTH_CERT_TYPE  | true        | true
+        certificateType        | seriesValid | numberValid | foreignBirth
+        FOREIGN_BRTH_CERT_TYPE | false       | false       | true
+        BRTH_CERT_TYPE         | true        | true        | true
+        RF_BRTH_CERT_TYPE      | true        | true        | true
     }
 
     def 'actDate validation'() {
