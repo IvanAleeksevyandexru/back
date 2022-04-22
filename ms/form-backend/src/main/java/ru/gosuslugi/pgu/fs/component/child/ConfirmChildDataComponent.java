@@ -51,6 +51,9 @@ import static ru.gosuslugi.pgu.dto.descriptor.types.ComponentType.ConfirmChildDa
 import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_ACT_DATE_ATTR;
 import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_BIRTH_DATE_ATTR;
 import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_FIRST_NAME_ATTR;
+import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_FOREIGN_BIRTH_CERTIFICATE_ISSUED_BY_ATTR;
+import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_FOREIGN_BIRTH_CERTIFICATE_NUMBER_ATTR;
+import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_FOREIGN_BIRTH_CERTIFICATE_SERIES_ATTR;
 import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_GENDER_ATTR;
 import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_LAST_NAME_ATTR;
 import static ru.gosuslugi.pgu.fs.component.child.ChildAttributes.CHILDREN_MIDDLE_NAME_ATTR;
@@ -96,6 +99,7 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
     private static final String BIRTH_CERTIFICATE_ISSUED_DATE_NOT_VALID = "Проверьте дату выдачи свидетельства о рождении";
     private static final String BIRTH_CERTIFICATE_TYPE_NOT_VALID = "Проверьте верно ли указан/указан ли тип свидетельства о рождении";
     public static final String FOREIGN_BRTH_CERT_TYPE = "FID_BRTH_CERT";
+    public static final String BRTH_CERT_TYPE = "BRTH_CERT";
     public static final Set<String> RF_LIKE_CERT_TYPES = Set.of("RF_BRTH_CERT", "BRTH_CERT", "OLD_BRTH_CERT");
 
     private final UserPersonalData userPersonalData;
@@ -453,7 +457,7 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
             }
         }
 
-        if (!childData.getDocType().contains("BRTH_CERT")) { // на проде помимо RF_BRTH_CERT и FID_BRTH_CERT может быть ещё и просто "BRTH_CERT" тип.
+        if (!childData.getDocType().contains(BRTH_CERT_TYPE)) { // на проде помимо RF_BRTH_CERT и FID_BRTH_CERT может быть ещё и просто "BRTH_CERT" тип.
             errors.add(new ErrorDto(BIRTH_CERTIFICATE_TYPE_NOT_VALID_TITLE, BIRTH_CERTIFICATE_TYPE_NOT_VALID));
         }
 
@@ -539,11 +543,14 @@ public class ConfirmChildDataComponent extends AbstractCycledComponent<FormDto<C
         if (fieldsComponent.containsKey(CHILDREN_MIDDLE_NAME_ATTR.name)) {
             validateByJsonRule(fieldsComponent.get(CHILDREN_MIDDLE_NAME_ATTR.name), errors);
         }
-        if (fieldsComponent.containsKey("foreignBirthCertificateSeries")) {
-            validateByJsonRule(fieldsComponent.get("foreignBirthCertificateSeries"), childData.getRfBirthCertificateSeries(), errors);
+        if (fieldsComponent.containsKey(CHILDREN_FOREIGN_BIRTH_CERTIFICATE_SERIES_ATTR.name)) {
+            validateByJsonRule(fieldsComponent.get(CHILDREN_FOREIGN_BIRTH_CERTIFICATE_SERIES_ATTR.name), childData.getRfBirthCertificateSeries(), errors);
         }
-        if (fieldsComponent.containsKey("foreignBirthCertificateNumber")) {
-            validateByJsonRule(fieldsComponent.get("foreignBirthCertificateNumber"), childData.getRfBirthCertificateNumber(), errors);
+        if (fieldsComponent.containsKey(CHILDREN_FOREIGN_BIRTH_CERTIFICATE_NUMBER_ATTR.name)) {
+            validateByJsonRule(fieldsComponent.get(CHILDREN_FOREIGN_BIRTH_CERTIFICATE_NUMBER_ATTR.name), childData.getRfBirthCertificateNumber(), errors);
+        }
+        if (fieldsComponent.containsKey(CHILDREN_FOREIGN_BIRTH_CERTIFICATE_ISSUED_BY_ATTR.name)) {
+            validateByJsonRule(fieldsComponent.get(CHILDREN_FOREIGN_BIRTH_CERTIFICATE_ISSUED_BY_ATTR.name), childData.getRfBirthCertificateIssuedBy(), errors);
         }
         return errors;
     }
