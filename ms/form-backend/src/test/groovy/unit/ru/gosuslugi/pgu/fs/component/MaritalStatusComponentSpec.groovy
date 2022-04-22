@@ -63,7 +63,7 @@ class MaritalStatusComponentSpec extends Specification {
         nsiSuggestDictionaryItem.setId('R7750064')
         nsiSuggestDictionaryItem.setText('Орган ЗАГС Москвы')
         def maritalStatusInputResponseDto = new MaritalStatusInputResponseDto()
-        maritalStatusInputResponseDto.setAct_rec_date('01.03.2016')
+        maritalStatusInputResponseDto.setAct_rec_date('2016-03-01')
         maritalStatusInputResponseDto.setAct_rec_number('R7750064')
         maritalStatusInputResponseDto.setAct_rec_registrator(nsiSuggestDictionaryItem)
         maritalStatusInputResponseDto.setSeries('01')
