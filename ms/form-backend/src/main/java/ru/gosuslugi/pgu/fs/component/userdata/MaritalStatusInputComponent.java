@@ -82,6 +82,7 @@ public class MaritalStatusInputComponent extends AbstractComponent<MaritalStatus
             String maritalStatusType = String.valueOf(fieldComponent.getAttrs().get(DOCUMENT_TYPE));
             //достаем все сертификаты из ЛК
             List<MaritalResponseItem> list = pguMarriageClient.getMaritalStatusCertificate(userPersonalData.getToken(), userPersonalData.getUserId(), maritalStatusType);
+            list.forEach(item->item.setActDate(String.valueOf(DateTimeUtil.parseDate(item.getActDate(), "dd.MM.yyyy"))));
 
             if (!list.isEmpty()) {
                 //достаем последний по дате актовой записи сертификат
