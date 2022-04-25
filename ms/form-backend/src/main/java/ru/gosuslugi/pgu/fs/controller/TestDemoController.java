@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import ru.gosuslugi.pgu.dto.ScenarioRequest;
 import ru.gosuslugi.pgu.dto.ScenarioResponse;
 import ru.gosuslugi.pgu.dto.descriptor.ServiceDescriptor;
 import ru.gosuslugi.pgu.fs.common.descriptor.DescriptorService;
+import ru.gosuslugi.pgu.fs.common.service.ProtectedFieldService;
 import ru.gosuslugi.pgu.fs.delirium.client.DeliriumClientStub;
 import ru.gosuslugi.pgu.fs.delirium.model.DeliriumStageDto;
 import ru.gosuslugi.pgu.fs.pgu.service.impl.PguOrderServiceStub;
@@ -40,6 +42,7 @@ public class TestDemoController {
     private final DescriptorService descriptorService;
     private final DraftClient draftClient;
     private final Environment environment;
+    private final ProtectedFieldService protectedFieldService;
 
     /**
      * Test method for updating service description json
@@ -112,5 +115,14 @@ public class TestDemoController {
             PguOrderServiceStub.EXISTING_ORDER_ID = scenario.getOrderId();
             draftClient.saveDraft(scenario, serviceId, null, null, serviceDescriptor.getDraftTtl(), serviceDescriptor.getOrderTtl());
         }
+    }
+
+    /**
+     * Test method for getting user's protectedFields
+     */
+    @Operation(summary = "Возвращает protectedFields пользователя")
+    @GetMapping(path = "/personal-data", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, Object> getProtectedFields() {
+        return protectedFieldService.getAllValues();
     }
 }

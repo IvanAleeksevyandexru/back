@@ -191,9 +191,12 @@ public class ProtectedFieldServiceImpl implements ProtectedFieldService {
 
         methodMap.put("assuranceLevel", userPersonalData -> userPersonalData.getPerson().getAssuranceLevel());
         methodMap.put("powers", userPersonalData -> {
-            JSONArray arr = new JSONArray();
-            arr.addAll(empowermentService.getUserEmpowerments());
-            return arr;
+            if (userPersonalData.getOrgId() != null) {
+                JSONArray arr = new JSONArray();
+                arr.addAll(empowermentService.getUserEmpowerments());
+                return arr;
+            }
+            return null;
         });
     }
 
@@ -209,6 +212,12 @@ public class ProtectedFieldServiceImpl implements ProtectedFieldService {
         }
 
         return null;
+    }
+
+    @Override
+    public Map<String, Object> getAllValues() {
+        return methodMap.entrySet().stream()
+                .collect(HashMap::new, (map, e) -> map.put(e.getKey(), getValue(e.getKey())), HashMap::putAll);
     }
 
     private Object getOrgValue(String name) {

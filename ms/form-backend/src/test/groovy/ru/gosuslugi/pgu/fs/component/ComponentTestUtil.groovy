@@ -154,6 +154,10 @@ class ComponentTestUtil extends Specification {
                     Object getValue(String name) {
                         return null
                     }
+                    @Override
+                    Map<String, Object> getAllValues() {
+                        return null
+                    }
                 },
                 new DefinitionResolver()
         )

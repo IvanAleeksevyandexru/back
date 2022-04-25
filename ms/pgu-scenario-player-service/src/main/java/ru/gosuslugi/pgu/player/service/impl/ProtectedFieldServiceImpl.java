@@ -63,6 +63,12 @@ public class ProtectedFieldServiceImpl implements ProtectedFieldService {
         return null;
     }
 
+    @Override
+    public Map<String, Object> getAllValues() {
+        return methodMap.entrySet().stream()
+                .collect(HashMap::new, (map, e) -> map.put(e.getKey(), getValue(e.getKey())), HashMap::putAll);
+    }
+
     private Object getOrgValue(String name){
         Object result = null;
         if(ORGANIZATION_TYPE.equals(name)){
